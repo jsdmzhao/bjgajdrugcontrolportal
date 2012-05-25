@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<context:annotation-config/>
+	<context:component-scan base-package="com.unis"/>
+
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>/WEB-INF/spring/jdbc.properties</value>
+		</property>
+	</bean> 
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${driverClassName}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+		<property name="maxActive" value="100" /> 
+		<property name="maxIdle" value="30" /> 
+		<property name="maxWait" value="500" /> 
+		<property name="defaultAutoCommit" value="true"/>
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="/WEB-INF/mybatis/mybatis-config.xml" />
+		<!-- mapper和resultmap配置路径 -->
+		<property name="mapperLocations">
+			<list>
+				<!-- 表示在com.unis.**.mapper包或以下所有目录中，以-mapper.xml结尾所有文件 -->
+				<value>classpath:com/unis/drugcontol/**/mapper/**/*-mapper.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 构造 sqlSession -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" >
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+
+	<!-- 配置事务管理器 -->
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- 配置事务特性，配置add,delete,update开始的方法，事务传播行为为required -->
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<!-- all methods starting with 'get' are read-only -->
+			<tx:method name="get*" read-only="true" />
+			<!-- other methods use the default transaction settings (see below) -->
+			<tx:method name="*" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 配置哪些类的方法进行事务管理，当前为service包下的方法，类中所有方法需要，还需要参考tx:advice的设置 -->
+	<aop:config>
+		<aop:pointcut id="allManagerMethod"
+			expression="execution (* com.unis.drugcontol..*Service.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="allManagerMethod" />
+	</aop:config>
+
+
+	<!-- 基础配置 -->
+	<bean id="dataSetProvider" class="com.unis.core.database.impl.DataSetProviderImpl">
+        <property name="sqlSession" ref="sqlSession" />
+    </bean>
+    <bean id="absServiceAdapter" class="com.unis.core.service.AbsServiceAdapter" abstract="true">
+        <property name="dataSetProvider" ref="dataSetProvider" />
+    </bean>
+	
+
+</beans>
