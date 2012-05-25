@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://getahead.org/dwr/dwr20.dtd">
+
+<dwr>
+
+  <allow>
+  		
+  		<create javascript="commonUtil" creator="new">
+  			<param name="class" value="com.unis.core.util.CommonUtil"></param>
+  		</create>
+  
+		<create javascript="loginService" creator="spring">
+			<param name="beanName" value="loginService"></param>
+		</create>
+		
+		<create javascript="loginAction" creator="spring">
+			<param name="beanName" value="loginAction"></param>
+		</create>
+		
+		<!-- 定义允许dwr将User实例转换成JavaScript对象 -->
+		<convert match="com.unis.drugcontol.login.model.User" converter="bean"></convert>
+	
+  </allow>
+
+</dwr>

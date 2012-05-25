@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 修改struts.xml配置文件,不用重启服务  -->
+	<constant name="struts.devMode" value="true" />
+	<!-- 修改struts2上传文件大小的限制(10M) -->
+	<constant name="struts.multipart.maxSize" value="10240000"/>
+	<!-- 把struts2的action交给spring管理 -->
+	<constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
+	<!-- 
+		<constant name="struts.objectFactory" value="spring" />
+	 -->
+	
+	<package name="front" namespace="/" extends="struts-default">
+	
+		<!-- 拦截错误页面 -->
+		<global-results>
+			<result name="errorPage">error.jsp</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<exception-mapping result="errorPage" exception="java.lang.Exception"/>
+		</global-exception-mappings>
+		
+		<!-- 通配符配置 -->
+		<!-- 
+    	<action name="*List" class="{1}Action" method="{1}List">
+			<result name="success">/{1}/{1}_list.jsp</result>
+		</action>
+		
+		<action name="*Save" class="{1}Action" method="{1}Save">
+			<result name="success" type="chain">{1}List</result>
+		</action>
+		
+		<action name="*Update" class="{1}Action" method="{1}Update">
+			<result name="success">/{1}/{1}_update.jsp</result>
+		</action>
+		
+		<action name="*Delete" class="{1}Action" method="{1}Delete">
+			<result name="success" type="chain">{1}List</result>
+		</action>
+		 -->
+
+		<action name="login" class="loginAction" method="login">
+			<result name="success">/success.jsp</result>
+			<result name="failure">/failure.jsp</result>
+		</action>
+		<action name="add" class="loginAction" method="add">
+			<result name="success">/success.jsp</result>
+			<result name="failure">/failure.jsp</result>
+		</action>
+		
+		<action name="view" class="loginAction" method="view">
+			<result name="success">/user_view.jsp</result>
+			<result name="failure">/failure.jsp</result>
+		</action>
+		
+	</package>
+
+</struts>
