@@ -237,11 +237,11 @@
             return input;
         },
         getValue: function (input, editParm)
-        { 
+        {
             return input.liger('option', 'value');
         },
         setValue: function (input, value, editParm)
-        { 
+        {
             input.liger('option', 'value', value);
         },
         resize: function (input, width, height, editParm)
@@ -966,7 +966,7 @@
             var g = this, p = this.options;
             if (g.editor.editing)
             {
-                var o = g.editor; 
+                var o = g.editor;
                 g.trigger('sysEndEdit', [g.editor.editParm]);
                 g.trigger('endEdit', [g.editor.editParm]);
                 if (o.editor.destroy) o.editor.destroy(o.input, o.editParm);
@@ -2106,6 +2106,8 @@
         _addData: function (rowdata, parentdata, neardata, isBefore)
         {
             var g = this, p = this.options;
+            if (!g.currentData) g.currentData = {};
+            if (!g.currentData[p.root]) g.currentData[p.root] = [];
             var listdata = g.currentData[p.root];
             if (neardata)
             {
@@ -3061,7 +3063,7 @@
         _checkEditAndUpdateCell: function (editParm)
         {
             var g = this, p = this.options;
-            if (g.trigger('beforeSubmitEdit', [editParm]) == false) return false; 
+            if (g.trigger('beforeSubmitEdit', [editParm]) == false) return false;
             g.updateCell(editParm.column, editParm.value, editParm.record);
             if (editParm.column.render || g.enabledTotal()) g.reRender({ column: editParm.column });
             g.reRender({ rowdata: editParm.record });
