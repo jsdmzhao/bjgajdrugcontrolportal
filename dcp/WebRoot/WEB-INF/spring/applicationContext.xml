@@ -12,7 +12,7 @@
 	<!-- 业务处理配置 -->
 	
 	<!-- login 登陆模块  -->
-	<bean id="loginService" class="com.unis.drugcontol.login.service.LoginService" parent="absServiceAdapter"/>
+	<bean id="loginService" class="com.unis.app.login.service.LoginService" parent="absServiceAdapter"/>
 	<!--
 	<bean id="loginAction" class="com.unis.drugcontol.login.action.LoginAction" scope="prototype">
 		<property name="loginService" ref="loginService" />
