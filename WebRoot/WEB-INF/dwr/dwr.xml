@@ -18,7 +18,7 @@
 		</create>
 		
 		<!-- 定义允许dwr将User实例转换成JavaScript对象 -->
-		<convert match="com.unis.drugcontol.login.model.User" converter="bean"></convert>
+		<convert match="com.unis.app.login.model.User" converter="bean"></convert>
 	
   </allow>
 
