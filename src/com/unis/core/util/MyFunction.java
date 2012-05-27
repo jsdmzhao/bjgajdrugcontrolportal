@@ -1,19 +1,8 @@
 package com.unis.core.util;
 
-import java.io.File;
-
-import javax.security.auth.login.AppConfigurationEntry;
-
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import com.unis.drugcontol.login.action.LoginAction;
 
 /**
- * ×Ô¶¨Òåº¯Êý
- * @author MaQinZh
+ * ï¿½Ô¶ï¿½ï¿½åº¯ï¿½ï¿½
  *
  */
 public class MyFunction {
