@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">
+	
+	<resultMap id="userResultMap" type="LoginUser">
+		<result property="c_user_id" column="C_USER_ID"/>
+		<result property="c_user_mc" column="C_USER_MC"/>
+		<result property="c_pass" column="C_PASS"/>
+	</resultMap>
+	<!-- 
+	<select id="checkUser" parameterType="map" resultType="LoginUser">
+		SELECT N_XH
+			FROM XT_YH_TEMP
+		WHERE C_USER_ID = #{c_user_id}
+			AND C_PASS = #{c_pass}
+			AND N_YXX = 1
+	</select>
+	 -->
+	
+	<select id="checkUser" parameterType="LoginUser" resultType="LoginUser">
+		SELECT N_XH
+			FROM XT_YH_TEMP
+		WHERE C_USER_ID = #{c_user_id}
+			<if test = "c_pass != null and c_pass != '' ">
+				AND C_PASS = #{c_pass}
+			</if>
+			AND N_YXX = 1
+	</select>
+	 
+	<select id="getUser" parameterType="int" resultType="LoginUser">
+		SELECT * FROM XT_YH_TEMP WHERE N_XH = #{n_xh}
+	</select>
+	
+	<select id="getUserByName" parameterType="string" resultType="LoginUser">
+		SELECT * FROM XT_YH_TEMP WHERE C_USER_ID = #{c_user_id}
+	</select>
+	
+	<insert id="insertUser" parameterType="LoginUser">
+		INSERT INTO XT_YH_TEMP 
+			(N_XH,C_USER_ID,C_USER_MC,C_AGE,C_XB,C_JJ) 
+		VALUES
+			(SQ_XT_YH.NEXTVAL,#{c_user_id},#{c_user_mc},#{c_age},#{c_xb},#{c_jj})
+	</insert>
+	
+	
+</mapper>
