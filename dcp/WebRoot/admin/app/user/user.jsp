@@ -3,9 +3,9 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
 	<base href="<%=basePath%>">
@@ -80,45 +80,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  });
 
       //增加搜索按钮,并创建事件
-     // LG.appendSearchButtons("#formsearch", grid);
+      LG.appendSearchButtons("#formsearch", grid);
 
       //加载toolbar
-      //LG.loadToolbar(grid, toolbarBtnItemClick);
+      LG.loadToolbar(grid, toolbarBtnItemClick);
       	
       	var items=[{
-                        click: toolbarBtnItemClick,
-                        text: '增加',
-                        id: 'add'
-                    },{
-                         click: toolbarBtnItemClick,
-                        text: '查看',
-                        id: 'view'
-                    },{
+                        
+                        click:toolbarBtnItemClick,
+                        text:'新增',
+                        img:'<%=basePath%>liger/lib/icons/silkicons/add.png',
+                        id:'add'
+                    },{line:true},{
                         click: toolbarBtnItemClick,
                         text: '修改',
+                        img:'<%=basePath%>liger/lib/icons/silkicons/application_edit.png',
                         id: 'modify'
-                    },{
+                    },{line:true},{
                         click: toolbarBtnItemClick,
                         text: '删除',
+                        img:'<%=basePath%>liger/lib/icons/silkicons/delete.png',
                         id: 'delete'
-                    }];
+                    },{line:true},{
+                        click: toolbarBtnItemClick,
+	                    text: '查看',
+	                    img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
+	                    id: 'view'
+                   },{line:true}];
     	grid.toolbarManager.set('items', items);
 
       //工具条事件
       function toolbarBtnItemClick(item) {
           switch (item.id) {
               case "add":
-                  top.f_addTab(null, '增加用户信息', 'MemberManage/UserDetail.aspx');
+                  top.f_addTab(null, '增加用户信息', '<%=basePath%>admin/app/user/userDetail.jsp');
                   break;
               case "view":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  top.f_addTab(null, '查看用户信息', 'MemberManage/UserDetail.aspx?IsView=1&ID=' + selected.UserID);
+                  top.f_addTab(null, '查看用户信息', '<%=basePath%>admin/app/user/userDetail.jsp?IsView=1&ID=' + selected.UserID);
                   break;
               case "modify":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  top.f_addTab(null, '修改用户信息', 'MemberManage/UserDetail.aspx?ID=' + selected.UserID);
+                  top.f_addTab(null, '修改用户信息', '<%=basePath%>admin/app/user/userDetail.jsp?ID=' + selected.UserID);
                   break;
               case "delete":
                   jQuery.ligerDialog.confirm('确定删除吗?', function (confirm) {
