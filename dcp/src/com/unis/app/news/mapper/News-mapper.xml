@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="NewsMapper">
+	
+	<resultMap id="newsResultMap" type="News">
+
+	</resultMap>
+	 
+	<select id="getNews" parameterType="int" resultType="News">
+		SELECT * FROM B_XINWEN WHERE N_XH = #{n_xh}
+	</select>
+	
+	
+	<insert id="insertNews" parameterType="News">
+		INSERT INTO B_XINWEN 
+			(N_XH) 
+		VALUES
+			(SQ_X.NEXTVAL,)
+	</insert>
+	
+	
+</mapper>
