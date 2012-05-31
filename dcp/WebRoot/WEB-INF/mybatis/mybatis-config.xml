@@ -6,6 +6,8 @@
 <typeAliases >
 
 	<typeAlias alias="User" type="com.unis.app.login.model.User" />
+	
+	<typeAlias alias="News" type="com.unis.app.news.model.News" />
 
 </typeAliases>
 
