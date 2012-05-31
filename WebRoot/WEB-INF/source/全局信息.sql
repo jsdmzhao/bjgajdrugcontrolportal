@@ -1,13 +1,13 @@
-jdk 7.0
-myeclipse 10.0
-tomcat 7.0
-oracle 10g/»òÒÔÉÏ
+--jdk 7.0
+--myeclipse 10.0
+--tomcat 7.0
+--oracle 10g/æˆ–ä»¥ä¸Š
 
-tablespace: dcp
-username: dcp
-password:dcp
-ÏµÍ³±í xt_Ó¢ÎÄµ¥´Ê
-Ó¦ÓÃ±í b_ººÓïÆ´ÒôÊ××ÖÄ¸
+--tablespace: dcp
+--username: dcp
+--password:dcp
+--ç³»ç»Ÿè¡¨ xt_è‹±æ–‡å•è¯
+--åº”ç”¨è¡¨ b_æ±‰è¯­æ‹¼éŸ³é¦–å­—æ¯
 
 create tablespace dcp
 datafile 'D:\app\Administrator\oradata\dcp\dcp.dbf'
