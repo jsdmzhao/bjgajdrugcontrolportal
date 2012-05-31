@@ -96,3 +96,12 @@ alter table b_xinwen
     minextents 1
     maxextents unlimited
   );
+  
+  
+--SEQUENCE
+create sequence SEQ_B_XINWEN
+minvalue 10000000
+maxvalue 99999999
+start with 10000000
+increment by 1
+cache 20;
