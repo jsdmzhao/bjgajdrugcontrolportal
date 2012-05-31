@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SysUserMapper">
+	
+	<resultMap id="Result" type="">
+		<result property="userId" column="USER_ID" jdbcType="DECIMAL"/>
+		<result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
+		<result property="userPassword" column="USER_PASSWORD" jdbcType="VARCHAR"/>
+		<result property="userLock" column="USER_LOCK" jdbcType="CHAR"/>
+		
+	</resultMap>
+	
+
+	<select id="queryAllInfo" resultMap="Result" parameterClass="java.util.HashMap" >
+				 select 
+					base.USER_ID,
+					base.USER_NAME,
+					base.USER_PASSWORD,
+					base.USER_LOCK
+				 from SYS_USER base 
+		 <dynamic prepend="where">
+			<isNotEmpty property="userId" prepend="and">	USER_ID = #userId#</isNotEmpty>
+			<isNotEmpty property="userName" prepend="and">	USER_NAME = #userName#</isNotEmpty>
+			<isNotEmpty property="userPassword" prepend="and">	USER_PASSWORD = #userName#</isNotEmpty>
+			<isNotEmpty property="userLock" prepend="and">	USER_LOCK = #userLock#</isNotEmpty>
+		</dynamic>
+		ORDER BY USER_ID  DESC 
+	</select>
+
+	<select id="queryInfo" resultMap="Result" parameterClass="java.util.HashMap" >
+		<include refid="pagination.paginationStart"></include>
+				 select 
+					base.USER_ID,
+					base.USER_NAME,
+					base.USER_PASSWORD,
+					base.USER_LOCK
+				 from SYS_USER base 
+		 <dynamic prepend="where">
+			<isNotEmpty property="userId" prepend="and">	USER_ID = #userId#</isNotEmpty>
+			<isNotEmpty property="userName" prepend="and">	USER_NAME = #userName#</isNotEmpty>
+			<isNotEmpty property="userPassword" prepend="and">	USER_PASSWORD = #userName#</isNotEmpty>
+			<isNotEmpty property="userLock" prepend="and">	USER_LOCK = #userLock#</isNotEmpty>
+		</dynamic>
+		ORDER BY USER_ID  DESC 
+		<include refid="pagination.paginationLast"></include>
+	</select>
+
+	<select id="queryCountInfo" resultClass="integer" parameterClass="java.util.HashMap" >
+				<!--vw_t_gczlgl_info 前台查询视图  ; vwm_t_gczlgl_info = 后台管理查询视图-->
+				<!--注意： where 条件后字段前必须有空格-->
+				<!--select count(N_XH) from vw_t_gczlgl_info-->
+				<!--select count(N_XH) from vwm_t_gczlgl_info-->
+				select count(base.USER_ID) from SYS_USER
+ 		<dynamic prepend="where">
+			<isNotEmpty property="userId" prepend="and">	USER_ID = #userId#</isNotEmpty>
+			<isNotEmpty property="userName" prepend="and">	USER_NAME = #userName#</isNotEmpty>
+			<isNotEmpty property="userPassword" prepend="and">	USER_PASSWORD = #userName#</isNotEmpty>
+			<isNotEmpty property="userLock" prepend="and">	USER_LOCK = #userLock#</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<insert id="saveInfo" parameterClass="java.util.HashMap" >
+			INSERT INTO SYS_USER(
+				 USER_ID
+			<isNotNull property="userName" prepend=",">USER_NAME</isNotNull>
+			<isNotNull property="userPassword" prepend=",">USER_PASSWORD</isNotNull>
+			<isNotNull property="userLock" prepend=",">USER_LOCK</isNotNull>
+			)VALUES(
+				SEQ_SYS_USER_ID.NEXTVAL 
+				<!-- #n_xh#-->
+			<isNotNull property="userName" prepend=",">#userName#</isNotNull>
+			<isNotNull property="userPassword" prepend=",">#userPassword#</isNotNull>
+			<isNotNull property="userLock" prepend=",">#userLock#</isNotNull>
+			)
+		<selectKey resultClass="string" keyProperty="id" >
+			 <!--SELECT #nXh# AS ID FROM dual  -->
+			 SELECT  SEQ_SYS_USER_ID.CURRVAL  AS ID FROM dual 
+		</selectKey>
+	</insert>
+
+	<insert id="saveAllInfo" parameterClass="java.util.HashMap" >
+			INSERT INTO SYS_USER(
+				USER_ID,
+				USER_NAME,
+				USER_PASSWORD,
+				USER_LOCK
+			)VALUES(
+				 SEQ_SYS_USER_ID.NEXTVAL,  
+				<!--#nXh#,-->
+				#userName#,
+				#userPassword#,
+				#userLock#
+			)
+		<selectKey resultClass="string" keyProperty="id" >
+			 <!--SELECT #nXh# AS ID FROM dual --> 
+			 SELECT  SEQ_SYS_USER_ID.CURRVAL  AS ID FROM dual 
+		</selectKey>
+	</insert>
+
+	<update id="updateInfo" parameterClass="java.util.HashMap"> 
+			update SYS_USER 
+			<dynamic prepend="set">
+				<isNotNull property="userName" prepend=",">USER_NAME = #userName#</isNotNull>
+				<isNotNull property="userPassword" prepend=",">USER_PASSWORD = #userPassword#</isNotNull>
+				<isNotNull property="userLock" prepend=",">USER_LOCK = #userLock#</isNotNull>
+			</dynamic>
+			<dynamic prepend="where"> 
+				<isNotNull property="userId" prepend="and">USER_ID = #userId#</isNotNull>
+				<isNotNull property="userIds" prepend="and">USER_ID in ($userIds$)</isNotNull>
+			</dynamic>
+	</update> 
+
+	<update id="updateAllInfo" parameterClass="java.util.HashMap"> 
+			update SYS_USER set 
+				USER_ID = #userId#,
+				USER_NAME = #userName#,
+				USER_PASSWORD = #userPassword#,
+				USER_LOCK = #userLock#
+			WHERE 
+				USER_ID = #userId#
+	</update> 
+
+	<delete id="removeInfo" parameterClass="java.util.Map"> 
+			 DELETE FROM SYS_USER
+			 WHERE
+			<!--N_XH = #nXh#--> 
+			<![CDATA[ USER_ID IN ($userIds$) ]]>
+	</delete> 
+</mapper>
