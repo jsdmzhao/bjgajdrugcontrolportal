@@ -27,7 +27,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<script type='text/javascript' src='dwr/engine.js'></script>
   	<script type='text/javascript' src='dwr/util.js'></script>
+  	<!--
   	<script type='text/javascript' src='dwr/interface/loginAction.js'></script>
+  	-->
+  	
+  	<script type='text/javascript' src='dwr/interface/loginSeivice.js'></script>
   	
   	<script type="text/javascript">
 
@@ -39,7 +43,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				return false;
 			} else {
 			
-				loginAction.checkUserByName( obj,function(data){
+				//loginAction.checkUserByName( obj,function(data){
+				loginSeivice.checkUserByName( obj,function(data){
 					 for(var property in data){       
 				         alert('库中存在同名人'+ data[property].c_user_id + '     ,姓名 ：'+ data[property].c_user_mc);      
 				     }   
