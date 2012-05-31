@@ -5,7 +5,7 @@
 
 <typeAliases >
 
-	<typeAlias alias="LoginUser" type="com.unis.app.login.model.User" />
+	<typeAlias alias="User" type="com.unis.app.login.model.User" />
 
 </typeAliases>
 
