@@ -155,9 +155,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     "children":[{
                     "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
                     "id":61,
-                    "MenuName":"通知通报",
+                    "MenuName":"文章发布",
                     "MenuID":61,
-                    "text":"通知通报",
+                    "text":"文章发布",
                     "MenuUrl":"<%=basePath%>admin/app/news/news.jsp?wzlx=tztb",
                     "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
                     "MenuNo":"MemberManageRole",
