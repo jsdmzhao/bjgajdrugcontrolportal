@@ -149,7 +149,79 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
             var mainmenu = $("#mainmenu");
 
-            var menus=[{"icon":"<%=basePath%>liger/lib/icons/silkicons/application.png","id":58,"children":[{"icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif","id":61,"MenuName":"新闻管理","MenuID":61,"text":"新闻管理","MenuUrl":"#","MenuIcon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif","MenuNo":"MemberManageRole","MenuParentNo":"MemberManage"}],"MenuName":"内容管理","MenuID":58,"text":"内容管理","MenuUrl":null,"MenuIcon":"<%=basePath%>liger/lib/icons/silkicons/application.png","MenuNo":"MemberManage","MenuParentNo":null},{"icon":"<%=basePath%>liger/lib/icons/32X32/future_projects.gif","id":1,"children":[{"icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif","id":61,"MenuName":"角色管理","MenuID":61,"text":"角色管理","MenuUrl":"<%=basePath%>admin/app/role/role.jsp","MenuIcon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif","MenuNo":"MemberManageRole","MenuParentNo":"MemberManage"},{"icon":"<%=basePath%>liger/lib/icons/32X32/role.gif","id":62,"MenuName":"用户管理","MenuID":62,"text":"用户管理","MenuUrl":"<%=basePath%>admin/app/user/user.jsp","MenuIcon":"<%=basePath%>liger/lib/icons/32X32/role.gif","MenuNo":"MemberManageUser","MenuParentNo":"MemberManage"},{"icon":"<%=basePath%>liger/lib/icons/32X32/sitemap.gif","id":8,"MenuName":"菜单管理","MenuID":8,"text":"菜单管理","MenuUrl":"<%=basePath%>admin/app/resource/resource.jsp","MenuIcon":"<%=basePath%>liger/lib/icons/32X32/sitemap.gif","MenuNo":"sysmenu","MenuParentNo":"system"},{"icon":"<%=basePath%>liger/lib/icons/32X32/link.gif","id":19,"MenuName":"权限中心","MenuID":19,"text":"权限中心","MenuUrl":"<%=basePath%>admin/app/permission/permission.jsp","MenuIcon":"<%=basePath%>liger/lib/icons/32X32/link.gif","MenuNo":"sysright","MenuParentNo":"system"}],"MenuName":"系统管理","MenuID":1,"text":"系统管理","MenuUrl":null,"MenuIcon":"<%=basePath%>liger/lib/icons/32X32/future_projects.gif","MenuNo":"system","MenuParentNo":null}]; 
+            var menus=[
+                     {"icon":"<%=basePath%>liger/lib/icons/silkicons/application.png",
+                     "id":58,
+                    "children":[{
+                    "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
+                    "id":61,
+                    "MenuName":"新闻管理",
+                    "MenuID":61,
+                    "text":"新闻管理",
+                    "MenuUrl":"#",
+                    "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
+                    "MenuNo":"MemberManageRole",
+                    "MenuParentNo":"MemberManage"
+                    }],
+                    "MenuName":"内容管理",
+                    "MenuID":58,
+                    "text":"内容管理",
+                    "MenuUrl":null,
+                    "MenuIcon":"<%=basePath%>liger/lib/icons/silkicons/application.png",
+                    "MenuNo":"MemberManage",
+                    "MenuParentNo":null
+                    },{
+                    "icon":"<%=basePath%>liger/lib/icons/32X32/future_projects.gif",
+                    "id":1,
+                    "children":[{
+                        "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
+                        "id":61,
+                        "MenuName":"角色管理",
+                        "MenuID":61,
+                        "text":"角色管理",
+                        "MenuUrl":"<%=basePath%>admin/app/role/role.jsp",
+                        "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
+                        "MenuNo":"MemberManageRole",
+                        "MenuParentNo":"MemberManage"
+                      	},{
+                       	"icon":"<%=basePath%>liger/lib/icons/32X32/role.gif",
+                       	"id":62,
+                       	"MenuName":"用户管理",
+                       	"MenuID":62,
+                       	"text":"用户管理",
+                       	"MenuUrl":"<%=basePath%>admin/app/user/user.jsp",
+                       	"MenuIcon":"<%=basePath%>liger/lib/icons/32X32/role.gif",
+                       	"MenuNo":"MemberManageUser",
+                       	"MenuParentNo":"MemberManage"
+                         },{
+                         "icon":"<%=basePath%>liger/lib/icons/32X32/sitemap.gif",
+                         "id":8,
+                         "MenuName":"菜单管理",
+                         "MenuID":8,
+                         "text":"菜单管理",
+                         "MenuUrl":"<%=basePath%>admin/app/resource/resource.jsp",
+                         "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/sitemap.gif",
+                         "MenuNo":"sysmenu",
+                         "MenuParentNo":"system"
+                         },{
+                         "icon":"<%=basePath%>liger/lib/icons/32X32/link.gif",
+                         "id":19,
+                         "MenuName":"权限中心",
+                         "MenuID":19,
+                         "text":"权限中心",
+                         "MenuUrl":"<%=basePath%>admin/app/permission/permission.jsp",
+                         "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/link.gif",
+                         "MenuNo":"sysright",
+                         "MenuParentNo":"system"
+                          }],
+                          "MenuName":"系统管理",
+                          "MenuID":1,
+                          "text":"系统管理",
+                          "MenuUrl":null,
+                          "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/future_projects.gif",
+                          "MenuNo":"system",
+                          "MenuParentNo":null
+                          }]; 
             
             $(menus).each(function (i, menu)
                 {
