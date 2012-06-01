@@ -10,25 +10,25 @@
 		<result property="userLock" column="USER_LOCK" jdbcType="CHAR"/>
 		
 	</resultMap>
-	
+	 
 
-	<select id="queryAllInfo" resultMap="Result" parameterClass="java.util.HashMap" >
+	<select id="queryAllInfo" resultMap="Result" parameterType="java.util.HashMap" >
 				 select 
 					base.USER_ID,
 					base.USER_NAME,
 					base.USER_PASSWORD,
 					base.USER_LOCK
 				 from SYS_USER base 
-		 <dynamic prepend="where">
-			<isNotEmpty property="userId" prepend="and">	USER_ID = #userId#</isNotEmpty>
-			<isNotEmpty property="userName" prepend="and">	USER_NAME = #userName#</isNotEmpty>
-			<isNotEmpty property="userPassword" prepend="and">	USER_PASSWORD = #userName#</isNotEmpty>
-			<isNotEmpty property="userLock" prepend="and">	USER_LOCK = #userLock#</isNotEmpty>
-		</dynamic>
+		 <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}#</if>
+			<if test="userName != null and userName !='' ">  and USER_NAME = #{userName}#</if>
+			<if test="userPassword != null and userPassword !='' ">  and USER_PASSWORD = #{userName}#</if>
+			<if test="userLock != null and userLock !='' ">  and USER_LOCK = #{userLock}#</if>
+		</trim>
 		ORDER BY USER_ID  DESC 
 	</select>
 
-	<select id="queryInfo" resultMap="Result" parameterClass="java.util.HashMap" >
+	<select id="queryInfo" resultMap="Result" parameterType="java.util.HashMap" >
 		<include refid="pagination.paginationStart"></include>
 				 select 
 					base.USER_ID,
@@ -36,50 +36,54 @@
 					base.USER_PASSWORD,
 					base.USER_LOCK
 				 from SYS_USER base 
-		 <dynamic prepend="where">
-			<isNotEmpty property="userId" prepend="and">	USER_ID = #userId#</isNotEmpty>
-			<isNotEmpty property="userName" prepend="and">	USER_NAME = #userName#</isNotEmpty>
-			<isNotEmpty property="userPassword" prepend="and">	USER_PASSWORD = #userName#</isNotEmpty>
-			<isNotEmpty property="userLock" prepend="and">	USER_LOCK = #userLock#</isNotEmpty>
-		</dynamic>
+		 <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="userId != null and userId !='' ">  and 	USER_ID = #{userId}#</if>
+			<if test="userName != null and userName !='' ">  and 	USER_NAME = #{userName}#</if>
+			<if test="userPassword != null and userPassword !='' ">  and 	USER_PASSWORD = #{userName}#</if>
+			<if test="userLock != null and userLock !='' ">  and 	USER_LOCK = #{userLock}#</if>
+		</trim>
 		ORDER BY USER_ID  DESC 
 		<include refid="pagination.paginationLast"></include>
 	</select>
 
-	<select id="queryCountInfo" resultClass="integer" parameterClass="java.util.HashMap" >
+	<select id="queryCountInfo" resultType="integer" parameterType="java.util.HashMap" >
 				<!--vw_t_gczlgl_info 前台查询视图  ; vwm_t_gczlgl_info = 后台管理查询视图-->
 				<!--注意： where 条件后字段前必须有空格-->
 				<!--select count(N_XH) from vw_t_gczlgl_info-->
 				<!--select count(N_XH) from vwm_t_gczlgl_info-->
 				select count(base.USER_ID) from SYS_USER
- 		<dynamic prepend="where">
-			<isNotEmpty property="userId" prepend="and">	USER_ID = #userId#</isNotEmpty>
-			<isNotEmpty property="userName" prepend="and">	USER_NAME = #userName#</isNotEmpty>
-			<isNotEmpty property="userPassword" prepend="and">	USER_PASSWORD = #userName#</isNotEmpty>
-			<isNotEmpty property="userLock" prepend="and">	USER_LOCK = #userLock#</isNotEmpty>
-		</dynamic>
+ 		<trim prefix="where" prefixOverrides="and |or"> 
+			<if test="userId != null and userId !='' ">  and 	USER_ID = #{userId}#</if>
+			<if test="userName != null and userName !='' ">  and 	USER_NAME = #{userName}#</if>
+			<if test="userName != null and userName !='' ">  and 	USER_PASSWORD = #{userName}#</if>
+			<if test="userLock != null and userLock !='' ">  and 	USER_LOCK = #{userLock}#</if>
+		</trim>
 	</select>
 
-	<insert id="saveInfo" parameterClass="java.util.HashMap" >
+	<insert id="saveInfo" parameterType="HashMap" >
 			INSERT INTO SYS_USER(
 				 USER_ID
-			<isNotNull property="userName" prepend=",">USER_NAME</isNotNull>
-			<isNotNull property="userPassword" prepend=",">USER_PASSWORD</isNotNull>
-			<isNotNull property="userLock" prepend=",">USER_LOCK</isNotNull>
+		    <trim  prefixOverrides=","> 
+			<if test="userName != null and userName !='' ">  and USER_NAME</if>
+			<if test="userPassword != null and userPassword !='' ">  and USER_PASSWORD</if>
+			<if test="userLock != null and userLock !='' ">  and  USER_LOCK</if>
+			</trim>
 			)VALUES(
 				SEQ_SYS_USER_ID.NEXTVAL 
-				<!-- #n_xh#-->
-			<isNotNull property="userName" prepend=",">#userName#</isNotNull>
-			<isNotNull property="userPassword" prepend=",">#userPassword#</isNotNull>
-			<isNotNull property="userLock" prepend=",">#userLock#</isNotNull>
+				<!-- #{n_xh#-->
+			<trim  prefixOverrides=","> 
+			<if test="userName != null and userName !='' ">  and  #{userName}#</if>
+			<if test="userPassword != null and userPassword !='' ">  and  #{userPassword}#</if>
+			<if test="userLock != null and userLock !='' ">  and  #{userLock}#</if>
+			</trim>
 			)
-		<selectKey resultClass="string" keyProperty="id" >
-			 <!--SELECT #nXh# AS ID FROM dual  -->
+		<selectKey resultType="string" keyProperty="id" >
+			 <!--SELECT #{nXh# AS ID FROM dual  -->
 			 SELECT  SEQ_SYS_USER_ID.CURRVAL  AS ID FROM dual 
 		</selectKey>
 	</insert>
 
-	<insert id="saveAllInfo" parameterClass="java.util.HashMap" >
+	<insert id="saveAllInfo" parameterType="java.util.HashMap" >
 			INSERT INTO SYS_USER(
 				USER_ID,
 				USER_NAME,
@@ -88,43 +92,43 @@
 			)VALUES(
 				 SEQ_SYS_USER_ID.NEXTVAL,  
 				<!--#nXh#,-->
-				#userName#,
-				#userPassword#,
-				#userLock#
+				#{userName}#,
+				#{userPassword}#,
+				#{userLock}#
 			)
-		<selectKey resultClass="string" keyProperty="id" >
-			 <!--SELECT #nXh# AS ID FROM dual --> 
+		<selectKey resultType="string" keyProperty="id" >
+			 <!--SELECT #{nXh# AS ID FROM dual --> 
 			 SELECT  SEQ_SYS_USER_ID.CURRVAL  AS ID FROM dual 
 		</selectKey>
 	</insert>
 
-	<update id="updateInfo" parameterClass="java.util.HashMap"> 
+	<update id="updateInfo" parameterType="java.util.HashMap"> 
 			update SYS_USER 
-			<dynamic prepend="set">
-				<isNotNull property="userName" prepend=",">USER_NAME = #userName#</isNotNull>
-				<isNotNull property="userPassword" prepend=",">USER_PASSWORD = #userPassword#</isNotNull>
-				<isNotNull property="userLock" prepend=",">USER_LOCK = #userLock#</isNotNull>
-			</dynamic>
-			<dynamic prepend="where"> 
-				<isNotNull property="userId" prepend="and">USER_ID = #userId#</isNotNull>
-				<isNotNull property="userIds" prepend="and">USER_ID in ($userIds$)</isNotNull>
-			</dynamic>
+			<trim prefix="set" prefixOverrides=","> 
+				<if test="userName != null and userName !='' "> , USER_NAME = #{userName}#</if>
+				<if test="userPassword != null and userPassword !='' "> , USER_PASSWORD = #{userPassword}#</if>
+				<if test="userLock != null and userLock !='' "> , USER_LOCK = #{userLock}#</if>
+			</trim>
+			<trim prefix="where" prefixOverrides="and |or">  
+				<if test="userId != null and userId !='' ">  and USER_ID = #{userId}#</if>
+				<if test="userIds != null and userIds !='' ">  and  USER_ID in (${userIds}$)</if>
+			</trim>
 	</update> 
 
-	<update id="updateAllInfo" parameterClass="java.util.HashMap"> 
+	<update id="updateAllInfo" parameterType="java.util.HashMap"> 
 			update SYS_USER set 
-				USER_ID = #userId#,
-				USER_NAME = #userName#,
-				USER_PASSWORD = #userPassword#,
-				USER_LOCK = #userLock#
+				USER_ID = #{userId}#,
+				USER_NAME = #{userName}#,
+				USER_PASSWORD = #{userPassword#},
+				USER_LOCK = #{userLock}#
 			WHERE 
-				USER_ID = #userId#
+				USER_ID = #{userId)#
 	</update> 
 
-	<delete id="removeInfo" parameterClass="java.util.Map"> 
+	<delete id="removeInfo" parameterType="java.util.Map"> 
 			 DELETE FROM SYS_USER
 			 WHERE
-			<!--N_XH = #nXh#--> 
-			<![CDATA[ USER_ID IN ($userIds$) ]]>
+			<!--N_XH = #{nXh#--> 
+			<![CDATA[ USER_ID IN (${userIds}$) ]]>
 	</delete> 
 </mapper>

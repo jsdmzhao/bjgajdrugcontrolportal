@@ -62,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="login-page clearfix">
 						<div class="full-login">
 							<div class="shadow">
-								<div class="login-panel">
+								<div class="login-panel" >
 									<form method="post" id="loginForm" onsubmit="return checkLogin();" action="login">
 										<h2>登录系统</h2>
 										<p class="clearfix">
