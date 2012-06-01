@@ -561,7 +561,17 @@
             tab.removeTabItem(tabid);
         }
     };
-
+    
+    
+  //关闭dialog
+    LG.closeCurrentDialog = function ()
+    {
+        if (!lDialog)
+        {
+        	lDialog.close();
+        }
+    };
+    
     //关闭Tab项并且刷新父窗口
     LG.closeAndReloadParent = function (tabid, parentMenuNo)
     {
@@ -582,6 +592,8 @@
             tab.reload(parentTabid);
         }
     };
+    
+
 
     //覆盖页面grid的loading效果
     LG.overrideGridLoading = function ()

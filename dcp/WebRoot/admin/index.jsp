@@ -76,6 +76,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         var layout, tab, accordion;
         //tabid计数器，保证tabid不会重复
         var tabidcounter = 0;
+        //dialog对象
+        var lDialog;
         //窗口改变时的处理函数
         function f_heightChanged(options) {
             if (tab)
@@ -93,6 +95,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }
             tab.addTabItem({ tabid: tabid, text: text, url: url });
         }
+
+        //增加dialog的函数
+        function f_openDialog(dialogId, title, url) {
+            lDialog=$.ligerDialog.open({ title : title ,url: url, height: 400,width: 750});
+        }
+
+      //关闭dialog的函数
+        function f_closeDialog() {
+            lDialog.close();
+        }
+        
         //登录
         function f_login()
         {
