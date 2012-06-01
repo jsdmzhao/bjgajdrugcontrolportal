@@ -35,6 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div id="maingrid"></div> 
   
   <script type="text/javascript">
+  
        var config ={"Grid":{
           columns: [
           { display: "账号", name: "LoginName", width: 180, type: "text", align: "left" }, 
@@ -111,11 +112,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    },{line:true}];
     	grid.toolbarManager.set('items', items);
 
+
+        var lDialog;
+        function abc(){
+               
+            }
+
       //工具条事件
       function toolbarBtnItemClick(item) {
           switch (item.id) {
               case "add":
-                  top.f_addTab(null, '增加用户信息', '<%=basePath%>admin/app/user/userDetail.jsp');
+            	  top.f_openDialog(null,'aaa','<%=basePath%>admin/app/user/userDetail.jsp' );
                   break;
               case "view":
                   var selected = grid.getSelected();

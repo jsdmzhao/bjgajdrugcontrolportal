@@ -142,8 +142,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
         function f_cancel()
         {
-            var win = parent || window;
-            win.LG.closeCurrentTab(null);
+        	top.f_closeDialog();
         }
 
 		 
