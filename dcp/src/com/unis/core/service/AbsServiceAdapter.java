@@ -2,6 +2,8 @@ package com.unis.core.service;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+
 import com.unis.core.database.IDataSetProvider;
 
 /**
@@ -21,7 +23,7 @@ public abstract class AbsServiceAdapter<T> {
 
     /**
      * @param statmentId
-     * @param o ÐÂÔö²Ù×÷
+     * @param o ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @return
      */
     public Object insert(String statmentId, Object o) {
@@ -30,7 +32,7 @@ public abstract class AbsServiceAdapter<T> {
 
     /**
      * @param statmentId
-     * @param o ÐÞ¸Ä²Ù×÷
+     * @param o ï¿½Þ¸Ä²ï¿½ï¿½ï¿½
      * @return
      */
     public Object update(String statmentId, Object o) {
@@ -39,7 +41,7 @@ public abstract class AbsServiceAdapter<T> {
 
     /**
      * @param statmentId
-     * @param o ²éÑ¯List²Ù×÷
+     * @param o ï¿½ï¿½Ñ¯Listï¿½ï¿½ï¿½ï¿½
      * @return
      */
     public List<?> selectList(String statmentId, Object o) {
@@ -48,11 +50,15 @@ public abstract class AbsServiceAdapter<T> {
 
     /**
      * @param statmentId
-     * @param o ²éÑ¯µ¥¸ö¶ÔÏó²Ù×÷
+     * @param o ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @return
      */
     public Object selectOne(String statmentId, Object o) {
         return dataSetProvider.selectOne(statmentId, o);
     };
+    
+    public SqlSession getSqlSession() {
+		return dataSetProvider.getSqlSession();
+	}
    
 }

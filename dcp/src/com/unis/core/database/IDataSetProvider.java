@@ -2,6 +2,8 @@ package com.unis.core.database;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+
 /**
  *
  * @param <T>
@@ -35,5 +37,9 @@ public interface IDataSetProvider<T> {
      * @return
      */
     public Object selectOne(String statmentId, Object o);
+    
+    public SqlSession getSqlSession() ;
+    
+    
     
 }

@@ -41,6 +41,7 @@ public class DataSetProviderImpl<T> implements IDataSetProvider<T> {
      */
     public Object update(String statmentId, Object o) {
         return getSqlSession().update(statmentId, o);
+        
     }
 
 	/**

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter;
 
-/**
+/** 
  *  ckeditor 
  */
 public class CkPassFilter extends StrutsPrepareAndExecuteFilter {
