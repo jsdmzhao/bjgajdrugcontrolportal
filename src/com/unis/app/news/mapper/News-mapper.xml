@@ -2,22 +2,92 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="NewsMapper">
-	
-	<resultMap id="newsResultMap" type="News">
-
-	</resultMap>
 	 
-	<select id="getNews" parameterType="int" resultType="News">
+	<select id="getNews" parameterType="News" resultType="News">
 		SELECT * FROM B_XINWEN WHERE N_XH = #{n_xh}
 	</select>
 	
+	<delete id="deleteNews" parameterType="News">
+		delete from B_XINWEN WHERE N_XH = #{n_xh}
+	</delete>
 	
-	<insert id="insertNews" parameterType="News">
-		INSERT INTO B_XINWEN 
-			(N_XH) 
-		VALUES
-			(SQ_X.NEXTVAL,)
+	<insert id="insertNews" parameterType="hashmap">
+		 INSERT INTO B_XINWEN(
+			N_XH,
+			C_BT,
+			C_SFTPWZ,
+			C_TPLJDZ,
+			C_TPKD,
+			C_TPGD,
+			C_SFSCSP,
+			C_SPLJDZ,
+			C_LJ,
+			C_JJ,
+			C_NR,
+			D_FBSJ,
+			C_LM,
+			C_YHID,
+			C_YHZID,
+			C_SFSH,
+			C_SHR,
+			D_SHSJ,
+			N_YDCS,
+			C_SFTJ,
+			C_SFZD,
+			N_XXXH ) 
+		VALUES (	            	
+		    seq_b_xinwen.nextval,
+		     #{c_bt,jdbcType=VARCHAR},    
+		     #{c_sftwpz,jdbcType=CHAR},
+	         #{c_tpljdz,jdbcType=VARCHAR},   
+	         #{c_tpkd,jdbcType=NUMERIC},          
+	         #{c_tpgd,jdbcType=NUMERIC},          
+	         #{c_sfscsp,jdbcType=CHAR},        
+	         #{c_spljdz,jdbcType=VARCHAR},        
+	         #{c_lj,jdbcType=VARCHAR},            
+	         #{c_jj,jdbcType=VARCHAR},            
+	         #{c_nr,javaType=String,jdbcType=CLOB,handler=ClobTypeHandler},            
+	         to_date(#{d_fbsj,jdbcType=VARCHAR},'yyyy-mm-dd'),          
+	         #{c_lm,jdbcType=VARCHAR},            
+	         #{c_yhid,jdbcType=VARCHAR},            
+	         #{c_yhzid,jdbcType=VARCHAR},         
+	         #{c_sfsh,jdbcType=CHAR},          
+	         #{c_shr,jdbcType=VARCHAR},           
+	         to_date(#{d_shsj,jdbcType=DATE},'yyyy-mm-dd'),           
+	         #{n_ydcs,jdbcType=NUMERIC},          
+	         #{c_sftj,jdbcType=VARCHAR},          
+	         #{c_sfzd,jdbcType=VARCHAR},          
+	       	 #{n_xxxh,jdbcType=NUMERIC}         
+	    )  
 	</insert>
+	
+	<update id="updateNews" parameterType="News">
+		UPDATE B_XINWEN
+		   SET  C_BT     =	#{c_bt,jdbcType=VARCHAR},
+				C_SFTPWZ =	#{c_sftpwz}, 
+				C_TPLJDZ =	#{c_tpljdz,jdbcType=VARCHAR}, 							
+				C_TPKD   =	#{c_tpkd,jdbcType=NUMERIC},   							
+				C_TPGD   =	#{c_tpgd,jdbcType=NUMERIC},   							
+				C_SFSCSP =	#{c_sfscsp,jdbcType=VARCHAR},  							
+				C_SPLJDZ =	#{c_spljdz,jdbcType=VARCHAR}, 							
+				C_LJ     =	#{c_lj,jdbcType=VARCHAR},     							
+				C_JJ     =	#{c_jj,jdbcType=VARCHAR},     							
+				C_NR     =	#{c_nr,jdbcType=VARCHAR},     							
+				D_FBSJ   =	#{d_fbsj,jdbcType=VARCHAR},    							
+				C_LM     =	#{c_lm,jdbcType=VARCHAR},     							
+				C_YH     =	#{c_yh,jdbcType=VARCHAR},     							
+				C_YHZID  =	#{c_yhzid,jdbcType=VARCHAR},  							
+				C_SFSH   =	#{c_sfsh,jdbcType=VARCHAR},   							
+				C_SHR    =	#{c_shr,jdbcType=VARCHAR},    							
+				D_SHSJ   =	#{d_shsj,jdbcType=VARCHAR},   							
+				N_YDCS   =	#{n_ydcs,jdbcType=NUMERIC},   							
+				C_SFTJ   =	#{c_sftj,jdbcType=VARCHAR},   							
+				C_SFZD   =	#{c_sfzd,jdbcType=VARCHAR},   							
+				N_XXXH   =	#{n_xxxh,jdbcType=NUMERIC}    							
+		WHERE N_XH = #{n_xh}
+	</update>
+	
+	
 	
 	
 </mapper>
