@@ -6,7 +6,7 @@ public class News {
 	
 	private String c_bt;
 	
-	private String c_sftwwz;
+	private String c_sftpwz;
 	
 	private String c_tpljdz;
 	
@@ -62,12 +62,12 @@ public class News {
 		this.c_bt = c_bt;
 	}
 
-	public String getC_sftwwz() {
-		return c_sftwwz;
+	public String getC_sftpwz() {
+		return c_sftpwz;
 	}
 
-	public void setC_sftwwz(String c_sftwwz) {
-		this.c_sftwwz = c_sftwwz;
+	public void setC_sftpwz(String c_sftpwz) {
+		this.c_sftpwz = c_sftpwz;
 	}
 
 	public String getC_tpljdz() {
