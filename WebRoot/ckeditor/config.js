@@ -24,11 +24,11 @@ CKEDITOR.editorConfig = function( config )
 	  [ 
 		  ['Source', 'Preview', '-'], 
 		  ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', ], 
-		  ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'], 
+		  ['Undo', 'Redo',  '-', 'SelectAll', 'RemoveFormat'], 
 		  ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar','PageBreak'], 
 		  ['Bold', 'Italic', 'Underline', '-', 'Subscript', 'Superscript'], 
 		  '/', 
-		  ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote'], 
+		  ['NumberedList', 'BulletedList', '-', 'Blockquote'], 
 		  ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'], 
 		  ['Link', 'Unlink'], 
 		  ['Format', 'Font', 'FontSize'], 
