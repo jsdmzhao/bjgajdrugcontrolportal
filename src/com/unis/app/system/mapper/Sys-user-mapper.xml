@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SysUserMapper">
+	
+	<resultMap id="Result"  type="java.util.Map">
+		<result property="userId" column="USER_ID" jdbcType="DECIMAL"/>
+		<result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
+		<result property="userPassword" column="USER_PASSWORD" jdbcType="VARCHAR"/>
+		<result property="userLock" column="USER_LOCK" jdbcType="CHAR"/>
+		
+	</resultMap>
+	 
+
+	<select id="queryAllInfo" resultMap="Result"  parameterType="java.util.Map" >
+				 select 
+					base.USER_ID,
+					base.USER_NAME,
+					base.USER_PASSWORD,
+					base.USER_LOCK
+				 from SYS_USER base 
+		 <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
+			<if test="userName != null and userName !='' ">  and USER_NAME = #{userName}</if>
+			<if test="userPassword != null and userPassword !='' ">  and USER_PASSWORD = #{userName}</if>
+			<if test="userLock != null and userLock !='' ">  and USER_LOCK = #{userLock}</if>
+		</trim>
+		ORDER BY USER_ID  DESC 
+	</select>
+
+	<select id="queryInfo" resultMap="Result" parameterType="java.util.Map" >
+		<include refid="pagination.paginationStart"></include>
+				 select 
+					base.USER_ID,
+					base.USER_NAME,
+					base.USER_PASSWORD,
+					base.USER_LOCK
+				 from SYS_USER base 
+		 <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="userId != null and userId !='' ">  and 	USER_ID = #{userId}</if>
+			<if test="userName != null and userName !='' ">  and 	USER_NAME = #{userName}</if>
+			<if test="userPassword != null and userPassword !='' ">  and 	USER_PASSWORD = #{userName}</if>
+			<if test="userLock != null and userLock !='' ">  and 	USER_LOCK = #{userLock}</if>
+		</trim>
+		ORDER BY USER_ID  DESC 
+		<include refid="pagination.paginationLast"></include>
+	</select>
+
+
+	<select id="queryCountInfo" resultType="integer" parameterType="java.util.Map" >
+				select count(base.USER_ID) from SYS_USER base
+ 		<trim prefix="where" prefixOverrides="and |or"> 
+			<if test="userId != null and userId !='' ">  and 	USER_ID = #{userId}</if>
+			<if test="userName != null and userName !='' ">  and 	USER_NAME = #{userName}</if>
+			<if test="userName != null and userName !='' ">  and 	USER_PASSWORD = #{userName}</if>
+			<if test="userLock != null and userLock !='' ">  and 	USER_LOCK = #{userLock}</if>
+		</trim>
+	</select> 
+	
+	
+
+	<insert id="saveInfo" parameterType="java.util.Map" >
+			INSERT INTO SYS_USER(
+				 USER_ID
+			<if test="userName != null and userName !='' ">  , USER_NAME</if>
+			<if test="userPassword != null and userPassword !='' ">  , USER_PASSWORD</if>
+			<if test="userLock != null and userLock !='' ">  ,  USER_LOCK</if>
+			)VALUES(
+				SEQ_SYS_USER_ID.NEXTVAL 
+				<!-- #{n_xh#-->
+			<if test="userName != null and userName !='' ">  ,  #{userName}</if>
+			<if test="userPassword != null and userPassword !='' ">  ,  #{userPassword}</if>
+			<if test="userLock != null and userLock !='' "> 
+			<if test="userLock =='on'"> 
+			 ,  1
+			 </if>
+			  <if test="userLock == null or userLock =='' "> 
+			 ,  0
+			 </if>
+			  </if>
+			
+			
+			)
+		<selectKey resultType="string" keyProperty="id" >
+			 <!--SELECT #{nXh# AS ID FROM dual  -->
+			 SELECT  SEQ_SYS_USER_ID.CURRVAL  AS ID FROM dual 
+		</selectKey>
+	</insert>
+
+	<insert id="saveAllInfo" parameterType="java.util.Map" >
+			INSERT INTO SYS_USER(
+				USER_ID,
+				USER_NAME,
+				USER_PASSWORD,
+				USER_LOCK
+			)VALUES(
+				 SEQ_SYS_USER_ID.NEXTVAL,  
+				<!--#nXh#,-->
+				#{userName},
+				#{userPassword},
+				#{userLock}
+			)
+		<selectKey resultType="string" keyProperty="id" >
+			 <!--SELECT #{nXh# AS ID FROM dual --> 
+			 SELECT  SEQ_SYS_USER_ID.CURRVAL  AS ID FROM dual 
+		</selectKey>
+	</insert>
+
+	<update id="updateInfo" parameterType="java.util.Map"> 
+			update SYS_USER 
+			<trim prefix="set" prefixOverrides=","> 
+				<if test="userName != null and userName !='' "> , USER_NAME = #{userName}</if>
+				<if test="userPassword != null and userPassword !='' "> , USER_PASSWORD = #{userPassword}</if>
+				<if test="userLock != null and userLock !='' "> , USER_LOCK = #{userLock}</if>
+			</trim>
+			<trim prefix="where" prefixOverrides="and |or">  
+				<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
+				<if test="userIds != null and userIds !='' ">  and  USER_ID in (${userIds})</if>
+			</trim>
+	</update> 
+
+	<update id="updateAllInfo" parameterType="java.util.Map"> 
+			update SYS_USER set 
+				USER_ID = #{userId},
+				USER_NAME = #{userName},
+				USER_PASSWORD = #{userPassword},
+				USER_LOCK = #{userLock}
+			WHERE 
+				USER_ID = #{userId}
+	</update> 
+
+	<delete id="removeInfo" parameterType="java.util.Map"> 
+			 DELETE FROM SYS_USER
+			 WHERE
+			<!--N_XH = #{nXh#
+			<![CDATA[ USER_ID IN (${userIds}) ]]>--> 
+			 USER_ID =#{userId} 
+	</delete> 
+</mapper>
