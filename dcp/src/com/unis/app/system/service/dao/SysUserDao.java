@@ -1,55 +1,58 @@
 package  com.unis.app.system.service.dao;
 
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.unis.core.dao.SimpleDaoSupport;
-import com.unis.core.pagination.Pagination;
+import com.unis.app.pagination.Pagination;
+import com.unis.core.service.AbsServiceAdapter;
 
 @Repository
-public class SysUserDao extends SimpleDaoSupport {
+public class SysUserDao extends AbsServiceAdapter {
 
-	public Object saveInfo(Map p) throws SQLException {
-		return getSqlSession().insert("sysUserInfo.saveInfo", p);
+	@Autowired
+	private AbsServiceAdapter<Integer> asa = null;
+	
+	public Object saveInfo(Map p){
+		return asa.insert("SysUserMapper.saveInfo", p);
 	}
 
-	public Object saveAllInfo(Map p) throws SQLException {
-		return getSqlSession().insert("sysUserInfo.saveAllInfo", p);
+	public Object saveAllInfo(Map p){
+		return asa.insert("SysUserMapper.saveAllInfo", p);
 	}
 
-	public Object removeInfo(Map p) throws SQLException {
-		return getSqlSession().delete("sysUserInfo.removeInfo", p);
+	public Object removeInfo(Map p){
+		return asa.delete("SysUserMapper.removeInfo", p);
 	}
 
-	public Object updateInfo(Map p) throws SQLException {
-		return getSqlSession().update("sysUserInfo.updateInfo", p);
+	public Object updateInfo(Map p){
+		return asa.update("SysUserMapper.updateInfo", p);
 	}
 
-	public Object updateAllInfo(Map p) throws SQLException {
-		return getSqlSession().update("sysUserInfo.updateAllInfo", p);
+	public Object updateAllInfo(Map p){
+		return asa.update("SysUserMapper.updateAllInfo", p);
 	}
 
-	public List queryAllInfo(Map p) throws SQLException {
-		return getSqlSession().selectList("sysUserInfo.queryAllInfo", p);
+	public List queryAllInfo(Map p){
+		return asa.selectList("SysUserMapper.queryAllInfo", p);
 	}
 
-	public List queryInfo(Map p) throws SQLException {
-		return getSqlSession().selectList("sysUserInfo.queryInfo", p);
+	public List queryInfo(Map p){
+		return asa.selectList("SysUserMapper.queryInfo", p);
 	}
 
-	public Object queryCountInfo(Map p) throws SQLException {
-		return getSqlSession().selectOne("sysUserInfo.queryCountInfo", p);
+	public Object queryCountInfo(Map p) {
+		return asa.selectOne("SysUserMapper.queryCountInfo", p);
 	}
 
-	public Map queryByPageInfo(Map p, Map page) throws SQLException {
+	public Map queryByPageInfo(Map p, Map page){
 		String count = String.valueOf((Integer)queryCountInfo(p));
 		if("0".equals(count)){
 			return null;
-		}else{
+		}else{ 
 			page.put("recordCount", count);
 			Pagination pagination = new Pagination(page);
 			page.put("pageCount", pagination.getPageCount());
