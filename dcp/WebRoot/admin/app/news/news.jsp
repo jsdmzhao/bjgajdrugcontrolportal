@@ -48,8 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <ul class="iconlist">
   </ul>
   <script type="text/javascript">
-    
-    
+  
       //验证
       var maingform = $("#mainform");
       $.metadata.setType("attr", "validate");
@@ -72,9 +71,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   }
                   break;
               case "修改":
+             	  var selected = grid.getSelected();
+                  if (!selected) { LG.tip('请选择行!'); return }
                   if (editingrow == null)
                   {
-                      op.f_addTab(null, '修改用户信息', '<%=basePath%>admin/app/news/newsDetail?n_xh=' + selected.n_xh);
+                      top.f_addTab(null, '修改新闻信息', '<%=basePath%>newsUpdate?news.n_xh=' + selected.n_xh);
                   } else
                   {
                       LG.tip('请先提交或取消修改');
@@ -170,7 +171,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         ]
     };
 
-    var tempdata={"Rows":[{"MenuID":8,"MenuNo":"sysmenu","MenuParentNo":"system","MenuOrder":null,"MenuName":"菜单管理","MenuUrl":"system/menu.aspx","MenuIcon":"lib/icons/32X32/sitemap.gif","IsVisible":1,"IsLeaf":1},{"MenuID":19,"MenuNo":"sysright","MenuParentNo":"system","MenuOrder":null,"MenuName":"权限中心","MenuUrl":"system/right.aspx","MenuIcon":"lib/icons/32X32/link.gif","IsVisible":null,"IsLeaf":null},{"MenuID":42,"MenuNo":"BaseManage","MenuParentNo":null,"MenuOrder":0,"MenuName":"基础信息管理","MenuUrl":null,"MenuIcon":"lib/icons/silkicons/application.png","IsVisible":1,"IsLeaf":0},{"MenuID":43,"MenuNo":"BaseManageCategories","MenuParentNo":"BaseManage","MenuOrder":0,"MenuName":"类别","MenuUrl":"BaseManage/Categories.aspx","MenuIcon":"lib/icons/32X32/basket.gif","IsVisible":1,"IsLeaf":0},{"MenuID":44,"MenuNo":"BaseManageProducts","MenuParentNo":"BaseManage","MenuOrder":0,"MenuName":"产品","MenuUrl":"BaseManage/Products.aspx","MenuIcon":"lib/icons/32X32/product_169.gif","IsVisible":1,"IsLeaf":0},{"MenuID":45,"MenuNo":"BaseManageSuppliers","MenuParentNo":"BaseManage","MenuOrder":0,"MenuName":"供应商","MenuUrl":"BaseManage/Suppliers.aspx","MenuIcon":"lib/icons/32X32/suppliers.gif","IsVisible":1,"IsLeaf":0},{"MenuID":46,"MenuNo":"BaseManageEmployees","MenuParentNo":"BaseManage","MenuOrder":0,"MenuName":"员工","MenuUrl":"BaseManage/Employees.aspx","MenuIcon":"lib/icons/32X32/my_account.gif","IsVisible":1,"IsLeaf":0},{"MenuID":52,"MenuNo":"CustomerManage","MenuParentNo":null,"MenuOrder":0,"MenuName":"客户管理","MenuUrl":null,"MenuIcon":"lib/icons/silkicons/application.png","IsVisible":1,"IsLeaf":0},{"MenuID":53,"MenuNo":"CustomerManageCustomers","MenuParentNo":"CustomerManage","MenuOrder":0,"MenuName":"客户","MenuUrl":"CustomerManage/Customers.aspx","MenuIcon":"lib/icons/32X32/comment.gif","IsVisible":1,"IsLeaf":0},{"MenuID":54,"MenuNo":"OrderManage","MenuParentNo":null,"MenuOrder":0,"MenuName":"订单管理","MenuUrl":null,"MenuIcon":"lib/icons/32X32/order_159.gif","IsVisible":1,"IsLeaf":0},{"MenuID":56,"MenuNo":"OrderManageOrders","MenuParentNo":"OrderManage","MenuOrder":0,"MenuName":"订单","MenuUrl":"OrderManage/Orders.aspx","MenuIcon":"lib/icons/32X32/product_169.gif","IsVisible":1,"IsLeaf":0},{"MenuID":57,"MenuNo":"OrderManageShippers","MenuParentNo":"OrderManage","MenuOrder":0,"MenuName":"托运人","MenuUrl":"OrderManage/Shippers.aspx","MenuIcon":"lib/icons/32X32/order_159.gif","IsVisible":1,"IsLeaf":0},{"MenuID":58,"MenuNo":"MemberManage","MenuParentNo":null,"MenuOrder":0,"MenuName":"组织架构","MenuUrl":null,"MenuIcon":"lib/icons/silkicons/application.png","IsVisible":1,"IsLeaf":0},{"MenuID":59,"MenuNo":"MemberManageDepartment","MenuParentNo":"MemberManage","MenuOrder":0,"MenuName":"部门","MenuUrl":"MemberManage/Department.aspx","MenuIcon":"lib/icons/32X32/customers.gif","IsVisible":1,"IsLeaf":0},{"MenuID":61,"MenuNo":"MemberManageRole","MenuParentNo":"MemberManage","MenuOrder":0,"MenuName":"角色","MenuUrl":"MemberManage/Role.aspx","MenuIcon":"lib/icons/32X32/my_account.gif","IsVisible":1,"IsLeaf":0},{"MenuID":62,"MenuNo":"MemberManageUser","MenuParentNo":"MemberManage","MenuOrder":0,"MenuName":"用户","MenuUrl":"MemberManage/User.aspx","MenuIcon":"lib/icons/32X32/role.gif","IsVisible":1,"IsLeaf":0},{"MenuID":64,"MenuNo":"sysDataPrivilege","MenuParentNo":"system","MenuOrder":null,"MenuName":"数据权限","MenuUrl":"system/DataPrivilege.aspx","MenuIcon":"lib/icons/32X32/setup.gif","IsVisible":null,"IsLeaf":null},{"MenuID":65,"MenuNo":"sysAdminMethodPrivilege","MenuParentNo":"system","MenuOrder":null,"MenuName":"底层权限","MenuUrl":"system/AdminMethod.aspx","MenuIcon":"lib/icons/32X32/config.gif","IsVisible":null,"IsLeaf":null},{"MenuID":66,"MenuNo":"sysConfiguration","MenuParentNo":"system","MenuOrder":null,"MenuName":"页面配置(字段权限)","MenuUrl":"system/Configuration.aspx","MenuIcon":"lib/icons/32X32/consulting.gif","IsVisible":null,"IsLeaf":null},{"MenuID":1,"MenuNo":"system","MenuParentNo":null,"MenuOrder":10,"MenuName":"系统管理","MenuUrl":null,"MenuIcon":"lib/icons/32X32/future_projects.gif","IsVisible":1,"IsLeaf":0}],"Total":"20"};
+    var tempdata={
+    	    "Rows":[{
+        	    "MenuID":8,
+        	    "MenuNo":"sysmenu",
+        	    "MenuParentNo":"system",
+        	    "MenuOrder":null,
+        	    "MenuName":"菜单管理",
+        	    "MenuUrl":"system/menu.aspx",
+        	    "MenuIcon":"lib/icons/32X32/sitemap.gif",
+        	    "IsVisible":1,
+        	    "IsLeaf":1
+        	    },{
+            	 "MenuID":19,
+            	 "MenuNo":"sysright",
+            	 "MenuParentNo":"system",
+            	 "MenuOrder":null,
+            	 "MenuName":"权限中心",
+            	 "MenuUrl":"system/right.aspx",
+            	 "MenuIcon":"lib/icons/32X32/link.gif",
+            	 "IsVisible":null,
+            	 "IsLeaf":null
+            	 },{
+                 "MenuID":42,
+                 "MenuNo":"BaseManage",
+                 "MenuParentNo":null,
+                 "MenuOrder":0,
+                 "MenuName":"基础信息管理",
+                 "MenuUrl":null,
+                 "MenuIcon":"lib/icons/silkicons/application.png",
+                 "IsVisible":1,
+                 "IsLeaf":0
+                 }],"Total":"3"};
+    
     var tree = $("#maintree").ligerTree({
         url: '../handler/tree.ashx?' +
     $.param({
@@ -200,23 +233,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     var layout = $("#layout").ligerLayout({ leftWidth: 140 });
      
+    var newspdata = {"Rows":[{
+	    "n_xh":1,"c_bt":"系统管理员","d_fbsj":"2011-01-01"
+	    },{
+	    "n_xh":5,"c_bt":"系统管理员","d_fbsj":"2011-01-01"
+	    },{
+	    "n_xh":7,"c_bt":"基础信息录入员","d_fbsj":"2011-01-01"
+    	}],"Total":"3"};
+     
     var grid = $("#maingrid").ligerGrid({
         //headerImg:"<%=basePath%>liger/lib/icons/silkicons/table.png",title:'表格表头',
         columns: [
-                { display: '序号', name: 'n_xh', align: 'left', width: 180, minWidth: 60
-                , validate: { required: true }
-                , editor: { type: 'hidden' }
+                { display: '序号', name: 'n_xh', align: 'left', width: 50, minWidth: 60, 
+                validate: { required: true }  ,
+                editor: { type: 'hidden' }
                 },
-                { display: '新闻标题', name: 'MenuNo', align: 'left', width: 330, minWidth: 100
-                , validate: { required: true }
-                , editor: { type: 'text' }
+                { display: '新闻标题', name: 'c_bt', align: 'left', width: 350, minWidth: 100, 
+                validate: { required: true }, 
+                editor: { type: 'text' }
                 },
-                { display: '发布时间', name: 'MenuUrl', align: 'left', width: 300, minWidth: 60
-                , validate: { required: true }
-                , editor: { type: 'text' }
-                }
-                , { display: '图标', name: 'MenuIcon', align: 'left', width: 230, minWidth: 50
-                , editor: { type: 'select',
+                { display: '发布时间', name: 'd_fbsj', align: 'left', width: 100, minWidth: 60, 
+                validate: { required: true },
+                editor: { type: 'text' }
+                }, 
+                { display: '图标', name: 'MenuIcon', align: 'left', width: 330, minWidth: 50, 
+                editor: { type: 'select',
                     ext:
                     function (rowdata)
                     {
@@ -240,7 +281,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 }
                 ], dataAction: 'server', pageSize: 20, toolbar: toolbarOptions, sortName: 'MenuID',
         width: '98%', height: '100%', heightDiff: -5, checkbox: false, usePager: false, enabledEdit: true, clickToEdit: false,
-        fixedCellHeight: true, rowHeight: 25
+        fixedCellHeight: true, rowHeight: 25, data: newspdata
     });
 
 
