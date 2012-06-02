@@ -17,6 +17,7 @@ public class SysUserSvc  {
 	private SysUserDao sysUserDao;
 
 	public Object save(Map p) throws SQLException {
+		System.out.println("@@@@svc@@@@@p : "+p);
 		return sysUserDao.saveInfo(p);
 	}
 
@@ -41,6 +42,7 @@ public class SysUserSvc  {
 	}
 
 	public Map queryByPage(Map p, Map page) throws SQLException {
+		System.out.println("@@@@svc@@@@@p : "+p+"page :"+page);
 		return sysUserDao.queryByPageInfo(p, page);
 	}
 
