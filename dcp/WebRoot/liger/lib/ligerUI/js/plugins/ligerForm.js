@@ -88,6 +88,10 @@
         {
             jinput.addClass("l-textarea");
         }
+        else if (jinput.is("button"))
+        {
+            jinput.addClass("l-button");
+        }
     }
 
     //表单组件
@@ -240,6 +244,10 @@
             var g = this, p = this.options;
             var width = field.width || p.inputWidth;
             var name = field.name || field.id;
+            var value = '';
+            if(typeof(field.value) != undefined && field.value != 'undefined'){
+            	value = field.value;
+            }
             var out = [];
             if (field.comboboxName && field.type == "select")
             {
@@ -247,7 +255,7 @@
             }
             if (field.textarea || field.type == "textarea")
             {
-                out.push('<textarea ');
+                out.push('<textarea value="'+value+'"  ');
             }
             else if (field.type == "checkbox")
             {
@@ -259,11 +267,15 @@
             }
             else if (field.type == "password")
             {
-                out.push('<input type="password" ');
+                out.push('<input type="password" value="'+value+'" ');
+            }
+            else if (field.type == "button")
+            {
+                out.push('<input type="button" value="'+value+'"  onclick="'+field.onclick+'"');
             }
             else
             {
-                out.push('<input type="text" ');
+                out.push('<input type="text"  value="'+value+'"  ');
             }
             if (field.cssClass)
             {
