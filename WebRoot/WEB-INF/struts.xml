@@ -25,8 +25,9 @@
 			<exception-mapping result="errorPage" exception="java.lang.Exception"/>
 		</global-exception-mappings>
 		
+		
+		
 		<!-- 通配符配置 -->
-		<!-- 
     	<action name="*List" class="{1}Action" method="{1}List">
 			<result name="success">/{1}/{1}_list.jsp</result>
 		</action>
@@ -36,14 +37,17 @@
 		</action>
 		
 		<action name="*Update" class="{1}Action" method="{1}Update">
-			<result name="success">/{1}/{1}_update.jsp</result>
+			<result name="success">/admin/app/{1}/{1}Update.jsp</result>
 		</action>
 		
 		<action name="*Delete" class="{1}Action" method="{1}Delete">
 			<result name="success" type="chain">{1}List</result>
 		</action>
-		 -->
-
+		
+		<action name="*Query" class="{1}Action" method="{1}Query">
+			<result name="success" type="chain">{1}List</result>
+		</action>
+		
 		<action name="login" class="loginAction" method="login">
 			<result name="success">/success.jsp</result>
 			<result name="failure">/failure.jsp</result>
