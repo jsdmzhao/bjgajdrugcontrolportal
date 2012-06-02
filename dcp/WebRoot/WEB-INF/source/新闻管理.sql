@@ -3,7 +3,7 @@ create table b_xinwen
 (
   n_xh     NUMBER(8) not null,
   c_bt     VARCHAR2(100),
-  c_sftwwz CHAR(1),
+  c_sftpwz CHAR(1),
   c_tpljdz VARCHAR2(100),
   c_tpkd   NUMBER(10),
   c_tpgd   NUMBER(10),
@@ -22,7 +22,8 @@ create table b_xinwen
   n_ydcs   NUMBER(10),
   c_sftj   CHAR(1),
   c_sfzd   CHAR(1),
-  n_xxxh   NUMBER(10)
+  n_xxxh   NUMBER(10),
+  c_sfgl   CHAR(1)
 )
 tablespace DCP
   pctfree 10
@@ -42,7 +43,7 @@ comment on column b_xinwen.n_xh
   is '序号';
 comment on column b_xinwen.c_bt
   is '标题';
-comment on column b_xinwen.c_sftwwz
+comment on column b_xinwen.c_sftpwz
   is '是否图文文章';
 comment on column b_xinwen.c_tpljdz
   is '图片链接地址';
@@ -82,6 +83,8 @@ comment on column b_xinwen.c_sfzd
   is '是否置顶';
 comment on column b_xinwen.n_xxxh
   is '显示序号';
+comment on column b_xinwen.c_sfgl
+  is '是否高亮';
 -- Create/Recreate primary, unique and foreign key constraints 
 alter table b_xinwen
   add constraint PK_B_XINWEN primary key (N_XH)
