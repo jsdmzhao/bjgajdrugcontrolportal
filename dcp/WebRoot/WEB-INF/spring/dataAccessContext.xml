@@ -35,8 +35,8 @@
 		<!-- mapper和resultmap配置路径 -->
 		<property name="mapperLocations">
 			<list>
-				<!-- 表示在com.unis.**.mapper包或以下所有目录中，以-mapper.xml结尾所有文件 -->
-				<value>classpath:com/unis/app/**/mapper/**/*-mapper.xml</value>
+				<!-- 表示在com.unis.app/**.mapper包或以下所有目录中，以-mapper.xml结尾所有文件 -->
+				<value>classpath:com/unis/app/**/mapper/*-mapper.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -64,7 +64,7 @@
 	<!-- 配置哪些类的方法进行事务管理，当前为service包下的方法，类中所有方法需要，还需要参考tx:advice的设置 -->
 	<aop:config>
 		<aop:pointcut id="allManagerMethod"
-			expression="execution (* com.unis.app..*Service.*(..))" />
+			expression="execution (* com.unis.app..service.*Service.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="allManagerMethod" />
 	</aop:config>
 

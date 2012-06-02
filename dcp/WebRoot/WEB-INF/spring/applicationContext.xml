@@ -18,5 +18,8 @@
 		<property name="loginService" ref="loginService" />
 	</bean>
 	-->
+	
+	<!-- news 新闻模块  -->
+	<bean id="newsService" class="com.unis.app.news.service.NewsService" parent="absServiceAdapter"/>
 
 </beans>
