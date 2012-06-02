@@ -1,4 +1,5 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -57,6 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         space:30,
 	         type:"text",
 	         group:"基本信息",
+	         value: "<s:property value='news.c_bt'/>", 
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },
          {display:"是否图片文章",
@@ -64,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              newline:true,
              labelWidth:100,width:30,space:30,type:"checkbox"
          },
-         {display:"图片路径",name:"c_tpljdz",newline:false,labelWidth:100,width:250,space:30,type:"text"},
+         {display:"图片路径",name:"c_tpljdz",newline:false,labelWidth:100,width:250,space:30,type:"text",value: "<s:property value='news.c_tpljdz'/>" },
          {
         	 //display:"上传图片",
    	         name:"sctp",
@@ -82,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             type:"checkbox",
             nodeWidth :30
         },
-        {display:"视频路径",name:"news.c_spljdz",newline:false,labelWidth:100,width:250,space:30,type:"text"},
+        {display:"视频路径",name:"news.c_spljdz",newline:false,labelWidth:100,width:250,space:30,type:"text",value: "<s:property value='news.c_spljdz'/>" },
         {
         	 //display:"上传视频",
         	 value:"选择视频",
@@ -99,11 +101,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          	newline:true,
          	labelWidth:100,
          	width:700,space:30,
-         	type:"textarea"
+         	type:"textarea",
+         	value: "<s:property value='news.c_jj'/>"
          },
-         {display:"链接",name:"c_lj",newline:true,labelWidth:100,width:300,space:30,type:"text"},
-         {display:"发布时间",name:"d_fbsj",newline:false,labelWidth:100,width:250,space:30,type:"date"},
-         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea"}
+         {display:"链接",name:"c_lj",newline:true,labelWidth:100,width:300,space:30,type:"text",value: "<s:property value='news.c_lj'/>" },
+         {display:"发布时间",name:"d_fbsj",newline:false,labelWidth:100,width:250,space:30,type:"date",value: "<s:property value='news.d_fbsj'/>" },
+         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea",value: "<s:property value='news.c_nr'/>" }
          //,
          //{name:"n_ydcs", labelWidth:100,width:30,space:30,type:"hidden",value:"0"}
         ]
