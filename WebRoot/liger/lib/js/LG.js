@@ -1,4 +1,35 @@
-﻿(function ($)
+﻿/**
+  *打印数据对象
+  */
+function $d(obj,preBlank){
+	var str="";
+	if(!preBlank)preBlank = "";
+	switch(typeof(obj)){
+		case "number":
+		case "string":
+		case "boolean": return obj+"\n";break;
+		case "object":
+		              for(var na in obj){
+		              	var naStr=na.toString();
+		              	if(parseInt(naStr.substr(0,1))>=0) naStr="["+na+"]";
+		              	var len=naStr.length;
+		              	var pre="";
+		              	for(var i=0;i<len;i++)
+		              	   pre+=" ";
+		                str+=preBlank+naStr+":"+$d(obj[na],preBlank+pre+" ");	   
+		              	
+		              }
+		              return "\n"+str;
+		              break;
+		               
+	default: {
+	return "undefinded\n";
+	break;	}
+	}
+}
+
+
+(function ($)
 {
 
     //全局系统对象
@@ -561,17 +592,7 @@
             tab.removeTabItem(tabid);
         }
     };
-    
-    
-  //关闭dialog
-    LG.closeCurrentDialog = function ()
-    {
-        if (!lDialog)
-        {
-        	lDialog.close();
-        }
-    };
-    
+
     //关闭Tab项并且刷新父窗口
     LG.closeAndReloadParent = function (tabid, parentMenuNo)
     {
@@ -592,8 +613,6 @@
             tab.reload(parentTabid);
         }
     };
-    
-
 
     //覆盖页面grid的loading效果
     LG.overrideGridLoading = function ()
