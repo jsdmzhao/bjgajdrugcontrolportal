@@ -31,9 +31,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <script type="text/javascript" src="<%=basePath%>ckeditor/ckeditor.js"></script>
 	<script type="text/javascript" src="<%=basePath%>ckfinder/ckfinder.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/My97DatePicker/WdatePicker.js"></script>
 	<script type='text/javascript' src='dwr/engine.js'></script>
   	<script type='text/javascript' src='dwr/util.js'></script>
-  	<script type='text/javascript' src='dwr/interface/NewsService.js'></script>
+  	<script type='text/javascript' src='dwr/interface/NewsAction.js'></script>
 </head>
 <body style="padding-bottom:31px;">
     <form id="mainform"  method="post"></form> 
@@ -48,7 +49,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
         var config = {"Form":{ 
          fields : [
-         {name:"n_xh",type:"hidden"},
          {
 	         display:"标题",
 	         name:"c_bt",
@@ -64,6 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          {display:"是否图片文章",
              name:"c_sftpwz",
              newline:true,
+             value:"<s:property value='news.c_sftpwz'/>",
              labelWidth:100,width:30,space:30,type:"checkbox"
          },
          {display:"图片路径",name:"c_tpljdz",newline:false,labelWidth:100,width:250,space:30,type:"text",value: "<s:property value='news.c_tpljdz'/>" },
@@ -82,9 +83,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             name:"c_sfscsp",
             newline:true,labelWidth:100,width:30,space:30,
             type:"checkbox",
+            value:"<s:property value='news.c_sfscsp'/>",
             nodeWidth :30
         },
-        {display:"视频路径",name:"news.c_spljdz",newline:false,labelWidth:100,width:250,space:30,type:"text",value: "<s:property value='news.c_spljdz'/>" },
+        {display:"视频路径",name:"c_spljdz",newline:false,labelWidth:100,width:250,space:30,type:"text",value: "<s:property value='news.c_spljdz'/>" },
         {
         	 //display:"上传视频",
         	 value:"选择视频",
@@ -105,10 +107,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          	value: "<s:property value='news.c_jj'/>"
          },
          {display:"链接",name:"c_lj",newline:true,labelWidth:100,width:300,space:30,type:"text",value: "<s:property value='news.c_lj'/>" },
-         {display:"发布时间",name:"d_fbsj",newline:false,labelWidth:100,width:250,space:30,type:"date",value: "<s:property value='news.d_fbsj'/>" },
-         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea",value: "<s:property value='news.c_nr'/>" }
-         //,
-         //{name:"n_ydcs", labelWidth:100,width:30,space:30,type:"hidden",value:"0"}
+         {display:"发布时间",name:"d_fbsj",newline:false,labelWidth:100,
+         width:250,space:30,type:"text",value: "<s:property value='news.d_fbsj.substring(0,19)'/>",
+         onclick:"WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" },
+         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea",value: "<s:property value='news.c_nr'/>" },
+         {name:"n_xh", type:"hidden",value:"<s:property value='news.n_xh'/>"}
         ]
  }};
 
@@ -195,8 +198,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	}
         	
         	formMap["c_nr"] = editor.document.getBody().getHtml();
-			
-        	NewsService.newsSave(formMap,function (result){
+
+        	NewsAction.newsSave(formMap, function (result){
         		var win = parent || window;
         		if(result == 'success'){
         			win.LG.showSuccess('保存成功', function () { 
@@ -225,7 +228,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             var win = parent || window;
             win.LG.closeCurrentTab(null);
         }
-
+        
+		//DWRUtil.setValues("mainform",'<s:property value="news"/>'); 
+		///DWRUtils.
         
     </script>
    
