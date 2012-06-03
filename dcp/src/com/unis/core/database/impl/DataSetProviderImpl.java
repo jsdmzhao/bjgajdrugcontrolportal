@@ -43,6 +43,10 @@ public class DataSetProviderImpl<T> implements IDataSetProvider<T> {
         return getSqlSession().update(statmentId, o);
         
     }
+    
+    public Object delete(String statmentId, Object o) {
+        return getSqlSession().delete(statmentId, o);
+    }
 
 	/**
 	 * @return
