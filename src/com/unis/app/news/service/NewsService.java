@@ -39,8 +39,4 @@ public class NewsService<T> extends AbsServiceAdapter<T> {
 		return super.update(statmentId, o);
 	}
 	
-	public String newsSave(Map<String, String> sqlParamMap){
-		insert("NewsMapper.insertNews", sqlParamMap);
-		return Globals.SUCCESS;
-	}
 }
