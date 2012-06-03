@@ -127,10 +127,15 @@
                 $(p.fields).each(function (index, field)
                 {
                     var name = field.name || field.id;
+                    //var value = field.value;
+                    var value = '';
+                    if((typeof(field.value)||'') != 'undefined' && (field.value||'') != 'undefined'){
+                    	value = field.value;
+                    }
                     if (!name) return;
                     if (field.type == "hidden")
                     {
-                        out.push('<input type="hidden" id="' + name + '" name="' + name + '" />');
+                        out.push('<input type="hidden" id="' + name + '" name="' + name + '" value = "' + value + '" />');
                         return;
                     }
                     var newLine = field.renderToNewLine || field.newline;
@@ -245,7 +250,7 @@
             var width = field.width || p.inputWidth;
             var name = field.name || field.id;
             var value = '';
-            if(typeof(field.value) != undefined && field.value != 'undefined'){
+            if((typeof(field.value)+'') != 'undefined' && (field.value+'') != 'undefined'){
             	value = field.value;
             }
             var out = [];
@@ -255,11 +260,15 @@
             }
             if (field.textarea || field.type == "textarea")
             {
-                out.push('<textarea value="'+value+'"  ');
+                out.push('<textarea ');
             }
             else if (field.type == "checkbox")
             {
-                out.push('<input type="checkbox" ');
+            	if(value == '1'){
+            		out.push('<input type="checkbox" checked ');
+            	}else {
+            		out.push('<input type="checkbox" ');
+            	}
             }
             else if (field.type == "radio")
             {
@@ -275,7 +284,7 @@
             }
             else
             {
-                out.push('<input type="text"  value="'+value+'"  ');
+                out.push('<input type="text"  value="'+value+'"  onclick="'+field.onclick+'"');
             }
             if (field.cssClass)
             {
@@ -318,7 +327,16 @@
             {
                 out.push(" validate='" + p.toJSON(field.validate) + "' ");
             }
-            out.push(' />');
+            var value2 = '';
+            if((typeof(field.value)+'') != 'undefined' && (field.value+'') != 'undefined'){
+            	value = field.value;
+            }
+            if(field.type == 'textarea'){
+            	out.push( '>' + value + '</textarea>');
+            } else {
+            	 out.push(' />');
+            }
+           
             return out.join('');
         }
     });
