@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.xwork.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.directwebremoting.WebContext;
 import org.directwebremoting.WebContextFactory;
@@ -26,7 +27,7 @@ public class NewsAction {
 	@Autowired
 	private AbsServiceAdapter<Integer> newsService = null;
 	
-	public String newsSave(){
+/*	public String newsSave(){
 		//HttpServletRequest request = ServletActionContext.getRequest();
 		Map<String, Object> sqlParamMap = new HashMap<String, Object>();
 		WebContext context = WebContextFactory.get();
@@ -34,6 +35,15 @@ public class NewsAction {
 	    sqlParamMap = WebUtil.getParamsFromRequest(request);
 		//System.out.println(request.getParameter("c_bt")+"------56-----"+sqlParamMap.get("c_bt"));
 		newsService.insert("NewsMapper.insertNews", sqlParamMap);
+		return Globals.SUCCESS;
+	}*/
+	
+	public String newsSave(Map<String, String> sqlParamMap){
+		if(StringUtils.isNotEmpty(sqlParamMap.get("n_xh"))){
+			newsService.update("NewsMapper.updateNews", sqlParamMap);
+		} else {
+			newsService.insert("NewsMapper.insertNews", sqlParamMap);
+		}
 		return Globals.SUCCESS;
 	}
 	
