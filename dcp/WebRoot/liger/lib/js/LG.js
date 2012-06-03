@@ -436,6 +436,9 @@ function $d(obj,preBlank){
     //带验证、带loading的提交
     LG.submitForm = function (mainform, success, error)
     {
+    	pp(mainform);
+    	pp(success);
+    	pp(error);
         if (!mainform)
             mainform = $("form:first");
         if (mainform.valid())
@@ -445,6 +448,7 @@ function $d(obj,preBlank){
                 success: success,
                 beforeSubmit: function (formData, jqForm, options)
                 {
+                	alert($d(formData));
                     //针对复选框和单选框 处理
                     $(":checkbox,:radio", jqForm).each(function ()
                     {
@@ -592,6 +596,24 @@ function $d(obj,preBlank){
             tab.removeTabItem(tabid);
         }
     };
+
+    
+    
+  //关闭dialog
+    LG.closeCurrentDialog = function ()
+    {
+    	//alert('do closeCurrentDialog');
+    	 top.f_closeDialog();
+    };
+    
+    //关闭dialog项并且刷新父窗口
+    LG.closeDialogAndReloadParent = function (parentMenuNo)
+    {
+    	//top.f_reLoadTab();
+        LG.closeCurrentDialog();
+
+    };
+    
 
     //关闭Tab项并且刷新父窗口
     LG.closeAndReloadParent = function (tabid, parentMenuNo)
