@@ -1,4 +1,44 @@
-﻿//获取QueryString的数组
+
+/**
+  *打印数据对象
+  */
+function $d(obj,preBlank){
+	var str="";
+	if(!preBlank)preBlank = "";
+	switch(typeof(obj)){
+		case "number":
+		case "string":
+		case "boolean": return obj+"\n";break;
+		case "object":
+		              for(var na in obj){
+		              	var naStr=na.toString();
+		              	if(parseInt(naStr.substr(0,1))>=0) naStr="["+na+"]";
+		              	var len=naStr.length;
+		              	var pre="";
+		              	for(var i=0;i<len;i++)
+		              	   pre+=" ";
+		                str+=preBlank+naStr+":"+$d(obj[na],preBlank+pre+" ");	   
+		              	
+		              }
+		              return "\n"+str;
+		              break;
+		               
+	default: {
+	return "undefinded\n";
+	break;	}
+	}
+}
+
+function pp(obj){ 
+	 var str = ''; 
+	 for(var o in obj){
+		str += o+" : "+obj[o]+'\n'; 
+	 }
+	 alert(str);
+	 return; 
+}
+//获取QueryString的数组
+
 function getQueryString()
 {
     var result = location.search.match(new RegExp("[\?\&][^\?\&]+=[^\?\&]+", "g"));
