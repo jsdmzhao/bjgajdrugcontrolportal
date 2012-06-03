@@ -32,6 +32,7 @@
 <script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
 <script type='text/javascript'
 	src='<%=basePath%>dwr/interface/SysUserSvc.js'></script>
+<script type='text/javascript' src='<%=basePath%>js/formUtil.js'></script>
 
 </head>
 <body style="padding:10px;height:100%; text-align:center;">
@@ -70,9 +71,18 @@
      var grid = $("#maingrid").ligerGrid({
          columns: config.Grid.columns, pageSize: 20, toolbar: {},
          sortName: 'UserID', 
-         width: '98%', height: '100%',heightDiff:-10, checkbox: false
+         width: '98%', height: '100%',heightDiff:-10, checkbox: true
      });
     
+        //双击事件
+   //   LG.setGridDoubleClick(grid, 'modify');
+
+      //搜索表单应用ligerui样式
+      //$("#formsearch").ligerForm({
+	//	   fields:[],
+	//	   appendID:false,
+		//   toJSON: JSON2.stringify 
+	 // });
 
       //加载toolbar
       LG.loadToolbar(grid, toolbarBtnItemClick);
@@ -92,14 +102,12 @@
                         text: '删除',
                         img:'<%=basePath%>liger/lib/icons/silkicons/delete.png',
                         id: 'delete'
-                   // }
-                    //,{line:true},{
-                      //  click: toolbarBtnItemClick,
-	                  // text: '查看',
-	                  //  img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
-	                   // id: 'view'
-                   },
-                   {line:true}];
+                    },{line:true},{
+                        click: toolbarBtnItemClick,
+	                    text: '查看',
+	                    img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
+	                    id: 'view'
+                   },{line:true}];
     	grid.toolbarManager.set('items', items);
 
     	function loadGrid(obj){
@@ -119,34 +127,30 @@
       function toolbarBtnItemClick(item) {
           switch (item.id) {
               case "add":
-            	  f_dialog("add","新增用户信息");
+            	  f_edit("add",null);
             	//  top.f_openDialog(null,'新增用户信息','<%=basePath%>admin/app/user/userDetail.jsp' );
                   break;
-            //  case "view":
-            //      var selected = grid.getSelected();
-            //      if (!selected) { LG.tip('请选择行!'); return }
-            //      top.f_addTab(null, '查看用户信息', '<%=basePath%>admin/app/user/userDetail.jsp?IsView=1&ID=' + selected.UserID);
-            //      break;
+              case "view":
+                  var selected = grid.getSelected();
+                  if (!selected) { LG.tip('请选择行!'); return }
+                  top.f_addTab(null, '查看用户信息', '<%=basePath%>admin/app/user/userDetail.jsp?IsView=1&ID=' + selected.UserID);
+                  break;
               case "modify":
-            	  f_dialog("modify","修改用户信息");
+            	  f_edit("add",null);
 				break;
 			case "delete":
 				jQuery.ligerDialog.confirm('确定删除吗?', function(confirm) {
 					if (confirm)
-						f_remove();
+						f_delete();
 				});
 				break;
 			}
 		}
 
 		function f_save(d) {
-			var obj = {
-			userName: $("#userName").val(),
-			userPassword: $("#userPassword").val(),
-			userLock: $("#userLock").val(),
-					
-					
-			}
+			var formUtil = new FormUtil();
+			var obj = formUtil.getFormValue("mainform");
+			alert($d(obj));
 			if (!obj)
 				return;
 			SysUserSvc.save(obj, function(rdata) {
@@ -162,86 +166,31 @@
 			});
 
 		};
-		
-		
-		function f_update(d) {
-			var selected = grid.getSelected();
-			if (selected) {
-			var obj = {
-			userId: $("#userId").val(),
-			userName: $("#userName").val(),
-			userPassword: $("#userPassword").val(),
-			userLock: $("#userLock").val(),
-			}
-			if (!obj)
-				return;
-			SysUserSvc.update(obj, function(rdata) {
-				if (rdata) {
-					LG.showSuccess('修改成功', function() {
-						loadGrid();
-						$("input").ligerHideTip(); 
-						d.hide();
-					});
-				} else {
-					LG.showError('修改失败');
-				}
-			});
-			} else {
-				LG.tip('请选择行!');
-			}
-		};
-		
-		function f_remove() {
-			var selected = grid.getSelected();
-			if (selected) {
-				SysUserSvc.remove(selected, function(rdata) {
-					if (rdata) {
-						LG.showSuccess('删除成功');
-						loadGrid();
-					} else {
-						LG.showError('删除失败');
-					}
-				});
-			} else {
-				LG.tip('请选择行!');
-			}
-		}
 
-		function f_dialog(type,title) {
-			if (type == "add") {
-				$("#userId").val("");
+		function f_edit(type, rowindex) {
+			if (type != "add") {
+				$("#userName").val(grid.getRow(rowindex).userName);
+				$("#userPassword").val(grid.getRow(rowindex).userPassword);
+				$("#userPassword2").val(grid.getRow(rowindex).userPassword2);
+				$("#userLock").val(grid.getRow(rowindex).userLock);
+			} else {
 				$("#userName").val("");
 				$("#userPassword").val("");
 				$("#userPassword2").val("");
 				$("#userLock").val("");
-				if (dlgedit == null) {
-					dlgedit = $.ligerDialog.open({
-						width : 350, //宽度
-						height : null,
-						title : title,
-						target : $("#divedit"),
-						 buttons: [  { text: '保存', onclick: function (i, d) { f_save(d); }}, 
-	                                 { text: '关闭', onclick: function (i, d) { $("input").ligerHideTip(); d.hide(); }} 
-	                              ]
-					});
-			} }else {
-				$("#userId").val(grid.getSelected().userId);
-				$("#userName").val(grid.getSelected().userName);
-				$("#userPassword").val(grid.getSelected().userPassword);
-				$("#userPassword2").val(grid.getSelected().userPassword2);
-				$("#userLock").val(grid.getSelected().userLock);
-				if (dlgedit == null) {
-					dlgedit = $.ligerDialog.open({
-						width : 350, //宽度
-						height : null,
-						title : title,
-						target : $("#divedit"),
-						 buttons: [  { text: '保存', onclick: function (i, d) { f_update(d); }}, 
-	                                 { text: '关闭', onclick: function (i, d) { $("input").ligerHideTip(); d.hide(); }} 
-	                              ]
-					});
 			}
-			
+			edittype = type;
+			rowi = rowindex;
+			if (dlgedit == null) {
+				dlgedit = $.ligerDialog.open({
+					width : 350, //宽度
+					height : null,
+					title : '新增用户信息',
+					target : $("#divedit"),
+					 buttons: [  { text: '保存', onclick: function (i, d) { f_save(d); }}, 
+                                 { text: '关闭', onclick: function (i, d) { $("input").ligerHideTip(); d.hide(); }} 
+                              ]
+				});
 
 				$(".l-dialog-close").bind('mousedown', function() //dialog右上角的叉
 				{
@@ -253,14 +202,37 @@
 				{
 					$("input").ligerHideTip();
 				});
+			} else {
 				dlgedit.show();
 			}
-			}
+
+		}
 
 		function f_reload() {
-			  grid.loadData();
+			//  grid.loadData();
 		}
-	
+		function f_delete() {
+			var selected = grid.getSelected();
+			if (selected) {
+				LG.ajax({
+					type : 'AjaxMemberManage',
+					method : 'RemoveUser',
+					loading : '正在删除中...',
+					data : {
+						ID : selected.UserID
+					},
+					success : function() {
+						LG.showSuccess('删除成功');
+						f_reload();
+					},
+					error : function(message) {
+						LG.showError(message);
+					}
+				});
+			} else {
+				LG.tip('请选择行!');
+			}
+		}
 	</script>
 
 <div style="display: none">

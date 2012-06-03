@@ -95,6 +95,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }
             tab.addTabItem({ tabid: tabid, text: text, url: url });
         }
+        
+        //刷寻tab项的函数
+        function f_reLoadTab(tabid) {
+            if (!tab) return;
+            if (!tabid)
+            {
+            	 tabid = $("#framecenter > .l-tab-content > .l-tab-content-item:visible").attr("tabid");
+            }
+            tab.reload(tabid);
+        }
 
         //增加dialog的函数
         function f_openDialog(dialogId, title, url) {

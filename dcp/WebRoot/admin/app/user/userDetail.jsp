@@ -27,40 +27,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerForm.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerTree.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerComboBox.js" type="text/javascript"></script>
+       	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/interface/SysUserSvc.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>js/formUtil.js'></script>
 </head><body style="padding-bottom:31px;">
     <form id="mainform" method="post"></form> 
     <script type="text/javascript"> 
         var config = {"Form":{ 
          fields : [
-         {name:"UserID",type:"hidden"},{display:"用户名",name:"LoginName",newline:true,labelWidth:100,width:220,space:30,type:"text",group:"基本信息",groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif",validate : {required:true,username:true,minlength:4,maxlength:25,remote:'../handler/validate.ashx?Action=Exist&View=user',messages:{required:'请输入用户名',remote:'用户名已经存在!'}}  
+         {name:"userId",type:"hidden"},{display:"帐号",name:"userName",newline:true,labelWidth:100,width:220,space:30,type:"text",group:"基本信息",groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif",validate : {required:true,username:true,minlength:4,maxlength:25,messages:{required:'请输入用户名'}}  
          },
-         {display:"部门",name:"DeptID",newline:false,labelWidth:100,width:220,space:30,type:"select",comboboxName:"DepartmentDeptName",options:{tree:{
-            url :'../handler/tree.ashx?view=CF_Department&idfield=DeptID&textfield=DeptName&pidfield=DeptParentID',
-            checkbox:false,
-            nodeWidth :220
-        },valueFieldID:"DeptID",valueField:"DeptID"}},
-         {display:"密码",name:"LoginPassword",newline:true,labelWidth:100,width:220,space:30,type:"password",validate:{maxlength:50,required:true,messages:{required:'请输入密码'}}},
-         {display:"确认密码",name:"LoginPassword2",newline:false,labelWidth:100,width:220,space:30,type:"password",validate:{maxlength:50,required:true,equalTo:'#LoginPassword',messages:{required:'请输入密码',equalTo:'两次密码输入不一致'}}},
-         {display:"真实姓名",name:"RealName",newline:true,labelWidth:100,width:220,space:30,type:"text",validate:{required:true,minlength:1,maxlength:50,messages:{required:'请输入姓名',maxlength:'你的名字有这么长嘛？'}}},
-         {display:"头衔",name:"Title",newline:false,labelWidth:100,width:220,space:30,type:"text",validate:{maxlength:50}},
-         {display:"角色",name:"RoleID",newline:true,labelWidth:100,width:220,space:30,type:"select",
-         comboboxName:"RoleRoleName",options:{valueFieldID:"RoleID",url:"../handler/select.ashx?view=CF_Role&idfield=RoleID&textfield=RoleName",isMultiSelect:true,split:','}},
-        {
-             display:"雇员 ",name:"EmployeeID",newline:false,labelWidth:100,width:220,space:30,type:"select",
-             comboboxName:"EmployeesTitle",
-             options:{valueFieldID:"EmployeeID",url:"../handler/select.ashx?view=Employees&idfield=EmployeeID&textfield=Title"}
-         },
-         {display:"供应商",name:"SupplierID",newline:true,labelWidth:100,width:220,space:30,
-         type:"select",comboboxName:"SuppliersCompanyName",
-         options:{valueFieldID:"SupplierID",url:"../handler/select.ashx?view=Suppliers&idfield=SupplierID&textfield=CompanyName"},
-         group:"设置为供应商",groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"},
-         {display:"性别",name:"Sex",newline:true,labelWidth:100,width:220,space:30,type:"text",validate:{maxlength:255},group:"其他信息",groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"},
-         {display:"电话",name:"Phone",newline:false,labelWidth:100,width:220,space:30,type:"text",validate:{maxlength:50}},
-         {display:"传真",name:"Fax",newline:true,labelWidth:100,width:220,space:30,type:"text",validate:{maxlength:50}},
-         {display:"电子邮件",name:"Email",newline:false,labelWidth:100,width:220,space:30,type:"text",validate:{maxlength:50}},
-         {display:"QQ",name:"QQ",newline:true,labelWidth:100,width:220,space:30,type:"text",validate:{maxlength:50}},
-         {display:"昵称",name:"NickName",newline:false,labelWidth:100,width:220,space:30,type:"text",validate:{maxlength:50}},
-         {display:"地址",name:"Address",newline:true,labelWidth:100,width:520,space:30,type:"textarea"}]
+         {display:"密码",name:"userPassword",newline:true,labelWidth:100,width:220,space:30,type:"password",validate:{maxlength:50,required:true,messages:{required:'请输入密码'}}},
+         {display:"确认密码",name:"userPassword2",newline:true,labelWidth:100,width:220,space:30,type:"password",validate:{maxlength:50,required:true,equalTo:'#userPassword',messages:{required:'请输入密码',equalTo:'两次密码输入不一致'}}},
+         {display:"已锁定",name:"userLock",newline:true,labelWidth:100,width:220,space:30,type:"checkbox",groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"}]
  }};
 
         var forbidFields = [];
@@ -81,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         LG.overrideGridLoading(); 
 
         //表单底部按钮 
-        LG.setFormDefaultBtn(f_cancel,isView ? null : f_save);
+  //     LG.setFormDefaultBtn(f_cancel,isView ? null : f_save);
 
         var deptTree = {
             url :'../handler/tree.ashx?view=CF_Department&idfield=DeptID&textfield=DeptName&pidfield=DeptParentID',
@@ -97,15 +77,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 toJSON:JSON2.stringify
         });
 
-        $("#RoleID").val(roleids);
+     //   $("#RoleID").val(roleids);
 
-        var actionRoot = "../handler/ajax.ashx?type=AjaxMemberManage";
+      //  var actionRoot = "../handler/ajax.ashx?type=AjaxMemberManage";
         if(isEdit){ 
             $("#LoginName").attr("readonly", "readonly").removeAttr("validate");
             mainform.attr("action", actionRoot + "&method=UpdateUser"); 
         }
         if (isAddNew) {
-            mainform.attr("action", actionRoot + "&method=AddUser");
+            //mainform.attr("action", actionRoot + "&method=AddUser");
         }
         else { 
             LG.loadForm(mainform, { type: 'AjaxMemberManage', method: 'GetUser', data: { ID: currentID} },f_loaded);
@@ -124,25 +104,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         {
             if(!isView) return; 
             //查看状态，控制不能编辑
-            $("input,select,textarea",mainform).attr("readonly", "readonly");
+          //  $("input,select,textarea",mainform).attr("readonly", "readonly");
         }
-        function f_save()
-        {
-            LG.submitForm(mainform, function (data) {
-                var win = parent || window;
-                if (data.IsError) {  
-                    win.LG.showError('错误:' + data.Message);
-                }
-                else { 
-                    win.LG.showSuccess('保存成功', function () { 
-                        win.LG.closeAndReloadParent(null, "MemberManageUser");
-                    });
-                }
-            });
-        }
+      
+        
+
         function f_cancel()
         {
-        	top.f_closeDialog();
+        	 LG.closeCurrentDialog();
         }
 
 		 

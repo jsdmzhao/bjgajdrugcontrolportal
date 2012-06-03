@@ -4,33 +4,35 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
 
 	<head>
 		<base href="<%=basePath%>">
-		<title>北京禁毒网站后台管理</title>
-	<link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" /><link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
+    <title>北京禁毒网站后台管理</title>
+    <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
+    <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
 
-    <script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
+   
+    <link href="<%=basePath%>liger/lib/css/common.css" rel="stylesheet" type="text/css" />  
+    <link href="<%=basePath%>liger/lib/css/welcome.css" rel="stylesheet" type="text/css" />
+<!--
+ <script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/ligerUI/js/ligerui.min.js" type="text/javascript"></script>  
-    <link href="<%=basePath%>liger/lib/css/common.css" rel="stylesheet" type="text/css" /><link href="<%=basePath%>liger/lib/css/welcome.css" rel="stylesheet" type="text/css" />
-
         <script src="<%=basePath%>liger/lib/jquery-validation/jquery.validate.min.js" type="text/javascript"></script> 
     <script src="<%=basePath%>liger/lib/jquery-validation/jquery.metadata.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/jquery-validation/messages_cn.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/jquery.form.js" type="text/javascript"></script>
 
     <script src="<%=basePath%>liger/lib/js/common.js" type="text/javascript"></script>
-    <script src="<%=basePath%>liger/lib/js/LG.js" type="text/javascript"></script>
-    <script src="<%=basePath%>liger/lib/js/addfavorite.js" type="text/javascript"></script> 
+     <script src="<%=basePath%>liger/lib/js/LG.js" type="text/javascript"></script>
+    <script src="<%=basePath%>liger/lib/js/addfavorite.js" type="text/javascript"></script>  -->
 </head>
 <body style="padding:10px; overflow:auto; text-align:center;background:#FFFFFF;"> 
         <div class="navbar"><div class="navbar-l"></div><div class="navbar-r"></div>
         <div class="navbar-icon"><img src="<%=basePath%>liger/lib/icons/32X32/hire_me.gif" /></div>
         <div class="navbar-inner"> 
-        <b><span id="labelusername"></span><span>，</span><span id="labelwelcome"></span><span>北京禁毒网站后台管理</span></b>
+        <b><span id="labelusername"></span><span>，</span><span id="labelwelcome"></span><span>欢迎使用北京禁毒网站后台管理</span></b>
         <a href="javascript:void(0)" id="usersetup" style="display:none">账号设置</a>
         </div>
         </div>
@@ -62,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="navbar"><div class="navbar-l"></div><div class="navbar-r"></div>
         <div class="navbar-icon"><img src="<%=basePath%>liger/lib/icons/32X32/collaboration.gif" /></div>
         <div class="navbar-inner"> 
-        <b>LigerRM 使用说明</b> 
+        <b>使用说明</b> 
         </div>
         </div>
 
@@ -79,14 +81,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <div class="withicon">
             <div class="icon"> 
                 <img src="<%=basePath%>liger/lib/icons/32X32/communication.gif" /></div>
-            <span><b>LigerRM是基于ligerui开发的一套权限管理系统，系统中大量使用了grid、tree以及各种表单插件，欢迎体验。在第二版中引入了Northwind实例数据库,更大程度地展示了ligerui的一些功能的使用。</b></span>
+            <span><b>欢迎体验。</b></span>
         </div>
 
 
 
-           <p class="p1"><b>特别说明</b>：此程序版权归作者所有，仅供学习参考，请勿用于任何商业用途！如有问题，请发邮件至gd_star@163.com</p>
+           <p class="p1"><b>特别说明</b>：此程序版权归作者所有！</p>
            
-           <script type="text/javascript">
+       <!--     <script type="text/javascript">
                $("div.link").live("mouseover", function ()
                {
                    $(this).addClass("linkover");
@@ -205,6 +207,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                loadInfo();
                loadMyFavorite();
-           </script>  
+           </script>   -->
 </body>
 </html>
