@@ -15,7 +15,6 @@ import org.springframework.stereotype.Controller;
 
 import com.unis.core.service.AbsServiceAdapter;
 import com.unis.core.util.Globals;
-import com.unis.shgk.common.util.WebUtil;
 import com.unis.app.news.model.News;
 
 @Controller

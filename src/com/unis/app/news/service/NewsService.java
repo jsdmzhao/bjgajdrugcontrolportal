@@ -11,7 +11,6 @@ import org.directwebremoting.WebContextFactory;
 
 import com.unis.core.service.AbsServiceAdapter;
 import com.unis.core.util.Globals;
-import com.unis.shgk.common.util.WebUtil;
 
 public class NewsService<T> extends AbsServiceAdapter<T> {
 

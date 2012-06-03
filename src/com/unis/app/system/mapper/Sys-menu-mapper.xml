@@ -32,7 +32,7 @@
 			<if test="menuIcon != null and menuIcon !='' ">  and MENU_ICON = #{menuIcon}</if>
 			<if test="isvisible != null and isvisible !='' ">  and ISVISIBLE = #{isvisible}</if>
 		</trim>
-		ORDER BY USER_ID  DESC 
+		ORDER BY MENU_ID  ASC 
 	</select>
 
 
@@ -56,13 +56,13 @@
 			<if test="menuIcon != null and menuIcon !='' ">  and MENU_ICON = #{menuIcon}</if>
 			<if test="isvisible != null and isvisible !='' ">  and ISVISIBLE = #{isvisible}</if>
 		</trim>
-		ORDER BY USER_ID  DESC 
+		ORDER BY MENU_ID  ASC 
 		<include refid="pagination.paginationLast"></include>
 	</select>
 
 
 	<select id="queryCountInfo" resultType="integer" parameterType="java.util.Map" >
-				select count(base.USER_ID) from SYS_MENU base
+				select count(base.MENU_ID) from SYS_MENU base
  		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="menuId != null and menuId !='' ">  and MENU_ID = #{menuId}</if>
 			<if test="menuNo != null and menuNo !='' ">  and MENU_NO = #{menuNo}</if>
@@ -77,7 +77,7 @@
 	
 
 	<insert id="saveInfo" parameterType="java.util.Map" >
-			INSERT INTO SYS_USER(
+			INSERT INTO SYS_MENU(
 				 MENU_ID
 			<if test="menuNo != null and menuNo !='' ">  , MENU_NO</if>
 			<if test="menuParentNo != null and menuParentNo !='' ">  ,  MENU_PARENT_NO</if>

@@ -197,7 +197,7 @@ function $d(obj,preBlank){
             },
             error: function (result, b)
             {
-                LG.tip('发现系统错误 <BR>错误码：' + result.status);
+               // LG.tip('发现系统错误 <BR>错误码：' + result.status);
             }
         });
     };
@@ -477,7 +477,7 @@ function $d(obj,preBlank){
                 },
                 error: function (result)
                 {
-                    LG.tip('发现系统错误 <BR>错误码：' + result.status);
+                  //  LG.tip('发现系统错误 <BR>错误码：' + result.status);
                 }
             });
         }

@@ -151,6 +151,7 @@
 			userPassword: $("#userPassword").val(),
 			userLock: userLock
 			}
+
 			if (!obj)
 				return;
 			SysUserSvc.save(obj, function(rdata) {
@@ -169,8 +170,6 @@
 		
 		
 		function f_update(d) {
-			var selected = grid.getSelected();
-			if (selected) {
 				var userLock;
 				if($('#userLock').attr("checked")){
 					userLock='1';
@@ -197,9 +196,6 @@
 					LG.showError('修改失败');
 				}
 			});
-			} else {
-				LG.tip('请选择行!');
-			}
 		};
 		
 		function f_remove() {
@@ -224,7 +220,7 @@
 				$("#userName").val("");
 				$("#userPassword").val("");
 				$("#userPassword2").val("");
-				$('#userLock').attr("checked", false);  
+				$('#userLock').attr("checked", false);   
 				
 			//	$("#userLock").val("");
 				dlgedit = $.ligerDialog.open({
@@ -237,6 +233,8 @@
                               ]
 				});
 			}else {
+				var selected = grid.getSelected();
+				if (selected) {
 				$("#userId").val(grid.getSelected().userId);
 				$("#userName").val(grid.getSelected().userName);
 				$("#userPassword").val(grid.getSelected().userPassword);
@@ -256,6 +254,10 @@
 	                                 { text: '关闭', onclick: function (i, d) { $("input").ligerHideTip(); d.hide(); }} 
 	                              ]
 					});
+				} else {
+					LG.tip('请选择行!');
+					return;
+				}
 			}
 
 				$(".l-dialog-close").bind('mousedown', function() //dialog右上角的叉

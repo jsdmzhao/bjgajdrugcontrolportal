@@ -222,7 +222,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          "MenuName":"菜单管理",
                          "MenuID":8,
                          "text":"菜单管理",
-                         "MenuUrl":"<%=basePath%>admin/app/resource/resource.jsp",
+                         "MenuUrl":"<%=basePath%>admin/app/menu/menu.jsp",
                          "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/sitemap.gif",
                          "MenuNo":"sysmenu",
                          "MenuParentNo":"system"

@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <span id="labelLastLoginTime"></span>
         </div>
 
-
+<!-- 
         <div class="navline">
         </div>
         
@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
 
           
-
+ -->
 
         <div class="navbar"><div class="navbar-l"></div><div class="navbar-r"></div>
         <div class="navbar-icon"><img src="<%=basePath%>liger/lib/icons/32X32/collaboration.gif" /></div>
@@ -72,21 +72,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
          <p style="margin:10px;">也可以快速进行系统权限的管理操作，全部的菜单都在左侧。。。</p>
        
-
+<!-- 
 
         <div class="navline">
         </div>
 
-         
+     
            <div class="withicon">
             <div class="icon"> 
                 <img src="<%=basePath%>liger/lib/icons/32X32/communication.gif" /></div>
             <span><b>欢迎体验。</b></span>
         </div>
+ -->    
 
 
-
-           <p class="p1"><b>特别说明</b>：此程序版权归作者所有！</p>
+           <p class="p1"><b>特别说明</b>：此程序版本为测试版！功能逐步完善中！</p>
            
        <!--     <script type="text/javascript">
                $("div.link").live("mouseover", function ()
