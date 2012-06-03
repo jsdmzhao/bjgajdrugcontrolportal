@@ -81,6 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             name:"c_sfscsp",
             newline:true,labelWidth:100,width:30,space:30,
             type:"checkbox",
+            onclick:"javascript:alert('aa');",
             nodeWidth :30
         },
         {display:"视频路径",name:"c_spljdz",newline:false,labelWidth:100,width:250,space:30,type:"text"},
@@ -224,8 +225,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             var win = parent || window;
             win.LG.closeCurrentTab(null);
         }
-
         
+
+
     </script>
    
 </body>
