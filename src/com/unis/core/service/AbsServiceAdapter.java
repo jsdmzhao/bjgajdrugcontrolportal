@@ -36,6 +36,8 @@ public abstract class AbsServiceAdapter<T> {
      * @return
      */
     public Object update(String statmentId, Object o) {
+    	System.out.println("@@@@AbsServiceAdapter@@update@statmentId : " +statmentId);
+    	System.out.println("@@@@AbsServiceAdapter@@update@o : " +o);
         return dataSetProvider.update(statmentId, o);
     };
 
@@ -45,6 +47,8 @@ public abstract class AbsServiceAdapter<T> {
      * @return
      */
     public List<?> selectList(String statmentId, Object o) {
+    	System.out.println("@@@@AbsServiceAdapter@@selectList@statmentId : " +statmentId);
+    	System.out.println("@@@@AbsServiceAdapter@@selectList@o : " +o);
         return dataSetProvider.selectList(statmentId, o);
     };
 
@@ -57,8 +61,10 @@ public abstract class AbsServiceAdapter<T> {
         return dataSetProvider.selectOne(statmentId, o);
     };
     
-    public SqlSession getSqlSession() {
-		return dataSetProvider.getSqlSession();
-	}
+    
+    public Object delete(String statmentId, Object o) {
+        return dataSetProvider.delete(statmentId, o);
+    };
+    
    
 }

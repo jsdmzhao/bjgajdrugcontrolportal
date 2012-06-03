@@ -38,8 +38,12 @@ public interface IDataSetProvider<T> {
      */
     public Object selectOne(String statmentId, Object o);
     
-    public SqlSession getSqlSession() ;
-    
+    /**
+     * @param statmentId
+     * @param o
+     * @return
+     */
+    public Object delete(String statmentId, Object o);
     
     
 }
