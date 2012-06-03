@@ -62,14 +62,7 @@ function f_openIconsWin()
     });
     if (!jiconlist.attr("loaded"))
     {
-        LG.ajax({
-            type: 'AjaxSystem',
-            method: 'GetIcons',
-            loading: '正在加载图标中...',
-            data: { HttpContext: true },
-            success: function (data)
-            {
-                for (var i = 0, l = data.length; i < l; i++)
+                for (var i = 0, l = 113; i < l; i++)
                 {
                     var src = data[i];
                     var reg = /(lib\\icons)(.+)/;
@@ -80,6 +73,4 @@ function f_openIconsWin()
                 }
                 jiconlist.attr("loaded", true);
             }
-        });
-    }
 }

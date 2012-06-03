@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -11,41 +12,38 @@ import com.unis.app.pagination.Pagination;
 import com.unis.core.service.AbsServiceAdapter;
 
 @Repository
-public class SysMenuDao  {
+public class SysMenuDao extends SqlSessionDaoSupport {
 
-	@Autowired 
-	private AbsServiceAdapter<Integer> asa = null;
-	
 	public Object saveInfo(Map p){
-		return asa.insert("SysMenuMapper.saveInfo", p);
+		return getSqlSession().insert("SysMenuMapper.saveInfo", p);
 	}
 
 	public Object saveAllInfo(Map p){
-		return asa.insert("SysMenuMapper.saveAllInfo", p);
+		return getSqlSession().insert("SysMenuMapper.saveAllInfo", p);
 	}
 
 	public Object removeInfo(Map p){
-		return asa.delete("SysMenuMapper.removeInfo", p);
+		return getSqlSession().delete("SysMenuMapper.removeInfo", p);
 	}
 
 	public Object updateInfo(Map p){
-		return asa.update("SysMenuMapper.updateInfo", p);
+		return getSqlSession().update("SysMenuMapper.updateInfo", p);
 	}
 
 	public Object updateAllInfo(Map p){
-		return asa.update("SysMenuMapper.updateAllInfo", p);
+		return getSqlSession().update("SysMenuMapper.updateAllInfo", p);
 	}
 
 	public List queryAllInfo(Map p){
-		return asa.selectList("SysMenuMapper.queryAllInfo", p);
+		return getSqlSession().selectList("SysMenuMapper.queryAllInfo", p);
 	}
 
 	public List queryInfo(Map p){
-		return asa.selectList("SysMenuMapper.queryInfo", p);
+		return getSqlSession().selectList("SysMenuMapper.queryInfo", p);
 	}
 
 	public Object queryCountInfo(Map p) {
-		return asa.selectOne("SysMenuMapper.queryCountInfo", p);
+		return getSqlSession().selectOne("SysMenuMapper.queryCountInfo", p);
 	}
 
 	public Map queryByPageInfo(Map p, Map page){
