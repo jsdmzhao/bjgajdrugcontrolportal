@@ -108,7 +108,7 @@
     			if(rdata == null){
     				  grid.setOptions({ data:  { Total:0, Rows:""  } });
     			}else{
-    				grid.setOptions({ data:  { Total:rdata.page.recordCount, Rows:rdata.data  } });
+    				  grid.setOptions({ data:  { Total:rdata.page.recordCount, Rows:rdata.data  } });
         		}
     		});
     	}
