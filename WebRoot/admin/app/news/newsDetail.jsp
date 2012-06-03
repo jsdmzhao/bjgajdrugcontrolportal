@@ -30,9 +30,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <script type="text/javascript" src="<%=basePath%>ckeditor/ckeditor.js"></script>
 	<script type="text/javascript" src="<%=basePath%>ckfinder/ckfinder.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/My97DatePicker/WdatePicker.js"></script>
 	<script type='text/javascript' src='dwr/engine.js'></script>
   	<script type='text/javascript' src='dwr/util.js'></script>
-  	<script type='text/javascript' src='dwr/interface/NewsService.js'></script>
+  	<script type='text/javascript' src='dwr/interface/NewsAction.js'></script>
 </head>
 <body style="padding-bottom:31px;">
     <form id="mainform"  method="post"></form> 
@@ -82,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             type:"checkbox",
             nodeWidth :30
         },
-        {display:"视频路径",name:"news.c_spljdz",newline:false,labelWidth:100,width:250,space:30,type:"text"},
+        {display:"视频路径",name:"c_spljdz",newline:false,labelWidth:100,width:250,space:30,type:"text"},
         {
         	 //display:"上传视频",
         	 value:"选择视频",
@@ -102,7 +103,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          	type:"textarea"
          },
          {display:"链接",name:"c_lj",newline:true,labelWidth:100,width:300,space:30,type:"text"},
-         {display:"发布时间",name:"d_fbsj",newline:false,labelWidth:100,width:250,space:30,type:"date"},
+         {display:"发布时间",name:"d_fbsj",newline:false,labelWidth:100,width:250,
+         space:30,type:"text",onclick:"WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"},
          {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea"}
          //,
          //{name:"n_ydcs", labelWidth:100,width:30,space:30,type:"hidden",value:"0"}
@@ -193,7 +195,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	
         	formMap["c_nr"] = editor.document.getBody().getHtml();
 			
-        	NewsService.newsSave(formMap,function (result){
+        	NewsAction.newsSave(formMap,function (result){
         		var win = parent || window;
         		if(result == 'success'){
         			win.LG.showSuccess('保存成功', function () { 
