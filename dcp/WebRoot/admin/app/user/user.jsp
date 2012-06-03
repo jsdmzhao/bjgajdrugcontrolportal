@@ -280,7 +280,7 @@
 	</script>
 
 <div style="display: none">
-<dir id='divedit'>
+<div id='divedit'>
 <form class="l-form" id="mainform" method="post"  ligeruiid="mainform">
 	<input id="userId" name="userId" type="hidden">
 		<div class="l-group l-group-hasicon">
@@ -340,8 +340,8 @@
 		</ul>
 		</div>
 		</form>
-		</dir>
-		</dir>
+		</div>
+		</div>
 		
 		
 </body>
