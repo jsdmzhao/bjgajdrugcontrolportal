@@ -140,12 +140,16 @@
 		}
 
 		function f_save(d) {
+			var userLock;
+			if($('#userLock').attr("checked")){
+				userLock='1';
+			}else{
+				userLock='0';
+			}
 			var obj = {
 			userName: $("#userName").val(),
 			userPassword: $("#userPassword").val(),
-			userLock: $("#userLock").val(),
-					
-					
+			userLock: userLock
 			}
 			if (!obj)
 				return;
@@ -167,11 +171,18 @@
 		function f_update(d) {
 			var selected = grid.getSelected();
 			if (selected) {
+				var userLock;
+				if($('#userLock').attr("checked")){
+					userLock='1';
+				}else{
+					userLock='0';
+				}
+				
 			var obj = {
 			userId: $("#userId").val(),
 			userName: $("#userName").val(),
 			userPassword: $("#userPassword").val(),
-			userLock: $("#userLock").val(),
+			userLock: userLock
 			}
 			if (!obj)
 				return;
@@ -213,24 +224,29 @@
 				$("#userName").val("");
 				$("#userPassword").val("");
 				$("#userPassword2").val("");
-				$("#userLock").val("");
-				if (dlgedit == null) {
-					dlgedit = $.ligerDialog.open({
-						width : 350, //宽度
-						height : null,
-						title : title,
-						target : $("#divedit"),
-						 buttons: [  { text: '保存', onclick: function (i, d) { f_save(d); }}, 
-	                                 { text: '关闭', onclick: function (i, d) { $("input").ligerHideTip(); d.hide(); }} 
-	                              ]
-					});
-			} }else {
+				$('#userLock').attr("checked", false);  
+				
+			//	$("#userLock").val("");
+				dlgedit = $.ligerDialog.open({
+					width : 350, //宽度
+					height : null,
+					title : title,
+					target : $("#divedit"),
+					 buttons: [  { text: '保存', onclick: function (i, d) { f_save(d); }}, 
+                                 { text: '关闭', onclick: function (i, d) { $("input").ligerHideTip(); d.hide(); }} 
+                              ]
+				});
+			}else {
 				$("#userId").val(grid.getSelected().userId);
 				$("#userName").val(grid.getSelected().userName);
 				$("#userPassword").val(grid.getSelected().userPassword);
 				$("#userPassword2").val(grid.getSelected().userPassword2);
-				$("#userLock").val(grid.getSelected().userLock);
-				if (dlgedit == null) {
+				if(grid.getSelected().userLock=='1'){
+					$('#userLock').attr("checked", true);  
+				}else{
+					$('#userLock').attr("checked", false);  
+				}
+			//	$("#userLock").val(grid.getSelected().userLock);
 					dlgedit = $.ligerDialog.open({
 						width : 350, //宽度
 						height : null,
@@ -241,7 +257,6 @@
 	                              ]
 					});
 			}
-			
 
 				$(".l-dialog-close").bind('mousedown', function() //dialog右上角的叉
 				{
@@ -254,7 +269,6 @@
 					$("input").ligerHideTip();
 				});
 				dlgedit.show();
-			}
 			}
 
 		function f_reload() {
@@ -317,7 +331,7 @@
 					class="l-checkbox-wrapper">
 					<input id="userLock" 
 						name="userLock" type="checkbox" ligeruiid="userLock"
-						ltype="checkbox" ligerui='{"width":218}'  value="1">
+						ltype="checkbox" ligerui='{"width":218}'  >
 				</div>
 			</li>
 			<li style="width: 30px;"></li>
