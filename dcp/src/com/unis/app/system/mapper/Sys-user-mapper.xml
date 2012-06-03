@@ -70,14 +70,7 @@
 				<!-- #{n_xh#-->
 			<if test="userName != null and userName !='' ">  ,  #{userName}</if>
 			<if test="userPassword != null and userPassword !='' ">  ,  #{userPassword}</if>
-			<if test="userLock != null and userLock !='' "> 
-			<if test="userLock =='on'"> 
-			 ,  1
-			 </if>
-			  <if test="userLock == null or userLock =='' "> 
-			 ,  0
-			 </if>
-			  </if>
+			<if test="userLock != null and userLock !='' "> ,  #{userLock} </if>
 			
 			
 			)

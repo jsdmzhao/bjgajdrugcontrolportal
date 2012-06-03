@@ -8,6 +8,8 @@ drop table SYS_RESOURCE ;
 drop table SYS_ROLE ;
 drop table SYS_USER ;
 drop table SYS_USER_GROUP ;
+DROP TABLE SYS_MENU;
+DROP TABLE SYS_BUTTON;
 
 /*==============================================================*/
 /* Table: SYS_AUTHORITY                                         */
@@ -222,6 +224,103 @@ comment on column SYS_USER_GROUP.GROUP_ID is
 '组编号';
 
 
+
+/*==============================================================*/
+/* Table: SYS_MENU                                              */
+/*==============================================================*/
+CREATE TABLE SYS_MENU  (
+   MENU_ID              NUMBER(8)                       NOT NULL,
+   MENU_NO              VARCHAR2(20),
+   MENU_PARENT_NO       VARCHAR2(20),
+   MENU_NAME            VARCHAR2(20),
+   MENU_URL             VARCHAR2(100),
+   MENU_ICON            VARCHAR2(100),
+   ISVISIBLE            CHAR(1),
+   CONSTRAINT PK_SYS_MENU PRIMARY KEY (MENU_ID)
+);
+
+COMMENT ON TABLE SYS_MENU IS
+'菜单';
+
+COMMENT ON COLUMN SYS_MENU.MENU_ID IS
+'菜单序号';
+
+COMMENT ON COLUMN SYS_MENU.MENU_NO IS
+'菜单编号';
+
+COMMENT ON COLUMN SYS_MENU.MENU_PARENT_NO IS
+'上级编号';
+
+COMMENT ON COLUMN SYS_MENU.MENU_NAME IS
+'菜单名称';
+
+COMMENT ON COLUMN SYS_MENU.MENU_URL IS
+'菜单连接';
+
+COMMENT ON COLUMN SYS_MENU.MENU_ICON IS
+'菜单图标';
+
+COMMENT ON COLUMN SYS_MENU.ISVISIBLE IS
+'有效性';
+
+
+
+/*==============================================================*/
+/* Table: SYS_BUTTON                                            */
+/*==============================================================*/
+CREATE TABLE SYS_BUTTON  (
+   BTN_ID                NUMBER(8)                       NOT NULL,
+   BTN_NAME              VARCHAR2(20),
+   BTN_NO                VARCHAR2(20),
+   BTN_CLASS             VARCHAR2(20),
+   BTN_ICON              VARCHAR2(100),
+   BTN_SCRIPT            VARCHAR2(100),
+   MENU_ID               NUMBER(8),
+   INITSTATUS           CHAR(1)
+);
+
+COMMENT ON TABLE SYS_BUTTON IS
+'按钮';
+
+COMMENT ON COLUMN SYS_BUTTON.BTN_ID IS
+'按钮序号';
+
+COMMENT ON COLUMN SYS_BUTTON.BTN_NAME IS
+'按钮名称';
+
+COMMENT ON COLUMN SYS_BUTTON.BTN_NO IS
+'按钮编号';
+
+COMMENT ON COLUMN SYS_BUTTON.BTN_CLASS IS
+'按钮类别';
+
+COMMENT ON COLUMN SYS_BUTTON.BTN_ICON IS
+'按钮图标';
+
+COMMENT ON COLUMN SYS_BUTTON.BTN_SCRIPT IS
+'按钮脚本';
+
+COMMENT ON COLUMN SYS_BUTTON.MENU_NO IS
+'菜单序号';
+
+COMMENT ON COLUMN SYS_BUTTON.INITSTATUS IS
+'状态';
+
+
+create sequence SEQ_SYS_MENU_ID
+minvalue 10000000
+maxvalue 99999999
+start with 10000000
+increment by 1
+cache 20;
+ 
+
+create sequence SEQ_SYS_MENU_ID
+minvalue 10000000
+maxvalue 99999999
+start with 10000000
+increment by 1
+cache 20;
  
 create sequence SEQ_SYS_AUTHORITY_ID
 minvalue 10000000

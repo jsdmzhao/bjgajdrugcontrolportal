@@ -11,41 +11,41 @@ import com.unis.app.pagination.Pagination;
 import com.unis.core.service.AbsServiceAdapter;
 
 @Repository
-public class SysUserDao{
+public class SysMenuDao  {
 
-	@Autowired
+	@Autowired 
 	private AbsServiceAdapter<Integer> asa = null;
 	
 	public Object saveInfo(Map p){
-		return asa.insert("SysUserMapper.saveInfo", p);
+		return asa.insert("SysMenuMapper.saveInfo", p);
 	}
 
 	public Object saveAllInfo(Map p){
-		return asa.insert("SysUserMapper.saveAllInfo", p);
+		return asa.insert("SysMenuMapper.saveAllInfo", p);
 	}
 
 	public Object removeInfo(Map p){
-		return asa.delete("SysUserMapper.removeInfo", p);
+		return asa.delete("SysMenuMapper.removeInfo", p);
 	}
 
 	public Object updateInfo(Map p){
-		return asa.update("SysUserMapper.updateInfo", p);
+		return asa.update("SysMenuMapper.updateInfo", p);
 	}
 
 	public Object updateAllInfo(Map p){
-		return asa.update("SysUserMapper.updateAllInfo", p);
+		return asa.update("SysMenuMapper.updateAllInfo", p);
 	}
 
 	public List queryAllInfo(Map p){
-		return asa.selectList("SysUserMapper.queryAllInfo", p);
+		return asa.selectList("SysMenuMapper.queryAllInfo", p);
 	}
 
 	public List queryInfo(Map p){
-		return asa.selectList("SysUserMapper.queryInfo", p);
+		return asa.selectList("SysMenuMapper.queryInfo", p);
 	}
 
 	public Object queryCountInfo(Map p) {
-		return asa.selectOne("SysUserMapper.queryCountInfo", p);
+		return asa.selectOne("SysMenuMapper.queryCountInfo", p);
 	}
 
 	public Map queryByPageInfo(Map p, Map page){
