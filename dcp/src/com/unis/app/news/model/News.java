@@ -6,7 +6,7 @@ public class News {
 	
 	private String c_bt;
 	
-	private String c_sftpwz;
+	private String c_sftwwz;
 	
 	private String c_tpljdz;
 	
@@ -44,6 +44,8 @@ public class News {
 	
 	private String c_sfzd;
 	
+	private String c_sfgl;
+	
 	private String n_xxxh;
 
 	public String getN_xh() {
@@ -62,12 +64,12 @@ public class News {
 		this.c_bt = c_bt;
 	}
 
-	public String getC_sftpwz() {
-		return c_sftpwz;
+	public String getC_sftwwz() {
+		return c_sftwwz;
 	}
 
-	public void setC_sftpwz(String c_sftpwz) {
-		this.c_sftpwz = c_sftpwz;
+	public void setC_sftwwz(String c_sftwwz) {
+		this.c_sftwwz = c_sftwwz;
 	}
 
 	public String getC_tpljdz() {
@@ -212,6 +214,14 @@ public class News {
 
 	public void setC_sfzd(String c_sfzd) {
 		this.c_sfzd = c_sfzd;
+	}
+
+	public String getC_sfgl() {
+		return c_sfgl;
+	}
+
+	public void setC_sfgl(String cSfgl) {
+		c_sfgl = cSfgl;
 	}
 
 	public String getN_xxxh() {

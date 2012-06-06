@@ -2,12 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="NewsMapper">
-	 
+	 <resultMap type="News" id="resultNews">
+	 	<result column="N_XH" property="n_xh"/>
+	 	<result column="C_BT" property="c_bt"/>
+	 	<result column="D_FBSJ" property="d_fbsj"/>
+	 	<result column="C_SFZD" property="c_sfzd"/>
+	 	<result column="C_SFGL" property="c_sfgl"/>
+	 	<result column="C_SFTJ" property="c_sftj"/>
+	 </resultMap>
 	<select id="getNews" parameterType="News" resultType="News">
 		SELECT * FROM B_XINWEN WHERE N_XH = #{n_xh}
 	</select>
+	 
+	<select id="getNewsList" parameterType="string" resultMap="resultNews">
+	  SELECT N_XH,
+	   C_BT,
+       TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
+       C_SFZD,
+       C_SFGL,
+       C_SFTJ
+	  FROM B_XINWEN
+	  WHERE C_LM = #{c_lm}
+	</select>
 	
-	<delete id="deleteNews" parameterType="News">
+	<delete id="deleteNews" parameterType="int">
 		delete from B_XINWEN WHERE N_XH = #{n_xh}
 	</delete>
 	
@@ -15,7 +33,7 @@
 		 INSERT INTO B_XINWEN(
 			N_XH,
 			C_BT,
-			C_SFTPWZ,
+			C_SFTWWZ,
 			C_TPLJDZ,
 			C_TPKD,
 			C_TPGD,
@@ -64,7 +82,7 @@
 	<update id="updateNews" parameterType="News">
 		UPDATE B_XINWEN
 		   SET  C_BT     =	#{c_bt,jdbcType=VARCHAR},
-				C_SFTPWZ =	#{c_sftpwz}, 
+				C_SFTWWZ =	#{c_sftwwz}, 
 				C_TPLJDZ =	#{c_tpljdz,jdbcType=VARCHAR}, 							
 				C_TPKD   =	#{c_tpkd,jdbcType=NUMERIC},   							
 				C_TPGD   =	#{c_tpgd,jdbcType=NUMERIC},   							
@@ -87,7 +105,14 @@
 		WHERE N_XH = #{n_xh}
 	</update>
 	
-	
+	<update id="operateNews" parameterType="map">
+		UPDATE B_XINWEN
+			SET 
+			<if test="operateType == 'zd' ">C_SFZD = #{value} </if>
+			<if test="operateType == 'gl' ">C_SFGL = #{value} </if>
+			<if test="operateType == 'tj' ">C_SFTJ = #{value} </if>
+		    WHERE N_XH = #{n_xh}
+	</update>
 	
 	
 </mapper>
