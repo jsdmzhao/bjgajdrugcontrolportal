@@ -1,6 +1,7 @@
 package com.unis.app.news.action;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,15 +47,39 @@ public class NewsAction {
 		return Globals.SUCCESS;
 	}
 	
+	public String newsOperate(String operateType, String value, String n_xh){
+		Map<String, Object> sqlParamMap = new HashMap<String, Object>();
+		sqlParamMap.put("operateType", operateType);
+		sqlParamMap.put("value", value);
+		sqlParamMap.put("n_xh", n_xh);
+	    newsService.update("NewsMapper.operateNews", sqlParamMap);
+		return Globals.SUCCESS;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> newsList(String c_lm){
+		Map<String, Object> resMap = new HashMap<String, Object>();
+		List<News> newsList = (List<News>) newsService.selectList("NewsMapper.getNewsList", c_lm);
+		resMap.put("Rows", newsList);
+		resMap.put("Total", newsList.size());
+		return resMap;
+	}
+	
 	public String newsUpdate(){
 		news = (News) newsService.selectOne("NewsMapper.getNews", news);
 		//newsService.update("NewsMapper.updateNews", news);
 		return Globals.SUCCESS;
 	}
 	
-	public String newsDelete(){
+	public String newsView(){
+		news = (News) newsService.selectOne("NewsMapper.getNews", news);
+		//newsService.update("NewsMapper.updateNews", news);
+		return Globals.SUCCESS;
+	}
+	
+	public String newsDelete(String n_xh){
 		
-		newsService.update("NewsMapper.deleteNews", news);
+		newsService.update("NewsMapper.deleteNews", n_xh);
 		return Globals.SUCCESS;
 	}
 	
