@@ -2,12 +2,15 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
+String newsType = request.getParameter("newsType");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+	<base href="<%=basePath%>">
     <title></title> 
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
@@ -29,12 +32,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>liger/lib/jquery.form.js" type="text/javascript"></script>
 
     <script src="<%=basePath%>liger/lib/js/iconselector.js" type="text/javascript"></script> 
+    
+    <script type='text/javascript' src='dwr/engine.js'></script>
+  	<script type='text/javascript' src='dwr/util.js'></script>
+  	<script type='text/javascript' src='dwr/interface/NewsAction.js'></script>
+  	
+  	
     <style type="text/css">
     .l-panel td.l-grid-row-cell-editing { padding-bottom: 2px;padding-top: 2px;}
     </style>
 </head>
 <body style="padding:2px;height:100%; text-align:center;">
-  
+  <input type="hidden" name="MenuNo" value="NewsGridTable"/>
   <div id="layout">
     <div position="left" title="主菜单模块" id="mainmenu">
         <ul id="maintree"></ul>
@@ -48,6 +57,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <ul class="iconlist">
   </ul>
   <script type="text/javascript">
+
+      var newsType = '<%=newsType %>';
   
       //验证
       var maingform = $("#mainform");
@@ -64,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               case "增加":
                   if (editingrow == null)
                   {
-                      top.f_addTab(null, '增加新闻信息', '<%=basePath%>admin/app/news/newsDetail.jsp');
+                      top.f_addTab(null, '增加新闻信息', '<%=basePath%>admin/app/news/newsDetail.jsp?newsType='+newsType);
                   } else
                   {
                       LG.tip('请先提交或取消修改');
@@ -99,22 +110,62 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       LG.tip('现在不在编辑状态!');
                   }
                   break;
+              case "查看":
+            	  var selected = grid.getSelected();
+                  if (!selected) { LG.tip('请选择行!'); return }
+                  if (editingrow == null ) {
+                      top.f_addTab(null, '查看新闻信息', '<%=basePath%>newsView?news.n_xh=' + selected.n_xh);
+                  } else {
+                      LG.tip('现在不在编辑状态!');
+                  }
+                  break;
               case "删除": 
                   $.ligerDialog.confirm('确定删除吗?', function (confirm) {
                       if (confirm)
                           f_delete();
                   });
                   break;
-              case "操作按钮":
-                  var selected = grid.getSelected();
-                  if (!selected) return;
-                  top.f_addTab(null, selected.MenuName + ' 操作按钮管理', '<%=basePath%>admin/app/operation/operation.jsp?MenuNo=' + selected.MenuNo);
+              case "置顶": 
+                  $.ligerDialog.confirm('确定置顶吗?', function (confirm) {
+                      if (confirm)
+                          f_operate('zd','1');
+                  });
+                  break;
+              case "取消置顶": 
+                  $.ligerDialog.confirm('确定取消置顶吗?', function (confirm) {
+                      if (confirm)
+                          f_operate('zd','0');
+                  });
+                  break;
+              case "高亮": 
+                  $.ligerDialog.confirm('确定高亮吗?', function (confirm) {
+                      if (confirm)
+                    	  f_operate('gl','1');
+                  });
+                  break;
+              case "取消高亮": 
+                  $.ligerDialog.confirm('确定取消高亮吗?', function (confirm) {
+                      if (confirm)
+                    	  f_operate('gl','0');
+                  });
+                  break;
+              case "推荐": 
+                  $.ligerDialog.confirm('确定推荐吗?', function (confirm) {
+                      if (confirm)
+                    	  f_operate('tj','1');
+                  });
+                  break;
+              case "取消推荐": 
+                  $.ligerDialog.confirm('确定取消推荐吗?', function (confirm) {
+                      if (confirm)
+                    	  f_operate('tj','0');
+                  });
                   break;
           }
       }
       function f_reload()
       {
-          grid.loadData();
+          grid.loadGrid(newsType);
       }
       function f_delete()
       { 
@@ -124,28 +175,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               if (!selected.MenuID)
               {
                   grid.deleteRow(selected);
-                  return;
+                  //return;
+                  NewsAction.newsDelete(selected.n_xh, function (data){
+      	   	    	 if(data == 'success'){
+      	   	    		LG.showSuccess('删除成功');
+      	                //f_reload();
+      	    	     } else {
+      	    	    	LG.showSuccess('删除失败');
+      	 	    	 }
+      	   	      });
               }
-              LG.ajax({
-                  type: 'AjaxSystem',
-                  method: 'RemoveMenu',
-                  loading:'正在删除中...',
-                  data: { MenuID: selected.MenuID },
-                  success: function () { 
-                      LG.showSuccess('删除成功');
-                      f_reload();
-                  },
-                  error: function (message)
-                  {
-                      LG.showError(message);
-                  }
-              });
           }
           else
           {
               LG.tip('请选择行!');
           }
       }
+
+      function f_operate(operateType,value){
+          
+    	  var selected = grid.getSelected();
+    	  //alert(selected.c_sfzd); return;
+          if (selected){
+	    	  NewsAction.newsOperate(operateType , value,selected.n_xh, function (data){
+	   	    	 if(data == 'success'){
+	   	    		LG.showSuccess('操作成功');
+	   	    		loadGrid(newsType);
+	    	     }
+	   	      });
+          }else{
+        	  LG.tip('请选择行!');
+          }
+      }
+      
       var toolbarOptions = { 
         items: [ 
             { text: '增加', click: itemclick , img:"<%=basePath%>liger/lib/icons/silkicons/add.png"}, 
@@ -156,9 +218,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             { line: true },
             { text: '取消', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/cancel.png" },
             { line: true },
+            { text: '查看', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png" },
+            { line: true },
             { text: '删除', click: itemclick, img: "<%=basePath%>liger/lib/icons/miniicons/page_delete.gif" },
             { line: true },
-            { text: '操作按钮', click: itemclick, img: "<%=basePath%>liger/lib/icons/32X32/document_library.gif" } 
+            { text: '置顶', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/arrow_up.png" },
+            { line: true },
+            { text: '取消置顶', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/arrow_down.png" },
+            { line: true },
+            { text: '高亮', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/star.png" },
+            { line: true },
+            { text: '取消高亮', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/star_01.png" },
+            { line: true },
+            { text: '推荐', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/flag_red.png" },
+            { line: true },
+            { text: '取消推荐', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/flag_yellow.png" }
         ]
     };
 
@@ -205,18 +279,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  }],"Total":"3"};
     
     var tree = $("#maintree").ligerTree({
-        url: '../handler/tree.ashx?' +
-    $.param({
-        root: '主菜单',
-        rooticon: '<%=basePath%>liger/lib/icons/32X32/category.gif',
-        view: 'Sys_Menu',
-        idfield: 'MenuNo',
-        pidfield: 'MenuParentNo',
-        textfield: 'MenuName',
-        iconfield: 'MenuIcon',
-        iconroot: '../',
-        where: JSON2.stringify(treefilter)
-    }),
+        data:[
+              {text: '领导动态',MenuNo:'1'},
+              {text: '机构设置',MenuNo:'2'},
+              {text: '工作交流',MenuNo:'3'},
+              {text: '禁毒动态',MenuNo:'4'},
+              {text: '机构设置',MenuNo:'5'},
+              {text: '通知通报',MenuNo:'6'}
+        ],
         checkbox: false,
         onClick: function (node)
         {
@@ -225,22 +295,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 op: 'and',
                 rules: [{ field: 'MenuParentNo', value: node.data.MenuNo, op: 'equal'}]
             };
+            newsType =  node.data.MenuNo;
             currentMenuParentNo = node.data.MenuNo;
-            grid.set('parms', { where: JSON2.stringify(where) });
-            grid.set('data', tempdata);
+            loadGrid(newsType);
+            //grid.set('parms', { where: JSON2.stringify(where) });
+            //grid.set('data', tempdata);
         }
     });
 
     var layout = $("#layout").ligerLayout({ leftWidth: 140 });
-     
-    var newspdata = {"Rows":[{
-	    "n_xh":1,"c_bt":"系统管理员","d_fbsj":"2011-01-01"
-	    },{
-	    "n_xh":5,"c_bt":"系统管理员","d_fbsj":"2011-01-01"
-	    },{
-	    "n_xh":7,"c_bt":"基础信息录入员","d_fbsj":"2011-01-01"
-    	}],"Total":"3"};
-     
+
+
+    
+    var newsdata = '';
+
+    /**
+    NewsAction.newsList(function (data){
+       // alert($d(data));
+    	newsdata = JSON2.stringify(data);
+    	alert(JSON2.stringify(data));
+    });
+    **/
     var grid = $("#maingrid").ligerGrid({
         //headerImg:"<%=basePath%>liger/lib/icons/silkicons/table.png",title:'表格表头',
         columns: [
@@ -256,46 +331,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 validate: { required: true },
                 editor: { type: 'text' }
                 }, 
-                { display: '图标', name: 'MenuIcon', align: 'left', width: 330, minWidth: 50, 
-                editor: { type: 'select',
-                    ext:
-                    function (rowdata)
-                    {
-                        return {
-                            onBeforeOpen: function ()
-                            {
-                                currentComboBox = this;
-                                f_openIconsWin();
-                                return false;
-                            },
-                            render: function ()
-                            {
-                                return rowdata.MenuIcon;
-                            }
-                        };
-                    } }
-                , render: function (item)
-                {
+                { display: '状态', name: 'operate', editor: { type: 'text' },align: 'left', width: 200, minWidth: 50
+                },{
+					name: 'c_sfzd',editor: {type: 'hidden'},hide : '1'
+                },{
+					name: 'c_sfgl',editor: {type: 'hidden'},hide : '1'
+                },{
+					name: 'c_sftj',editor: {type: 'hidden'},hide : '1'
+                }], 
+                dataAction: 'server', pageSize: 20, toolbar: toolbarOptions, sortName: 'MenuID',
+		        width: '98%', height: '100%', heightDiff: -5, checkbox: false, usePager: true, enabledEdit: true, 
+		        clickToEdit: false, fixedCellHeight: true, rowHeight: 25,
+		        render: function (item) {
                     return "<div style='width:100%;height:100%;'><img src='../" + item.MenuIcon + "' /></div>";
                 }
-                }
-                ], dataAction: 'server', pageSize: 20, toolbar: toolbarOptions, sortName: 'MenuID',
-        width: '98%', height: '100%', heightDiff: -5, checkbox: false, usePager: false, enabledEdit: true, clickToEdit: false,
-        fixedCellHeight: true, rowHeight: 25, data: newspdata
     });
 
-
-    grid.bind('beforeSubmitEdit', function (e)
-    {
-        if (!LG.validator.form())
-        {
+    grid.bind('beforeSubmitEdit', function (e) {
+        if (!LG.validator.form()) {
             LG.showInvalid();
             return false;
         }
         return true;
     });
-    grid.bind('afterSubmitEdit', function (e)
-    {
+    
+    grid.bind('afterSubmitEdit', function (e) {
+        
         var isAddNew = e.record['__status'] == "add";
         var data = $.extend({ MenuParentNo: currentMenuParentNo }, e.newdata);
         if (!isAddNew)
@@ -307,7 +368,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             data: data,
             success: function ()
             {
-                grid.loadData();
+                grid.loadGrid(newsType);
                 LG.tip('保存成功!');
             },
             error: function (message)
@@ -316,6 +377,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }
         }); 
     }); 
+    //loadData();
+    loadGrid(newsType);
 
     function beginEdit()
     {
@@ -327,6 +390,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     {
         grid.addEditRow();
     }
+	
+    function loadGrid(newsType){
+        if(newsType == undefined || newsType == ''){
+			newType = '1';
+        }
+    	NewsAction.newsList(newsType,function (data){
+  	    	//newsdata = JSON2.stringify(data);
+  	    	for(var i=0;i<data.Rows.length;i++){
+  	    		var rowData = "<div style='width:100%;height:100%;'>";
+				var sfzd = data.Rows[i].c_sfzd;
+				var sfgl = data.Rows[i].c_sfgl;
+				var sftj = data.Rows[i].c_sftj;
+				if(sfzd == '1'){
+					rowData += "<span style=width:33%><img src='liger/lib/icons/silkicons/arrow_up.png'/>置顶&nbsp;&nbsp;</span>";
+			    }else {
+					rowData += "<span style=width:33%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
+				}
+				if(sfgl == '1'){
+					rowData += "<img src='liger/lib/icons/silkicons/star.png'/>高亮&nbsp;&nbsp;";
+				}else {
+					rowData += "<span style=width:33%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
+				}
+				if(sftj == '1'){
+					rowData += "<img src='liger/lib/icons/silkicons/flag_red.png'/>推荐&nbsp;&nbsp;";
+				}else {
+					rowData += "<span style=width:33%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
+				}
+				rowData += "</div>";
+				data.Rows[i].operate = rowData;
+  	  	  	}
+  	    	grid.setOptions({data:data});
+  	    });
+    }
+   
   </script>
 </body>
 </html> 
