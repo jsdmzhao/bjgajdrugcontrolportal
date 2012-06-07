@@ -177,11 +177,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      "id":58,
                     "children":[{
                     "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                    "id":61,
+                    "id":41,
                     "MenuName":"文章发布",
-                    "MenuID":61,
+                    "MenuID":41,
                     "text":"文章发布",
-                    "MenuUrl":"<%=basePath%>admin/app/news/news.jsp?wzlx=tztb",
+                    "MenuUrl":"<%=basePath%>admin/app/news/news.jsp?newsType=1",
+                    "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
+                    "MenuNo":"MemberManageRole",
+                    "MenuParentNo":"MemberManage"
+                    },{
+                    "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
+                    "id":42,
+                    "MenuName":"文章审核",
+                    "MenuID":42,
+                    "text":"文章审核",
+                    "MenuUrl":"<%=basePath%>admin/app/news/newsAudit.jsp",
                     "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
                     "MenuNo":"MemberManageRole",
                     "MenuParentNo":"MemberManage"
