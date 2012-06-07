@@ -250,8 +250,16 @@
             var width = field.width || p.inputWidth;
             var name = field.name || field.id;
             var value = '';
-            if((typeof(field.value)+'') != 'undefined' && (field.value+'') != 'undefined'){
+            var readonly = '';
+            var disabled = '';
+            if((typeof(field.value)||'') != 'undefined' && (field.value||'') != 'undefined'){
             	value = field.value;
+            }
+            if((typeof(field.readonly)||'') != 'undefined' && (field.readonly||'') != 'undefined'){
+            	readonly = field.readonly;
+            }
+            if((typeof(field.disabled)||'') != 'undefined' && (field.disabled||'') != 'undefined'){
+            	disabled = field.disabled;
             }
             var out = [];
             if (field.comboboxName && field.type == "select")
@@ -265,26 +273,33 @@
             else if (field.type == "checkbox")
             {
             	if(value == '1'){
-            		out.push('<input type="checkbox" checked ');
+            		out.push('<input type="checkbox" checked="checked" onclick="'+field.onclick+'" ');
             	}else {
-            		out.push('<input type="checkbox" ');
+            		out.push('<input type="checkbox" onclick="'+field.onclick+'"');
             	}
             }
             else if (field.type == "radio")
             {
-                out.push('<input type="radio" ');
+                out.push('<input type="radio" onclick="'+field.onclick+'" ');
             }
             else if (field.type == "password")
             {
                 out.push('<input type="password" value="'+value+'" ');
             }
             else if (field.type == "button")
-            {
-                out.push('<input type="button" value="'+value+'"  onclick="'+field.onclick+'"');
+            {	if(disabled == 'disabled'){
+            	 	out.push('<input type="button" value="'+value+'"  onclick="'+field.onclick+'" disabled="disabled" ');
+            	} else {
+            		out.push('<input type="button" value="'+value+'"  onclick="'+field.onclick+'"');
+            	}
             }
             else
-            {
-                out.push('<input type="text"  value="'+value+'"  onclick="'+field.onclick+'"');
+            {	
+            	if(readonly == 'readonly'){
+        			out.push('<input type="text"  value="'+value+'"  onclick="'+field.onclick+'"  readonly = "readonly" ');
+        		} else {
+        			out.push('<input type="text"  value="'+value+'"  onclick="'+field.onclick+'" ');
+        		}
             }
             if (field.cssClass)
             {
