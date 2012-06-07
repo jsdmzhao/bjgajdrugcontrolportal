@@ -2,6 +2,8 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
+String newsType = request.getParameter("newsType");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -34,21 +36,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type='text/javascript' src='dwr/engine.js'></script>
   	<script type='text/javascript' src='dwr/util.js'></script>
   	<script type='text/javascript' src='dwr/interface/NewsAction.js'></script>
+
 </head>
 <body style="padding-bottom:31px;">
     <form id="mainform"  method="post"></form> 
     <script type="text/javascript"> 
 
-		
+	    function checkSctp(node){
+	    	alert('1123'+node.value);
+
+	    	//$("sctp").attr("disabled", "disabled");
+	    }
     
 		function test(){
 			alert('hello!');
+			
 		}
-
+       
     
         var config = {"Form":{ 
          fields : [
-         {name:"n_xh",type:"hidden"},
+         {name:"c_lm",type:"hidden",value:'<%=newsType %>'},
          {
 	         display:"标题",
 	         name:"c_bt",
@@ -61,11 +69,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },
          {display:"是否图片文章",
-             name:"c_sftpwz",
+             name:"c_sftwwz",
              newline:true,
-             labelWidth:100,width:30,space:30,type:"checkbox"
+             labelWidth:100,width:30,space:30,type:"checkbox",
+             onclick : "checkSctp(this)"
          },
-         {display:"图片路径",name:"c_tpljdz",newline:false,labelWidth:100,width:250,space:30,type:"text"},
+         {display:"图片名称",name:"c_tpljdz",newline:false,labelWidth:100,width:250,space:30,type:"text",readonly:"readonly"},
          {
         	 //display:"上传图片",
    	         name:"sctp",
@@ -75,16 +84,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	         type:"button",
    	         cssClass:"l-button",
    	         value:"选择图片",
-   	         onclick:"test()"
+   	         onclick:"alert('')",
+   	      	 disabled:"disabled",
+   	      	 onclick : "openDialog('#uploadImageDiv')"
          },
          { display:"是否上传视频",
             name:"c_sfscsp",
             newline:true,labelWidth:100,width:30,space:30,
             type:"checkbox",
-            onclick:"javascript:alert('aa');",
             nodeWidth :30
         },
-        {display:"视频路径",name:"c_spljdz",newline:false,labelWidth:100,width:250,space:30,type:"text"},
+        {display:"视频名称",name:"c_spljdz",newline:false,labelWidth:100,width:250,space:30,type:"text",readonly:"readonly"},
         {
         	 //display:"上传视频",
         	 value:"选择视频",
@@ -93,7 +103,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         labelWidth:100,
 	         width:220,space:30, 
 	         type:"button",
-	         cssClass:"l-button"
+	         cssClass:"l-button",
+	         disabled:"disabled",
+	         onclick : "openDialog('#uploadFlashDiv')"
          },
          {
          	display:"简介",
@@ -174,18 +186,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             //查看状态，控制不能编辑
             $("input,select,textarea",mainform).attr("readonly", "readonly");
         }
-        
+
+        //<!-- 设置一些默认参数 -->
         var editor = CKEDITOR.replace( 'c_nr' );
     	CKFinder.setupCKEditor( editor, '/ckfinder/' );
+
+    	//$("c_tpljdz").setDisabled();
         
         function f_save() {
 
         	var formMap = DWRUtil.getValues("mainform"); 
 
-        	if(formMap["c_sftpwz"] == true){
-        		formMap["c_sftpwz"] = '1';
+        	if(formMap["c_sftwwz"] == true){
+        		formMap["c_sftwwz"] = '1';
         	} else {
-        		formMap["c_sftpwz"] = '0';
+        		formMap["c_sftwwz"] = '0';
         	}
         	
         	if(formMap["c_sfscsp"] == true){
@@ -200,7 +215,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		var win = parent || window;
         		if(result == 'success'){
         			win.LG.showSuccess('保存成功', function () { 
-                        win.LG.closeAndReloadParent(null, "maingrid");
+                        win.LG.closeAndReloadParent(null, "NewsGridTable");
                     });
         		} else {
         		 	win.LG.showError('保存失败');
@@ -225,11 +240,67 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             var win = parent || window;
             win.LG.closeCurrentTab(null);
         }
+
+        function openDialog(divNode){
+
+        	var dlgedit = $.ligerDialog.open({
+				width : 350, //宽度
+				height : null,
+				title : "文件上传",
+				target : $(divNode),
+				buttons: [ 
+                           { text: '关闭', onclick: function (i, d) { $("input").ligerHideTip(); d.hide(); }} 
+                          ]
+			});
+        }
+
+        $(function(){
+       	 if ($.browser.msie) {
+       	  	$('input:checkbox').click(function () { 
+       	   	    this.blur();   
+       	   		this.focus(); 
+       		});   
+       	 };
+       	 
+       	 $("#c_sftwwz").change(function() {
+       		 var value = $("#c_sftwwz").attr("checked");
+       		 if(value == true){
+				$("#sctp").attr("disabled",false);	
+             }else{
+            	 $("#sctp").attr("disabled","disabled");	
+             }
+       	 
+       		});
+       	}); 
+
+
+        $(function(){
+       	 if ($.browser.msie) {
+       	  	$('input:checkbox').click(function () { 
+       	   	    this.blur();   
+       	   		this.focus(); 
+       		});   
+       	 };
+       	 $("#c_sfscsp").change(function() {
+       		 var value = $("#c_sfscsp").attr("checked");
+       		 if(value == true){
+    			$("#scsp").attr("disabled",false);	
+             }else{
+            	 $("#scsp").attr("disabled","disabled");
+             }
+       	 
+       		//  upload('c_spljdz','fileDownload','cSmjhzm');
+       		});
+       	}); 
         
-
-
     </script>
-   
+ 	<div id="uploadImageDiv" style="display: none;">
+		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_tpljdz"></iframe> <!---->
+	</div>
+	<div id="uploadFlashDiv" style="display: none;">
+		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_spljdz"></iframe> <!---->
+	</div>   
 </body>
+
 </html>
 

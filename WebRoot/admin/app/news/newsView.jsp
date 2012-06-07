@@ -38,9 +38,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<script type='text/javascript' src='dwr/interface/NewsAction.js'></script>
 </head>
 <body style="padding-bottom:31px;">
+   <%-- 
     <form id="mainform"  method="post"></form> 
     <script type="text/javascript"> 
-    
+
         var config = {"Form":{ 
          fields : [
          {
@@ -55,14 +56,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         value: "<s:property value='news.c_bt'/>", 
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },
-         {display:"是否图文文章",
+         {display:"是否图片文章",
              name:"c_sftwwz",
              newline:true,
              value:"<s:property value='news.c_sftwwz'/>",
              labelWidth:100,width:30,space:30,type:"checkbox"
          },
-         {display:"图片名称",name:"c_tpljdz",newline:false,labelWidth:100,width:250,
-          space:30,type:"text",value: "<s:property value='news.c_tpljdz'/>" ,readonly:'readonly'},
+         {display:"图片路径",name:"c_tpljdz",newline:false,labelWidth:100,width:250,space:30,type:"text",value: "<s:property value='news.c_tpljdz'/>" },
          {
         	 //display:"上传图片",
    	         name:"sctp",
@@ -72,9 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	         type:"button",
    	         cssClass:"l-button",
    	         value:"选择图片",
-   	         onclick:"test()",
-   	     	 disabled:"disabled",
-   	         onclick : "openDialog('#uploadImageDiv')"
+   	         onclick:"test()"
          },
          { display:"是否上传视频",
             name:"c_sfscsp",
@@ -83,8 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             value:"<s:property value='news.c_sfscsp'/>",
             nodeWidth :30
         },
-        {display:"视频名称",name:"c_spljdz",newline:false,labelWidth:100,width:250,space:30,type:"text",
-         value: "<s:property value='news.c_spljdz'/>"  ,readonly:'readonly'},
+        {display:"视频路径",name:"c_spljdz",newline:false,labelWidth:100,width:250,space:30,type:"text",value: "<s:property value='news.c_spljdz'/>" },
         {
         	 //display:"上传视频",
         	 value:"选择视频",
@@ -93,9 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         labelWidth:100,
 	         width:220,space:30, 
 	         type:"button",
-	         cssClass:"l-button",
-	         disabled:"disabled",
-	         onclick : "openDialog('#uploadFlashDiv')"
+	         cssClass:"l-button"
          },
          {
          	display:"简介",
@@ -238,72 +233,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		//DWRUtil.setValues("mainform",'<s:property value="news"/>'); 
 		///DWRUtils.
         
-        function openDialog(divNode){
-
-        	var dlgedit = $.ligerDialog.open({
-				width : 350, //宽度
-				height : null,
-				title : "文件上传",
-				target : $(divNode),
-				buttons: [ 
-                           { text: '关闭', onclick: function (i, d) { $("input").ligerHideTip(); d.hide(); }} 
-                          ]
-			});
-        }
-
-        $(function(){
-       	 if ($.browser.msie) {
-       	  	$('input:checkbox').click(function () { 
-       	   	    this.blur();   
-       	   		this.focus(); 
-       		});   
-       	 };
-       	 
-       	 $("#c_sftwwz").change(function() {
-       		 var value = $("#c_sftwwz").attr("checked");
-       		 if(value == true){
-				$("#sctp").attr("disabled",false);	
-             }else{
-            	 $("#sctp").attr("disabled","disabled");	
-             }
-       	 
-       		});
-       	}); 
-
-
-        $(function(){
-       	 if ($.browser.msie) {
-       	  	$('input:checkbox').click(function () { 
-       	   	    this.blur();   
-       	   		this.focus(); 
-       		});   
-       	 };
-       	 $("#c_sfscsp").change(function() {
-       		 var value = $("#c_sfscsp").attr("checked");
-       		 if(value == true){
-    			$("#scsp").attr("disabled",false);	
-             }else{
-            	 $("#scsp").attr("disabled","disabled");
-             }
-       	 
-       		//  upload('c_spljdz','fileDownload','cSmjhzm');
-       		});
-       	}); 
-		
-
-       	function f_file_save(){
-			//$("#flashForm").submit();
-        }
     </script>
-    
-    
-    <div id="uploadImageDiv" style="display: none;">
-		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_tpljdz"></iframe> <!---->
-	</div>
-	<div id="uploadFlashDiv" style="display: none;">
-		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_spljdz"></iframe> <!---->
-	</div>
-
+    --%>
+   <table cellspacing="0" border="1" align="center" style="margin-top: 10px" width="700px;">
+  		<tr>
+  			<td colspan="2" height="60" align="center"><h1><s:property value="news.c_bt"/></h1></td>
+  		</tr>
+  		<tr>
+  			<td colspan="2" height="60" align="center"><h3><s:property value="news.d_fbsj.substring(0,19)"/></h3></td>
+  		</tr>
+  		<tr>
+  			<td colspan="2" style="font-size: 20px;"><s:property value="news.c_nr" escape="false"/></td>
+  		</tr>
+   </table>
 </body>
 </html>
 
