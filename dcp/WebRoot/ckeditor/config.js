@@ -53,12 +53,12 @@ CKEDITOR.editorConfig = function( config )
 	 // config.startupOutlineBlocks = false;
 	 
 	 // 在 CKEditor 中集成 CKFinder，注意 ckfinder 的路径选择要正确。 
-	 config.filebrowserBrowseUrl = 'ckfinder/ckfinder.html',
-	 config.filebrowserImageBrowseUrl = 'ckfinder/ckfinder.html?type=Images',
-	 config.filebrowserFlashBrowseUrl = 'ckfinder/ckfinder.html?type=Flash',
-	 config.filebrowserUploadUrl = 'ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Files',
-	 config.filebrowserImageUploadUrl = 'ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Images',
-	 config.filebrowserFlashUploadUrl = 'ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Flash',
+	 config.filebrowserBrowseUrl = location.hash+ '/dcp/ckfinder/ckfinder.html',
+	 config.filebrowserImageBrowseUrl = location.hash+ '/dcp/ckfinder/ckfinder.html?type=Images',
+	 config.filebrowserFlashBrowseUrl = location.hash+ '/dcp/ckfinder/ckfinder.html?type=Flash',
+	 config.filebrowserUploadUrl = location.hash+ '/dcp/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Files',
+	 config.filebrowserImageUploadUrl = location.hash+ '/dcp/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Images',
+	 config.filebrowserFlashUploadUrl = location.hash+ '/dcp/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Flash',
 	 config.filebrowserWindowWidth = '1000',
 	 config.filebrowserWindowHeight = '600'
 
