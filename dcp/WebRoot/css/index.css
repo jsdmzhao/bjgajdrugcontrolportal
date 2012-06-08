@@ -1,0 +1,280 @@
+.nav-ul li{
+	float: left;
+	width: 78px;
+	height:32px;
+	line-height:32px;
+	text-align: center;
+	font-size: 12px;
+	font-weight: bold; 
+}
+
+.nav-ul li.middle{
+	float: left;
+	width: 78px;
+	height:32px;
+	line-height:32px;
+	background: url("../images/index/ul-line.png") 0 bottom no-repeat;
+	text-align: center; 
+}
+ 
+.nav-ul li a{
+	color: #002b73;
+	font-family: "宋体";
+	display: inline-block;
+}
+
+.nav-ul li a:hover{
+	background: url("../images/index/nav-hover.png") no-repeat;
+	width: 78px;
+	color: white;
+}
+
+.current{
+	background: url("../images/index/nav-hover.png") no-repeat;
+	width: 78px;
+}
+
+.index-ul li{
+	background:url("../images/index/li.png") 0 8px no-repeat;
+	height: 25px;
+	line-height: 20px;
+	text-indent: 10px;
+}
+
+.index-ul li.one{
+	background:url("../images/index/numb.png") 0 4px no-repeat;
+	height: 23px;
+	line-height: 23px;
+	text-indent: 20px;
+}
+.index-ul li.two{
+	background:url("../images/index/numb.png") 0 -19px no-repeat;
+	height: 23px;
+	line-height: 23px;
+	text-indent: 20px;
+}
+
+.index-ul li.three{
+	background:url("../images/index/numb.png") 0 -44px no-repeat;
+	height: 23px;
+	line-height: 23px;
+	text-indent: 20px;
+}
+
+.index-ul li.four{
+	background:url("../images/index/numb.png") 0 -68px no-repeat;
+	height: 23px;
+	line-height: 23px;
+	text-indent: 20px;
+}
+
+.index-ul li.five{
+	background:url("../images/index/numb.png") 0 -93px no-repeat;
+	height: 23px;
+	line-height: 23px;
+	text-indent: 20px;
+}
+.index-ul li.six{
+	background:url("../images/index/numb.png") 0 -116px no-repeat;
+	height: 23px;
+	line-height: 23px;
+	text-indent: 20px;
+}
+.index-ul li.serv{
+	background:url("../images/index/numb.png") 0 -140px no-repeat;
+	height: 23px;
+	line-height: 23px;
+	text-indent: 20px;
+}
+.index-ul li.eight{
+	background:url("../images/index/numb.png") 0 -164px no-repeat;
+	height: 23px;
+	line-height: 23px;
+	text-indent: 20px;
+}
+.index-ul li.nine{
+	background:url("../images/index/numb.png") 0 -188px no-repeat;
+	height: 23px;
+	line-height: 23px;
+	text-indent: 20px;
+}
+.index-ul li.ten{
+	background:url("../images/index/numb.png") 0 -212px no-repeat;
+	height: 23px;
+	line-height: 23px;
+	text-indent: 20px;
+
+}
+
+.index-ul li .time{
+margin-left:10px;
+}
+
+.awidth
+{
+width:220px;
+}
+
+.main-top-box h2{
+	background: url("../images/index/bg-1.png") no-repeat;
+	padding: 6px 10px 0;
+}
+
+.main-top-con{
+	background: url("../images/index/bg-1.png") 0 bottom no-repeat;
+/*	padding: 4px 0 4px 5px;*/
+	padding: 10px 0 10px 20px;
+	height: 181px;
+}
+
+.main-box .title1{
+	display:inline-block;
+	background: url("../images/index/bg-2.png") no-repeat;
+	padding: 6px 20px 0;
+	width: 100%;
+	color: #FFF;
+	font-size: 14px;
+	font-weight: bold;
+	
+} 
+.main-con{
+	background: url("../images/index/bg-2.png") 0 bottom no-repeat;
+	padding: 20px 0 4px 20px;
+}
+/*side*/
+.search-box{
+height: 43px;
+line-height:43px;
+text-indent:150px;
+margin-bottom: 4px;
+background: url('../images/index/search-bg.png') no-repeat;
+}
+
+.search-box2{
+text-indent:150px;
+margin-bottom: 4px;
+}
+
+
+.search-box .search-ul li{
+	float: left; 
+	height: 43px;
+	line-height: 43px;
+}
+#submit{
+	border: none;
+	background: url("../images/index/search-but.png") no-repeat;
+	width: 64px;
+	height: 24px;
+}
+
+.side-box .side-title{
+	background: url("../images/index/bg-4.png") 0 top no-repeat;
+	padding-top: 10px;
+}
+
+.side-box .side-con{
+	
+	background: url("../images/index/bg-4.png") 0 bottom no-repeat;
+	padding-bottom: 10px;
+}
+
+.news{
+	height: 245px;
+	margin-bottom: 4px;
+	background: url('../images/index/news-bg.png') no-repeat;
+}
+
+.news .news-title{
+	background: url('../images/index/news-line.png') 32px bottom no-repeat;
+	height: 55px;
+	line-height: 55px;
+	text-align: center;
+	font-family: "宋体";
+	font-size: 14px;
+	font-weight: bold;
+	color: #002b70;
+}
+
+.six-left{ 
+	width: 373px;
+/*	height: 300px; */
+	float:left;
+}
+
+.six-right{ 
+	width: 373px;
+/*	height: 300px; */
+	float:right;
+}
+
+.six-box .six-con{
+	background: url("../images/index/bg-5.png") 0 top no-repeat;
+	height: 220px; 
+	padding-left: 20px;
+}
+
+.six-box .six-con .six-title{
+	font-size: 14px;
+	font-family: "宋体";
+	font-weight:bold;
+	color: #002b73;
+	line-height: 30px;
+	display: inline-block;s
+}
+
+.six-box .six-bottom{
+	background: url("../images/index/bg-5.png") 0 bottom no-repeat;
+	height: 10px; 
+}
+
+.main-top-ul li{
+	float: left;
+	width: 220px;
+}
+
+.three-pass{
+	background: url('../images/index/bg-8.png') no-repeat;
+	width: 138px;
+	height: 29px;
+	float: left;
+	line-height: 29px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 14px;
+	color: #999999;
+}
+ 
+.three-pass-hover {
+	background: url('../images/index/bg-7.png') no-repeat;
+	width: 138px;
+	height: 30px;
+	float: left;
+	font-weight: bold;
+	font-size: 14px;
+	color: #0074cd;
+	line-height: 29px;
+	text-align: center;
+}
+
+
+.pass-cont-one{
+	display: none;
+}
+ 
+.pass-cont-two{
+	display: none;
+}
+.pass-cont-three{
+	margin:0 auto;
+	padding:15px;
+}
+.pass-cont-three ul li{
+	float: left;
+	margin-left: 12px;
+}
+.STYLE1 {
+	color: #FF0000;
+	font-weight: bold;
+		font-size: 14px;
+}

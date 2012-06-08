@@ -24,6 +24,15 @@ public class NewsAction {
 
 	private News news;
 	
+	private Map<String, Object> resMap; 
+	public Map<String, Object> getResMap() {
+		return resMap;
+	}
+
+	public void setResMap(Map<String, Object> resMap) {
+		this.resMap = resMap;
+	}
+
 	@Autowired
 	private AbsServiceAdapter<Integer> newsService = null;
 	
@@ -69,6 +78,14 @@ public class NewsAction {
 		news = (News) newsService.selectOne("NewsMapper.getNews", news);
 		//newsService.update("NewsMapper.updateNews", news);
 		return Globals.SUCCESS;
+	}
+	
+	public String  newsindexList(){
+		resMap = new HashMap<String, Object>();
+		List<News> newsList = (List<News>) newsService.selectList("NewsMapper.getNewsList", news);
+		resMap.put("Rows", newsList);
+		resMap.put("Total", newsList.size());
+		return  Globals.SUCCESS;
 	}
 	
 	public String newsView(){

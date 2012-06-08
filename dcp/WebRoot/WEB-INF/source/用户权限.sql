@@ -307,7 +307,7 @@ COMMENT ON COLUMN SYS_BUTTON.INITSTATUS IS
 '状态';
 
 
-create sequence SEQ_SYS_MENU_ID
+create sequence SEQ_SYS_BTN_ID
 minvalue 10000000
 maxvalue 99999999
 start with 10000000

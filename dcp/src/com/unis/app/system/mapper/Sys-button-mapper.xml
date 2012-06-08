@@ -26,7 +26,7 @@
 					base.BTN_SCRIPT,
 					base.MENU_ID,
 					base.INITSTATUS
-				 from SYS_button base 
+				 from SYS_BUTTON base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="btnId != null and btnId !='' ">  and BTN_ID = #{btnId}</if>
 			<if test="btnName != null and btnName !='' ">  and BTN_NAME = #{btnName}</if>
@@ -68,85 +68,113 @@
 
 
 	<select id="queryCountInfo" resultType="integer" parameterType="java.util.Map" >
-				select count(base.USER_ID) from SYS_USER base
+				select count(base.BTN_ID) from SYS_BUTTON base
  		<trim prefix="where" prefixOverrides="and |or"> 
-			<if test="userId != null and userId !='' ">  and 	USER_ID = #{userId}</if>
-			<if test="userName != null and userName !='' ">  and 	USER_NAME = #{userName}</if>
-			<if test="userName != null and userName !='' ">  and 	USER_PASSWORD = #{userName}</if>
-			<if test="userLock != null and userLock !='' ">  and 	USER_LOCK = #{userLock}</if>
+			<if test="btnId != null and btnId !='' ">  and 	BTN_ID = #{btnId}</if>
+			<if test="btnName != null and btnName !='' ">  and 	BTN_NAME = #{btnName}</if>
+			<if test="btnNo != null and btnNo !='' ">  and 	BTN_NO = #{btnNo}</if>
+			<if test="btnClass != null and btnClass !='' ">  and 	BTN_CLASS = #{btnClass}</if>
+			<if test="btnIcon != null and btnIcon !='' ">  and 	BTN_ICON = #{btnIcon}</if>
+			<if test="btnScript != null and btnScript !='' ">  and 	BTN_SCRIPT = #{btnScript}</if>
+			<if test="menuId != null and menuId !='' ">  and 	MENU_ID = #{menuId}</if>
+			<if test="initstatus != null and initstatus !='' ">  and 	INITSTATUS = #{initstatus}</if>
 		</trim>
 	</select> 
 	
 	
 
 	<insert id="saveInfo" parameterType="java.util.Map" >
-			INSERT INTO SYS_USER(
-				 USER_ID
-			<if test="userName != null and userName !='' ">  , USER_NAME</if>
-			<if test="userPassword != null and userPassword !='' ">  , USER_PASSWORD</if>
-			<if test="userLock != null and userLock !='' ">  ,  USER_LOCK</if>
+			INSERT INTO SYS_BUTTON(
+				 BTN_ID
+			<if test="btnName != null and btnName !='' ">  , BTN_NAME</if>
+			<if test="btnNo != null and btnNo !='' ">  , BTN_NO</if>
+			<if test="btnClass != null and btnClass !='' ">  ,  BTN_CLASS</if>
+			<if test="btnIcon != null and btnIcon !='' ">  , BTN_ICON</if>
+			<if test="btnScript != null and btnScript !='' ">  , BTN_SCRIPT</if>
+			<if test="menuId != null and menuId !='' ">  ,  MENU_ID</if>
+			<if test="initstatus != null and initstatus !='' ">  ,  INITSTATUS</if>
 			)VALUES(
-				SEQ_SYS_USER_ID.NEXTVAL 
+				SEQ_SYS_BTN_ID.NEXTVAL 
 				<!-- #{n_xh#-->
-			<if test="userName != null and userName !='' ">  ,  #{userName}</if>
-			<if test="userPassword != null and userPassword !='' ">  ,  #{userPassword}</if>
-			<if test="userLock != null and userLock !='' "> ,  #{userLock} </if>
+			<if test="btnName != null and btnName !='' ">  ,  #{btnName}</if>
+			<if test="btnNo != null and btnNo !='' ">  ,  #{btnNo}</if>
+			<if test="btnClass != null and btnClass !='' "> ,  #{btnClass} </if>
+			<if test="btnIcon != null and btnIcon !='' ">  ,  #{btnIcon}</if>
+			<if test="btnScript != null and btnScript !='' ">  ,  #{btnScript}</if>
+			<if test="menuId != null and menuId !='' "> ,  #{menuId} </if>
+			<if test="initstatus != null and initstatus !='' "> ,  #{initstatus} </if>
 			
 			
 			)
 		<selectKey resultType="string" keyProperty="id" >
 			 <!--SELECT #{nXh# AS ID FROM dual  -->
-			 SELECT  SEQ_SYS_USER_ID.CURRVAL  AS ID FROM dual 
+			 SELECT  SEQ_SYS_BTN_ID.CURRVAL  AS ID FROM dual 
 		</selectKey>
 	</insert>
 
 	<insert id="saveAllInfo" parameterType="java.util.Map" >
-			INSERT INTO SYS_USER(
-				USER_ID,
-				USER_NAME,
-				USER_PASSWORD,
-				USER_LOCK
+			INSERT INTO SYS_BUTTON(
+				BTN_ID,
+				BTN_NAME,
+				BTN_NO,
+				BTN_CLASS,
+				BTN_ICON,
+				BTN_SCRIPT,
+			    MENU_ID,
+			    INITSTATUS
 			)VALUES(
-				 SEQ_SYS_USER_ID.NEXTVAL,  
+				 SEQ_SYS_BTN_ID.NEXTVAL,  
 				<!--#nXh#,-->
-				#{userName},
-				#{userPassword},
-				#{userLock}
+				#{btnName},
+				#{btnNo},
+				#{btnClass},
+				#{btnIcon},
+				#{btnScript},
+				#{menuId},
+				#{initstatus}
 			)
 		<selectKey resultType="string" keyProperty="id" >
 			 <!--SELECT #{nXh# AS ID FROM dual --> 
-			 SELECT  SEQ_SYS_USER_ID.CURRVAL  AS ID FROM dual 
+			 SELECT  SEQ_SYS_BTN_ID.CURRVAL  AS ID FROM dual 
 		</selectKey>
 	</insert>
 
 	<update id="updateInfo" parameterType="java.util.Map"> 
-			update SYS_USER 
+			update SYS_BUTTON 
 			<trim prefix="set" prefixOverrides=","> 
-				<if test="userName != null and userName !='' "> , USER_NAME = #{userName}</if>
-				<if test="userPassword != null and userPassword !='' "> , USER_PASSWORD = #{userPassword}</if>
-				<if test="userLock != null and userLock !='' "> , USER_LOCK = #{userLock}</if>
+				<if test="btnName != null and btnName !='' "> , BTN_NAME = #{btnName}</if>
+				<if test="btnNo != null and btnNo !='' "> , BTN_NO = #{btnNo}</if>
+				<if test="btnClass != null and btnClass !='' "> , BTN_CLASS = #{btnClass}</if>
+				<if test="btnIcon != null and btnIcon !='' "> , BTN_ICON = #{btnIcon}</if>
+				<if test="btnScript != null and btnScript !='' "> , BTN_SCRIPT = #{btnScript}</if>
+				<if test="menuId != null and menuId !='' "> , MENU_ID = #{menuId}</if>
+				<if test="initstatus != null and initstatus !='' "> , INITSTATUS = #{initstatus}</if>
 			</trim>
 			<trim prefix="where" prefixOverrides="and |or">  
-				<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
-				<if test="userIds != null and userIds !='' ">  and  USER_ID in (${userIds})</if>
+				<if test="btnId != null and btnId !='' ">  and BTN_ID = #{btnId}</if>
+				<if test="btnIds != null and btnIds !='' ">  and  BTN_ID in (${btnIds})</if>
 			</trim>
 	</update> 
 
 	<update id="updateAllInfo" parameterType="java.util.Map"> 
-			update SYS_USER set 
-				USER_ID = #{userId},
-				USER_NAME = #{userName},
-				USER_PASSWORD = #{userPassword},
-				USER_LOCK = #{userLock}
+			update SYS_BUTTON set 
+				BTN_ID = #{btnId},
+				BTN_NAME = #{btnName},
+				BTN_NO = #{btnNo},
+				BTN_CLASS = #{btnClass},
+				BTN_ICON = #{btnIcon},
+				BTN_SCRIPT = #{btnScript},
+				MENU_ID = #{menuId},
+				INITSTATUS = #{initstatus}
 			WHERE 
-				USER_ID = #{userId}
+				BTN_ID = #{btnId}
 	</update> 
 
 	<delete id="removeInfo" parameterType="java.util.Map"> 
-			 DELETE FROM SYS_USER
+			 DELETE FROM SYS_BUTTON
 			 WHERE
 			<!--N_XH = #{nXh#
-			<![CDATA[ USER_ID IN (${userIds}) ]]>--> 
-			 USER_ID =#{userId} 
+			<![CDATA[ BTN_ID IN (${userIds}) ]]>--> 
+			 BTN_ID =#{btnId} 
 	</delete> 
 </mapper>

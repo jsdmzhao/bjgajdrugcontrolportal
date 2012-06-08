@@ -1,0 +1,36 @@
+@charset "gb2312";
+/* CSS Document */
+
+body { margin:0 auto; font-size:12px; font-family:Verdana; line-height:1.5;}
+ul,dl,dd,h1,h2,h3,h4,h5,h6,form,p { padding:0; margin:0;}
+ul { list-style:none;}
+img { border:0px;}
+a { color:#3E3E3E; text-decoration:none;}
+a:hover { color:#f00;}
+
+.clearfloat {clear:both;height:0;font-size: 1px;line-height: 0px;} 
+
+/*body*/
+#container { width:1002px; margin: auto;background-color: #EAF3F9;}
+#container2 { width:1002px; margin: auto;background-color: #EAF3F9;}
+#container3{ width:1002px; margin: auto;background-color: #EAF3F9;}
+
+/*header*/
+#header { height:125px;}
+#nav { height:42px;}
+
+/*main*/
+#maincontent {padding:0 4px; overflow:auto; zoom:1;}
+#main { float:left; width:246px;}
+#side { float:right; width:748px;}
+
+/*footer*/
+#footer {
+	height:132px;
+	background: url("../images/index/footer-bg.png") no-repeat;
+	color: white;
+	text-align: center;
+	line-height: 30px;
+	padding-top: 20px;
+}
+
