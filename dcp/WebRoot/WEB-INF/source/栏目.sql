@@ -46,46 +46,46 @@ alter table b_lanmu
   
 
 comment on table B_LANMU is
-'À¸Ä¿±í';
+'æ ç›®è¡¨';
 
 comment on column B_LANMU.N_XH is
-'ĞòºÅ';
+'åºå·';
 
 comment on column B_LANMU.C_LMDM is
-'À¸Ä¿´úÂë';
+'æ ç›®ä»£ç ';
 
 comment on column B_LANMU.C_LMMC is
-'À¸Ä¿Ãû³Æ';
+'æ ç›®åç§°';
 
 comment on column B_LANMU.C_YHID is
-'ÓÃ»§';
+'ç”¨æˆ·';
 
 comment on column B_LANMU.C_YHZID is
-'ÓÃ»§×é';
+'ç”¨æˆ·ç»„';
 
 comment on column B_LANMU.C_SJLMDM is
-'ÉÏ¼¶À¸Ä¿´úÂë';
+'ä¸Šçº§æ ç›®ä»£ç ';
 
 comment on column B_LANMU.C_SFDH is
-'ÊÇ·ñµ¼º½';
+'æ˜¯å¦å¯¼èˆª';
 
 comment on column B_LANMU.C_SFTP is
-'ÊÇ·ñÍ¼Æ¬';
+'æ˜¯å¦å›¾ç‰‡';
 
 comment on column B_LANMU.C_TPLJDZ is
-'Í¼Æ¬Á´½ÓµØÖ·';
+'å›¾ç‰‡é“¾æ¥åœ°å€';
 
 comment on column B_LANMU.C_SFNR is
-'ÊÇ·ñÄÚÈİ';
+'æ˜¯å¦å†…å®¹';
 
 comment on column B_LANMU.C_NR is
-'ÄÚÈİ';
+'å†…å®¹';
 
 comment on column B_LANMU.C_LJ is
-'Á´½Ó';
+'é“¾æ¥';
 
 comment on column B_LANMU.N_XSXH is
-'ÏÔÊ¾ĞòºÅ';
+'æ˜¾ç¤ºåºå·';
 
 comment on column B_LANMU.D_DJ is
-'µÇ¼ÇÈÕÆÚ';
+'ç™»è®°æ—¥æœŸ';
