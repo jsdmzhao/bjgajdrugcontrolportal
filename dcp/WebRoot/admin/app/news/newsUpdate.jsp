@@ -117,6 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          {name:"c_sfzd", type:"hidden",value:"<s:property value='news.c_sfzd'/>"},
          {name:"c_sfgl", type:"hidden",value:"<s:property value='news.c_sfgl'/>"},
          {name:"c_sftj", type:"hidden",value:"<s:property value='news.c_sftj'/>"},
+         {name:"c_lm", type:"hidden",value:"<s:property value='news.c_lm'/>"},
          {name:"n_xxxh", type:"hidden",value:"<s:property value='news.n_xxxh'/>"}
         ]
  }};
