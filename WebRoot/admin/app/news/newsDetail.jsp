@@ -41,19 +41,7 @@ String newsType = request.getParameter("newsType");
 <body style="padding-bottom:31px;">
     <form id="mainform"  method="post"></form> 
     <script type="text/javascript"> 
-
-	    function checkSctp(node){
-	    	alert('1123'+node.value);
-
-	    	//$("sctp").attr("disabled", "disabled");
-	    }
-    
-		function test(){
-			alert('hello!');
-			
-		}
-       
-    
+	    
         var config = {"Form":{ 
          fields : [
          {name:"c_lm",type:"hidden",value:'<%=newsType %>'},
@@ -71,8 +59,7 @@ String newsType = request.getParameter("newsType");
          {display:"是否图片文章",
              name:"c_sftwwz",
              newline:true,
-             labelWidth:100,width:30,space:30,type:"checkbox",
-             onclick : "checkSctp(this)"
+             labelWidth:100,width:30,space:30,type:"checkbox"
          },
          {display:"图片名称",name:"c_tpljdz",newline:false,labelWidth:100,width:250,space:30,type:"text",readonly:"readonly"},
          {
@@ -84,7 +71,6 @@ String newsType = request.getParameter("newsType");
    	         type:"button",
    	         cssClass:"l-button",
    	         value:"选择图片",
-   	         onclick:"alert('')",
    	      	 disabled:"disabled",
    	      	 onclick : "openDialog('#uploadImageDiv')"
          },
