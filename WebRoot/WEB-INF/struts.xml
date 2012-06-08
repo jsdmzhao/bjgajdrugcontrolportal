@@ -63,5 +63,12 @@
 		</action>
 		
 	</package>
+	
+	<package name="news" namespace="/news" extends="struts-default">
+        <action name="view" class="com.unis.app.news.action.NewsAction" method="newsindexList">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+     </package>
 
 </struts>

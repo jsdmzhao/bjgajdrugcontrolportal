@@ -32,7 +32,7 @@
     <div id="maingrid"  style="margin:2px;"></div> 
     </form> 
   <script type="text/javascript">
-      var MenuNo = '<%= System.Web.HttpContext.Current.Request["MenuNo"] %>';
+      var MenuNo = '';
       
       
       //验证

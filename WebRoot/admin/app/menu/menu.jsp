@@ -224,11 +224,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 , editor: { type: 'text' }
                 }
                 , { display: '图标', name: 'menuIcon', align: 'left', width: 230, minWidth: 50
-                , editor: { type: 'text',
-                , render: function (item)
-                {
-                    return "<div style='width:100%;height:100%;'><img src='<%=basePath%>" + item.MenuIcon + "' /></div>";
-                }
+                , editor: { type: 'text'}
                 }
                 ], dataAction: 'server', pageSize: 20, toolbar: toolbarOptions, sortName: 'MenuID',
         width: '98%', height: '100%', heightDiff: -5, checkbox: false, usePager: false, enabledEdit: true, clickToEdit: false,
