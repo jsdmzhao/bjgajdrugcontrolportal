@@ -23,6 +23,10 @@
 			<param name="beanName" value="sysMenuSvc"></param>
 		</create>
 		
+		<create javascript="SysButtonSvc" creator="spring">
+			<param name="beanName" value="sysButtonSvc"></param>
+		</create>
+		
 		
 
 		
