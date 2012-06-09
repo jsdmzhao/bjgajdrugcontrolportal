@@ -268,7 +268,11 @@
             }
             if (field.textarea || field.type == "textarea")
             {
-                out.push('<textarea ');
+            	if(readonly == 'readonly'){
+            		out.push('<textarea readonly="readonly" ');
+            	}else{
+            		out.push('<textarea ');
+            	}
             }
             else if (field.type == "checkbox")
             {
