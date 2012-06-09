@@ -25,6 +25,10 @@ public class SysButtonDao  extends SqlSessionDaoSupport {
 	public Object removeInfo(Map p){
 		return  getSqlSession().delete("SysButtonMapper.removeInfo", p);
 	}
+	
+	public Object removeInfoByMenuId(Map p){
+		return  getSqlSession().delete("SysButtonMapper.removeInfoByMenuId", p);
+	}
 
 	public Object updateInfo(Map p){
 		return  getSqlSession().update("SysButtonMapper.updateInfo", p);
