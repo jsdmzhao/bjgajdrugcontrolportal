@@ -37,7 +37,7 @@
 			<if test="menuId != null and menuId !='' ">  and MENU_ID = #{menuId}</if>
 			<if test="initstatus != null and initstatus !='' ">  and INITSTATUS = #{initstatus}</if>
 		</trim>
-		ORDER BY BTN_ID  DESC 
+		ORDER BY BTN_ID  ASC 
 	</select>
 
 	<select id="queryInfo" resultMap="Result" parameterType="java.util.Map" >
@@ -62,7 +62,7 @@
 			<if test="menuId != null and menuId !='' ">  and MENU_ID = #{menuId}</if>
 			<if test="initstatus != null and initstatus !='' ">  and INITSTATUS = #{initstatus}</if>
 		</trim>
-		ORDER BY BTN_ID  DESC 
+		ORDER BY BTN_ID  ASC 
 		<include refid="pagination.paginationLast"></include>
 	</select>
 
@@ -176,5 +176,14 @@
 			<!--N_XH = #{nXh#
 			<![CDATA[ BTN_ID IN (${userIds}) ]]>--> 
 			 BTN_ID =#{btnId} 
+	</delete> 
+	
+	
+	<delete id="removeInfoByMenuId" parameterType="java.util.Map"> 
+			 DELETE FROM SYS_BUTTON
+			 WHERE
+			<!--N_XH = #{nXh#
+			<![CDATA[ BTN_ID IN (${userIds}) ]]>--> 
+			 MENU_ID = #{menuId}
 	</delete> 
 </mapper>

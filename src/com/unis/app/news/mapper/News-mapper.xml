@@ -22,7 +22,9 @@
        C_SFGL,
        C_SFTJ
 	  FROM B_XINWEN
-	  WHERE C_LM = #{c_lm}
+	  <if test="c_lm != null and c_lm != ''">
+	 	 WHERE C_LM = #{c_lm}
+	  </if>
 	</select>
 	
 	<delete id="deleteNews" parameterType="int">
