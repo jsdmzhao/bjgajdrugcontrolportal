@@ -21,7 +21,7 @@
 			<if test="roleName != null and roleName !='' ">  and ROLE_NAME = #{roleName}</if>
 			<if test="roleDescription != null and roleDescription !='' ">  and ROLE_DESCRIPTION = #{roleDescription}</if>
 		</trim>
-		ORDER BY MENU_ID  ASC 
+		ORDER BY ROLE_ID  ASC 
 	</select>
 
 
