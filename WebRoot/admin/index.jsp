@@ -188,6 +188,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     },{
                     "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
                     "id":42,
+                    "MenuName":"栏目列表",
+                    "MenuID":42,
+                    "text":"栏目列表",
+                    "MenuUrl":"<%=basePath%>admin/app/column/column.jsp",
+                    "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/sitemap.gif",
+                    "MenuNo":"MemberManageRole",
+                    "MenuParentNo":"MemberManage"
+                    },{
+                    "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
+                    "id":42,
                     "MenuName":"文章审核",
                     "MenuID":42,
                     "text":"文章审核",

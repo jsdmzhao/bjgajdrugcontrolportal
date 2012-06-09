@@ -33,9 +33,9 @@ String newsType = request.getParameter("newsType");
 
     <script src="<%=basePath%>liger/lib/js/iconselector.js" type="text/javascript"></script> 
     
-    <script type='text/javascript' src='dwr/engine.js'></script>
-  	<script type='text/javascript' src='dwr/util.js'></script>
-  	<script type='text/javascript' src='dwr/interface/NewsAction.js'></script>
+    <script src='<%=basePath%>dwr/engine.js' type='text/javascript' ></script>
+  	<script src='<%=basePath%>dwr/util.js' type='text/javascript' ></script>
+  	<script src='<%=basePath%>dwr/interface/NewsAction.js' type='text/javascript' ></script>
   	
   	
     <style type="text/css">
