@@ -116,6 +116,6 @@
 			 WHERE
 			<!--N_XH = #{nXh#
 			<![CDATA[ USER_ID IN (${userIds}) ]]>--> 
-			 ROLE_ID =#{menuId} 
+			 ROLE_ID =#{roleId} 
 	</delete> 
 </mapper>
