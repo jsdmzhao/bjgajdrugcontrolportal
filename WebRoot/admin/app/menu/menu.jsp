@@ -118,7 +118,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               case "操作按钮":
                   var selected = grid.getSelected();
                   if (!selected) return;
-                  top.f_addTab(null, selected.MenuName + ' 操作按钮管理', '<%=basePath%>admin/app/operation/operation.jsp?MenuNo=' + selected.MenuNo);
+                  top.f_addTab(null, selected.menuName + ' 操作按钮管理', '<%=basePath%>admin/app/button/button.jsp?MenuId=' + selected.menuId);
                   break;
           }
       }
@@ -232,15 +232,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     });
 
 
-    grid.bind('beforeSubmitEdit', function (e)
-    {
-        if (!LG.validator.form())
-        {
-            LG.showInvalid();
-            return false;
-        }
-        return true;
-    });
+  //  grid.bind('beforeSubmitEdit', function (e)
+  //  {
+   //     if (!LG.validator.form())
+  //      {
+  //          LG.showInvalid();
+  //          return false;
+  //      }
+  //      return true;
+  //  });
     grid.bind('afterSubmitEdit', function (e)
     {
         var isAddNew = e.record['__status'] == "add";
@@ -273,7 +273,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		if(!obj)obj={menuParentNo : parentNo };
 		SysMenuSvc.queryByPage(obj,oPage,function(rdata){
 			if(rdata == null){
-				  grid.setOptions({ data:  { Total:0, Rows:{}  } });
+				  grid.setOptions({ data:  { Total:0, Rows:'' } });
 			}else{
 				  grid.setOptions({ data:  { Total:rdata.page.recordCount, Rows:rdata.data  } });
     		}
