@@ -5,11 +5,11 @@ drop table B_LANMU cascade constraints;
 /*==============================================================*/
 create table B_LANMU  (
    N_XH                 NUMBER(8)                       not null,
-   C_LMDM               VARCHAR2(6),
+   C_LMDM               VARCHAR2(4),
    C_LMMC               VARCHAR2(200),
    C_YHID               VARCHAR2(20),
    C_YHZID              VARCHAR2(20),
-   C_SJLMDM             VARCHAR2(6),
+   C_SJLMDM             VARCHAR2(4),
    C_SFDH               CHAR(1),
    C_SFTP               CHAR(1),
    C_TPLJDZ             VARCHAR2(100),
@@ -89,3 +89,18 @@ comment on column B_LANMU.N_XSXH is
 
 comment on column B_LANMU.D_DJ is
 '登记日期';
+
+--SEQUENCE
+create sequence SEQ_B_LANMU
+minvalue 10000000
+maxvalue 99999999
+start with 10000000
+increment by 1
+cache 20;
+
+create sequence SEQ_B_LANMU_DM
+minvalue 1000
+maxvalue 9999
+start with 1000
+increment by 1
+cache 20;
