@@ -4,25 +4,13 @@
 <dwr>
 
   <allow>
-  		
-  		<create javascript="commonUtil" creator="new">
-  			<param name="class" value="com.unis.core.util.CommonUtil"></param>
-  		</create>
-  
-		<create javascript="loginService" creator="spring">
-			<param name="beanName" value="loginService"></param>
-		</create>
-		
-		<create javascript="loginAction" creator="spring">
-			<param name="beanName" value="loginAction"></param>
-		</create>
-		
+
 		<create javascript="NewsAction" creator="spring">
 			<param name="beanName" value="newsAction"></param>
 		</create>
 		
-		<create javascript="NewsService" creator="spring">
-			<param name="beanName" value="newsService"></param>
+		<create javascript="ColumnAction" creator="spring">
+			<param name="beanName" value="columnAction"></param>
 		</create>
 		
 		
@@ -30,6 +18,7 @@
 			<param name="beanName" value="sysUserSvc"></param>
 		</create>
 		
+		 
 		<create javascript="SysMenuSvc" creator="spring">
 			<param name="beanName" value="sysMenuSvc"></param>
 		</create>
@@ -40,6 +29,7 @@
 		<!-- 定义允许dwr将User实例转换成JavaScript对象 -->
 		<convert match="com.unis.app.login.model.User" converter="bean"/>
 		<convert match="com.unis.app.news.model.News" converter="bean"/>
+		<convert match="com.unis.app.column.model.Column" converter="bean"/>
 	
   </allow>
 
