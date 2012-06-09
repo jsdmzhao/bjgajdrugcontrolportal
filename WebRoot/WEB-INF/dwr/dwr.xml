@@ -13,7 +13,6 @@
 			<param name="beanName" value="columnAction"></param>
 		</create>
 		
-		
 		<create javascript="SysUserSvc" creator="spring">
 			<param name="beanName" value="sysUserSvc"></param>
 		</create>
@@ -25,6 +24,10 @@
 		
 		<create javascript="SysButtonSvc" creator="spring">
 			<param name="beanName" value="sysButtonSvc"></param>
+		</create>
+		
+		<create javascript="SysRoleSvc" creator="spring">
+			<param name="beanName" value="sysRoleSvc"></param>
 		</create>
 		
 		
