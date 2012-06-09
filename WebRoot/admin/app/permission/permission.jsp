@@ -39,6 +39,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     .access-icon-selected{ background-position:0px -13px;} 
     .l-panel td.l-grid-row-cell-editing { padding-bottom: 2px;padding-top: 2px;}
     </style>
+            <script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
+<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
+<script type='text/javascript'
+	src='<%=basePath%>dwr/interface/SysRoleSvc.js'></script>
 </head>
 <body style=" overflow:hidden;"> 
     <div id="layout" style="margin:2px; margin-right:3px;">
@@ -59,7 +63,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   
     <script type="text/javascript">
-
+	var oPage={
+			pageIndex:1,
+			pageSize:20
+	}
         //覆盖本页面grid的loading效果
         LG.overrideGridLoading(); 
 
@@ -97,12 +104,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         gridRole = $("#rolegrid").ligerGrid({
             columns:
                 [
-                { display: '角色名', name: 'RoleName', width: 150, align: 'left' },
-                { display: '角色描述', name: 'RoleDesc', width: 450, align: 'left' }
+                { display: '角色名', name: 'roleName', width: 150, align: 'left' },
+                { display: '角色描述', name: 'roleDescription', width: 450, align: 'left' }
                 ], showToggleColBtn: false, width: '99%', height: 200, rowHeight: 20, fixedCellHeight: true,
-            columnWidth: 100, frozen: false, sortName: 'RoleID', usePager: false, checkbox: false, rownumbers: true,
-            url: '../handler/grid.ashx?view=CF_Role', parms: { where: JSON2.stringify(gridRoleFilter) }
+            columnWidth: 100, frozen: false, sortName: 'RoleID', usePager: false, checkbox: false, rownumbers: true
         });
+        
+        
+        function loadGridRole(obj){
+        	if(!obj)obj={};
+    		SysRoleSvc.queryByPage(obj,oPage,function(rdata){
+    			if(rdata == null){
+    				gridRole.setOptions({ data:  { Total:0, Rows:""  } });
+    			}else{
+    				gridRole.setOptions({ data:  { Total:rdata.page.recordCount, Rows:rdata.data  } });
+        		}
+    		});
+    	}
+        
+        loadGridRole();
+        
         gridRole.bind('SelectRow', function (rowdata)
         {
             selectedUserID = null;
@@ -110,7 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             //隐藏禁止权限列
             gridRight.toggleCol('Forbid', false);
 
-            bottomHeader.html("设置角色【" + rowdata.RoleName + "】的权限");
+            bottomHeader.html("设置角色【" + rowdata.roleName + "】的权限");
 
             LG.ajax({
                 loading: '正在加载角色权限中...',
@@ -242,17 +263,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             gridRight.reRender({ rowdata: rowdata });
         }
 
-
         //加载 菜单-按钮数据
-        LG.ajax({
-            loading: '正在加载菜单按钮中...',
-            type: 'AjaxSystem',
-            method: 'GetAccess',
-            success: function (data)
-            { 
-                gridRight.set('data', { Rows: data });
-            }
-        });
+      gridRight.set('data', { Rows: [{AccessName:'菜单-按钮',AccessNo:'编码',AccessIcon:'图标'},{AccessName:'菜单-按钮',AccessNo:'编码',AccessIcon:'图标'},{AccessName:'菜单-按钮',AccessNo:'编码',AccessIcon:'图标'},{AccessName:'菜单-按钮',AccessNo:'编码',AccessIcon:'图标'}] });
 
         //角色,在tab选择的时候才加载表格和表格数据
         tab.bind('afterSelectTabItem', function (tabid)
