@@ -30,6 +30,10 @@
 			<param name="beanName" value="sysRoleSvc"></param>
 		</create>
 		
+		<create javascript="SysPermissionSvc" creator="spring">
+			<param name="beanName" value="sysPermissionSvc"></param>
+		</create>
+		
 		
 
 		
