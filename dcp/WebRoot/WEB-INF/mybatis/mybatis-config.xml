@@ -8,6 +8,8 @@
 	<typeAlias alias="User" type="com.unis.app.login.model.User" />
 	
 	<typeAlias alias="News" type="com.unis.app.news.model.News" />
+	
+	<typeAlias alias="Column" type="com.unis.app.column.model.Column" />
 
 </typeAliases>
 
