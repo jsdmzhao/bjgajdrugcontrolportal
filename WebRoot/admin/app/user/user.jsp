@@ -1,9 +1,17 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+﻿<%@page import="com.unis.app.system.service.SysRoleSvc"%>
+<%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
+<%@page import="org.springframework.context.ApplicationContext"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+	
+	ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());
+	SysRoleSvc sysRoleSvc= (SysRoleSvc) ctx.getBean("sysRoleSvc");
+	Map p=new HashMap();
+	List<Map> list = sysRoleSvc.queryAll(p); 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -149,6 +157,7 @@
 			var obj = {
 			userName: $("#userName").val(),
 			userPassword: $("#userPassword").val(),
+			roleId: $("#roleId").val(),
 			userLock: userLock
 			}
 
@@ -181,6 +190,7 @@
 			userId: $("#userId").val(),
 			userName: $("#userName").val(),
 			userPassword: $("#userPassword").val(),
+			roleId: $("#roleId").val(),
 			userLock: userLock
 			}
 			if (!obj)
@@ -238,7 +248,7 @@
 				$("#userId").val(grid.getSelected().userId);
 				$("#userName").val(grid.getSelected().userName);
 				$("#userPassword").val(grid.getSelected().userPassword);
-				$("#userPassword2").val(grid.getSelected().userPassword2);
+				$("#roleId").val(grid.getSelected().roleId);
 				if(grid.getSelected().userLock=='1'){
 					$('#userLock').attr("checked", true);  
 				}else{
@@ -290,11 +300,11 @@
 		</div>
 		<ul>
 			<li style="width: 100px; text-align: left;">帐号：</li>
-			<li style="width: 220px; text-align: left;"><div
+			<li style="width: 150px; text-align: left;"><div
 					style="width: 218px;" class="l-text">
 					<input style="width: 214px;" id="userName" class="l-text-field"
 						name="userName" type="text" ligeruiid="userName"
-						ltype="text" ligerui='{"width":218}'><div class="l-text-l"></div>
+						ltype="text" ligerui='{"width":148}'><div class="l-text-l"></div>
 						<div class="l-text-r"></div>
 				</div>
 			</li>
@@ -302,11 +312,11 @@
 		</ul>
 		<ul>
 			<li style="width: 100px; text-align: left;">密码：</li>
-			<li style="width: 220px; text-align: left;"><div
+			<li style="width: 150px; text-align: left;"><div
 					style="width: 218px;" class="l-text">
 					<input style="width: 214px;" id="userPassword" class="l-text-field"
 						name="userPassword" type="password" ligeruiid="userPassword"
-						ltype="password" ligerui='{"width":218}'><div
+						ltype="password" ligerui='{"width":148}'><div
 							class="l-text-l"></div>
 						<div class="l-text-r"></div>
 				</div>
@@ -315,25 +325,40 @@
 		</ul>
 		<ul>
 			<li style="width: 100px; text-align: left;">确认密码：</li>
-			<li style="width: 220px; text-align: left;"><div
+			<li style="width: 150px; text-align: left;"><div
 					style="width: 218px;" class="l-text">
 					<input style="width: 214px;" id="userPassword2"
 						class="l-text-field" name="userPassword2" type="password"
 						ligeruiid="userPassword2"
-						ltype="password" ligerui='{"width":218}'><div
+						ltype="password" ligerui='{"width":148}'><div
 							class="l-text-l"></div>
 						<div class="l-text-r"></div>
 				</div>
 			</li>
 			<li style="width: 30px;"></li>
 		</ul>
+			<ul>
+			<li style="width: 100px; text-align: left;">角色：</li>
+			<li style="width: 150px; "><div
+					class="l-combobox-wrapper">
+		 <select name="roleId" id="roleId" >
+		 <option value=""></option>
+		 <%  for(int i=0; i<list.size(); i++){    %>
+			<option value="<%= list.get(i).get("roleId")%>"><%= list.get(i).get("roleName")%></option>
+			<% } %>
+				
+			</select> 
+			</div>
+			</li>
+			<li style="width: 30px;"></li>
+		</ul>
 		<ul>
 			<li style="width: 100px; text-align: left;">已锁定：</li>
-			<li style="width: 220px; "><div
+			<li style="width: 150px; "><div
 					class="l-checkbox-wrapper">
 					<input id="userLock" 
 						name="userLock" type="checkbox" ligeruiid="userLock"
-						ltype="checkbox" ligerui='{"width":218}'  >
+						ltype="checkbox" ligerui='{"width":148}'  >
 				</div>
 			</li>
 			<li style="width: 30px;"></li>

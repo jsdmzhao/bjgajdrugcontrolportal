@@ -9,6 +9,8 @@
 		<result property="userPassword" column="USER_PASSWORD" jdbcType="VARCHAR"/>
 		<result property="userLock" column="USER_LOCK" jdbcType="CHAR"/>
 		
+		<result property="roleId" column="ROLE_ID" jdbcType="DECIMAL"/>
+		<result property="roleName" column="ROLE_NAME" jdbcType="VARCHAR"/>
 	</resultMap>
 	 
 
@@ -30,12 +32,17 @@
 
 	<select id="queryInfo" resultMap="Result" parameterType="java.util.Map" >
 		<include refid="pagination.paginationStart"></include>
+		select * from ( 
 				 select 
 					base.USER_ID,
 					base.USER_NAME,
 					base.USER_PASSWORD,
-					base.USER_LOCK
-				 from SYS_USER base 
+					base.USER_LOCK,
+					role.role_id ROLE_ID,
+					role.role_name ROLE_NAME
+				 from SYS_USER base ,SYS_ROLE role ,SYS_GROUP_ROLE gr
+				 where base.user_id = gr.group_id and role.role_id=gr.role_id
+				 )
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="userId != null and userId !='' ">  and 	USER_ID = #{userId}</if>
 			<if test="userName != null and userName !='' ">  and 	USER_NAME = #{userName}</if>
@@ -71,12 +78,27 @@
 			<if test="userName != null and userName !='' ">  ,  #{userName}</if>
 			<if test="userPassword != null and userPassword !='' ">  ,  #{userPassword}</if>
 			<if test="userLock != null and userLock !='' "> ,  #{userLock} </if>
-			
-			
 			)
-		<selectKey resultType="string" keyProperty="id" >
+		<selectKey resultType="string"  keyProperty="userId" >
 			 <!--SELECT #{nXh# AS ID FROM dual  -->
 			 SELECT  SEQ_SYS_USER_ID.CURRVAL  AS ID FROM dual 
+		</selectKey>
+	</insert>
+	
+<insert id="saveGRInfo" parameterType="java.util.Map" >
+			INSERT INTO SYS_GROUP_ROLE(
+				GROUP_ROLE_ID,
+				GROUP_ID,
+				ROLE_ID
+			)VALUES(
+				 SEQ_SYS_GROUP_ROLE_ID.NEXTVAL,  
+				<!--#nXh#,-->
+				#{userId},
+				#{roleId}
+			)
+		<selectKey resultType="string" keyProperty="id" >
+			 <!--SELECT #{nXh# AS ID FROM dual --> 
+			 SELECT  SEQ_SYS_GROUP_ROLE_ID.CURRVAL  AS ID FROM dual 
 		</selectKey>
 	</insert>
 
@@ -128,5 +150,13 @@
 			<!--N_XH = #{nXh#
 			<![CDATA[ USER_ID IN (${userIds}) ]]>--> 
 			 USER_ID =#{userId} 
+	</delete> 
+	
+	<delete id="removeGRInfo" parameterType="java.util.Map"> 
+			 DELETE FROM SYS_GROUP_ROLE
+			 WHERE
+			<!--N_XH = #{nXh#
+			<![CDATA[ USER_ID IN (${userIds}) ]]>--> 
+			 GROUP_ID =#{userId} 
 	</delete> 
 </mapper>

@@ -21,6 +21,14 @@ public class SysUserDao  extends SqlSessionDaoSupport {
 	public Object saveAllInfo(Map p){
 		return  getSqlSession().insert("SysUserMapper.saveAllInfo", p);
 	}
+	
+	public Object saveGRInfo(Map p){
+		return  getSqlSession().insert("SysUserMapper.saveGRInfo", p);
+	}
+	
+	public Object removeGRInfo(Map p){
+		return  getSqlSession().insert("SysUserMapper.removeGRInfo", p);
+	}
 
 	public Object removeInfo(Map p){
 		return  getSqlSession().delete("SysUserMapper.removeInfo", p);
@@ -37,7 +45,7 @@ public class SysUserDao  extends SqlSessionDaoSupport {
 	public List queryAllInfo(Map p){
 		return  getSqlSession().selectList("SysUserMapper.queryAllInfo", p);
 	}
-
+	
 	public List queryInfo(Map p){
 		return  getSqlSession().selectList("SysUserMapper.queryInfo", p);
 	}

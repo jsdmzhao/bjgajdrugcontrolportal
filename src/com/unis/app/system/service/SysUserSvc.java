@@ -17,22 +17,33 @@ public class SysUserSvc  {
 	private SysUserDao sysUserDao;
 
 	public Object save(Map p) throws SQLException {
-		return sysUserDao.saveInfo(p);
+		Object userId =sysUserDao.saveInfo(p);
+	//	sysUserDao.removeGRInfo(p);
+		sysUserDao.saveGRInfo(p);
+		return userId;
 	}
 
 	public Object saveAll(Map p) throws SQLException {
+		sysUserDao.removeGRInfo(p);
+		sysUserDao.saveGRInfo(p);
 		return sysUserDao.saveAllInfo(p);
 	}
 
 	public Object remove(Map p) throws SQLException {
+		sysUserDao.removeGRInfo(p);
+		//sysUserDao.saveGRInfo(p);
 		return sysUserDao.removeInfo(p);
 	}
 
 	public Object update(Map p) throws SQLException {
+		sysUserDao.removeGRInfo(p);
+		sysUserDao.saveGRInfo(p);
 		return sysUserDao.updateInfo(p);
 	}
 
 	public Object updateAll(Map p) throws SQLException {
+		sysUserDao.removeGRInfo(p);
+		sysUserDao.saveGRInfo(p);
 		return sysUserDao.updateAllInfo(p);
 	}
 
