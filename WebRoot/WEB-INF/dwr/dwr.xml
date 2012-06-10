@@ -13,6 +13,10 @@
 			<param name="beanName" value="columnAction"></param>
 		</create>
 		
+		<create javascript="WebsiteAction" creator="spring">
+			<param name="beanName" value="websiteAction"></param>
+		</create>
+		<!-- 
 		<create javascript="SysUserSvc" creator="spring">
 			<param name="beanName" value="sysUserSvc"></param>
 		</create>
@@ -33,7 +37,7 @@
 		<create javascript="SysPermissionSvc" creator="spring">
 			<param name="beanName" value="sysPermissionSvc"></param>
 		</create>
-		
+		 -->
 		
 
 		
@@ -41,6 +45,8 @@
 		<convert match="com.unis.app.login.model.User" converter="bean"/>
 		<convert match="com.unis.app.news.model.News" converter="bean"/>
 		<convert match="com.unis.app.column.model.Column" converter="bean"/>
+		<convert match="com.unis.app.website.model.Website" converter="bean"/>
+		<convert match="com.unis.core.commons.Combox" converter="bean"/>
 	
   </allow>
 

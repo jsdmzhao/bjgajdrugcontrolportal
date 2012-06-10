@@ -22,6 +22,7 @@
 	<!-- news 新闻模块  -->
 	<bean id="newsService" class="com.unis.app.news.service.NewsService" parent="absServiceAdapter"/>
 	<bean id="columnService" class="com.unis.app.column.service.ColumnService" parent="absServiceAdapter"/>
+	<bean id="websiteService" class="com.unis.app.website.service.WebsiteService" parent="absServiceAdapter"/>
     
 
 </beans>

@@ -10,6 +10,10 @@
 	<typeAlias alias="News" type="com.unis.app.news.model.News" />
 	
 	<typeAlias alias="Column" type="com.unis.app.column.model.Column" />
+	
+	<typeAlias alias="Website" type="com.unis.app.website.model.Website" />
+	
+	<typeAlias alias="Combox" type="com.unis.core.commons.Combox" />
 
 </typeAliases>
 
