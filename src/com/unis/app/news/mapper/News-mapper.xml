@@ -9,6 +9,7 @@
 	 	<result column="C_SFZD" property="c_sfzd"/>
 	 	<result column="C_SFGL" property="c_sfgl"/>
 	 	<result column="C_SFTJ" property="c_sftj"/>
+	 	<result column="C_SHJG" property="c_shjg"/>
 	 	<result column="C_LM"   property="c_lm"/>
 	 </resultMap>
 	<select id="getNews" parameterType="News" resultType="News">
@@ -21,7 +22,8 @@
        TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
        C_SFZD,
        C_SFGL,
-       C_SFTJ
+       C_SFTJ,
+       C_SHJG
 	  FROM B_XINWEN
 	 	 WHERE C_LM = #{c_lm}
 	  <if test="c_sfsh != null and c_sfsh != ''">

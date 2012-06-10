@@ -47,6 +47,8 @@ public class News {
 	private String c_sfgl;
 	
 	private String n_xxxh;
+	
+	private String c_shjg;
 
 	public String getN_xh() {
 		return n_xh;
@@ -230,6 +232,14 @@ public class News {
 
 	public void setN_xxxh(String n_xxxh) {
 		this.n_xxxh = n_xxxh;
+	}
+
+	public String getC_shjg() {
+		return c_shjg;
+	}
+
+	public void setC_shjg(String cShjg) {
+		c_shjg = cShjg;
 	}
 	
 }

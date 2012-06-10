@@ -29,7 +29,7 @@
 	 
 	<select id="getWebsiteList" resultMap="resultWebsite">
 		SELECT N_XH,
-			   N_LBXH,
+			   FUN_GET_WZLB(N_LBXH) N_LBXH,
 		       C_BT,
 		       C_LJ,
 		       TO_CHAR(D_DJ,'YYYY-MM-DD HH24:MI:SS') D_DJ,
