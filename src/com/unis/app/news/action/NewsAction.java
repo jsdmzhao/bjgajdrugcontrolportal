@@ -61,14 +61,17 @@ public class NewsAction {
 		sqlParamMap.put("operateType", operateType);
 		sqlParamMap.put("value", value);
 		sqlParamMap.put("n_xh", n_xh);
+		sqlParamMap.put("c_yhid", "");
 	    newsService.update("NewsMapper.operateNews", sqlParamMap);
 		return Globals.SUCCESS;
 	}
 	
 	@SuppressWarnings("unchecked")
 	public Map<String, Object> newsList(String c_lm){
+		news = new News();
+		news.setC_lm(c_lm);
 		Map<String, Object> resMap = new HashMap<String, Object>();
-		List<News> newsList = (List<News>) newsService.selectList("NewsMapper.getNewsList", c_lm);
+		List<News> newsList = (List<News>) newsService.selectList("NewsMapper.getNewsList", news);
 		resMap.put("Rows", newsList);
 		resMap.put("Total", newsList.size());
 		return resMap;
