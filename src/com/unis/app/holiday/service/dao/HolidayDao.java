@@ -13,46 +13,46 @@ import com.unis.app.pagination.Pagination;
 import com.unis.core.service.AbsServiceAdapter;
 
 @Repository
-public class SysHolidayDao  extends SqlSessionDaoSupport {
+public class HolidayDao  extends SqlSessionDaoSupport {
 	
 	public Object saveInfo(Map p){
-		return  getSqlSession().insert("SysHolidayMapper.saveInfo", p);
+		return  getSqlSession().insert("HolidayMapper.saveInfo", p);
 	}
 
 	public Object saveAllInfo(Map p){
-		return  getSqlSession().insert("SysHolidayMapper.saveAllInfo", p);
+		return  getSqlSession().insert("HolidayMapper.saveAllInfo", p);
 	}
 	
 	public Object saveGRInfo(Map p){
-		return  getSqlSession().insert("SysHolidayMapper.saveGRInfo", p);
+		return  getSqlSession().insert("HolidayMapper.saveGRInfo", p);
 	}
 	
 	public Object removeGRInfo(Map p){
-		return  getSqlSession().insert("SysHolidayMapper.removeGRInfo", p);
+		return  getSqlSession().insert("HolidayMapper.removeGRInfo", p);
 	}
 
 	public Object removeInfo(Map p){
-		return  getSqlSession().delete("SysHolidayMapper.removeInfo", p);
+		return  getSqlSession().delete("HolidayMapper.removeInfo", p);
 	}
 
 	public Object updateInfo(Map p){
-		return  getSqlSession().update("SysHolidayMapper.updateInfo", p);
+		return  getSqlSession().update("HolidayMapper.updateInfo", p);
 	}
 
 	public Object updateAllInfo(Map p){
-		return  getSqlSession().update("SysHolidayMapper.updateAllInfo", p);
+		return  getSqlSession().update("HolidayMapper.updateAllInfo", p);
 	}
 
 	public List queryAllInfo(Map p){
-		return  getSqlSession().selectList("SysHolidayMapper.queryAllInfo", p);
+		return  getSqlSession().selectList("HolidayMapper.queryAllInfo", p);
 	}
 	
 	public List queryInfo(Map p){
-		return  getSqlSession().selectList("SysHolidayMapper.queryInfo", p);
+		return  getSqlSession().selectList("HolidayMapper.queryInfo", p);
 	}
 
 	public Object queryCountInfo(Map p) {
-		return  getSqlSession().selectOne("SysHolidayMapper.queryCountInfo", p);
+		return  getSqlSession().selectOne("HolidayMapper.queryCountInfo", p);
 	}
 	
 	

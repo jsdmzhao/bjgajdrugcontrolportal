@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  <script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
 <script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
 <script type='text/javascript'
-	src='<%=basePath%>dwr/interface/SysHolidaySvc.js'></script>
+	src='<%=basePath%>dwr/interface/HolidaySvc.js'></script>
 	</head>
 	<body style="padding: 10px; height: 100%; text-align: center;">
 		<ipnut type="hidden" id="MenuNo" value="BaseManageEmployees" />
@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	 function loadGrid(obj){
 			if(!obj)obj={};
-			SysHolidaySvc.queryByPage(obj,oPage,function(rdata){
+			HolidaySvc.queryByPage(obj,oPage,function(rdata){
 				if(rdata == null){
 					  grid.setOptions({ data:  { Total:0, Rows:'' } });
 				}else{
@@ -176,7 +176,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 
 	function f_quick() {
-			SysHolidaySvc.quick(function(rdata) {
+			HolidaySvc.quick(function(rdata) {
 				if (rdata) {
 					LG.showSuccess('快速增加成功');
 					loadGrid();
@@ -190,7 +190,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	function f_delete() {
 		var selected = grid.getSelected();
 		if (selected) {
-			SysHolidaySvc.remove(selected, function(rdata) {
+			HolidaySvc.remove(selected, function(rdata) {
 				if (rdata) {
 					LG.showSuccess('删除成功');
 					loadGrid();
@@ -217,7 +217,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		if (!obj)
 			return;
-		SysHolidaySvc.save(obj, function(rdata) {
+		HolidaySvc.save(obj, function(rdata) {
 			if (rdata) {
 				LG.showSuccess('保存成功', function() {
 					loadGrid();
@@ -247,7 +247,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 	if (!obj)
 		return;
-	SysHolidaySvc.update(obj, function(rdata) {
+	HolidaySvc.update(obj, function(rdata) {
 		if (rdata) {
 			LG.showSuccess('修改成功', function() {
 				loadGrid();

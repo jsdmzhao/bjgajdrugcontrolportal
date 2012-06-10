@@ -13,42 +13,42 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.unis.app.holiday.service.dao.SysHolidayDao;
+import com.unis.app.holiday.service.dao.HolidayDao;
 import com.unis.core.util.DateUtil;
 
 @Service
 @Transactional(rollbackFor={Exception.class,SQLException.class})
-public class SysHolidaySvc  {
+public class HolidaySvc  {
  
 	@Autowired
-	private SysHolidayDao sysHolidayDao;
+	private HolidayDao holidayDao;
 
 	public Object save(Map p) throws SQLException {
-		return sysHolidayDao.saveInfo(p);
+		return holidayDao.saveInfo(p);
 	}
 
 	public Object saveAll(Map p) throws SQLException {
-		return sysHolidayDao.saveAllInfo(p);
+		return holidayDao.saveAllInfo(p);
 	}
 
 	public Object remove(Map p) throws SQLException {
-		return sysHolidayDao.removeInfo(p);
+		return holidayDao.removeInfo(p);
 	}
 
 	public Object update(Map p) throws SQLException {
-		return sysHolidayDao.updateInfo(p);
+		return holidayDao.updateInfo(p);
 	}
 
 	public Object updateAll(Map p) throws SQLException {
-		return sysHolidayDao.updateAllInfo(p);
+		return holidayDao.updateAllInfo(p);
 	}
 
 	public List queryAll(Map p) throws SQLException {
-		return sysHolidayDao.queryAllInfo(p);
+		return holidayDao.queryAllInfo(p);
 	}
 	
 	public Map queryByPage(Map p, Map page) throws SQLException {
-		return sysHolidayDao.queryByPageInfo(p, page);
+		return holidayDao.queryByPageInfo(p, page);
 	}
 	
 	public Object quick() throws SQLException  {
@@ -63,7 +63,7 @@ public class SysHolidaySvc  {
         for (int i = 0; i < 7; i++) {
         	p.put("dRq", date);
         	p.put("cZt", DateUtil.getHoliday(date));
-        	sysHolidayDao.saveInfo(p);
+        	holidayDao.saveInfo(p);
         	date=DateUtil.getSpecifiedDayAfter(date);
 		}
 		return true;

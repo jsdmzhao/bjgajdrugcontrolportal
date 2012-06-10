@@ -10,10 +10,10 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class SysKitDao  extends SqlSessionDaoSupport {
+public class KitDao  extends SqlSessionDaoSupport {
 	
 	public List querySjgsdInfo(Map p){
-		return  getSqlSession().selectList("SysKitMapper.querySjgsdInfo", p);
+		return  getSqlSession().selectList("KitMapper.querySjgsdInfo", p);
 	}
 
 	
