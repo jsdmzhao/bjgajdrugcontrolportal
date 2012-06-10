@@ -280,7 +280,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/world.gif",
                           "MenuNo":"sysright",
                           "MenuParentNo":"system"
-                           }],
+                           },{
+                               "icon":"<%=basePath%>liger/lib/icons/32X32/link.gif",
+                               "id":21,
+                               "MenuName":"假日管理",
+                               "MenuID":21,
+                               "text":"假日管理",
+                               "MenuUrl":"<%=basePath%>admin/app/holiday/holiday.jsp",
+                               "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/world.gif",
+                               "MenuNo":"sysright",
+                               "MenuParentNo":"system"
+                                }],
                           "MenuName":"系统管理",
                           "MenuID":1,
                           "text":"系统管理",

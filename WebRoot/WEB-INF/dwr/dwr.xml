@@ -38,6 +38,10 @@
 			<param name="beanName" value="sysPermissionSvc"></param>
 		</create>
 	
+	<create javascript="SysHolidaySvc" creator="spring">
+			<param name="beanName" value="sysHolidaySvc"></param>
+		</create>
+	
 		
 
 		
