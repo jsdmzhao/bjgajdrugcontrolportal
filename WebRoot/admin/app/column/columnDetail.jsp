@@ -10,7 +10,6 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
-	<base href="<%=basePath%>">
     <title>栏目 明细</title>
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
@@ -33,9 +32,9 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
     <script type="text/javascript" src="<%=basePath%>ckeditor/ckeditor.js"></script>
 	<script type="text/javascript" src="<%=basePath%>ckfinder/ckfinder.js"></script>
 	
-	<script type='text/javascript' src='dwr/engine.js'></script>
-  	<script type='text/javascript' src='dwr/util.js'></script>
-  	<script type='text/javascript' src='dwr/interface/ColumnAction.js'></script>
+	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/interface/ColumnAction.js'></script>
 
 </head>
 <body style="padding-bottom:31px;">
@@ -107,7 +106,7 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
         LG.setFormDefaultBtn(f_cancel,isView ? null : f_save);
 
         var deptTree = {
-            url :'../handler/tree.ashx?view=CF_Department&idfield=DeptID&textfield=DeptName&pidfield=DeptParentID',
+            url :'',
             checkbox:false,
             nodeWidth :220
         };
@@ -133,9 +132,7 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
         else { 
             LG.loadForm(mainform, { type: 'AjaxMemberManage', method: 'newsQuery', data: { ID: currentID} },f_loaded);
         }  
-
         
-          
         if(!isView) 
         {
             //验证
@@ -151,7 +148,7 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
         }
 
         //<!-- 设置一些默认参数 -->
-		var editor = CKEDITOR.replace( 'c_nr' );
+		var editor = null;
 
     	//$("c_tpljdz").setDisabled();
         
@@ -176,8 +173,10 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
         	} else {
         		formMap["c_sfdh"] = '0';
         	}
-        	
-        	formMap["c_nr"] = editor.document.getBody().getHtml();
+
+        	if(editor != null){
+	        	formMap["c_nr"] = editor.document.getBody().getHtml();
+           	}
 			
         	ColumnAction.columnSave(formMap,function (result){
         		var win = parent || window;
@@ -239,7 +238,6 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
              }else{
             	 $("#sctp").attr("disabled","disabled");	
              }
-       	 
        		});
        	}); 
        	
@@ -254,7 +252,8 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
        	 
        	 $("#c_sfnr").change(function() {
 	       		 var value = $("#c_sfnr").attr("checked");
-	       		 if(value == true){
+	       		 if(value == true && editor == null){
+	       			 editor = CKEDITOR.replace( 'c_nr' );
 	    	         CKFinder.setupCKEditor( editor, '/ckfinder/' );
 	             }else{
 	            	 $("#c_nr").attr("disabled","disabled");	

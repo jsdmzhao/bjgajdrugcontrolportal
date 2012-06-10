@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </style>
 </head>
 <body style="padding:10px;height:100%; text-align:center;">
-   <ipnut type="hidden" id="MenuNo" value="MemberManageRole" /> 
+   <input type="hidden" id="MenuNo" value="MemberManageRole" /> 
   <form id="mainform">
     <div id="maingrid"  style="margin:2px;"></div> 
     </form> 
@@ -75,9 +75,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      	   },{
             
             click:toolbarBtnItemClick,
-            text:'新增',
+            text:'新增栏目',
             img:'<%=basePath%>liger/lib/icons/silkicons/add.png',
             id:'add'
+        },{line:true},{
+            click: toolbarBtnItemClick,
+            text: '新增子栏目',
+            img:'<%=basePath%>liger/lib/icons/silkicons/application_edit.png',
+            id: 'add2'
         },{line:true},{
             click: toolbarBtnItemClick,
             text: '修改',
@@ -112,10 +117,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       LG.tip('请先提交或取消修改');
                   }
                   break;
+              case "add2":
+            	  var selected = grid.getSelected();
+                  if (!selected) { LG.tip('请选择行!'); return }
+                  top.f_addTab(null, '保存信息', '<%=basePath%>admin/app/column/columnDetail.jsp?c_sjlmdm='+ selected.c_lmdm);
+                  break;
               case "view":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  top.f_addTab(null, '查看信息', '<%=basePath%>admin/app/role/roleDetail.jsp?IsView=1&ID=' + selected.RoleID);
+                  top.f_addTab(null, '查看信息', '<%=basePath%>columnUpdate?column.n_xh=' + selected.n_xh);
                   break;
               case "modify":
                   var selected = grid.getSelected();
@@ -154,6 +164,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       function f_delete() {
           var selected = grid.getSelected();
           if (selected) {
+        	  /**
               LG.ajax({
                   type: 'AjaxMemberManage',
                   method: 'RemoveRole',
@@ -167,6 +178,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       LG.showError(message);
                   }
               });
+              **/
+        	  grid.deleteRow(selected);
+        	  ColumnAction.columnDelete(selected.n_xh, function (result){
+             	   if(result == 'success'){
+             		  LG.showSuccess('删除成功');
+	           	   } else {
+	           		  LG.showError('删除失败');
+	           	   }
+               });
           }
           else {
               LG.tip('请选择行!');

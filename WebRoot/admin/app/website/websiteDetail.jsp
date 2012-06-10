@@ -41,11 +41,11 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
     <form id="mainform"  method="post"></form> 
     <script type="text/javascript"> 
     
-        var tempdata=[{ text:2323,value:1000},{text:2323,value:1000},{text:2323,value:1000}];
+        //var tempdata=[{ text:2323,value:1000},{text:2323,value:1000}];
 
         WebsiteAction.getWebtypeCombox(function(data){
 			//$("#n_lbxh").tempdata = data;
-	        tempdata = data;
+	        var tempdata = data;
 	        var config = {"Form":{ 
 		         fields : [
 		         {display:"网站类别",name:"n_lbxh",newline:true,labelWidth:100,
