@@ -201,7 +201,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     "MenuName":"文章审核",
                     "MenuID":42,
                     "text":"文章审核",
-                    "MenuUrl":"<%=basePath%>admin/app/news/newsAudit.jsp",
+                    "MenuUrl":"<%=basePath%>admin/app/news/newsAudit.jsp?newsType=1",
                     "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
                     "MenuNo":"MemberManageRole",
                     "MenuParentNo":"MemberManage"
@@ -256,7 +256,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/link.gif",
                          "MenuNo":"sysright",
                          "MenuParentNo":"system"
-                          }],
+                         },{
+                          "icon":"<%=basePath%>liger/lib/icons/32X32/link.gif",
+                          "id":20,
+                          "MenuName":"网址类别",
+                          "MenuID":20,
+                          "text":"网址类别",
+                          "MenuUrl":"<%=basePath%>admin/app/website/webtype.jsp",
+                          "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/link.gif",
+                          "MenuNo":"sysright",
+                          "MenuParentNo":"system"
+                         },{
+                          "icon":"<%=basePath%>liger/lib/icons/32X32/link.gif",
+                          "id":21,
+                          "MenuName":"常用网址",
+                          "MenuID":21,
+                          "text":"常用网址",
+                          "MenuUrl":"<%=basePath%>admin/app/website/website.jsp",
+                          "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/world.gif",
+                          "MenuNo":"sysright",
+                          "MenuParentNo":"system"
+                           }],
                           "MenuName":"系统管理",
                           "MenuID":1,
                           "text":"系统管理",
