@@ -22,7 +22,21 @@ public class SysPermissionSvc  {
 	}
 
 	public Object saveAll(Map p) throws SQLException {
-		return sysPermissionDao.saveAllInfo(p);
+		System.out.println("@@@@@@@@@@@@ p : "+p);
+		if(p!=null){
+			String roleId=p.get("roleId")+"";
+			remove(p);
+			if(p.get("data")!=null){
+		   String btnIds=p.get("data")+"";
+		   String [] btnIdArr=btnIds.split(",");
+		   for (int i = 0; i < btnIdArr.length; i++) {
+			   p.put("authorityId", btnIdArr[i]);
+			   sysPermissionDao.saveAllInfo(p);
+		   }
+		   return true;
+		}
+		}
+		return null;
 	}
 
 	public Object remove(Map p) throws SQLException {
@@ -43,6 +57,10 @@ public class SysPermissionSvc  {
 
 	public Map queryByPage(Map p, Map page) throws SQLException {
 		return sysPermissionDao.queryByPageInfo(p, page);
+	}
+	
+	public List queryInfo(Map p) throws SQLException {
+		return sysPermissionDao.queryInfo(p);
 	}
 	
 }
