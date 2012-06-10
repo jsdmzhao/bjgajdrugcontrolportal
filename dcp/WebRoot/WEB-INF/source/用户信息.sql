@@ -6,8 +6,8 @@ DROP TABLE B_YH;
 /* Table: B_YH                                                  */
 /*==============================================================*/
 CREATE TABLE B_YH  (
-   N_XH                 NUMBER(9)                       NOT NULL,
-   USER_ID              NUMBER(9),
+   N_XH                 NUMBER(8)                       NOT NULL,
+   USER_ID              NUMBER(8),
    N_JB                 NUMBER(1)                      ,
    N_YHZ                NUMBER(4)                      ,
    C_ZC                 VARCHAR2(100),
