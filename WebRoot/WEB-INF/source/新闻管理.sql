@@ -19,6 +19,7 @@ create table b_xinwen
   c_sfsh   CHAR(1),
   c_shr    CHAR(1),
   d_shsj   DATE,
+  c_shjg   CHAR(1),
   n_ydcs   NUMBER(10),
   c_sftj   CHAR(1),
   c_sfzd   CHAR(1),
