@@ -125,6 +125,21 @@
 			</if>			
 		    WHERE N_XH = #{n_xh}
 	</update>
+	 
+	<select id="getNewsLanmuCombox" resultType="Combox" parameterType="string">  
+	   SELECT C_LMDM VALUE,
+	          C_LMMC TEXT
+	   FROM B_LANMU 
+	   WHERE C_SJLMDM = '0000'
+	   	AND C_YHZID = #{c_yhzid}
+	</select>
+	 
+	<select id="getLanmuChilden" parameterType="string" resultType="Combox">  
+	  SELECT C_LMDM VALUE,
+	         C_LMMC TEXT
+	  FROM B_LANMU
+		WHERE C_SJLMDM = #{c_sjlmdm}
+	</select>
 	
 	
 </mapper>

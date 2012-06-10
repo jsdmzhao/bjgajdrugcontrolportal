@@ -4,16 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.xwork.StringUtils;
-import org.apache.struts2.ServletActionContext;
-import org.directwebremoting.WebContext;
-import org.directwebremoting.WebContextFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.unis.core.commons.Combox;
 import com.unis.core.service.AbsServiceAdapter;
 import com.unis.core.util.Globals;
 import com.unis.app.news.model.News;
@@ -36,16 +33,36 @@ public class NewsAction {
 	@Autowired
 	private AbsServiceAdapter<Integer> newsService = null;
 	
-/*	public String newsSave(){
-		//HttpServletRequest request = ServletActionContext.getRequest();
-		Map<String, Object> sqlParamMap = new HashMap<String, Object>();
-		WebContext context = WebContextFactory.get();
-		HttpServletRequest request = context.getHttpServletRequest();
-	    sqlParamMap = WebUtil.getParamsFromRequest(request);
-		//System.out.println(request.getParameter("c_bt")+"------56-----"+sqlParamMap.get("c_bt"));
-		newsService.insert("NewsMapper.insertNews", sqlParamMap);
-		return Globals.SUCCESS;
-	}*/
+	@SuppressWarnings("unchecked")
+	public String getNewsLanmuCombox(){
+		StringBuffer sbf = new StringBuffer("[");
+		List<Combox> comboxList = (List<Combox>) newsService.selectList("NewsMapper.getNewsLanmuCombox", "0");
+		
+		for(Combox combox : comboxList){
+			sbf.append("{text:'"+combox.getText()+"', value:'"+combox.getValue()+"'");
+			List<Combox> childList = getLanmuChilden(combox.getValue());
+			if(!childList.isEmpty()){
+				sbf.append(",children: [");
+				for(Combox combChild : childList){
+					sbf.append("{text:'"+combChild.getText()+"', value:'"+combChild.getValue()+"'},");
+				}
+				sbf.replace(sbf.lastIndexOf(","), sbf.length(), "");
+				sbf.append("]},");
+			} else {
+				sbf.append("},");
+			}
+		}
+		sbf.replace(sbf.lastIndexOf(","), sbf.length(), "");
+		sbf.append("]");
+		
+		return sbf.toString();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Combox> getLanmuChilden(String c_sjdm){
+		List<Combox> comboxList = (List<Combox>) newsService.selectList("NewsMapper.getLanmuChilden", c_sjdm);
+		return comboxList;
+	}
 	
 	public String newsSave(Map<String, String> sqlParamMap){
 		if(StringUtils.isNotEmpty(sqlParamMap.get("n_xh"))){
@@ -83,6 +100,7 @@ public class NewsAction {
 		return Globals.SUCCESS;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public String  newsindexList(){
 		resMap = new HashMap<String, Object>();
 		List<News> newsList = (List<News>) newsService.selectList("NewsMapper.getNewsList", news);
