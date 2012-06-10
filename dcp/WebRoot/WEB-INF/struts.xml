@@ -40,6 +40,10 @@
 			<result name="success">/admin/app/{1}/{1}Update.jsp</result>
 		</action>
 		
+		<action name="*View" class="{1}Action" method="{1}View">
+			<result name="success" type="chain">/admin/app/{1}/{1}View.jsp</result>
+		</action>
+		
 		<action name="*Delete" class="{1}Action" method="{1}Delete">
 			<result name="success" type="chain">{1}List</result>
 		</action>
