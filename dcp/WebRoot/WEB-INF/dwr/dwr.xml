@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://getahead.org/dwr/dwr20.dtd">
 
 <dwr>
@@ -17,6 +17,17 @@
 			<param name="beanName" value="websiteAction"></param>
 		</create>
 		
+		<create javascript="NoticeAction" creator="spring">
+			<param name="beanName" value="noticeAction"></param>
+		</create>
+
+		<create javascript="CarAction" creator="spring">
+			<param name="beanName" value="carAction"></param>
+		</create>
+		
+		<create javascript="CartypeAction" creator="spring">
+			<param name="beanName" value="cartypeAction"></param>
+		</create>
 		<create javascript="SysUserSvc" creator="spring">
 			<param name="beanName" value="sysUserSvc"></param>
 		</create>
@@ -51,6 +62,8 @@
 		<convert match="com.unis.app.column.model.Column" converter="bean"/>
 		<convert match="com.unis.app.website.model.Website" converter="bean"/>
 		<convert match="com.unis.core.commons.Combox" converter="bean"/>
+		<convert match="com.unis.app.notice.model.Notice" converter="bean"/>
+		<convert match="com.unis.app.car.model.Car" converter="bean"/>
 	
   </allow>
 

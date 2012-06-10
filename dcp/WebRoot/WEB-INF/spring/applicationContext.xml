@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:aop="http://www.springframework.org/schema/aop"
@@ -23,6 +23,8 @@
 	<bean id="newsService" class="com.unis.app.news.service.NewsService" parent="absServiceAdapter"/>
 	<bean id="columnService" class="com.unis.app.column.service.ColumnService" parent="absServiceAdapter"/>
 	<bean id="websiteService" class="com.unis.app.website.service.WebsiteService" parent="absServiceAdapter"/>
+	<bean id="noticeService" class="com.unis.app.notice.service.NoticeService" parent="absServiceAdapter"/>
+	<bean id="carService" class="com.unis.app.car.service.CarService" parent="absServiceAdapter"/>
     
 
 </beans>

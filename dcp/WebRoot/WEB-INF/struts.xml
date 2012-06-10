@@ -25,7 +25,9 @@
 			<exception-mapping result="errorPage" exception="java.lang.Exception"/>
 		</global-exception-mappings>
 		
-		
+		<action name="cartypeUpdate" class="cartypeAction" method="cartypeUpdate">
+			<result name="success">/admin/app/car/cartypeUpdate.jsp</result>
+		</action>
 		
 		<!-- 通配符配置 -->
     	<action name="*List" class="{1}Action" method="{1}List">
@@ -41,7 +43,7 @@
 		</action>
 		
 		<action name="*View" class="{1}Action" method="{1}View">
-			<result name="success" type="chain">/admin/app/{1}/{1}View.jsp</result>
+			<result name="success">/admin/app/{1}/{1}View.jsp</result>
 		</action>
 		
 		<action name="*Delete" class="{1}Action" method="{1}Delete">
