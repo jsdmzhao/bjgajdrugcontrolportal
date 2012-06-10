@@ -1,21 +1,70 @@
+drop table B_CYWZ cascade constraints;
 
---取车牌号码
-CREATE OR REPLACE FUNCTION FUN_GET_CPHM(N_CPXH NUMBER) RETURN VARCHAR2 
-IS
-     RES_NAME VARCHAR2(200);
-BEGIN
-      SELECT C_CPHM INTO RES_NAME FROM B_CLLB WHERE N_XH = N_CPXH;
-      RETURN RES_NAME;
-END;
-/
+/*==============================================================*/
+/* Table: B_CYWZ                                               */
+/*==============================================================*/
 
---取网址分类名称
-CREATE OR REPLACE FUNCTION FUN_GET_WZLB(N_LBXH NUMBER) RETURN VARCHAR2 
+create table B_CYWZ  (
+   N_XH                 NUMBER(4),
+   N_LBXH               NUMBER(4),
+   C_YHID               VARCHAR2(30),
+   C_BT                 VARCHAR2(200),
+   C_LJ                 VARCHAR2(100),
+   N_XSXH               NUMBER(10),
+   D_DJ                 DATE
+) tablespace DCP
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64
+    minextents 1
+    maxextents unlimited
+  );
+  
+  
+alter table B_CYWZ
+  add constraint PK_B_CYWZ primary key (N_XH)
+  using index 
+  tablespace DCP
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+  
+comment on table B_CYWZ is
+'常用网址表';
 
-IS
-     RES_NAME VARCHAR2(200);
-BEGIN
-      SELECT C_LBMC INTO RES_NAME FROM B_WZLB WHERE N_XH = N_LBXH;
-      RETURN RES_NAME;
-END;
-/
+comment on column B_CYWZ.N_XH is
+'序号';
+
+comment on column B_CYWZ.N_LBXH is
+'类别序号';
+
+comment on column B_CYWZ.C_BT is
+'标题';
+
+comment on column B_CYWZ.C_LJ is
+'连接地址';
+
+comment on column B_CYWZ.N_XSXH is
+'显示序号';
+
+comment on column B_CYWZ.D_DJ is
+'登记日期';
+
+
+--SEQUENCE
+create sequence SEQ_B_CYWZ
+minvalue 1000
+maxvalue 9999
+start with 1000
+increment by 1
+cache 20;
+
