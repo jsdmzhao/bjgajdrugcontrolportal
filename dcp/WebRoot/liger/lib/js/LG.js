@@ -309,29 +309,33 @@ function $d(obj,preBlank){
                 click: function ()
                 {
                     var rule = LG.bulidFilterGroup(form);
-                    if (rule.rules.length)
+                    var arr=rule.rules;
+                    var objRule={};
+                    for(var i=0;i<arr.length;i++){
+                    	eval('objRule.'+arr[i].field+"=arr[i].value");
+                    }
+                    if (arr.length)
                     {
-                        grid.set('parms', { where: JSON2.stringify(rule) });
+                    	loadGrid(objRule);
                     } else
                     {
-                        grid.set('parms', {});
+                    	loadGrid({});
                     }
-                    grid.loadData();
                 }
             });
         }
-        if (btn2Container)
-        {
-            LG.createButton({
-                appendTo: btn2Container,
-                width: 80,
-                text: '高级搜索',
-                click: function ()
-                {
-                    grid.showFilter();
-                }
-            });
-        }
+      //  if (btn2Container)
+      //  {
+      //      LG.createButton({
+      //          appendTo: btn2Container,
+      //          width: 80,
+      ////          text: '高级搜索',
+      //          click: function ()
+      //          {
+      //              grid.showFilter();
+      //          }
+      //      });
+      //  }
     };
 
     //快速设置表单底部默认的按钮:保存、取消

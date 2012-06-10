@@ -300,11 +300,11 @@
 		</div>
 		<ul>
 			<li style="width: 100px; text-align: left;">帐号：</li>
-			<li style="width: 150px; text-align: left;"><div
-					style="width: 218px;" class="l-text">
-					<input style="width: 214px;" id="userName" class="l-text-field"
+			<li style="width: 180px; text-align: left;"><div
+					style="width: 160px;" class="l-text">
+					<input style="width: 160px;" id="userName" class="l-text-field"
 						name="userName" type="text" ligeruiid="userName"
-						ltype="text" ligerui='{"width":148}'><div class="l-text-l"></div>
+						ltype="text" ligerui='{"width":160}'><div class="l-text-l"></div>
 						<div class="l-text-r"></div>
 				</div>
 			</li>
@@ -312,9 +312,9 @@
 		</ul>
 		<ul>
 			<li style="width: 100px; text-align: left;">密码：</li>
-			<li style="width: 150px; text-align: left;"><div
-					style="width: 218px;" class="l-text">
-					<input style="width: 214px;" id="userPassword" class="l-text-field"
+			<li style="width: 180px; text-align: left;"><div
+					style="width: 160px;" class="l-text">
+					<input style="width: 160px;" id="userPassword" class="l-text-field"
 						name="userPassword" type="password" ligeruiid="userPassword"
 						ltype="password" ligerui='{"width":148}'><div
 							class="l-text-l"></div>
@@ -325,9 +325,9 @@
 		</ul>
 		<ul>
 			<li style="width: 100px; text-align: left;">确认密码：</li>
-			<li style="width: 150px; text-align: left;"><div
-					style="width: 218px;" class="l-text">
-					<input style="width: 214px;" id="userPassword2"
+			<li style="width: 180px; text-align: left;"><div
+					style="width: 160px;" class="l-text">
+					<input style="width: 160px;" id="userPassword2"
 						class="l-text-field" name="userPassword2" type="password"
 						ligeruiid="userPassword2"
 						ltype="password" ligerui='{"width":148}'><div
@@ -339,7 +339,7 @@
 		</ul>
 			<ul>
 			<li style="width: 100px; text-align: left;">角色：</li>
-			<li style="width: 150px; "><div
+			<li style="width: 180px; "><div
 					class="l-combobox-wrapper">
 		 <select name="roleId" id="roleId" >
 		 <option value=""></option>
@@ -354,7 +354,7 @@
 		</ul>
 		<ul>
 			<li style="width: 100px; text-align: left;">已锁定：</li>
-			<li style="width: 150px; "><div
+			<li style="width: 180px; "><div
 					class="l-checkbox-wrapper">
 					<input id="userLock" 
 						name="userLock" type="checkbox" ligeruiid="userLock"
