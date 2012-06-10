@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="navbar"><div class="navbar-l"></div><div class="navbar-r"></div>
         <div class="navbar-icon"><img src="<%=basePath%>liger/lib/icons/32X32/hire_me.gif" /></div>
         <div class="navbar-inner"> 
-        <b><span id="labelusername"></span><span>，</span><span id="labelwelcome"></span><span>欢迎使用北京禁毒网站后台管理</span></b>
+        <b><span id="labelusername"><%=session.getAttribute("userName")%></span><span>，</span><span id="labelwelcome"></span><span>欢迎使用北京禁毒网站后台管理</span></b>
         <a href="javascript:void(0)" id="usersetup" style="display:none">账号设置</a>
         </div>
         </div>

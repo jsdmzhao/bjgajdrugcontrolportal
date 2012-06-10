@@ -55,22 +55,16 @@
         var LoginPassword = $("#NewPassword").val();
         if (changePasswordPanle.valid())
         {
-            LG.ajax({
-                type: 'AjaxSystem',
-                method: 'ChangePassword',
-                data: { OldPassword: OldPassword, LoginPassword: LoginPassword },
-                success: function ()
-                {
-                    LG.showSuccess('密码修改成功');
-                    window.changePasswordWin.hide();
-                    $(document).unbind('keydown.changepassword');
-                },
-                error: function (message)
-                {
-                    LG.showError(message);
-                }
-            });
+        	 var obj={ OldPassword: OldPassword, LoginPassword: LoginPassword };
+                SysUserSvc.changePassword(obj, function(rdata) {
+    				if (rdata) {
+    					 LG.showSuccess('密码修改成功');
+    	                    window.changePasswordWin.hide();
+    	                    $(document).unbind('keydown.changepassword');
+    				} else {
+    					LG.showError('修改失败');
+    				}
+    			});
         }
     }
-
 };

@@ -24,7 +24,7 @@
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
 			<if test="userName != null and userName !='' ">  and USER_NAME = #{userName}</if>
-			<if test="userPassword != null and userPassword !='' ">  and USER_PASSWORD = #{userName}</if>
+			<if test="userPassword != null and userPassword !='' ">  and USER_PASSWORD = #{userPassword}</if>
 			<if test="userLock != null and userLock !='' ">  and USER_LOCK = #{userLock}</if>
 		</trim>
 		ORDER BY USER_ID  DESC 

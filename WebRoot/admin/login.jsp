@@ -2,6 +2,12 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
+Object action = request.getAttribute("Action");
+if("out".equals(action)){
+	session.invalidate();   
+}
+
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -38,6 +44,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         #txtUsername,#txtPassword{ width:191px;} 
         #logincopyright{ text-align:center; color:White; margin-top:50px;}
     </style>
+    <script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
+<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
+<script type='text/javascript'
+	src='<%=basePath%>dwr/interface/SysUserSvc.js'></script>
+    
     <script type="text/javascript"><!--
         var FromUrl = getQueryStringByName("FromUrl");
         if (!FromUrl)
@@ -84,11 +95,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     $("#txtPassword").focus();
                     return;
                 }
-               
-                        $.ligerDialog.waitting("正在登陆中,请稍后...");
+
+                var obj={userName: username,userPassword : password};
+                //alert($d(obj));
+                SysUserSvc.login(obj,function(rdata){
+        			if(rdata == null){
+        				LG.showError('登陆失败,账号或密码有误!');
+        			}else{
+        				
+        				$.ligerDialog.waitting("正在登陆中,请稍后...");
                         $("#btnLogin").attr("disabled", true);
                         window.location.href="index.jsp";
-                 
+            		}
+        		});
             }
         });
     </script>
