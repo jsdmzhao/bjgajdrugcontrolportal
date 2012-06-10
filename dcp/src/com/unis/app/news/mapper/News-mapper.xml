@@ -2,19 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="NewsMapper">
-	 <resultMap type="News" id="resultNews">
-	 	<result column="N_XH" property="n_xh"/>
-	 	<result column="C_BT" property="c_bt"/>
+	 <resultMap type="News"    id="resultNews">
+	 	<result column="N_XH"   property="n_xh"/>
+	 	<result column="C_BT"   property="c_bt"/>
 	 	<result column="D_FBSJ" property="d_fbsj"/>
 	 	<result column="C_SFZD" property="c_sfzd"/>
 	 	<result column="C_SFGL" property="c_sfgl"/>
 	 	<result column="C_SFTJ" property="c_sftj"/>
+	 	<result column="C_LM"   property="c_lm"/>
 	 </resultMap>
 	<select id="getNews" parameterType="News" resultType="News">
 		SELECT * FROM B_XINWEN WHERE N_XH = #{n_xh}
 	</select>
 	 
-	<select id="getNewsList" parameterType="string" resultMap="resultNews">
+	<select id="getNewsList" parameterType="News" resultMap="resultNews">
 	  SELECT N_XH,
 	   C_BT,
        TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
@@ -22,8 +23,9 @@
        C_SFGL,
        C_SFTJ
 	  FROM B_XINWEN
-	  <if test="c_lm != null and c_lm != ''">
 	 	 WHERE C_LM = #{c_lm}
+	  <if test="c_sfsh != null and c_sfsh != ''">
+	 	 AND C_SFSH = #{c_sfsh}
 	  </if>
 	</select>
 	
@@ -113,6 +115,12 @@
 			<if test="operateType == 'zd' ">C_SFZD = #{value} </if>
 			<if test="operateType == 'gl' ">C_SFGL = #{value} </if>
 			<if test="operateType == 'tj' ">C_SFTJ = #{value} </if>
+			<if test="operateType == 'sh' ">
+				C_SFSH = 1,
+				C_SHJG = #{value},
+				C_SHR = #{c_yhid},
+				D_SHSJ = SYSDATE
+			</if>			
 		    WHERE N_XH = #{n_xh}
 	</update>
 	
