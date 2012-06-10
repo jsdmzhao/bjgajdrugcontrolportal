@@ -43,6 +43,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
 <script type='text/javascript'
 	src='<%=basePath%>dwr/interface/SysRoleSvc.js'></script>
+	
+	<script type='text/javascript'
+	src='<%=basePath%>dwr/interface/SysPermissionSvc.js'></script>
 </head>
 <body style=" overflow:hidden;"> 
     <div id="layout" style="margin:2px; margin-right:3px;">
@@ -51,9 +54,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <div title="角色" tabid="rolelist">
                     <div id="rolegrid" style="margin:2px auto;"></div>
                  </div>
-                 <div title="用户"  tabid="userlist">
-                     <div id="usergrid" style="margin:2px auto;"></div>
-                 </div> 
                </div>
           </div>
           <div position="bottom" title="权限控制">
@@ -127,39 +127,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         gridRole.bind('SelectRow', function (rowdata)
         {
             selectedUserID = null;
-            selectedRoleID = rowdata.RoleID;
+            selectedRoleID = rowdata.roleId;
             //隐藏禁止权限列
             gridRight.toggleCol('Forbid', false);
 
             bottomHeader.html("设置角色【" + rowdata.roleName + "】的权限");
 
-            LG.ajax({
-                loading: '正在加载角色权限中...',
-                type: 'AjaxSystem',
-                method: 'GetRolePermission',
-                data: { RoleID: selectedRoleID },
-                success: function (data)
-                {
-                    var rows = gridRight.rows;
+            var obj= { roleId: selectedRoleID };
+      //      alert($d(obj));
+            SysPermissionSvc.queryInfo(obj,function(rdata){
+    			if(rdata == null){
+    			//	LG.showError('加载失败');
+    			}else{
+    			    var rows = gridRight.rows;
                     for (var i = 0, l = rows.length; i < l; i++)
                     {
-                        rows[i].Permit = checkPermit(rows[i], data);
+                        rows[i].Permit = checkPermit(rows[i], rdata);
                     }
                     gridRight.reRender();
-                }
-            });
-
+        		}
+    		});
+            
             //判断是否有权限
             function checkPermit(rowdata, data)
             {
-                if (!data || !data.length) return false;
-                var isButton = rowdata.BtnID != null && rowdata.BtnID != 0;
+                if (!data || !data.length||data=='') return false;
+                var isButton = rowdata.btnId != null && rowdata.btnId != 0;
                 for (var i = 0, l = data.length; i < l; i++)
                 {
-                    if (isButton && data[i].BtnID == rowdata.BtnID)
+                    if (isButton && data[i].btnId == rowdata.btnId)
                         return true;
-                    if (!isButton && data[i].MenuID == rowdata.MenuID)
-                        return true;
+           //         if (!isButton && data[i].MenuID == rowdata.MenuID)
+           //             return true;
                 }
                 return false;
             }
@@ -187,19 +186,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     return iconHtml;
                 }
                 },
-                { display: '禁止权限', name: 'Forbid', align: 'left', width: 60, minWidth: 60, isAllowHide: false, render: function (rowdata)
-                {
-                    var iconHtml = '<div class="access-icon access-forbid';
-                    if (rowdata.Forbid) iconHtml += " access-icon-selected";
-                    iconHtml += '"';
-                    iconHtml += ' rowid = "' + rowdata['__id'] + '"';
-                    iconHtml += '></div>';
-                    return iconHtml;
-                }
-                },
-                { display: '菜单-按钮', name: 'AccessName', align: 'left', width: 200, minWidth: 60 },
-                { display: '编码', name: 'AccessNo', align: 'left', width: 200, minWidth: 60 },
-                { display: '图标', name: 'AccessIcon', align: 'left', width: 200, minWidth: 60 }
+                { display: '菜单-按钮', name: 'accessName', align: 'left', width: 200, minWidth: 60 },
+                { display: '编码', name: 'accessNo', align: 'left', width: 200, minWidth: 60 },
+                { display: '图标', name: 'accessIcon', align: 'left', width: 200, minWidth: 60 }
                 ], showToggleColBtn: false, width: '99%', height: 200, rowHeight: 20, fixedCellHeight: true,
             columnWidth: 100, frozen: false, usePager: false, checkbox: false, rownumbers: true, toolbar: toolbarOptions,
             tree: { columnName: 'AccessName' }, 
@@ -262,10 +251,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }
             gridRight.reRender({ rowdata: rowdata });
         }
-
         //加载 菜单-按钮数据
-      gridRight.set('data', { Rows: [{AccessName:'菜单-按钮',AccessNo:'编码',AccessIcon:'图标'},{AccessName:'菜单-按钮',AccessNo:'编码',AccessIcon:'图标'},{AccessName:'菜单-按钮',AccessNo:'编码',AccessIcon:'图标'},{AccessName:'菜单-按钮',AccessNo:'编码',AccessIcon:'图标'}] });
-
+      function loadGridRight(obj){
+     	 if(!obj)obj={ };
+     	SysPermissionSvc.queryAll(obj,function(rdata){
+   			if(rdata == null){
+   				gridRight.set('data', { Rows:'' } );
+   			}else{
+   			    gridRight.set('data', { Rows:rdata } );
+       		}
+   		});
+   	}
+      loadGridRight();
         //角色,在tab选择的时候才加载表格和表格数据
         tab.bind('afterSelectTabItem', function (tabid)
         {
@@ -340,12 +337,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             });
         });
 
-
-
-        
-
-
-
         function f_save()
         {
             if (!selectedRoleID && !selectedUserID) return;
@@ -362,24 +353,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     delete o.children;
                 data.push(o);
             }
-            LG.ajax({
-                loading: '正在保存权限设置中...',
-                type: 'AjaxSystem',
-                method: selectedRoleID ? 'SaveRolePermission' : 'SaveUserPermission',
-                data: {
-                    DataJSON: JSON2.stringify(data),
-                    RoleID: selectedRoleID,
-                    UserID: selectedUserID
-                },
-                success: function ()
-                {
-                    LG.showSuccess("保存成功!");
-                },
-                error: function (message)
-                {
-                    LG.showError(message);
-                }
-            });
+           var btnIds='';
+           for(var i=0;i<data.length;i++){
+        	   if(data[i].Permit==true){
+        		   btnIds=btnIds+data[i].btnId+','
+        	   }
+           }
+           
+           var obj= {roleId: selectedRoleID,data:btnIds};
+            alert($d(obj));
+        	SysPermissionSvc.saveAll(obj,function(rdata){
+           			if (rdata) {
+           				LG.showSuccess('保存成功', function() {
+           				});
+           			} else {
+           				LG.showError('保存失败');
+           			}
+               }); 
         }
 
         function updateGridHeight()
