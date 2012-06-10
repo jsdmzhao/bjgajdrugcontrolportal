@@ -39,7 +39,7 @@
 <script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
 <script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
 <script type='text/javascript'
-	src='<%=basePath%>dwr/interface/SysKitSvc.js'></script>
+	src='<%=basePath%>dwr/interface/KitSvc.js'></script>
 
 </head>
 <body style="padding:10px;height:100%; text-align:center;">
@@ -56,7 +56,7 @@
              {
 
              var obj={nHm : $("#nHm").val()}
-        	 SysKitSvc.querySjgsdInfo(obj, function(rdata) {
+        	 KitSvc.querySjgsdInfo(obj, function(rdata) {
     				if (rdata) {
     					$("#result").html(rdata);
     				}
