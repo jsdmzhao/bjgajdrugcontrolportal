@@ -55,7 +55,8 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
 		             valueField:"value",
 		             textFiled:"text",
 		         	 //url:"../handler/select.ashx?view=Categories&idfield=CategoryID&textfield=CategoryName",
-		         	 data : tempdata
+		         	 data : tempdata,
+		         	 value : '<s:property value='website.c_lbxh'/>'
 		          },
 		          group:"基本信息",
 		          groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"

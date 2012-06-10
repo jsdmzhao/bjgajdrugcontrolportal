@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -217,6 +217,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     "MenuIcon":"<%=basePath%>liger/lib/icons/silkicons/application.png",
                     "MenuNo":"MemberManage",
                     "MenuParentNo":null
+                    },{"icon":"<%=basePath%>liger/lib/icons/silkicons/application.png",
+                    "id":58,
+                    "children":[{
+                    "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
+                    "id":70,
+                    "MenuName":"车辆列表",
+                    "MenuID":70,
+                    "text":"车辆列表",
+                    "MenuUrl":"<%=basePath%>admin/app/car/car.jsp",
+                    "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/sitemap.gif",
+                    "MenuNo":"MemberManageRole",
+                    "MenuParentNo":"MemberManage"
+                    },{
+                     "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
+                     "id":71,
+                     "MenuName":"车辆审核",
+                     "MenuID":71,
+                     "text":"车辆审核",
+                     "MenuUrl":"<%=basePath%>admin/app/car/carAudit.jsp",
+                     "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/zoom.gif",
+                     "MenuNo":"MemberManageRole",
+                     "MenuParentNo":"MemberManage"
+                     }],
+                    "MenuName":"车辆管理",
+                    "MenuID":78,
+                    "text":"车辆管理",
+                    "MenuUrl":null,
+                    "MenuIcon":"<%=basePath%>liger/lib/icons/silkicons/application.png",
+                    "MenuNo":"MemberManage",
+                    "MenuParentNo":null
                     },{
                     "icon":"<%=basePath%>liger/lib/icons/32X32/future_projects.gif",
                     "id":1,
@@ -280,7 +310,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/world.gif",
                           "MenuNo":"sysright",
                           "MenuParentNo":"system"
-                           },{
+                         },{
+                           "icon":"<%=basePath%>liger/lib/icons/32X32/link.gif",
+                           "id":22,
+                           "MenuName":"公告列表",
+                           "MenuID":22,
+                           "text":"公告列表",
+                           "MenuUrl":"<%=basePath%>admin/app/notice/notice.jsp",
+                           "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/order_159.gif",
+                           "MenuNo":"sysright",
+                           "MenuParentNo":"system"
+                         },{
+                           "icon":"<%=basePath%>liger/lib/icons/32X32/link.gif",
+                           "id":23,
+                           "MenuName":"车辆管理",
+                           "MenuID":22,
+                           "text":"车辆管理",
+                           "MenuUrl":"<%=basePath%>admin/app/car/cartype.jsp",
+                           "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/milestone.gif",
+                           "MenuNo":"sysright",
+                           "MenuParentNo":"system"
+                         },{
                                "icon":"<%=basePath%>liger/lib/icons/32X32/link.gif",
                                "id":21,
                                "MenuName":"假日管理",
