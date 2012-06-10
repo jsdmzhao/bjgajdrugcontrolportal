@@ -46,6 +46,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			type="text/javascript"></script>
 		<script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerForm.js"
 			type="text/javascript"></script>
+			    <script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
+<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
+<script type='text/javascript'
+	src='<%=basePath%>dwr/interface/SysUserSvc.js'></script>
 	</head>
 	<body
 		style="text-align: center; background: #F0F0F0; overflow: hidden;">
@@ -55,10 +59,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				北京禁毒网站后台管理
 			</div>
 			<div class="l-topmenu-welcome">
-				<span class="l-topmenu-username"></span>欢迎您 &nbsp; [
+				<span class="l-topmenu-username"></span>欢迎您 &nbsp; <%=session.getAttribute("userName") %>[
 				<a href="javascript:f_changepassword()">修改密码</a>] &nbsp; [
 				<a href="javascript:f_login()">切换用户</a>] [
-				<a href="login.htm?Action=out">退出</a>]
+				<a href="<%=basePath%>admin/login.jsp?Action=out">退出</a>]
 			</div>
 
 		</div>

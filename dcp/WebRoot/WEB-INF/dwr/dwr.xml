@@ -16,7 +16,7 @@
 		<create javascript="WebsiteAction" creator="spring">
 			<param name="beanName" value="websiteAction"></param>
 		</create>
-		<!-- 
+		
 		<create javascript="SysUserSvc" creator="spring">
 			<param name="beanName" value="sysUserSvc"></param>
 		</create>
@@ -37,7 +37,7 @@
 		<create javascript="SysPermissionSvc" creator="spring">
 			<param name="beanName" value="sysPermissionSvc"></param>
 		</create>
-		 -->
+	
 		
 
 		

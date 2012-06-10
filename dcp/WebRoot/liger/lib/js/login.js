@@ -49,39 +49,15 @@
         var username = $("#LoginUserName").val();
         var password = $("#LoginPassword").val();
 
-        $.ajax({
-            type: 'post', cache: false, dataType: 'json',
-            url: '../handler/validate.ashx',
-            data: [
-                    { name: 'Action', value: 'Login' },
-                    { name: 'username', value: username },
-                    { name: 'password', value: password }
-                    ],
-            success: function (result)
-            {
-                if (!result)
-                {
-                    LG.showError('登陆失败,账号或密码有误!');
-                    $("#LoginUserName").focus();
-                    return;
-                } else
-                {
-                    location.href = location.href;
-                }
-            },
-            error: function ()
-            {
-                LG.showError('发送系统错误,请与系统管理员联系!');
-            },
-            beforeSend: function ()
-            {
-                LG.showLoading('正在登录中...');
-            },
-            complete: function ()
-            {
-                LG.hideLoading();
-            }
-        });
+    var obj={userName: username,userPassword : password};
+    //alert($d(obj));
+    SysUserSvc.login(obj,function(rdata){
+		if(rdata == null){
+			LG.showError('登陆失败,账号或密码有误!');
+		}else{
+			
+			 location.href = location.href;
+		}
+	});
     }
-
 };
