@@ -124,11 +124,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         return win;
     }
     var links = [
-            { icon: 'images/3DSMAX.png', title: '公告通知', url: '../admin/app/notice/notice.jsp' },
+            { icon: 'images/3DSMAX.png', title: '公告通知', url: '../temp/notice.jsp' },
             { icon: 'images/3DSMAX.png', title: '个人考勤', url: '../temp/kaoqin.jsp' },
             { icon: 'images/3DSMAX.png', title: '值班表', url: '../temp/zbb.jsp' },
             { icon: 'images/Program Files Folder.png', title: '我的资料', url: '../temp/wdzl.jsp' },
-            { icon: 'images/Program Files Folder.png', title: '常用网址', url: '../admin/app/website/website.jsp' }
+            { icon: 'images/Program Files Folder.png', title: '常用网址', url: '../temp/website.jsp' }
         ];
              
     function onResize() {

@@ -74,39 +74,39 @@ else {wh="无停驶尾号";}
 <div  class="topdiv">
 <div   class="imgdiv" >
 <img   class="imgdiv"  src="<%=basePaths%>/images/1.png  "/></div >
-<div   class="font1"  align="center"><a href="#"  onclick='Box("msg1",900,600,parahtml("desktop/index.jsp",900,600),fontbutton(1,1));' >我的桌面</a></div>
+<div   class="font1"  align="center"><a href="#"  onclick='Box("msg1",900,600,parahtml("<%=basePaths %>desktop/index.jsp",900,600),fontbutton(1,1));' >我的桌面</a></div>
 </div>
 
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/9.png  "/></div >
-<div   class="font1"  align="center"><a href="#" onclick='Box("msg9",900,600,parahtml("admin/app/news/news.jsp",900,600),fontbutton(9,1));'>新闻管理</a></div>
+<div   class="font1"  align="center"><a href="#" onclick='Box("msg9",900,600,parahtml("<%=basePaths %>temp/news.jsp",900,600),fontbutton(9,1));'>新闻管理</a></div>
 </div>
 
 
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/3.png  "/></div >
-<div   class="font1"  align="center"><a href="#" onclick='Box("msg3",900,600,parahtml("admin/app/car/car.jsp",900,600),fontbutton(3,1));' >车辆管理</a></div>
+<div   class="font1"  align="center"><a href="#" onclick='Box("msg3",900,600,parahtml("<%=basePaths %>temp/car.jsp",900,600),fontbutton(3,1));' >车辆管理</a></div>
 </div>
 
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/8.png  "/></div >
-<div   class="font1"  align="center"><a href="#" onclick='Box("msg8",900,600,parahtml("temp/nbyj.jsp",900,600),fontbutton(8,1));'>内部邮件</a></div>
+<div   class="font1"  align="center"><a href="#" onclick='Box("msg8",900,600,parahtml("<%=basePaths %>temp/nbyj.jsp",900,600),fontbutton(8,1));'>内部邮件</a></div>
 </div>
 
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/2.png  "/></div >
-<div   class="font1"  align="center"><a href="#" onclick='Box("msg2",900,600,parahtml("temp/kaoqin.jsp",900,600),fontbutton(2,1));' >考勤情况</a></div>
+<div   class="font1"  align="center"><a href="#" onclick='Box("msg2",900,600,parahtml("<%=basePaths %>temp/kaoqin.jsp",900,600),fontbutton(2,1));' >考勤情况</a></div>
 </div>
 
 
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/4.png  "/></div >
-<div   class="font1"  align="center"><a href="#" onclick='Box("msg4",900,600,parahtml("temp/gzrz.jsp",900,600),fontbutton(4,1));'>工作日志</a></div>
+<div   class="font1"  align="center"><a href="#" onclick='Box("msg4",900,600,parahtml("<%=basePaths %>temp/gzrz.jsp",900,600),fontbutton(4,1));'>工作日志</a></div>
 </div>
 <!-- 
 <div class="topdiv">
@@ -119,7 +119,7 @@ else {wh="无停驶尾号";}
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/6.png  "/></div >
-<div   class="font1"  align="center"><a href="#" onclick='Box("msg6",900,600,parahtml("temp/nbyj.jsp",900,600),fontbutton(6,1));'>内部消息</a></div>
+<div   class="font1"  align="center"><a href="#" onclick='Box("msg6",900,600,parahtml("<%=basePaths %>temp/nbyj.jsp",900,600),fontbutton(6,1));'>内部消息</a></div>
 </div>
 
 
@@ -127,7 +127,7 @@ else {wh="无停驶尾号";}
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/7.png  "/></div >
-<div   class="font1"  align="center"><a href="#" onclick='Box("msg7",900,600,parahtml("temp/nbyj.jsp",900,600),fontbutton(7,1));'>手机短息</a></div>
+<div   class="font1"  align="center"><a href="#" onclick='Box("msg7",900,600,parahtml("<%=basePaths %>temp/nbyj.jsp",900,600),fontbutton(7,1));'>手机短息</a></div>
 </div>
 
 
@@ -156,7 +156,7 @@ else {wh="无停驶尾号";}
 		<div style="float:left; padding-top:4px; padding-left:20px;">今日限行尾号：<%=wh %></div>
 			<div style="float:right; padding-top:4px; padding-right:10px;"><a  href="#" onclick='Box("msg3",259,90,parahtml2(259,90),fontbutton(3,1));'>联系我们</a></div>
 				<div style="float:right; padding-top:8px; padding-right:2px;"> <IMG src="<%=basePaths%>/images/2.jpg" /></div>
-			<div style="float:right; padding-top:4px;padding-right:10px;"><a onClick="window.external.AddFavorite(location.href,document.title)" style="cursor:hand;color:blue">收藏本站</a></div>
+			<div style="float:right; padding-top:4px;padding-right:10px;"><a onClick="window.external.AddFavorite(location.href,document.title)" style="cursor:hand;">收藏本站</a></div>
 					<div style="float:right; padding-top:7px; padding-right:2px;"> <IMG src="<%=basePaths%>/images/1.jpg" /></div>
 			<div style="float:right; padding-top:4px;padding-right:10px;"> <a href=# onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.alioooo.comt');">设为主页</a></div>
 					<div style="float:right; padding-top:7px; padding-right:2px;"> <IMG src="<%=basePaths%>/images/3.jpg" /></div>
