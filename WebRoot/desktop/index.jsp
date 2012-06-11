@@ -124,18 +124,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         return win;
     }
     var links = [
-            { icon: 'images/3DSMAX.png', title: '填写周报', url: '../case/week.htm' },
-            { icon: 'images/3DSMAX.png', title: 'treegrid', url: '../grid/treegrid/treegrid.htm' },
-            { icon: 'images/3DSMAX.png', title: '多表头', url: '../grid/mulheader/grid2.htm' },
-            { icon: 'images/Program Files Folder.png', title: '固定列', url: '../grid/frozen/frozengrid.htm' },
-            { icon: 'images/Program Files Folder.png', title: '可拖动', url: '../base/drag.htm' },
-            { icon: 'images/Alien Folder.png', title: '树', url: '../tree/draggable.htm' },
-            { icon: 'images/Xp-G5 006.png', title: '下拉框', url: '../comboBox/comboBoxGrid.htm' },
-            { icon: 'images/Xp-G5 006.png', title: '下拉框', url: '../comboBox/comboBoxGrid.htm' },
-            { icon: 'images/Alien Folder.png', title: 'layout', url: '../layout/layoutFullHeight.htm' },
-             { icon: 'images/Alien Folder.png', title: 'menu', url: '../menu/menubar.htm' },
-             { icon: 'images/Xp-G5 006.png', title: 'tab', url: '../tab/tabHtml.htm' },
-             { icon: 'images/3DSMAX.png', title: '分组', url: '../grid/groupable/checkbox.htm' }
+            { icon: 'images/3DSMAX.png', title: '公告通知', url: '../admin/app/notice/notice.jsp' },
+            { icon: 'images/3DSMAX.png', title: '个人考勤', url: '../temp/kaoqin.jsp' },
+            { icon: 'images/3DSMAX.png', title: '值班表', url: '../temp/zbb.jsp' },
+            { icon: 'images/Program Files Folder.png', title: '我的资料', url: '../temp/wdzl.jsp' },
+            { icon: 'images/Program Files Folder.png', title: '常用网址', url: '../admin/app/website/website.jsp' }
         ];
              
     function onResize() {

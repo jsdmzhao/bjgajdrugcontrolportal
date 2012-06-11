@@ -16,9 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</head>
 	<body style="font-size:14px;">
 <!-- 跳转 -->	
-<s:if test="resMap==null">
-<% response.sendRedirect("news/view"); %>
-</s:if>
+
 
 <script type="text/javascript" src="<%=basePath%>/js/lightBox.js"></script>
 <SCRIPT src="<%=basePath%>/js/jquery-1.2.6.pack.js" type=text/javascript></SCRIPT>
@@ -33,9 +31,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 /*弹出内容*/
-function parahtml(width,height)
+function parahtml(url,width,height)
 {
-var htmls= '<iframe src="../admin/index.jsp" width='+width+' height='+height+' frameborder="0"></iframe>';
+var htmls= '<iframe src="'+url+'" width='+width+' height='+height+' frameborder="0"></iframe>';
 return htmls;
 }
 function parahtml2(width,height)

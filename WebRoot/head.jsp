@@ -74,40 +74,52 @@ else {wh="无停驶尾号";}
 <div  class="topdiv">
 <div   class="imgdiv" >
 <img   class="imgdiv"  src="<%=basePaths%>/images/1.png  "/></div >
-<div   class="font1"  align="center"><a href="#"  onclick='Box("msg1",900,700,parahtml(900,700),fontbutton(1,1));' >我的桌面</a></div>
+<div   class="font1"  align="center"><a href="#"  onclick='Box("msg1",900,600,parahtml("desktop/index.jsp",900,600),fontbutton(1,1));' >我的桌面</a></div>
 </div>
 
 <div class="topdiv">
 <div class="imgdiv"  >
-<img  class="imgdiv"   src="<%=basePaths%>/images/2.png  "/></div >
-<div   class="font1"  align="center"><a href="#" onclick='Box("msg2",700,600,parahtml(700,600),fontbutton(2,1));' >考勤情况</a></div>
+<img  class="imgdiv"   src="<%=basePaths%>/images/9.png  "/></div >
+<div   class="font1"  align="center"><a href="#" onclick='Box("msg9",900,600,parahtml("admin/app/news/news.jsp",900,600),fontbutton(9,1));'>新闻管理</a></div>
 </div>
 
 
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/3.png  "/></div >
-<div   class="font1"  align="center"><a href="#" onclick='Box("msg3",600,300,parahtml(600,300),fontbutton(3,1));' >车辆管理</a></div>
+<div   class="font1"  align="center"><a href="#" onclick='Box("msg3",900,600,parahtml("admin/app/car/car.jsp",900,600),fontbutton(3,1));' >车辆管理</a></div>
+</div>
+
+<div class="topdiv">
+<div class="imgdiv"  >
+<img  class="imgdiv"   src="<%=basePaths%>/images/8.png  "/></div >
+<div   class="font1"  align="center"><a href="#" onclick='Box("msg8",900,600,parahtml("temp/nbyj.jsp",900,600),fontbutton(8,1));'>内部邮件</a></div>
+</div>
+
+<div class="topdiv">
+<div class="imgdiv"  >
+<img  class="imgdiv"   src="<%=basePaths%>/images/2.png  "/></div >
+<div   class="font1"  align="center"><a href="#" onclick='Box("msg2",900,600,parahtml("temp/kaoqin.jsp",900,600),fontbutton(2,1));' >考勤情况</a></div>
 </div>
 
 
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/4.png  "/></div >
-<div   class="font1"  align="center"><a href="#" onclick='Box("msg4",600,300,parahtml(600,300),fontbutton(4,1));'>工作日志</a></div>
+<div   class="font1"  align="center"><a href="#" onclick='Box("msg4",900,600,parahtml("temp/gzrz.jsp",900,600),fontbutton(4,1));'>工作日志</a></div>
 </div>
-
+<!-- 
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/5.png  "/></div >
-<div   class="font1"  align="center"><a href="#" onclick='Box("msg5",600,300,parahtml(600,300),fontbutton(5,1));'>工作计划</a></div>
+<div   class="font1"  align="center"><a href="#" onclick='Box("msg5",900,600,parahtml(900,600),fontbutton(5,1));'>工作计划</a></div>
 </div>
-
+ -->
 
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/6.png  "/></div >
-<div   class="font1"  align="center">内部消息</div>
+<div   class="font1"  align="center"><a href="#" onclick='Box("msg6",900,600,parahtml("temp/nbyj.jsp",900,600),fontbutton(6,1));'>内部消息</a></div>
 </div>
 
 
@@ -115,22 +127,9 @@ else {wh="无停驶尾号";}
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/7.png  "/></div >
-<div   class="font1"  align="center">手机短息</div>
+<div   class="font1"  align="center"><a href="#" onclick='Box("msg7",900,600,parahtml("temp/nbyj.jsp",900,600),fontbutton(7,1));'>手机短息</a></div>
 </div>
 
-
-<div class="topdiv">
-<div class="imgdiv"  >
-<img  class="imgdiv"   src="<%=basePaths%>/images/8.png  "/></div >
-<div   class="font1"  align="center">内部邮件</div>
-</div>
-
-
-<div class="topdiv">
-<div class="imgdiv"  >
-<img  class="imgdiv"   src="<%=basePaths%>/images/9.png  "/></div >
-<div   class="font1"  align="center">新闻管理</div>
-</div>
 
 </div>
 </div>
