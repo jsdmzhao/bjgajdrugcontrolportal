@@ -1,0 +1,49 @@
+
+li{list-style-type:none;}
+/* 左右分栏设置 */
+.wrap {width: 960px; margin:0 auto;}
+.wrap .leftzone {float: left;width: 231px;margin:0px 0;}
+/*边栏设置 */
+
+.modTop .sidetitle{height:28px;background:url('../images/sidetitle.gif') no-repeat; font-weight:bold;}
+
+.modTop em{float:left;padding:6px 0 0 11px;font-style:normal;color:#000;}
+.sidecontent{
+	padding-top: 0px;
+	padding-right: 6px;
+	padding-bottom: 6px;
+	padding-left: 6px;
+}
+
+/****左侧商品导航条****/
+.my_left_category{width:180px;}
+.my_left_category h1{height:20px;font-size:14px;font-weight:bold;padding-left:15px;padding-top:8px;margin:0px;color:#FFF;}
+.my_left_category .my_left_cat_list{width:178px;line-height:13.5pt;}
+.my_left_category .my_left_cat_list h2 {margin:0px;padding:3px 5px 0px 9px;}
+.my_left_category .my_left_cat_list h2 a {color:#d6290b;font-weight:bold;font-size:14px;line-height:22px;}
+.my_left_category .my_left_cat_list h2 a:hover {color:#d6290b;font-weight:bold;font-size:14px;line-height:22px;}
+.my_left_category .h2_cat{
+	width:231px;
+	height:26px;
+	background-image:url(../images/my_menubg.gif);
+	background-repeat:no-repeat;
+	line-height:26px;
+	font-weight:normal;
+	color:#333333;
+	position:relative;
+	background-color: #FFFFFF;
+}
+.my_left_category .h2_cat_1{width:178px;height:26px;line-height:26px;font-weight:normal;color:#333333;position:relative;}
+.my_left_category a{font:12px;text-decoration:none;color:#333333;}
+.my_left_category a:hover{text-decoration:underline;color:#ff3333;}
+.my_left_category h3{margin:0px;padding:0px;height:26px;font-size:12px;font-weight:normal;display:block;padding-left:8px;}
+.my_left_category h3 span{color:#999999; width:145px; float:right;}
+.my_left_category h3 a{	line-height:26px;}
+.my_left_category .h3_cat{display:none;width:204px;position:absolute;left:153px;margin-top:-26px;cursor:auto;}
+.my_left_category .shadow{position:inherit;width:204px;}
+.my_left_category .shadow_border{position:inherit;width:200px;border:1px solid #959595; margin-top:1px;border-left-width:0px;background:url('../images/shadow_border.gif') no-repeat 0px 21px;background-color:#ffffff;margin-bottom:3px}
+
+.my_left_category .active_cat{ z-index:99;background-position:0 -25px;cursor:pointer;}
+.my_left_category .active_cat h3 { font-weight:bold}
+.my_left_category .active_cat h3 span{ display:none;}
+.my_left_category .active_cat div{display:block;}

@@ -187,15 +187,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            	}
 			
         	ColumnAction.columnSave(formMap,function (result){
-        		var win = parent || window;
         		if(result == 'success'){
-        			win.LG.showSuccess('保存成功', function () { 
-                        win.LG.closeAndReloadParent(null, "NewsGridTable");
+        			LG.showSuccess('保存成功', function () { 
+                        f_cancel();
+                        parent.loadGrid();
                     });
         		} else {
-        		 	win.LG.showError('保存失败');
+        		 	LG.showError('保存失败');
         		}
-        	});
         	
         	/**
             LG.submitForm(mainform, function (data) {
@@ -212,8 +211,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
         function f_cancel()
         {
-            var win = parent || window;
-            win.LG.closeCurrentTab(null);
+           //f_cancel();
+           parent.dialog_hidden();
         }
 
         function openDialog(divNode){

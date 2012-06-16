@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -36,6 +36,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div id="maingrid"  style="margin:2px;"></div> 
     </form> 
   <script type="text/javascript">
+
+      var dialog;
       //相对路径
       var rootPath = "../";
       //列表结构
@@ -100,7 +102,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               case "add":
                   if (editingrow == null)
                   {
-                	  top.f_addTab(null, '保存信息', '<%=basePath%>admin/app/notice/noticeDetail.jsp');
+                	  //top.f_addTab(null, '保存信息', '<%=basePath%>admin/app/notice/noticeDetail.jsp');
+			  dialog = $.ligerDialog.open({ url: '<%=basePath%>dmin/app/notice/noticeDetail.jsp', 
+                           	height: 600,width: 900,showMax: true, showToggle: true,  showMin: true
+					  });
                   } else
                   {
                       LG.tip('请先提交或取消修改');
@@ -114,7 +119,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               case "modify":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  top.f_addTab(null, '修改栏目信息', '<%=basePath%>noticeUpdate?notice.n_xh=' + selected.n_xh);
+                  //top.f_addTab(null, '修改栏目信息', '<%=basePath%>noticeUpdate?notice.n_xh=' + selected.n_xh);
+			dialog = $.ligerDialog.open({ url: '<%=basePath%>noticeUpdate?notice.n_xh=' + selected.n_xh, 
+                           	height: 600,width: 900,showMax: true, showToggle: true,  showMin: true
+					  });
                   /**
                   if (editingrow == null)
                   {
@@ -145,6 +153,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       function f_reload() {
           grid.loadData();
       }
+      
+      function dialog_hidden()
+      {
+    	  dialog.hidden();
+      }
+
       
       function f_delete() {
           var selected = grid.getSelected();

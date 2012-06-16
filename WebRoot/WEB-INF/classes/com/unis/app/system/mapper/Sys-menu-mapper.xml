@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SysMenuMapper">
+	<resultMap id="Result"  type="java.util.Map">
+		<result property="menuId" column="MENU_ID" jdbcType="DECIMAL"/>
+		<result property="menuNo" column="MENU_NO" jdbcType="VARCHAR"/>
+		<result property="menuParentNo" column="MENU_PARENT_NO" jdbcType="VARCHAR"/>
+		<result property="menuName" column="MENU_NAME" jdbcType="VARCHAR"/>
+		<result property="menuUrl" column="MENU_URL" jdbcType="VARCHAR"/>
+		<result property="menuIcon" column="MENU_ICON" jdbcType="VARCHAR"/>
+		<result property="isvisible" column="ISVISIBLE" jdbcType="CHAR"/>
+	</resultMap>
+	 
+
+	<select id="queryAllInfo" resultMap="Result"  parameterType="java.util.Map" >
+				 select 
+					base.MENU_ID,
+					base.MENU_NO,
+					base.MENU_PARENT_NO,
+					base.MENU_NAME,
+					base.MENU_URL,
+					base.MENU_ICON,
+					base.ISVISIBLE
+				 from SYS_MENU base 
+		 <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="menuId != null and menuId !='' ">  and MENU_ID = #{menuId}</if>
+			<if test="menuNo != null and menuNo !='' ">  and MENU_NO = #{menuNo}</if>
+			<if test="menuParentNo != null and menuParentNo !='' ">  and MENU_PARENT_NO = #{menuParentNo}</if>
+			<if test="menuName != null and menuName !='' ">  and MENU_NAME = #{menuName}</if>
+			<if test="menuUrl != null and menuUrl !='' ">  and MENU_URL = #{menuUrl}</if>
+			<if test="menuIcon != null and menuIcon !='' ">  and MENU_ICON = #{menuIcon}</if>
+			<if test="isvisible != null and isvisible !='' ">  and ISVISIBLE = #{isvisible}</if>
+		</trim>
+		ORDER BY MENU_ID  ASC 
+	</select>
+
+
+	<select id="queryInfo" resultMap="Result" parameterType="java.util.Map" >
+		<include refid="pagination.paginationStart"></include>
+	 select 
+					base.MENU_ID,
+					base.MENU_NO,
+					base.MENU_PARENT_NO,
+					base.MENU_NAME,
+					base.MENU_URL,
+					base.MENU_ICON,
+					base.ISVISIBLE
+				 from SYS_MENU base 
+		 <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="menuId != null and menuId !='' ">  and MENU_ID = #{menuId}</if>
+			<if test="menuNo != null and menuNo !='' ">  and MENU_NO = #{menuNo}</if>
+			<if test="menuParentNo != null and menuParentNo !='' ">  and MENU_PARENT_NO = #{menuParentNo}</if>
+			<if test="menuName != null and menuName !='' ">  and MENU_NAME = #{menuName}</if>
+			<if test="menuUrl != null and menuUrl !='' ">  and MENU_URL = #{menuUrl}</if>
+			<if test="menuIcon != null and menuIcon !='' ">  and MENU_ICON = #{menuIcon}</if>
+			<if test="isvisible != null and isvisible !='' ">  and ISVISIBLE = #{isvisible}</if>
+		</trim>
+		ORDER BY MENU_ID  ASC 
+		<include refid="pagination.paginationLast"></include>
+	</select>
+
+
+	<select id="queryCountInfo" resultType="integer" parameterType="java.util.Map" >
+				select count(base.MENU_ID) from SYS_MENU base
+ 		 <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="menuId != null and menuId !='' ">  and MENU_ID = #{menuId}</if>
+			<if test="menuNo != null and menuNo !='' ">  and MENU_NO = #{menuNo}</if>
+			<if test="menuParentNo != null and menuParentNo !='' ">  and MENU_PARENT_NO = #{menuParentNo}</if>
+			<if test="menuName != null and menuName !='' ">  and MENU_NAME = #{menuName}</if>
+			<if test="menuUrl != null and menuUrl !='' ">  and MENU_URL = #{menuUrl}</if>
+			<if test="menuIcon != null and menuIcon !='' ">  and MENU_ICON = #{menuIcon}</if>
+			<if test="isvisible != null and isvisible !='' ">  and ISVISIBLE = #{isvisible}</if>
+		</trim>
+	</select> 
+	
+	
+
+	<insert id="saveInfo" parameterType="java.util.Map" >
+			INSERT INTO SYS_MENU(
+				 MENU_ID
+			<if test="menuNo != null and menuNo !='' ">  , MENU_NO</if>
+			<if test="menuParentNo != null and menuParentNo !='' ">  ,  MENU_PARENT_NO</if>
+			<if test="menuName != null and menuName !='' ">  ,  MENU_NAME</if>
+			<if test="menuUrl != null and menuUrl !='' ">  ,  MENU_URL</if>
+			<if test="menuIcon != null and menuIcon !='' ">  ,  MENU_ICON</if>
+						<if test="isvisible != null and isvisible !='' ">  , ISVISIBLE</if>
+			)VALUES(
+				SEQ_SYS_MENU_ID.NEXTVAL 
+				<!-- #{n_xh#-->
+			<if test="menuNo != null and menuNo !='' ">  , #{menuNo} </if>
+			<if test="menuParentNo != null and menuParentNo !='' ">  ,  #{menuParentNo} </if>
+			<if test="menuName != null and menuName !='' ">  ,  #{menuName} </if>
+			<if test="menuUrl != null and menuUrl !='' ">  ,  #{menuUrl} </if>
+			<if test="menuIcon != null and menuIcon !='' ">  ,  #{menuIcon} </if>
+			<if test="isvisible != null and isvisible !='' ">  , #{isvisible} </if>
+			)
+		<selectKey resultType="string" keyProperty="id" >
+			 <!--SELECT #{nXh# AS ID FROM dual  -->
+			 SELECT  SEQ_SYS_MENU_ID.CURRVAL  AS ID FROM dual 
+		</selectKey>
+	</insert>
+
+
+	<insert id="saveAllInfo" parameterType="java.util.Map" >
+			INSERT INTO SYS_USER(
+				MENU_ID,
+				MENU_NO,
+				MENU_PARENT_NO,
+				MENU_NAME,
+				MENU_URL,
+				MENU_ICON,
+				ISVISIBLE
+			)VALUES(
+				 SEQ_SYS_MENU_ID.NEXTVAL,  
+				<!--#nXh#,-->
+				#{menuNo},
+				#{menuParentNo},
+				#{menuName},
+				#{menuUrl},
+				#{menuIcon},
+				#{isvisible}
+			)
+		<selectKey resultType="string" keyProperty="id" >
+			 <!--SELECT #{nXh# AS ID FROM dual --> 
+			 SELECT  SEQ_SYS_MENU_ID.CURRVAL  AS ID FROM dual 
+		</selectKey>
+	</insert>
+
+
+
+	<update id="updateInfo" parameterType="java.util.Map"> 
+			update SYS_MENU 
+			<trim prefix="set" prefixOverrides=","> 
+				<if test="menuNo != null and menuNo !='' "> , MENU_NO = #{menuNo}</if>
+				<if test="menuParentNo != null and menuParentNo !='' "> , MENU_PARENT_NO = #{menuParentNo}</if>
+				<if test="menuName != null and menuName !='' "> , MENU_NAME = #{menuName}</if>
+				<if test="menuUrl != null and menuUrl !='' "> , MENU_URL = #{menuUrl}</if>
+				<if test="menuIcon != null and menuIcon !='' "> , MENU_ICON = #{menuIcon}</if>
+				<if test="isvisible != null and isvisible !='' "> , ISVISIBLE = #{isvisible}</if>
+			</trim>
+			<trim prefix="where" prefixOverrides="and |or">  
+				<if test="menuId != null and menuId !='' ">  and MENU_ID = #{menuId}</if>
+				<if test="menuIds != null and menuIds !='' ">  and  MENU_ID in (${menuIds})</if>
+			</trim>
+	</update> 
+	
+	<update id="updateAllInfo" parameterType="java.util.Map"> 
+			update SYS_MENU set 
+				MENU_ID = #{menuId},
+				MENU_NO = #{menuNo},
+				MENU_PARENT_NO = #{menuParentNo},
+				MENU_NAME = #{menuName}
+				MENU_URL = #{menuUrl}
+				MENU_ICON = #{menuIcon}
+				ISVISIBLE = #{isvisible}
+			WHERE 
+				MENU_ID = #{menuId}
+	</update> 
+
+	<delete id="removeInfo" parameterType="java.util.Map"> 
+			 DELETE FROM SYS_MENU
+			 WHERE
+			<!--N_XH = #{nXh#
+			<![CDATA[ USER_ID IN (${userIds}) ]]>--> 
+			 MENU_ID =#{menuId} 
+	</delete> 
+</mapper>

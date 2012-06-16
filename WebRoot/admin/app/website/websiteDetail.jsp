@@ -148,21 +148,21 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
 	            formMap['n_lbxh'] = formMap['n_lbxhName_val'];
 	 
 	        	WebsiteAction.websiteSave(formMap,function (result){
-	        		var win = parent || window;
-	        		if(result == 'success'){
-	        			win.LG.showSuccess('保存成功', function () { 
-	                        win.LG.closeAndReloadParent(null, "NewsGridTable");
-	                    });
-	        		} else {
-	        		 	win.LG.showError('保存失败');
-	        		}
+	        		//var win = parent || window;
+	        	        if(result == 'success'){
+        			LG.showSuccess('保存成功', function () { 
+                        		f_cancel();
+                        		parent.loadGrid();
+                    		});
+        			} else {
+        		   		 LG.showError('保存失败');
+        			}
 	        	});
 	        	
 	        }
 	        function f_cancel()
 	        {
-	            var win = parent || window;
-	            win.LG.closeCurrentTab(null);
+	             parent.dialog_hidden();
 	        }
 	
 	

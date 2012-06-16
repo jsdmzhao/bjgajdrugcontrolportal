@@ -44,7 +44,7 @@ String newsType = request.getParameter("newsType");
 <body style="padding:2px;height:100%; text-align:center;">
   <input type="hidden" name="MenuNo" value="NewsGridTable"/>
   <div id="layout">
-    <div position="left" title="主菜单模块" id="mainmenu">
+    <div position="left" title="主菜单模块" id="mainmenu" style="width:100%;height:95%;overflow: auto;">
         <ul id="maintree"></ul>
      </div>
     <div position="center" title="子菜单列表"> 
@@ -158,62 +158,27 @@ String newsType = request.getParameter("newsType");
         ]
     };
 
-    var tempdata={
-    	    "Rows":[{
-        	    "MenuID":8,
-        	    "MenuNo":"sysmenu",
-        	    "MenuParentNo":"system",
-        	    "MenuOrder":null,
-        	    "MenuName":"菜单管理",
-        	    "MenuUrl":"system/menu.aspx",
-        	    "MenuIcon":"lib/icons/32X32/sitemap.gif",
-        	    "IsVisible":1,
-        	    "IsLeaf":1
-        	    },{
-            	 "MenuID":19,
-            	 "MenuNo":"sysright",
-            	 "MenuParentNo":"system",
-            	 "MenuOrder":null,
-            	 "MenuName":"权限中心",
-            	 "MenuUrl":"system/right.aspx",
-            	 "MenuIcon":"lib/icons/32X32/link.gif",
-            	 "IsVisible":null,
-            	 "IsLeaf":null
-            	 },{
-                 "MenuID":42,
-                 "MenuNo":"BaseManage",
-                 "MenuParentNo":null,
-                 "MenuOrder":0,
-                 "MenuName":"基础信息管理",
-                 "MenuUrl":null,
-                 "MenuIcon":"lib/icons/silkicons/application.png",
-                 "IsVisible":1,
-                 "IsLeaf":0
-                 }],"Total":"3"};
+    var tempdata={};
     
     var tree = $("#maintree").ligerTree({
-        data:[
-              {text: '领导动态',MenuNo:'1'},
-              {text: '机构设置',MenuNo:'2'},
-              {text: '工作交流',MenuNo:'3'},
-              {text: '禁毒动态',MenuNo:'4'},
-              {text: '机构设置',MenuNo:'5'},
-              {text: '通知通报',MenuNo:'6'}
-        ],
         checkbox: false,
         onClick: function (node)
         {
-            if (!node.data.MenuNo) return;
+            if (!node.data.value) return;
             var where = {
                 op: 'and',
-                rules: [{ field: 'MenuParentNo', value: node.data.MenuNo, op: 'equal'}]
+                rules: [{ field: 'MenuParentNo', value: node.data.value, op: 'equal'}]
             };
-            newsType =  node.data.MenuNo;
-            currentMenuParentNo = node.data.MenuNo;
+            newsType =  node.data.value;
+            currentMenuParentNo = node.data.value;
             loadGrid(newsType);
             //grid.set('parms', { where: JSON2.stringify(where) });
             //grid.set('data', tempdata);
         }
+    });
+
+    NewsAction.getNewsLanmuCombox(function(data){
+    	tree.setData(eval(data));
     });
 
     var layout = $("#layout").ligerLayout({ leftWidth: 140 });
@@ -311,7 +276,7 @@ String newsType = request.getParameter("newsType");
 				var c_shjg = data.Rows[i].c_shjg;
 
 				if(c_shjg == '1'){
-					rowData += "<img src='liger/lib/icons/silkicons/flag_red.png'/>通过&nbsp;&nbsp;";
+					rowData += "<img src='<%=basePath%>liger/lib/icons/silkicons/flag_red.png'/>通过&nbsp;&nbsp;";
 				}else {
 					rowData += "<span style=width:33%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
 				}

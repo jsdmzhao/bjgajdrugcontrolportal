@@ -75,6 +75,19 @@
 			<result name="success">/index.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
+		
+		 <action name="detail" class="com.unis.app.news.action.NewsAction" method="newsQuery">
+			<result name="success">/news_detail.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		 <action name="list" class="com.unis.app.news.action.NewsAction" method="newsQuerys">
+			<result name="success">/news_list.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		
+		
      </package>
 
 </struts>

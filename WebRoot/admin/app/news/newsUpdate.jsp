@@ -10,7 +10,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
-	<base href="<%=basePath%>">
     <title>新闻 明细</title>
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
@@ -33,9 +32,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="<%=basePath%>ckeditor/ckeditor.js"></script>
 	<script type="text/javascript" src="<%=basePath%>ckfinder/ckfinder.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/My97DatePicker/WdatePicker.js"></script>
-	<script type='text/javascript' src='dwr/engine.js'></script>
-  	<script type='text/javascript' src='dwr/util.js'></script>
-  	<script type='text/javascript' src='dwr/interface/NewsAction.js'></script>
+	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/interface/NewsAction.js'></script>
 </head>
 <body style="padding-bottom:31px;">
     <form id="mainform"  method="post"></form> 
@@ -207,13 +206,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	formMap["c_nr"] = editor.document.getBody().getHtml();
 
         	NewsAction.newsSave(formMap, function (result){
-        		var win = parent || window;
+        		//var win = parent || window;
         		if(result == 'success'){
-        			win.LG.showSuccess('保存成功', function () { 
-                        win.LG.closeAndReloadParent(null, "maingrid")
+        			LG.showSuccess('保存成功', function () { 
+                        //win.LG.closeAndReloadParent(null, "maingrid")
+        				 f_cancel();
+        				 parent.loadGrid("<s:property value='news.c_lm'/>");
                     });
         		} else {
-        		 	win.LG.showError('保存失败');
+        		 	LG.showError('保存失败');
         		}
         	});
         	
@@ -232,8 +233,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
         function f_cancel()
         {
-            var win = parent || window;
-            win.LG.closeCurrentTab(null);
+        	parent.dialog_hidden();
         }
         
 		//DWRUtil.setValues("mainform",'<s:property value="news"/>'); 

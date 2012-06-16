@@ -10,7 +10,6 @@ String newsType = request.getParameter("newsType");
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
-	<base href="<%=basePath%>">
     <title>新闻 明细</title>
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
@@ -33,13 +32,13 @@ String newsType = request.getParameter("newsType");
     <script type="text/javascript" src="<%=basePath%>ckeditor/ckeditor.js"></script>
 	<script type="text/javascript" src="<%=basePath%>ckfinder/ckfinder.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/My97DatePicker/WdatePicker.js"></script>
-	<script type='text/javascript' src='dwr/engine.js'></script>
-  	<script type='text/javascript' src='dwr/util.js'></script>
-  	<script type='text/javascript' src='dwr/interface/NewsAction.js'></script>
+	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/interface/NewsAction.js'></script>
 
 </head>
 <body style="padding-bottom:31px;">
-    <form id="mainform"  method="post"></form> 
+    <form id="mainform2"  method="post"></form> 
     <script type="text/javascript"> 
 	    
         var config = {"Form":{ 
@@ -130,14 +129,14 @@ String newsType = request.getParameter("newsType");
         LG.setFormDefaultBtn(f_cancel,isView ? null : f_save);
 
         var deptTree = {
-            url :'../handler/tree.ashx?view=CF_Department&idfield=DeptID&textfield=DeptName&pidfield=DeptParentID',
+            url :'',
             checkbox:false,
             nodeWidth :220
         };
 
         //创建表单结构
-        var mainform = $("#mainform");  
-        mainform.ligerForm({ 
+        var mainform2 = $("#mainform2");  
+        mainform2.ligerForm({ 
          inputWidth: 280,
          fields : config.Form.fields//,
 		 //toJSON:JSON2.stringify
@@ -148,29 +147,27 @@ String newsType = request.getParameter("newsType");
         var actionRoot = "";
         if(isEdit){ 
             $("#LoginName").attr("readonly", "readonly").removeAttr("validate");
-            mainform.attr("action", actionRoot + "newsUpdate"); 
+            mainform2.attr("action", actionRoot + "newsUpdate"); 
         }
         if (isAddNew) {
-            mainform.attr("action", actionRoot + "newsSave");
+            mainform2.attr("action", actionRoot + "newsSave");
         }
         else { 
-            LG.loadForm(mainform, { type: 'AjaxMemberManage', method: 'newsQuery', data: { ID: currentID} },f_loaded);
+            LG.loadForm(mainform2, { type: 'AjaxMemberManage', method: 'newsQuery', data: { ID: currentID} },f_loaded);
         }  
 
-        
-          
         if(!isView) 
         {
             //验证
             jQuery.metadata.setType("attr", "validate"); 
-            LG.validate(mainform);
+            LG.validate(mainform2);
         } 
 
 		function f_loaded()
         {
             if(!isView) return; 
             //查看状态，控制不能编辑
-            $("input,select,textarea",mainform).attr("readonly", "readonly");
+            $("input,select,textarea",mainform2).attr("readonly", "readonly");
         }
 
         //<!-- 设置一些默认参数 -->
@@ -181,7 +178,7 @@ String newsType = request.getParameter("newsType");
         
         function f_save() {
 
-        	var formMap = DWRUtil.getValues("mainform"); 
+        	var formMap = DWRUtil.getValues("mainform2"); 
 
         	if(formMap["c_sftwwz"] == true){
         		formMap["c_sftwwz"] = '1';
@@ -198,18 +195,19 @@ String newsType = request.getParameter("newsType");
         	formMap["c_nr"] = editor.document.getBody().getHtml();
 			
         	NewsAction.newsSave(formMap,function (result){
-        		var win = parent || window;
+        		//var win = parent || window;
         		if(result == 'success'){
-        			win.LG.showSuccess('保存成功', function () { 
-                        win.LG.closeAndReloadParent(null, "NewsGridTable");
+        			LG.showSuccess('保存成功', function () { 
+                        f_cancel();
+                        parent.loadGrid('<%=newsType%>');
                     });
         		} else {
-        		 	win.LG.showError('保存失败');
+        		    LG.showError('保存失败');
         		}
         	});
         	
         	/**
-            LG.submitForm(mainform, function (data) {
+            LG.submitForm(mainform2, function (data) {
                 var win = parent || window;
                 //if (data.IsError) {  
                 //    win.LG.showError('错误:' + data.Message);
@@ -223,8 +221,7 @@ String newsType = request.getParameter("newsType");
         }
         function f_cancel()
         {
-            var win = parent || window;
-            win.LG.closeCurrentTab(null);
+            parent.dialog_hidden();
         }
 
         function openDialog(divNode){

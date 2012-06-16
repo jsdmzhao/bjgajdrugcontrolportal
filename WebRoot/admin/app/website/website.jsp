@@ -38,6 +38,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <script type="text/javascript">
       //相对路径
       var rootPath = "../";
+
+ 	var dialog ;
+
       //列表结构
       var tempdata = ""; 
       var grid = $("#maingrid").ligerGrid({
@@ -99,7 +102,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           var editingrow = grid.getEditingRow();
           switch (item.id) {
               case "add":
-                  top.f_addTab(null, '增加常用网址信息', '<%=basePath%>admin/app/website/websiteDetail.jsp');
+                  //top.f_addTab(null, '增加常用网址信息', '<%=basePath%>admin/app/website/websiteDetail.jsp');
+		  dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/website/websiteDetail.jsp', 
+                           height: 600,width: 900,showMax: true, showToggle: true,  showMin: true
+					  });
                   /**
                   if (editingrow == null)
                   {
@@ -113,12 +119,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               case "view":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  top.f_addTab(null, '查看常用网址信息', '<%=basePath%>websiteUpdate?news.n_xh=' + selected.n_xh);
+                  //top.f_addTab(null, '查看常用网址信息', '<%=basePath%>websiteUpdate?news.n_xh=' + selected.n_xh);
                   break;
               case "modify":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  top.f_addTab(null, '修改常用网址信息', '<%=basePath%>websiteUpdate?website.n_xh=' + selected.n_xh);
+                  //top.f_addTab(null, '修改常用网址信息', '<%=basePath%>websiteUpdate?website.n_xh=' + selected.n_xh);
+		  dialog = $.ligerDialog.open({ url: '<%=basePath%>websiteUpdate?website.n_xh=' + selected.n_xh, 
+                           height: 600,width: 900,showMax: true, showToggle: true,  showMin: true
+					  });
                   /**
                   if (editingrow == null)
                   {
@@ -146,6 +155,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   break;
           }
       }
+     function dialog_hidden()
+      {
+    	  dialog.hidden();
+      }
+
       function f_reload() {
           grid.loadData();
       }

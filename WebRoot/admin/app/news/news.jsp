@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -55,9 +55,11 @@ String newsType = request.getParameter("newsType");
   </div>
   <ul class="iconlist">
   </ul>
+  
   <script type="text/javascript">
 
       var newsType = '<%=newsType %>';
+      var dialog ;
   
       //验证
       var maingform = $("#mainform");
@@ -72,9 +74,12 @@ String newsType = request.getParameter("newsType");
           switch (item.text)
           {
               case "增加":
-                  if (editingrow == null)
-                  {
-                      top.f_addTab(null, '增加新闻信息', '<%=basePath%>admin/app/news/newsDetail.jsp?newsType='+newsType);
+                  if (editingrow == null) {
+                      
+                      //top.f_addTab(null, '增加新闻信息', '<!%=basePath%>admin/app/news/newsDetail.jsp?newsType='+newsType);
+                     dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/news/newsDetail.jsp?newsType='+newsType, 
+                           height: 600,width: 900,showMax: true, showToggle: true,  showMin: true
+					  });
                   } else
                   {
                       LG.tip('请先提交或取消修改');
@@ -83,11 +88,12 @@ String newsType = request.getParameter("newsType");
               case "修改":
              	  var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  if (editingrow == null)
-                  {
-                      top.f_addTab(null, '修改新闻信息', '<%=basePath%>newsUpdate?news.n_xh=' + selected.n_xh);
-                  } else
-                  {
+                  if (editingrow == null) {
+                	  dialog = $.ligerDialog.open({ url: '<%=basePath%>newsUpdate?news.n_xh=' + selected.n_xh, 
+                          height: 600,width: 900,showMax: true, showToggle: true,  showMin: true
+					  });
+                      //stop.f_addTab(null, '修改新闻信息', '<!%=basePath%>newsUpdate?news.n_xh=' + selected.n_xh);
+                  } else {
                       LG.tip('请先提交或取消修改');
                   }
                   break;
@@ -162,6 +168,14 @@ String newsType = request.getParameter("newsType");
                   break;
           }
       }
+
+      
+      function dialog_hidden()
+      {
+    	  dialog.hidden();
+      }
+
+      
       function f_reload()
       {
           grid.loadGrid(newsType);

@@ -1,3 +1,6 @@
+
+
+
 .nav-ul li{
 	float: left;
 	width: 78px;
@@ -19,7 +22,7 @@
  
 .nav-ul li a{
 	color: #002b73;
-	font-family: "宋体";
+	font-family: "";
 	display: inline-block;
 }
 
@@ -39,6 +42,7 @@
 	height: 25px;
 	line-height: 20px;
 	text-indent: 10px;
+	font-size:12px;	
 }
 
 .index-ul li.one{
@@ -46,12 +50,14 @@
 	height: 23px;
 	line-height: 23px;
 	text-indent: 20px;
+	padding-left:10px;
 }
 .index-ul li.two{
 	background:url("../images/index/numb.png") 0 -19px no-repeat;
 	height: 23px;
 	line-height: 23px;
 	text-indent: 20px;
+		padding-left:10px;
 }
 
 .index-ul li.three{
@@ -59,6 +65,7 @@
 	height: 23px;
 	line-height: 23px;
 	text-indent: 20px;
+		padding-left:10px;
 }
 
 .index-ul li.four{
@@ -66,6 +73,7 @@
 	height: 23px;
 	line-height: 23px;
 	text-indent: 20px;
+		padding-left:10px;
 }
 
 .index-ul li.five{
@@ -73,36 +81,42 @@
 	height: 23px;
 	line-height: 23px;
 	text-indent: 20px;
+		padding-left:10px;
 }
 .index-ul li.six{
 	background:url("../images/index/numb.png") 0 -116px no-repeat;
 	height: 23px;
 	line-height: 23px;
 	text-indent: 20px;
+		padding-left:10px;
 }
 .index-ul li.serv{
 	background:url("../images/index/numb.png") 0 -140px no-repeat;
 	height: 23px;
 	line-height: 23px;
 	text-indent: 20px;
+		padding-left:10px;
 }
 .index-ul li.eight{
 	background:url("../images/index/numb.png") 0 -164px no-repeat;
 	height: 23px;
 	line-height: 23px;
 	text-indent: 20px;
+		padding-left:10px;
 }
 .index-ul li.nine{
 	background:url("../images/index/numb.png") 0 -188px no-repeat;
 	height: 23px;
 	line-height: 23px;
 	text-indent: 20px;
+		padding-left:10px;
 }
 .index-ul li.ten{
 	background:url("../images/index/numb.png") 0 -212px no-repeat;
 	height: 23px;
 	line-height: 23px;
 	text-indent: 20px;
+		padding-left:10px;
 
 }
 
@@ -130,7 +144,7 @@ width:220px;
 .main-box .title1{
 	display:inline-block;
 	background: url("../images/index/bg-2.png") no-repeat;
-	padding: 6px 20px 0;
+	padding: 5px 20px 5px 5px;
 	width: 100%;
 	color: #FFF;
 	font-size: 14px;
@@ -141,11 +155,19 @@ width:220px;
 	background: url("../images/index/bg-2.png") 0 bottom no-repeat;
 	padding: 20px 0 4px 20px;
 }
+.main-con img
+{
+	margin-top: 10px;
+	border: 0px;
+}
+.main-con2{
+	background: url("../images/index/bg-2.png") 0 bottom no-repeat;
+	padding: 20px 0 4px 10px;
+}
 /*side*/
 .search-box{
 height: 43px;
-line-height:43px;
-text-indent:150px;
+
 margin-bottom: 4px;
 background: url('../images/index/search-bg.png') no-repeat;
 }
@@ -190,7 +212,7 @@ margin-bottom: 4px;
 	height: 55px;
 	line-height: 55px;
 	text-align: center;
-	font-family: "宋体";
+	font-family: "";
 	font-size: 14px;
 	font-weight: bold;
 	color: #002b70;
@@ -260,14 +282,20 @@ margin-bottom: 4px;
 
 .pass-cont-one{
 	display: none;
+	
 }
  
 .pass-cont-two{
 	display: none;
+
+	background-color: white;
+	height: 153px;
 }
 .pass-cont-three{
 	margin:0 auto;
 	padding:15px;
+	background-color: white;
+	height: 123px;
 }
 .pass-cont-three ul li{
 	float: left;
@@ -277,4 +305,62 @@ margin-bottom: 4px;
 	color: #FF0000;
 	font-weight: bold;
 		font-size: 14px;
+}
+h4 {
+	font-size:120%;
+	color:#dc5b24;
+	font-weight:normal;
+	letter-spacing:-.05em;
+	position:relative;
+	margin:.6em 0;
+	padding-top:1px;
+	width:80%;
+}
+h1 span, h2 span, h3 span, h4 span{
+	position:absolute;
+	display:block;
+	top:0;
+	left:0;
+	height:80%;
+	width:100%;
+	background:url(../images/gradient_1.png) repeat-x;
+}
+h1 span, h3 span{background:url(../images/gradient_2.png) repeat-x;}
+* html h1 span, * html h3 span{
+	background-color:#fff;
+	back\ground-color:transparent;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../images/gradient_2.png", sizingMethod="scale");
+}
+* html h2 span, * html h4 span{
+background-color:#fff;
+back\ground-color:transparent;
+filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../images/gradient_1.png", sizingMethod="scale");
+}
+
+.searchinput{
+border-right-width: 0px;
+padding-left: 3px;
+width: 348px;
+font-family: arial;
+float: left;
+border-top-width: 0px;
+border-bottom-width: 0px;
+color: #636365;
+margin-left: 4px;
+font-size: 8pt;
+vertical-align: middle;
+border-left-width: 0px;
+margin-right: 3px;
+}
+.tab_search{
+border-bottom: #cccccc 1px solid;
+border-left: #cccccc 1px solid;
+height: 25px;
+border-top: #cccccc 1px solid;
+border-right: #cccccc 1px solid;
+}
+.searchaction{
+width: 21px;
+float: left;
+height: 17px;
 }
