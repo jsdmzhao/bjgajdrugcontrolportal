@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="NewsMapper">
+	 <resultMap type="News"    id="resultNews">
+	 	<result column="N_XH"   property="n_xh"/>
+	 	<result column="C_BT"   property="c_bt"/>
+	 	<result column="D_FBSJ" property="d_fbsj"/>
+	 	<result column="C_SFZD" property="c_sfzd"/>
+	 	<result column="C_SFGL" property="c_sfgl"/>
+	 	<result column="C_SFTJ" property="c_sftj"/>
+	 	<result column="C_SHJG" property="c_shjg"/>
+	 	<result column="C_LM"   property="c_lm"/>
+	 </resultMap>
+	<select id="getNews" parameterType="News" resultType="News">
+		SELECT * FROM B_XINWEN WHERE N_XH = #{n_xh}
+	</select>
+	 
+	<select id="getNewsList" parameterType="News" resultMap="resultNews">
+	  SELECT N_XH,
+	   C_BT,
+       TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
+       C_SFZD,
+       C_SFGL,
+       C_SFTJ,
+       C_SHJG
+	  FROM B_XINWEN
+	 	 WHERE C_LM = #{c_lm}
+	  <if test="c_sfsh != null and c_sfsh != ''">
+	 	 AND C_SFSH = #{c_sfsh}
+	  </if>
+	</select>
+	
+	<delete id="deleteNews" parameterType="int">
+		delete from B_XINWEN WHERE N_XH = #{n_xh}
+	</delete>
+	
+	<insert id="insertNews" parameterType="hashmap">
+		 INSERT INTO B_XINWEN(
+			N_XH,
+			C_BT,
+			C_SFTWWZ,
+			C_TPLJDZ,
+			C_TPKD,
+			C_TPGD,
+			C_SFSCSP,
+			C_SPLJDZ,
+			C_LJ,
+			C_JJ,
+			C_NR,
+			D_FBSJ,
+			C_LM,
+			C_YHID,
+			C_YHZID,
+			C_SFSH,
+			C_SHR,
+			D_SHSJ,
+			N_YDCS,
+			C_SFTJ,
+			C_SFZD,
+			N_XXXH ) 
+		VALUES (	            	
+		    seq_b_xinwen.nextval,
+		     #{c_bt,jdbcType=VARCHAR},    
+		     #{c_sftwpz,jdbcType=CHAR},
+	         #{c_tpljdz,jdbcType=VARCHAR},   
+	         #{c_tpkd,jdbcType=NUMERIC},          
+	         #{c_tpgd,jdbcType=NUMERIC},          
+	         #{c_sfscsp,jdbcType=CHAR},        
+	         #{c_spljdz,jdbcType=VARCHAR},        
+	         #{c_lj,jdbcType=VARCHAR},            
+	         #{c_jj,jdbcType=VARCHAR},            
+	         #{c_nr,javaType=String,jdbcType=CLOB,handler=ClobTypeHandler},            
+	         to_date(#{d_fbsj,jdbcType=VARCHAR},'yyyy-mm-dd hh24:mi:ss'),          
+	         #{c_lm,jdbcType=VARCHAR},            
+	         #{c_yhid,jdbcType=VARCHAR},            
+	         #{c_yhzid,jdbcType=VARCHAR},         
+	         #{c_sfsh,jdbcType=CHAR},          
+	         #{c_shr,jdbcType=VARCHAR},           
+	         to_date(#{d_shsj,jdbcType=DATE},'yyyy-mm-dd hh24:mi:ss'),           
+	         #{n_ydcs,jdbcType=NUMERIC},          
+	         #{c_sftj,jdbcType=VARCHAR},          
+	         #{c_sfzd,jdbcType=VARCHAR},          
+	       	 #{n_xxxh,jdbcType=NUMERIC}         
+	    )  
+	</insert>
+	
+	<update id="updateNews" parameterType="News">
+		UPDATE B_XINWEN
+		   SET  C_BT     =	#{c_bt,jdbcType=VARCHAR},
+				C_SFTWWZ =	#{c_sftwwz}, 
+				C_TPLJDZ =	#{c_tpljdz,jdbcType=VARCHAR}, 							
+				C_TPKD   =	#{c_tpkd,jdbcType=NUMERIC},   							
+				C_TPGD   =	#{c_tpgd,jdbcType=NUMERIC},   							
+				C_SFSCSP =	#{c_sfscsp,jdbcType=VARCHAR},  							
+				C_SPLJDZ =	#{c_spljdz,jdbcType=VARCHAR}, 							
+				C_LJ     =	#{c_lj,jdbcType=VARCHAR},     							
+				C_JJ     =	#{c_jj,jdbcType=VARCHAR},     							
+				C_NR     =	#{c_nr,jdbcType=CLOB,handler=ClobTypeHandler},     							
+				D_FBSJ   =	to_date(#{d_fbsj,jdbcType=VARCHAR},'yyyy-mm-dd hh24:mi:ss'),      							
+				C_LM     =	#{c_lm,jdbcType=VARCHAR},     							
+				C_YHID   =	#{c_yhid,jdbcType=VARCHAR},     							
+				C_YHZID  =	#{c_yhzid,jdbcType=VARCHAR},  							
+				C_SFSH   =	#{c_sfsh,jdbcType=VARCHAR},   							
+				C_SHR    =	#{c_shr,jdbcType=VARCHAR},    							
+				D_SHSJ   =	to_date(#{d_shsj,jdbcType=VARCHAR},'yyyy-mm-dd hh24:mi:ss'),    							
+				N_YDCS   =	#{n_ydcs,jdbcType=NUMERIC},   							
+				C_SFTJ   =	#{c_sftj,jdbcType=VARCHAR},   							
+				C_SFZD   =	#{c_sfzd,jdbcType=VARCHAR},   							
+				N_XXXH   =	#{n_xxxh,jdbcType=NUMERIC}    							
+		WHERE N_XH = #{n_xh}
+	</update>
+	
+	<update id="operateNews" parameterType="map">
+		UPDATE B_XINWEN
+			SET 
+			<if test="operateType == 'zd' ">C_SFZD = #{value} </if>
+			<if test="operateType == 'gl' ">C_SFGL = #{value} </if>
+			<if test="operateType == 'tj' ">C_SFTJ = #{value} </if>
+			<if test="operateType == 'sh' ">
+				C_SFSH = 1,
+				C_SHJG = #{value},
+				C_SHR = #{c_yhid},
+				D_SHSJ = SYSDATE
+			</if>			
+		    WHERE N_XH = #{n_xh}
+	</update>
+	 
+	<select id="getNewsLanmuCombox" resultType="Combox" parameterType="string">  
+	   SELECT C_LMDM VALUE,
+	          C_LMMC TEXT
+	   FROM B_LANMU 
+	   WHERE C_SJLMDM = '0000'
+	   	AND C_YHZID = #{c_yhzid}
+	</select>
+	 
+	<select id="getLanmuChilden" parameterType="string" resultType="Combox">  
+	  SELECT C_LMDM VALUE,
+	         C_LMMC TEXT
+	  FROM B_LANMU
+		WHERE C_SJLMDM = #{c_sjlmdm}
+	</select>
+	
+	
+</mapper>

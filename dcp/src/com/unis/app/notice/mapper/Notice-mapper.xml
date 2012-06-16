@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="NoticeMapper">
+	 <resultMap type="Notice"   id="resultNotice">
+	 	<result column="N_XH"   property="n_xh"/>
+	 	<result column="C_BT"   property="c_bt"/>
+	 	<result column="C_YHID" property="c_yhid"/>
+	 	<result column="D_DJ"   property="d_dj"/>
+	 </resultMap>
+	 
+	<select id="getNotice" parameterType="Notice" resultType="Notice">
+		SELECT * FROM B_GONGGAO WHERE N_XH = #{n_xh}
+	</select>
+	 
+	<select id="getNoticeList" resultMap="resultNotice">
+		SELECT N_XH,
+		       C_BT,
+		       TO_CHAR(D_DJ,'YYYY-MM-DD hh24:MI:SS') D_DJ,
+		       C_YHID
+		  FROM B_GONGGAO
+	</select>
+	
+	<delete id="deleteNotice" parameterType="int">
+		DELETE FROM B_GONGGAO WHERE N_XH = #{n_xh}
+	</delete>
+	
+	<insert id="insertNotice" parameterType="hashmap">
+		 INSERT INTO B_GONGGAO(
+		   N_XH     ,
+		   C_BT     ,
+		   C_YHID   ,
+		   C_YHZID  ,
+		   C_NR     ,
+		   D_DJ    ) 
+		VALUES (	            	
+		     seq_b_gonggao.nextval,  
+		     #{c_bt,jdbcType=VARCHAR},
+	         #{c_yhid,jdbcType=VARCHAR},   
+	         #{c_yhzid,jdbcType=VARCHAR},          
+	         #{c_nr,javaType=String,jdbcType=CLOB,handler=ClobTypeHandler}, 
+	       	 sysdate      
+	    )  
+	</insert>
+	
+	<update id="updateNotice" parameterType="Notice">
+		UPDATE B_GONGGAO
+		   SET  C_BT   =	#{c_bt,jdbcType=VARCHAR},
+				C_YHID   =	#{c_yhid,jdbcType=VARCHAR}, 
+				C_YHZID   =	#{c_yhzid,jdbcType=VARCHAR}, 							   							
+				C_NR     =	#{c_nr,jdbcType=CLOB,handler=ClobTypeHandler}							
+		WHERE N_XH = #{n_xh}
+	</update>
+	
+	
+</mapper>

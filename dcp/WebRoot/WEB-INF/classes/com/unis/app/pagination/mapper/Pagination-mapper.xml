@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pagination">
+
+	<sql id="paginationStart">
+		<![CDATA[
+        	select * from (select row_.*, rownum rownum_ from (
+                 ]]>
+	</sql>
+
+	<sql id="paginationLast">
+		<![CDATA[
+			) row_ where rownum <=#{lastIndex} ) where rownum_ > #{startIndex}
+                 ]]>
+	</sql>
+
+</mapper>
