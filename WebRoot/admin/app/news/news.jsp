@@ -227,10 +227,12 @@ String newsType = request.getParameter("newsType");
             { line:true },
             { text: '修改', click: itemclick, img: "<%=basePath%>liger/lib/icons/miniicons/page_edit.gif" },
             { line: true },
+			/****
             { text: '保存', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/page_save.png" },
             { line: true },
             { text: '取消', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/cancel.png" },
             { line: true },
+            ****/
             { text: '查看', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png" },
             { line: true },
             { text: '删除', click: itemclick, img: "<%=basePath%>liger/lib/icons/miniicons/page_delete.gif" },
