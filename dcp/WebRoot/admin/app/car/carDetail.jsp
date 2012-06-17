@@ -151,21 +151,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            formMap['n_cllbxh'] = formMap['n_cllbxhName_val'];
 	 
 	        	CarAction.carSave(formMap,function (result){
-	        		var win = parent || window;
 	        		if(result == 'success'){
-	        			win.LG.showSuccess('保存成功', function () { 
-	                        win.LG.closeAndReloadParent(null, "NewsGridTable");
-	                    });
-	        		} else {
-	        		 	win.LG.showError('保存失败');
-	        		}
+        			LG.showSuccess('保存成功', function () { 
+                        f_cancel();
+                        parent.loadGrid();
+                    });
+        		} else {
+        		 	LG.showError('保存失败');
+        		}
 	        	});
 	        	
 	        }
 	        function f_cancel()
 	        {
-	            var win = parent || window;
-	            win.LG.closeCurrentTab(null);
+	           parent.dialog_hidden();
 	        }
 	
 	

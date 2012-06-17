@@ -114,8 +114,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   {
                       //addNewRow();
                 	  //top.f_addTab(null, '保存信息', '<%=basePath%>admin/app/column/columnDetail.jsp?c_sjlmdm=0000');
-			  dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/column/columnDetail.jsp?c_sjlmdm=0000', 
-                           height: 600,width: 900,showMax: true, showToggle: true,  showMin: true
+			  		  dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/column/columnDetail.jsp?c_sjlmdm=0000', 
+                           height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
 					  });
                   } else
                   {
@@ -125,7 +125,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               case "add2":
             	  var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  top.f_addTab(null, '保存信息', '<%=basePath%>admin/app/column/columnDetail.jsp?c_sjlmdm='+ selected.c_lmdm);
+                  //top.f_addTab(null, '保存信息', '<%=basePath%>admin/app/column/columnDetail.jsp?c_sjlmdm='+ selected.c_lmdm);
+                  dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/column/columnDetail.jsp?c_sjlmdm='+ selected.c_lmd, 
+                          height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+				  });
                   break;
               case "view":
                   var selected = grid.getSelected();
@@ -136,8 +139,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
                   //top.f_addTab(null, '修改栏目信息', '<%=basePath%>columnUpdate?column.n_xh=' + selected.n_xh);
-		  dialog = $.ligerDialog.open({ url: '<%=basePath%>columnUpdate?column.n_xh=' + selected.n_xh, 
-                           height: 600,width: 900,showMax: true, showToggle: true,  showMin: true
+		  			dialog = $.ligerDialog.open({ url: '<%=basePath%>columnUpdate?column.n_xh=' + selected.n_xh, 
+                           height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
 					  });
                   /**
                   if (editingrow == null)

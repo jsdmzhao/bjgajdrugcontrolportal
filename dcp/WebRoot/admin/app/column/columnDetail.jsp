@@ -209,13 +209,6 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
 			});
         }
 
-
-
-	function f_cancel()
-        {
-            parent.dialog_hidden();
-        }
-
         $(function(){
        	 if ($.browser.msie) {
        	  	$('input:checkbox').click(function () { 

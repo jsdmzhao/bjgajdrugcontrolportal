@@ -36,6 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div id="maingrid"  style="margin:2px;"></div> 
     </form> 
   <script type="text/javascript">
+var dialog;
       //相对路径
       var rootPath = "../";
       //列表结构
@@ -87,7 +88,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           var editingrow = grid.getEditingRow();
           switch (item.id) {
               case "add":
-                  top.f_addTab(null, '增加车辆申请信息', '<%=basePath%>admin/app/car/carDetail.jsp');
+                  //top.f_addTab(null, '增加车辆申请信息', '<%=basePath%>admin/app/car/carDetail.jsp');
+		  dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/car/carDetail.jsp', 
+                           height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+					  });
                   /**
                   if (editingrow == null)
                   {
@@ -101,7 +105,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               case "view":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  top.f_addTab(null, '查看车辆申请信息', '<%=basePath%>carUpdate?news.n_xh=' + selected.n_xh);
+                  //top.f_addTab(null, '查看车辆申请信息', '<%=basePath%>carUpdate?news.n_xh=' + selected.n_xh);
+		  dialog = $.ligerDialog.open({ url: '<%=basePath%>carUpdate?news.n_xh=' + selected.n_xh, 
+                           height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+					  });
                   break;
               case "shtg":
                   var selected = grid.getSelected();
@@ -190,6 +197,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           grid.addEditRow();
       } 
 
+      function dialog_hidden()
+      {
+    	  dialog.hidden();
+      }
 	  loadGrid();
       
       function loadGrid(){
