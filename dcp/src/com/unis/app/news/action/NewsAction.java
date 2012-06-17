@@ -61,6 +61,7 @@ public class NewsAction {
 				sbf.append("},");
 			}
 		}
+		System.out.println("sbf："+sbf.toString());
 		sbf.replace(sbf.lastIndexOf(","), sbf.length(), "");
 		sbf.append("]");
 		

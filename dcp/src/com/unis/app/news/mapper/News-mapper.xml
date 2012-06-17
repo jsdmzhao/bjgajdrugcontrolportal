@@ -131,7 +131,7 @@
 	          C_LMMC TEXT
 	   FROM B_LANMU 
 	   WHERE C_SJLMDM = '0000'
-	   	AND C_YHZID = #{c_yhzid}
+		   	AND C_YHZID = #{c_yhzid}
 	</select>
 	 
 	<select id="getLanmuChilden" parameterType="string" resultType="Combox">  

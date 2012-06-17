@@ -78,7 +78,7 @@ String newsType = request.getParameter("newsType");
                       
                       //top.f_addTab(null, '增加新闻信息', '<!%=basePath%>admin/app/news/newsDetail.jsp?newsType='+newsType);
                      dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/news/newsDetail.jsp?newsType='+newsType, 
-                           height: 600,width: 900,showMax: true, showToggle: true,  showMin: true
+                           height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
 					  });
                   } else
                   {
@@ -90,7 +90,7 @@ String newsType = request.getParameter("newsType");
                   if (!selected) { LG.tip('请选择行!'); return }
                   if (editingrow == null) {
                 	  dialog = $.ligerDialog.open({ url: '<%=basePath%>newsUpdate?news.n_xh=' + selected.n_xh, 
-                          height: 600,width: 900,showMax: true, showToggle: true,  showMin: true
+                          height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
 					  });
                       //stop.f_addTab(null, '修改新闻信息', '<!%=basePath%>newsUpdate?news.n_xh=' + selected.n_xh);
                   } else {
