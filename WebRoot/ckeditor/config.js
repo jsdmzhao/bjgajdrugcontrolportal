@@ -41,11 +41,24 @@ CKEDITOR.editorConfig = function( config )
 	 		['Font', 'FontSize'] , //样式栏：字体、大小        
 	 		['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'] , //对齐栏：左对齐、中心对齐、右对齐、两端对齐        
 	 		['TextColor', 'BGColor'], //颜色栏：文本颜色、背景颜色        
+	 		['Bold', 'Italic', 'Underline', 'Strike'], //基本样式栏：加粗、倾斜、下划线、删除线、下标、上标、移除样式        
+	 		['Image', 'Flash', 'Table', 'HorizontalRule'], //插入栏：图像、flash、表格、水平线        
+	 		['Link', 'Unlink']//, //超链接栏：增加超链接、取消超链接        
+	 		//['Source']//源代码栏：查看源代码    
+	    ];
+	   
+	   /**
+	    * 
+	    config.toolbar_Basic =  [        
+	 		['Font', 'FontSize'] , //样式栏：字体、大小        
+	 		['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'] , //对齐栏：左对齐、中心对齐、右对齐、两端对齐        
+	 		['TextColor', 'BGColor'], //颜色栏：文本颜色、背景颜色        
 	 		['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat'], //基本样式栏：加粗、倾斜、下划线、删除线、下标、上标、移除样式        
 	 		['Image', 'Flash', 'Table', 'HorizontalRule'], //插入栏：图像、flash、表格、水平线        
 	 		['Link', 'Unlink'], //超链接栏：增加超链接、取消超链接        
 	 		['Source']//源代码栏：查看源代码    
 	    ];
+	    */
 	    //config.skin = 'kama';// 界面v2,kama,office2003
 	    config.font_names='宋体/宋体;黑体/黑体;仿宋/仿宋_GB2312;楷体/楷体_GB2312; 隶书/隶书;幼圆/幼圆;微软雅黑/微软雅黑;'+ config.font_names;
 
