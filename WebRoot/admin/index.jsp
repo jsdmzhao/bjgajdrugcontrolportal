@@ -206,7 +206,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     "MenuID":42,
                     "text":"文章审核",
                     "MenuUrl":"<%=basePath%>admin/app/news/newsAudit.jsp?newsType=1",
-                    "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
+                    "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/zoom.gif",
                     "MenuNo":"MemberManageRole",
                     "MenuParentNo":"MemberManage"
                     }],
