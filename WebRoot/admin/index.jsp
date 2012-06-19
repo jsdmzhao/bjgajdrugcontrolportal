@@ -248,6 +248,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     "MenuNo":"MemberManage",
                     "MenuParentNo":null
                     },{
+                    "icon":"<%=basePath%>liger/lib/icons/silkicons/application.png",
+                    "id":18,
+                    "children":[{
+                    "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
+                    "id":10,
+                    "MenuName":"日志列表",
+                    "MenuID":10,
+                    "text":"日志列表",
+                    "MenuUrl":"<%=basePath%>admin/app/blog/blog.jsp",
+                    "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/sitemap.gif",
+                    "MenuNo":"MemberManageRole",
+                    "MenuParentNo":"MemberManage"
+                    },{
+                     "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
+                     "id":11,
+                     "MenuName":"日志审核",
+                     "MenuID":11,
+                     "text":"日志审核",
+                     "MenuUrl":"<%=basePath%>admin/app/blog/blogAudit.jsp",
+                     "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/zoom.gif",
+                     "MenuNo":"MemberManageRole",
+                     "MenuParentNo":"MemberManage"
+                    },{
+                     "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
+                     "id":12,
+                     "MenuName":"日志推荐",
+                     "MenuID":12,
+                     "text":"日志推荐",
+                     "MenuUrl":"<%=basePath%>admin/app/blog/blogSftj.jsp",
+                     "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/finished_work.gif",
+                     "MenuNo":"MemberManageRole",
+                     "MenuParentNo":"MemberManage"
+                     }],
+                    "MenuName":"日志管理",
+                    "MenuID":18,
+                    "text":"日志管理",
+                    "MenuUrl":null,
+                    "MenuIcon":"<%=basePath%>liger/lib/icons/silkicons/application.png",
+                    "MenuNo":"MemberManage",
+                    "MenuParentNo":null
+                    },{
                     "icon":"<%=basePath%>liger/lib/icons/32X32/future_projects.gif",
                     "id":1,
                     "children":[{
