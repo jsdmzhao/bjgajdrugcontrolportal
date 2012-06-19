@@ -18,6 +18,8 @@
 	<typeAlias alias="Notice" type="com.unis.app.notice.model.Notice" />
 
 	<typeAlias alias="Car"  type="com.unis.app.car.model.Car" />
+	
+	<typeAlias alias="Blog"  type="com.unis.app.blog.model.Blog" />
 
 </typeAliases>
 
