@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BlogMapper">
+
+	 <resultMap type="Blog"    id="resultBlog">
+	 	<result column="N_XH"  property="n_xh"/>
+	 	<result column="C_BT"  property="c_bt"/>
+	 	<result column="D_DJ"  property="d_dj"/>
+	 	<result column="C_SHJG"  property="c_shjg"/>
+	 </resultMap>
+
+	<select id="getBlog" parameterType="Blog" resultType="Blog">
+		SELECT * FROM B_RIZHI WHERE N_XH = #{n_xh}
+	</select>
+	
+	
+	<delete id="deleteBlog" parameterType="int">
+		DELETE FROM B_RIZHI WHERE N_XH = #{n_xh}
+	</delete>
+	
+	<insert id="insertBlog" parameterType="hashmap">
+		 INSERT INTO B_RIZHI(
+		   N_XH      ,
+		   C_BT      ,
+		   C_YHID    ,
+		   C_YHZID   ,
+		   C_NR      ,
+		   D_DJ      ,
+		   C_SFTJ    ,
+		   C_SFSH    ) 
+		VALUES (	            	
+	      seq_b_rizhi.nextval,        
+          #{c_bt,jdbcType=NUMERIC},  
+          #{c_yhid,jdbcType=VARCHAR},         
+          #{c_yhzid,jdbcType=VARCHAR},         
+          #{c_nr,jdbcType=CLOB,handler=ClobTypeHandler},           
+          sysdate,           
+          '0',           
+          '0'      
+	    )  
+	</insert>
+	
+	
+	<select id="getBlogList" resultMap="resultBlog">
+		SELECT N_XH,
+		       C_BT,
+		       TO_CHAR(D_DJ,'YYYY-MM-DD HH24:MI:SS') D_DJ,
+		       DECODE(C_SHJG,'0','不通过','1','通过','未审核') C_SHJG,
+		       DECODE(C_SFTJ,'0','不推荐','1','推荐','不推荐') C_SFTJ
+		  FROM B_RIZHI
+	</select>
+	
+	<update id="updateBlog" parameterType="hashmap">
+		UPDATE B_RIZHI
+		   SET  C_BT   =	#{c_bt,jdbcType=VARCHAR},
+		        C_NR   =	#{c_nr,jdbcType=CLOB,handler=ClobTypeHandler}
+		WHERE N_XH = #{n_xh}
+	</update>
+	
+	<update id="operateBlog" parameterType="hashmap">
+		UPDATE B_RIZHI
+		   SET  
+		   <if test="type == 'sh' ">
+		   		C_SHJG  =  #{c_shjg,jdbcType=VARCHAR},
+		        C_SHR   =  #{c_shr,jdbcType=VARCHAR},
+		        D_SHSJ  =  sysdate,
+		   		C_SFSH  =  1
+		   </if>
+		   <if test="type == 'tj' ">
+		   		C_SFTJ =  #{c_shjg,jdbcType=VARCHAR}
+		   </if>
+		WHERE N_XH = #{n_xh}
+	</update>
+	
+</mapper>
