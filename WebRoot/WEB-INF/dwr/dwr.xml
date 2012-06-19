@@ -28,11 +28,15 @@
 		<create javascript="CartypeAction" creator="spring">
 			<param name="beanName" value="cartypeAction"></param>
 		</create>
+		
+		<create javascript="BlogAction" creator="spring">
+			<param name="beanName" value="blogAction"></param>
+		</create>
+		
 		<create javascript="SysUserSvc" creator="spring">
 			<param name="beanName" value="sysUserSvc"></param>
 		</create>
 		
-		 
 		<create javascript="SysMenuSvc" creator="spring">
 			<param name="beanName" value="sysMenuSvc"></param>
 		</create>
@@ -68,6 +72,7 @@
 		<convert match="com.unis.core.commons.Combox" converter="bean"/>
 		<convert match="com.unis.app.notice.model.Notice" converter="bean"/>
 		<convert match="com.unis.app.car.model.Car" converter="bean"/>
+		<convert match="com.unis.app.blog.model.Blog" converter="bean"/>
 	
   </allow>
 
