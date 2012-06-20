@@ -41,6 +41,12 @@
 		DELETE FROM B_LANMU WHERE N_XH = #{n_xh}
 	</delete>
 	
+	<update id="updateXsxh" parameterType="hashmap">
+		UPDATE B_LANMU 
+			SET N_XSXH = #{n_xsxh}
+		WHERE N_XH = #{n_xh}
+	</update>
+	
 	<insert id="insertColumn" parameterType="hashmap">
 		 INSERT INTO B_LANMU(
 		   N_XH     ,
