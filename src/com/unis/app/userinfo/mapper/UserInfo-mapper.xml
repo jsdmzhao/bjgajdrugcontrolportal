@@ -29,7 +29,7 @@
 		   <result property="cJcjl" column="C_JCJL" jdbcType="VARCHAR"/>
 		   <result property="cBz" column="C_BZ" jdbcType="VARCHAR"/>
 		   <result property="nDlcs" column="N_DLCS" jdbcType="VARCHAR"/>
-		   <result property="dZxsc" column="D_ZXSC" jdbcType="VARCHAR"/>
+		   <result property="nZxsc" column="N_ZXSC" jdbcType="VARCHAR"/>
 		   <result property="nLx" column="N_LX" jdbcType="VARCHAR"/>
 		   <result property="cYxip" column="C_YXIP" jdbcType="VARCHAR"/>
 	</resultMap>
@@ -62,7 +62,7 @@
 					base.C_JCJL,
 					base.C_BZ,
 					base.N_DLCS,
-					to_char(base.D_ZXSC,'YYYY-MM-DD') D_ZXSC,
+					N_ZXSC,
 					base.N_LX,
 					base.C_YXIP
 				 from B_YH base 
@@ -107,7 +107,7 @@
 					base.C_JCJL,
 					base.C_BZ,
 					base.N_DLCS,
-					to_char(base.D_ZXSC,'YYYY-MM-DD') D_ZXSC,
+					N_ZXSC,
 					base.N_LX,
 					base.C_YXIP
 				 from B_YH base 
@@ -170,7 +170,7 @@
 			<if test="cJcjl != null and cJcjl !='' ">  ,  C_JCJL</if>
 			<if test="cBz != null and cBz !='' ">  ,  C_BZ</if>
 			<if test="nDlcs != null and nDlcs !='' ">  ,  N_DLCS</if>
-			<if test="dZxsc != null and dZxsc !='' ">  ,  D_ZXSC</if>
+			<if test="nZxsc != null and nZxsc !='' ">  ,  N_ZXSC</if>
 			<if test="nLx != null and nLx !='' ">  ,  N_LX</if>
 			<if test="cYxip != null and cYxip !='' ">  ,  C_YXIP</if>
 			)VALUES(
@@ -200,7 +200,7 @@
 			<if test="cJcjl != null and cJcjl !='' ">  ,  #{cJcjl}</if>
 			<if test="cBz != null and cBz !='' ">  ,  #{cBz}</if>
 			<if test="nDlcs != null and nDlcs !='' ">  ,  #{nDlcs}</if>
-			<if test="dZxsc != null and dZxsc !='' ">  ,  to_date(#{dZxsc},'YYYY-MM-DD')</if>
+			<if test="nZxsc != null and nZxsc !='' ">  ,  to_date(#{nZxsc},'YYYY-MM-DD')</if>
 			<if test="nLx != null and nLx !='' ">  ,  #{nLx}</if>
 			<if test="cYxip != null and cZt !='' ">  ,  #{cYxip}</if>
 			)
@@ -237,7 +237,7 @@
 				C_JCJL,
 				C_BZ,
 				N_DLCS,
-				D_ZXSC,
+				N_ZXSC,
 				N_LX,
 				C_YXIP
 			)VALUES(
@@ -266,7 +266,7 @@
 			   #{cJcjl},
 			   #{cBz},
 			   #{nDlcs},
-			   to_date(#{dZxsc},,'YYYY-MM-DD')
+			   to_date(#{nZxsc},,'YYYY-MM-DD')
 			   #{nLx}
 			   #{cYxip}
 			)
@@ -303,7 +303,7 @@
 			<if test="cJcjl != null and cJcjl !='' ">,C_JCJL  =  #{cJcjl}</if>
 			<if test="cBz != null and cBz !='' ">, C_BZ =  #{cBz}</if>
 			<if test="nDlcs != null and nDlcs !='' ">, N_DLCS =  #{nDlcs}</if>
-			<if test="dZxsc != null and dZxsc !='' ">, D_ZXSC =  to_date(#{dZxsc}='YYYY-MM-DD')</if>
+			<if test="nZxsc != null and nZxsc !='' ">, N_ZXSC =  #{nZxsc}</if>
 			<if test="nLx != null and nLx !='' ">, N_LX =  #{nLx}</if>
 			<if test="cYxip != null and cZt !='' ">, C_YXIP =  #{cYxip}</if>
 			</trim>
@@ -339,7 +339,7 @@
 			,C_JCJL  =  #{cJcjl}
 			, C_BZ =  #{cBz}
 			, N_DLCS =  #{nDlcs}
-			, D_ZXSC =  to_date(#{dZxsc}='YYYY-MM-DD')
+			, N_ZXSC =  #{nZxsc}
 			, N_LX =  #{nLx}
 			, C_YXIP =  #{cYxip}
 			WHERE 

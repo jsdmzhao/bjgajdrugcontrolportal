@@ -39,7 +39,7 @@
 <script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
 <script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
 <script type='text/javascript'
-	src='<%=basePath%>dwr/interface/SysUserSvc.js'></script>
+	src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>
 
 </head>
 <body style="padding:10px;height:100%; text-align:center;">
@@ -69,9 +69,14 @@
 	}
 	 var config ={"Grid":{
          columns: [
-         { display: "账号", name: "userName", width: 180, type: "text", align: "left" }, 
-         { display: "密码", name: "userPassword", width: 180, type: "text", align: "left" },
-         { display: "状态", name: "userLock", width: 180, type: "text", align: "left" }
+         { display: "职称", name: "cZc", width: 180, type: "text", align: "left" },
+         { display: "姓名", name: "cXm", width: 180, type: "text", align: "left" },
+         { display: "生日", name: "dSr", width: 180, type: "text", align: "left" },
+         { display: "婚姻状况", name: "cHyzk", width: 180, type: "text", align: "left" },
+         { display: "电话号码", name: "cDhhm", width: 180, type: "text", align: "left" },
+         { display: "手机号码", name: "cSjhm", width: 180, type: "text", align: "left" },
+         { display: "邮箱", name: "cYx", width: 180, type: "text", align: "left" },
+         { display: "IP", name: "cYxip", width: 180, type: "text", align: "left" }
          ]      
 },"Search":null};
 
@@ -86,11 +91,6 @@
       LG.loadToolbar(grid, toolbarBtnItemClick);
       	
       	var items=[{
-                        click:toolbarBtnItemClick,
-                        text:'新增',
-                        img:'<%=basePath%>liger/lib/icons/silkicons/add.png',
-                        id:'add'
-                    },{line:true},{
                         click: toolbarBtnItemClick,
                         text: '修改',
                         img:'<%=basePath%>liger/lib/icons/silkicons/application_edit.png',
@@ -112,7 +112,7 @@
 
     	function loadGrid(obj){
     		if(!obj)obj={};
-    		SysUserSvc.queryByPage(obj,oPage,function(rdata){
+    		UserInfoSvc.queryByPage(obj,oPage,function(rdata){
     			if(rdata == null){
     				  grid.setOptions({ data:  { Total:0, Rows:""  } });
     			}else{
@@ -163,7 +163,7 @@
 
 			if (!obj)
 				return;
-			SysUserSvc.save(obj, function(rdata) {
+			UserInfoSvc.save(obj, function(rdata) {
 				if (rdata) {
 					LG.showSuccess('保存成功', function() {
 						loadGrid();
@@ -195,7 +195,7 @@
 			}
 			if (!obj)
 				return;
-			SysUserSvc.update(obj, function(rdata) {
+			UserInfoSvc.update(obj, function(rdata) {
 				if (rdata) {
 					LG.showSuccess('修改成功', function() {
 						loadGrid();
@@ -211,7 +211,7 @@
 		function f_remove() {
 			var selected = grid.getSelected();
 			if (selected) {
-				SysUserSvc.remove(selected, function(rdata) {
+				UserInfoSvc.remove(selected, function(rdata) {
 					if (rdata) {
 						LG.showSuccess('删除成功');
 						loadGrid();
