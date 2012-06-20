@@ -60,6 +60,10 @@
 		<create javascript="KitSvc" creator="spring">
 			<param name="beanName" value="kitSvc"></param>
 		</create>
+		
+			<create javascript="UserInfoSvc" creator="spring">
+			<param name="beanName" value="userInfoSvc"></param>
+		</create>
 	
 		
 
