@@ -39,11 +39,11 @@
 <script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
 <script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
 <script type='text/javascript'
-	src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>
+	src='<%=basePath%>dwr/interface/KqCcjlSvc.js'></script>
 
 </head>
 <body style="padding:10px;height:100%; text-align:center;">
-	<ipnut type="hidden" id="MenuNo" value="MemberManageUser" />
+	<input type="hidden" id="MenuNo" value="MemberManageUser" />
 	<div id="mainsearch" style=" width:98%">
 		<div class="searchtitle">
 			<span>搜索</span><img
