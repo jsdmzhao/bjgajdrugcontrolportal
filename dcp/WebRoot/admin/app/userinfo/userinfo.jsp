@@ -63,6 +63,8 @@
   var edittype=null;
   var rowi=0;
   
+  var dialog ;
+  
 	var oPage={
 			pageIndex:1,
 			pageSize:20
@@ -136,7 +138,14 @@
             //      top.f_addTab(null, '查看用户信息', '<%=basePath%>admin/app/user/userDetail.jsp?IsView=1&ID=' + selected.UserID);
             //      break;
               case "modify":
-            	  f_dialog("modify","修改用户信息");
+            	  
+            	  var selected = grid.getSelected();
+                        if (!selected) { LG.tip('请选择行!'); return }
+                       dialog = $.ligerDialog.open({ title :'修改信息',url: '<%=basePath%>admin/app/userinfo/userinfoDetail.jsp?nXh=' + selected.nXh, 
+                       height: 500,width: 720,showMax: true, showToggle: true,  showMin: true
+				  });
+                       break;
+            	 
 				break;
 			case "delete":
 				jQuery.ligerDialog.confirm('确定删除吗?', function(confirm) {
@@ -147,67 +156,7 @@
 			}
 		}
 
-		function f_save(d) {
-			var userLock;
-			if($('#userLock').attr("checked")){
-				userLock='1';
-			}else{
-				userLock='0';
-			}
-			var obj = {
-			userName: $("#userName").val(),
-			userPassword: $("#userPassword").val(),
-			roleId: $("#roleId").val(),
-			userLock: userLock
-			}
 
-			if (!obj)
-				return;
-			UserInfoSvc.save(obj, function(rdata) {
-				if (rdata) {
-					LG.showSuccess('保存成功', function() {
-						loadGrid();
-						$("input").ligerHideTip(); 
-						d.hide();
-					});
-				} else {
-					LG.showError('保存失败');
-				}
-			});
-
-		};
-		
-		
-		function f_update(d) {
-				var userLock;
-				if($('#userLock').attr("checked")){
-					userLock='1';
-				}else{
-					userLock='0';
-				}
-				
-			var obj = {
-			userId: $("#userId").val(),
-			userName: $("#userName").val(),
-			userPassword: $("#userPassword").val(),
-			roleId: $("#roleId").val(),
-			userLock: userLock
-			}
-			if (!obj)
-				return;
-			UserInfoSvc.update(obj, function(rdata) {
-				if (rdata) {
-					LG.showSuccess('修改成功', function() {
-						loadGrid();
-						$("input").ligerHideTip(); 
-						d.hide();
-					});
-				} else {
-					LG.showError('修改失败');
-				}
-			});
-		};
-		
 		function f_remove() {
 			var selected = grid.getSelected();
 			if (selected) {
@@ -224,149 +173,17 @@
 			}
 		}
 
-		function f_dialog(type,title) {
-			if (type == "add") {
-				$("#userId").val("");
-				$("#userName").val("");
-				$("#userPassword").val("");
-				$("#userPassword2").val("");
-				$('#userLock').attr("checked", false);   
-				
-			//	$("#userLock").val("");
-				dlgedit = $.ligerDialog.open({
-					width : 350, //宽度
-					height : null,
-					title : title,
-					target : $("#divedit"),
-					 buttons: [  { text: '保存', onclick: function (i, d) { f_save(d); }}, 
-                                 { text: '关闭', onclick: function (i, d) { $("input").ligerHideTip(); d.hide(); }} 
-                              ]
-				});
-			}else {
-				var selected = grid.getSelected();
-				if (selected) {
-				$("#userId").val(grid.getSelected().userId);
-				$("#userName").val(grid.getSelected().userName);
-				$("#userPassword").val(grid.getSelected().userPassword);
-				$("#roleId").val(grid.getSelected().roleId);
-				if(grid.getSelected().userLock=='1'){
-					$('#userLock').attr("checked", true);  
-				}else{
-					$('#userLock').attr("checked", false);  
-				}
-			//	$("#userLock").val(grid.getSelected().userLock);
-					dlgedit = $.ligerDialog.open({
-						width : 350, //宽度
-						height : null,
-						title : title,
-						target : $("#divedit"),
-						 buttons: [  { text: '保存', onclick: function (i, d) { f_update(d); }}, 
-	                                 { text: '关闭', onclick: function (i, d) { $("input").ligerHideTip(); d.hide(); }} 
-	                              ]
-					});
-				} else {
-					LG.tip('请选择行!');
-					return;
-				}
-			}
-
-				$(".l-dialog-close").bind('mousedown', function() //dialog右上角的叉
-				{
-					$("input").ligerHideTip();
-					dlgedit.hide();
-				});
-
-				$(".l-dialog-title").bind('mousedown', function() //移动dialog时,隐藏tip
-				{
-					$("input").ligerHideTip();
-				});
-				dlgedit.show();
-			}
-
 		function f_reload() {
 			  grid.loadData();
 		}
 	
+		  function dialog_hidden()
+	      {
+	    	  dialog.hidden();
+	      }
 	</script>
 
-<div style="display: none">
-<div id='divedit'>
-<form class="l-form" id="mainform" method="post"  ligeruiid="mainform">
-	<input id="userId" name="userId" type="hidden">
-		<div class="l-group l-group-hasicon">
-			<img
-				src="<%=basePath%>liger/lib/icons/32X32/communication.gif">
-				<span>基本信息</span>
-		</div>
-		<ul>
-			<li style="width: 100px; text-align: left;">帐号：</li>
-			<li style="width: 180px; text-align: left;"><div
-					style="width: 160px;" class="l-text">
-					<input style="width: 160px;" id="userName" class="l-text-field"
-						name="userName" type="text" ligeruiid="userName"
-						ltype="text" ligerui='{"width":160}'><div class="l-text-l"></div>
-						<div class="l-text-r"></div>
-				</div>
-			</li>
-			<li style="width: 30px;"></li>
-		</ul>
-		<ul>
-			<li style="width: 100px; text-align: left;">密码：</li>
-			<li style="width: 180px; text-align: left;"><div
-					style="width: 160px;" class="l-text">
-					<input style="width: 160px;" id="userPassword" class="l-text-field"
-						name="userPassword" type="password" ligeruiid="userPassword"
-						ltype="password" ligerui='{"width":148}'><div
-							class="l-text-l"></div>
-						<div class="l-text-r"></div>
-				</div>
-			</li>
-			<li style="width: 30px;"></li>
-		</ul>
-		<ul>
-			<li style="width: 100px; text-align: left;">确认密码：</li>
-			<li style="width: 180px; text-align: left;"><div
-					style="width: 160px;" class="l-text">
-					<input style="width: 160px;" id="userPassword2"
-						class="l-text-field" name="userPassword2" type="password"
-						ligeruiid="userPassword2"
-						ltype="password" ligerui='{"width":148}'><div
-							class="l-text-l"></div>
-						<div class="l-text-r"></div>
-				</div>
-			</li>
-			<li style="width: 30px;"></li>
-		</ul>
-			<ul>
-			<li style="width: 100px; text-align: left;">角色：</li>
-			<li style="width: 180px; "><div
-					class="l-combobox-wrapper">
-		 <select name="roleId" id="roleId" >
-		 <option value=""></option>
-		 <%  for(int i=0; i<list.size(); i++){    %>
-			<option value="<%= list.get(i).get("roleId")%>"><%= list.get(i).get("roleName")%></option>
-			<% } %>
-				
-			</select> 
-			</div>
-			</li>
-			<li style="width: 30px;"></li>
-		</ul>
-		<ul>
-			<li style="width: 100px; text-align: left;">已锁定：</li>
-			<li style="width: 180px; "><div
-					class="l-checkbox-wrapper">
-					<input id="userLock" 
-						name="userLock" type="checkbox" ligeruiid="userLock"
-						ltype="checkbox" ligerui='{"width":148}'  >
-				</div>
-			</li>
-			<li style="width: 30px;"></li>
-		</ul>
-		</div>
-		</form>
-		</div>
-		</div>
+
 		
 		
 </body>
