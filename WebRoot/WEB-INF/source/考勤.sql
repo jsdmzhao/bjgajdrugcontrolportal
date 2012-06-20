@@ -134,8 +134,8 @@ COMMENT ON COLUMN B_KQ_CCJL.C_ZT IS
 CREATE TABLE B_KQ_QQSB  (
    N_XH                 NUMBER(8)                       NOT NULL,
    USER_ID              NUMBER(8),
-   C_RQ                 DATE,
-   C_SJ                 VARCHAR2(4000,
+   D_RQ                 DATE,
+   C_SJ                 VARCHAR2(4000),
    C_TXYY               VARCHAR2(4000),
    D_DJ                 DATE,
    C_ZT                 CHAR(1),
@@ -151,7 +151,7 @@ COMMENT ON COLUMN B_KQ_QQSB.N_XH IS
 COMMENT ON COLUMN B_KQ_QQSB.USER_ID IS
 '用户ID';
 
-COMMENT ON COLUMN B_KQ_QQSB.C_RQ IS
+COMMENT ON COLUMN B_KQ_QQSB.D_RQ IS
 '日期';
 
 COMMENT ON COLUMN B_KQ_QQSB.C_SJ IS
@@ -165,6 +165,7 @@ COMMENT ON COLUMN B_KQ_QQSB.D_DJ IS
 
 COMMENT ON COLUMN B_KQ_QQSB.C_ZT IS
 '状态';
+
 
 create sequence SEQ_KQ_SXB
 minvalue 10000000
