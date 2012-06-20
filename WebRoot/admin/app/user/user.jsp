@@ -62,6 +62,7 @@
   var Validator = null;
   var edittype=null;
   var rowi=0;
+  var dialog ;
   
 	var oPage={
 			pageIndex:1,
@@ -106,8 +107,13 @@
 	                  // text: '查看',
 	                  //  img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
 	                   // id: 'view'
-                   },
-                   {line:true}];
+                   }
+                   ,{line:true},{
+                       click: toolbarBtnItemClick,
+                       text: '补充详细信息',
+                       img:'<%=basePath%>liger/lib/icons/silkicons/add.png',
+                       id: 'supp'
+                   }];
     	grid.toolbarManager.set('items', items);
 
     	function loadGrid(obj){
@@ -143,6 +149,13 @@
 					if (confirm)
 						f_remove();
 				});
+				break;
+			case "supp":
+				 var selected = grid.getSelected();
+                 if (!selected) { LG.tip('请选择行!'); return }
+                dialog = $.ligerDialog.open({ title :'补充信息',url: '<%=basePath%>admin/app/userinfo/userinfoDetail.jsp?userId=' + selected.userId, 
+                height: 500,width: 720,showMax: true, showToggle: true,  showMin: true
+			  });
 				break;
 			}
 		}
@@ -286,7 +299,10 @@
 		function f_reload() {
 			  grid.loadData();
 		}
-	
+		  function dialog_hidden()
+	      {
+	    	  dialog.hidden();
+	      }
 	</script>
 
 <div style="display: none">
