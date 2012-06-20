@@ -64,6 +64,22 @@
 			<create javascript="UserInfoSvc" creator="spring">
 			<param name="beanName" value="userInfoSvc"></param>
 		</create>
+		
+			<create javascript="KqCcjlSvc" creator="spring">
+			<param name="beanName" value="kqCcjlSvc"></param>
+		</create>
+		
+			<create javascript="KqQqsbSvc" creator="spring">
+			<param name="beanName" value="kqQqsbSvc"></param>
+		</create>
+		
+			<create javascript="KqSxbSvc" creator="spring">
+			<param name="beanName" value="kqSxbSvc"></param>
+		</create>
+		
+			<create javascript="KqYbjlSvc" creator="spring">
+			<param name="beanName" value="kqYbjlSvc"></param>
+		</create>
 	
 		
 

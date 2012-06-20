@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="KqQqsbMapper">
+	
+	<resultMap id="Result"  type="java.util.Map">
+	     	<result property="nXh" column="N_XH" jdbcType="DECIMAL"/>
+			<result property="userId" column="USER_ID" jdbcType="DECIMAL"/>
+			<result property="nJb" column="N_JB" jdbcType="VARCHAR"/>
+			<result property="nYhz" column="N_YHZ" jdbcType="VARCHAR"/>
+			<result property="cZc" column="C_ZC" jdbcType="VARCHAR"/>
+			<result property="cXm" column="C_XM" jdbcType="VARCHAR"/>
+			<result property="nXb" column="N_XB" jdbcType="VARCHAR"/>
+			<result property="dSr" column="D_SR" jdbcType="VARCHAR"/>
+			<result property="cGj" column="C_GJ" jdbcType="VARCHAR"/>
+			<result property="cCsd" column="C_CSD" jdbcType="VARCHAR"/>
+			<result property="cHyzk" column="C_HYZK" jdbcType="VARCHAR"/>
+		   <result property="cXl" column="C_XL" jdbcType="VARCHAR"/>
+		   <result property="cByyx" column="C_BYYX" jdbcType="VARCHAR"/>
+		   <result property="cZy" column="C_ZY" jdbcType="VARCHAR"/>
+		   <result property="cKh" column="C_KH" jdbcType="VARCHAR"/>
+		   <result property="cHkszd" column="C_HKSZD" jdbcType="VARCHAR"/>
+		   <result property="cDhhm" column="C_DHHM" jdbcType="VARCHAR"/>
+		   <result property="cSjhm" column="C_SJHM" jdbcType="VARCHAR"/>
+		   <result property="cYx" column="C_YX" jdbcType="VARCHAR"/>
+		   <result property="cDz" column="C_DZ" jdbcType="VARCHAR"/>
+		   <result property="dGzsj" column="D_GZSJ" jdbcType="VARCHAR"/>
+		   <result property="dRzsj" column="D_RZSJ" jdbcType="VARCHAR"/>
+		   <result property="cJcjl" column="C_JCJL" jdbcType="VARCHAR"/>
+		   <result property="cBz" column="C_BZ" jdbcType="VARCHAR"/>
+		   <result property="nDlcs" column="N_DLCS" jdbcType="VARCHAR"/>
+		   <result property="nZxsc" column="N_ZXSC" jdbcType="VARCHAR"/>
+		   <result property="nLx" column="N_LX" jdbcType="VARCHAR"/>
+		   <result property="cYxip" column="C_YXIP" jdbcType="VARCHAR"/>
+	</resultMap>
+	 
+
+	<select id="queryAllInfo" resultMap="Result"  parameterType="java.util.Map" >
+				 select 
+					base.N_XH,
+					base.USER_ID,
+					base.N_JB,
+					base.N_YHZ,
+					base.C_ZC,
+					base.C_XM,
+					base.N_XB,
+					to_char(base.D_SR,'YYYY-MM-DD') D_SR ,
+					base.C_GJ,
+					base.C_CSD,
+					base.C_HYZK,
+					base.C_XL,
+					base.C_BYYX,
+					base.C_ZY,
+					base.C_KH,
+					base.C_HKSZD,
+					base.C_DHHM,
+					base.C_SJHM,
+					base.C_YX,
+					base.C_DZ,
+					to_char(base.D_GZSJ,'YYYY-MM-DD') D_GZSJ,
+					to_char(base.D_RZSJ,'YYYY-MM-DD') D_RZSJ,
+					base.C_JCJL,
+					base.C_BZ,
+					base.N_DLCS,
+					N_ZXSC,
+					base.N_LX,
+					base.C_YXIP
+				 from B_YH base 
+		 <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
+			<if test="nYhz != null and nYhz !='' ">  and N_YHZ = #{nYhz}</if>
+			<if test="cXm != null and cXm !='' ">  and C_XM = #{cXm}</if>
+			<if test="dSrBeg != null and dSrBeg !='' ">  and D_SR &gt;= to_date(#{dSrBeg},'YYYY-MM-DD')</if>
+			<if test="dSrEnd != null and dSrEnd !='' "> and D_SR &lt; to_date(#{dSrEnd},'YYYY-MM-DD')</if>
+			<if test="nlx != null and nlx !='' ">  and N_LX = #{nlx}</if>
+			<if test="cYxip != null and cYxip !='' ">  and C_YXIP = #{cYxip}</if>
+		</trim>
+		ORDER BY base.N_XH  DESC
+	</select>
+
+	<select id="queryInfo" resultMap="Result" parameterType="java.util.Map" >
+		<include refid="pagination.paginationStart"></include>
+						 select 
+					base.N_XH,
+					base.USER_ID,
+					base.N_JB,
+					base.N_YHZ,
+					base.C_ZC,
+					base.C_XM,
+					base.N_XB,
+					to_char(base.D_SR,'YYYY-MM-DD') D_SR ,
+					base.C_GJ,
+					base.C_CSD,
+					base.C_HYZK,
+					base.C_XL,
+					base.C_BYYX,
+					base.C_ZY,
+					base.C_KH,
+					base.C_HKSZD,
+					base.C_DHHM,
+					base.C_SJHM,
+					base.C_YX,
+					base.C_DZ,
+					to_char(base.D_GZSJ,'YYYY-MM-DD') D_GZSJ,
+					to_char(base.D_RZSJ,'YYYY-MM-DD') D_RZSJ,
+					base.C_JCJL,
+					base.C_BZ,
+					base.N_DLCS,
+					N_ZXSC,
+					base.N_LX,
+					base.C_YXIP
+				 from B_YH base 
+		 <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
+			<if test="nYhz != null and nYhz !='' ">  and N_YHZ = #{nYhz}</if>
+			<if test="cXm != null and cXm !='' ">  and C_XM = #{cXm}</if>
+			<if test="dSrBeg != null and dSrBeg !='' ">  and D_SR &gt;= to_date(#{dSrBeg},'YYYY-MM-DD')</if>
+			<if test="dSrEnd != null and dSrEnd !='' "> and D_SR &lt; to_date(#{dSrEnd},'YYYY-MM-DD')</if>
+			<if test="nlx != null and nlx !='' ">  and N_LX = #{nlx}</if>
+			<if test="cYxip != null and cYxip !='' ">  and C_YXIP = #{cYxip}</if>
+		</trim>
+		ORDER BY base.N_XH  DESC
+		<include refid="pagination.paginationLast"></include>
+	</select>
+
+
+	<select id="queryCountInfo" resultType="integer" parameterType="java.util.Map" >
+				select count(base.N_XH) from B_YH base
+		 <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
+			<if test="nYhz != null and nYhz !='' ">  and N_YHZ = #{nYhz}</if>
+			<if test="cXm != null and cXm !='' ">  and C_XM = #{cXm}</if>
+			<if test="dSrBeg != null and dSrBeg !='' ">  and D_SR &gt;= to_date(#{dSrBeg},'YYYY-MM-DD')</if>
+			<if test="dSrEnd != null and dSrEnd !='' "> and D_SR &lt; to_date(#{dSrEnd},'YYYY-MM-DD')</if>
+			<if test="nlx != null and nlx !='' ">  and N_LX = #{nlx}</if>
+			<if test="cYxip != null and cYxip !='' ">  and C_YXIP = #{cYxip}</if>
+		</trim>
+		ORDER BY base.N_XH  DESC
+	</select> 
+	
+	
+
+	<insert id="saveInfo" parameterType="java.util.Map" >
+			INSERT INTO B_YH(
+				 N_XH
+			<if test="userId != null and userId !='' ">  , USER_ID</if>
+			<if test="nJb != null and nJb !='' ">  ,  N_JB</if>
+			<if test="nYhz != null and nYhz !='' ">  ,  N_YHZ</if>
+			<if test="cZc != null and cZc !='' ">  ,  C_ZC</if>
+			<if test="cXm != null and cXm !='' ">  ,  C_XM</if>
+			<if test="nXb != null and nXb !='' ">  ,  N_XB</if>
+			<if test="dSr != null and dSr !='' ">  ,  D_SR</if>
+			<if test="cGj != null and cGj !='' ">  ,  C_GJ</if>
+			<if test="cCsd != null and cCsd !='' ">  ,  C_CSD</if>
+			<if test="cHyzk != null and cHyzk !='' ">  ,  C_HYZK</if>
+			<if test="cXl != null and cXl !='' ">  ,  C_XL</if>
+			<if test="cByyx != null and cByyx !='' ">  ,  C_BYYX</if>
+			<if test="cZy != null and cZy !='' ">  ,  C_ZY</if>
+			<if test="cKh != null and cKh !='' ">  ,  C_KH</if>
+			<if test="cHkszd != null and cHkszd !='' ">  ,  C_HKSZD</if>
+			<if test="cDhhm != null and cDhhm !='' ">  ,  C_DHHM</if>
+			<if test="cSjhm != null and cSjhm !='' ">  ,  C_SJHM</if>
+			<if test="cYx != null and cYx !='' ">  ,  C_YX</if>
+			<if test="cDz != null and cDz !='' ">  ,  C_DZ</if>
+			<if test="dGzsj != null and dGzsj !='' ">  ,  D_GZSJ</if>
+			<if test="dRzsj != null and dRzsj !='' ">  ,  D_RZSJ</if>
+			<if test="cJcjl != null and cJcjl !='' ">  ,  C_JCJL</if>
+			<if test="cBz != null and cBz !='' ">  ,  C_BZ</if>
+			<if test="nDlcs != null and nDlcs !='' ">  ,  N_DLCS</if>
+			<if test="nZxsc != null and nZxsc !='' ">  ,  N_ZXSC</if>
+			<if test="nLx != null and nLx !='' ">  ,  N_LX</if>
+			<if test="cYxip != null and cYxip !='' ">  ,  C_YXIP</if>
+			)VALUES(
+				SEQ_YH.NEXTVAL 
+				<!-- #{n_xh#-->
+			<if test="userId != null and userId !='' ">  ,  #{userId}</if>
+			<if test="nJb != null and nJb !='' ">  ,  #{nJb}</if>
+			<if test="nYhz != null and nYhz !='' ">  ,  #{nYhz}</if>
+			<if test="cZc != null and cZc !='' ">  ,  #{cZc}</if>
+			<if test="cXm != null and cXm !='' ">  ,  #{cXm}</if>
+			<if test="nXb != null and nXb !='' ">  ,  #{nXb}</if>
+			<if test="dSr != null and dSr !='' ">  ,  to_date(#{dSr},'YYYY-MM-DD')</if>
+			<if test="cGj != null and cGj !='' ">  ,  #{cGj}</if>
+			<if test="cCsd != null and cCsd !='' ">  ,  #{cCsd}</if>
+			<if test="cHyzk != null and cHyzk !='' ">  ,  #{cHyzk}</if>
+			<if test="cXl != null and cXl !='' ">  ,  #{cXl}</if>
+			<if test="cByyx != null and cByyx !='' ">  ,  #{cByyx}</if>
+			<if test="cZy != null and cZy !='' ">  ,  #{cZy}</if>
+			<if test="cKh != null and cKh !='' ">  ,  #{cKh}</if>
+			<if test="cHkszd != null and cHkszd !='' ">  ,  #{cHkszd}</if>
+			<if test="cDhhm != null and cDhhm !='' ">  ,  #{cDhhm}</if>
+			<if test="cSjhm != null and cSjhm !='' ">  ,  #{cSjhm}</if>
+			<if test="cYx != null and cYx !='' ">  ,  #{cYx}</if>
+			<if test="cDz != null and cDz !='' ">  ,  #{cDz}</if>
+			<if test="dGzsj != null and dGzsj !='' ">  ,   to_date(#{dGzsj},'YYYY-MM-DD')</if>
+			<if test="dRzsj != null and dRzsj !='' ">  ,   to_date(#{dRzsj},'YYYY-MM-DD')</if>
+			<if test="cJcjl != null and cJcjl !='' ">  ,  #{cJcjl}</if>
+			<if test="cBz != null and cBz !='' ">  ,  #{cBz}</if>
+			<if test="nDlcs != null and nDlcs !='' ">  ,  #{nDlcs}</if>
+			<if test="nZxsc != null and nZxsc !='' ">  ,  to_date(#{nZxsc},'YYYY-MM-DD')</if>
+			<if test="nLx != null and nLx !='' ">  ,  #{nLx}</if>
+			<if test="cYxip != null and cZt !='' ">  ,  #{cYxip}</if>
+			)
+		<selectKey resultType="string" keyProperty="id" >
+			 <!--SELECT #{nXh# AS ID FROM dual  -->
+			 SELECT  SEQ_YH.CURRVAL  AS ID FROM dual 
+		</selectKey>
+	</insert>
+
+	<insert id="saveAllInfo" parameterType="java.util.Map" >
+			INSERT INTO B_YH(
+				N_XH,
+				USER_ID,
+				N_JB,
+				N_YHZ,
+				C_ZC,
+				C_XM,
+				N_XB,
+				D_SR,
+				C_GJ,
+				C_CSD,
+				C_HYZK,
+				C_XL,
+				C_BYYX,
+				C_ZY,
+				C_KH,
+				C_HKSZD,
+				C_DHHM,
+				C_SJHM",
+				C_YX,
+				C_DZ,
+				D_GZSJ,
+				D_RZSJ,
+				C_JCJL,
+				C_BZ,
+				N_DLCS,
+				N_ZXSC,
+				N_LX,
+				C_YXIP
+			)VALUES(
+				 SEQ_YH.NEXTVAL,  
+				  #{userId},
+			 #{nJb},
+			   #{nYhz},
+			   #{cZc},
+			   #{cXm},
+			   #{nXb},
+			   to_date(#{dSr},,'YYYY-MM-DD')
+			   #{cGj},
+			   #{cCsd},
+			   #{cHyzk},
+			   #{cXl},
+			   #{cByyx},
+			   #{cZy},
+			  #{cKh},
+			   #{cHkszd},
+			   #{cDhhm},
+			   #{cSjhm},
+			  #{cYx},
+			   #{cDz},
+			    to_date(#{dGzsj},,'YYYY-MM-DD')
+			   to_date(#{dRzsj},,'YYYY-MM-DD')
+			   #{cJcjl},
+			   #{cBz},
+			   #{nDlcs},
+			   to_date(#{nZxsc},,'YYYY-MM-DD')
+			   #{nLx}
+			   #{cYxip}
+			)
+		<selectKey resultType="string" keyProperty="id" >
+			 <!--SELECT #{nXh# AS ID FROM dual --> 
+			 SELECT  SEQ_YH.CURRVAL  AS ID FROM dual 
+		</selectKey>
+	</insert>
+
+	<update id="updateInfo" parameterType="java.util.Map"> 
+			update B_YH 
+			<trim prefix="set" prefixOverrides=","> 
+			<if test="userId != null and userId !='' ">, USER_ID =  #{userId}</if>
+			<if test="nJb != null and nJb !='' ">, N_JB =  #{nJb}</if>
+			<if test="nYhz != null and nYhz !='' ">,N_YHZ =  #{nYhz}</if>
+			<if test="cZc != null and cZc !='' ">, C_ZC =  #{cZc}</if>
+			<if test="cXm != null and cXm !='' ">, C_XM =  #{cXm}</if>
+			<if test="nXb != null and nXb !='' ">, N_XB =  #{nXb}</if>
+			<if test="dSr != null and dSr !='' ">, D_SR =  to_date(#{dSr},'YYYY-MM-DD')</if>
+			<if test="cGj != null and cGj !='' ">, C_GJ =  #{cGj}</if>
+			<if test="cCsd != null and cCsd !='' ">,  C_CSD =  #{cCsd}</if>
+			<if test="cHyzk != null and cHyzk !='' ">,C_HYZK  =  #{cHyzk}</if>
+			<if test="cXl != null and cXl !='' ">, C_XL =  #{cXl}</if>
+			<if test="cByyx != null and cByyx !='' ">,C_BYYX  =  #{cByyx}</if>
+			<if test="cZy != null and cZy !='' ">, C_ZY =  #{cZy}</if>
+			<if test="cKh != null and cKh !='' ">, C_KH =  #{cKh}</if>
+			<if test="cHkszd != null and cHkszd !='' ">, C_HKSZD =  #{cHkszd}</if>
+			<if test="cDhhm != null and cDhhm !='' ">, C_DHHM =  #{cDhhm}</if>
+			<if test="cSjhm != null and cSjhm !='' ">, C_SJHM =  #{cSjhm}</if>
+			<if test="cYx != null and cYx !='' ">, C_YX =  #{cYx}</if>
+			<if test="cDz != null and cDz !='' ">,C_DZ  =  #{cDz}</if>
+			<if test="dGzsj != null and dGzsj !='' ">, D_GZSJ =   to_date(#{dGzsj}='YYYY-MM-DD')</if>
+			<if test="dRzsj != null and dRzsj !='' ">, D_RZSJ =   to_date(#{dRzsj}='YYYY-MM-DD')</if>
+			<if test="cJcjl != null and cJcjl !='' ">,C_JCJL  =  #{cJcjl}</if>
+			<if test="cBz != null and cBz !='' ">, C_BZ =  #{cBz}</if>
+			<if test="nDlcs != null and nDlcs !='' ">, N_DLCS =  #{nDlcs}</if>
+			<if test="nZxsc != null and nZxsc !='' ">, N_ZXSC =  #{nZxsc}</if>
+			<if test="nLx != null and nLx !='' ">, N_LX =  #{nLx}</if>
+			<if test="cYxip != null and cZt !='' ">, C_YXIP =  #{cYxip}</if>
+			</trim>
+			<trim prefix="where" prefixOverrides="and |or">  
+				<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+				<if test="nXhs ">,= null and nXhs !='' ">  and  N_XH in (${nXhs})</if>
+			</trim>
+	</update> 
+
+	<update id="updateAllInfo" parameterType="java.util.Map"> 
+			update B_YH set 
+				 USER_ID =  #{userId}
+			, N_JB =  #{nJb}
+			,N_YHZ =  #{nYhz}
+			, C_ZC =  #{cZc}
+			, C_XM =  #{cXm}
+			, N_XB =  #{nXb}
+			, D_SR =  to_date(#{dSr},'YYYY-MM-DD')
+			, C_GJ =  #{cGj}
+			,  C_CSD =  #{cCsd}
+			,C_HYZK  =  #{cHyzk}
+			, C_XL =  #{cXl}
+			,C_BYYX  =  #{cByyx}
+			, C_ZY =  #{cZy}
+			, C_KH =  #{cKh}
+			, C_HKSZD =  #{cHkszd}
+			, C_DHHM =  #{cDhhm}
+			, C_SJHM =  #{cSjhm}
+			, C_YX =  #{cYx}
+			,C_DZ  =  #{cDz}
+			, D_GZSJ =   to_date(#{dGzsj}='YYYY-MM-DD')
+			, D_RZSJ =   to_date(#{dRzsj}='YYYY-MM-DD')
+			,C_JCJL  =  #{cJcjl}
+			, C_BZ =  #{cBz}
+			, N_DLCS =  #{nDlcs}
+			, N_ZXSC =  #{nZxsc}
+			, N_LX =  #{nLx}
+			, C_YXIP =  #{cYxip}
+			WHERE 
+				N_XH = #{nXh}
+	</update> 
+
+	<delete id="removeInfo" parameterType="java.util.Map"> 
+			 DELETE FROM B_YH
+			 WHERE
+			<!--N_XH = #{nXh#
+			<![CDATA[ BTN_ID IN (${userIds}) ]]>--> 
+			 N_XH =#{nXh} 
+	</delete> 
+</mapper>
