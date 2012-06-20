@@ -36,23 +36,54 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div id="maingrid"  style="margin:2px;"></div> 
     </form> 
   <script type="text/javascript">
+  
+	  $.ligerDefaults.Grid.mouseoverRowCssClass = null;
+	
+	  //扩展一个 多行文本框 的编辑器
+	  $.ligerDefaults.Grid.editors['textarea'] = {
+	      create: function (container, editParm)
+	      {
+	          var input = $("<textarea class='l-textarea' />");
+	          container.append(input);
+	          return input;
+	      },
+	      getValue: function (input, editParm)
+	      {
+	          return input.val();
+	      },
+	      setValue: function (input, value, editParm)
+	      {
+	          input.val(value);
+	      },
+	      resize: function (input, width, height, editParm)
+	      {
+	          var column = editParm.column;
+	          if (column.editor.width) input.width(column.editor.width);
+	          else input.width(width);
+	          if (column.editor.height) input.height(column.editor.height);
+	          else input.height(height);
+	      }
+	  };
 
       var dialog;
       //相对路径
       var rootPath = "../";
       //列表结构
       var tempdata = {};
+      
+      var dayEditor = { type: 'spinner', minValue: 0, maxValue: 24 };
+      
       var grid = $("#maingrid").ligerGrid({
           columns: [
           { display: "序号", name: "n_xh", width: 70, type: "text", align: "left"},
-          { display: "栏目名称", name: "c_lmmc", width: 300, type: "text", align: "left", editor: { type: 'text'} },
-          { display: "是否导航", name: "c_sfdh", width: 80, type: "text", align: "left", editor: { type: 'text'} },
-          { display: "是否图片", name: "c_sftp", width: 80, type: "text",align: "left", editor: { type: 'text',readonly: 'readonly'} },
-          { display: "是否内容", name: "c_sfnr", width: 80, type: "text", align: "left", editor: { type: 'text'} },
-          { display: "位置", name: "n_xsxh", width: 80, type: "textarea", align: "left", editor: { type: 'text'} }
+          { display: "栏目名称", name: "c_lmmc", width: 300, type: "text", align: "left" },
+          { display: "是否导航", name: "c_sfdh", width: 80, type: "text", align: "left" },
+          { display: "是否图片", name: "c_sftp", width: 80, type: "text",align: "left" },
+          { display: "是否内容", name: "c_sfnr", width: 80, type: "text", align: "left"},
+          { display: "位置", name: "n_xsxh", width: 80, type: "int", align: "left", editor: { type: 'int'} }
           ], dataAction: 'server', pageSize: 20, toolbar: {},
            sortName: 'n_xh', 
-          width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false
+          width: '98%', height: '100%',heightDiff:-10, checkbox: false, enabledEdit: true, clickToEdit: true,rownumbers:true
          // ,data: tempdata
       });
 
@@ -70,9 +101,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      	var items=[
      	           {
      	        	  click:toolbarBtnItemClick,
-     	        	    text:'保存',
-     	        	    img:'<%=basePath%>liger/lib/icons/silkicons/page_save.png',
-     	        	    id:'save'    	
+	   	        	    text:'保存',
+	   	        	    img:'<%=basePath%>liger/lib/icons/silkicons/page_save.png',
+	   	        	    id:'save'    	
      	       	
      	   },{
             
@@ -159,6 +190,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   });
                   break;
               case "save":
+            	  var selected = grid.getSelected();
+                  if (!selected) { LG.tip('请选择行!'); return }
+                  //alert(selected.n_xsxh+'--'+selected.n_xh)
+                  
+                  ColumnAction.columnUpdateXsxh(selected.n_xh, selected.n_xsxh,function(result){
+                	  
+                	  if(result == 'success'){
+                 		  LG.showSuccess('修改成功');
+    	           	   } else {
+    	           		  LG.showError('修改失败');
+    	           	   }
+                  });
+                  /**
                   if (editingrow != null)
                   {
                       grid.endEdit(editingrow);
@@ -166,6 +210,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   {
                       LG.tip('现在不在编辑状态!');
                   }
+                  **/
                   break;
           }
       }
