@@ -31,7 +31,7 @@ CREATE TABLE B_YH  (
    C_JCJL               VARCHAR2(4000),
    C_BZ                 VARCHAR2(4000),
    N_DLCS               NUMBER(10)                    ,
-   D_ZXSC               NUMBER(10)                    ,
+   N_ZXSC               NUMBER(10)                    ,
    N_LX                 NUMBER(4)                      ,
    C_YXIP               VARCHAR2(20),
    CONSTRAINT PK_yh PRIMARY KEY (N_XH)
