@@ -195,7 +195,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		} else {
         		 	LG.showError('保存失败');
         		}
-        	
+        	});
         	/**
             LG.submitForm(mainform, function (data) {
                 var win = parent || window;
