@@ -46,33 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 
 
-/*弹出内容*/
-function parahtml(url,width,height)
-{
-var htmls= '<iframe src="'+url+'" width='+width+' height='+height+' frameborder="0"></iframe>';
-return htmls;
-}
-function parahtml2(width,height)
-{
-var htmls='<div style="width='+width+' height='+height+'">联系人：黄园<Br />联系电话：<Br />邮箱地址：huangyuanaccp@163.com</div>';
-return htmls;
-}
-/*底部样式*/
-function fontbutton(index,mag)
-{
-var footerhtml
-if(mag==1)//选择按钮样式
-{
- footerhtml='<input type="image" alt="Cancel" src="<%=basePath%>images/cancel_button.gif" class="btn" id="msg'+index+'cancel" />';	
 
-}else
-{
-footerhtml='<input type="image" alt="Cancel" src="<%=basePath%>images/send_button.gif" class="btn" onclick=alert("Sumbited!"); />';
-footerhtml+='<input type="image" alt="Cancel" src="<%=basePath%>images/cancel_button.gif" class="btn" id="msg'+index+'cancel" />';
-}
-return footerhtml;
-
-}
 
 
 
@@ -215,7 +189,7 @@ return footerhtml;
 						<div class="main-box" style="margin-bottom: 4px;">
 						<span class="title1">专栏专项工作</span>	
 						<div class="main-con" style="height: 435px;">
-					<a href="view/list?news.c_lm=10" onclick="return hs.htmlExpand(this, { objectType: 'ajax'} )">	<img src="<%=basePath%>/images/tb/12.png"/></a>
+					<a href="news_list.jsp?news.c_lm=10" onclick="return hs.htmlExpand(this, { objectType: 'ajax'} )">	<img src="<%=basePath%>/images/tb/12.png"/></a>
 					<a href="view/list?news.c_lm=223" onclick="return hs.htmlExpand(this, { objectType: 'ajax'} )">		<img src="<%=basePath%>/images/tb/2.png"/></a>
 					<a href="view/list?news.c_lm=207" onclick="return hs.htmlExpand(this, { objectType: 'ajax'} )">		<img src="<%=basePath%>/images/tb/3.png"/></a>
 					<a href="re.jsp'" onclick="return hs.htmlExpand(this, { objectType: 'ajax'} )">		<img src="<%=basePath%>/images/tb/5.png"/></a>
