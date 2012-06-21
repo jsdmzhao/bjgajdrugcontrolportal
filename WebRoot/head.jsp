@@ -3,7 +3,113 @@
 String paths = request.getContextPath();
 String basePaths = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+paths+"/";
 %>
+<link rel="stylesheet" type="text/css" href="<%=basePaths%>/css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="<%=basePaths%>/css/index.css" />
+		<LINK href="<%=basePaths%>/css/css.css" type=text/css rel=stylesheet />
+		<link href="<%=basePaths%>/css/base.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="<%=basePaths%>highslide/highslide-with-html.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=basePaths%>highslide/highslide.css" />
 
+<script type="text/javascript" src="<%=basePaths%>/js/lightBox.js"></script>
+<SCRIPT src="<%=basePaths%>/js/jquery-1.2.6.pack.js" type=text/javascript></SCRIPT>
+<script type="text/javascript" src="<%=basePaths%>/js/jquery.min.js" ></script>
+<script type="text/javascript" src="<%=basePaths%>/js/jquery-ui.min.js" ></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#featured > ul").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 5000, true);
+	});
+
+
+	hs.graphicsDir = '<%=basePaths%>highslide/graphics/';
+	hs.outlineType = 'rounded-white';
+	hs.wrapperClassName = 'draggable-header';
+
+
+</script>
+<script type="text/javascript">
+
+
+/*弹出内容*/
+function parahtml(url,width,height)
+{
+var htmls= '<iframe src="'+url+'" width='+width+' height='+height+' frameborder="0"></iframe>';
+return htmls;
+}
+function parahtml2(width,height)
+{
+var htmls='<div style="width='+width+' height='+height+'">联系人：黄园<Br />联系电话：<Br />邮箱地址：huangyuanaccp@163.com</div>';
+return htmls;
+}
+/*底部样式*/
+function fontbutton(index,mag)
+{
+var footerhtml
+if(mag==1)//选择按钮样式
+{
+ footerhtml='<input type="image" alt="Cancel" src="<%=basePaths%>images/cancel_button.gif" class="btn" id="msg'+index+'cancel" />';	
+
+}else
+{
+footerhtml='<input type="image" alt="Cancel" src="<%=basePaths%>images/send_button.gif" class="btn" onclick=alert("Sumbited!"); />';
+footerhtml+='<input type="image" alt="Cancel" src="<%=basePaths%>images/cancel_button.gif" class="btn" id="msg'+index+'cancel" />';
+}
+return footerhtml;
+
+}
+
+
+
+
+		$(document).ready(function(){
+			$("#three-pass-one").click(function(){
+				$("#three-pass-one").removeClass("three-pass");
+				$("#three-pass-one").addClass("three-pass-hover");
+				
+				$("#three-pass-two").removeClass("three-pass-hover");
+				$("#three-pass-two").addClass("three-pass");
+				
+				$("#three-pass-three").removeClass("three-pass-hover");
+				$("#three-pass-three").addClass("three-pass");
+				
+				$(".pass-cont-one").show();
+				$(".pass-cont-two").hide();
+				$(".pass-cont-three").hide();
+			});
+			
+			$("#three-pass-two").click(function(){
+				
+				$("#three-pass-two").removeClass("three-pass");
+				$("#three-pass-two").addClass("three-pass-hover");
+				
+				$("#three-pass-one").removeClass("three-pass-hover");
+				$("#three-pass-one").addClass("three-pass");
+				
+				$("#three-pass-three").removeClass("three-pass-hover");
+				$("#three-pass-three").addClass("three-pass");
+				
+				$(".pass-cont-one").hide();
+				$(".pass-cont-two").show();
+				$(".pass-cont-three").hide();
+			});
+			
+			$("#three-pass-three").click(function(){
+				
+				$("#three-pass-three").removeClass("three-pass");
+				$("#three-pass-three").addClass("three-pass-hover");
+				
+				$("#three-pass-two").removeClass("three-pass-hover");
+				$("#three-pass-two").addClass("three-pass");
+				
+				$("#three-pass-one").removeClass("three-pass-hover");
+				$("#three-pass-one").addClass("three-pass");
+				
+				$(".pass-cont-one").hide();
+				$(".pass-cont-two").hide();
+				$(".pass-cont-three").show();
+			});
+		});
+	</script>		
 <%
 GregorianCalendar d =new GregorianCalendar();
 int week=d.get(Calendar.DAY_OF_WEEK);
@@ -64,6 +170,7 @@ else {wh="无停驶尾号";}
                 
     } 
   </script>
+
 <DIV class=selCity id=allCity style="display:none" >
 <DIV class=area>
 <div  class=bodydiv>
@@ -178,7 +285,7 @@ else {wh="无停驶尾号";}
 			<div id="nav" style="background: url('<%=basePaths%>/images/index/nav-bg.png') 0 -12px repeat-x;">
 				<div style="padding: 0 20px;">
 					<ul class="nav-ul">
-						<li><a href="index.jsp" class="current">首 页</a></li>
+						<li><a href="<%=basePaths%>index.jsp" class="current">首 页</a></li>
 						<li class="middle"><a href="#">机构设置</a></li>
 						<li class="middle"><a href="#">新闻中心</a></li>
 					    <li class="middle"><a href="#">电话查询</a></li>
