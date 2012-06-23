@@ -1,8 +1,8 @@
 -- CREATE TABLE
 CREATE TABLE D_DM
 (
-  N_XH     NUMBER(10) NOT NULL,
-  N_BXH    NUMBER(4),
+  N_XH     NUMBER(9) NOT NULL,
+  C_BXH    VARCHAR2(4),
   C_DM     VARCHAR2(8),
   C_MC     VARCHAR2(200),
   N_XSXH   NUMBER(10),
@@ -26,7 +26,7 @@ COMMENT ON TABLE D_DM
 -- ADD COMMENTS TO THE COLUMNS 
 COMMENT ON COLUMN D_DM.N_XH
   IS '序号';
-COMMENT ON COLUMN D_DM.N_BXH
+COMMENT ON COLUMN D_DM.C_BXH
   IS '信息类型';
 COMMENT ON COLUMN D_DM.C_DM
   IS '代码';
@@ -55,3 +55,11 @@ alter table D_DM
     minextents 1
     maxextents unlimited
   );
+  
+  --SEQUENCE
+create sequence SEQ_DM
+minvalue 10000000
+maxvalue 99999999
+start with 10000000
+increment by 1
+cache 20;

@@ -77,8 +77,8 @@
 				 N_XH
 			<if test="userId != null and userId !='' ">  , USER_ID</if>
 			<if test="nLx != null and nLx !='' ">  ,  N_LX</if>
-			<if test="nXb != null and nXb !='' ">  ,  D_DJ</if>
-			<if test="dSr != null and dSr !='' ">  ,  C_ZT</if>
+			<if test="dDj != null and dDj !='' ">  ,  D_DJ</if>
+			<if test="cZt != null and cZt !='' ">  ,  C_ZT</if>
 			)VALUES(
 				SEQ_KQ_SXB.NEXTVAL 
 				<!-- #{n_xh#-->

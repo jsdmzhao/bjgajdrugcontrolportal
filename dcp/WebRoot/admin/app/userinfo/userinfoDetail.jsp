@@ -54,10 +54,10 @@ if(userId==null){
          fields : [
          {name:"nXh",type:"hidden",value:'<%=nXh %>'},
          {name:"userId",type:"hidden",value:'<%=userId %>'},
-         {display:"类型",name:"nLx",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"类型",name:"cLx",newline:true,labelWidth:100,width:200,space:30,type:"text"},
          {display:"IP",name:"cYxip",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"级别",name:"nJb",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"用户组",name:"nYhz",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"级别",name:"cJb",newline:false,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"用户组",name:"cYhz",newline:true,labelWidth:100,width:200,space:30,type:"text"},
          {display:"职称",name:"cZc",newline:false,labelWidth:100,width:200,space:30,type:"text"},
          {display:"姓名",name:"cXm",newline:true,labelWidth:100,width:200,space:30,type:"text"},
          {display:"性别",name:"nXb",newline:false,labelWidth:100,width:200,space:30,type:"text"},
