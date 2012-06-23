@@ -6,8 +6,8 @@
 	<resultMap id="Result"  type="java.util.Map">
 	     	<result property="nXh" column="N_XH" jdbcType="DECIMAL"/>
 			<result property="userId" column="USER_ID" jdbcType="DECIMAL"/>
-			<result property="nJb" column="N_JB" jdbcType="VARCHAR"/>
-			<result property="nYhz" column="N_YHZ" jdbcType="VARCHAR"/>
+			<result property="cJb" column="C_JB" jdbcType="VARCHAR"/>
+			<result property="cYhz" column="C_YHZ" jdbcType="VARCHAR"/>
 			<result property="cZc" column="C_ZC" jdbcType="VARCHAR"/>
 			<result property="cXm" column="C_XM" jdbcType="VARCHAR"/>
 			<result property="nXb" column="N_XB" jdbcType="VARCHAR"/>
@@ -30,7 +30,7 @@
 		   <result property="cBz" column="C_BZ" jdbcType="VARCHAR"/>
 		   <result property="nDlcs" column="N_DLCS" jdbcType="VARCHAR"/>
 		   <result property="nZxsc" column="N_ZXSC" jdbcType="VARCHAR"/>
-		   <result property="nLx" column="N_LX" jdbcType="VARCHAR"/>
+		   <result property="cLx" column="C_LX" jdbcType="VARCHAR"/>
 		   <result property="cYxip" column="C_YXIP" jdbcType="VARCHAR"/>
 	</resultMap>
 	 
@@ -39,8 +39,8 @@
 				 select 
 					base.N_XH,
 					base.USER_ID,
-					base.N_JB,
-					base.N_YHZ,
+					base.C_JB,
+					base.C_YHZ,
 					base.C_ZC,
 					base.C_XM,
 					base.N_XB,
@@ -63,17 +63,17 @@
 					base.C_BZ,
 					base.N_DLCS,
 					N_ZXSC,
-					base.N_LX,
+					base.C_LX,
 					base.C_YXIP
 				 from B_YH base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
-			<if test="nYhz != null and nYhz !='' ">  and N_YHZ = #{nYhz}</if>
+			<if test="cYhz != null and cYhz !='' ">  and C_YHZ = #{cYhz}</if>
 			<if test="cXm != null and cXm !='' ">  and C_XM = #{cXm}</if>
 			<if test="dSrBeg != null and dSrBeg !='' ">  and D_SR &gt;= to_date(#{dSrBeg},'YYYY-MM-DD')</if>
 			<if test="dSrEnd != null and dSrEnd !='' "> and D_SR &lt; to_date(#{dSrEnd},'YYYY-MM-DD')</if>
-			<if test="nlx != null and nlx !='' ">  and N_LX = #{nlx}</if>
+			<if test="cLx != null and cLx !='' ">  and C_LX = #{cLx}</if>
 			<if test="cYxip != null and cYxip !='' ">  and C_YXIP = #{cYxip}</if>
 		</trim>
 		ORDER BY base.N_XH  DESC
@@ -84,8 +84,8 @@
 						 select 
 					base.N_XH,
 					base.USER_ID,
-					base.N_JB,
-					base.N_YHZ,
+					base.C_JB,
+					base.C_YHZ,
 					base.C_ZC,
 					base.C_XM,
 					base.N_XB,
@@ -108,17 +108,17 @@
 					base.C_BZ,
 					base.N_DLCS,
 					N_ZXSC,
-					base.N_LX,
+					base.C_LX,
 					base.C_YXIP
 				 from B_YH base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
-			<if test="nYhz != null and nYhz !='' ">  and N_YHZ = #{nYhz}</if>
+			<if test="cYhz != null and cYhz !='' ">  and C_YHZ = #{cYhz}</if>
 			<if test="cXm != null and cXm !='' ">  and C_XM = #{cXm}</if>
 			<if test="dSrBeg != null and dSrBeg !='' ">  and D_SR &gt;= to_date(#{dSrBeg},'YYYY-MM-DD')</if>
 			<if test="dSrEnd != null and dSrEnd !='' "> and D_SR &lt; to_date(#{dSrEnd},'YYYY-MM-DD')</if>
-			<if test="nlx != null and nlx !='' ">  and N_LX = #{nlx}</if>
+			<if test="cLx != null and cLx !='' ">  and C_LX = #{cLx}</if>
 			<if test="cYxip != null and cYxip !='' ">  and C_YXIP = #{cYxip}</if>
 		</trim>
 		ORDER BY base.N_XH  DESC
@@ -131,11 +131,11 @@
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
-			<if test="nYhz != null and nYhz !='' ">  and N_YHZ = #{nYhz}</if>
+			<if test="cYhz != null and cYhz !='' ">  and C_YHZ = #{cYhz}</if>
 			<if test="cXm != null and cXm !='' ">  and C_XM = #{cXm}</if>
 			<if test="dSrBeg != null and dSrBeg !='' ">  and D_SR &gt;= to_date(#{dSrBeg},'YYYY-MM-DD')</if>
 			<if test="dSrEnd != null and dSrEnd !='' "> and D_SR &lt; to_date(#{dSrEnd},'YYYY-MM-DD')</if>
-			<if test="nlx != null and nlx !='' ">  and N_LX = #{nlx}</if>
+			<if test="cLx != null and cLx !='' ">  and C_LX = #{cLx}</if>
 			<if test="cYxip != null and cYxip !='' ">  and C_YXIP = #{cYxip}</if>
 		</trim>
 		ORDER BY base.N_XH  DESC
@@ -147,8 +147,8 @@
 			INSERT INTO B_YH(
 				 N_XH
 			<if test="userId != null and userId !='' ">  , USER_ID</if>
-			<if test="nJb != null and nJb !='' ">  ,  N_JB</if>
-			<if test="nYhz != null and nYhz !='' ">  ,  N_YHZ</if>
+			<if test="cJb != null and cJb !='' ">  ,  C_JB</if>
+			<if test="cYhz != null and cYhz !='' ">  ,  C_YHZ</if>
 			<if test="cZc != null and cZc !='' ">  ,  C_ZC</if>
 			<if test="cXm != null and cXm !='' ">  ,  C_XM</if>
 			<if test="nXb != null and nXb !='' ">  ,  N_XB</if>
@@ -171,14 +171,14 @@
 			<if test="cBz != null and cBz !='' ">  ,  C_BZ</if>
 			<if test="nDlcs != null and nDlcs !='' ">  ,  N_DLCS</if>
 			<if test="nZxsc != null and nZxsc !='' ">  ,  N_ZXSC</if>
-			<if test="nLx != null and nLx !='' ">  ,  N_LX</if>
+			<if test="cLx != null and cLx !='' ">  ,  C_LX</if>
 			<if test="cYxip != null and cYxip !='' ">  ,  C_YXIP</if>
 			)VALUES(
 				SEQ_YH.NEXTVAL 
 				<!-- #{n_xh#-->
 			<if test="userId != null and userId !='' ">  ,  #{userId}</if>
-			<if test="nJb != null and nJb !='' ">  ,  #{nJb}</if>
-			<if test="nYhz != null and nYhz !='' ">  ,  #{nYhz}</if>
+			<if test="cJb != null and cJb !='' ">  ,  #{cJb}</if>
+			<if test="cYhz != null and cYhz !='' ">  ,  #{cYhz}</if>
 			<if test="cZc != null and cZc !='' ">  ,  #{cZc}</if>
 			<if test="cXm != null and cXm !='' ">  ,  #{cXm}</if>
 			<if test="nXb != null and nXb !='' ">  ,  #{nXb}</if>
@@ -201,7 +201,7 @@
 			<if test="cBz != null and cBz !='' ">  ,  #{cBz}</if>
 			<if test="nDlcs != null and nDlcs !='' ">  ,  #{nDlcs}</if>
 			<if test="nZxsc != null and nZxsc !='' ">  ,  to_date(#{nZxsc},'YYYY-MM-DD')</if>
-			<if test="nLx != null and nLx !='' ">  ,  #{nLx}</if>
+			<if test="cLx != null and cLx !='' ">  ,  #{cLx}</if>
 			<if test="cYxip != null and cZt !='' ">  ,  #{cYxip}</if>
 			)
 		<selectKey resultType="string" keyProperty="id" >
@@ -214,8 +214,8 @@
 			INSERT INTO B_YH(
 				N_XH,
 				USER_ID,
-				N_JB,
-				N_YHZ,
+				C_JB,
+				C_YHZ,
 				C_ZC,
 				C_XM,
 				N_XB,
@@ -238,13 +238,13 @@
 				C_BZ,
 				N_DLCS,
 				N_ZXSC,
-				N_LX,
+				C_LX,
 				C_YXIP
 			)VALUES(
 				 SEQ_YH.NEXTVAL,  
 				  #{userId},
-			 #{nJb},
-			   #{nYhz},
+			 #{cJb},
+			   #{cYhz},
 			   #{cZc},
 			   #{cXm},
 			   #{nXb},
@@ -267,7 +267,7 @@
 			   #{cBz},
 			   #{nDlcs},
 			   to_date(#{nZxsc},,'YYYY-MM-DD')
-			   #{nLx}
+			   #{cLx}
 			   #{cYxip}
 			)
 		<selectKey resultType="string" keyProperty="id" >
@@ -280,8 +280,8 @@
 			update B_YH 
 			<trim prefix="set" prefixOverrides=","> 
 			<if test="userId != null and userId !='' ">, USER_ID =  #{userId}</if>
-			<if test="nJb != null and nJb !='' ">, N_JB =  #{nJb}</if>
-			<if test="nYhz != null and nYhz !='' ">,N_YHZ =  #{nYhz}</if>
+			<if test="cJb != null and cJb !='' ">, C_JB =  #{cJb}</if>
+			<if test="cYhz != null and cYhz !='' ">,C_YHZ =  #{cYhz}</if>
 			<if test="cZc != null and cZc !='' ">, C_ZC =  #{cZc}</if>
 			<if test="cXm != null and cXm !='' ">, C_XM =  #{cXm}</if>
 			<if test="nXb != null and nXb !='' ">, N_XB =  #{nXb}</if>
@@ -304,7 +304,7 @@
 			<if test="cBz != null and cBz !='' ">, C_BZ =  #{cBz}</if>
 			<if test="nDlcs != null and nDlcs !='' ">, N_DLCS =  #{nDlcs}</if>
 			<if test="nZxsc != null and nZxsc !='' ">, N_ZXSC =  #{nZxsc}</if>
-			<if test="nLx != null and nLx !='' ">, N_LX =  #{nLx}</if>
+			<if test="cLx != null and cLx !='' ">, C_LX =  #{cLx}</if>
 			<if test="cYxip != null and cZt !='' ">, C_YXIP =  #{cYxip}</if>
 			</trim>
 			<trim prefix="where" prefixOverrides="and |or">  
@@ -316,8 +316,8 @@
 	<update id="updateAllInfo" parameterType="java.util.Map"> 
 			update B_YH set 
 				 USER_ID =  #{userId}
-			, N_JB =  #{nJb}
-			,N_YHZ =  #{nYhz}
+			, C_JB =  #{cJb}
+			,C_YHZ =  #{cYhz}
 			, C_ZC =  #{cZc}
 			, C_XM =  #{cXm}
 			, N_XB =  #{nXb}
@@ -340,7 +340,7 @@
 			, C_BZ =  #{cBz}
 			, N_DLCS =  #{nDlcs}
 			, N_ZXSC =  #{nZxsc}
-			, N_LX =  #{nLx}
+			, C_LX =  #{cLx}
 			, C_YXIP =  #{cYxip}
 			WHERE 
 				N_XH = #{nXh}

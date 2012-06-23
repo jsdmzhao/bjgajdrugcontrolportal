@@ -11,7 +11,10 @@ Object userId = request.getParameter("userId");
 if(userId==null){
 	userId="";
 }
-
+Object nLx = request.getParameter("nLx");
+if(nLx==null){
+	nLx="";
+}
 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -19,7 +22,7 @@ if(userId==null){
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
-    <title>用户 明细</title>
+    <title>明细</title>
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
     <script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
@@ -38,14 +41,11 @@ if(userId==null){
     <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerTree.js" type="text/javascript"></script>
     <script src="<%=basePath%>js/formUtil.js" type="text/javascript"></script>
     
-    <script type="text/javascript" src="<%=basePath%>ckeditor/ckeditor.js"></script>
-	<script type="text/javascript" src="<%=basePath%>ckfinder/ckfinder.js"></script>
-	<script type="text/javascript" src="<%=basePath%>js/My97DatePicker/WdatePicker.js"></script>
 	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
-  	<script type='text/javascript' src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/interface/KqYbjlSvc.js'></script>
 
-</head>
+</head> 
 <body style="padding-bottom:31px;">
     <form id="mform"  method="post"></form> 
     <script type="text/javascript"> 
@@ -53,33 +53,13 @@ if(userId==null){
         var config = {"Form":{ 
          fields : [
          {name:"nXh",type:"hidden",value:'<%=nXh %>'},
-         {name:"userId",type:"hidden",value:'<%=userId %>'},
-         {display:"类型",name:"nLx",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"IP",name:"cYxip",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"级别",name:"nJb",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"用户组",name:"nYhz",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"职称",name:"cZc",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"姓名",name:"cXm",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"性别",name:"nXb",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"生日",name:"dSr",newline:true,labelWidth:100,width:200,space:30,type:"date"},
-         {display:"国籍",name:"cGj",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"出生地",name:"cCsd",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"婚姻状况",name:"cHyzk",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"学历",name:"cXl",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"毕业院校",name:"cByyx",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"专业",name:"cZy",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"卡号",name:"cKh",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"户口所在地",name:"cHkszd",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"电话号码",name:"cDhhm",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"手机号码",name:"cSjhm",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"邮箱",name:"cYx",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"地址",name:"cDz",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"工作时间",name:"dGzsj",newline:false,labelWidth:100,width:200,space:30,type:"date"},
-         {display:"入职时间",name:"dRzsj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
-         {display:"检查记录",name:"cJcjl",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"登录次数",name:"nDlcs",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"在线时长",name:"nZxsc",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"备注",name:"cBz",newline:true,labelWidth:100,width:500,space:30,type:"textarea"}
+         {name:"nLx",type:"hidden",value:'<%=nLx %>'},
+         {display:"用户ID",name:"userId",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"原因",name:"cYy",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
+         {display:"开始时间",name:"dKssj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
+         {display:"结束时间",name:"dJssj",newline:false,labelWidth:100,width:200,space:30,type:"date"},
+         {display:"登记时间",name:"dDj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
+         {display:"状态",name:"cZt",newline:false,labelWidth:100,width:200,space:30,type:"text"}
         ]
  }};
 
@@ -128,7 +108,7 @@ if(userId==null){
         }
         else { 
              var obj={nXh:'<%=nXh%>'};
-        	UserInfoSvc.queryAll(obj, function (rdata)
+        	KqYbjlSvc.queryAll(obj, function (rdata)
                     {
         		    if(rdata != null){
         		    	var data=rdata[0];
@@ -181,17 +161,11 @@ if(userId==null){
             $("input,select,textarea",mform).attr("readonly", "readonly");
         }
 
-        //<!-- 设置一些默认参数 -->
-        var editor = CKEDITOR.replace( 'c_nr' );
-    	CKFinder.setupCKEditor( editor, '/ckfinder/' );
-
-    	//$("c_tpljdz").setDisabled();
-        
         function f_save() {
 
         	var formMap = DWRUtil.getValues("mform"); 
 			if(isAddNew){
-        	UserInfoSvc.save(formMap,function (rdata){
+        	KqYbjlSvc.save(formMap,function (rdata){
         		if (rdata) {
 					LG.showSuccess('保存成功', function() {
 						  f_cancel();
@@ -202,7 +176,7 @@ if(userId==null){
 				}
 			});
         	}else{
-        	   	UserInfoSvc.update(formMap,function (rdata){
+        	   	KqYbjlSvc.update(formMap,function (rdata){
         	   		if (rdata) {
     					LG.showSuccess('修改成功', function() {
     						  f_cancel();

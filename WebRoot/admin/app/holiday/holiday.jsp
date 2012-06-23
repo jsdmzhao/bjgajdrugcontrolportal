@@ -33,7 +33,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	src='<%=basePath%>dwr/interface/HolidaySvc.js'></script>
 	</head>
 	<body style="padding: 10px; height: 100%; text-align: center;">
-		<ipnut type="hidden" id="MenuNo" value="BaseManageEmployees" />
 		<div id="mainsearch" style="width: 98%">
 			<div class="searchtitle">
 				<span>搜索</span>

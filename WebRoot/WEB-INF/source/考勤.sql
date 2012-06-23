@@ -42,7 +42,7 @@ COMMENT ON COLUMN B_KQ_SXB.C_ZT IS
 /* Table: B_KQ_YBJL                                             */
 /*==============================================================*/
 CREATE TABLE B_KQ_YBJL  (
-   N_XH                 NUMBER(10)                      NOT NULL,
+   N_XH                 NUMBER(8)                      NOT NULL,
    USER_ID              NUMBER(8),
    N_LX                 NUMBER(4),
    C_YY                 VARCHAR2(4000),
@@ -183,7 +183,7 @@ start with 10000000
 increment by 1
 cache 20;
 
-create sequence SEQ_KQ_CCJL;
+create sequence SEQ_KQ_CCJL
 minvalue 10000000
 maxvalue 99999999
 start with 10000000

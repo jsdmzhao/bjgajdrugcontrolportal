@@ -80,6 +80,10 @@
 			<create javascript="KqYbjlSvc" creator="spring">
 			<param name="beanName" value="kqYbjlSvc"></param>
 		</create>
+		
+			<create javascript="DmSvc" creator="spring">
+			<param name="beanName" value="dmSvc"></param>
+		</create>
 	
 		
 

@@ -8,8 +8,8 @@ DROP TABLE B_YH;
 CREATE TABLE B_YH  (
    N_XH                 NUMBER(8)                       NOT NULL,
    USER_ID              NUMBER(8),
-   N_JB                 NUMBER(1)                      ,
-   N_YHZ                NUMBER(4)                      ,
+   C_JB                 VARCHAR2(8)                      ,
+   C_YHZ                 VARCHAR2(8)                         ,
    C_ZC                 VARCHAR2(100),
    C_XM                 VARCHAR2(30),
    N_XB                 NUMBER(1)                      ,
@@ -32,7 +32,7 @@ CREATE TABLE B_YH  (
    C_BZ                 VARCHAR2(4000),
    N_DLCS               NUMBER(10)                    ,
    N_ZXSC               NUMBER(10)                    ,
-   N_LX                 NUMBER(4)                      ,
+   C_LX                  VARCHAR2(8)                         ,
    C_YXIP               VARCHAR2(20),
    CONSTRAINT PK_yh PRIMARY KEY (N_XH)
 );
@@ -46,10 +46,10 @@ COMMENT ON COLUMN B_YH.N_XH IS
 COMMENT ON COLUMN B_YH.USER_ID IS
 '用户ID';
 
-COMMENT ON COLUMN B_YH.N_JB IS
+COMMENT ON COLUMN B_YH.C_JB IS
 '级别';
 
-COMMENT ON COLUMN B_YH.N_YHZ IS
+COMMENT ON COLUMN B_YH.C_YHZ IS
 '用户组';
 
 COMMENT ON COLUMN B_YH.C_ZC IS
@@ -115,10 +115,10 @@ COMMENT ON COLUMN B_YH.C_BZ IS
 COMMENT ON COLUMN B_YH.N_DLCS IS
 '登录次数';
 
-COMMENT ON COLUMN B_YH.D_ZXSC IS
+COMMENT ON COLUMN B_YH.n_ZXSC IS
 '在线时长';
 
-COMMENT ON COLUMN B_YH.N_LX IS
+COMMENT ON COLUMN B_YH.C_LX IS
 '类型';
 
 COMMENT ON COLUMN B_YH.C_YXIP IS

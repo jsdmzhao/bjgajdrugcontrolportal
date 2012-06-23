@@ -150,9 +150,9 @@
 				MENU_ID = #{menuId},
 				MENU_NO = #{menuNo},
 				MENU_PARENT_NO = #{menuParentNo},
-				MENU_NAME = #{menuName}
-				MENU_URL = #{menuUrl}
-				MENU_ICON = #{menuIcon}
+				MENU_NAME = #{menuName},
+				MENU_URL = #{menuUrl},
+				MENU_ICON = #{menuIcon},
 				ISVISIBLE = #{isvisible}
 			WHERE 
 				MENU_ID = #{menuId}

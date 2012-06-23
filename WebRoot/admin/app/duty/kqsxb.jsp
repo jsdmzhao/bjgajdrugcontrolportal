@@ -19,7 +19,7 @@
 
 <head>
 <base href="<%=basePath%>">
-<title>用户</title>
+<title>上下班</title>
 <link
 	href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css"
 	rel="stylesheet" type="text/css" />
@@ -39,23 +39,22 @@
 <script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
 <script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
 <script type='text/javascript'
-	src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>
+	src='<%=basePath%>dwr/interface/KqSxbSvc.js'></script>
 
 </head>
 <body style="padding:10px;height:100%; text-align:center;">
-	<ipnut type="hidden" id="MenuNo" value="MemberManageUser" />
-	<div id="mainsearch" style=" width:98%">
-		<div class="searchtitle">
-			<span>搜索</span><img
-				src="<%=basePath%>liger/lib/icons/32X32/searchtool.gif" />
-			<div class="togglebtn"></div>
+<div id="mainsearch" style="width: 98%">
+			<div class="searchtitle">
+				<span>搜索</span>
+				<img src="<%=basePath%>liger/lib/icons/32X32/searchtool.gif" />
+				<div class="togglebtn"></div>
+			</div>
+			<div class="navline" style="margin-bottom: 4px; margin-top: 4px;"></div>
+			<div class="searchbox">
+				<form id="formsearch" class="l-form"></form>
+			</div>
 		</div>
-		<div class="navline" style="margin-bottom:4px; margin-top:4px;"></div>
-		<div class="searchbox">
-			<form id="formsearch" class="l-form"></form>
-		</div>
-	</div>
-	<div id="maingrid"></div>
+		<div id="maingrid"></div>
 
 	<script type="text/javascript">
   var dlgedit=null;
@@ -71,14 +70,10 @@
 	}
 	 var config ={"Grid":{
          columns: [
-         { display: "职称", name: "cZc", width: 180, type: "text", align: "left" },
-         { display: "姓名", name: "cXm", width: 180, type: "text", align: "left" },
-         { display: "生日", name: "dSr", width: 180, type: "text", align: "left" },
-         { display: "婚姻状况", name: "cHyzk", width: 180, type: "text", align: "left" },
-         { display: "电话号码", name: "cDhhm", width: 180, type: "text", align: "left" },
-         { display: "手机号码", name: "cSjhm", width: 180, type: "text", align: "left" },
-         { display: "邮箱", name: "cYx", width: 180, type: "text", align: "left" },
-         { display: "IP", name: "cYxip", width: 180, type: "text", align: "left" }
+         { display: "类型", name: "nLx", width: 180, type: "text", align: "left" },
+         { display: "姓名", name: "userId", width: 180, type: "text", align: "left" },
+         { display: "登记时间", name: "dDj", width: 180, type: "text", align: "left" },
+         { display: "状态", name: "cZt", width: 180, type: "text", align: "left" }
          ]      
 },"Search":null};
 
@@ -87,12 +82,45 @@
          sortName: 'UserID', 
          width: '98%', height: '100%',heightDiff:-10, checkbox: false
      });
-    
+   //双击事件
+ 	LG.setGridDoubleClick(grid, 'modify');
+
+ 	//搜索表单应用ligerui样式
+ 	$("#formsearch").ligerForm( {
+ 		fields : [ {
+ 			display : "日期范围",
+ 			name : "dDjBeg",
+ 			newline : false,
+ 			labelWidth : 100,
+ 			width : 220,
+ 			space : 30,
+ 			type : "date",
+ 			cssClass : "field"
+ 		}, {
+ 			display : "至 ",
+ 			name : "dDjEnd",
+ 			newline : false,
+ 			labelWidth : 100,
+ 			width : 220,
+ 			space : 30,
+ 			type : "date",
+ 			cssClass : "field"
+ 		} ],
+ 		toJSON : JSON2.stringify
+ 	});
+
+ 	//增加搜索按钮,并创建事件
+ 	LG.appendSearchButtons("#formsearch", grid);
 
       //加载toolbar
       LG.loadToolbar(grid, toolbarBtnItemClick);
       	
       	var items=[{
+			            click:toolbarBtnItemClick,
+			            text:'新增',
+			            img:'<%=basePath%>liger/lib/icons/silkicons/add.png',
+			            id:'add'
+			        },{line:true},{
                         click: toolbarBtnItemClick,
                         text: '修改',
                         img:'<%=basePath%>liger/lib/icons/silkicons/application_edit.png',
@@ -114,7 +142,7 @@
 
     	function loadGrid(obj){
     		if(!obj)obj={};
-    		UserInfoSvc.queryByPage(obj,oPage,function(rdata){
+    		KqSxbSvc.queryByPage(obj,oPage,function(rdata){
     			if(rdata == null){
     				  grid.setOptions({ data:  { Total:0, Rows:""  } });
     			}else{
@@ -129,20 +157,23 @@
       function toolbarBtnItemClick(item) {
           switch (item.id) {
               case "add":
-            	  f_dialog("add","新增用户信息");
-            	//  top.f_openDialog(null,'新增用户信息','<%=basePath%>admin/app/user/userDetail.jsp' );
+            	//  f_dialog("add","新增上下班信息");
+            	   dialog = $.ligerDialog.open({ title :'新增信息',url: '<%=basePath%>admin/app/duty/kqsxbDetail.jsp', 
+                       height: 300,width: 720,showMax: true, showToggle: true,  showMin: true
+				  });
+            	//  top.f_openDialog(null,'新增上下班信息','<%=basePath%>admin/app/user/userDetail.jsp' );
                   break;
             //  case "view":
             //      var selected = grid.getSelected();
             //      if (!selected) { LG.tip('请选择行!'); return }
-            //      top.f_addTab(null, '查看用户信息', '<%=basePath%>admin/app/user/userDetail.jsp?IsView=1&ID=' + selected.UserID);
+            //      top.f_addTab(null, '查看上下班信息', '<%=basePath%>admin/app/duty/kqsxbDetail.jsp?IsView=1&ID=' + selected.UserID);
             //      break;
               case "modify":
             	  
             	  var selected = grid.getSelected();
                         if (!selected) { LG.tip('请选择行!'); return }
-                       dialog = $.ligerDialog.open({ title :'修改信息',url: '<%=basePath%>admin/app/userinfo/userinfoDetail.jsp?nXh=' + selected.nXh, 
-                       height: 500,width: 720,showMax: true, showToggle: true,  showMin: true
+                       dialog = $.ligerDialog.open({ title :'修改信息',url: '<%=basePath%>admin/app/duty/kqsxbDetail.jsp?nXh=' + selected.nXh, 
+                       height: 300,width: 720,showMax: true, showToggle: true,  showMin: true
 				  });
                        break;
             	 
@@ -160,7 +191,7 @@
 		function f_remove() {
 			var selected = grid.getSelected();
 			if (selected) {
-				UserInfoSvc.remove(selected, function(rdata) {
+				KqSxbSvc.remove(selected, function(rdata) {
 					if (rdata) {
 						LG.showSuccess('删除成功');
 						loadGrid();
