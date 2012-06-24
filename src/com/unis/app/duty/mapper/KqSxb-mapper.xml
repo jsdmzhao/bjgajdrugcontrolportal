@@ -26,7 +26,7 @@
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
 			<if test="nLx != null and nLx !='' ">  and N_LX = #{nLx}</if>
 			<if test="dDjBeg != null and dDjBeg !='' ">  and D_DJ &gt;= to_date(#{dDjBeg},'YYYY-MM-DD')</if>
-			<if test="dDjEnd != null and dDjEnd !='' "> and D_DJ &lt; to_date(#{dDjEnd},'YYYY-MM-DD')</if>
+			<if test="dDjEnd != null and dDjEnd !='' "> and D_DJ &lt;= to_date(#{dDjEnd},'YYYY-MM-DD')</if>
 			
 			<if test="cZt != null and cZt !='' ">  and C_ZT = #{cZt}</if>
 		</trim>
@@ -47,7 +47,7 @@
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
 			<if test="nLx != null and nLx !='' ">  and N_LX = #{nLx}</if>
 			<if test="dDjBeg != null and dDjBeg !='' ">  and D_DJ &gt;= to_date(#{dDjBeg},'YYYY-MM-DD')</if>
-			<if test="dDjEnd != null and dDjEnd !='' "> and D_DJ &lt; to_date(#{dDjEnd},'YYYY-MM-DD')</if>
+			<if test="dDjEnd != null and dDjEnd !='' "> and D_DJ &lt;= to_date(#{dDjEnd},'YYYY-MM-DD')</if>
 			
 			<if test="cZt != null and cZt !='' ">  and C_ZT = #{cZt}</if>
 		</trim>
@@ -63,7 +63,7 @@
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
 			<if test="nLx != null and nLx !='' ">  and N_LX = #{nLx}</if>
 			<if test="dDjBeg != null and dDjBeg !='' ">  and D_DJ &gt;= to_date(#{dDjBeg},'YYYY-MM-DD')</if>
-			<if test="dDjEnd != null and dDjEnd !='' "> and D_DJ &lt; to_date(#{dDjEnd},'YYYY-MM-DD')</if>
+			<if test="dDjEnd != null and dDjEnd !='' "> and D_DJ &lt;= to_date(#{dDjEnd},'YYYY-MM-DD')</if>
 			
 			<if test="cZt != null and cZt !='' ">  and C_ZT = #{cZt}</if>
 		</trim>

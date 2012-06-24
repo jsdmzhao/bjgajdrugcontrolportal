@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       
       var oPage={
   			pageIndex:1,
-  			pageSize:20
+  			pageSize:1000
   	};
       
       //列表结构

@@ -33,15 +33,16 @@
 	<select id="queryInfo" resultMap="Result" parameterType="java.util.Map" >
 		<include refid="pagination.paginationStart"></include>
 		select * from ( 
-				 select 
-					base.USER_ID,
-					base.USER_NAME,
-					base.USER_PASSWORD,
-					base.USER_LOCK,
-					role.role_id ROLE_ID,
-					role.role_name ROLE_NAME
-				 from SYS_USER base ,SYS_ROLE role ,SYS_GROUP_ROLE gr
-				 where base.user_id = gr.group_id and role.role_id=gr.role_id
+			select 
+          base.USER_ID,
+          base.USER_NAME,
+          base.USER_PASSWORD,
+          base.USER_LOCK,
+          role.role_id ROLE_ID,
+          role.role_name ROLE_NAME
+         from SYS_USER base,SYS_GROUP_ROLE gr ,SYS_ROLE role 
+         where base.user_id = gr.group_id(+) and role.role_id(+)=gr.role_id
+     
 				 )
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="userId != null and userId !='' ">  and 	USER_ID = #{userId}</if>

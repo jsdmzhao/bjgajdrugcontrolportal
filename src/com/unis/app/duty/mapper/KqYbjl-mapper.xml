@@ -34,13 +34,13 @@
 			<if test="cYy != null and cYy !='' ">  and C_YY = #{cYy}</if>
 			
 			<if test="dKssjBeg != null and dKssjBeg !='' ">  and D_KSSJ &gt;= to_date(#{dKssjBeg},'YYYY-MM-DD')</if>
-			<if test="dKssjEnd != null and dKssjEnd !='' "> and D_KSSJ &lt; to_date(#{dKssjEnd},'YYYY-MM-DD')</if>
+			<if test="dKssjEnd != null and dKssjEnd !='' "> and D_KSSJ &lt;= to_date(#{dKssjEnd},'YYYY-MM-DD')</if>
 			
 			<if test="dJssjBeg != null and dJssjBeg !='' ">  and D_JSSJ &gt;= to_date(#{dJssjBeg},'YYYY-MM-DD')</if>
-			<if test="dJssjEnd != null and dJssjEnd !='' "> and D_JSSJ &lt; to_date(#{dJssjEnd},'YYYY-MM-DD')</if>
+			<if test="dJssjEnd != null and dJssjEnd !='' "> and D_JSSJ &lt;= to_date(#{dJssjEnd},'YYYY-MM-DD')</if>
 			
 			<if test="dDjBeg != null and dDjBeg !='' ">  and D_DJ &gt;= to_date(#{dDjBeg},'YYYY-MM-DD')</if>
-			<if test="dDjEnd != null and dDjEnd !='' "> and D_DJ &lt; to_date(#{dDjEnd},'YYYY-MM-DD')</if>
+			<if test="dDjEnd != null and dDjEnd !='' "> and D_DJ &lt;= to_date(#{dDjEnd},'YYYY-MM-DD')</if>
 			
 			<if test="cZt != null and cZt !='' ">  and C_ZT = #{cZt}</if>
 		</trim>
@@ -66,13 +66,13 @@
 			<if test="cYy != null and cYy !='' ">  and C_YY = #{cYy}</if>
 			
 			<if test="dKssjBeg != null and dKssjBeg !='' ">  and D_KSSJ &gt;= to_date(#{dKssjBeg},'YYYY-MM-DD')</if>
-			<if test="dKssjEnd != null and dKssjEnd !='' "> and D_KSSJ &lt; to_date(#{dKssjEnd},'YYYY-MM-DD')</if>
+			<if test="dKssjEnd != null and dKssjEnd !='' "> and D_KSSJ &lt;= to_date(#{dKssjEnd},'YYYY-MM-DD')</if>
 			
 			<if test="dJssjBeg != null and dJssjBeg !='' ">  and D_JSSJ &gt;= to_date(#{dJssjBeg},'YYYY-MM-DD')</if>
-			<if test="dJssjEnd != null and dJssjEnd !='' "> and D_JSSJ &lt; to_date(#{dJssjEnd},'YYYY-MM-DD')</if>
+			<if test="dJssjEnd != null and dJssjEnd !='' "> and D_JSSJ &lt;= to_date(#{dJssjEnd},'YYYY-MM-DD')</if>
 			
 			<if test="dDjBeg != null and dDjBeg !='' ">  and D_DJ &gt;= to_date(#{dDjBeg},'YYYY-MM-DD')</if>
-			<if test="dDjEnd != null and dDjEnd !='' "> and D_DJ &lt; to_date(#{dDjEnd},'YYYY-MM-DD')</if>
+			<if test="dDjEnd != null and dDjEnd !='' "> and D_DJ &lt;= to_date(#{dDjEnd},'YYYY-MM-DD')</if>
 			
 			<if test="cZt != null and cZt !='' ">  and C_ZT = #{cZt}</if>
 		</trim>
@@ -90,13 +90,13 @@
 			<if test="cYy != null and cYy !='' ">  and C_YY = #{cYy}</if>
 			
 			<if test="dKssjBeg != null and dKssjBeg !='' ">  and D_KSSJ &gt;= to_date(#{dKssjBeg},'YYYY-MM-DD')</if>
-			<if test="dKssjEnd != null and dKssjEnd !='' "> and D_KSSJ &lt; to_date(#{dKssjEnd},'YYYY-MM-DD')</if>
+			<if test="dKssjEnd != null and dKssjEnd !='' "> and D_KSSJ &lt;= to_date(#{dKssjEnd},'YYYY-MM-DD')</if>
 			
 			<if test="dJssjBeg != null and dJssjBeg !='' ">  and D_JSSJ &gt;= to_date(#{dJssjBeg},'YYYY-MM-DD')</if>
-			<if test="dJssjEnd != null and dJssjEnd !='' "> and D_JSSJ &lt; to_date(#{dJssjEnd},'YYYY-MM-DD')</if>
+			<if test="dJssjEnd != null and dJssjEnd !='' "> and D_JSSJ &lt;= to_date(#{dJssjEnd},'YYYY-MM-DD')</if>
 			
 			<if test="dDjBeg != null and dDjBeg !='' ">  and D_DJ &gt;= to_date(#{dDjBeg},'YYYY-MM-DD')</if>
-			<if test="dDjEnd != null and dDjEnd !='' "> and D_DJ &lt; to_date(#{dDjEnd},'YYYY-MM-DD')</if>
+			<if test="dDjEnd != null and dDjEnd !='' "> and D_DJ &lt;= to_date(#{dDjEnd},'YYYY-MM-DD')</if>
 			
 			<if test="cZt != null and cZt !='' ">  and C_ZT = #{cZt}</if>
 		</trim>

@@ -66,7 +66,7 @@
   
 	var oPage={
 			pageIndex:1,
-			pageSize:20
+			pageSize:1000
 	}
 	 var config ={"Grid":{
          columns: [
@@ -79,7 +79,8 @@
      var grid = $("#maingrid").ligerGrid({
          columns: config.Grid.columns, pageSize: 20, toolbar: {},
          sortName: 'UserID', 
-         width: '98%', height: '100%',heightDiff:-10, checkbox: false
+         width: '98%', height: '100%',heightDiff:-10, checkbox: false,
+         pageSize : 20,
      });
     
 
@@ -331,7 +332,7 @@
 			<li style="width: 180px; text-align: left;"><div
 					style="width: 160px;" class="l-text">
 					<input style="width: 160px;" id="userPassword" class="l-text-field"
-						name="userPassword" type="password" ligeruiid="userPassword"
+						name="userPassword" type="text" ligeruiid="userPassword"
 						ltype="password" ligerui='{"width":148}'><div
 							class="l-text-l"></div>
 						<div class="l-text-r"></div>
@@ -339,20 +340,7 @@
 			</li>
 			<li style="width: 30px;"></li>
 		</ul>
-		<ul>
-			<li style="width: 100px; text-align: left;">确认密码：</li>
-			<li style="width: 180px; text-align: left;"><div
-					style="width: 160px;" class="l-text">
-					<input style="width: 160px;" id="userPassword2"
-						class="l-text-field" name="userPassword2" type="password"
-						ligeruiid="userPassword2"
-						ltype="password" ligerui='{"width":148}'><div
-							class="l-text-l"></div>
-						<div class="l-text-r"></div>
-				</div>
-			</li>
-			<li style="width: 30px;"></li>
-		</ul>
+		
 			<ul>
 			<li style="width: 100px; text-align: left;">角色：</li>
 			<li style="width: 180px; "><div

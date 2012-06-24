@@ -18,7 +18,7 @@
 	<select id="queryAllInfo" resultMap="Result" parameterType="java.util.Map">
 		select menu_name||'--'|| btn_name as ACCESS_NAME, BTN_no as ACCESS_no,BTN_id as BTN_ID,
 		btn_icon as ACCESS_ICON from sys_button ,sys_menu where
-		sys_button.menu_id=sys_menu.menu_id
+		sys_button.menu_id=sys_menu.menu_id order by sys_menu.menu_id aSC,btn_id asc
 	</select>
 
 

@@ -34,6 +34,15 @@
 		</trim>
 		ORDER BY MENU_ID  ASC 
 	</select>
+	
+	
+	<select id="queryUserMenu" resultMap="Result"  parameterType="java.util.Map" >
+		    select * from sys_menu where menu_id in (
+     select distinct menu_id from sys_button where btn_id in (
+    select authority_id  from sys_permission where role_id=(
+    select role_id from sys_group_role where group_id =#{userId}))) order by menu_parent_no,menu_no
+    
+	</select>
 
 
 	<select id="queryInfo" resultMap="Result" parameterType="java.util.Map" >

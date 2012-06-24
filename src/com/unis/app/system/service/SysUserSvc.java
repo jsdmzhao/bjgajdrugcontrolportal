@@ -55,7 +55,6 @@ public class SysUserSvc  {
 	}
 	
 	public Object login(Map p,HttpServletRequest request) throws SQLException {
-		System.out.println("@@@@@@@@@@@ p : "+p);
 		List<Map> list=sysUserDao.queryAllInfo(p);
 		if(list.size()>0){
 			request.getSession().setAttribute("userName", list.get(0).get("userName"));

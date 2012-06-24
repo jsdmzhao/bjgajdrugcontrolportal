@@ -361,7 +361,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            }
            
            var obj= {roleId: selectedRoleID,data:btnIds};
-            alert($d(obj));
+          //  alert($d(obj));
         	SysPermissionSvc.saveAll(obj,function(rdata){
            			if (rdata) {
            				LG.showSuccess('保存成功', function() {

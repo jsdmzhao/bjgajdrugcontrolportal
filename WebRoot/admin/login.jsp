@@ -105,7 +105,9 @@ if("out".equals(action)){
         				
         				$.ligerDialog.waitting("正在登陆中,请稍后...");
                         $("#btnLogin").attr("disabled", true);
-                        window.location.href="index.jsp";
+                       // 
+                        window.location.href="<%=basePath%>admin/index.jsp?date="+new Date();
+                       // history.go(0);
             		}
         		});
             }

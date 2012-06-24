@@ -30,13 +30,13 @@
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
 			
 			<if test="dRqBeg != null and dRqBeg !='' ">  and D_RQ &gt;= to_date(#{dRqBeg},'YYYY-MM-DD')</if>
-			<if test="dRqEnd != null and dRqEnd !='' "> and D_RQ &lt; to_date(#{dRqEnd},'YYYY-MM-DD')</if>
+			<if test="dRqEnd != null and dRqEnd !='' "> and D_RQ &lt;= to_date(#{dRqEnd},'YYYY-MM-DD')</if>
 			
 			<if test="cSj != null and cSj !='' ">  and C_SJ = #{cSj}</if>
 			<if test="cTxyy != null and cTxyy !='' ">  and C_TXYY = #{cYy}</if>
 			
 			<if test="dDjBeg != null and dDjBeg !='' ">  and D_DJ &gt;= to_date(#{dDjBeg},'YYYY-MM-DD')</if>
-			<if test="dDjEnd != null and dDjEnd !='' "> and D_DJ &lt; to_date(#{dDjEnd},'YYYY-MM-DD')</if>
+			<if test="dDjEnd != null and dDjEnd !='' "> and D_DJ &lt;= to_date(#{dDjEnd},'YYYY-MM-DD')</if>
 			
 			<if test="cZt != null and cZt !='' ">  and C_ZT = #{cZt}</if>
 		</trim>
@@ -59,13 +59,13 @@
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
 			
 			<if test="dRqBeg != null and dRqBeg !='' ">  and D_RQ &gt;= to_date(#{dRqBeg},'YYYY-MM-DD')</if>
-			<if test="dRqEnd != null and dRqEnd !='' "> and D_RQ &lt; to_date(#{dRqEnd},'YYYY-MM-DD')</if>
+			<if test="dRqEnd != null and dRqEnd !='' "> and D_RQ &lt;= to_date(#{dRqEnd},'YYYY-MM-DD')</if>
 			
 			<if test="cSj != null and cSj !='' ">  and C_SJ = #{cSj}</if>
 			<if test="cTxyy != null and cTxyy !='' ">  and C_TXYY = #{cYy}</if>
 			
 			<if test="dDjBeg != null and dDjBeg !='' ">  and D_DJ &gt;= to_date(#{dDjBeg},'YYYY-MM-DD')</if>
-			<if test="dDjEnd != null and dDjEnd !='' "> and D_DJ &lt; to_date(#{dDjEnd},'YYYY-MM-DD')</if>
+			<if test="dDjEnd != null and dDjEnd !='' "> and D_DJ &lt;= to_date(#{dDjEnd},'YYYY-MM-DD')</if>
 			
 			<if test="cZt != null and cZt !='' ">  and C_ZT = #{cZt}</if>
 		</trim>
@@ -81,13 +81,13 @@
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
 			
 			<if test="dRqBeg != null and dRqBeg !='' ">  and D_RQ &gt;= to_date(#{dRqBeg},'YYYY-MM-DD')</if>
-			<if test="dRqEnd != null and dRqEnd !='' "> and D_RQ &lt; to_date(#{dRqEnd},'YYYY-MM-DD')</if>
+			<if test="dRqEnd != null and dRqEnd !='' "> and D_RQ &lt;= to_date(#{dRqEnd},'YYYY-MM-DD')</if>
 			
 			<if test="cSj != null and cSj !='' ">  and C_SJ = #{cSj}</if>
 			<if test="cTxyy != null and cTxyy !='' ">  and C_TXYY = #{cYy}</if>
 			
 			<if test="dDjBeg != null and dDjBeg !='' ">  and D_DJ &gt;= to_date(#{dDjBeg},'YYYY-MM-DD')</if>
-			<if test="dDjEnd != null and dDjEnd !='' "> and D_DJ &lt; to_date(#{dDjEnd},'YYYY-MM-DD')</if>
+			<if test="dDjEnd != null and dDjEnd !='' "> and D_DJ &lt;= to_date(#{dDjEnd},'YYYY-MM-DD')</if>
 			
 			<if test="cZt != null and cZt !='' ">  and C_ZT = #{cZt}</if>
 		</trim>

@@ -72,7 +72,7 @@
 			<if test="cYhz != null and cYhz !='' ">  and C_YHZ = #{cYhz}</if>
 			<if test="cXm != null and cXm !='' ">  and C_XM = #{cXm}</if>
 			<if test="dSrBeg != null and dSrBeg !='' ">  and D_SR &gt;= to_date(#{dSrBeg},'YYYY-MM-DD')</if>
-			<if test="dSrEnd != null and dSrEnd !='' "> and D_SR &lt; to_date(#{dSrEnd},'YYYY-MM-DD')</if>
+			<if test="dSrEnd != null and dSrEnd !='' "> and D_SR &lt;= to_date(#{dSrEnd},'YYYY-MM-DD')</if>
 			<if test="cLx != null and cLx !='' ">  and C_LX = #{cLx}</if>
 			<if test="cYxip != null and cYxip !='' ">  and C_YXIP = #{cYxip}</if>
 		</trim>
@@ -117,7 +117,7 @@
 			<if test="cYhz != null and cYhz !='' ">  and C_YHZ = #{cYhz}</if>
 			<if test="cXm != null and cXm !='' ">  and C_XM = #{cXm}</if>
 			<if test="dSrBeg != null and dSrBeg !='' ">  and D_SR &gt;= to_date(#{dSrBeg},'YYYY-MM-DD')</if>
-			<if test="dSrEnd != null and dSrEnd !='' "> and D_SR &lt; to_date(#{dSrEnd},'YYYY-MM-DD')</if>
+			<if test="dSrEnd != null and dSrEnd !='' "> and D_SR &lt;= to_date(#{dSrEnd},'YYYY-MM-DD')</if>
 			<if test="cLx != null and cLx !='' ">  and C_LX = #{cLx}</if>
 			<if test="cYxip != null and cYxip !='' ">  and C_YXIP = #{cYxip}</if>
 		</trim>
@@ -134,7 +134,7 @@
 			<if test="cYhz != null and cYhz !='' ">  and C_YHZ = #{cYhz}</if>
 			<if test="cXm != null and cXm !='' ">  and C_XM = #{cXm}</if>
 			<if test="dSrBeg != null and dSrBeg !='' ">  and D_SR &gt;= to_date(#{dSrBeg},'YYYY-MM-DD')</if>
-			<if test="dSrEnd != null and dSrEnd !='' "> and D_SR &lt; to_date(#{dSrEnd},'YYYY-MM-DD')</if>
+			<if test="dSrEnd != null and dSrEnd !='' "> and D_SR &lt;= to_date(#{dSrEnd},'YYYY-MM-DD')</if>
 			<if test="cLx != null and cLx !='' ">  and C_LX = #{cLx}</if>
 			<if test="cYxip != null and cYxip !='' ">  and C_YXIP = #{cYxip}</if>
 		</trim>
@@ -202,7 +202,7 @@
 			<if test="nDlcs != null and nDlcs !='' ">  ,  #{nDlcs}</if>
 			<if test="nZxsc != null and nZxsc !='' ">  ,  to_date(#{nZxsc},'YYYY-MM-DD')</if>
 			<if test="cLx != null and cLx !='' ">  ,  #{cLx}</if>
-			<if test="cYxip != null and cZt !='' ">  ,  #{cYxip}</if>
+			<if test="cYxip != null and cYxip !='' ">  ,  #{cYxip}</if>
 			)
 		<selectKey resultType="string" keyProperty="id" >
 			 <!--SELECT #{nXh# AS ID FROM dual  -->

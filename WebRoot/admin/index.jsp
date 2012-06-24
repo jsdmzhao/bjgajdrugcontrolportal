@@ -2,6 +2,18 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
+if(session.getAttribute("userId")==null){
+	%>
+	<script>
+	
+	window.location.href="<%=basePath%>admin/login.jsp
+	
+	</script>
+	<%
+	
+}else{
+
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -50,6 +62,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
 <script type='text/javascript'
 	src='<%=basePath%>dwr/interface/SysUserSvc.js'></script>
+	<script type='text/javascript'
+	src='<%=basePath%>dwr/interface/SysMenuSvc.js'></script>
 	</head>
 	<body
 		style="text-align: center; background: #F0F0F0; overflow: hidden;">
@@ -71,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div position="left" title="主要菜单" id="mainmenu"></div>
 			<div position="center" id="framecenter">
 				<div tabid="home" title="我的主页">
-					<iframe frameborder="0" name="home" id="home" src="<%=basePath%>admin/welcome.jsp"></iframe>
+					<iframe frameborder="0" name="home" id="home" src="<%=basePath%>admin/welcome.jsp?date="<%=new Date() %>></iframe>
 				</div>
 			</div>
 		</div>
@@ -173,253 +187,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
             //预加载dialog的背景图片
             LG.prevDialogImage();
-
             var mainmenu = $("#mainmenu");
+           var menus;
+           function f_menu()
+	        {
+   	           var obj={userId : '<%=session.getAttribute("userId")%>'};
+        	   SysMenuSvc.queryUserMenu(obj, function(rdata) {
+					if (rdata) {
+						menus =rdata;
+					     $(menus).each(function (i, menu)
+					                {
+					                    var item = $('<div title="' + menu.MenuName + '"><ul class="menulist"></ul></div>');
+										
+					                    $(menu.children).each(function (j, submenu)
+					                    {
+					                        var subitem = $('<li><img/><span></span><div class="menuitem-l"></div><div class="menuitem-r"></div></li>');
+					                        subitem.attr({
+					                            url: submenu.MenuUrl,
+					                            menuno: submenu.MenuNo
+					                        });
+					                        $("img", subitem).attr("src", submenu.MenuIcon || submenu.icon);
+					                        $("span", subitem).html(submenu.MenuName || submenu.text);
 
-            var menus=[
-                     {"icon":"<%=basePath%>liger/lib/icons/silkicons/application.png",
-                     "id":58,
-                    "children":[{
-                    "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                    "id":41,
-                    "MenuName":"文章发布",
-                    "MenuID":41,
-                    "text":"文章发布",
-                    "MenuUrl":"<%=basePath%>admin/app/news/news.jsp?newsType=1",
-                    "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                    "MenuNo":"MemberManageRole",
-                    "MenuParentNo":"MemberManage"
-                    },{
-                    "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                    "id":42,
-                    "MenuName":"栏目列表",
-                    "MenuID":42,
-                    "text":"栏目列表",
-                    "MenuUrl":"<%=basePath%>admin/app/column/column.jsp",
-                    "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/sitemap.gif",
-                    "MenuNo":"MemberManageRole",
-                    "MenuParentNo":"MemberManage"
-                    },{
-                    "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                    "id":42,
-                    "MenuName":"文章审核",
-                    "MenuID":42,
-                    "text":"文章审核",
-                    "MenuUrl":"<%=basePath%>admin/app/news/newsAudit.jsp?newsType=1",
-                    "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/zoom.gif",
-                    "MenuNo":"MemberManageRole",
-                    "MenuParentNo":"MemberManage"
-                    }],
-                    "MenuName":"新闻管理",
-                    "MenuID":58,
-                    "text":"新闻管理",
-                    "MenuUrl":null,
-                    "MenuIcon":"<%=basePath%>liger/lib/icons/silkicons/application.png",
-                    "MenuNo":"MemberManage",
-                    "MenuParentNo":null
-                    },{"icon":"<%=basePath%>liger/lib/icons/silkicons/application.png",
-                    "id":58,
-                    "children":[{
-                    "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                    "id":70,
-                    "MenuName":"车辆列表",
-                    "MenuID":70,
-                    "text":"车辆列表",
-                    "MenuUrl":"<%=basePath%>admin/app/car/car.jsp",
-                    "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/sitemap.gif",
-                    "MenuNo":"MemberManageRole",
-                    "MenuParentNo":"MemberManage"
-                    },{
-                     "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                     "id":71,
-                     "MenuName":"车辆审核",
-                     "MenuID":71,
-                     "text":"车辆审核",
-                     "MenuUrl":"<%=basePath%>admin/app/car/carAudit.jsp",
-                     "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/zoom.gif",
-                     "MenuNo":"MemberManageRole",
-                     "MenuParentNo":"MemberManage"
-                     }],
-                    "MenuName":"车辆管理",
-                    "MenuID":78,
-                    "text":"车辆管理",
-                    "MenuUrl":null,
-                    "MenuIcon":"<%=basePath%>liger/lib/icons/silkicons/application.png",
-                    "MenuNo":"MemberManage",
-                    "MenuParentNo":null
-                    },{
-                    "icon":"<%=basePath%>liger/lib/icons/silkicons/application.png",
-                    "id":18,
-                    "children":[{
-                    "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                    "id":10,
-                    "MenuName":"日志列表",
-                    "MenuID":10,
-                    "text":"日志列表",
-                    "MenuUrl":"<%=basePath%>admin/app/blog/blog.jsp",
-                    "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/sitemap.gif",
-                    "MenuNo":"MemberManageRole",
-                    "MenuParentNo":"MemberManage"
-                    },{
-                     "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                     "id":11,
-                     "MenuName":"日志审核",
-                     "MenuID":11,
-                     "text":"日志审核",
-                     "MenuUrl":"<%=basePath%>admin/app/blog/blogAudit.jsp",
-                     "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/zoom.gif",
-                     "MenuNo":"MemberManageRole",
-                     "MenuParentNo":"MemberManage"
-                    },{
-                     "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                     "id":12,
-                     "MenuName":"日志推荐",
-                     "MenuID":12,
-                     "text":"日志推荐",
-                     "MenuUrl":"<%=basePath%>admin/app/blog/blogSftj.jsp",
-                     "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/finished_work.gif",
-                     "MenuNo":"MemberManageRole",
-                     "MenuParentNo":"MemberManage"
-                     }],
-                    "MenuName":"日志管理",
-                    "MenuID":18,
-                    "text":"日志管理",
-                    "MenuUrl":null,
-                    "MenuIcon":"<%=basePath%>liger/lib/icons/silkicons/application.png",
-                    "MenuNo":"MemberManage",
-                    "MenuParentNo":null
-                    },{
-                    "icon":"<%=basePath%>liger/lib/icons/32X32/future_projects.gif",
-                    "id":1,
-                    "children":[{
-                        "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                        "id":61,
-                        "MenuName":"角色管理",
-                        "MenuID":61,
-                        "text":"角色管理",
-                        "MenuUrl":"<%=basePath%>admin/app/role/role.jsp",
-                        "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                        "MenuNo":"MemberManageRole",
-                        "MenuParentNo":"MemberManage"
-                      	},{
-                       	"icon":"<%=basePath%>liger/lib/icons/32X32/role.gif",
-                       	"id":62,
-                       	"MenuName":"用户管理",
-                       	"MenuID":62,
-                       	"text":"用户管理",
-                       	"MenuUrl":"<%=basePath%>admin/app/user/user.jsp",
-                       	"MenuIcon":"<%=basePath%>liger/lib/icons/32X32/role.gif",
-                       	"MenuNo":"MemberManageUser",
-                       	"MenuParentNo":"MemberManage"
-                         },{
-                         "icon":"<%=basePath%>liger/lib/icons/32X32/sitemap.gif",
-                         "id":8,
-                         "MenuName":"菜单管理",
-                         "MenuID":8,
-                         "text":"菜单管理",
-                         "MenuUrl":"<%=basePath%>admin/app/menu/menu.jsp",
-                         "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/sitemap.gif",
-                         "MenuNo":"sysmenu",
-                         "MenuParentNo":"system"
-                         },{
-                         "icon":"<%=basePath%>liger/lib/icons/32X32/link.gif",
-                         "id":19,
-                         "MenuName":"权限中心",
-                         "MenuID":19,
-                         "text":"权限中心",
-                         "MenuUrl":"<%=basePath%>admin/app/permission/permission.jsp",
-                         "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/link.gif",
-                         "MenuNo":"sysright",
-                         "MenuParentNo":"system"
-                         },{
-                          "icon":"<%=basePath%>liger/lib/icons/32X32/link.gif",
-                          "id":20,
-                          "MenuName":"网址类别",
-                          "MenuID":20,
-                          "text":"网址类别",
-                          "MenuUrl":"<%=basePath%>admin/app/website/webtype.jsp",
-                          "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/link.gif",
-                          "MenuNo":"sysright",
-                          "MenuParentNo":"system"
-                         },{
-                          "icon":"<%=basePath%>liger/lib/icons/32X32/link.gif",
-                          "id":21,
-                          "MenuName":"常用网址",
-                          "MenuID":21,
-                          "text":"常用网址",
-                          "MenuUrl":"<%=basePath%>admin/app/website/website.jsp",
-                          "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/world.gif",
-                          "MenuNo":"sysright",
-                          "MenuParentNo":"system"
-                         },{
-                           "icon":"<%=basePath%>liger/lib/icons/32X32/link.gif",
-                           "id":22,
-                           "MenuName":"公告列表",
-                           "MenuID":22,
-                           "text":"公告列表",
-                           "MenuUrl":"<%=basePath%>admin/app/notice/notice.jsp",
-                           "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/order_159.gif",
-                           "MenuNo":"sysright",
-                           "MenuParentNo":"system"
-                         },{
-                           "icon":"<%=basePath%>liger/lib/icons/32X32/link.gif",
-                           "id":23,
-                           "MenuName":"车辆管理",
-                           "MenuID":22,
-                           "text":"车辆管理",
-                           "MenuUrl":"<%=basePath%>admin/app/car/cartype.jsp",
-                           "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/milestone.gif",
-                           "MenuNo":"sysright",
-                           "MenuParentNo":"system"
-                         },{
-                               "icon":"<%=basePath%>liger/lib/icons/32X32/link.gif",
-                               "id":21,
-                               "MenuName":"假日管理",
-                               "MenuID":21,
-                               "text":"假日管理",
-                               "MenuUrl":"<%=basePath%>admin/app/holiday/holiday.jsp",
-                               "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/world.gif",
-                               "MenuNo":"sysright",
-                               "MenuParentNo":"system"
-                                }],
-                          "MenuName":"系统管理",
-                          "MenuID":1,
-                          "text":"系统管理",
-                          "MenuUrl":null,
-                          "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/future_projects.gif",
-                          "MenuNo":"system",
-                          "MenuParentNo":null
-                          }]; 
-            
-            $(menus).each(function (i, menu)
-                {
-                    var item = $('<div title="' + menu.MenuName + '"><ul class="menulist"></ul></div>');
-					
-                    $(menu.children).each(function (j, submenu)
-                    {
-                        var subitem = $('<li><img/><span></span><div class="menuitem-l"></div><div class="menuitem-r"></div></li>');
-                        subitem.attr({
-                            url: submenu.MenuUrl,
-                            menuno: submenu.MenuNo
-                        });
-                        $("img", subitem).attr("src", submenu.MenuIcon || submenu.icon);
-                        $("span", subitem).html(submenu.MenuName || submenu.text);
+					                        $("ul:first", item).append(subitem);
+					                    });
+					                    mainmenu.append(item);
 
-                        $("ul:first", item).append(subitem);
-                    });
-                    mainmenu.append(item);
-
-                });
-
-                //Accordion
-                accordion = $("#mainmenu").ligerAccordion({ height: bodyHeight - 24, speed: null });
+					                });
+				                //Accordion
+				                accordion = $("#mainmenu").ligerAccordion({ height: bodyHeight - 24, speed: null });
 
 
 
-                $("#pageloading").hide();
+				                $("#pageloading").hide();
+						
+					} else {
+						LG.showError('菜单获取失败');
+					}
+				});
+	        }
+           f_menu();
+      
             
 
         });
     </script>
 	</body>
 </html>
+<%}%>

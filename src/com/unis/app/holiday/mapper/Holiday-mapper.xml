@@ -20,7 +20,7 @@
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
 			<if test="dRqBeg != null and dRqBeg !='' ">  and D_RQ &gt;= to_date(#{dRqBeg},'YYYY-MM-DD')</if>
-			<if test="dRqEnd != null and dRqEnd !='' "> and D_RQ &lt; to_date(#{dRqEnd},'YYYY-MM-DD')</if>
+			<if test="dRqEnd != null and dRqEnd !='' "> and D_RQ &lt;= to_date(#{dRqEnd},'YYYY-MM-DD')</if>
 			<if test="cZt != null and btnNo !='' ">  and C_ZT = #{cZt}</if>
 		</trim>
 		ORDER BY base.D_RQ  DESC
@@ -36,7 +36,7 @@
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
 			<if test="dRqBeg != null and dRqBeg !='' ">  and D_RQ &gt;= to_date(#{dRqBeg},'YYYY-MM-DD')</if>
-			<if test="dRqEnd != null and dRqEnd !='' "> and D_RQ &lt; to_date(#{dRqEnd},'YYYY-MM-DD')</if>
+			<if test="dRqEnd != null and dRqEnd !='' "> and D_RQ &lt;= to_date(#{dRqEnd},'YYYY-MM-DD')</if>
 			<if test="cZt != null and btnNo !='' ">  and C_ZT = #{cZt}</if>
 		</trim>
 		ORDER BY base.D_RQ  DESC
@@ -49,7 +49,7 @@
  		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
 		<if test="dRqBeg != null and dRqBeg !='' ">  and D_RQ &gt;= to_date(#{dRqBeg},'YYYY-MM-DD')</if>
-			<if test="dRqEnd != null and dRqEnd !='' "> and D_RQ &lt; to_date(#{dRqEnd},'YYYY-MM-DD')</if>
+			<if test="dRqEnd != null and dRqEnd !='' "> and D_RQ &lt;= to_date(#{dRqEnd},'YYYY-MM-DD')</if>
 			<if test="cZt != null and btnNo !='' ">  and C_ZT = #{cZt}</if>
 		</trim>
 	</select> 
