@@ -67,7 +67,7 @@
   
 	var oPage={
 			pageIndex:1,
-			pageSize:20
+			pageSize:1000
 	}
 	 var config ={"Grid":{
          columns: [

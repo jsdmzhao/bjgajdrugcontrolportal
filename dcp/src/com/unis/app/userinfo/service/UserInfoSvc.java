@@ -21,6 +21,7 @@ public class UserInfoSvc  {
 	private UserInfoDao userDao;
 
 	public Object save(Map p) throws SQLException {
+		System.out.println("@@@@@ p@@@@@ : "+p);
 		Object userId =userDao.saveInfo(p);
 		return userId;
 	}

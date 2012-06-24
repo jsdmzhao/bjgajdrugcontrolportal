@@ -55,8 +55,7 @@
 		if(rdata == null){
 			LG.showError('登陆失败,账号或密码有误!');
 		}else{
-			
-			 location.href = location.href;
+			 history.go(0);
 		}
 	});
     }

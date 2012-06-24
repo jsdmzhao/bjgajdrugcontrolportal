@@ -45,6 +45,11 @@ public class SysMenuDao extends SqlSessionDaoSupport {
 	public Object queryCountInfo(Map p) {
 		return getSqlSession().selectOne("SysMenuMapper.queryCountInfo", p);
 	}
+	
+	public List queryUserMenu(Map p){
+		return getSqlSession().selectList("SysMenuMapper.queryUserMenu", p);
+	}
+
 
 	public Map queryByPageInfo(Map p, Map page){
 		String count = String.valueOf((Integer)queryCountInfo(p));

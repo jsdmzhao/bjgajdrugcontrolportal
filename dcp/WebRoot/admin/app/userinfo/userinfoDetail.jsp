@@ -38,9 +38,6 @@ if(userId==null){
     <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerTree.js" type="text/javascript"></script>
     <script src="<%=basePath%>js/formUtil.js" type="text/javascript"></script>
     
-    <script type="text/javascript" src="<%=basePath%>ckeditor/ckeditor.js"></script>
-	<script type="text/javascript" src="<%=basePath%>ckfinder/ckfinder.js"></script>
-	<script type="text/javascript" src="<%=basePath%>js/My97DatePicker/WdatePicker.js"></script>
 	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>
@@ -89,6 +86,9 @@ if(userId==null){
         var roleids = '';
         //当前ID
         var currentID = '<%= nXh %>';
+        if(currentID==""){
+        	currentID = '<%= userId %>';
+            }
         //是否新增状态
         var isAddNew = currentID == "" || currentID == "0";
         //是否查看状态
@@ -127,7 +127,7 @@ if(userId==null){
         //    mform.attr("action", actionRoot + "newsSave");
         }
         else { 
-             var obj={nXh:'<%=nXh%>'};
+             var obj={nXh:'<%=nXh%>',userId :'<%=userId%>' };
         	UserInfoSvc.queryAll(obj, function (rdata)
                     {
         		    if(rdata != null){
@@ -181,11 +181,6 @@ if(userId==null){
             $("input,select,textarea",mform).attr("readonly", "readonly");
         }
 
-        //<!-- 设置一些默认参数 -->
-        var editor = CKEDITOR.replace( 'c_nr' );
-    	CKFinder.setupCKEditor( editor, '/ckfinder/' );
-
-    	//$("c_tpljdz").setDisabled();
         
         function f_save() {
 

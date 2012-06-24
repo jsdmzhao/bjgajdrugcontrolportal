@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   var oPage={
 			pageIndex:1,
-			pageSize:20
+			pageSize:1000
 	}
 
   var parentNo;
@@ -227,9 +227,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 , editor: { type: 'text'}
                 }
                 ], dataAction: 'server', pageSize: 20, toolbar: toolbarOptions, sortName: 'MenuID',
-        width: '98%', height: '100%', heightDiff: -5, checkbox: false, usePager: false, enabledEdit: true, clickToEdit: false,
+        width: '98%', height: '100%', heightDiff: -5, checkbox: false, enabledEdit: true, clickToEdit: false,
         fixedCellHeight: true, rowHeight: 25
     });
+
 
 
   //  grid.bind('beforeSubmitEdit', function (e)
