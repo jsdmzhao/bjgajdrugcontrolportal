@@ -33,6 +33,14 @@
 			<param name="beanName" value="blogAction"></param>
 		</create>
 		
+		<create javascript="MessageAction" creator="spring">
+			<param name="beanName" value="messageAction"></param>
+		</create>
+		
+		<create javascript="EmailAction" creator="spring">
+			<param name="beanName" value="emailAction"></param>
+		</create>
+		
 		<create javascript="SysUserSvc" creator="spring">
 			<param name="beanName" value="sysUserSvc"></param>
 		</create>
@@ -53,7 +61,7 @@
 			<param name="beanName" value="sysPermissionSvc"></param>
 		</create>
 	
-	<create javascript="HolidaySvc" creator="spring">
+		<create javascript="HolidaySvc" creator="spring">
 			<param name="beanName" value="holidaySvc"></param>
 		</create>
 		
@@ -61,27 +69,27 @@
 			<param name="beanName" value="kitSvc"></param>
 		</create>
 		
-			<create javascript="UserInfoSvc" creator="spring">
+		<create javascript="UserInfoSvc" creator="spring">
 			<param name="beanName" value="userInfoSvc"></param>
 		</create>
 		
-			<create javascript="KqCcjlSvc" creator="spring">
+		<create javascript="KqCcjlSvc" creator="spring">
 			<param name="beanName" value="kqCcjlSvc"></param>
 		</create>
 		
-			<create javascript="KqQqsbSvc" creator="spring">
+		<create javascript="KqQqsbSvc" creator="spring">
 			<param name="beanName" value="kqQqsbSvc"></param>
 		</create>
 		
-			<create javascript="KqSxbSvc" creator="spring">
+		<create javascript="KqSxbSvc" creator="spring">
 			<param name="beanName" value="kqSxbSvc"></param>
 		</create>
 		
-			<create javascript="KqYbjlSvc" creator="spring">
+		<create javascript="KqYbjlSvc" creator="spring">
 			<param name="beanName" value="kqYbjlSvc"></param>
 		</create>
 		
-			<create javascript="DmSvc" creator="spring">
+		<create javascript="DmSvc" creator="spring">
 			<param name="beanName" value="dmSvc"></param>
 		</create>
 	
@@ -97,6 +105,8 @@
 		<convert match="com.unis.app.notice.model.Notice" converter="bean"/>
 		<convert match="com.unis.app.car.model.Car" converter="bean"/>
 		<convert match="com.unis.app.blog.model.Blog" converter="bean"/>
+		<convert match="com.unis.app.message.model.Message" converter="bean"/>
+		<convert match="com.unis.app.email.model.Email" converter="bean"/>
 	
   </allow>
 

@@ -21,6 +21,10 @@
 	
 	<typeAlias alias="Blog"  type="com.unis.app.blog.model.Blog" />
 
+	<typeAlias alias="Message"  type="com.unis.app.message.model.Message" />
+
+	<typeAlias alias="Email"  type="com.unis.app.email.model.Email" />
+
 </typeAliases>
 
 </configuration>
