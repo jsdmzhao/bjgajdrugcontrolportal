@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MessageMapper">
+	 <resultMap type="Message"   id="resultMessage">
+	 	<result column="N_XH"   property="n_xh"/>
+	 	<result column="C_BT"   property="c_bt"/>
+	 	<result column="C_YHID" property="c_yhid"/>
+	 	<result column="D_DJ"   property="d_dj"/>
+	 	<result column="C_IP"   property="c_ip"/>
+	 </resultMap>
+	 
+	<select id="getMessage" parameterType="Message" resultType="Message">
+		SELECT * FROM B_NBXX WHERE N_XH = #{n_xh}
+	</select>
+	 
+	<select id="getMessageList" resultMap="resultMessage">
+		SELECT N_XH,
+		       C_BT,
+		       TO_CHAR(D_DJ,'YYYY-MM-DD hh24:MI:SS') D_DJ,
+		       C_YHID,
+		       C_IP
+		  FROM B_NBXX
+	</select>
+	
+	<delete id="deleteMessage" parameterType="int">
+		DELETE FROM B_NBXX WHERE N_XH = #{n_xh}
+	</delete>
+	
+	<insert id="insertMessage" parameterType="hashmap">
+		 INSERT INTO B_NBXX(
+		   N_XH     ,
+		   C_BT     ,
+		   C_YHID   ,
+		   C_YHZID  ,
+		   C_NR     ,
+		   C_IP     ,
+		   C_SFSC   , 
+		   D_DJ    ) 
+		VALUES (	            	
+		     seq_b_nbxx.nextval,  
+		     #{c_bt,jdbcType=VARCHAR},
+	         #{c_yhid,jdbcType=VARCHAR},   
+	         #{c_yhzid,jdbcType=VARCHAR},          
+	         #{c_nr,javaType=String,jdbcType=CLOB,handler=ClobTypeHandler}, 
+	         #{c_ip,jdbcType=VARCHAR},
+	         #{c_sfsc,jdbcType=VARCHAR},
+	       	 sysdate      
+	    )
+	</insert>
+	
+	<insert id="insertMessageRecieve" parameterType="hashmap">
+		INSERT INTO B_NBXX_RECIEVE 
+			(N_XH,N_NBXXXH,C_JSR,C_ZT)
+		VALUES(
+			seq_b_nbxx_recieve.nextval,
+			seq_b_nbxx.currval,
+			<foreach collection="c_jsr" item="item" separator=",">
+				#{item.c_yhid}
+			</foreach>
+			,'0'
+		)
+	</insert>
+	
+	<update id="updateMessage" parameterType="Message">
+		UPDATE B_NBXX
+		   SET  C_BT   =	#{c_bt,jdbcType=VARCHAR},							   							
+				C_NR     =	#{c_nr,jdbcType=CLOB,handler=ClobTypeHandler}							
+		WHERE N_XH = #{n_xh}
+	</update>
+	
+</mapper>
