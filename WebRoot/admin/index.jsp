@@ -7,7 +7,7 @@ if(session.getAttribute("userId")==null){
 	%>
 	<script>
 	
-	window.location.href="<%=basePath%>admin/login.jsp
+	window.location.href="<%=basePath%>admin/login.jsp";
 	
 	</script>
 	<%
@@ -64,7 +64,12 @@ if(session.getAttribute("userId")==null){
 	src='<%=basePath%>dwr/interface/SysUserSvc.js'></script>
 	<script type='text/javascript'
 	src='<%=basePath%>dwr/interface/SysMenuSvc.js'></script>
-	</head>
+	
+<script type="text/javascript">
+	$("#home").attr("src","<%=basePath%>admin/welcome.jsp?date='+new Date()+'") ;
+</script>
+
+</head>
 	<body
 		style="text-align: center; background: #F0F0F0; overflow: hidden;">
 		<div id="pageloading" style="display: block;"></div>
@@ -85,7 +90,7 @@ if(session.getAttribute("userId")==null){
 			<div position="left" title="主要菜单" id="mainmenu"></div>
 			<div position="center" id="framecenter">
 				<div tabid="home" title="我的主页">
-					<iframe frameborder="0" name="home" id="home" src="<%=basePath%>admin/welcome.jsp?date="<%=new Date() %>></iframe>
+			<iframe frameborder="0" name="home" id="home" src="<%=basePath%>admin/welcome.jsp"></iframe>
 				</div>
 			</div>
 		</div>
