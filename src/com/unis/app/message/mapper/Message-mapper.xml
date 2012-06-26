@@ -50,16 +50,18 @@
 	</insert>
 	
 	<insert id="insertMessageRecieve" parameterType="hashmap">
-		INSERT INTO B_NBXX_RECIEVE 
-			(N_XH,N_NBXXXH,C_JSR,C_ZT)
-		VALUES(
-			seq_b_nbxx_recieve.nextval,
-			seq_b_nbxx.currval,
-			<foreach collection="c_jsr" item="item" separator=",">
-				#{item.c_yhid}
-			</foreach>
-			,'0'
-		)
+		BEGIN
+		<foreach collection="list" item="item" separator=";">
+			INSERT INTO B_NBXX_RECIEVE 
+				(N_XH,N_NBXXXH,C_JSR,C_ZT)
+			VALUES
+				(
+					seq_b_nbxx_recieve.nextval,
+					seq_b_nbxx.currval,
+					#{item.c_yhid},'0'
+			    )
+		</foreach>
+		; END;
 	</insert>
 	
 	<update id="updateMessage" parameterType="Message">
