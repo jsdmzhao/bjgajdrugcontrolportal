@@ -35,12 +35,8 @@ public class MessageAction {
 				msg.setC_yhid(jsr);
 				list.add(msg);
 			}
-			//sqlParamMap.put("c_jsr", list);
+			sqlParamMap.put("list", list);
 		}
-		/***
-		 * 
-		*
-		***/
 		messageService.insert("MessageMapper.insertMessage", sqlParamMap);
 		messageService.insert("MessageMapper.insertMessageRecieve", sqlParamMap);
 		
