@@ -96,7 +96,12 @@ String c_zt = request.getParameter("c_zt");
             text: '查看',
             img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
             id: 'view'
-       },{line:true}];
+       },{line:true},{
+           click: toolbarBtnItemClick,
+           text: '查看签收情况',
+           img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
+           id: 'viewQsqk'
+      },{line:true}];
 	grid.toolbarManager.set('items', items);
 
       //工具条事件
@@ -125,13 +130,12 @@ String c_zt = request.getParameter("c_zt");
                          	title:'内部邮件'
 				  });
                   break;
-              case "modify":
+              case "viewQsqk":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  //top.f_addTab(null, '修改栏目信息', '<!%=basePath%>emailUpdate?email.n_xh=' + selected.n_xh);
-				  dialog = $.ligerDialog.open({ url: '<%=basePath%>emailUpdate?email.n_xh=' + selected.n_xh, 
-                         	height: 500,width: 900,showMax: true, showToggle: true,  showMin: true,
-                         	title:'内部邮件'
+				  dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/email/emailQsqk.jsp?n_xh=' + selected.n_xh, 
+                         	height: 440,width: 430,showMax: true, showToggle: true,  showMin: true,
+                         	title:'签收情况'
 				  });
                   /**
                   if (editingrow == null)
