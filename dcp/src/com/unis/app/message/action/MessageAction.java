@@ -1,9 +1,11 @@
 package com.unis.app.message.action;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.xwork.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -22,11 +24,7 @@ public class MessageAction {
 	private AbsServiceAdapter<Integer> messageService = null;
 	
 	
-	public String messageSave(Map<String, String> sqlParamMap){
-		
-		/***
-		 * 
-		 * 
+	public String messageSave(Map sqlParamMap){
 		
 		String jsrStr = (String) sqlParamMap.get("c_jsr");
 		if(StringUtils.isNotEmpty(jsrStr)){
@@ -39,11 +37,12 @@ public class MessageAction {
 			}
 			//sqlParamMap.put("c_jsr", list);
 		}
-		
+		/***
+		 * 
 		*
 		***/
 		messageService.insert("MessageMapper.insertMessage", sqlParamMap);
-		//messageService.insert("MessageMapper.insertMessageRecieve", sqlParamMap);
+		messageService.insert("MessageMapper.insertMessageRecieve", sqlParamMap);
 		
 		/**
 		if(StringUtils.isNotEmpty(sqlParamMap.get("n_xh"))){
