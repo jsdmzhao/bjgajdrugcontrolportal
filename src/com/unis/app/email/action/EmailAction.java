@@ -1,12 +1,13 @@
 package com.unis.app.email.action;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.xwork.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -14,8 +15,6 @@ import org.springframework.stereotype.Controller;
 import com.unis.core.service.AbsServiceAdapter;
 import com.unis.core.util.Globals;
 import com.unis.app.email.model.Email;
-import com.unis.app.login.model.User;
-import com.unis.app.system.model.SysUser;
 
 @Controller
 @Scope(value="prototype")
@@ -27,30 +26,43 @@ public class EmailAction {
 	private AbsServiceAdapter<Integer> emailService = null;
 	
 	
-	public String emailSave(Map<String, String> sqlParamMap, HttpServletRequest request){
+	public String emailSave(Map sqlParamMap, HttpServletRequest request){
 		
-		/***
-		 * 
-		 * 
 		
 		String jsrStr = (String) sqlParamMap.get("c_jsr");
+		String csrStr = (String) sqlParamMap.get("c_csr");
+		
+//		
+//		String jsrStr = "abc,cdw2";
+//		String csrStr = "1111,222";
+		
+		List<Email> list = new ArrayList<Email>();
 		if(StringUtils.isNotEmpty(jsrStr)){
 			String[] jsrs = jsrStr.split(",");
-			List<Email> list = new ArrayList<Email>();
 			for(String jsr : jsrs){
-				Email msg = new Email();
-				msg.setC_yhid(jsr);
-				list.add(msg);
+				Email em = new Email();
+				em.setC_yhid(jsr);
+				em.setC_lx("1");
+				list.add(em);
 			}
 			//sqlParamMap.put("c_jsr", list);
 		}
+		if(StringUtils.isNotEmpty(csrStr)){
+			String[] csrs = csrStr.split(",");
+			for(String csr : csrs){
+				Email em = new Email();
+				em.setC_yhid(csr);
+				em.setC_lx("0");
+				list.add(em);
+			}
+			//sqlParamMap.put("c_jsr", list);
+		}
+		sqlParamMap.put("list", list);
 		
-		*
-		***/
 		//HttpSession session = request.getSession();
 		//String userId = (String) session.getAttribute("userId");
 		emailService.insert("EmailMapper.insertEmail", sqlParamMap);
-		//emailService.insert("EmailMapper.insertEmailRecieve", sqlParamMap);
+		emailService.insert("EmailMapper.insertEmailRecieve", sqlParamMap);
 		
 		/**
 		if(StringUtils.isNotEmpty(sqlParamMap.get("n_xh"))){
@@ -72,9 +84,27 @@ public class EmailAction {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public Map<String, Object> emailList(){
+	public Map<String, Object> emailList(String c_zt){
 		Map<String, Object> resMap = new HashMap<String, Object>();
-		List<Email> emailList = (List<Email>) emailService.selectList("EmailMapper.getEmailList","");
+		List<Email> emailList = (List<Email>) emailService.selectList("EmailMapper.getEmailList",c_zt);
+		resMap.put("Rows", emailList);
+		resMap.put("Total", emailList.size());
+		return resMap;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> getEmailRecieveList(){
+		Map<String, Object> resMap = new HashMap<String, Object>();
+		List<Email> emailList = (List<Email>) emailService.selectList("EmailMapper.getEmailRecieveList","");
+		resMap.put("Rows", emailList);
+		resMap.put("Total", emailList.size());
+		return resMap;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> getEmailNoReadList(){
+		Map<String, Object> resMap = new HashMap<String, Object>();
+		List<Email> emailList = (List<Email>) emailService.selectList("EmailMapper.getEmailNoReadList","");
 		resMap.put("Rows", emailList);
 		resMap.put("Total", emailList.size());
 		return resMap;

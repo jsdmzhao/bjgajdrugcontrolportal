@@ -14,13 +14,41 @@
 		SELECT * FROM B_NBYJ WHERE N_XH = #{n_xh}
 	</select>
 	 
-	<select id="getEmailList" resultMap="resultEmail">
+	<select id="getEmailList" resultMap="resultEmail" parameterType="string">
 		SELECT N_XH,
 		       C_BT,
 		       TO_CHAR(D_DJ,'YYYY-MM-DD hh24:MI:SS') D_DJ,
 		       C_YHID,
 		       C_IP
-		  FROM B_NBYJ
+		FROM B_NBYJ
+		  WHERE C_ZT = #{c_zt}
+	</select>
+	
+	
+	<select id="getEmailRecieveList" resultMap="resultEmail" parameterType="string">
+		SELECT N_XH,
+		       C_BT,
+		       TO_CHAR(D_DJ,'YYYY-MM-DD hh24:MI:SS') D_DJ,
+		       C_YHID,
+		       C_IP
+		FROM B_NBYJ B
+		  WHERE EXISTS (SELECT '1'
+				          FROM B_NBYJ_RECIEVE R
+				         WHERE R.N_NBYJXH = B.N_XH
+				           AND R.C_JSR = #{c_yhid})
+	</select>
+	
+	<select id="getEmailNoReadList" resultMap="resultEmail" parameterType="string">
+		SELECT N_XH,
+		       C_BT,
+		       TO_CHAR(D_DJ,'YYYY-MM-DD hh24:MI:SS') D_DJ,
+		       C_YHID,
+		       C_IP
+		FROM B_NBYJ B
+		  WHERE EXISTS (SELECT '1'
+				          FROM B_NBYJ_RECIEVE R
+				         WHERE R.N_NBYJXH = B.N_XH
+				           AND R.C_JSR = #{c_yhid} AND R.C_ZT = '1')
 	</select>
 	
 	<delete id="deleteEmail" parameterType="int">
@@ -36,6 +64,7 @@
 		   C_NR     ,
 		   C_IP     ,
 		   C_SFSC   , 
+		   C_ZT     ,
 		   D_DJ    ) 
 		VALUES (	            	
 		     seq_b_nbyj.nextval,  
@@ -45,21 +74,24 @@
 	         #{c_nr,javaType=String,jdbcType=CLOB,handler=ClobTypeHandler}, 
 	         #{c_ip,jdbcType=VARCHAR},
 	         #{c_sfsc,jdbcType=VARCHAR},
+	         #{c_zt,jdbcType=VARCHAR},
 	       	 sysdate      
 	    )
 	</insert>
 	
 	<insert id="insertEmailRecieve" parameterType="hashmap">
-		INSERT INTO B_NBYJ_RECIEVE 
-			(N_XH,N_NBXXXH,C_JSR,C_ZT)
-		VALUES(
-			seq_b_nbyj_recieve.nextval,
-			seq_b_nbyj.currval,
-			<foreach collection="c_jsr" item="item" separator=",">
-				#{item.c_yhid}
-			</foreach>
-			,'0'
-		)
+		BEGIN
+		<foreach collection="list" item="item" separator=";">
+			INSERT INTO B_NBYJ_RECIEVE 
+				(N_XH,N_NBYJXH,C_JSR,C_LX,C_ZT)
+			VALUES
+				(
+					seq_b_nbyj_recieve.nextval,
+					seq_b_nbyj.currval,
+					#{item.c_yhid},#{item.c_lx},'1'
+			    )
+		</foreach>
+		; END;
 	</insert>
 	
 	<update id="updateEmail" parameterType="Email">
