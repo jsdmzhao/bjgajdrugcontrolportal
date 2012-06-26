@@ -93,6 +93,16 @@ public class EmailAction {
 	}
 	
 	@SuppressWarnings("unchecked")
+	public Map<String, Object> getEmailQsqkList(String n_xh){
+		Map<String, Object> resMap = new HashMap<String, Object>();
+		List<Email> emailList = (List<Email>) emailService.selectList("EmailMapper.getEmailQsqkList",n_xh);
+		resMap.put("Rows", emailList);
+		resMap.put("Total", emailList.size());
+		return resMap;
+	}
+	
+	
+	@SuppressWarnings("unchecked")
 	public Map<String, Object> getEmailRecieveList(){
 		Map<String, Object> resMap = new HashMap<String, Object>();
 		List<Email> emailList = (List<Email>) emailService.selectList("EmailMapper.getEmailRecieveList","");

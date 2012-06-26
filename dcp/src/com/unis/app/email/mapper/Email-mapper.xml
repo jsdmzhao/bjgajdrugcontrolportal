@@ -2,12 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="EmailMapper">
+
 	 <resultMap type="Email"   id="resultEmail">
 	 	<result column="N_XH"   property="n_xh"/>
 	 	<result column="C_BT"   property="c_bt"/>
 	 	<result column="C_YHID" property="c_yhid"/>
 	 	<result column="D_DJ"   property="d_dj"/>
 	 	<result column="C_IP"   property="c_ip"/>
+	 </resultMap>
+	 
+	 <resultMap type="Email"   id="resultEmailRecieve">
+	 	<result column="C_YHID" property="c_yhid"/>
+	 	<result column="C_ZT"   property="c_zt"/>
 	 </resultMap>
 	 
 	<select id="getEmail" parameterType="Email" resultType="Email">
@@ -100,5 +106,11 @@
 				C_NR     =	#{c_nr,jdbcType=CLOB,handler=ClobTypeHandler}							
 		WHERE N_XH = #{n_xh}
 	</update>
+	
+	<select id="getEmailQsqkList" parameterType="string" resultMap="resultEmailRecieve">
+	 SELECT C_JSR C_YHID, DECODE(C_ZT, '1', '未签收', '2', '已签收', '已删除') C_ZT
+	  FROM B_NBYJ_RECIEVE
+	 WHERE N_NBYJXH = #{n_xh}
+	</select>
 	
 </mapper>
