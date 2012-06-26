@@ -39,15 +39,26 @@ String n_xh = request.getParameter("n_xh");
   	<script type="text/javascript">
   		var n_xh = '<%=n_xh %>';
   		EmailAction.getEmailQsqkList(n_xh, function (data){
-  			var str = "";
-  		    for (var one in data.Rows) {
-  		        for(var key in data[one]) {
-  		            str += data[one][key] + ",";
-  		            alert(str);
-  		        }
-  		    }
-
-  			
+			var list = [];			
+			var rows = data.Rows;		
+			list.push("<TABLE class=l-grid-body-table cellSpacing=0 cellPadding=0>");
+			list.push("<TBODY>");
+			for (var i in rows){
+				if(rows[i].c_yhid != undefined && rows[i].c_zt != undefined){
+					list.push("<TR class=l-grid-row>");
+					list.push("<TD style=\"WIDTH: 220px\" class=\"l-grid-row-cell \">");
+					list.push("<DIV style=\"TEXT-ALIGN: left;\" class=l-grid-row-cell-inner>");
+					list.push(rows[i].c_yhid);
+					list.push("</div></TD>");
+					
+					list.push("<TD style=\"WIDTH: 180px\" class=\"l-grid-row-cell \">");
+					list.push("<DIV style=\"TEXT-ALIGN: left;\" class=l-grid-row-cell-inner>");
+					list.push(rows[i].c_zt);
+					list.push("</div></TD></TR>");
+				}
+			}
+			list.push("</TBODY></TABLE>");
+			document.getElementById("valueTable").innerHTML = list.join('');
   		});
   	</script>
 
@@ -125,7 +136,8 @@ String n_xh = request.getParameter("n_xh");
 							</DIV>
 						</DIV>
 						<DIV style="HEIGHT: 459px" class="l-grid-body l-grid-body2 l-scroll">
-							<DIV style="WIDTH: 400px" class=l-grid-body-inner>
+							<DIV style="WIDTH: 400px" class=l-grid-body-inner id="valueTable">
+							<!-- 
 								<TABLE class=l-grid-body-table cellSpacing=0 cellPadding=0>
 									<TBODY>
 										<TR class=l-grid-row>
@@ -136,12 +148,13 @@ String n_xh = request.getParameter("n_xh");
 											</TD>
 											<TD style="WIDTH: 180px" class="l-grid-row-cell ">
 												<DIV style="TEXT-ALIGN: left;" class=l-grid-row-cell-inner>
-													
+													abvc
 												</DIV>
 											</TD>
 										</TR>
 									</TBODY>
 								</TABLE>
+								 -->
 							</DIV>
 						</DIV>
 					</DIV>
