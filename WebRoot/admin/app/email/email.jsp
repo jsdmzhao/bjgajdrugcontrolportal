@@ -2,6 +2,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String c_zt = request.getParameter("c_zt");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -11,9 +12,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>内部邮件</title> 
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
+    <link href="<%=basePath%>liger/lib/css/common.css" rel="stylesheet" type="text/css" />  
     <script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/ligerUI/js/ligerui.min.js" type="text/javascript"></script>   
-    <link href="<%=basePath%>liger/lib/css/common.css" rel="stylesheet" type="text/css" />  
     <script src="<%=basePath%>liger/lib/js/common.js" type="text/javascript"></script>   
     <script src="<%=basePath%>liger/lib/js/LG.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/js/ligerui.expand.js" type="text/javascript"></script> 
@@ -252,8 +253,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       loadGrid();
       
       function loadGrid(){
-          
-	 	  EmailAction.emailList(function (data){
+          var c_zt = '<%=c_zt %>';
+	 	  EmailAction.emailList(c_zt,function (data){
 	    	 grid.setOptions({data:data});
 	      });
       }

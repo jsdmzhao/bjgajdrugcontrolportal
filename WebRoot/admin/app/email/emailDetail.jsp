@@ -108,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         LG.overrideGridLoading(); 
 
         //表单底部按钮 
-        LG.setFormDefaultBtn(f_cancel,isView ? null : f_save);
+        LG.setEmailFormDefaultBtn(f_cancel,isView ? null : f_save, f_send);
 
         var deptTree = {
             url :'',
@@ -158,11 +158,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     	//$("c_tpljdz").setDisabled();
         
+    	function f_send(){
+			var formMap = DWRUtil.getValues("mainform"); 
+        	
+	        formMap["c_nr"] = editor.document.getBody().getHtml();
+	        formMap["c_zt"] = '1';
+			
+        	EmailAction.emailSave(formMap,function (result){
+        		
+        		if(result == 'success'){
+        			LG.showSuccess('发送成功', function () { 
+                        f_cancel();
+                        parent.loadGrid();
+                    });
+        		} else {
+        		    LG.showError('发送失败');
+        		}
+        	});
+    	}
+    	
         function f_save() {
 
         	var formMap = DWRUtil.getValues("mainform"); 
         	
 	        formMap["c_nr"] = editor.document.getBody().getHtml();
+	        formMap["c_zt"] = '2';
 			
         	EmailAction.emailSave(formMap,function (result){
         		

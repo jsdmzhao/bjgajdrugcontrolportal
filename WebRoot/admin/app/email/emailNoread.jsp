@@ -65,28 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       //加载toolbar
       LG.loadToolbar(grid, toolbarBtnItemClick);
 
-     	var items=[
-     	           {
-     	        	  click:toolbarBtnItemClick,
-     	        	   text:'保存',
-     	        	   img:'<%=basePath%>liger/lib/icons/silkicons/page_save.png',
-     	        	   id:'save'    	
-     	   },{
-            click:toolbarBtnItemClick,
-            text:'新增',
-            img:'<%=basePath%>liger/lib/icons/silkicons/add.png',
-            id:'add'
-        },{line:true},{
-            click: toolbarBtnItemClick,
-            text: '修改',
-            img:'<%=basePath%>liger/lib/icons/silkicons/application_edit.png',
-            id: 'modify'
-        },{line:true},{
-            click: toolbarBtnItemClick,
-            text: '删除',
-            img:'<%=basePath%>liger/lib/icons/silkicons/delete.png',
-            id: 'delete'
-        },{line:true},{
+     	var items=[{
             click: toolbarBtnItemClick,
             text: '查看',
             img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
@@ -245,7 +224,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       
       function loadGrid(){
           
-	 	  EmailAction.emailList(function (data){
+	 	  EmailAction.getEmailNoReadList(function (data){
 	    	 grid.setOptions({data:data});
 	      });
       }
