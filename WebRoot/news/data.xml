@@ -25,9 +25,9 @@
 	showNumberButtonsHorizontal="yes"
 	showNumberButtonsAscending="yes"
 	autoPlay="yes">
-  <item image="images/newspic/01.jpg" link="#" textBlend="no"><![CDATA[]]></item>
-  <item image="images/newspic/02.jpg" link="#" textBlend="no"><![CDATA[]]></item>
-  <item image="images/newspic/03.jpg" link="#" textBlend="no"><![CDATA[]]></item>
-  <item image="images/newspic/04.jpg" link="#" textBlend="no"><![CDATA[]]></item>
-  <item image="images/newspic/05.jpg" link="#" textBlend="no"><![CDATA[]]></item>
+  <item image="../images/newspic/01.jpg" link="#" textBlend="no"><![CDATA[]]></item>
+  <item image="../images/newspic/02.jpg" link="#" textBlend="no"><![CDATA[]]></item>
+  <item image="../images/newspic/03.jpg" link="#" textBlend="no"><![CDATA[]]></item>
+  <item image="../images/newspic/04.jpg" link="#" textBlend="no"><![CDATA[]]></item>
+  <item image="../images/newspic/05.jpg" link="#" textBlend="no"><![CDATA[]]></item>
 </Banner>

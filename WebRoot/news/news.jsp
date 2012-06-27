@@ -128,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div style="float:left; width:272px; margin-left:5px;">
 					<div class="ycfcw">
 					<script language="javascript" type="text/javascript">
-					writeflashhtml("_swf=flash/ycfcw.swf", "_width=270", "_height=238" ,"_wmode=transparent");
+					writeflashhtml("_swf=../flash/ycfcw.swf", "_width=270", "_height=238" ,"_wmode=transparent");
 					</script>
 					</div>
                   		<div id="main"  style="margin-left:15px; margin-top:5px;"> 
