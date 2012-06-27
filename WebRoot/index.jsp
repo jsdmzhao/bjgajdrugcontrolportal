@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 
 <s:if test="resMap==null">
-<c:redirect url="news/view"></c:redirect>
+<c:redirect url="/login/view"></c:redirect>
 </s:if>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -22,27 +22,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</head>
 	<body style="font-size:14px;">
 
-
+<!-- 弹出窗 -->
 <script type="text/javascript" src="<%=basePath%>highslide/highslide-with-html.js"></script>
 <link rel="stylesheet" type="text/css" href="<%=basePath%>highslide/highslide.css" />
+<!-- 弹出窗 -->
 
 <script type="text/javascript" src="<%=basePath%>/js/lightBox.js"></script>
 <SCRIPT src="<%=basePath%>/js/jquery-1.2.6.pack.js" type=text/javascript></SCRIPT>
 <script type="text/javascript" src="<%=basePath%>/js/jquery.min.js" ></script>
 <script type="text/javascript" src="<%=basePath%>/js/jquery-ui.min.js" ></script>
 
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#featured > ul").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 5000, true);
-	});
 
 
-	hs.graphicsDir = '<%=basePath%>highslide/graphics/';
-	hs.outlineType = 'rounded-white';
-	hs.wrapperClassName = 'draggable-header';
 
-
-</script>
 <script type="text/javascript">
 
 
@@ -139,7 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									  <div style="float: left;padding-left: 6px;margin-bottom: 10px;
                          background:url('<%=basePath%>/images/index/li.png') 0 8px no-repeat;
                           border-bottom: 1px dashed #CCCCCC;">
-                          <a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
+                          <a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
 								    <s:property value="#news.c_bt"/>
 								    </a>	
 								   &nbsp;&nbsp;&nbsp;<img src="<%=basePath%>images/new.gif"/>&nbsp;&nbsp;&nbsp;
@@ -189,14 +181,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="main-box" style="margin-bottom: 4px;">
 						<span class="title1">专栏专项工作</span>	
 						<div class="main-con" style="height: 435px;">
-					<a href="news_list.jsp?news.c_lm=10" onclick="return hs.htmlExpand(this, { objectType: 'ajax'} )">	<img src="<%=basePath%>/images/tb/12.png"/></a>
-					<a href="view/list?news.c_lm=223" onclick="return hs.htmlExpand(this, { objectType: 'ajax'} )">		<img src="<%=basePath%>/images/tb/2.png"/></a>
-					<a href="view/list?news.c_lm=207" onclick="return hs.htmlExpand(this, { objectType: 'ajax'} )">		<img src="<%=basePath%>/images/tb/3.png"/></a>
-					<a href="re.jsp'" onclick="return hs.htmlExpand(this, { objectType: 'ajax'} )">		<img src="<%=basePath%>/images/tb/5.png"/></a>
-					<a href="<%=basePaths %>temp/car.jsp'" onclick="return hs.htmlExpand(this, { objectType: 'ajax'} )">		<img src="<%=basePath%>/images/tb/6.png"/></a>
-					<a href="<%=basePath%>re.jsp?url='http://10.8.2.195:96/'" onclick="return hs.htmlExpand(this, { objectType: 'ajax'} )">		<img src="<%=basePath%>/images/tb/9.png"/></a>
-					<a href="<%=basePath%>re.jsp?url='http://10.8.2.195:91/'" onclick="return hs.htmlExpand(this, { objectType: 'ajax'} )">		<img src="<%=basePath%>/images/tb/10.png"/></a>
-					<a href="<%=basePath%>re.jsp?url='http://10.8.2.52:8030/'" onclick="return hs.htmlExpand(this, { objectType: 'ajax'} )">		<img src="<%=basePath%>/images/tb/1.png"/></a>
+					<a href="news_list.jsp?news.c_lm=10" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">	<img src="<%=basePath%>/images/tb/12.png"/></a>
+					<a href="<%=basePath%>news/list?news.c_lm=1221" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">		<img src="<%=basePath%>/images/tb/2.png"/></a>
+					<a href="<%=basePath%>news/list?news.c_lm=1221" onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">		<img src="<%=basePath%>/images/tb/3.png"/></a>
+					<a href="re.jsp'" onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">		<img src="<%=basePath%>/images/tb/5.png"/></a>
+					<a href="<%=basePaths %>temp/car.jsp'" onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">		<img src="<%=basePath%>/images/tb/6.png"/></a>
+					<a href="http://www.baidu.com" onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">		<img src="<%=basePath%>/images/tb/9.png"/></a>
+					<a href="<%=basePath%>re.jsp?url='http://10.8.2.195:91/'" onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">		<img src="<%=basePath%>/images/tb/10.png"/></a>
+					<a href="<%=basePath%>re.jsp?url='http://10.8.2.52:8030/'" onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">		<img src="<%=basePath%>/images/tb/1.png"/></a>
 						</div>
 					</div>
 					<div class="main-box" style="margin-bottom: 4px;">
@@ -272,7 +264,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="main-con" style="height: 285px;">
 							<ul class="index-ul">
 												<s:iterator   value="resMap.Rows8"  id="news" var="news" >
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
 									
 									<s:if test="#news.c_bt.length()>=15"> 
 									<s:property value="#news.c_bt.substring(0,15)+'...'"/>	
@@ -284,7 +276,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</a></li>	
 								</s:iterator></ul> 
 							<div style="text-align: right;padding: 10px 20px 0 0;">
-							<a href="view/list?news.c_lm=1189">更多信息 >></a>
+							<a href="<%=basePath%>news/list?news.c_lm=1189">更多信息 >></a>
 							</div>
 						</div>
 					</div>
@@ -293,7 +285,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="main-con" style="height: 285px;">
 							<ul class="index-ul">
 												<s:iterator   value="resMap.Rows9"  id="news" var="news" begin="0" end="8" >
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
 									
 									<s:if test="#news.c_bt.length()>=15"> 
 									<s:property value="#news.c_bt.substring(0,15)+'...'"/>	
@@ -305,7 +297,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</a></li>	
 								</s:iterator>	</ul> 
 							<div style="text-align: right;padding: 10px 20px 0 0;">
-							<a href="view/list?news.c_lm=1237">更多信息 >></a>
+							<a href="<%=basePath%>news/list?news.c_lm=1237">更多信息 >></a>
 							</div>
 						</div>
 					</div>
@@ -349,7 +341,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 							 	
 								<s:iterator   value="resMap.Rows1"  id="news" var="news" begin="0" end="8">
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
 									
 									<s:if test="#news.c_bt.length()>=15"> 
 									<s:property value="#news.c_bt.substring(0,15)+'...'"/>	
@@ -378,7 +370,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							 	<ul class="index-ul main-top-ul">
 							 		<%for(int i=0;i<9;i++){
 							 			%> 
-							 		<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">警营开放日民警进村讲害</a></li>	
+							 		<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">警营开放日民警进村讲害</a></li>	
 							 			<%
 							 		} %> 
 							 	</ul>
@@ -449,21 +441,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div style="padding: 10px 40px 10px 30px; height: 180px;">
 							<div style="float: left;width: 320px">
 								<ul class="index-ul">
-									<li><div style="float: left;"><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>"  class="awidth">北京警方1月以来破获毒品案30 </a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
-									<li><div style="float: left;"><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京警方破获特大团伙贩毒案</a></div><div  style="float: right;"><span class="time">2012-04-12</span></div></li>
-									<li><div style="float: left;"><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京警方1月以来破获毒品案3</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
-									<li><div style="float: left;"><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京警方破获特大团伙贩</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
-								<li><div style="float: left;"><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京警方破获特大团伙贩毒案</a></div><div style="float: right;"><span class="time">2012-04-12</span></li>
+									<li><div style="float: left;"><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"  class="awidth">北京警方1月以来破获毒品案30 </a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
+									<li><div style="float: left;"><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京警方破获特大团伙贩毒案</a></div><div  style="float: right;"><span class="time">2012-04-12</span></div></li>
+									<li><div style="float: left;"><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京警方1月以来破获毒品案3</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
+									<li><div style="float: left;"><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京警方破获特大团伙贩</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
+								<li><div style="float: left;"><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京警方破获特大团伙贩毒案</a></div><div style="float: right;"><span class="time">2012-04-12</span></li>
 								
 								</ul> 
 							</div>
 							<div style="float: right;width: 320px">
 								<ul class="index-ul">
-									<li><div style="float: left;"><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京禁毒流动大课堂取得效果</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
-									<li><div style="float: left;"><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">阳光致远禁毒志愿者大队开展锋</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
-									<li><div style="float: left;"><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">阳光致远禁毒志愿者大队开雷锋</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
-									<li><div style="float: left;"><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京禁毒流动大课堂取得效果</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
-								<li><div style="float: left;"><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京禁毒流动大课堂取得良好效果</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
+									<li><div style="float: left;"><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京禁毒流动大课堂取得效果</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
+									<li><div style="float: left;"><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">阳光致远禁毒志愿者大队开展锋</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
+									<li><div style="float: left;"><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">阳光致远禁毒志愿者大队开雷锋</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
+									<li><div style="float: left;"><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京禁毒流动大课堂取得效果</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
+								<li><div style="float: left;"><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京禁毒流动大课堂取得良好效果</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
 								</ul>
 							</div>
 							<div class="clearfloat"></div>
@@ -482,12 +474,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<span class="six-title">工作动态</span>
 									<div style="text-align: right;float: right;margin-left: 60px;
 									margin-right: 10px;padding-top: 4px;">
-										<a href="view/list?news.c_lm=1221">更多信息 >></a>
+										<a href="<%=basePath%>news/list?news.c_lm=1221">更多信息 >></a>
 									</div>
 									<div style="padding-top: 10px;">
 										<ul class="index-ul">
 											<s:iterator   value="resMap.Rows2"  id="news" var="news" begin="0" end="5">
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
 									
 									<s:if test="#news.c_bt.length()>=25"> 
 									<s:property value="#news.c_bt.substring(0,25)+'...'"/>	
@@ -511,12 +503,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<span class="six-title">通知通报</span>
 									<div style="text-align: right;float: right;margin-left: 60px;
 									margin-right: 10px;padding-top: 4px;">
-										<a href="view/list?news.c_lm=1196">更多信息 >></a>
+										<a href="<%=basePath%>news/list?news.c_lm=1196">更多信息 >></a>
 									</div>
 									<div style="padding-top: 10px;">
 										<ul class="index-ul">
 										<s:iterator   value="resMap.Rows3"  id="news" var="news" begin="0" end="5">
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
 									
 									<s:if test="#news.c_bt.length()>=25"> 
 									<s:property value="#news.c_bt.substring(0,25)+'...'"/>	
@@ -543,12 +535,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<span class="six-title">队伍建设</span>
 									<div style="text-align: right;float: right;margin-left: 60px;
 									margin-right: 10px;padding-top: 4px;">
-										<a href="view/list?news.c_lm=1197">更多信息 >></a>
+										<a href="<%=basePath%>news/list?news.c_lm=1197">更多信息 >></a>
 									</div>
 									<div style="padding-top: 10px;">
 										<ul class="index-ul">
 															<s:iterator   value="resMap.Rows4"  id="news" var="news" begin="0" end="5">
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
 									
 									<s:if test="#news.c_bt.length()>=25"> 
 									<s:property value="#news.c_bt.substring(0,25)+'...'"/>	
@@ -571,12 +563,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<span class="six-title">文件阅览</span>
 									<div style="text-align: right;float: right;margin-left: 60px;
 									margin-right: 10px;padding-top: 4px;">
-										<a href="view/list?news.c_lm=1198">更多信息 >></a>
+										<a href="<%=basePath%>news/list?news.c_lm=1198">更多信息 >></a>
 									</div>
 									<div style="padding-top: 10px;">
 										<ul class="index-ul">
 													<s:iterator   value="resMap.Rows5"  id="news" var="news" begin="0" end="5">
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
 									
 									<s:if test="#news.c_bt.length()>=25"> 
 									<s:property value="#news.c_bt.substring(0,25)+'...'"/>	
@@ -602,12 +594,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<span class="six-title">媒体关注</span>
 									<div style="text-align: right;float: right;margin-left: 60px;
 									margin-right: 10px;padding-top: 4px;">
-										<a href="view/list?news.c_lm=1199">更多信息 >></a>
+										<a href="<%=basePath%>news/list?news.c_lm=1199">更多信息 >></a>
 									</div>
 									<div style="padding-top: 10px;">
 										<ul class="index-ul">
 															<s:iterator   value="resMap.Rows6"  id="news" var="news" begin="0" end="5">
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
 									
 									<s:if test="#news.c_bt.length()>=25"> 
 									<s:property value="#news.c_bt.substring(0,25)+'...'"/>	
@@ -630,12 +622,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<span class="six-title">民警风采</span>
 									<div style="text-align: right;float: right;margin-left: 60px;
 									margin-right: 10px;padding-top: 4px;">
-										<a href="view/list?news.c_lm=1191">更多信息 >></a>
+										<a href="<%=basePath%>news/list?news.c_lm=1191">更多信息 >></a>
 									</div>
 									<div style="padding-top: 10px;">
 										<ul class="index-ul">
 															<s:iterator   value="resMap.Rows7"  id="news" var="news" begin="0" end="5">
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
 									
 									<s:if test="#news.c_bt.length()>=25"> 
 									<s:property value="#news.c_bt.substring(0,25)+'...'"/>	
@@ -705,12 +697,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							
 							<div class="pass-cont-three">
 								<ul>
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>/images/index/one.png"/></a></li>
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>/images/index/two.png"/></a></li>
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>/images/index/three.png"/></a></li>
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>/images/index/four.png"/></a></li>
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>/images/index/five.png"/></a></li>
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>/images/index/six.png"/></a></li>
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>/images/index/one.png"/></a></li>
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>/images/index/two.png"/></a></li>
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>/images/index/three.png"/></a></li>
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>/images/index/four.png"/></a></li>
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>/images/index/five.png"/></a></li>
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>/images/index/six.png"/></a></li>
 								</ul>
 								<div class="clearfloat"></div>
 							</div>

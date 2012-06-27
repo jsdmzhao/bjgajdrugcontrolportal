@@ -7,26 +7,25 @@ String basePaths = request.getScheme()+"://"+request.getServerName()+":"+request
 		<link rel="stylesheet" type="text/css" href="<%=basePaths%>/css/index.css" />
 		<LINK href="<%=basePaths%>/css/css.css" type=text/css rel=stylesheet />
 		<link href="<%=basePaths%>/css/base.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="<%=basePaths%>highslide/highslide-with-html.js"></script>
+
+<!-- 弹出窗 -->
+<script type="text/javascript" src="<%=basePaths%>highslide/highslide-with-html.js"></script>
 <link rel="stylesheet" type="text/css" href="<%=basePaths%>highslide/highslide.css" />
+<!-- 弹出窗 -->
+
+<script type="text/javascript">
+hs.graphicsDir = '../highslide/graphics/';
+hs.outlineType = 'rounded-white';
+hs.wrapperClassName = 'draggable-header';
+</script>
 
 <script type="text/javascript" src="<%=basePaths%>/js/lightBox.js"></script>
 <SCRIPT src="<%=basePaths%>/js/jquery-1.2.6.pack.js" type=text/javascript></SCRIPT>
 <script type="text/javascript" src="<%=basePaths%>/js/jquery.min.js" ></script>
 <script type="text/javascript" src="<%=basePaths%>/js/jquery-ui.min.js" ></script>
 
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#featured > ul").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 5000, true);
-	});
 
 
-	hs.graphicsDir = '<%=basePaths%>highslide/graphics/';
-	hs.outlineType = 'rounded-white';
-	hs.wrapperClassName = 'draggable-header';
-
-
-</script>
 <script type="text/javascript">
 
 
@@ -181,39 +180,39 @@ else {wh="无停驶尾号";}
 <div  class="topdiv">
 <div   class="imgdiv" >
 <img   class="imgdiv"  src="<%=basePaths%>/images/1.png  "/></div >
-<div   class="font1"  align="center"><a href="#"  onclick='Box("msg1",900,600,parahtml("<%=basePaths %>desktop/index.jsp",900,600),fontbutton(1,1));' >我的桌面</a></div>
+<div   class="font1"  align="center"><a href="#"  onclick='Box("msg1",900,600,parahtml("<%=basePaths %>desktop/index.jsp",900,600),fontbutton(1,1))' >我的桌面</a></div>
 </div>
 
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/9.png  "/></div >
-<div   class="font1"  align="center"><a href="#" onclick='Box("msg9",900,600,parahtml("<%=basePaths %>temp/news.jsp",900,600),fontbutton(9,1));'>新闻管理</a></div>
+<div   class="font1"  align="center"><a href="<%=basePaths %>temp/news.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">新闻管理</a></div>
 </div>
 
 
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/3.png  "/></div >
-<div   class="font1"  align="center"><a href="#" onclick='Box("msg3",900,600,parahtml("<%=basePaths %>temp/car.jsp",900,600),fontbutton(3,1));' >车辆管理</a></div>
+<div   class="font1"  align="center"><a href="<%=basePaths %>temp/car.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )" >车辆管理</a></div>
 </div>
 
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/8.png  "/></div >
-<div   class="font1"  align="center"><a href="#" onclick='Box("msg8",900,600,parahtml("<%=basePaths %>temp/nbyj.jsp",900,600),fontbutton(8,1));'>内部邮件</a></div>
+<div   class="font1"  align="center"><a href="<%=basePaths %>temp/nbyj.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">内部邮件</a></div>
 </div>
 
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/2.png  "/></div >
-<div   class="font1"  align="center"><a href="#" onclick='Box("msg2",900,600,parahtml("<%=basePaths %>temp/kaoqin.jsp",900,600),fontbutton(2,1));' >考勤情况</a></div>
+<div   class="font1"  align="center"><a href="<%=basePaths %>temp/kaoqin.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )" >考勤情况</a></div>
 </div>
 
 
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/4.png  "/></div >
-<div   class="font1"  align="center"><a href="#" onclick='Box("msg4",900,600,parahtml("<%=basePaths %>temp/gzrz.jsp",900,600),fontbutton(4,1));'>工作日志</a></div>
+<div   class="font1"  align="center"><a href="<%=basePaths %>temp/kaoqin.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">工作日志</a></div>
 </div>
 <!-- 
 <div class="topdiv">
@@ -226,7 +225,7 @@ else {wh="无停驶尾号";}
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/6.png  "/></div >
-<div   class="font1"  align="center"><a href="#" onclick='Box("msg6",900,600,parahtml("<%=basePaths %>temp/nbyj.jsp",900,600),fontbutton(6,1));'>内部消息</a></div>
+<div   class="font1"  align="center"><a href="<%=basePaths %>temp/nbyj.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">内部消息</a></div>
 </div>
 
 
@@ -234,7 +233,7 @@ else {wh="无停驶尾号";}
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/7.png  "/></div >
-<div   class="font1"  align="center"><a href="#" onclick='Box("msg7",900,600,parahtml("<%=basePaths %>temp/nbyj.jsp",900,600),fontbutton(7,1));'>手机短息</a></div>
+<div   class="font1"  align="center"><a href="<%=basePaths %>temp/nbyj.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">手机短息</a></div>
 </div>
 
 
@@ -286,8 +285,8 @@ else {wh="无停驶尾号";}
 				<div style="padding: 0 20px;">
 					<ul class="nav-ul">
 						<li><a href="<%=basePaths%>index.jsp" class="current">首 页</a></li>
-						<li class="middle"><a href="#">机构设置</a></li>
-						<li class="middle"><a href="#">新闻中心</a></li>
+						<li class="middle"><a href="http://www.baidu.com" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">机构设置</a></li>
+						<li class="middle"><a href="<%=basePaths%>news/news.jsp">新闻中心</a></li>
 					    <li class="middle"><a href="#">电话查询</a></li>
 						<li class="middle"><a href="#">视频在线</a></li>
 						<li class="middle"><a href="#">信息安全</a></li>
