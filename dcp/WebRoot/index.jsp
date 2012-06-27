@@ -18,6 +18,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link rel="stylesheet" type="text/css" href="<%=basePath%>/css/index.css" />
 		<LINK href="<%=basePath%>/css/css.css" type=text/css rel=stylesheet />
 		<link href="<%=basePath%>/css/base.css" rel="stylesheet" type="text/css" />
+		
+		<link href="<%=basePath%>/css/Wygkcn_home.css" rel="stylesheet" type="text/css" />
+		<link href="<%=basePath%>/css/Wygkcn_Index.css" rel="stylesheet" type="text/css" />
 	
 	</head>
 	<body style="font-size:14px;">
@@ -38,7 +41,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 
 
-
+function Show_SubLmy(id_num,num){
+	for(var i=0;i<=9;i++){
+		
+		if(GetObj("S_MenuMy_"+id_num+i)){
+			GetObj("S_MenuMy_"+id_num+i).className='';
+			
+		}
+		if(GetObj("S_ContMy_"+id_num+i)){
+			GetObj("S_ContMy_"+id_num+i).style.display='none';
+			
+		}
+		
+	}
+	if(GetObj("S_MenuMy_"+id_num+num)){
+		GetObj("S_MenuMy_"+id_num+num).className='selectd';
+		
+	}
+	if(GetObj("S_ContMy_"+id_num+num)){
+		GetObj("S_ContMy_"+id_num+num).style.display='block';
+		
+	}
+	
+}
+function GetObj(objName){
+	
+	if(document.getElementById){
+		
+		return eval('document.getElementById("'+objName+'")');		
+		
+	}else {
+		
+		return eval('document.all.'+objName);		
+		
+	}
+	
+}
 
 
 
@@ -195,71 +233,214 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span class="title1">信息采用排行</span>	
 					
 					</div>
-					
-<div class="wrap">
-<div class="leftzone">
 
+				<!-- 
+				<div class="wrap">
+					<div class="leftzone">
 
+						<div class="sidecontent">
+							<div class="my_left_category">
+								<div class="my_left_cat_list">
 
-<div class="sidecontent">
-<div class="my_left_category">
-<div class="my_left_cat_list">
+									<div class="h2_cat"
+										onmouseover="this.className='h2_cat active_cat'"
+										onmouseout="this.className='h2_cat'">
+										<h3>
+											<a href="http://www.duice.net/html/list_622.html">总队属各单位</a>
+										</h3>
+										<div class="h3_cat">
+											<div class="shadow">
+												<div class="shadow_border">
+													<ul class="index-ul">
+														<li class="one"><a href="#">办公室</a> <span
+															style="margin-left: 50px;">12条</span></li>
+														<li class="two"><a href="#">协指</a><span
+															style="margin-left: 50px;">8条</span></li>
+														<li class="three"><a href="#">情报</a><span
+															style="margin-left: 50px;">0条</span></li>
+														<li class="four"><a href="#">法制</a><span
+															style="margin-left: 50px;">0条</span></li>
+														<li class="five"><a href="#">侦查</a><span
+															style="margin-left: 50px;">0条</span></li>
+														<li class="six"><a href="#">查禁</a><span
+															style="margin-left: 50px;">0条</span></li>
+														<li class="serv"><a href="#">缉控</a><span
+															style="margin-left: 50px;">0条</span></li>
+														<li class="eight"><a href="#">两品</a><span
+															style="margin-left: 50px;">0条</span></li>
 
-<div class="h2_cat" onmouseover="this.className='h2_cat active_cat'" onmouseout="this.className='h2_cat'">
-<h3><a href="http://www.duice.net/html/list_622.html">总队属各单位</a></h3>
-<div class="h3_cat">
-<div class="shadow">
-<div class="shadow_border">
-	<ul class="index-ul">
-								<li class="one"><a href="#">办公室</a>  <span style="margin-left: 50px;">12条</span></li>
-								<li class="two"><a href="#">协指</a><span style="margin-left: 50px;">8条</span></li>
-								<li class="three"><a href="#">情报</a><span style="margin-left: 50px;">0条</span></li>
-								<li class="four"><a href="#">法制</a><span style="margin-left: 50px;">0条</span></li>
-								<li class="five"><a href="#">侦查</a><span style="margin-left: 50px;">0条</span></li>
-								<li class="six"><a href="#">查禁</a><span style="margin-left: 50px;">0条</span></li>
-								<li class="serv"><a href="#">缉控</a><span style="margin-left: 50px;">0条</span></li>
-								<li class="eight"><a href="#">两品</a><span style="margin-left: 50px;">0条</span></li>
-								
-							</ul> 
-</div>
-</div>
-</div>
-</div>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
 
-<div class="h2_cat" onmouseover="this.className='h2_cat active_cat'" onmouseout="this.className='h2_cat'">
-<h3><a href="http://www.duice.net/html/list_622.html">各分县局</a></h3>
-<div class="h3_cat">
-<div class="shadow">
-<div class="shadow_border">
-	<ul class="index-ul">
-								<li class="one"><a href="#">东城分局</a><span style="margin-left: 50px;">20条</span></li>
-								<li class="two"><a href="#">西城分局</a><span style="margin-left: 50px;">0条</span></li>
-								<li class="three"><a href="#">崇文分局</a><span style="margin-left: 50px;">0条</span></li>
-								<li class="four"><a href="#">宣武分局</a><span style="margin-left: 50px;">0条</span></li>
-								<li class="five"><a href="#">朝阳分局</a><span style="margin-left: 50px;">0条</span></li>
-								<li class="six"><a href="#">丰台分局</a><span style="margin-left: 50px;">0条</span></li>
-								<li class="serv"><a href="#">石景山分局</a><span style="margin-left: 50px;">0条</span></li>
-								<li class="eight"><a href="#">海淀分局</a><span style="margin-left: 50px;">0条</span></li>
-								<li class="nine"><a href="#">门头沟分局</a><span style="margin-left: 50px;">0条</span></li>
-								<li class="ten"><a href="#">房山分局</a><span style="margin-left: 50px;">0条</span></li>	
-							</ul>
-</div>
-</div>
-</div>
-</div>
+									<div class="h2_cat"
+										onmouseover="this.className='h2_cat active_cat'"
+										onmouseout="this.className='h2_cat'">
+										<h3>
+											<a href="http://www.duice.net/html/list_622.html">各分县局</a>
+										</h3>
+										<div class="h3_cat">
+											<div class="shadow">
+												<div class="shadow_border">
+													<ul class="index-ul">
+														<li class="one"><a href="#">东城分局</a><span
+															style="margin-left: 50px;">20条</span></li>
+														<li class="two"><a href="#">西城分局</a><span
+															style="margin-left: 50px;">0条</span></li>
+														<li class="three"><a href="#">崇文分局</a><span
+															style="margin-left: 50px;">0条</span></li>
+														<li class="four"><a href="#">宣武分局</a><span
+															style="margin-left: 50px;">0条</span></li>
+														<li class="five"><a href="#">朝阳分局</a><span
+															style="margin-left: 50px;">0条</span></li>
+														<li class="six"><a href="#">丰台分局</a><span
+															style="margin-left: 50px;">0条</span></li>
+														<li class="serv"><a href="#">石景山分局</a><span
+															style="margin-left: 50px;">0条</span></li>
+														<li class="eight"><a href="#">海淀分局</a><span
+															style="margin-left: 50px;">0条</span></li>
+														<li class="nine"><a href="#">门头沟分局</a><span
+															style="margin-left: 50px;">0条</span></li>
+														<li class="ten"><a href="#">房山分局</a><span
+															style="margin-left: 50px;">0条</span></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
 
+								</div>
+							</div>
+						</div>
 
+					</div>
+				</div>
+ -->
+				<div class="hd slide_bg float_right" style="width: 96%">
+					<UL class=T_Menu_style style="background:url(<%=basePath%>images/gov_Wygkcn_71.gif) repeat-x left top;">
+						<LI id=S_MenuMy_66  class="selectd" onMouseOver="Show_SubLmy(6,6); return false">审计知识 </LI>
+						<LI id=S_MenuMy_67  onMouseOver="Show_SubLmy(6,7); return false">案件披露</LI>
+					</UL>
 
+					<DIV id=S_ContMy_66>
+						<table width="98%" align="center" cellpadding="0"
+							cellspacing="0" border="1" bordercolor="#BBBBBB">
+							<tr align="center" class="blue_tit">
+								<td width="16%" height="24" bgcolor="#FFFFFF">序号</td>
+								<td width="58%" bgcolor="#FFFFFF">名称</td>
+								<td width="26%" bgcolor="#FFFFFF">数量</td>
+							</tr>
 
-</div>
-</div>
-</div>  
+							<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
+								onmouseout="this.className='normal_tr'" bgcolor="#FFFFFF">
+								<td height="22" align="center">12</td>
+								<td align="left">·<a class="list"
+									href='Wygkcn_ReadOpinion.asp?OpinionID=13' target="_blank">建议广州政</a>
+								</td>
+								<td align="center">2009</td>
+							</tr>
 
- 
-</div>
-</div>
-					
-					<div class="main-box" style="margin-bottom: 4px;">
+							<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
+								onmouseout="this.className='normal_tr'" bgcolor="#FFFFFF">
+								<td height="22" align="center">12</td>
+								<td align="left">·<a class="list"
+									href='Wygkcn_ReadOpinion.asp?OpinionID=12' target="_blank">建议广州</a>
+								</td>
+								<td align="center">2009</td>
+							</tr>
+
+							<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
+								onmouseout="this.className='normal_tr'" bgcolor="#FFFFFF">
+								<td height="22" align="center">12</td>
+								<td align="left">·<a class="list"
+									href='Wygkcn_ReadOpinion.asp?OpinionID=11' target="_blank">建议广州</a>
+								</td>
+								<td align="center">2009</td>
+							</tr>
+
+							<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
+								onmouseout="this.className='normal_tr'" bgcolor="#FFFFFF">
+								<td height="22" align="center">12</td>
+								<td align="left">·<a class="list"
+									href='Wygkcn_ReadOpinion.asp?OpinionID=10' target="_blank">建广州</a>
+								</td>
+								<td align="center">20091</td>
+							</tr>
+
+							<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
+								onmouseout="this.className='normal_tr'" bgcolor="#FFFFFF">
+								<td height="22" align="center">12</td>
+								<td align="left">·<a class="list"
+									href='Wygkcn_ReadOpinion.asp?OpinionID=9' target="_blank">建议广州.</a>
+								</td>
+								<td align="center">2009</td>
+							</tr>
+
+						</table>
+					</div>
+
+					<div id=S_ContMy_67 style="DISPLAY: none">
+						<table width="98%" align="center" cellpadding="0"
+							cellspacing="0" border="1" bordercolor="#BBBBBB">
+							<tr align="center" class="blue_tit">
+								<td width="16%" height="24" bgcolor="#FFFFFF">序号</td>
+								<td width="58%" bgcolor="#FFFFFF">名称</td>
+								<td width="26%" bgcolor="#FFFFFF">数量</td>
+							</tr>
+
+							<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
+								onmouseout="this.className='normal_tr'"  bgcolor="#FFFFFF">
+								<td height="22" align="center">12</td>
+								<td align="left">·<a class="list"
+									href='Wygkcn_ReadOpinion.asp?OpinionID=13' target="_blank">建议州</a>
+								</td>
+								<td align="center">2009</td>
+							</tr>
+
+							<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
+								onmouseout="this.className='normal_tr'"  bgcolor="#FFFFFF">
+								<td height="22" align="center">12</td>
+								<td align="left">·<a class="list"
+									href='Wygkcn_ReadOpinion.asp?OpinionID=12' target="_blank">建议广州</a>
+								</td>
+								<td align="center">2009</td>
+							</tr>
+
+							<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
+								onmouseout="this.className='normal_tr'"  bgcolor="#FFFFFF">
+								<td height="22" align="center">12</td>
+								<td align="left">·<a class="list"
+									href='Wygkcn_ReadOpinion.asp?OpinionID=11' target="_blank">建议广州</a>
+								</td>
+								<td align="center">2009</td>
+							</tr>
+
+							<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
+								onmouseout="this.className='normal_tr'"  bgcolor="#FFFFFF">
+								<td height="22" align="center">12</td>
+								<td align="left">·<a class="list"
+									href='Wygkcn_ReadOpinion.asp?OpinionID=10' target="_blank">建议广州</a>
+								</td>
+								<td align="center">2009</td>
+							</tr>
+
+							<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
+								onmouseout="this.className='normal_tr'" bgcolor="#FFFFFF">
+								<td height="22" align="center">12</td>
+								<td align="left">·<a class="list"
+									href='Wygkcn_ReadOpinion.asp?OpinionID=9' target="_blank">建议广州</a>
+								</td>
+								<td align="center">2009</td>
+							</tr>
+
+						</table>
+
+					</div>
+				</div>
+				
+				<div class="main-box" style="margin-bottom: 4px;">
 						<span class="title1">禁吸戒毒</span>	
 						<div class="main-con" style="height: 285px;">
 							<ul class="index-ul">
