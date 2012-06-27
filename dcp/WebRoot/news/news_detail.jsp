@@ -62,7 +62,7 @@ return footerhtml;
 
 }
 </script>
-<%@include  file="head.jsp" %>
+<%@include  file="../head.jsp" %>
 <div id="container2" style="height: 100%" >
 <div style="float:left;"><div id="main"> 
 				
@@ -208,7 +208,7 @@ width:691px; height:57px;"></div>
 width:17px; height:57px;"></div>
 </div>
 				<div style="margin-top: 10px;float:right; width: 1000px;">
-<%@include file="foot.jsp"  %>
+<%@include file="../foot.jsp"  %>
 </div>
 </div>
 
@@ -231,18 +231,6 @@ jQuery(function(){
     });
 
 </SCRIPT>
-      <script language="javascript">
-      $(document).ready(function (){
-        var nScrollHight = 0; 
-        var nScrollTop = 0;  
-        var nDivHight = $("#div1").height();
-        $("#div1").scroll(function(){
-          nScrollHight = $(this)[0].scrollHeight;
-          nScrollTop = $(this)[0].scrollTop;
-          if(nScrollTop + nDivHight >= nScrollHight)
-           
-          });
-      });
- </script>
+     
  </body>
  </html>

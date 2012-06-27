@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Banner
+	bannerWidth="231"
+	bannerHeight="238"
+
+	textSize="14"
+	textColor=""
+	textAreaWidth=""
+	textLineSpacing="0"
+	textLetterSpacing="-0.5"
+	textMarginLeft="12"
+	textMarginBottom="3"
+	
+	transitionType="1"
+	transitionDelayTimeFixed="4"
+	transitionDelayTimePerWord=".5"
+	transitionSpeed="8"
+	transitionBlur="yes"
+	transitionRandomizeOrder="no"
+	
+	showTimerClock="yes"
+	showBackButton="yes"
+	showNumberButtons="yes"
+	showNumberButtonsAlways="Yes"
+	showNumberButtonsHorizontal="yes"
+	showNumberButtonsAscending="yes"
+	autoPlay="yes">
+  <item image="images/newspic/01.jpg" link="#" textBlend="no"><![CDATA[]]></item>
+  <item image="images/newspic/02.jpg" link="#" textBlend="no"><![CDATA[]]></item>
+  <item image="images/newspic/03.jpg" link="#" textBlend="no"><![CDATA[]]></item>
+  <item image="images/newspic/04.jpg" link="#" textBlend="no"><![CDATA[]]></item>
+  <item image="images/newspic/05.jpg" link="#" textBlend="no"><![CDATA[]]></item>
+</Banner>

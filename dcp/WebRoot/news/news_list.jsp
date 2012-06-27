@@ -13,6 +13,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link rel="stylesheet" type="text/css" href="<%=basePath%>css/layout.css" />
 		<link rel="stylesheet" type="text/css" href="<%=basePath%>css/index.css" />
 		<LINK href="<%=basePath%>css/css.css" type=text/css rel=stylesheet />
+		<!-- 弹出窗 -->
+<script type="text/javascript" src="<%=basePath%>highslide/highslide-with-html.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=basePath%>highslide/highslide.css" />
+<!-- 弹出窗 -->
+		
 	    <style type="text/css">
 <!--
 .STYLE3 {
@@ -108,7 +113,7 @@ return footerhtml;
 
 }
 </script>
-<%@include  file="head.jsp" %>
+<%@include  file="../head.jsp" %>
 <div id="container2">
 <div style=" width:1000px; height:26px; background-image:url(<%=basePath%>images/headbg.jpg)">
 <div style="float:left; margin-left:20px;">当前位置>> </div> 
@@ -204,7 +209,7 @@ return footerhtml;
 </div>
 
 
-<%@include file="foot.jsp"  %>
+<%@include file="../foot.jsp"  %>
 <SCRIPT type=text/javascript>
 jQuery(function(){
 
@@ -216,18 +221,6 @@ jQuery(function(){
     });
 
 </SCRIPT>
-      <script language="javascript">
-      $(document).ready(function (){
-        var nScrollHight = 0; 
-        var nScrollTop = 0;  
-        var nDivHight = $("#div1").height();
-        $("#div1").scroll(function(){
-          nScrollHight = $(this)[0].scrollHeight;
-          nScrollTop = $(this)[0].scrollTop;
-          if(nScrollTop + nDivHight >= nScrollHight)
-           
-          });
-      });
- </script>
+  
  </body>
  </html>
