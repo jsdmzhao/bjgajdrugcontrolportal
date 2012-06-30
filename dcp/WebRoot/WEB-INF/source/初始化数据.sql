@@ -91,6 +91,39 @@ MENU_ICON, ISVISIBLE)values (509, '509', '5', '车辆管理', 'admin/app/car/car
  insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
 MENU_ICON, ISVISIBLE)values (510, '510', '5', '假日管理', 'admin/app/holiday/holiday.jsp', 'liger/lib/icons/32X32/world.gif', '1' );
 
+
+
+--新增
+insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+MENU_ICON, ISVISIBLE)values (6, '6', '0', '内部消息', '', 'liger/lib/icons/silkicons/application.png', '1' );
+
+insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+MENU_ICON, ISVISIBLE)values (601, '601', '1', '未读消息', 'admin/app/news/news.jsp?newsType=1', 'liger/lib/icons/32X32/my_account.gif', '1' );
+
+insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+MENU_ICON, ISVISIBLE)values (602, '602', '1', '收件箱', 'admin/app/column/column.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+
+insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+MENU_ICON, ISVISIBLE)values (603, '603', '1', '发件箱', 'admin/app/news/newsAudit.jsp?newsType=1', 'liger/lib/icons/32X32/zoom.gif', '1' );
+
+--新增
+insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+MENU_ICON, ISVISIBLE)values (7, '7', '0', '内部邮件', '', 'liger/lib/icons/silkicons/application.png', '1' );
+
+insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+MENU_ICON, ISVISIBLE)values (701, '701', '1', '未读邮件', 'admin/app/news/news.jsp?newsType=1', 'liger/lib/icons/32X32/my_account.gif', '1' );
+
+insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+MENU_ICON, ISVISIBLE)values (702, '702', '1', '收件箱', 'admin/app/column/column.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+
+insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+MENU_ICON, ISVISIBLE)values (703, '703', '1', '发件箱', 'admin/app/news/newsAudit.jsp?newsType=1', 'liger/lib/icons/32X32/zoom.gif', '1' );
+
+insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+MENU_ICON, ISVISIBLE)values (704, '704', '1', '草稿箱', 'admin/app/news/newsAudit.jsp?newsType=1', 'liger/lib/icons/32X32/zoom.gif', '1' );
+
+
+
 --按钮
 
 insert into SYS_BUTTON (BTN_ID, BTN_NAME, BTN_NO, BTN_CLASS, BTN_ICON, BTN_SCRIPT, MENU_ID, INITSTATUS)
