@@ -35,7 +35,7 @@
 	    FROM B_CLSQ WHERE N_XH = #{n_xh}
 	</select>
 	 
-	<select id="getCarList" resultMap="resultCar">
+	<select id="getCarList" resultMap="resultCar" parameterType="hashmap">
 		SELECT N_XH,
 			   FUN_GET_CPHM(N_CLLBXH) N_CLLBXH,
 			   C_YHID,
@@ -45,7 +45,7 @@
 		       DECODE(C_SHJG,'1','同意','0','不同意','等待审核') C_SHJG,
 		       TO_CHAR(D_DJ,'YYYY-MM-DD HH24:MI:SS') D_DJ
 		  FROM B_CLSQ
-		  <if test="c_yhid != null and c_yhid != '' ">
+		  <if test="type != null and type == 'yh' ">
 		  WHERE C_YHID = #{c_yhid}
 		  </if>
 	</select>
