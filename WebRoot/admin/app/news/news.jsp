@@ -47,16 +47,36 @@ String newsType = request.getParameter("newsType");
     <div position="left" title="主菜单模块" id="mainmenu" style="width:100%;height:95%;overflow: auto;">
         <ul id="maintree"></ul>
      </div>
+     
     <div position="center" title="子菜单列表"> 
         <form id="mainform">
-        <div id="maingrid"  style="margin:2px;"></div> 
+				<DIV class=l-panel-search>
+					<DIV class=l-panel-search-item>标题：</DIV>
+					<DIV class=l-panel-search-item>
+						<INPUT id="bt" name="bt" type="text" class="l-text" style="width: 200px;"  ltype="text">
+					</DIV>
+					<DIV class=l-panel-search-item>
+						<DIV style="WIDTH: 100px" id=searchbtn class=l-btn  ligeruiid="searchbtn" onclick="search();">
+							搜索
+							<DIV class=l-btn-l></DIV>
+							<DIV class=l-btn-r></DIV>
+							<SPAN></SPAN>
+						</DIV>
+					</DIV>
+				</DIV>
+				<div id="maingrid"  style="margin:2px;"></div> 
         </form>
     </div>
   </div>
   <ul class="iconlist">
   </ul>
-  
+
   <script type="text/javascript">
+  
+  	  function search(){
+  		  var value = document.getElementById("bt").value;
+  		  alert(value);
+  	  }
 
       var newsType = '<%=newsType %>';
       var dialog ;
@@ -178,7 +198,7 @@ String newsType = request.getParameter("newsType");
       
       function f_reload()
       {
-          grid.loadGrid(newsType);
+          grid.loadGrid(newsType,'');
       }
       function f_delete()
       { 
@@ -213,7 +233,7 @@ String newsType = request.getParameter("newsType");
 	    	  NewsAction.newsOperate(operateType , value,selected.n_xh, function (data){
 	   	    	 if(data == 'success'){
 	   	    		LG.showSuccess('操作成功');
-	   	    		loadGrid(newsType);
+	   	    		loadGrid(newsType,'');
 	    	     }
 	   	      });
           }else{
@@ -274,7 +294,7 @@ String newsType = request.getParameter("newsType");
             };
             newsType =  node.data.value;
             currentMenuParentNo = node.data.value;
-            loadGrid(newsType);
+            loadGrid(newsType,'');
             //grid.set('parms', { where: JSON2.stringify(where) });
             //grid.set('data', tempdata);
         }
@@ -349,7 +369,7 @@ String newsType = request.getParameter("newsType");
             data: data,
             success: function ()
             {
-                grid.loadGrid(newsType);
+                grid.loadGrid(newsType,'');
                 LG.tip('保存成功!');
             },
             error: function (message)
@@ -359,7 +379,7 @@ String newsType = request.getParameter("newsType");
         }); 
     }); 
     //loadData();
-    loadGrid(newsType);
+    loadGrid(newsType,'');
 
     function beginEdit()
     {
@@ -372,11 +392,11 @@ String newsType = request.getParameter("newsType");
         grid.addEditRow();
     }
 	
-    function loadGrid(newsType){
+    function loadGrid(newsType,btValue){
         if(newsType == undefined || newsType == ''){
 			newType = '1';
         }
-    	NewsAction.newsList(newsType,function (data){
+    	NewsAction.newsList(newsType,btValue,function (data){
   	    	//newsdata = JSON2.stringify(data);
   	    	for(var i=0;i<data.Rows.length;i++){
   	    		var rowData = "<div style='width:100%;height:100%;'>";
@@ -404,6 +424,7 @@ String newsType = request.getParameter("newsType");
   	    	grid.setOptions({data:data});
   	    });
     }
+
    
   </script>
 </body>
