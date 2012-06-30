@@ -94,9 +94,10 @@ public class NewsAction {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public Map<String, Object> newsList(String c_lm){
+	public Map<String, Object> newsList(String c_lm,String c_bt){
 		news = new News();
 		news.setC_lm(c_lm);
+		news.setC_bt(c_bt);
 		Map<String, Object> resMap = new HashMap<String, Object>();
 		List<News> newsList = (List<News>) newsService.selectList("NewsMapper.getNewsList", news);
 		resMap.put("Rows", newsList);
