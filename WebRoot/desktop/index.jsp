@@ -110,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     var winlinksul =  $("#winlinks ul");
     function f_open(url, title, icon) {
         var win = $.ligerDialog.open(
-        { height: 500, url: url, width: 600, showMax: true, showToggle: true, showMin: true, isResize: true, modal: false, title: title, slide: false, buttons: [
+        { height: 500, url: url, width: 700, showMax: true, showToggle: true, showMin: true, isResize: true, modal: false, title: title, slide: false, buttons: [
             { text: '确定', onclick: function (item, Dialog, index) {
                 win.hide();
             }
@@ -127,7 +127,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             { icon: 'images/3DSMAX.png', title: '公告通知', url: '../temp/notice.jsp' },
             { icon: 'images/3DSMAX.png', title: '个人考勤', url: '../temp/kaoqin.jsp' },
             { icon: 'images/3DSMAX.png', title: '值班表', url: '../temp/zbb.jsp' },
-            { icon: 'images/Program Files Folder.png', title: '我的资料', url: '../temp/wdzl.jsp' },
+            { icon: 'images/Program Files Folder.png', title: '我的资料', url: '<%=basePath%>admin/app/userinfo/userinfoDetail.jsp?userId=<%=session.getAttribute("userId")%>'},
             { icon: 'images/Program Files Folder.png', title: '常用网址', url: '../temp/website.jsp' }
         ];
              
