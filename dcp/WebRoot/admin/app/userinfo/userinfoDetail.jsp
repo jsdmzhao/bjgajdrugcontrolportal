@@ -46,15 +46,17 @@ if(userId==null){
 <body style="padding-bottom:31px;">
     <form id="mform"  method="post"></form> 
     <script type="text/javascript"> 
-	    
+    UserInfoSvc.getDep(function(rddata){
         var config = {"Form":{ 
          fields : [
          {name:"nXh",type:"hidden",value:'<%=nXh %>'},
          {name:"userId",type:"hidden",value:'<%=userId %>'},
          {display:"类型",name:"cLx",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"IP",name:"cYxip",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"IP",name:"cYxip",newline:true,labelWidth:100,width:200,space:30,type:"text"}, 
          {display:"级别",name:"cJb",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"用户组",name:"cYhz",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"用户组",name:"cYhz",newline:true,labelWidth:100,width:200,space:30,type:"select",
+             comboboxName:"cYhz",
+             options:{data:rddata}},
          {display:"职称",name:"cZc",newline:false,labelWidth:100,width:200,space:30,type:"text"},
          {display:"姓名",name:"cXm",newline:true,labelWidth:100,width:200,space:30,type:"text"},
          {display:"性别",name:"nXb",newline:false,labelWidth:100,width:200,space:30,type:"text"},
@@ -228,6 +230,7 @@ if(userId==null){
         {
             parent.dialog_hidden();
         }
+        });
     </script>
   
 </body>

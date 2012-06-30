@@ -64,8 +64,23 @@ public class UserInfoSvc  {
 			for (int j = 0; j < clist.size(); j++) {
 				Map cp=clist.get(j);
 				cp.put("text", cp.get("cXm"));
+				cp.put("value", cp.get("userId"));
 			}
 			tp.put("children", clist);
+		}
+		return list;
+	}
+	
+	public List getDep() throws SQLException {
+		Map p=new HashMap();
+		p.put("nBxh", "DEP");
+		List<Map> list=dmDao.queryAllInfo(p);
+		for (int i = 0; i < list.size(); i++) {
+			Map tp=list.get(i);
+			tp.put("id", tp.get("nXh"));
+			tp.put("text", tp.get("cMc"));
+			tp.put("value", tp.get("cDm"));
+			
 		}
 		return list;
 	}
