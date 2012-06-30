@@ -34,6 +34,12 @@
 		   <result property="cYxip" column="C_YXIP" jdbcType="VARCHAR"/>
 	</resultMap>
 	 
+	 
+	 <resultMap id="ResultForChoose"  type="java.util.Map">
+			<result property="userId" column="USER_ID" jdbcType="DECIMAL"/>
+			<result property="cXm" column="C_XM" jdbcType="VARCHAR"/>
+			<result property="cYhz" column="C_YHZ" jdbcType="VARCHAR"/>
+	</resultMap>
 
 	<select id="queryAllInfo" resultMap="Result"  parameterType="java.util.Map" >
 				 select 
@@ -77,6 +83,11 @@
 			<if test="cYxip != null and cYxip !='' ">  and C_YXIP = #{cYxip}</if>
 		</trim>
 		ORDER BY base.N_XH  DESC
+	</select>
+	
+	
+	<select id="choose" resultMap="ResultForChoose"  parameterType="java.util.Map" >
+		select user_id,c_xm,c_yhz from b_yh where c_yhz&lt;&gt;0 order by c_yhz
 	</select>
 
 	<select id="queryInfo" resultMap="Result" parameterType="java.util.Map" >
