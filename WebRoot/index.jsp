@@ -4,6 +4,8 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
+session.setAttribute("userId","10000081");
 %>
 
 <s:if test="resMap==null">
