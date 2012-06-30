@@ -216,7 +216,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       
       function loadGrid(){
       
-    	CarAction.carList(function (data){
+    	CarAction.carList('yh',function (data){
   	    	grid.setOptions({data:data});
   	    });
   	  }
