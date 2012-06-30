@@ -205,7 +205,7 @@ var dialog;
       
       function loadGrid(){
       
-    	CarAction.carList(function (data){
+    	CarAction.carList('sh',function (data){
   	    	grid.setOptions({data:data});
   	    });
   	  }
