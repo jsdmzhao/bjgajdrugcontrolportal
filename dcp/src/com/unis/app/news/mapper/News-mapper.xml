@@ -29,6 +29,9 @@
 	  <if test="c_sfsh != null and c_sfsh != ''">
 	 	 AND C_SFSH = #{c_sfsh}
 	  </if>
+	  <if test="c_bt != null and c_bt != ''">
+	 	 AND C_BT = #{c_bt}
+	  </if>
 	</select>
 	
 	<delete id="deleteNews" parameterType="int">
