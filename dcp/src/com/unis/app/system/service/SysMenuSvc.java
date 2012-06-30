@@ -79,7 +79,7 @@ public class SysMenuSvc  {
        //           }]; 
 			
 		}
-		System.out.println("@@@@@@@pList@@@@@@@@@ : "+pList);
+		//System.out.println("@@@@@@@pList@@@@@@@@@ : "+pList);
 		return pList;
 	}
 
