@@ -1,8 +1,12 @@
 package com.unis.app.car.action;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.xwork.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,9 +39,14 @@ public class CarAction {
 	}
 
 	@SuppressWarnings("unchecked")
-	public Map<String, Object> carList(){
+	public Map<String, Object> carList(String type,HttpServletRequest request){
+		HttpSession session = request.getSession();
+		String userId =  session.getAttribute("userId").toString();
+		Map<String, String> sqlParamMap = new HashMap<String, String>();
+		sqlParamMap.put("type", type);
+		sqlParamMap.put("c_yhid", userId);
 		Map<String, Object> resMap = new HashMap<String, Object>();
-		List<Car> carList = (List<Car>) carService.selectList("CarMapper.getCarList",c_yhid);
+		List<Car> carList = (List<Car>) carService.selectList("CarMapper.getCarList",sqlParamMap);
 		resMap.put("Rows", carList);
 		resMap.put("Total", carList.size());
 		return resMap;
