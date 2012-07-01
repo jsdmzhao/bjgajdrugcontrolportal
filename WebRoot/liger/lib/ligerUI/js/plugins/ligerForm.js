@@ -37,7 +37,7 @@
     };
 
     //@description 默认表单编辑器构造器扩展(如果创建的表单效果不满意 建议重载)
-    //@param {jinput} 表单元素jQuery对象 比如input、select、textarea 
+    //@param {jinput} 表单元素jQuery对象 比如input、select、textarea  smarttext
     $.ligerDefaults.Form.editorBulider = function (jinput)
     {
         //这里this就是form的ligerui对象
@@ -71,6 +71,10 @@
                 case "int":
                 case "digits":
                     inputOptions.digits = true;
+                case "smarttext":
+                    //inputOptions.number = true;
+                    //jinput.ligerTextBox(inputOptions);
+                    break;
                 default:
                     jinput.ligerTextBox(inputOptions);
                     break;
@@ -295,6 +299,13 @@
             	 	out.push('<input type="button" value="'+value+'"  onclick="'+field.onclick+'" disabled="disabled" ');
             	} else {
             		out.push('<input type="button" value="'+value+'"  onclick="'+field.onclick+'"');
+            	}
+            }
+            else if (field.type == "smarttext")
+            {	if(disabled == 'disabled'){
+            	 	out.push('<input type="text" class="l-text-field" value="'+value+'"  onclick="'+field.onclick+'" disabled="disabled" ');
+            	} else {
+            		out.push('<input type="text" class="l-text-field" value="'+value+'"  onclick="'+field.onclick+'"');
             	}
             }
             else
