@@ -6,6 +6,36 @@ DROP TABLE B_KQ_CCJL;
 
 DROP TABLE B_KQ_QQSB;
 
+
+DROP TABLE B_KQ_ZB;
+
+/*==============================================================*/
+/* Table: B_KQ_ZB                                              */
+/*==============================================================*/
+CREATE TABLE B_KQ_ZB  (
+   N_XH                 NUMBER(8)                       NOT NULL,
+   D_SJ                 DATE,
+   USER_ID              NUMBER(8),
+   C_BZ                 VARCHAR2(200),
+   CONSTRAINT PK_B_ZHIBAN PRIMARY KEY (N_XH)
+);
+
+COMMENT ON TABLE B_KQ_ZB IS
+'值班';
+
+COMMENT ON COLUMN B_KQ_ZB.N_XH IS
+'序号';
+
+COMMENT ON COLUMN B_KQ_ZB.D_SJ IS
+'时间';
+
+COMMENT ON COLUMN B_KQ_ZB.USER_ID IS
+'人员';
+
+COMMENT ON COLUMN B_KQ_ZB.C_BZ IS
+'备注';
+
+
 /*==============================================================*/
 /* Table: B_KQ_SXB                                              */
 /*==============================================================*/
@@ -196,3 +226,12 @@ maxvalue 99999999
 start with 10000000
 increment by 1
 cache 20;
+
+
+create sequence SEQ_KQ_ZB
+minvalue 10000000
+maxvalue 99999999
+start with 10000000
+increment by 1
+cache 20;
+
