@@ -93,17 +93,17 @@
  			display : "日期范围",
  			name : "dDjBeg",
  			newline : false,
- 			labelWidth : 100,
- 			width : 220,
- 			space : 30,
+ 			labelWidth : 80,
+ 			width : 100,
+ 			space : 10,
  			type : "date",
  			cssClass : "field"
  		}, {
- 			display : "至 ",
+ 			display : "至",
  			name : "dDjEnd",
  			newline : false,
- 			labelWidth : 100,
- 			width : 220,
+ 			labelWidth : 30,
+ 			width : 100,
  			space : 30,
  			type : "date",
  			cssClass : "field"
