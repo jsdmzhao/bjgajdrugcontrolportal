@@ -26,7 +26,6 @@ public class UserInfoSvc  {
 	private DmDao dmDao;
 
 	public Object save(Map p) throws SQLException {
-		System.out.println("@@@@@ p@@@@@ : "+p);
 		Object userId =userDao.saveInfo(p);
 		return userId;
 	}
@@ -65,6 +64,7 @@ public class UserInfoSvc  {
 				Map cp=clist.get(j);
 				cp.put("text", cp.get("cXm"));
 				cp.put("value", cp.get("userId"));
+				cp.put("id", cp.get("userId"));
 			}
 			tp.put("children", clist);
 		}
