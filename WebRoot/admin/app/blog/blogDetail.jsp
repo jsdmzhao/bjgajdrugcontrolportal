@@ -1,8 +1,13 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
+String userName = (String) session.getAttribute("cXm");
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+String dateStr = sdf.format(new Date());
+String c_mc = userName + " " + dateStr + "工作日志";
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -45,6 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		         fields : [
 		         {display:"标题",name:"c_bt",newline:true,labelWidth:100,
 		          width:640,space:30,type:"text",
+		          value: '<%=c_mc%>',
 		          group:"基本信息",
 		          groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
 		         },
