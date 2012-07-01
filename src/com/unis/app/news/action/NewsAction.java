@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 
 import org.apache.commons.lang.xwork.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,10 +97,15 @@ public class NewsAction {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public Map<String, Object> newsList(String c_lm,String c_bt){
+	public Map<String, Object> newsList(String c_lm,String c_bt, HttpServletRequest request){
+		HttpSession session = request.getSession();
+		String c_yhid = session.getAttribute("userId")+"";
+		String c_yhzid = session.getAttribute("cYhz")+"";
 		news = new News();
 		news.setC_lm(c_lm);
 		news.setC_bt(c_bt);
+		news.setC_yhzid(c_yhzid);
+		news.setC_yhid(c_yhid);
 		Map<String, Object> resMap = new HashMap<String, Object>();
 		List<News> newsList = (List<News>) newsService.selectList("NewsMapper.getNewsList", news);
 		resMap.put("Rows", newsList);
@@ -116,34 +124,34 @@ public class NewsAction {
 		resMap = new HashMap<String, Object>();
 		News n =new News();
 		n.setC_lm("1195");
-		List<News> newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsList", n);
+		List<News> newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
 		resMap.put("Rows1", newsList1);
 		n.setC_lm("1221");
-		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsList", n);
+		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
 		resMap.put("Rows2", newsList1);
 		n.setC_lm("1255");
-		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsList", n);
+		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
 		resMap.put("Rows3", newsList1);
 		n.setC_lm("1196");
-		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsList", n);
+		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
 		resMap.put("Rows4", newsList1);
 		n.setC_lm("1197");
-		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsList", n);
+		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
 		resMap.put("Rows5", newsList1);
 		n.setC_lm("1198");
-		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsList", n);
+		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
 		resMap.put("Rows6", newsList1);
 		n.setC_lm("1199");
-		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsList", n);
+		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
 		resMap.put("Rows7", newsList1);
 		n.setC_lm("1191");
-		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsList", n);
+		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
 		resMap.put("Rows8", newsList1);
 		n.setC_lm("1189");
-		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsList", n);
+		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
 		resMap.put("Rows9", newsList1);
 		n.setC_lm("1237");
-		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsList", n);
+		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
 		resMap.put("Rows10", newsList1);
 	
 		

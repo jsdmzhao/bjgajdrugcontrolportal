@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.xwork.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,17 +29,18 @@ public class EmailAction {
 	
 	public String emailSave(Map sqlParamMap, HttpServletRequest request){
 		
+		HttpSession session = request.getSession();
+		String c_yhid = session.getAttribute("userId")+"";
+		String c_yhzid = session.getAttribute("cYhz")+"";
+		sqlParamMap.put("c_yhid", c_yhid);
+		sqlParamMap.put("c_yhzid", c_yhzid);
 		
 		String jsrStr = (String) sqlParamMap.get("c_jsr");
 		String csrStr = (String) sqlParamMap.get("c_csr");
 		
-//		
-//		String jsrStr = "abc,cdw2";
-//		String csrStr = "1111,222";
-		
 		List<Email> list = new ArrayList<Email>();
 		if(StringUtils.isNotEmpty(jsrStr)){
-			String[] jsrs = jsrStr.split(",");
+			String[] jsrs = jsrStr.split(";");
 			for(String jsr : jsrs){
 				Email em = new Email();
 				em.setC_yhid(jsr);
@@ -48,7 +50,7 @@ public class EmailAction {
 			//sqlParamMap.put("c_jsr", list);
 		}
 		if(StringUtils.isNotEmpty(csrStr)){
-			String[] csrs = csrStr.split(",");
+			String[] csrs = csrStr.split(";");
 			for(String csr : csrs){
 				Email em = new Email();
 				em.setC_yhid(csr);
@@ -62,7 +64,7 @@ public class EmailAction {
 		//HttpSession session = request.getSession();
 		//String userId = (String) session.getAttribute("userId");
 		emailService.insert("EmailMapper.insertEmail", sqlParamMap);
-		emailService.insert("EmailMapper.insertEmailRecieve", sqlParamMap);
+		//emailService.insert("EmailMapper.insertEmailRecieve", sqlParamMap);
 		
 		/**
 		if(StringUtils.isNotEmpty(sqlParamMap.get("n_xh"))){
