@@ -98,30 +98,29 @@ insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL,
 MENU_ICON, ISVISIBLE)values (6, '6', '0', '内部消息', '', 'liger/lib/icons/silkicons/application.png', '1' );
 
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
-MENU_ICON, ISVISIBLE)values (601, '601', '1', '未读消息', 'admin/app/news/news.jsp?newsType=1', 'liger/lib/icons/32X32/my_account.gif', '1' );
+MENU_ICON, ISVISIBLE)values (601, '601', '6', '未读消息', 'admin/app/message/messageNoread.jsp', 'liger/lib/icons/32X32/my_account.gif', '1' );
 
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
-MENU_ICON, ISVISIBLE)values (602, '602', '1', '收件箱', 'admin/app/column/column.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+MENU_ICON, ISVISIBLE)values (602, '602', '6', '收件箱', 'admin/app/column/column.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
 
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
-MENU_ICON, ISVISIBLE)values (603, '603', '1', '发件箱', 'admin/app/news/newsAudit.jsp?newsType=1', 'liger/lib/icons/32X32/zoom.gif', '1' );
+MENU_ICON, ISVISIBLE)values (603, '603', '6', '发件箱', 'admin/app/message/message.jsp', 'liger/lib/icons/32X32/zoom.gif', '1' );
 
 --新增
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
 MENU_ICON, ISVISIBLE)values (7, '7', '0', '内部邮件', '', 'liger/lib/icons/silkicons/application.png', '1' );
 
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
-MENU_ICON, ISVISIBLE)values (701, '701', '1', '未读邮件', 'admin/app/news/news.jsp?newsType=1', 'liger/lib/icons/32X32/my_account.gif', '1' );
+MENU_ICON, ISVISIBLE)values (701, '701', '7', '未读邮件', 'admin/app/email/emailNoread.jsp', 'liger/lib/icons/32X32/zoom.gif', '1' );
 
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
-MENU_ICON, ISVISIBLE)values (702, '702', '1', '收件箱', 'admin/app/column/column.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+MENU_ICON, ISVISIBLE)values (702, '702', '7', '收件箱', 'admin/app/email/emailRecieve.jspp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
 
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
-MENU_ICON, ISVISIBLE)values (703, '703', '1', '发件箱', 'admin/app/news/newsAudit.jsp?newsType=1', 'liger/lib/icons/32X32/zoom.gif', '1' );
+MENU_ICON, ISVISIBLE)values (703, '703', '7', '发件箱', 'admin/app/email/email.jsp?c_zt=1', 'liger/lib/icons/32X32/zoom.gif', '1' );
 
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
-MENU_ICON, ISVISIBLE)values (704, '704', '1', '草稿箱', 'admin/app/news/newsAudit.jsp?newsType=1', 'liger/lib/icons/32X32/zoom.gif', '1' );
-
+MENU_ICON, ISVISIBLE)values (704, '704', '7', '草稿箱', 'admin/app/email/email.jsp?c_zt=2', 'liger/lib/icons/32X32/zoom.gif', '1' );
 
 
 --按钮
@@ -829,3 +828,4 @@ values (118, 'renchao', '002912', null);
 
 insert into sys_user (USER_ID, USER_NAME, USER_PASSWORD, USER_LOCK)
 values (309, 'wangyanming', '111111', null);
+
