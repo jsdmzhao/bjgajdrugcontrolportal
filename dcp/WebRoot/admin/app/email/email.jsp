@@ -66,42 +66,51 @@ String c_zt = request.getParameter("c_zt");
       //加载toolbar
       LG.loadToolbar(grid, toolbarBtnItemClick);
 
-     	var items=[
-     	           {
-     	        	  click:toolbarBtnItemClick,
-     	        	   text:'保存',
-     	        	   img:'<%=basePath%>liger/lib/icons/silkicons/page_save.png',
-     	        	   id:'save'    	
-     	   },{
-            click:toolbarBtnItemClick,
-            text:'新增',
-            img:'<%=basePath%>liger/lib/icons/silkicons/add.png',
-            id:'add'
-        }
-     	/**
-     	,{line:true},{
-            click: toolbarBtnItemClick,
-            text: '修改',
-            img:'<%=basePath%>liger/lib/icons/silkicons/application_edit.png',
-            id: 'modify'
-        },{line:true}
-        **/
-        ,{
-            click: toolbarBtnItemClick,
-            text: '删除',
-            img:'<%=basePath%>liger/lib/icons/silkicons/delete.png',
-            id: 'delete'
-        },{line:true},{
-            click: toolbarBtnItemClick,
-            text: '查看',
-            img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
-            id: 'view'
-       },{line:true},{
-           click: toolbarBtnItemClick,
-           text: '查看签收情况',
-           img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
-           id: 'viewQsqk'
-      },{line:true}];
+      var items ;
+
+      if('<%=c_zt%>' == '2'){
+    	  items=[
+   	      {
+	          click:toolbarBtnItemClick,
+	          text:'新增',
+	          img:'<%=basePath%>liger/lib/icons/silkicons/add.png',
+	          id:'add'
+	      },{
+	          click: toolbarBtnItemClick,
+	          text: '删除',
+	          img:'<%=basePath%>liger/lib/icons/silkicons/delete.png',
+	          id: 'delete'
+	      },{line:true},{
+	          click: toolbarBtnItemClick,
+	          text: '查看',
+	          img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
+	          id: 'view'
+	     }];
+      } else {
+          
+	      items=[
+	     	{
+	            click:toolbarBtnItemClick,
+	            text:'新增',
+	            img:'<%=basePath%>liger/lib/icons/silkicons/add.png',
+	            id:'add'
+	        },{
+	            click: toolbarBtnItemClick,
+	            text: '删除',
+	            img:'<%=basePath%>liger/lib/icons/silkicons/delete.png',
+	            id: 'delete'
+	        },{line:true},{
+	            click: toolbarBtnItemClick,
+	            text: '查看',
+	            img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
+	            id: 'view'
+	       },{line:true},{
+	           click: toolbarBtnItemClick,
+	           text: '查看签收情况',
+	           img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
+	           id: 'viewQsqk'
+	      },{line:true}];
+      }
 	grid.toolbarManager.set('items', items);
 
       //工具条事件
@@ -134,7 +143,7 @@ String c_zt = request.getParameter("c_zt");
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
 				  dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/email/emailQsqk.jsp?n_xh=' + selected.n_xh, 
-                         	height: 440,width: 430,showMax: true, showToggle: true,  showMin: true,
+                         	height: 430,width: 365,showMax: true, showToggle: true,  showMin: true,
                          	title:'签收情况'
 				  });
                   /**

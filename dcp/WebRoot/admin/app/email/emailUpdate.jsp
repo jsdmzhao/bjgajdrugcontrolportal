@@ -35,54 +35,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/interface/EmailAction.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>
 
 </head>
 <body style="padding-bottom:31px;">
     <form id="mainform"  method="post"></form> 
     <script type="text/javascript"> 
-    
+    	var box1;
+    	var box2;
+    	var box3;
     
         var config = {"Form":{ 
          fields : [
          {
-	         display:"栏目名称",
+	         display:"消息标题",
 	         name:"c_bt",
-	         value:"<s:property value='email.c_bt'/>",
 	         newline:true,
 	         labelWidth:100,
 	         width:700,
 	         space:30,
 	         type:"text",
+	         value:"<s:property value='email.c_bt'/>",
 	         group:"基本信息",
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },
-        {display:"发送人",name:"c_yhid",newline:true,labelWidth:100,width:250,space:30,type:"text",readonly:"readonly",value:"<s:property value='email.c_tpljdz'/>"},
-        {
-        	 //display:"上传视频",
-        	 value:"选择用户",
-	         name:"sctp",
-	         newline:false,
-	         labelWidth:100,
-	         width:220,space:30, 
-	         type:"button",
-	         cssClass:"l-button",
-	         disabled:"disabled",
-	         onclick : "openDialog('#uploadImageDiv')"
-         },
-         {display:"抄送人",name:"c_csr",newline:true,labelWidth:100,width:250,space:30,type:"text",readonly:"readonly"},
+         {display:"收信人",name:"c_jsr",newline:true,labelWidth:100,width:700,space:30,type:"smarttext"},
+         {display:"抄送",name:"c_csr",newline:true,labelWidth:100,width:700,space:30,type:"smarttext"},
+         {display:"密送",name:"c_msr",newline:true,labelWidth:100,width:700,space:30,type:"smarttext"},
+         {display:"附件",name:"c_fj",newline:true,labelWidth:100,width:250,space:30,type:"text",readonly:"readonly",value:"<s:property value='email.c_fj'/>"},
          {
-         	 value:"选择用户",
- 	         name:"csr",
- 	         newline:false,
- 	         labelWidth:100,
- 	         width:220,space:30, 
- 	         type:"button",
- 	         cssClass:"l-button",
- 	         onclick : "openDialog('#uploadImageDiv')"
-          }, {display:"附件",name:"c_fj",newline:true,labelWidth:100,width:250,space:30,type:"text",readonly:"readonly",value:"<s:property value='email.c_fj'/>"},
-          {
           	 value:"选择附件",
-  	         name:"sctp",
+  	         name:"scfj",
   	         newline:false,
   	         labelWidth:100,
   	         width:220,space:30, 
@@ -90,8 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	         cssClass:"l-button",
   	         onclick : "openDialog('#uploadImageDiv')"
            },
-         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea", readonly:"readonly",value:"<s:property value='email.c_nr' escape='false'/>"},
-         {name:"n_xh", type:"hidden",value:"<s:property value='email.n_xh'/>"}
+         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea",value:"<s:property value='email.c_nr'/>"}
         ]
  }};
 
@@ -112,10 +94,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         LG.overrideGridLoading(); 
 
         //表单底部按钮 
-        LG.setFormDefaultBtn(f_cancel,isView ? null : f_save);
+        LG.setEmailFormDefaultBtn(f_cancel,isView ? null : f_save, f_send);
 
         var deptTree = {
-            url :'../handler/tree.ashx?view=CF_Department&idfield=DeptID&textfield=DeptName&pidfield=DeptParentID',
+            url :'',
             checkbox:false,
             nodeWidth :220
         };
@@ -141,9 +123,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         else { 
             LG.loadForm(mainform, { type: 'AjaxMemberManage', method: 'newsQuery', data: { ID: currentID} },f_loaded);
         }  
-
         
-          
         if(!isView) 
         {
             //验证
@@ -164,13 +144,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     	//$("c_tpljdz").setDisabled();
         
+    	function f_send(){
+			var formMap = DWRUtil.getValues("mainform"); 
+        	
+	        formMap["c_nr"] = editor.document.getBody().getHtml();
+	        formMap["c_zt"] = '1';
+	        formMap["c_jsr"] = box1.getValue();
+	        formMap["c_csr"] = box2.getValue();
+	        formMap["c_msr"] = box3.getValue();
+
+	        EmailAction.emailSave(formMap,function (result){
+        		
+        		if(result == 'success'){
+        			LG.showSuccess('发送成功', function () { 
+                        f_cancel();
+                        parent.loadGrid();
+                    });
+        		} else {
+        		    LG.showError('发送失败');
+        		}
+        	});
+    	}
+    	
         function f_save() {
 
         	var formMap = DWRUtil.getValues("mainform"); 
-     
+        	
 	        formMap["c_nr"] = editor.document.getBody().getHtml();
+	        formMap["c_zt"] = '2';
+
+	        formMap["c_jsr"] = box1.getValue();
+	        formMap["c_csr"] = box2.getValue();
+	        formMap["c_msr"] = box3.getValue();
 			
         	EmailAction.emailSave(formMap,function (result){
+        		
         		if(result == 'success'){
         			LG.showSuccess('保存成功', function () { 
                         f_cancel();
@@ -180,9 +188,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		    LG.showError('保存失败');
         		}
         	});
-
+        	
         }
-        function f_cancel()
+       function f_cancel()
         {
             parent.dialog_hidden();
         }
@@ -199,13 +207,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           ]
 			});
         }
+        
+        UserInfoSvc.choose(function(rdata){
+   			if(rdata != null){
 
-
-
+   	          box1= $("#c_jsr").ligerComboBox({
+   	            width : 698, 
+   	            selectBoxWidth: 698,
+   	            selectBoxHeight: 240, valueField: 'value', treeLeafOnly: true,
+   	            tree: { data:rdata}
+   	          }); 
+   	          box2= $("#c_csr").ligerComboBox({
+  	            width : 698, 
+  	            selectBoxWidth: 698,
+  	            selectBoxHeight: 240, valueField: 'value', treeLeafOnly: true,
+  	            tree: { data:rdata}
+  	          }); 
+   	       	  box3= $("#c_msr").ligerComboBox({
+ 	            width : 698, 
+ 	            selectBoxWidth: 698,
+ 	            selectBoxHeight: 240, valueField: 'value', treeLeafOnly: true,
+ 	            tree: { data:rdata}
+ 	          }); 
+   			}
+   		});
+        
+        
         
     </script>
  	<div id="uploadImageDiv" style="display: none;">
-		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_tpljdz"></iframe> <!---->
+		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_fj"></iframe> <!---->
 	</div>
 </body>
 

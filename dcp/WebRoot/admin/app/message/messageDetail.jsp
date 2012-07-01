@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body style="padding-bottom:31px;">
     <form id="mainform"  method="post"></form> 
     <script type="text/javascript"> 
-    
+    	var box1;
     
         var config = {"Form":{ 
          fields : [
@@ -133,6 +133,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	var formMap = DWRUtil.getValues("mainform"); 
         	
 	        formMap["c_nr"] = editor.document.getBody().getHtml();
+	        formMap["c_jsr"] = box1.getValue();
 			
         	MessageAction.messageSave(formMap,function (result){
         		
@@ -155,7 +156,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         UserInfoSvc.choose(function(rdata){
 	  			if(rdata != null){
 	
-	  	          var box1= $("#c_jsr").ligerComboBox({
+	  	            box1 = $("#c_jsr").ligerComboBox({
 	  	            width : 700, 
 	  	            selectBoxWidth: 698,
 	  	            selectBoxHeight: 240, valueField: 'text', treeLeafOnly: false,
