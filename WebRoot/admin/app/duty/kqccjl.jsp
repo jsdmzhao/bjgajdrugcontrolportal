@@ -66,7 +66,7 @@
 	}
 	 var config ={"Grid":{
          columns: [
-                   { display: "姓名", name: "userId", width: 180, type: "text", align: "left" },
+                   { display: "人员", name: "userName", width: 180, type: "text", align: "left" },
                    { display: "出差城市", name: "cCccs", width: 180, type: "text", align: "left" },
                     { display: "原因", name: "cYy", width: 180, type: "text", align: "left" },
                    { display: "开始时间", name: "dKssj", width: 180, type: "text", align: "left" },

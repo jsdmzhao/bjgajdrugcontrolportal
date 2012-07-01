@@ -66,8 +66,8 @@
 	 var config ={"Grid":{
          columns: [
          { display: "类型", name: "nLx", width: 180, type: "text", align: "left" },
-         { display: "姓名", name: "userId", width: 180, type: "text", align: "left" },
-         { display: "登记时间", name: "dDj", width: 180, type: "text", align: "left" },
+         { display: "人员", name: "userName", width: 180, type: "text", align: "left" },
+          { display: "登记时间", name: "dDj", width: 180, type: "text", align: "left" },
          { display: "状态", name: "cZt", width: 180, type: "text", align: "left" }
          ]      
 },"Search":null};
