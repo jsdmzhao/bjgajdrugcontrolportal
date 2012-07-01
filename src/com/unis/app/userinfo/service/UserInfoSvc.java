@@ -77,9 +77,9 @@ public class UserInfoSvc  {
 		List<Map> list=dmDao.queryAllInfo(p);
 		for (int i = 0; i < list.size(); i++) {
 			Map tp=list.get(i);
-			tp.put("id", tp.get("nXh"));
+			tp.put("id", tp.get("cDm"));
 			tp.put("text", tp.get("cMc"));
-			tp.put("value", tp.get("cDm"));
+		//	tp.put("value", tp.get("cDm"));
 			
 		}
 		return list;
