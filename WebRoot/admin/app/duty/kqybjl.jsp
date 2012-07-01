@@ -8,10 +8,6 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	
-	ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());
-	SysRoleSvc sysRoleSvc= (SysRoleSvc) ctx.getBean("sysRoleSvc");
-	Map p=new HashMap();
-	List<Map> list = sysRoleSvc.queryAll(p); 
 	
 	String lx=request.getParameter("lx");
 	String lxms="";
