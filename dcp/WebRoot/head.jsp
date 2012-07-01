@@ -285,8 +285,8 @@ else {wh="无停驶尾号";}
 				<div style="padding: 0 20px;">
 					<ul class="nav-ul">
 						<li><a href="<%=basePaths%>index.jsp" class="current">首 页</a></li>
-						<li class="middle"><a href="http://www.baidu.com" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">机构设置</a></li>
-						<li class="middle"><a href="<%=basePaths%>news/news.jsp">新闻中心</a></li>
+						<li class="middle"><a href="#">机构设置</a></li>
+						<li class="middle"><a href="#">新闻中心</a></li>
 					    <li class="middle"><a href="#">电话查询</a></li>
 						<li class="middle"><a href="#">视频在线</a></li>
 						<li class="middle"><a href="#">信息安全</a></li>
