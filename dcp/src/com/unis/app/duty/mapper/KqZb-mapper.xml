@@ -16,7 +16,7 @@
 				 select 
 					base.N_XH,
 					base.USER_ID,
-					to_char(base.D_KSSJ,'YYYY-MM-DD')  D_KSSJ,
+					to_char(base.D_SJ,'YYYY-MM-DD')  D_SJ,
 					base.C_BZ
 				 from B_KQ_ZB base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
@@ -36,7 +36,7 @@
 						 select 
 					base.N_XH,
 					base.USER_ID,
-					to_char(base.D_KSSJ,'YYYY-MM-DD')  D_KSSJ,
+					to_char(base.D_SJ,'YYYY-MM-DD')  D_SJ,
 					base.C_BZ
 				 from B_KQ_ZB base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
