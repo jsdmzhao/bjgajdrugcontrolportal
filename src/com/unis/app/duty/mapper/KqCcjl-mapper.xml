@@ -12,6 +12,8 @@
 			<result property="dJssj" column="D_JSSJ" jdbcType="VARCHAR"/>
 			<result property="dDj" column="D_DJ" jdbcType="VARCHAR"/>
 			<result property="cZt" column="C_ZT" jdbcType="VARCHAR"/>
+			
+			<result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
 		
 	</resultMap>
 	 
@@ -25,7 +27,8 @@
 					to_char(base.D_KSSJ,'YYYY-MM-DD')  D_KSSJ,
 					to_char(base.D_JSSJ,'YYYY-MM-DD')  D_JSSJ,
 					to_char(base.D_DJ,'YYYY-MM-DD')  D_DJ,
-					base.C_ZT
+					base.C_ZT,
+					FUN_GET_YHMC(USER_ID) USER_NAME
 				 from B_KQ_CCJL base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
@@ -57,7 +60,8 @@
 					to_char(base.D_KSSJ,'YYYY-MM-DD')  D_KSSJ,
 					to_char(base.D_JSSJ,'YYYY-MM-DD')  D_JSSJ,
 					to_char(base.D_DJ,'YYYY-MM-DD')  D_DJ,
-					base.C_ZT
+					base.C_ZT,
+					FUN_GET_YHMC(USER_ID) USER_NAME
 				 from B_KQ_CCJL base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
