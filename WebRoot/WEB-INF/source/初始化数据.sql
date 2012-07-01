@@ -52,6 +52,9 @@ insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL,
 MENU_ICON, ISVISIBLE)values (405, '405', '4', '补休记录', 'admin/app/duty/kqybjl.jsp?lx=BX', 'liger/lib/icons/32X32/sitemap.gif', '1' );
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
 MENU_ICON, ISVISIBLE)values (406, '406', '4', '缺勤申辩', 'admin/app/duty/kqqqsb.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+MENU_ICON, ISVISIBLE)values (407, '407', '4', '值班', 'admin/app/duty/kqzb.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+
 
 
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
