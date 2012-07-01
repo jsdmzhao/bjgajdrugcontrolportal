@@ -199,20 +199,20 @@ else {wh="无停驶尾号";}
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/8.png  "/></div >
-<div   class="font1"  align="center"><a href="<%=basePaths %>temp/nbyj.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">内部邮件</a></div>
+<div   class="font1"  align="center"><a href="<%=basePaths %>temp/email.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">内部邮件</a></div>
 </div>
 
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/2.png  "/></div >
-<div   class="font1"  align="center"><a href="<%=basePaths %>temp/kaoqin.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )" >考勤情况</a></div>
+<div   class="font1"  align="center"><a href="<%=basePaths %>temp/duty.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )" >考勤情况</a></div>
 </div>
 
 
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/4.png  "/></div >
-<div   class="font1"  align="center"><a href="<%=basePaths %>temp/kaoqin.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">工作日志</a></div>
+<div   class="font1"  align="center"><a href="<%=basePaths %>temp/blog.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">工作日志</a></div>
 </div>
 <!-- 
 <div class="topdiv">
@@ -225,7 +225,7 @@ else {wh="无停驶尾号";}
 <div class="topdiv">
 <div class="imgdiv"  >
 <img  class="imgdiv"   src="<%=basePaths%>/images/6.png  "/></div >
-<div   class="font1"  align="center"><a href="<%=basePaths %>temp/nbyj.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">内部消息</a></div>
+<div   class="font1"  align="center"><a href="<%=basePaths %>temp/message.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">内部消息</a></div>
 </div>
 
 
