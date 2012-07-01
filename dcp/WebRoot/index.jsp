@@ -345,17 +345,16 @@ session.setAttribute("userId","10000081");
 					</div>
 				</div>
  -->
-				<div class="hd slide_bg float_right" style="width: 96%">
+				<div class="hd slide_bg float_left" style="width: 96%">
 					<UL class=T_Menu_style style="background:url(<%=basePath%>images/gov_Wygkcn_71.gif) repeat-x left top;">
 						<LI id=S_MenuMy_66  class="selectd" onMouseOver="Show_SubLmy(6,6); return false">总队属各单位 </LI>
 						<LI id=S_MenuMy_67  onMouseOver="Show_SubLmy(6,7); return false">各分县局</LI>
 					</UL>
 
-					<DIV id=S_ContMy_66>
-						<table width="98%" align="center" cellpadding="0"
-							cellspacing="0" border="1" bordercolor="#BBBBBB">
+					<DIV id="S_ContMy_66" style="margin : 0 auto; padding: 5px;" >
+						<table width="98%" align="center" cellpadding="0" cellspacing="0" border="1" bordercolor="#BBBBBB">
 							<tr align="center" class="blue_tit">
-									<td width="16%" height="24" bgcolor="#FFFFFF">序号</td>
+									<td width="16%" height="24" bgcolor="#FFFFFF">名次</td>
 									<td width="58%" bgcolor="#FFFFFF">单位</td>
 									<td width="26%" bgcolor="#FFFFFF">数量</td>
 								</tr>
@@ -398,11 +397,11 @@ session.setAttribute("userId","10000081");
 						</table>
 					</div>
 
-					<div id=S_ContMy_67 style="DISPLAY: none">
+					<div id=S_ContMy_67 style="DISPLAY: none; margin : 0 auto; padding: 5px;">
 						<table width="98%" align="center" cellpadding="0"
 							cellspacing="0" border="1" bordercolor="#BBBBBB">
 							<tr align="center" class="blue_tit">
-									<td width="16%" height="24" bgcolor="#FFFFFF">序号</td>
+									<td width="16%" height="24" bgcolor="#FFFFFF">名次</td>
 									<td width="58%" bgcolor="#FFFFFF">单位</td>
 									<td width="26%" bgcolor="#FFFFFF">数量</td>
 								</tr>
