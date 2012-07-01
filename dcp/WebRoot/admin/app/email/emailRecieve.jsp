@@ -90,7 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   //top.f_addTab(null, '查看信息', '<!%=basePath%>emailUpdate?email.n_xh=' + selected.n_xh);
                   dialog = $.ligerDialog.open({ url: '<%=basePath%>emailUpdate?email.n_xh=' + selected.n_xh, 
                          	height: 500,width: 900,showMax: true, showToggle: true,  showMin: true,
-                         	title:'内部消息'
+                         	title:'内部邮件'
 				  });
                   break;
               case "delete":
