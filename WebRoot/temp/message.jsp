@@ -58,8 +58,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			style="width: 99.2%; margin: 0 auto; margin-top: 3px;">
 			<div position="left" title="主要菜单" id="mainmenu"></div>
 			<div position="center" id="framecenter">
-				<div tabid="home" title="考勤管理">
-					<iframe frameborder="0" name="home" id="home" src="<%=basePath%>admin/app/duty/kqsxb.jsp"></iframe>
+				<div tabid="home" title="内部消息">
+					<iframe frameborder="0" name="home" id="home" src="<%=basePath%>admin/app/message/messageNoread.jsp"></iframe>
 				</div>
 			</div>
 		</div>
@@ -167,32 +167,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             var menus=[
                      { "children":[{
                     "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                    "text":"上下班",
-                    "MenuUrl":"<%=basePath%>admin/app/duty/kqsxb.jsp",
+                    "text":"未读消息",
+                    "MenuUrl":"<%=basePath%>admin/app/message/messageNoread.jsp",
                     },{
-                        "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                        "text":"外出记录",
-                        "MenuUrl":"<%=basePath%>admin/app/duty/kqybjl.jsp?lx=WC",
+                        "icon":"<%=basePath%>liger/lib/icons/32X32/sitemap.gif",
+                        "text":"收件箱",
+                        "MenuUrl":"<%=basePath%>admin/app/message/messageRecieve.jsp",
                         },{
-                            "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                            "text":"请假记录",
-                            "MenuUrl":"<%=basePath%>admin/app/duty/kqybjl.jsp?LX=QJ",
-                            },{
-                                "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                                "text":"出差记录",
-                                "MenuUrl":"<%=basePath%>admin/app/duty/kqccjl.jsp",
-                                },{
-                                    "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                                    "text":"补休记录",
-                                    "MenuUrl":"<%=basePath%>admin/app/duty/kqybjl.jsp?lx=BX",
-                                    },{
-                                        "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                                        "text":"缺勤申辩",
-                                        "MenuUrl":"<%=basePath%>admin/app/duty/kqqqsb.jsp",
-                                        }
+                            "icon":"<%=basePath%>liger/lib/icons/32X32/zoom.gif",
+                            "text":"发件箱",
+                            "MenuUrl":"<%=basePath%>admin/app/message/message.jsp",
+                            }
                     ],
-                    "MenuName":"考勤管理",
-                    "text":"考勤管理"
+                    "MenuName":"内部消息",
+                    "text":"内部消息"
                     }]; 
             
             $(menus).each(function (i, menu)
