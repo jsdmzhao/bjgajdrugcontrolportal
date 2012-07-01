@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 
 import org.apache.commons.lang.xwork.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +27,14 @@ public class ColumnAction {
 	private AbsServiceAdapter<Integer> columnService = null;
 	
 	
-	public String columnSave(Map<String, String> sqlParamMap){
+	public String columnSave(Map<String, String> sqlParamMap, HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		String c_yhid = session.getAttribute("userId")+"";
+		String c_yhzid = session.getAttribute("cYhz")+"";
+		sqlParamMap.put("c_yhid", c_yhid);
+		sqlParamMap.put("c_yhzid", c_yhzid);
+		
 		if(StringUtils.isNotEmpty(sqlParamMap.get("n_xh"))){
 			columnService.update("ColumnMapper.updateColumn", sqlParamMap);
 		} else {

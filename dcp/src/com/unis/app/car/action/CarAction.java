@@ -1,6 +1,5 @@
 package com.unis.app.car.action;
 
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +28,12 @@ public class CarAction {
 	@Autowired
 	private AbsServiceAdapter<Integer> carService = null;
 	
-	public String carSave(Map<String, String> sqlParamMap){
+	public String carSave(Map<String, String> sqlParamMap,HttpServletRequest request){
+		HttpSession session = request.getSession();
+		String userId = session.getAttribute("userId")+"";
+		String yhzId = session.getAttribute("cYhz")+"";
+		sqlParamMap.put("c_yhid", userId);
+		sqlParamMap.put("c_yhzid", yhzId);
 		if(StringUtils.isNotEmpty(sqlParamMap.get("n_xh"))){
 			carService.update("CarMapper.updateCar", sqlParamMap);
 		} else {
@@ -41,7 +45,7 @@ public class CarAction {
 	@SuppressWarnings("unchecked")
 	public Map<String, Object> carList(String type,HttpServletRequest request){
 		HttpSession session = request.getSession();
-		String userId =  session.getAttribute("userId").toString();
+		String userId =  session.getAttribute("userId")+"";
 		Map<String, String> sqlParamMap = new HashMap<String, String>();
 		sqlParamMap.put("type", type);
 		sqlParamMap.put("c_yhid", userId);

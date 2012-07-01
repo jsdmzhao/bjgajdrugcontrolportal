@@ -24,7 +24,7 @@
 		SELECT N_XH,
 		       C_BT,
 		       TO_CHAR(D_DJ,'YYYY-MM-DD hh24:MI:SS') D_DJ,
-		       C_YHID,
+		       FUN_GET_YHMC(C_YHID) C_YHID,
 		       C_IP
 		FROM B_NBYJ
 		  WHERE C_ZT = #{c_zt}
@@ -48,7 +48,7 @@
 		SELECT N_XH,
 		       C_BT,
 		       TO_CHAR(D_DJ,'YYYY-MM-DD hh24:MI:SS') D_DJ,
-		       C_YHID,
+		       FUN_GET_YHMC(C_YHID) C_YHID,
 		       C_IP
 		FROM B_NBYJ B
 		  WHERE EXISTS (SELECT '1'
@@ -62,6 +62,7 @@
 	</delete>
 	
 	<insert id="insertEmail" parameterType="hashmap">
+		BEGIN
 		 INSERT INTO B_NBYJ(
 		   N_XH     ,
 		   C_BT     ,
@@ -82,7 +83,20 @@
 	         #{c_sfsc,jdbcType=VARCHAR},
 	         #{c_zt,jdbcType=VARCHAR},
 	       	 sysdate      
-	    )
+	    );
+	    BEGIN
+		<foreach collection="list" item="item" separator=";">
+			INSERT INTO B_NBYJ_RECIEVE 
+				(N_XH,N_NBYJXH,C_JSR,C_LX,C_ZT)
+			VALUES
+				(
+					seq_b_nbyj_recieve.nextval,
+					seq_b_nbyj.currval,
+					#{item.c_yhid},#{item.c_lx},'1'
+			    )
+		</foreach>
+		; END;
+	  END;
 	</insert>
 	
 	<insert id="insertEmailRecieve" parameterType="hashmap">

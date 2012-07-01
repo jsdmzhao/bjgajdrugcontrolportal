@@ -17,7 +17,7 @@
 		SELECT N_XH,
 		       C_BT,
 		       TO_CHAR(D_DJ,'YYYY-MM-DD hh24:MI:SS') D_DJ,
-		       C_YHID
+		       FUN_GET_YHMC(C_YHID) C_YHID
 		  FROM B_GONGGAO
 	</select>
 	

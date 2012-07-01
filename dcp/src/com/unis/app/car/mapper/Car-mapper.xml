@@ -28,7 +28,7 @@
     <select id="getCar" parameterType="Car" resultType="Car">
 		SELECT N_XH,
 			   N_CLLBXH,
-			   C_YHID,
+			   FUN_GET_YHMC(C_YHID) C_YHID,
 			   C_SQSY,
 			   TO_CHAR(D_CCSJ,'YYYY-MM-DD HH24:MI:SS') D_CCSJ,
 			   TO_CHAR(D_GDSJ,'YYYY-MM-DD HH24:MI:SS') D_GDSJ
@@ -38,7 +38,7 @@
 	<select id="getCarList" resultMap="resultCar" parameterType="hashmap">
 		SELECT N_XH,
 			   FUN_GET_CPHM(N_CLLBXH) N_CLLBXH,
-			   C_YHID,
+			   FUN_GET_YHMC(C_YHID) C_YHID,
 		       C_SQSY,
 		       TO_CHAR(D_CCSJ,'YYYY-MM-DD HH24:MI:SS') D_CCSJ,
 		       TO_CHAR(D_GDSJ,'YYYY-MM-DD HH24:MI:SS') D_GDSJ,
@@ -48,6 +48,7 @@
 		  <if test="type != null and type == 'yh' ">
 		  WHERE C_YHID = #{c_yhid}
 		  </if>
+		  ORDER BY N_XH DESC
 	</select>
 	
 	<select id="getCartypeList" resultMap="resultCartype">
@@ -63,6 +64,7 @@
 		       C_CPHM,
 		       TO_CHAR(D_DJ,'YYYY-MM-DD HH24:MI:SS') D_DJ
 		  FROM B_CLLB
+		  ORDER BY N_XH DESC
 	</select>
 	
 	
@@ -101,7 +103,7 @@
 	</insert>
 	
 	<insert id="insertCartype" parameterType="hashmap">
-		 INSERT INTO B_CLLB(
+		INSERT INTO B_CLLB(
 		   N_XH    ,
 		   C_CPHM  ,
 		   C_YHZID ,

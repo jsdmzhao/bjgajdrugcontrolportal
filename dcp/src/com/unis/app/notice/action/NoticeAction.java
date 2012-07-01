@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 
 import org.apache.commons.lang.xwork.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +27,11 @@ public class NoticeAction {
 	private AbsServiceAdapter<Integer> noticeService = null;
 	
 	
-	public String noticeSave(Map<String, String> sqlParamMap){
+	public String noticeSave(Map<String, String> sqlParamMap, HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		String c_yhid = session.getAttribute("userId")+"";
+		String c_yhzid = session.getAttribute("cYhz")+"";
 		if(StringUtils.isNotEmpty(sqlParamMap.get("n_xh"))){
 			noticeService.update("NoticeMapper.updateNotice", sqlParamMap);
 		} else {

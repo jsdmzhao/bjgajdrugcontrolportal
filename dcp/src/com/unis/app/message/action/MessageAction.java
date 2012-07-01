@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.lang.xwork.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -24,11 +27,16 @@ public class MessageAction {
 	private AbsServiceAdapter<Integer> messageService = null;
 	
 	
-	public String messageSave(Map sqlParamMap){
+	public String messageSave(Map sqlParamMap, HttpServletRequest request){
 		
+		HttpSession session = request.getSession();
+		String c_yhid = session.getAttribute("userId")+"";
+		String c_yhzid = session.getAttribute("cYhz")+"";
+		sqlParamMap.put("c_yhid", c_yhid);
+		sqlParamMap.put("c_yhzid", c_yhzid);
 		String jsrStr = (String) sqlParamMap.get("c_jsr");
 		if(StringUtils.isNotEmpty(jsrStr)){
-			String[] jsrs = jsrStr.split(",");
+			String[] jsrs = jsrStr.split(";");
 			List<Message> list = new ArrayList<Message>();
 			for(String jsr : jsrs){
 				Message msg = new Message();
@@ -38,7 +46,7 @@ public class MessageAction {
 			sqlParamMap.put("list", list);
 		}
 		messageService.insert("MessageMapper.insertMessage", sqlParamMap);
-		messageService.insert("MessageMapper.insertMessageRecieve", sqlParamMap);
+		//messageService.insert("MessageMapper.insertMessageRecieve", sqlParamMap);
 		
 		/**
 		if(StringUtils.isNotEmpty(sqlParamMap.get("n_xh"))){

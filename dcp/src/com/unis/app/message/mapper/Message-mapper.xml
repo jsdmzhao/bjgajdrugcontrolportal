@@ -18,7 +18,7 @@
 		SELECT N_XH,
 		       C_BT,
 		       TO_CHAR(D_DJ,'YYYY-MM-DD hh24:MI:SS') D_DJ,
-		       C_YHID,
+		       FUN_GET_YHMC(C_YHID) C_YHID,
 		       C_IP
 		  FROM B_NBXX
 	</select>
@@ -28,6 +28,7 @@
 	</delete>
 	
 	<insert id="insertMessage" parameterType="hashmap">
+		BEGIN
 		 INSERT INTO B_NBXX(
 		   N_XH     ,
 		   C_BT     ,
@@ -46,7 +47,20 @@
 	         #{c_ip,jdbcType=VARCHAR},
 	         #{c_sfsc,jdbcType=VARCHAR},
 	       	 sysdate      
-	    )
+	    );
+	    BEGIN
+		<foreach collection="list" item="item" separator=";">
+			INSERT INTO B_NBXX_RECIEVE 
+				(N_XH,N_NBXXXH,C_JSR,C_ZT)
+			VALUES
+				(
+					seq_b_nbxx_recieve.nextval,
+					seq_b_nbxx.currval,
+					#{item.c_yhid},'0'
+			    )
+		</foreach>
+		; END;
+	  END;
 	</insert>
 	
 	<insert id="insertMessageRecieve" parameterType="hashmap">
