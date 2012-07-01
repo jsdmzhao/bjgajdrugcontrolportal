@@ -45,7 +45,7 @@ MENU_ICON, ISVISIBLE)values (401, '401', '4', '上下班', 'admin/app/duty/kqsxb
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
 MENU_ICON, ISVISIBLE)values (402, '402', '4', '外出记录', 'admin/app/duty/kqybjl.jsp?lx=WC', 'liger/lib/icons/32X32/sitemap.gif', '1' );
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
-MENU_ICON, ISVISIBLE)values (403, '403', '4', '请假记录', 'admin/app/duty/kqybjl.jsp?LX=QJ', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+MENU_ICON, ISVISIBLE)values (403, '403', '4', '请假记录', 'admin/app/duty/kqybjl.jsp?lx=QJ', 'liger/lib/icons/32X32/sitemap.gif', '1' );
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
 MENU_ICON, ISVISIBLE)values (404, '404', '4', '出差记录', 'admin/app/duty/kqccjl.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
@@ -138,7 +138,21 @@ SELECT SEQ_SYS_BTN_ID.NEXTVAL, '删除', 'delete', null, 'liger/lib/icons/silkic
 --用户
 
 insert into SYS_USER (USER_ID, USER_NAME, USER_PASSWORD, USER_LOCK)
-values (1, 'admin', 'admin', '1');
+values (10000, 'zl', '1', '0');
+
+
+insert into SYS_GROUP_ROLE (GROUP_ROLE_ID, GROUP_ID, ROLE_ID)
+values (10000, 10000, 10000);
+
+
+insert into SYS_ROLE (ROLE_ID, ROLE_NAME, ROLE_DESCRIPTION)
+values (10000, '管理员', '最高权限');
+
+
+insert into SYS_PERMISSION (PERMISSION_ID, ROLE_ID, AUTHORITY_ID)
+SELECT SEQ_SYS_PERMISSION_ID.NEXTVAL, 10000, BTN_ID FROM SYS_BUTTON;
+
+
 
 --部门
 
