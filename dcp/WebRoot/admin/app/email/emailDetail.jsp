@@ -34,6 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/interface/EmailAction.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>
 
 </head>
 <body style="padding-bottom:31px;">
@@ -54,31 +55,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         group:"基本信息",
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },
-        {display:"发送人",name:"c_jsr",newline:true,labelWidth:100,width:250,space:30,type:"text",readonly:"readonly"},
-        {
-        	 value:"选择用户",
-	         name:"fsr",
-	         newline:false,
-	         labelWidth:100,
-	         width:220,space:30, 
-	         type:"button",
-	         cssClass:"l-button",
-	         onclick : "openDialog('#uploadImageDiv')"
-         },
-         {display:"抄送人",name:"c_csr",newline:true,labelWidth:100,width:250,space:30,type:"text",readonly:"readonly"},
-         {
-         	 value:"选择用户",
- 	         name:"csr",
- 	         newline:false,
- 	         labelWidth:100,
- 	         width:220,space:30, 
- 	         type:"button",
- 	         cssClass:"l-button",
- 	         onclick : "openDialog('#uploadImageDiv')"
-          }, {display:"附件",name:"c_fj",newline:true,labelWidth:100,width:250,space:30,type:"text",readonly:"readonly"},
+         {display:"发送人",name:"c_jsr",newline:true,labelWidth:100,width:700,space:30,type:"smarttext"},
+         {display:"抄送人",name:"c_csr",newline:true,labelWidth:100,width:700,space:30,type:"smarttext"},
+         {display:"附件",name:"c_fj",newline:true,labelWidth:100,width:250,space:30,type:"text",readonly:"readonly"},
           {
           	 value:"选择附件",
-  	         name:"sctp",
+  	         name:"scfj",
   	         newline:false,
   	         labelWidth:100,
   	         width:220,space:30, 
@@ -215,9 +197,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
         }
         
+        UserInfoSvc.choose(function(rdata){
+   			if(rdata != null){
+
+   	          var box1= $("#c_jsr").ligerComboBox({
+   	            width : 698, 
+   	            selectBoxWidth: 698,
+   	            selectBoxHeight: 240, valueField: 'text', treeLeafOnly: true,
+   	            tree: { data:rdata}
+   	          }); 
+   	          var box2= $("#c_csr").ligerComboBox({
+  	            width : 698, 
+  	            selectBoxWidth: 698,
+  	            selectBoxHeight: 240, valueField: 'text', treeLeafOnly: true,
+  	            tree: { data:rdata}
+  	          }); 
+   			}
+   		});
+        
+        
+        
     </script>
  	<div id="uploadImageDiv" style="display: none;">
-		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_tpljdz"></iframe> <!---->
+		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_fj"></iframe> <!---->
 	</div>
 </body>
 

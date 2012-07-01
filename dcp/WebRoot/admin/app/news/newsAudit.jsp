@@ -49,6 +49,20 @@ String newsType = request.getParameter("newsType");
      </div>
     <div position="center" title="子菜单列表"> 
         <form id="mainform">
+        <DIV class=l-panel-search>
+			<DIV class=l-panel-search-item>标题：</DIV>
+			<DIV class=l-panel-search-item>
+				<INPUT id="bt" name="bt" type="text" class="l-text" style="width: 200px;"  ltype="text">
+			</DIV>
+			<DIV class=l-panel-search-item>
+				<DIV style="WIDTH: 100px" id=searchbtn class=l-btn  ligeruiid="searchbtn" onclick="search();">
+					搜索
+					<DIV class=l-btn-l></DIV>
+					<DIV class=l-btn-r></DIV>
+					<SPAN></SPAN>
+				</DIV>
+			</DIV>
+		</DIV>
         <div id="maingrid"  style="margin:2px;"></div> 
         </form>
     </div>
@@ -94,9 +108,14 @@ String newsType = request.getParameter("newsType");
                   break;
           }
       }
+
+      function search(){
+  		  loadGrid(newsType);
+  	  }
+  	  
       function f_reload()
       {
-          grid.loadGrid(newsType);
+  		  loadGrid(newsType);
       }
       function f_delete()
       { 
@@ -242,7 +261,7 @@ String newsType = request.getParameter("newsType");
             data: data,
             success: function ()
             {
-                grid.loadGrid(newsType);
+                loadGrid(newsType);
                 LG.tip('保存成功!');
             },
             error: function (message)
@@ -252,7 +271,7 @@ String newsType = request.getParameter("newsType");
         }); 
     }); 
     //loadData();
-    loadGrid(newsType);
+    //loadGrid(newsType);
 
     function beginEdit()
     {
@@ -269,7 +288,9 @@ String newsType = request.getParameter("newsType");
         if(newsType == undefined || newsType == ''){
 			newType = '1';
         }
-    	NewsAction.newsList(newsType,function (data){
+
+		var btValue = document.getElementById("bt").value;
+    	NewsAction.newsList(newsType,btValue,function (data){
   	    	//newsdata = JSON2.stringify(data);
   	    	for(var i=0;i<data.Rows.length;i++){
   	    		var rowData = "<div style='width:100%;height:100%;'>";

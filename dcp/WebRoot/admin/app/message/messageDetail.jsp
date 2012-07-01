@@ -34,6 +34,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/interface/MessageAction.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>
+  	
 
 </head>
 <body style="padding-bottom:31px;">
@@ -54,17 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         group:"基本信息",
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },
-        {display:"发送人",name:"c_jsr",newline:true,labelWidth:100,width:250,space:30,type:"text",readonly:"readonly"},
-        {
-        	 value:"选择用户",
-	         name:"sctp",
-	         newline:false,
-	         labelWidth:100,
-	         width:220,space:30, 
-	         type:"button",
-	         cssClass:"l-button",
-	         onclick : "openDialog('#uploadImageDiv')"
-         },
+        {display:"发送人",name:"c_jsr",newline:true,labelWidth:100,width:700,space:30,type:"smarttext"},
          {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea"}
         ]
  }};
@@ -159,24 +151,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         {
             parent.dialog_hidden();
         }
-
-        function openDialog(divNode){
-
-        	var dlgedit = $.ligerDialog.open({
-				width : 350, //宽度
-				height : null,
-				title : "文件上传",
-				target : $(divNode),
-				buttons: [ 
-                           { text: '关闭', onclick: function (i, d) { $("input").ligerHideTip(); d.hide(); }} 
-                          ]
-			});
-        }
         
+        UserInfoSvc.choose(function(rdata){
+	  			if(rdata != null){
+	
+	  	          var box1= $("#c_jsr").ligerComboBox({
+	  	            width : 700, 
+	  	            selectBoxWidth: 698,
+	  	            selectBoxHeight: 240, valueField: 'text', treeLeafOnly: false,
+	  	            tree: { data:rdata}
+	  	        }); 
+  			}
+  		});
     </script>
- 	<div id="uploadImageDiv" style="display: none;">
-		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_tpljdz"></iframe> <!---->
-	</div>
 </body>
 
 </html>

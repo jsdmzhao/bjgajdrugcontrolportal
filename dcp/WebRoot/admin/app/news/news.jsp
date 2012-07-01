@@ -72,11 +72,6 @@ String newsType = request.getParameter("newsType");
   </ul>
 
   <script type="text/javascript">
-  
-  	  function search(){
-  		  var value = document.getElementById("bt").value;
-  		  alert(value);
-  	  }
 
       var newsType = '<%=newsType %>';
       var dialog ;
@@ -188,7 +183,9 @@ String newsType = request.getParameter("newsType");
                   break;
           }
       }
-
+      function search(){
+  		  loadGrid(newsType);
+  	  }
       
       function dialog_hidden()
       {
@@ -198,7 +195,7 @@ String newsType = request.getParameter("newsType");
       
       function f_reload()
       {
-          grid.loadGrid(newsType,'');
+          loadGrid(newsType);
       }
       function f_delete()
       { 
@@ -230,10 +227,10 @@ String newsType = request.getParameter("newsType");
     	  var selected = grid.getSelected();
     	  //alert(selected.c_sfzd); return;
           if (selected){
-	    	  NewsAction.newsOperate(operateType , value,selected.n_xh, function (data){
+	    	  NewsAction.newsOperate(operateType , value, selected.n_xh, function (data){
 	   	    	 if(data == 'success'){
 	   	    		LG.showSuccess('操作成功');
-	   	    		loadGrid(newsType,'');
+	   	    		loadGrid(newsType);
 	    	     }
 	   	      });
           }else{
@@ -248,10 +245,10 @@ String newsType = request.getParameter("newsType");
             { text: '修改', click: itemclick, img: "<%=basePath%>liger/lib/icons/miniicons/page_edit.gif" },
             { line: true },
 			/****
-            { text: '保存', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/page_save.png" },
-            { line: true },
-            { text: '取消', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/cancel.png" },
-            { line: true },
+            //{ text: '保存', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/page_save.png" },
+            //{ line: true },
+            //{ text: '取消', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/cancel.png" },
+            //{ line: true },
             ****/
             { text: '查看', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png" },
             { line: true },
@@ -283,7 +280,6 @@ String newsType = request.getParameter("newsType");
     var tempdata={};
     
     var tree = $("#maintree").ligerTree({
-     //data:[{text:'毒品知识', value:'1282'},{text:'专栏链接', value:'1283',children: [{text:'创新群众工作,争做爱民模范', value:'1331'},{text:'群众工作', value:'1299'},{text:'第二批领导干部竞争选拔工作专栏', value:'1301'},{text:'践行三大支柱', value:'1302'},{text:'三项重点工作', value:'1313'},{text:'打零收戒工作手册', value:'1314'},{text:'和谐警民关系建设网', value:'1316'},{text:'十七届五中全会专栏', value:'1317'},{text:'党务公开专栏', value:'1318'},{text:'好警信息网', value:'1319'},{text:'首都公安文化建设', value:'1320'},{text:'保密专栏', value:'1321'},{text:'案例分析', value:'1324'},{text:'运动健身季', value:'1326'},{}]},{text:'信息安全', value:'1284'},{text:'旧站入口', value:'1285'},{text:'警钟长鸣', value:'1286'},{text:'情报导航', value:'1288'},{text:'关于做好2009年度党员领导干部报告个人有关事项和下半年个人收入申报工作的通知', value:'1329'},{text:'公安部文件', value:'1208'},{text:'政工信息', value:'1210'},{text:'装财信息', value:'1211'},{text:'文秘信息', value:'1212'},{text:'法制信息', value:'1213'},{text:'法律法规', value:'1214',children: [{text:'法规汇编', value:'1209'},{text:'规章汇编', value:'1307'},{text:'法律汇编', value:'1305'},{text:'规范性文件', value:'1312'},{}]},{text:'学习园地', value:'1215'},{text:'通知公告', value:'1216'},{text:'工作动态', value:'1217'},{text:'区县工作', value:'1218'},{text:'新闻时事', value:'1219'},{text:'成员单位', value:'1220'},{text:'工作动态', value:'1221'},{text:'文件交换', value:'1222'},{text:'禁毒在线', value:'1223'},{text:'考核评估', value:'1224'},{text:'相关禁毒信息', value:'1225'},{text:'戒毒康复工作', value:'1226'},{text:'宣传教育', value:'1227'},{text:'志愿者工作', value:'1228'},{text:'图片新闻', value:'1229'},{text:'查询系统', value:'1230'},{text:'“陆空邮”动态', value:'1231'},{text:'学习园地', value:'1232'},{text:'实用工具', value:'1233'},{text:'查缉装备', value:'1234'},{text:'队伍建设', value:'1235'},{text:'综合资讯', value:'1236'},{text:'公告栏', value:'1237'},{text:'图片新闻', value:'1238'},{text:'视频资料', value:'1239'},{text:'全国导航', value:'1240'},{text:'市局导航', value:'1241'},{text:'禁毒导航', value:'1242'},{text:'分县局导航', value:'1243'},{text:'处内导航', value:'1244'},{text:'工作动态', value:'1245'},{text:'相关资讯', value:'1246'},{text:'队伍建设', value:'1247'},{text:'专项行动', value:'1248'},{text:'三项措施', value:'1249'},{text:'公安数据库', value:'1250'},{text:'实用信息', value:'1251'},{text:'毒品知识', value:'1252'},{text:'通知公告', value:'1253'},{text:'图片新闻', value:'1254'},{text:'通知通报', value:'1255'},{text:'公共场所无毒', value:'1256'},{text:'娱乐场所无毒', value:'1257'},{text:'队伍建设', value:'1258'},{text:'研究报告', value:'1259'},{text:'法律法规', value:'1260'},{text:'图片新闻', value:'1261'},{text:'全国导航', value:'1262'},{text:'市局导航', value:'1263'},{text:'禁毒导航', value:'1264'},{text:'分县局导航', value:'1265'},{text:'处内导航', value:'1266'},{text:'动态管控', value:'1267'},{text:'毒情分析', value:'1268'},{text:'毒情监测', value:'1269'},{text:'交流协作', value:'1270'},{text:'调查研究', value:'1271'},{text:'警营文化', value:'1272'},{text:'战果通报', value:'1273'},{text:'执法考评', value:'1274'},{text:'应用系统导航', value:'1275'},{text:'查询系统导航', value:'1276'},{text:'图片新闻', value:'1277'},{text:'视频资料', value:'1278'},{text:'实用工具导航', value:'1279'},{text:'学习园地', value:'1281'},{text:'信息支持', value:'1290'},{text:'首页光荣榜', value:'1291'},{text:'视频', value:'1292'},{text:'机要交换', value:'1293'},{text:'部局文件', value:'1294'},{text:'市局文件', value:'1295'},{text:'外省公共娱乐场所禁毒动态', value:'1308'},{text:'信息查询', value:'1309'},{text:'装财服务之窗', value:'1310'},{text:'工作交流', value:'1311'},{text:'学习园地', value:'1296'},{text:'学习专栏', value:'1297'},{text:'吸毒排查管控', value:'1298'},{text:'建党专题', value:'1300'},{text:'市局文件', value:'1303'},{text:'视频资料', value:'1304'},{text:'禁毒宣传', value:'1306'},{text:'成员单位', value:'1315'},{text:'总队首页', value:'1322'},{text:'全网查控', value:'1323'},{text:'开门评警', value:'1327'},{text:'关于做好2009年度党员领导干部报告个人有关事项和下半年个人收入申报工作的通知', value:'1328'},{text:'信息查询', value:'1182'},{text:'机构设置', value:'1183',children: [{text:'市禁毒委办公室', value:'1333'},{text:'市公安局禁毒总队', value:'1332'},{text:'市禁毒委员会', value:'1280'},{}]},{text:'情报导航', value:'1184'},{text:'工作交流', value:'1185'},{text:'文件交换', value:'1186'},{text:'指挥决策', value:'1187'},{text:'预防教育', value:'1188'},{text:'禁毒情报', value:'1189'},{text:'侦察破案', value:'1190'},{text:'禁吸戒毒', value:'1191'},{text:'毒品查缉', value:'1192'},{text:'禁毒动态', value:'1193'},{text:'通知通报', value:'1194'},{text:'领导动态', value:'1195'},{text:'队伍建设', value:'1196'},{text:'禁毒文件', value:'1197'},{text:'媒体关注', value:'1198'},{text:'区县警讯', value:'1199'},{text:'公告栏', value:'1200'},{text:'首页图片', value:'1201'},{text:'全国导航', value:'1202'},{text:'市局导航', value:'1203'},{text:'禁毒导航', value:'1204'},{text:'分县局导航', value:'1205'},{text:'处内导航', value:'1206',children: [{text:'办公室', value:'1287'},{}]},{text:'调研文章', value:'1207'},{}],
         checkbox: false,
         onClick: function (node)
         {
@@ -294,7 +290,7 @@ String newsType = request.getParameter("newsType");
             };
             newsType =  node.data.value;
             currentMenuParentNo = node.data.value;
-            loadGrid(newsType,'');
+            loadGrid(newsType);
             //grid.set('parms', { where: JSON2.stringify(where) });
             //grid.set('data', tempdata);
         }
@@ -369,7 +365,7 @@ String newsType = request.getParameter("newsType");
             data: data,
             success: function ()
             {
-                grid.loadGrid(newsType,'');
+                loadGrid(newsType);
                 LG.tip('保存成功!');
             },
             error: function (message)
@@ -379,7 +375,7 @@ String newsType = request.getParameter("newsType");
         }); 
     }); 
     //loadData();
-    loadGrid(newsType,'');
+    //loadGrid(newsType);
 
     function beginEdit()
     {
@@ -392,10 +388,11 @@ String newsType = request.getParameter("newsType");
         grid.addEditRow();
     }
 	
-    function loadGrid(newsType,btValue){
+    function loadGrid(newsType){
         if(newsType == undefined || newsType == ''){
 			newType = '1';
         }
+        var btValue = document.getElementById("bt").value;
     	NewsAction.newsList(newsType,btValue,function (data){
   	    	//newsdata = JSON2.stringify(data);
   	    	for(var i=0;i<data.Rows.length;i++){
@@ -425,7 +422,6 @@ String newsType = request.getParameter("newsType");
   	    });
     }
 
-   
   </script>
 </body>
 </html> 
