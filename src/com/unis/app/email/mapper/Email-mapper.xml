@@ -20,7 +20,7 @@
 		SELECT * FROM B_NBYJ WHERE N_XH = #{n_xh}
 	</select>
 	 
-	<select id="getEmailList" resultMap="resultEmail" parameterType="string">
+	<select id="getEmailList" resultMap="resultEmail" parameterType="hashmap">
 		SELECT N_XH,
 		       C_BT,
 		       TO_CHAR(D_DJ,'YYYY-MM-DD hh24:MI:SS') D_DJ,
@@ -28,6 +28,7 @@
 		       C_IP
 		FROM B_NBYJ
 		  WHERE C_ZT = #{c_zt}
+		  AND C_YHID = #{c_yhid}
 	</select>
 	
 	
@@ -38,10 +39,9 @@
 		       C_YHID,
 		       C_IP
 		FROM B_NBYJ B
-		  WHERE EXISTS (SELECT '1'
-				          FROM B_NBYJ_RECIEVE R
-				         WHERE R.N_NBYJXH = B.N_XH
-				           AND R.C_JSR = #{c_yhid})
+		  WHERE B.N_XH IN (SELECT DISTINCT(N_NBYJXH)
+					          FROM B_NBYJ_RECIEVE R
+					       WHERE  R.C_JSR = #{c_yhid})
 	</select>
 	
 	<select id="getEmailNoReadList" resultMap="resultEmail" parameterType="string">
@@ -122,9 +122,16 @@
 	</update>
 	
 	<select id="getEmailQsqkList" parameterType="string" resultMap="resultEmailRecieve">
-	 SELECT C_JSR C_YHID, DECODE(C_ZT, '1', '未签收', '2', '已签收', '已删除') C_ZT
+	 SELECT FUN_GET_YHMC(C_JSR) C_YHID, DECODE(C_ZT, '1', '未签收', '2', '已签收', '已删除') C_ZT
 	  FROM B_NBYJ_RECIEVE
 	 WHERE N_NBYJXH = #{n_xh}
 	</select>
+	
+	<update id="operateRecieveEmail" parameterType="hashmap">
+		UPDATE B_NBYJ_RECIEVE
+			SET C_ZT = #{value}
+		WHERE N_NBYJXH = #{n_xh}
+		 	AND C_JSR = #{c_yhid}
+	</update>
 	
 </mapper>

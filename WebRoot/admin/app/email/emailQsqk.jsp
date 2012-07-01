@@ -47,13 +47,17 @@ String n_xh = request.getParameter("n_xh");
 				if(rows[i].c_yhid != undefined && rows[i].c_zt != undefined){
 					list.push("<TR class=l-grid-row>");
 					list.push("<TD style=\"WIDTH: 220px\" class=\"l-grid-row-cell \">");
-					list.push("<DIV style=\"TEXT-ALIGN: left;\" class=l-grid-row-cell-inner>");
+					list.push("<DIV style=\"TEXT-ALIGN: center;\" class=l-grid-row-cell-inner>");
 					list.push(rows[i].c_yhid);
 					list.push("</div></TD>");
 					
 					list.push("<TD style=\"WIDTH: 180px\" class=\"l-grid-row-cell \">");
-					list.push("<DIV style=\"TEXT-ALIGN: left;\" class=l-grid-row-cell-inner>");
-					list.push(rows[i].c_zt);
+					list.push("<DIV style=\"TEXT-ALIGN: center;\" class=l-grid-row-cell-inner>");
+					if(rows[i].c_zt == '已签收'){
+						list.push("<font color='red'>"+rows[i].c_zt+"</font>");
+					} else {
+						list.push(rows[i].c_zt);
+					}
 					list.push("</div></TD></TR>");
 				}
 			}
@@ -63,42 +67,12 @@ String n_xh = request.getParameter("n_xh");
   	</script>
 
 </head>
-<body style="padding-bottom:31px;">
-	<INPUT id=MenuNo value=MemberManageRole type=hidden>
-		<DIV class=l-panel-bwarp>
+<body>
+		<DIV class=l-panel-bwarp style="heigth: 350px; width: 350px">
 			<DIV class=l-panel-body>
-				<DIV style="HEIGHT: 488px" id=maingridgrid class=l-grid>
-					<DIV style="DISPLAY: none" class=l-grid-popup>
-						<TABLE cellSpacing=0 cellPadding=0>
-							<TBODY>
-								<TR>
-									<TD class=l-column-left>
-										<DIV class=l-checkbox-wrapper>
-											<A class="l-checkbox l-checkbox-checked"></A>
-											<INPUT class="l-checkbox l-hidden" value=on CHECKED type=checkbox
-												jQuery15203520640666483416="29" ligeruiid="CheckBox1006"
-												columnindex="1">
-										</DIV>
-									</TD>
-									<TD class=l-column-right>接收人</TD>
-								</TR>
-								<TR jQuery15203520640666483416="26">
-									<TD class=l-column-left>
-										<DIV class=l-checkbox-wrapper>
-											<A class="l-checkbox l-checkbox-checked"
-												jQuery15203520640666483416="20"></A><INPUT
-												class="l-checkbox l-hidden" value=on CHECKED type=checkbox
-												jQuery15203520640666483416="30" ligeruiid="CheckBox1007"
-												columnindex="2">
-										</DIV>
-									</TD>
-									<TD class=l-column-right>签收情况</TD>
-								</TR>
-							</TBODY>
-						</TABLE>
-					</DIV>
+				<DIV style="HEIGHT: 350px;" id=maingridgrid class=l-grid>
 					<DIV class=l-grid1>
-						<DIV style="HEIGHT: 30px" class="l-grid-header l-grid-header1">
+						<DIV style="HEIGHT: 20px" class="l-grid-header l-grid-header1">
 							<DIV class=l-grid-header-inner>
 								<TABLE class=l-grid-header-table cellSpacing=0 cellPadding=0>
 									<TBODY>
@@ -110,21 +84,19 @@ String n_xh = request.getParameter("n_xh");
 					</DIV>
 					<DIV class=l-grid2>
 						<DIV style="HEIGHT: 30px" class="l-grid-header l-grid-header2">
-							<DIV style="WIDTH: 400px" class=l-grid-header-inner>
+							<DIV style="WIDTH: 350px;" class=l-grid-header-inner>
 								<TABLE class=l-grid-header-table cellSpacing=0 cellPadding=0>
 									<TBODY>
 										<TR class=l-grid-hd-row>
-											<TD style="WIDTH: 220px; HEIGHT: 30px" id=maingrid|hcell|c101
-												class=l-grid-hd-cell jQuery15203520640666483416="12"
-												columnindex="0" columnname="n_xh"
+											<TD style="WIDTH: 197px; HEIGHT: 30px" id=maingrid|hcell|c101
+												class=l-grid-hd-cell columnindex="0" columnname="n_xh"
 												ligeruiresizableid="Resizable1001">
 												<DIV class=l-grid-hd-cell-inner>
 													<SPAN class=l-grid-hd-cell-text>接收人</SPAN>
 												</DIV>
 											</TD>
-											<TD style="WIDTH: 180px; HEIGHT: 30px" id=maingrid|hcell|c102
-												class=l-grid-hd-cell jQuery15203520640666483416="13"
-												columnindex="1" columnname="c_yhid"
+											<TD style="WIDTH: 179px; HEIGHT: 30px" id=maingrid|hcell|c102
+												class=l-grid-hd-cell columnindex="1" columnname="c_yhid"
 												ligeruiresizableid="Resizable1002">
 												<DIV class=l-grid-hd-cell-inner>
 													<SPAN class=l-grid-hd-cell-text>签收情况</SPAN>
@@ -135,8 +107,8 @@ String n_xh = request.getParameter("n_xh");
 								</TABLE>
 							</DIV>
 						</DIV>
-						<DIV style="HEIGHT: 459px" class="l-grid-body l-grid-body2 l-scroll">
-							<DIV style="WIDTH: 400px" class=l-grid-body-inner id="valueTable">
+						<DIV style="HEIGHT: 310px;WIDTH: 350px;" class="l-grid-body l-grid-body2 l-scroll">
+							<DIV style="HEIGHT: 310px;" class=l-grid-body-inner id="valueTable">
 							<!-- 
 								<TABLE class=l-grid-body-table cellSpacing=0 cellPadding=0>
 									<TBODY>

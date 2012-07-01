@@ -40,7 +40,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body style="padding-bottom:31px;">
     <form id="mainform"  method="post"></form> 
     <script type="text/javascript"> 
-    
+    	var box1;
+    	var box2;
+    	var box3;
     
         var config = {"Form":{ 
          fields : [
@@ -55,10 +57,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         group:"基本信息",
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },
-         {display:"发送人",name:"c_jsr",newline:true,labelWidth:100,width:700,space:30,type:"smarttext"},
-         {display:"抄送人",name:"c_csr",newline:true,labelWidth:100,width:700,space:30,type:"smarttext"},
+         {display:"收信人",name:"c_jsr",newline:true,labelWidth:100,width:700,space:30,type:"smarttext"},
+         {display:"抄送",name:"c_csr",newline:true,labelWidth:100,width:700,space:30,type:"smarttext"},
+         {display:"密送",name:"c_msr",newline:true,labelWidth:100,width:700,space:30,type:"smarttext"},
          {display:"附件",name:"c_fj",newline:true,labelWidth:100,width:250,space:30,type:"text",readonly:"readonly"},
-          {
+         {
           	 value:"选择附件",
   	         name:"scfj",
   	         newline:false,
@@ -69,7 +72,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	         onclick : "openDialog('#uploadImageDiv')"
            },
          {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea"}
-        
         ]
  }};
 
@@ -145,8 +147,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	
 	        formMap["c_nr"] = editor.document.getBody().getHtml();
 	        formMap["c_zt"] = '1';
-			
-        	EmailAction.emailSave(formMap,function (result){
+	        formMap["c_jsr"] = box1.getValue();
+	        formMap["c_csr"] = box2.getValue();
+	        formMap["c_msr"] = box3.getValue();
+
+	        EmailAction.emailSave(formMap,function (result){
         		
         		if(result == 'success'){
         			LG.showSuccess('发送成功', function () { 
@@ -165,6 +170,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	
 	        formMap["c_nr"] = editor.document.getBody().getHtml();
 	        formMap["c_zt"] = '2';
+
+	        formMap["c_jsr"] = box1.getValue();
+	        formMap["c_csr"] = box2.getValue();
+	        formMap["c_msr"] = box3.getValue();
 			
         	EmailAction.emailSave(formMap,function (result){
         		
@@ -200,18 +209,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         UserInfoSvc.choose(function(rdata){
    			if(rdata != null){
 
-   	          var box1= $("#c_jsr").ligerComboBox({
+   	          box1= $("#c_jsr").ligerComboBox({
    	            width : 698, 
    	            selectBoxWidth: 698,
-   	            selectBoxHeight: 240, valueField: 'text', treeLeafOnly: true,
+   	            selectBoxHeight: 240, valueField: 'value', treeLeafOnly: true,
    	            tree: { data:rdata}
    	          }); 
-   	          var box2= $("#c_csr").ligerComboBox({
+   	          box2= $("#c_csr").ligerComboBox({
   	            width : 698, 
   	            selectBoxWidth: 698,
-  	            selectBoxHeight: 240, valueField: 'text', treeLeafOnly: true,
+  	            selectBoxHeight: 240, valueField: 'value', treeLeafOnly: true,
   	            tree: { data:rdata}
   	          }); 
+   	       	  box3= $("#c_msr").ligerComboBox({
+ 	            width : 698, 
+ 	            selectBoxWidth: 698,
+ 	            selectBoxHeight: 240, valueField: 'value', treeLeafOnly: true,
+ 	            tree: { data:rdata}
+ 	          }); 
    			}
    		});
         
