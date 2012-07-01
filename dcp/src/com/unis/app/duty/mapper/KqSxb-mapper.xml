@@ -9,6 +9,7 @@
 			<result property="nLx" column="N_LX" jdbcType="VARCHAR"/>
 			<result property="dDj" column="D_DJ" jdbcType="VARCHAR"/>
 			<result property="cZt" column="C_ZT" jdbcType="VARCHAR"/>
+		<result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
 		
 	</resultMap>
 	 
@@ -19,7 +20,8 @@
 					base.USER_ID,
 					base.N_LX,
 					to_char(base.D_DJ,'YYYY-MM-DD')  D_DJ,
-					base.C_ZT
+					base.C_ZT,
+					FUN_GET_YHMC(USER_ID) USER_NAME
 				 from B_KQ_SXB base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
@@ -40,7 +42,8 @@
 					base.USER_ID,
 					base.N_LX,
 					to_char(base.D_DJ,'YYYY-MM-DD')  D_DJ,
-					base.C_ZT
+					base.C_ZT,
+					FUN_GET_YHMC(USER_ID) USER_NAME
 				 from B_KQ_SXB base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
