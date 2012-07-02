@@ -30,7 +30,8 @@ session.setAttribute("userId","10000081");
 		<script type="text/javascript" src="<%=basePath%>js/jquery-ui.min.js" ></script>
 	
 	</head>
-	<body style="font-size:14px; background-image: url('<%=basePath%>images/bg11.jpg'); background-repeat: repeat;">
+
+	<body style="">
 
 
 
@@ -173,7 +174,7 @@ session.setAttribute("userId","10000081");
 									  <div style="float: left;padding-left: 6px;margin-bottom: 10px;
                          background:url('<%=basePath%>images/index/li.png') 0 8px no-repeat;
                           border-bottom: 1px dashed #CCCCCC;">
-                          <a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
+                          <a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
 								    <s:property value="#news.c_bt"/>
 								    </a>	
 								   &nbsp;&nbsp;&nbsp;<img src="<%=basePath%>images/new.gif"/>&nbsp;&nbsp;&nbsp;
@@ -451,7 +452,7 @@ session.setAttribute("userId","10000081");
 						<div class="main-con" style="height: 285px;">
 							<ul class="index-ul">
 												<s:iterator   value="resMap.Rows8"  id="news" var="news" >
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
 									
 									<s:if test="#news.c_bt.length()>=15"> 
 									<s:property value="#news.c_bt.substring(0,15)+'...'"/>	
@@ -463,7 +464,7 @@ session.setAttribute("userId","10000081");
 									</a></li>	
 								</s:iterator></ul> 
 							<div style="text-align: right;padding: 10px 20px 0 0;">
-							<a href="view/list?news.c_lm=1189">更多信息 &gt;&gt;</a>
+							<a href="<%=basePath%>news/list?news.c_lm=1189">更多信息 &gt;&gt;</a>
 							</div>
 						</div>
 					</div>
@@ -472,7 +473,7 @@ session.setAttribute("userId","10000081");
 						<div class="main-con" style="height: 285px;">
 							<ul class="index-ul">
 												<s:iterator   value="resMap.Rows9"  id="news" var="news" begin="0" end="8" >
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
 									
 									<s:if test="#news.c_bt.length()>=15"> 
 									<s:property value="#news.c_bt.substring(0,15)+'...'"/>	
@@ -484,7 +485,7 @@ session.setAttribute("userId","10000081");
 									</a></li>	
 								</s:iterator>	</ul> 
 							<div style="text-align: right;padding: 10px 20px 0 0;">
-							<a href="view/list?news.c_lm=1237">更多信息 &gt;&gt;</a>
+							<a href="<%=basePath%>news/list?news.c_lm=1237">更多信息 &gt;&gt;</a>
 							</div>
 						</div>
 					</div>
@@ -535,7 +536,7 @@ session.setAttribute("userId","10000081");
 				
 							 	
 								<s:iterator   value="resMap.Rows1"  id="news" var="news" begin="0" end="8">
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
 									
 									<s:if test="#news.c_bt.length()>=15"> 
 									<s:property value="#news.c_bt.substring(0,15)+'...'"/>	
@@ -564,7 +565,7 @@ session.setAttribute("userId","10000081");
 							 	<ul class="index-ul main-top-ul">
 							 		<%for(int i=0;i<9;i++){
 							 			%> 
-							 		<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">警营开放日民警进村讲害</a></li>	
+							 		<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">警营开放日民警进村讲害</a></li>	
 							 			<%
 							 		} %> 
 							 	</ul>
@@ -669,21 +670,21 @@ session.setAttribute("userId","10000081");
 						<div style="padding: 10px 40px 10px 30px; height: 180px;">
 							<div style="float: left;width: 320px">
 								<ul class="index-ul">
-									<li><div style="float: left;"><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>"  class="awidth">北京警方1月以来破获毒品案30 </a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
-									<li><div style="float: left;"><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京警方破获特大团伙贩毒案</a></div><div  style="float: right;"><span class="time">2012-04-12</span></div></li>
-									<li><div style="float: left;"><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京警方1月以来破获毒品案3</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
-									<li><div style="float: left;"><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京警方破获特大团伙贩</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
-								<li><div style="float: left;"><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京警方破获特大团伙贩毒案</a></div><div style="float: right;"><span class="time">2012-04-12</span></li>
+									<li><div style="float: left;"><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"  class="awidth">北京警方1月以来破获毒品案30 </a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
+									<li><div style="float: left;"><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京警方破获特大团伙贩毒案</a></div><div  style="float: right;"><span class="time">2012-04-12</span></div></li>
+									<li><div style="float: left;"><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京警方1月以来破获毒品案3</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
+									<li><div style="float: left;"><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京警方破获特大团伙贩</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
+								<li><div style="float: left;"><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京警方破获特大团伙贩毒案</a></div><div style="float: right;"><span class="time">2012-04-12</span></li>
 								
 								</ul> 
 							</div>
 							<div style="float: right;width: 320px">
 								<ul class="index-ul">
-									<li><div style="float: left;"><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京禁毒流动大课堂取得效果</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
-									<li><div style="float: left;"><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">阳光致远禁毒志愿者大队开展锋</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
-									<li><div style="float: left;"><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">阳光致远禁毒志愿者大队开雷锋</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
-									<li><div style="float: left;"><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京禁毒流动大课堂取得效果</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
-								<li><div style="float: left;"><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京禁毒流动大课堂取得良好效果</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
+									<li><div style="float: left;"><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京禁毒流动大课堂取得效果</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
+									<li><div style="float: left;"><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">阳光致远禁毒志愿者大队开展锋</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
+									<li><div style="float: left;"><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">阳光致远禁毒志愿者大队开雷锋</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
+									<li><div style="float: left;"><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京禁毒流动大课堂取得效果</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
+								<li><div style="float: left;"><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">北京禁毒流动大课堂取得良好效果</a></div><div style="float: right;"><span class="time">2012-04-12</span></div></li>
 								</ul>
 							</div>
 							<div class="clearfloat"></div>
@@ -702,12 +703,12 @@ session.setAttribute("userId","10000081");
 									<span class="six-title">工作动态</span>
 									<div style="text-align: right;float: right;margin-left: 60px;
 									margin-right: 10px;padding-top: 4px;">
-										<a href="view/list?news.c_lm=1221">更多信息 &gt;&gt;</a>
+										<a href="<%=basePath%>news/list?news.c_lm=1221">更多信息 &gt;&gt;</a>
 									</div>
 									<div style="padding-top: 10px;">
 										<ul class="index-ul">
 											<s:iterator   value="resMap.Rows2"  id="news" var="news" begin="0" end="5">
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
 									
 									<s:if test="#news.c_bt.length()>=25"> 
 									<s:property value="#news.c_bt.substring(0,25)+'...'"/>	
@@ -731,12 +732,12 @@ session.setAttribute("userId","10000081");
 									<span class="six-title">通知通报</span>
 									<div style="text-align: right;float: right;margin-left: 60px;
 									margin-right: 10px;padding-top: 4px;">
-										<a href="view/list?news.c_lm=1196">更多信息 &gt;&gt;</a>
+										<a href="<%=basePath%>news/list?news.c_lm=1196">更多信息 &gt;&gt;</a>
 									</div>
 									<div style="padding-top: 10px;">
 										<ul class="index-ul">
 										<s:iterator   value="resMap.Rows3"  id="news" var="news" begin="0" end="5">
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
 									
 									<s:if test="#news.c_bt.length()>=25"> 
 									<s:property value="#news.c_bt.substring(0,25)+'...'"/>	
@@ -763,12 +764,12 @@ session.setAttribute("userId","10000081");
 									<span class="six-title">队伍建设</span>
 									<div style="text-align: right;float: right;margin-left: 60px;
 									margin-right: 10px;padding-top: 4px;">
-										<a href="view/list?news.c_lm=1197">更多信息 &gt;&gt;</a>
+										<a href="<%=basePath%>news/list?news.c_lm=1197">更多信息 &gt;&gt;</a>
 									</div>
 									<div style="padding-top: 10px;">
 										<ul class="index-ul">
 															<s:iterator   value="resMap.Rows4"  id="news" var="news" begin="0" end="5">
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
 									
 									<s:if test="#news.c_bt.length()>=25"> 
 									<s:property value="#news.c_bt.substring(0,25)+'...'"/>	
@@ -791,12 +792,12 @@ session.setAttribute("userId","10000081");
 									<span class="six-title">文件阅览</span>
 									<div style="text-align: right;float: right;margin-left: 60px;
 									margin-right: 10px;padding-top: 4px;">
-										<a href="view/list?news.c_lm=1198">更多信息 &gt;&gt;</a>
+										<a href="<%=basePath%>news/list?news.c_lm=1198">更多信息 &gt;&gt;</a>
 									</div>
 									<div style="padding-top: 10px;">
 										<ul class="index-ul">
 													<s:iterator   value="resMap.Rows5"  id="news" var="news" begin="0" end="5">
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
 									
 									<s:if test="#news.c_bt.length()>=25"> 
 									<s:property value="#news.c_bt.substring(0,25)+'...'"/>	
@@ -822,12 +823,12 @@ session.setAttribute("userId","10000081");
 									<span class="six-title">媒体关注</span>
 									<div style="text-align: right;float: right;margin-left: 60px;
 									margin-right: 10px;padding-top: 4px;">
-										<a href="view/list?news.c_lm=1199">更多信息 &gt;&gt;</a>
+										<a href="<%=basePath%>news/list?news.c_lm=1199">更多信息 &gt;&gt;</a>
 									</div>
 									<div style="padding-top: 10px;">
 										<ul class="index-ul">
 															<s:iterator   value="resMap.Rows6"  id="news" var="news" begin="0" end="5">
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
 									
 									<s:if test="#news.c_bt.length()>=25"> 
 									<s:property value="#news.c_bt.substring(0,25)+'...'"/>	
@@ -850,14 +851,14 @@ session.setAttribute("userId","10000081");
 									<span class="six-title">民警风采</span>
 									<div style="text-align: right;float: right;margin-left: 60px;
 									margin-right: 10px;padding-top: 4px;">
-										<a href="view/list?news.c_lm=1191">更多信息 &gt;&gt;</a>
+										<a href="<%=basePath%>news/list?news.c_lm=1191">更多信息 &gt;&gt;</a>
 									</div>
 								<div style="padding-top: 10px;">
 									<ul class="index-ul">
 										<s:iterator value="resMap.Rows7" id="news" var="news"
 											begin="0" end="5">
 											<li><a
-												href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>">
+												href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
 
 													<s:if test="#news.c_bt.length()>=25">
 														<s:property value="#news.c_bt.substring(0,25)+'...'" />
@@ -926,12 +927,12 @@ session.setAttribute("userId","10000081");
 							
 							<div class="pass-cont-three">
 								<ul>
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>images/index/one.png"/></a></li>
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>images/index/two.png"/></a></li>
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>images/index/three.png"/></a></li>
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>images/index/four.png"/></a></li>
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>images/index/five.png"/></a></li>
-									<li><a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>images/index/six.png"/></a></li>
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>images/index/one.png"/></a></li>
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>images/index/two.png"/></a></li>
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>images/index/three.png"/></a></li>
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>images/index/four.png"/></a></li>
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>images/index/five.png"/></a></li>
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>images/index/six.png"/></a></li>
 								</ul>
 								<div class="clearfloat"></div>
 							</div>
