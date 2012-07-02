@@ -20,10 +20,14 @@ hs.wrapperClassName = 'draggable-header';
 </script>
 
 <script type="text/javascript" src="<%=basePaths%>/js/lightBox.js"></script>
-<SCRIPT src="<%=basePaths%>/js/jquery-1.2.6.pack.js" type=text/javascript></SCRIPT>
-<script type="text/javascript" src="<%=basePaths%>/js/jquery.min.js" ></script>
-<script type="text/javascript" src="<%=basePaths%>/js/jquery-ui.min.js" ></script>
 
+<head>
+	<style>
+	body{
+	font-size:14px; background-image: url('<%=basePaths%>images/bg11.jpg'); background-repeat: repeat;
+	}
+	</style>
+</head>
 
 
 <script type="text/javascript">
@@ -285,17 +289,17 @@ else {wh="无停驶尾号";}
 				<div style="padding: 0 20px;">
 					<ul class="nav-ul">
 						<li><a href="<%=basePaths%>index.jsp" class="current">首 页</a></li>
-						<li class="middle"><a href="#">机构设置</a></li>
-						<li class="middle"><a href="#">新闻中心</a></li>
+						<li class="middle"><a href="<%=basePaths%>news/list?news.c_lm=1183">机构设置</a></li>
+						<li class="middle"><a href="<%=basePaths%>news/news.jsp">新闻中心</a></li>
 					    <li class="middle"><a href="#">电话查询</a></li>
-						<li class="middle"><a href="#">视频在线</a></li>
+						<li class="middle"><a href="<%=basePaths%>Video/Video.jsp">视频在线</a></li>
 						<li class="middle"><a href="#">信息安全</a></li>
-						<li class="middle"><a href="#">内部专区</a></li>
-						<li class="middle"><a href="#">警钟长鸣</a></li>
+						<li class="middle"><a href="<%=basePaths%>/admin/index.jsp">内部专区</a></li>
+						<li class="middle"><a href="<%=basePaths%>news/list?news.c_lm=1286">警钟长鸣</a></li>
 						<li class="middle"><a href="#">上传下载</a></li>
 						<li class="middle"><a href="#">情报信息</a></li>
 						<li class="middle"><a href="#">侦查破案 </a></li>
-						<li class="middle"><a href="#">学习园地</a></li>
+						<li class="middle"><a href="<%=basePaths%>news/list?news.c_lm=1296"">学习园地</a></li>
 					
 					</ul>
 					<div class="clearfloat"></div>
