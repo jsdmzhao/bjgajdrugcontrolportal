@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
-    <title>内部消息 明细</title>
+    <title>内部邮件 明细</title>
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
     <script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         var config = {"Form":{ 
          fields : [
          {
-	         display:"消息标题",
+	         display:"邮件标题",
 	         name:"c_bt",
 	         newline:true,
 	         labelWidth:100,
