@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         var config = {"Form":{ 
          fields : [
          {
-	         display:"消息标题",
+	         display:"邮件标题",
 	         name:"c_bt",
 	         newline:true,
 	         labelWidth:100,
@@ -73,7 +73,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	         cssClass:"l-button",
   	         onclick : "openDialog('#uploadImageDiv')"
            },
-         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea",value:"<s:property value='email.c_nr'/>"}
+         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea",value:"<s:property value='email.c_nr'/>"},
+         {name:"n_xh",type:"hidden",value:"<s:property value='email.n_xh'/>"}
+         
         ]
  }};
 
