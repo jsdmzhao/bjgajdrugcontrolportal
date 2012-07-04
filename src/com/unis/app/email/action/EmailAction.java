@@ -29,51 +29,114 @@ public class EmailAction {
 	
 	public String emailSave(Map sqlParamMap, HttpServletRequest request){
 		
-		HttpSession session = request.getSession();
-		String c_yhid = session.getAttribute("userId")+"";
-		String c_yhzid = session.getAttribute("cYhz")+"";
-		
-		sqlParamMap.put("c_yhid", c_yhid);
-		sqlParamMap.put("c_yhzid", c_yhzid);
-		
-		String jsrStr = (String) sqlParamMap.get("c_jsr");
-		String csrStr = (String) sqlParamMap.get("c_csr");
-		String msrStr = (String) sqlParamMap.get("c_msr");
-		
-		List<Email> list = new ArrayList<Email>();
-		if(StringUtils.isNotEmpty(jsrStr)){
-			String[] jsrs = jsrStr.split(";");
-			for(String jsr : jsrs){
-				Email em = new Email();
-				em.setC_yhid(jsr);
-				em.setC_lx("1");
-				list.add(em);
+		if(sqlParamMap.get("n_xh") != null && !"".equals(sqlParamMap.get("n_xh")) ){
+			
+			String jsrStr = (String) sqlParamMap.get("c_jsr");
+			String csrStr = (String) sqlParamMap.get("c_csr");
+			String msrStr = (String) sqlParamMap.get("c_msr");
+			
+			if("1".equals(sqlParamMap.get("c_zt"))){  //发送
+				
+				List<Email> list = new ArrayList<Email>();
+				if(StringUtils.isNotEmpty(jsrStr)){
+					String[] jsrs = jsrStr.split(";");
+					for(String jsr : jsrs){
+						Email em = new Email();
+						em.setC_yhid(jsr);
+						em.setC_lx("1");
+						list.add(em);
+					}
+					//sqlParamMap.put("c_jsr", list);
+				}
+				if(StringUtils.isNotEmpty(csrStr)){
+					String[] csrs = csrStr.split(";");
+					for(String csr : csrs){
+						Email em = new Email();
+						em.setC_yhid(csr);
+						em.setC_lx("2");
+						list.add(em);
+					}
+					//sqlParamMap.put("c_jsr", list);
+				}
+				if(StringUtils.isNotEmpty(msrStr)){
+					String[] msrs = msrStr.split(";");
+					for(String msr : msrs){
+						Email em = new Email();
+						em.setC_yhid(msr);
+						em.setC_lx("3");
+						list.add(em);
+					}
+					//sqlParamMap.put("c_jsr", list);
+				}
+				sqlParamMap.put("list", list);
+				emailService.insert("EmailMapper.updateEmail", sqlParamMap);
+				
+			} else { // 保存草稿箱
+				
+				emailService.insert("EmailMapper.updateEmailCg", sqlParamMap);
 			}
-			//sqlParamMap.put("c_jsr", list);
-		}
-		if(StringUtils.isNotEmpty(csrStr)){
-			String[] csrs = csrStr.split(";");
-			for(String csr : csrs){
-				Email em = new Email();
-				em.setC_yhid(csr);
-				em.setC_lx("2");
-				list.add(em);
+			
+		} else {
+			
+			HttpSession session = request.getSession();
+			String c_yhid = session.getAttribute("userId")+"";
+			String c_yhzid = session.getAttribute("cYhz")+"";
+			
+			sqlParamMap.put("c_yhid", c_yhid);
+			sqlParamMap.put("c_yhzid", c_yhzid);
+			
+			String jsrStr = (String) sqlParamMap.get("c_jsr");
+			String csrStr = (String) sqlParamMap.get("c_csr");
+			String msrStr = (String) sqlParamMap.get("c_msr");
+			
+			if("1".equals(sqlParamMap.get("c_zt"))){  //发送
+				
+				List<Email> list = new ArrayList<Email>();
+				if(StringUtils.isNotEmpty(jsrStr)){
+					String[] jsrs = jsrStr.split(";");
+					for(String jsr : jsrs){
+						Email em = new Email();
+						em.setC_yhid(jsr);
+						em.setC_lx("1");
+						list.add(em);
+					}
+					//sqlParamMap.put("c_jsr", list);
+				}
+				if(StringUtils.isNotEmpty(csrStr)){
+					String[] csrs = csrStr.split(";");
+					for(String csr : csrs){
+						Email em = new Email();
+						em.setC_yhid(csr);
+						em.setC_lx("2");
+						list.add(em);
+					}
+					//sqlParamMap.put("c_jsr", list);
+				}
+				if(StringUtils.isNotEmpty(msrStr)){
+					String[] msrs = msrStr.split(";");
+					for(String msr : msrs){
+						Email em = new Email();
+						em.setC_yhid(msr);
+						em.setC_lx("3");
+						list.add(em);
+					}
+					//sqlParamMap.put("c_jsr", list);
+				}
+				sqlParamMap.put("list", list);
+				emailService.insert("EmailMapper.insertEmail", sqlParamMap);
+				
+			} else { // 保存草稿箱
+				
+				emailService.insert("EmailMapper.insertEmailCg", sqlParamMap);
 			}
-			//sqlParamMap.put("c_jsr", list);
 		}
-		if(StringUtils.isNotEmpty(msrStr)){
-			String[] msrs = msrStr.split(";");
-			for(String msr : msrs){
-				Email em = new Email();
-				em.setC_yhid(msr);
-				em.setC_lx("3");
-				list.add(em);
-			}
-			//sqlParamMap.put("c_jsr", list);
-		}
-		sqlParamMap.put("list", list);
 		
-		emailService.insert("EmailMapper.insertEmail", sqlParamMap);
+		
+		
+		
+		
+		
+		
 		//emailService.insert("EmailMapper.insertEmailRecieve", sqlParamMap);
 		
 		/**

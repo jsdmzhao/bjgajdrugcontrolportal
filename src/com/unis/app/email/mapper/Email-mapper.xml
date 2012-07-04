@@ -99,6 +99,36 @@
 	  END;
 	</insert>
 	
+	<insert id="insertEmailCg" parameterType="hashmap">
+		 INSERT INTO B_NBYJ(
+		   N_XH     ,
+		   C_BT     ,
+		   C_YHID   ,
+		   C_YHZID  ,
+		   C_NR     ,
+		   C_IP     ,
+		   C_SFSC   , 
+		   C_ZT     ,
+		   C_FSR    ,
+		   C_CSR    ,
+		   C_MSR    ,
+		   D_DJ    ) 
+		VALUES (	            	
+		     seq_b_nbyj.nextval,  
+		     #{c_bt,jdbcType=VARCHAR},
+	         #{c_yhid,jdbcType=VARCHAR},   
+	         #{c_yhzid,jdbcType=VARCHAR},          
+	         #{c_nr,javaType=String,jdbcType=CLOB,handler=ClobTypeHandler}, 
+	         #{c_ip,jdbcType=VARCHAR},
+	         #{c_sfsc,jdbcType=VARCHAR},
+	         #{c_zt,jdbcType=VARCHAR},
+	         #{c_fsr,jdbcType=VARCHAR},
+	         #{c_csr,jdbcType=VARCHAR},
+	         #{c_msr,jdbcType=VARCHAR},
+	       	 sysdate      
+	    )
+	</insert>
+	
 	<insert id="insertEmailRecieve" parameterType="hashmap">
 		BEGIN
 		<foreach collection="list" item="item" separator=";">
@@ -114,10 +144,37 @@
 		; END;
 	</insert>
 	
-	<update id="updateEmail" parameterType="Email">
+	<update id="updateEmail" parameterType="hashmap">
+	  BEGIN
 		UPDATE B_NBYJ
 		   SET  C_BT   =	#{c_bt,jdbcType=VARCHAR},							   							
-				C_NR     =	#{c_nr,jdbcType=CLOB,handler=ClobTypeHandler}							
+				C_NR   =	#{c_nr,jdbcType=CLOB,handler=ClobTypeHandler},
+				C_FSR  =    #{c_fsr,jdbcType=VARCHAR},							
+				C_CSR  =    #{c_csr,jdbcType=VARCHAR},							
+				C_MSR  =    #{c_msr,jdbcType=VARCHAR}							
+		WHERE N_XH = #{n_xh};
+		BEGIN
+		<foreach collection="list" item="item" separator=";">
+			INSERT INTO B_NBYJ_RECIEVE 
+				(N_XH,N_NBYJXH,C_JSR,C_LX,C_ZT)
+			VALUES
+				(
+					seq_b_nbyj_recieve.nextval,
+					#{n_xh},
+					#{item.c_yhid},#{item.c_lx},'1'
+			    )
+		</foreach>
+		; END;
+	  END;
+	</update>
+	
+	<update id="updateupdateEmailCg" parameterType="hashmap">
+		UPDATE B_NBYJ
+		   SET  C_BT   =	#{c_bt,jdbcType=VARCHAR},							   							
+				C_NR   =	#{c_nr,jdbcType=CLOB,handler=ClobTypeHandler},
+				C_FSR  =    #{c_fsr,jdbcType=VARCHAR},							
+				C_CSR  =    #{c_csr,jdbcType=VARCHAR},							
+				C_MSR  =    #{c_msr,jdbcType=VARCHAR}							
 		WHERE N_XH = #{n_xh}
 	</update>
 	

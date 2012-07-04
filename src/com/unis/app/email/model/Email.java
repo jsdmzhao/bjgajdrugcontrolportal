@@ -28,6 +28,8 @@ public class Email {
 	
 	private String c_csr;
 	
+	private String c_msr;
+	
 	private String c_lx;  //1为普通发送，2为抄送，3为秘密发送
 
 	public String getN_xh() {
@@ -140,5 +142,13 @@ public class Email {
 
 	public void setC_lx(String c_lx) {
 		this.c_lx = c_lx;
+	}
+
+	public String getC_msr() {
+		return c_msr;
+	}
+
+	public void setC_msr(String c_msr) {
+		this.c_msr = c_msr;
 	}
 }
