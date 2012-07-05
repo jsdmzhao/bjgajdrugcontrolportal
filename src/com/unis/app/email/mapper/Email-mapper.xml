@@ -11,13 +11,35 @@
 	 	<result column="C_IP"   property="c_ip"/>
 	 </resultMap>
 	 
+	 <resultMap type="Email"   id="resultUpdateEmail">
+	 	<result column="N_XH"   property="n_xh"/>
+	 	<result column="C_BT"   property="c_bt"/>
+	 	<result column="C_NR" property="c_nr"/>
+	 	<result column="C_JSR"   property="d_jsr"/>
+	 	<result column="C_CSR"   property="c_csr"/>
+	 	<result column="C_MSR"   property="c_msr"/>
+	 	<result column="C_JSR_"   property="c_jsr_"/>
+	 	<result column="C_CSR_"   property="c_csr_"/>
+	 	<result column="C_MSR_"   property="c_msr_"/>
+	 </resultMap>
+	 
 	 <resultMap type="Email"   id="resultEmailRecieve">
 	 	<result column="C_YHID" property="c_yhid"/>
 	 	<result column="C_ZT"   property="c_zt"/>
 	 </resultMap>
 	 
 	<select id="getEmail" parameterType="Email" resultType="Email">
-		SELECT * FROM B_NBYJ WHERE N_XH = #{n_xh}
+		SELECT 
+			N_XH,
+			C_BT,
+			C_NR,
+			C_JSR,
+			C_CSR,
+			C_MSR,
+			FUN_GET_MULTI_YHMC(C_JSR) C_JSR_,
+			FUN_GET_MULTI_YHMC(C_CSR) C_CSR_,
+			FUN_GET_MULTI_YHMC(C_MSR) C_MSR_
+		FROM B_NBYJ WHERE N_XH = #{n_xh}
 	</select>
 	 
 	<select id="getEmailList" resultMap="resultEmail" parameterType="hashmap">
@@ -109,7 +131,7 @@
 		   C_IP     ,
 		   C_SFSC   , 
 		   C_ZT     ,
-		   C_FSR    ,
+		   C_JSR    ,
 		   C_CSR    ,
 		   C_MSR    ,
 		   D_DJ    ) 
@@ -122,7 +144,7 @@
 	         #{c_ip,jdbcType=VARCHAR},
 	         #{c_sfsc,jdbcType=VARCHAR},
 	         #{c_zt,jdbcType=VARCHAR},
-	         #{c_fsr,jdbcType=VARCHAR},
+	         #{c_jsr,jdbcType=VARCHAR},
 	         #{c_csr,jdbcType=VARCHAR},
 	         #{c_msr,jdbcType=VARCHAR},
 	       	 sysdate      
@@ -149,9 +171,10 @@
 		UPDATE B_NBYJ
 		   SET  C_BT   =	#{c_bt,jdbcType=VARCHAR},							   							
 				C_NR   =	#{c_nr,jdbcType=CLOB,handler=ClobTypeHandler},
-				C_FSR  =    #{c_fsr,jdbcType=VARCHAR},							
+				C_JSR  =    #{c_jsr,jdbcType=VARCHAR},							
 				C_CSR  =    #{c_csr,jdbcType=VARCHAR},							
-				C_MSR  =    #{c_msr,jdbcType=VARCHAR}							
+				C_MSR  =    #{c_msr,jdbcType=VARCHAR},
+				C_ZT  =    #{c_zt,jdbcType=VARCHAR}
 		WHERE N_XH = #{n_xh};
 		BEGIN
 		<foreach collection="list" item="item" separator=";">
@@ -168,11 +191,11 @@
 	  END;
 	</update>
 	
-	<update id="updateupdateEmailCg" parameterType="hashmap">
+	<update id="updateEmailCg" parameterType="hashmap">
 		UPDATE B_NBYJ
 		   SET  C_BT   =	#{c_bt,jdbcType=VARCHAR},							   							
 				C_NR   =	#{c_nr,jdbcType=CLOB,handler=ClobTypeHandler},
-				C_FSR  =    #{c_fsr,jdbcType=VARCHAR},							
+				C_JSR  =    #{c_jsr,jdbcType=VARCHAR},							
 				C_CSR  =    #{c_csr,jdbcType=VARCHAR},							
 				C_MSR  =    #{c_msr,jdbcType=VARCHAR}							
 		WHERE N_XH = #{n_xh}
