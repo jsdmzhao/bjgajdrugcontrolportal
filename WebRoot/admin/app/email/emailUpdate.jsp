@@ -59,9 +59,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         group:"基本信息",
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },
-         {display:"收信人",name:"c_jsr",newline:true,labelWidth:100,width:700,space:30,type:"smarttext"},
-         {display:"抄送",name:"c_csr",newline:true,labelWidth:100,width:700,space:30,type:"smarttext"},
-         {display:"密送",name:"c_msr",newline:true,labelWidth:100,width:700,space:30,type:"smarttext"},
+         {display:"收信人",name:"c_jsr",newline:true,labelWidth:100,width:700,space:30,
+          type:"smarttext",value:"<s:property value='email.c_jsr_'/>"},
+         {display:"抄送",name:"c_csr",newline:true,labelWidth:100,width:700,space:30,
+          type:"smarttext",value:"<s:property value='email.c_csr_'/>"},
+         {display:"密送",name:"c_msr",newline:true,labelWidth:100,width:700,space:30,
+          type:"smarttext",value:"<s:property value='email.c_msr_'/>"},
          {display:"附件",name:"c_fj",newline:true,labelWidth:100,width:250,space:30,type:"text",readonly:"readonly",value:"<s:property value='email.c_fj'/>"},
          {
           	 value:"选择附件",
@@ -74,6 +77,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	         onclick : "openDialog('#uploadImageDiv')"
            },
          {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea",value:"<s:property value='email.c_nr'/>"},
+         {name:"c_jsrValue",type:"hidden",value:"<s:property value='email.c_jsr'/>"},
+         {name:"c_csrValue",type:"hidden",value:"<s:property value='email.c_csr'/>"},
+         {name:"c_msrValue",type:"hidden",value:"<s:property value='email.c_msr'/>"},
          {name:"n_xh",type:"hidden",value:"<s:property value='email.n_xh'/>"}
          
         ]
