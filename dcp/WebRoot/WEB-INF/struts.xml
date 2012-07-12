@@ -75,7 +75,7 @@
 			<result name="success">/index.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
-	   </package>
+	</package>
 	   
 	<package name="news" namespace="/news" extends="struts-default">
 		 <action name="detail" class="com.unis.app.news.action.NewsAction" method="newsQuery">
