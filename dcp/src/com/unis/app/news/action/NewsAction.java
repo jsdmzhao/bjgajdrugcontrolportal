@@ -17,6 +17,8 @@ import com.unis.core.commons.Combox;
 import com.unis.core.service.AbsServiceAdapter;
 import com.unis.core.util.Globals;
 import com.unis.app.news.model.News;
+import com.unis.app.website.action.WebsiteAction;
+import com.unis.app.website.model.Website;
 
 @Controller
 @Scope(value="prototype")
@@ -121,6 +123,7 @@ public class NewsAction {
 	
 	@SuppressWarnings("unchecked")
 	public String  newsindexList(){
+
 		resMap = new HashMap<String, Object>();
 		News n =new News();
 		n.setC_lm("1195");
@@ -153,7 +156,17 @@ public class NewsAction {
 		n.setC_lm("1237");
 		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
 		resMap.put("Rows10", newsList1);
-	
+		List<Website> websites = (List<Website>) newsService.selectList("WebsiteMapper.getWebsiteLists", "1001");
+		resMap.put("Rows11", websites);
+		 websites = (List<Website>) newsService.selectList("WebsiteMapper.getWebsiteLists", "1002");
+		resMap.put("Rows12", websites);
+		 websites = (List<Website>) newsService.selectList("WebsiteMapper.getWebsiteLists", "1003");
+		resMap.put("Rows13", websites);
+		 websites = (List<Website>) newsService.selectList("WebsiteMapper.getWebsiteLists", "1004");
+		resMap.put("Rows14", websites);
+		 websites = (List<Website>) newsService.selectList("WebsiteMapper.getWebsiteLists", "1005");
+		resMap.put("Rows15", websites);
+		
 		
 		return  Globals.SUCCESS;
 	}
@@ -176,7 +189,7 @@ public class NewsAction {
 	}
 	
 	public String newsQuerys(){
-		Querys= (List<News>) newsService.selectList("NewsMapper.getNewsList", news);
+		Querys= (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", news);
         return Globals.SUCCESS;
 	}
 	
