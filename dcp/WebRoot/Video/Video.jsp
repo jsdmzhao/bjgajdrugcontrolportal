@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>视频在线</title>
     <!-- Load player theme -->
@@ -18,7 +18,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="<%=basePath %>js/jquery-1.7.2.min.js"></script>
 
     <!-- load projekktor -->
-    <script type="text/javascript" src="<%=basePath %>js/projekktor-1.0.23r85.min.js"></script>
+    <script language="javascript">AC_FL_RunContent = 0;</script>
+    <script src="AC_RunActiveContent.js" language="javascript"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
 <body>
@@ -50,11 +51,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div style="background-image:url(<%=basePath %>images/index/newbt.jpg); width:900px; height:27px; padding-left:10px;
 	padding-top:5px;margin-left:20px;">最新资讯</div>
       <div style="height:300px; width:400px; margin-left:40px; margin-top:10px;float:left;">
-        <video id="player_a" class="projekktor" poster="<%=basePath %>media/intro.png" title="this is Projekktor" width="350" height="300" controls>
-          <source src="<%=basePath %>media/intro.ogv" type="video/ogg" />
-          <source src="<%=basePath %>media/intro.mp4" type="video/mp4" />
-          <source src="<%=basePath %>media/intro.webm" type="video/mp4" />
-        </video>
+      <script language="javascript">
+	if (AC_FL_RunContent == 0) {
+		alert("This page requires AC_RunActiveContent.js.");
+	} else {
+		AC_FL_RunContent(
+			'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0',
+			'width', '550',
+			'height', '400',
+			'src', 'videoPlayer',
+			'quality', 'high',
+			'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
+			'align', 'middle',
+			'play', 'true',
+			'loop', 'true',
+			'scale', 'showall',
+			'wmode', 'window',
+			'devicefont', 'false',
+			'id', 'videoPlayer',
+			'bgcolor', '#000000',
+			'name', 'videoPlayer',
+			'menu', 'true',
+			'allowFullScreen', 'true',
+			'allowScriptAccess','sameDomain',
+			'movie', 'videoPlayer',
+			'salign', '',
+			'flashvars', 'htmlPage=videoPlayer.html'
+			); //end AC code
+	}
+</script>
+<noscript>
+	<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="550" height="400" id="videoPlayer" align="middle">
+	<param name="allowScriptAccess" value="sameDomain" />
+	<param name="allowFullScreen" value="true" />
+	<param name="movie" value="<%=basePath %>deploy/videoPlayer.swf" />
+    <param name="quality" value="high" />
+    <param name="bgcolor" value="#000000" />
+    <param name="flashvars" value="htmlPage=videoPlayer.html" />
+    <embed flashvars="htmlPage=videoPlayer.html" src="videoPlayer.swf" quality="high" bgcolor="#000000" width="550" height="400" name="videoPlayer" align="middle" allowScriptAccess="sameDomain" allowFullScreen="true" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+	</object>
+</noscript>
+      
+      
+      
 		<div  style="width:350px; margin-top:10px;">和惩治毒品违法犯罪行为，保护公民身心健康，维护社会秩序的工作。或者说，运用行政法令和群众监督的力量，促使吸食或注射鸦片和代用麻</div>
       </div>
 	  <div  style="height:200px; width:500px; margin-left:20px; margin-top:10px; float:left;">
