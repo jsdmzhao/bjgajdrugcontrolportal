@@ -1,0 +1,30 @@
+<settings 
+	autoResize="true"
+	playerWidth="500"
+	playerHeight="350"
+	
+	flv = "videos/1.flv"
+	previewImage = "images/1.jpg"
+	stafImage = "images/2.jpg"
+	
+	autoPlay = "false"
+	loop = "true"
+	
+	volume = "50"
+	controlsPadding = "10"
+	keepAspectRatio = "true"
+	
+	showPreviewImage = "true"
+	showShare = "true"
+	showFullScreenButton = "true"
+	showMiddlePlayButton = "true"
+	
+	spaceKeyListener = "true"
+	clickListener = "true"
+	
+	showWatermark = "true"
+	watermarkLink = "http://monleon.qzone.qq.com"
+	
+	aspectRatio = "4:3"
+	totalTime = "158"
+/>
