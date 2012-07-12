@@ -94,6 +94,13 @@ MENU_ICON, ISVISIBLE)values (509, '509', '5', '车辆管理', 'admin/app/car/car
  insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
 MENU_ICON, ISVISIBLE)values (510, '510', '5', '假日管理', 'admin/app/holiday/holiday.jsp', 'liger/lib/icons/32X32/world.gif', '1' );
 
+ insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+MENU_ICON, ISVISIBLE)values (511, '511', '5', '桌面菜单', 'admin/app/desktop/zmcd.jsp', 'liger/lib/icons/32X32/world.gif', '1' );
+
+ insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+MENU_ICON, ISVISIBLE)values (512, '512', '5', '我的桌面', 'admin/app/desktop/wdzm.jsp', 'liger/lib/icons/32X32/world.gif', '1' );
+
+
 
 
 --新增
