@@ -63,7 +63,7 @@ return footerhtml;
 }
 </script>
 <%@include  file="../head.jsp" %>
-<div id="container2" style="height: 100%" >
+<div id="container2" style="overflow:aoto;height: 100%" >
 <div style="float:left;"><div id="main"> 
 				
 					<div class="main-box" style="margin-bottom: 4px;">
