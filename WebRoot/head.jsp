@@ -289,16 +289,16 @@ else {wh="无停驶尾号";}
 				<div style="padding: 0 20px;">
 					<ul class="nav-ul">
 						<li><a href="<%=basePaths%>index.jsp" class="current">首 页</a></li>
-						<li class="middle"><a href="<%=basePaths%>news/list?news.c_lm=1183">机构设置</a></li>
+						<li class="middle"><a href="http://www.xxzx.bj/" target="_blank">信息查询</a></li>
 						<li class="middle"><a href="<%=basePaths%>news/news.jsp">新闻中心</a></li>
-					    <li class="middle"><a href="#">电话查询</a></li>
-						<li class="middle"><a href="<%=basePaths%>Video/Video.jsp">视频在线</a></li>
-						<li class="middle"><a href="#">信息安全</a></li>
-						<li class="middle"><a href="<%=basePaths%>/admin/index.jsp">内部专区</a></li>
+					    <li class="middle"><a href="http://10.8.1.135/" target="_blank">文件交换</a></li>
+						<li class="middle"><a href="<%=basePaths%>media/deploy/Video.jsp">视频在线</a></li>
+						<li class="middle"><a href="http://anquan.zx.bj" target="_blank">信息安全</a></li>
+						<li class="middle"><a href="<%=basePaths%>/admin/index.jsp" >内部专区</a></li>
 						<li class="middle"><a href="<%=basePaths%>news/list?news.c_lm=1286">警钟长鸣</a></li>
-						<li class="middle"><a href="#">上传下载</a></li>
-						<li class="middle"><a href="#">情报信息</a></li>
-						<li class="middle"><a href="#">侦查破案 </a></li>
+						<li class="middle"><a href="<%=basePaths%>news/list?news.c_lm=229">工作交流</a></li>
+						<li class="middle"><a href="<%=basePaths%>news/list?news.c_lm=12">禁毒情报</a></li>
+						<li class="middle"><a href="<%=basePaths%>news/list?news.c_lm=13">侦查破案 </a></li>
 						<li class="middle"><a href="<%=basePaths%>news/list?news.c_lm=1296"">学习园地</a></li>
 					
 					</ul>
