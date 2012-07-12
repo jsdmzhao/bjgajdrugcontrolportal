@@ -5,7 +5,6 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
-session.setAttribute("userId","10000081");
 %>
 
 <s:if test="resMap==null">
@@ -18,20 +17,103 @@ session.setAttribute("userId","10000081");
 		<title>主页</title>
 		<link rel="stylesheet" type="text/css" href="<%=basePath%>css/layout.css" />
 		<link rel="stylesheet" type="text/css" href="<%=basePath%>css/index.css" />
-		<LINK href="<%=basePath%>css/css.css" type=text/css rel=stylesheet />
+		<link href="<%=basePath%>css/css.css"  rel="stylesheet" type="text/css" />
 		<link href="<%=basePath%>css/base.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="<%=basePath%>highslide/highslide-with-html.js"></script>
 		<link rel="stylesheet" type="text/css" href="<%=basePath%>highslide/highslide.css" />
 		<link href="<%=basePath%>css/Wygkcn_home.css" rel="stylesheet" type="text/css" />
 		<link href="<%=basePath%>css/Wygkcn_Index.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="<%=basePath%>js/lightBox.js"></script>
-		<SCRIPT src="<%=basePath%>js/jquery-1.2.6.pack.js" type=text/javascript></SCRIPT>
+		<script type="text/javascript" src="<%=basePath%>js/jquery-1.2.6.pack.js"></script>
 		<script type="text/javascript" src="<%=basePath%>js/jquery.min.js" ></script>
 		<script type="text/javascript" src="<%=basePath%>js/jquery-ui.min.js" ></script>
-	
-	</head>
 
-	<body style="">
+<script>
+var fgm = {
+ $: function(id) {
+  return typeof id === "object" ? id : document.getElementById(id);
+ },
+ $$: function(tagName, oParent) {
+  return (oParent || document).getElementsByTagName(tagName);
+ },
+ $$$: function(className, element, tagName) {
+  var i = 0, aClass = [], reClass = new RegExp("(^|\\s)" + className + "(\\s|$)"), aElement = fgm.$$(tagName || "*", element || document);
+  for (i = 0; i < aElement.length; i++) reClass.test(aElement[i].className) && aClass.push(aElement[i]);
+  return aClass;
+ },
+ index: function(element) {
+  var aChildren = element.parentNode.children, i;
+  for(i = 0; i < aChildren.length; i++) if(aChildren[i] === element) return i;
+  return -1;
+ },
+ on: function(element, type, handler) {
+  return element.addEventListener ? element.addEventListener(type, handler, !1) : element.attachEvent("on" + type, handler); 
+ },
+ bind: function(object, handler) {
+  return function() {
+   return handler.apply(object, arguments);
+  }; 
+ }
+};
+function Tab(id) {
+ var that = this;
+ this.obj = fgm.$(id);
+ this.oTab = fgm.$$$("tab", this.obj)[0];
+ this.aTab = fgm.$$("li", this.oTab);
+ this.oSwitch = fgm.$$$("switchBtn", this.oTab)[0];
+ this.oPrev = fgm.$$("a", this.oSwitch)[0];
+ this.oNext = fgm.$$("a", this.oSwitch)[1];
+ this.aItems = fgm.$$$("items", this.obj);
+ this.iNow = 0;  
+ fgm.on(this.oSwitch, "click", fgm.bind(this, this.fnClick));
+ fgm.on(this.oTab, "mouseover", fgm.bind(this, this.fnMouseOver));
+}
+Tab.prototype = {
+ fnMouseOver: function(ev) {
+  var oEv = ev || event,
+  oTarget = oEv.target || oEv.srcElement;
+  oTarget.tagName.toUpperCase() === "LI" && (this.iNow = fgm.index(oTarget));
+  this.fnSwitch();
+ },
+ fnClick: function(ev) {
+  var oEv = ev || event,
+  oTarget = oEv.target || oEv.srcElement,
+  i;
+  switch(fgm.index(oTarget)) {
+   case 0:
+    if(oTarget.className == "prev") {
+     this.aTab[this.iNow].style.display = "block";
+     this.iNow--; 
+    };
+    break;
+   case 1:
+    if(oTarget.className == "next") {     
+     for(i = 0; i < this.iNow; i++) this.aTab[i].style.display = "none";
+     this.iNow++; 
+    };
+    break;
+  };
+  this.aTab[this.iNow].style.display = "block";  
+  this.fnSwitch(); 
+ },
+ fnSwitch: function() {
+  for(var i = 0; i < this.aTab.length; i++) (this.aTab[i].className = "", this.aItems[i].style.display = "none"); 
+  this.aTab[this.iNow].className = "tabcurrent";
+  this.aItems[this.iNow].style.display = "block";
+  this.oPrev.className = this.iNow == 0 ? "prevNot" : "prev";
+  this.oNext.className = this.iNow == this.aTab.length - 1 ? "nextNot" : "next";
+ }
+};
+//应用
+fgm.on(window, "load", function() {
+ var aItem = fgm.$$$("item"),
+ i = 0;
+ for(; i < aItem.length; i++) new Tab(aItem[i]);
+});
+</script>
+
+	</head>
+	<body style="font-size:14px; background-image: url('<%=basePath%>images/bg11.jpg'); background-repeat: repeat;">
 
 
 
@@ -143,15 +225,18 @@ session.setAttribute("userId","10000081");
 				<div id="main"> 
 						<div class="main-box" style="margin-bottom: 4px;">
 						<span class="title1">今日值班</span>
-						<div class="main-top-con">
+						<div class="main-top-con" style="height: 220px;font-size:14px; ">
 							<ul class="index-ul">
-								<li>领　导：金志海</li>
-								<li>办公室：金志海</li>
-								<li>协　指：金志海</li>
-								<li>情　报：金志海、李小海</li>
-								<li>侦　查：金志海、王大力</li>
-								<li>查　禁：金志海、杨益盟</li>
-								<li>侦　查：金志海、王大力</li>
+								<li>领　导：易阳</li>
+								<li>办公室：李可俭、张世强<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 薛状、董永蕙</li>
+								    <br/>  
+								<li>协　指：陈述</li>
+								<li>情　报：王琪、郝铁彬</li>
+								<li>侦　查：姚庆生、张静、李志新</li>
+								<li>查　禁：梁冲、王飞</li>
+								<li>缉　控：田亮、车佳音</li>
+								<li>两品办：王官龙</li>
 							</ul>
 						</div>
 					</div>
@@ -213,7 +298,7 @@ session.setAttribute("userId","10000081");
 							
 							<div style=" background: url('<%=basePath%>images/index/birth-bg.png') no-repeat;width: 227px;height:107px;position: relative;left: -12px;top: 10px;">
 								<div style="padding: 40px 0 0 20px; ">
-									严静，李小璐
+									
 								</div>
 								<div style="text-align: right;padding: 20px 10px 0 0;">
 									<a href="#" style="color: #ff0000;font-size: 12px;">点击领取总党委和全体民警祝福 >></a>
@@ -224,44 +309,105 @@ session.setAttribute("userId","10000081");
 				<div class="main-box" style="margin-bottom: 4px;">
 						<span class="title1">专栏专项工作</span>
 						<div class="main-con" style="padding: 11px;">
-							<a href="news_list.jsp?news.c_lm=10"
+							<a href="http://10.8.2.52:8030/"
 								onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
 								<img src="<%=basePath%>images/tb/12.png" />
 							</a>
-							<a href="<%=basePath%>news/list?news.c_lm=1221"
+							<a href="http://10.8.2.84"
 								onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
 								<img src="<%=basePath%>images/tb/2.png" />
 							</a>
-							<a href="<%=basePath%>news/list?news.c_lm=1221"
+							<a href="http://www.sdjwspzx.bj/"
 								onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
 								<img src="<%=basePath%>images/tb/3.png" />
 							</a>
-							<a href="re.jsp'"
+							<a href="http://www.zz.bj/project/20091112/index.jsp/"
 								onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
 								<img src="<%=basePath%>images/tb/5.png" />
 							</a>
-							<a href="<%=basePaths%>temp/car.jsp'"
+							<a href="http://10.8.2.195:91/"
 								onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
 								<img src="<%=basePath%>images/tb/6.png" />
 							</a>
-							<a href="http://www.baidu.com"
+							<a href="http://www.jdc.bj/list.php?id=233"
 								onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
 								<img src="<%=basePath%>images/tb/9.png" />
 							</a>
-							<a href="<%=basePath%>re.jsp?url='http://10.8.2.195:91/'"
+							<a href="http://10.8.2.195:96/"
 								onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
 								<img src="<%=basePath%>images/tb/10.png" />
 							</a>
-							<a href="<%=basePath%>re.jsp?url='http://10.8.2.52:8030/'"
+							<a href="http://www.jdc.bj/list/list.php?id=110"
 								onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
 								<img src="<%=basePath%>images/tb/1.png" />
 							</a>
 						</div>
 					</div>
-					<div class="main-box" style="margin-bottom: 4px;">
-						<span class="title1">信息采用排行</span>	
+					<div class="main-box" style="margin-bottom: 5px;">
+						<span class="titles">信息采用排行</span>	
+							<div class="main-cons" style="height: 315px;">
+						<div id="tabph">
+<div id="wrap">
+  <div id="list">
+        <div class="item">
+            <div class="tab">
+                <h5><a href="#">排行</a></h5>
+                <ul>
+                    <li class="tabcurrent">总队各单位</li>
+                    <li>各区县分局</li>
+                   
+                </ul>
+                <div style="display:none;">
+                <span class="switchBtn" ><a href="#" class="prevNot">左</a><a href="#" class="next">右</a></span>
+            </div>
+            </div>
+            <ul class="items" style="display:block;">
+             <li><div style="float:left; width:60px;"><a href="#" >办公室</a></div>
+				    <div style="float:left; width:60px; margin-left:30px;">  <a  href="#">0条</a></div>
+               <li><div style="float:left; width:60px;"><a href="#" >协指</a></div>
+				    <div style="float:left; width:60px; margin-left:30px;">  <a  href="#">0条</a></div>
+                <li><div style="float:left; width:60px;"><a href="#" >情报</a></div>
+				    <div style="float:left; width:60px; margin-left:30px;">  <a  href="#">0条</a></div>
+                <li><div style="float:left; width:60px;"><a href="#" >法制</a></div>
+				    <div style="float:left; width:60px; margin-left:30px;">  <a  href="#">0条</a></div>
+                <li><div style="float:left; width:60px;"><a href="#" >侦查</a></div>
+				    <div style="float:left; width:60px; margin-left:30px;">  <a  href="#">0条</a></div>
+                <li><div style="float:left; width:60px;"><a href="#" >查禁</a></div>
+				    <div style="float:left; width:60px; margin-left:30px;">  <a  href="#">0条</a></div>
+				   <li><div style="float:left; width:60px;"><a href="#" >缉控</a></div>
+				    <div style="float:left; width:60px; margin-left:30px;">  <a  href="#">0条</a></div>
+				<li><div style="float:left; width:60px;"><a href="#" >两品</a></div>
+				    <div style="float:left; width:60px; margin-left:30px;">  <a  href="#">0条</a></div>
+            </ul>
+            <ul class="items">
+                	<li><div style="float:left; width:60px;"><a href="#" >东城分局</a></div>
+				    <div style="float:left; width:60px; margin-left:30px;">  <a  href="#">0条</a></div>
+               	<li><div style="float:left; width:60px;"><a href="#" >西城分局</a></div>
+				    <div style="float:left; width:60px; margin-left:30px;">  <a  href="#">0条</a></div>
+                	<li><div style="float:left; width:60px;"><a href="#" >崇文分局</a></div>
+				    <div style="float:left; width:60px; margin-left:30px;">  <a  href="#">0条</a></div>
+               	<li><div style="float:left; width:60px;"><a href="#" >宣武分局</a></div>
+				    <div style="float:left; width:60px; margin-left:30px;">  <a  href="#">0条</a></div>
+                	<li><div style="float:left; width:60px;"><a href="#" >朝阳分局</a></div>
+				    <div style="float:left; width:60px; margin-left:30px;">  <a  href="#">0条</a></div>
+              	<li><div style="float:left; width:60px;"><a href="#" >丰台分局</a></div>
+				    <div style="float:left; width:60px; margin-left:30px;">  <a  href="#">0条</a></div>
+				<li><div style="float:left; width:60px;"><a href="#" >石景山分局</a></div>
+				    <div style="float:left; width:60px; margin-left:30px;">  <a  href="#">0条</a></div>
+				</li>
+				   	<li><div style="float:left; width:60px;"><a href="#" >海淀分局</a></div>
+				    <div style="float:left; width:60px; margin-left:30px;">  <a  href="#">0条</a></div>
+            </ul>
+        
+            <div  style="float:right; margin-right:20px; padding-top:3px;"> <a href="#">更多信息>></a></div>
+        </div>
+  </div>
+    <!--/list-->
+</div>
+</div>
+</div>
 					</div>
-
+	
 				<!-- 
 				<div class="wrap">
 					<div class="leftzone">
@@ -346,110 +492,11 @@ session.setAttribute("userId","10000081");
 					</div>
 				</div>
  -->
-				<div class="hd slide_bg float_left" style="width: 96%">
-					<UL class=T_Menu_style style="background:url(<%=basePath%>images/gov_Wygkcn_71.gif) repeat-x left top;">
-						<LI id=S_MenuMy_66  class="selectd" onMouseOver="Show_SubLmy(6,6); return false">总队属各单位 </LI>
-						<LI id=S_MenuMy_67  onMouseOver="Show_SubLmy(6,7); return false">各分县局</LI>
-					</UL>
-
-					<DIV id="S_ContMy_66" style="margin : 0 auto; padding: 5px;" >
-						<table width="98%" align="center" cellpadding="0" cellspacing="0" border="1" bordercolor="#BBBBBB">
-							<tr align="center" class="blue_tit">
-									<td width="16%" height="24" bgcolor="#FFFFFF">名次</td>
-									<td width="58%" bgcolor="#FFFFFF">单位</td>
-									<td width="26%" bgcolor="#FFFFFF">数量</td>
-								</tr>
-	
-								<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
-									onmouseout="this.className='normal_tr'" bgcolor="#FFFFFF">
-									<td height="22" align="center">1</td>
-									<td align="left">办公室</td>
-									<td align="center">50</td>
-								</tr>
-	
-								<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
-									onmouseout="this.className='normal_tr'" bgcolor="#FFFFFF">
-									<td height="22" align="center">2</td>
-									<td align="left">协指</td>
-									<td align="center">20</td>
-								</tr>
-	
-								<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
-									onmouseout="this.className='normal_tr'" bgcolor="#FFFFFF">
-									<td height="22" align="center">3</td>
-									<td align="left">情报</td>
-									<td align="center">19</td>
-								</tr>
-	
-								<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
-									onmouseout="this.className='normal_tr'" bgcolor="#FFFFFF">
-									<td height="22" align="center">4</td>
-									<td align="left">法制</td>
-									<td align="center">15</td>
-								</tr>
-	
-								<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
-									onmouseout="this.className='normal_tr'" bgcolor="#FFFFFF">
-									<td height="22" align="center">5</td>
-									<td align="left">查禁</td>
-									<td align="center">14</td>
-								</tr>
-
-						</table>
-					</div>
-
-					<div id=S_ContMy_67 style="DISPLAY: none; margin : 0 auto; padding: 5px;">
-						<table width="98%" align="center" cellpadding="0"
-							cellspacing="0" border="1" bordercolor="#BBBBBB">
-							<tr align="center" class="blue_tit">
-									<td width="16%" height="24" bgcolor="#FFFFFF">名次</td>
-									<td width="58%" bgcolor="#FFFFFF">单位</td>
-									<td width="26%" bgcolor="#FFFFFF">数量</td>
-								</tr>
-	
-								<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
-									onmouseout="this.className='normal_tr'" bgcolor="#FFFFFF">
-									<td height="22" align="center">1</td>
-									<td align="left">东城分局</td>
-									<td align="center">23</td>
-								</tr>
-	
-								<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
-									onmouseout="this.className='normal_tr'" bgcolor="#FFFFFF">
-									<td height="22" align="center">2</td>
-									<td align="left">西城分局</td>
-									<td align="center">12</td>
-								</tr>
-	
-								<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
-									onmouseout="this.className='normal_tr'" bgcolor="#FFFFFF">
-									<td height="22" align="center">3</td>
-									<td align="left">崇文分局</td>
-									<td align="center">12</td>
-								</tr>
-	
-								<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
-									onmouseout="this.className='normal_tr'" bgcolor="#FFFFFF">
-									<td height="22" align="center">4</td>
-									<td align="left">宣武分局</td>
-									<td align="center">11</td>
-								</tr>
-	
-								<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
-									onmouseout="this.className='normal_tr'" bgcolor="#FFFFFF">
-									<td height="22" align="center">5</td>
-									<td align="left">朝阳分局</td>
-									<td align="center">10</td>
-								</tr>
-
-						</table>
-
-					</div>
-				</div>
+				
 
 				<div class="main-box" style="margin-bottom: 4px;">
 						<span class="title1">禁吸戒毒</span>	
-						<div class="main-con" style="height: 285px;">
+						<div class="main-con" style="height: 365px;">
 							<ul class="index-ul">
 												<s:iterator   value="resMap.Rows8"  id="news" var="news" >
 									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
@@ -468,47 +515,36 @@ session.setAttribute("userId","10000081");
 							</div>
 						</div>
 					</div>
-					<div class="main-box" style="margin-bottom: 4px;">
-						<span class="title1">禁毒情报</span>	
-						<div class="main-con" style="height: 285px;">
-							<ul class="index-ul">
-												<s:iterator   value="resMap.Rows9"  id="news" var="news" begin="0" end="8" >
-									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
-									
-									<s:if test="#news.c_bt.length()>=15"> 
-									<s:property value="#news.c_bt.substring(0,15)+'...'"/>	
-									</s:if>
-								    <s:else>
-								    <s:property value="#news.c_bt"/>
-								    </s:else>
-									
-									</a></li>	
-								</s:iterator>	</ul> 
-							<div style="text-align: right;padding: 10px 20px 0 0;">
-							<a href="<%=basePath%>news/list?news.c_lm=1237">更多信息 &gt;&gt;</a>
-							</div>
-						</div>
-					</div>
-			
+				
 					
 				</div>
 				<div id="side">
 					<div class="search-box">
-						<div style="float: right;padding-right: 70px;padding-bottom: 5px;">  		
-				<form action="#" name="search"  style="margin-top: 10px;">
-<table border="0" cellpadding="0" cellspacing="0" class="tab_search">
-<tr>
-<td>
-<input type="text" name="q" title="Search" class="searchinput" id="searchinput" onkeydown="if (event.keyCode==13) {}" onblur="if(this.value=='')value='请输入要搜索的内容..';" onfocus="if(this.value=='请输入要搜索的内容..')value='';" value="请输入要搜索的内容.." size="10"/>
-</td>
-<td>
-<input type="image" width="21" height="17" class="searchaction" onclick="if(document.forms['search'].searchinput.value=='- Search Products -')document.forms['search'].searchinput.value='';" alt="Search" src="<%=basePath%>images/magglass.gif" border="0" hspace="2"/>
-</td>
-</tr>
-</table>
-</form>
-							
-							
+						<div style="float: right;padding-right: 70px;padding-bottom: 5px;">
+							<form action="#" name="search" style="margin-top: 10px;">
+								<table border="0" cellpadding="0" cellspacing="0"
+									class="tab_search">
+									<tr>
+										<td>
+											<input type="text" name="q" title="Search"
+												class="searchinput" id="searchinput"
+												onkeydown="if (event.keyCode==13) {}"
+												onblur="if(this.value=='')value='请输入要搜索的内容..';"
+												onfocus="if(this.value=='请输入要搜索的内容..')value='';"
+												value="请输入要搜索的内容.." size="10" />
+										</td>
+										<td>
+											<input type="image" width="21" height="17"
+												class="searchaction"
+												onclick="if(document.forms['search'].searchinput.value=='- Search Products -')document.forms['search'].searchinput.value='';"
+												alt="Search" src="<%=basePath%>images/magglass.gif"
+												border="0" hspace="2" />
+										</td>
+									</tr>
+								</table>
+							</form>
+
+
 						</div>
 						<div class="clearfloat"></div>
 					</div>
@@ -517,7 +553,7 @@ session.setAttribute("userId","10000081");
 						<div style="float: left;"><img src="<%=basePath%>images/tb/11.png"/></div>
 						<div style="float: left; padding-top: 3px;">
 						<span style="font-size:18px;padding-bottom: 2px;font-weight: bold;color:#FF0000" >
-						<b>下午3点总队会议室开会</b>
+						<b>暂无会议</b>
 						</span>	
 						</div>
 						</div>	
@@ -563,12 +599,19 @@ session.setAttribute("userId","10000081");
 							<div style="float: right;width: 690px;height:85px;margin-right:10px;">
 							 	
 							 	<ul class="index-ul main-top-ul">
-							 		<%for(int i=0;i<9;i++){
-							 			%> 
-							 		<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">警营开放日民警进村讲害</a></li>	
-							 			<%
-							 		} %> 
-							 	</ul>
+											<s:iterator   value="resMap.Rows2"  id="news" var="news" begin="0" end="8">
+									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">	
+									
+									<s:if test="#news.c_bt.length()>=15"> 
+									<s:property value="#news.c_bt.substring(0,15)+'...'"/>	
+									</s:if>
+								    <s:else>
+								    <s:property value="#news.c_bt"/>
+								    </s:else>
+									
+									</a></li>	
+								</s:iterator>
+										</ul> 
 							 	
 							 	<div style="text-align: right;padding: 10px 20px 0 0;">
 									<a href="#">更多信息 &gt;&gt;</a>
@@ -899,40 +942,82 @@ session.setAttribute("userId","10000081");
 							<div class="pass-cont-two">
 							<div style="width: 700px;padding: 5px; ">
 								<div><div style="float: left;margin-left: 10px;width: 40px; ">市局</div></div>
-								<div><div style="float: left;margin-left: 10px; ">禁毒网</div></div>
-								<div><div style="float: left;margin-left: 10px; ">吸毒人员动态管控</div></div>
+								
+									<div><div style="float: left;margin-left: 10px; ">
+								<s:iterator   value="resMap.Rows11"  var="website" begin="0" end="8">
+								  
+								   
+									<a href="<s:property value="#website.c_lj"/>">	
+								    <s:property value="#website.c_bt"/>
+									</a>
+									
+								</s:iterator>
+								</div></div>
+						
 						   </div>
 						   <div style="width: 700px; float: left;padding: 5px;">
 						   		<div><div style="float: left;margin-left: 10px;width: 40px; ">区县</div></div>
-								<div><div style="float: left;margin-left: 10px; ">禁毒网</div></div>
-								<div><div style="float: left;margin-left: 10px; ">吸毒人员动态管控</div></div>
+									<div><div style="float: left;margin-left: 10px; ">
+								<s:iterator   value="resMap.Rows12"  var="website" begin="0" end="8">
+								  
+								   
+									<a href="<s:property value="#website.c_lj"/>">	
+								    <s:property value="#website.c_bt"/>
+									</a>
+									
+								</s:iterator>
+								</div></div>
 						   </div>
 						    <div style="width: 700px; float: left;padding: 5px;">
 						   		<div><div style="float: left;margin-left: 10px;width: 40px; ">全国</div></div>
-								<div><div style="float: left;margin-left: 10px; ">禁毒网</div></div>
-								<div><div style="float: left;margin-left: 10px; ">吸毒人员动态管控</div></div>
+										<div><div style="float: left;margin-left: 10px; ">
+								<s:iterator   value="resMap.Rows13"  var="website" begin="0" end="16">
+								  
+								   
+									<a href="<s:property value="#website.c_lj"/>">	
+								    <s:property value="#website.c_bt"/>
+									</a>
+									
+								</s:iterator>
+								</div></div>
 						   </div>
 						    <div style="width: 700px; float: left;padding: 5px;">
 						   		<div><div style="float: left;margin-left: 10px;width: 40px; ">其他</div></div>
-								<div><div style="float: left;margin-left: 10px; ">禁毒网</div></div>
-								<div><div style="float: left;margin-left: 10px; ">吸毒人员动态管控</div></div>
+										<div><div style="float: left;margin-left: 10px; ">
+								<s:iterator   value="resMap.Rows14"  var="website" begin="0" end="4">
+								  
+								   
+									<a href="<s:property value="#website.c_lj"/>">	
+								    <s:property value="#website.c_bt"/>
+									</a>
+									
+								</s:iterator>
+								</div></div>
 						   </div>
 						    <div style="width: 700px; float: left;padding: 5px;">
 						   		<div><div style="float: left;margin-left: 10px; width: 40px;">禁毒</div></div>
-								<div><div style="float: left;margin-left: 10px; ">禁毒网</div></div>
-								<div><div style="float: left;margin-left: 10px; ">吸毒人员动态管控</div></div>
+									<div><div style="float: left;margin-left: 10px; ">
+								<s:iterator   value="resMap.Rows15"  var="website" begin="0" end="8">
+								  
+								   
+									<a href="<s:property value="#website.c_lj"/>">	
+								    <s:property value="#website.c_bt"/>
+									</a>
+									
+								</s:iterator>
+								</div></div>
 						   </div>
 						 
 							</div>
 							
 							<div class="pass-cont-three">
 								<ul>
-									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>images/index/one.png"/></a></li>
-									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>images/index/two.png"/></a></li>
-									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>images/index/three.png"/></a></li>
-									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>images/index/four.png"/></a></li>
-									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>images/index/five.png"/></a></li>
-									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"><img src="<%=basePath%>images/index/six.png"/></a></li>
+									<li><a href="http://jdcjsr-zyk.zx.ga/" target="_blank"><img src="<%=basePath%>images/index/one.png"/></a></li>
+									<li><a href="http://www.js/site/boot/wnl.htm" target="_blank"><img src="<%=basePath%>images/index/two.png"/></a></li>
+									<li><a href="http://10.6.1.37:8001/beeaweb/ "target="_blank"><img src="<%=basePath%>images/index/three.png"/></a></li>
+									<li><a href="http://jy-zyk.zx.ga/" target="_black" ><img src="<%=basePath%>images/index/four.png"/></a></li>
+									<li><a href="http://10.48.6.9/ip4/index.asp" target="_blank"><img src="<%=basePath%>images/index/five.png"/></a></li>
+									<li><a href="http://10.12.62.149/article/cxdh.htm" target="_blank"><img src="<%=basePath%>images/index/six.png"/></a></li>
 								</ul>
 								<div class="clearfloat"></div>
 							</div>
