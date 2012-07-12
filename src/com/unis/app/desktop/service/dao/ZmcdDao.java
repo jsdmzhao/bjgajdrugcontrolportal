@@ -46,10 +46,6 @@ public class ZmcdDao extends SqlSessionDaoSupport {
 	public Object queryCountInfo(Map p) {
 		return getSqlSession().selectOne("ZmcdMapper.queryCountInfo", p);
 	}
-	
-	public List queryUserMenu(Map p){
-		return getSqlSession().selectList("ZmcdMapper.queryUserMenu", p);
-	}
 
 
 	public Map queryByPageInfo(Map p, Map page){
