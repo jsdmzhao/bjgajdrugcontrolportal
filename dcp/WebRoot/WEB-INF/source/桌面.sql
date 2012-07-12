@@ -13,7 +13,7 @@ CREATE TABLE B_ZMCD  (
    C_MC                 VARCHAR2(20),
    C_LJ                 VARCHAR2(100),
    C_TB                 VARCHAR2(100),
-   N_XSXH               CHAR(10),
+   N_XSXH               NUMBER(2),
    C_YXX                CHAR(1),
    CONSTRAINT PK_B_ZMCD PRIMARY KEY (N_XH)
 );

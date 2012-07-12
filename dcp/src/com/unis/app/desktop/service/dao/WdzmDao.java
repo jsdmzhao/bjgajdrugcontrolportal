@@ -47,9 +47,6 @@ public class WdzmDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectOne("WdzmMapper.queryCountInfo", p);
 	}
 	
-	public List queryUserMenu(Map p){
-		return getSqlSession().selectList("WdzmMapper.queryUserMenu", p);
-	}
 
 
 	public Map queryByPageInfo(Map p, Map page){
