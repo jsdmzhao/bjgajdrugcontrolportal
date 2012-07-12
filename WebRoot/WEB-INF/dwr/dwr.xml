@@ -96,6 +96,18 @@
 		<create javascript="DmSvc" creator="spring">
 			<param name="beanName" value="dmSvc"></param>
 		</create>
+		
+		<create javascript="DmSvc" creator="spring">
+			<param name="beanName" value="dmSvc"></param>
+		</create>
+		
+		<create javascript="WdzmSvc" creator="spring">
+			<param name="beanName" value="wdzmSvc"></param>
+		</create>
+
+		<create javascript="ZmcdSvc" creator="spring">
+			<param name="beanName" value="zmcdSvc"></param>
+		</create>
 	
 		
 
