@@ -45,6 +45,16 @@
 		  FROM B_WZLB
 	</select>
 	
+	<select id="getWebsiteLists"  parameterType="string"  resultMap="resultWebsite">
+		SELECT N_XH,
+			   FUN_GET_WZLB(N_LBXH) N_LBXH,
+		       C_BT,
+		       C_LJ,
+		       TO_CHAR(D_DJ,'YYYY-MM-DD HH24:MI:SS') D_DJ,
+		       NVL(N_XSXH,'') N_XSXH
+		  FROM B_CYWZ WHERE N_LBXH=#{n_lbxh}
+	</select>
+	
 	
 	<select id="getWebtypeCombox" resultType="Combox">
 		SELECT N_XH VALUE,
