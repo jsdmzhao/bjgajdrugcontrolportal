@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.unis.app.duty.service.dao.KqYbjlDao;
 import com.unis.app.system.service.dao.SysUserDao;
-import com.unis.app.userinfo.service.dao.UserInfoDao;
 
 @Service
 @Transactional(rollbackFor={Exception.class,SQLException.class})
