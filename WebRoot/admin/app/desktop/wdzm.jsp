@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>角色</title> 
+    <title>我的桌面</title> 
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
     <script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
 <script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
 <script type='text/javascript'
-	src='<%=basePath%>dwr/interface/SysRoleSvc.js'></script>
+	src='<%=basePath%>dwr/interface/WdzmSvc.js'></script>
 </head>
 <body style="padding:10px;height:100%; text-align:center;">
    <ipnut type="hidden" id="MenuNo" value="MemberManageRole" /> 
@@ -46,14 +46,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       
       //列表结构
       var grid = $("#maingrid").ligerGrid({
-          columns: [
-          { display: "角色名", name: "roleName", width: 280, type: "text", align: "left"
-                , validate: { required: true }
-                , editor: { type: 'text' }
-
-          },
-          { display: "描述", name: "roleDescription", width: 580, type: "textarea", align: "left", editor: { type: 'text'} }
-          ], dataAction: 'server', pageSize: 20, toolbar: {},
+          columns:  [
+                     { display: '自定义名称', name: 'cZdymc', align: 'left', width: 180, minWidth: 60
+                         , validate: { required: true }
+                         , editor: { type: 'text' }
+                         },
+                     
+                              { display: '菜单名', name: 'nCdxh', align: 'left', width: 180, minWidth: 60
+                                  , validate: { required: true }
+                                  , editor: { type: 'text' }
+                                  },
+                                  { display: '用户名', name: 'userId', align: 'left', width: 300, minWidth: 60
+                                  , validate: { required: true }
+                                  , editor: { type: 'text' }
+                                  }
+                                  , { display: '显示序号', name: 'nXsxh', align: 'left', width: 230, minWidth: 50
+                                  , editor: { type: 'text'}
+                                  }
+                                  ], dataAction: 'server', pageSize: 20, toolbar: {},
            sortName: 'RoleID', 
           width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false
       });
@@ -148,7 +158,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
       function loadGrid(obj){
     	 if(!obj)obj={ };
-  		SysRoleSvc.queryByPage(obj,oPage,function(rdata){
+  		WdzmSvc.queryByPage(obj,oPage,function(rdata){
   			if(rdata == null){
   				  grid.setOptions({ data:  { Total:0, Rows:'' } });
   			}else{
@@ -163,7 +173,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       function f_delete() {
     	  var selected = grid.getSelected();
 			if (selected) {
-				SysRoleSvc.remove(selected, function(rdata) {
+				WdzmSvc.remove(selected, function(rdata) {
 					if (rdata) {
 						LG.showSuccess('删除成功');
 						loadGrid();
@@ -192,7 +202,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           var data = $.extend(true, {}, e.newdata);
           if (!isAddNew){
         	  data.roleId = e.record.roleId;
-                  SysRoleSvc.update(data, function(rdata) {
+                  WdzmSvc.update(data, function(rdata) {
           			if (rdata) {
           				LG.showSuccess('修改成功', function() {
           					loadGrid();
@@ -202,7 +212,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           			}
                   }); }
               else{
-            	 SysRoleSvc.save(data, function(rdata) {
+            	 WdzmSvc.save(data, function(rdata) {
       			if (rdata) {
       				LG.showSuccess('保存成功', function() {
       					loadGrid();
