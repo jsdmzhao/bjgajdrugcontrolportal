@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>内部消息</title> 
+    <title>手机短信</title> 
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
     <script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
@@ -21,11 +21,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <script src="<%=basePath%>liger/lib/jquery-validation/jquery.validate.min.js" type="text/javascript"></script> 
     <script src="<%=basePath%>liger/lib/jquery-validation/jquery.metadata.js" type="text/javascript"></script>
-    <script src="<%=basePath%>liger/lib/jquery-validation/messages_cn.js" type="text/javascript"></script> 
+    <script src="<%=basePath%>liger/lib/jquery-validation/mobiles_cn.js" type="text/javascript"></script> 
     
     <script src='<%=basePath%>dwr/engine.js' type='text/javascript' ></script>
   	<script src='<%=basePath%>dwr/util.js' type='text/javascript' ></script>
-  	<script src='<%=basePath%>dwr/interface/MessageAction.js' type='text/javascript' ></script>
+  	<script src='<%=basePath%>dwr/interface/MobileAction.js' type='text/javascript' ></script>
     <style type="text/css">
     .l-panel td.l-grid-row-cell-editing { padding-bottom: 2px;padding-top: 2px;}
     </style>
@@ -46,7 +46,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           columns: [
           { display: "序号", name: "n_xh", width: 70, type: "text", align: "left"},
           { display: "发布人", name: "c_yhid", width: 120, type: "text", align: "left", editor: { type: 'text'} },
-          { display: "标题", name: "c_bt", width: 400, type: "text", align: "left", editor: { type: 'text'} },
           { display: "添加时间", name: "d_dj", width: 160, type: "textarea", align: "left", editor: { type: 'text'} }
           ], dataAction: 'server', pageSize: 20, toolbar: {},
            sortName: 'n_xh', 
@@ -106,8 +105,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               case "add":
                   if (editingrow == null)
                   {
-                	  //top.f_addTab(null, '保存信息', '<%=basePath%>admin/app/message/messageDetail.jsp');
-			  		   dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/message/messageDetail.jsp', 
+                	  //top.f_addTab(null, '保存信息', '<%=basePath%>admin/app/mobile/mobileDetail.jsp');
+			  		   dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/mobile/mobileDetail.jsp', 
                            	height: 500,width: 900,showMax: true, showToggle: true,  showMin: true,
                            	title:'内部消息'
 					  });
@@ -118,8 +117,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               case "view":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  //top.f_addTab(null, '查看信息', '<!%=basePath%>messageUpdate?message.n_xh=' + selected.n_xh);
-                  dialog = $.ligerDialog.open({ url: '<%=basePath%>messageUpdate?message.n_xh=' + selected.n_xh, 
+                  //top.f_addTab(null, '查看信息', '<!%=basePath%>mobileUpdate?mobile.n_xh=' + selected.n_xh);
+                  dialog = $.ligerDialog.open({ url: '<%=basePath%>mobileUpdate?mobile.n_xh=' + selected.n_xh, 
                          	height: 500,width: 900,showMax: true, showToggle: true,  showMin: true,
                          	title:'内部消息'
 				  });
@@ -127,8 +126,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               case "modify":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  //top.f_addTab(null, '修改栏目信息', '<!%=basePath%>messageUpdate?message.n_xh=' + selected.n_xh);
-				  dialog = $.ligerDialog.open({ url: '<%=basePath%>messageUpdate?message.n_xh=' + selected.n_xh, 
+                  //top.f_addTab(null, '修改栏目信息', '<!%=basePath%>mobileUpdate?mobile.n_xh=' + selected.n_xh);
+				  dialog = $.ligerDialog.open({ url: '<%=basePath%>mobileUpdate?mobile.n_xh=' + selected.n_xh, 
                          	height: 500,width: 900,showMax: true, showToggle: true,  showMin: true,
                          	title:'内部消息'
 				  });
@@ -185,13 +184,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       LG.showSuccess('删除成功');
                       f_reload();
                   },
-                  error: function (message) {
-                      LG.showError(message);
+                  error: function (mobile) {
+                      LG.showError(mobile);
                   }
               });
               **/
         	  grid.deleteRow(selected);
-        	  MessageAction.messageDelete(selected.n_xh, function (result){
+        	  MobileAction.mobileDelete(selected.n_xh, function (result){
              	   if(result == 'success'){
              		  LG.showSuccess('删除成功');
 	           	   } else {
@@ -230,9 +229,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   grid.loadData();
                   LG.tip('保存成功!');
               },
-              error: function (message)
+              error: function (mobile)
               {
-                  LG.tip(message);
+                  LG.tip(mobile);
               }
           });
           return false;
@@ -253,7 +252,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       
       function loadGrid(){
           
-	 	  MessageAction.messageList(function (data){
+	 	  MobileAction.mobileList(function (data){
 	    	 grid.setOptions({data:data});
 	      });
       }
