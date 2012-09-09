@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       var grid = $("#maingrid").ligerGrid({
           columns: [
           { display: "序号", name: "n_xh", width: 70, type: "text", align: "left"},
-          { display: "发布人", name: "c_yhid", width: 120, type: "text", align: "left", editor: { type: 'text'} },
+          { display: "接收人", name: "c_yhid", width: 120, type: "text", align: "left", editor: { type: 'text'} },
           { display: "标题", name: "c_bt", width: 400, type: "text", align: "left", editor: { type: 'text'} },
           { display: "添加时间", name: "d_dj", width: 160, type: "textarea", align: "left", editor: { type: 'text'} }
           ], dataAction: 'server', pageSize: 20, toolbar: {},
