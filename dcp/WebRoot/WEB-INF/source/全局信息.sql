@@ -1,4 +1,4 @@
---jdk 7.0
+﻿--jdk 7.0
 --myeclipse 10.0
 --tomcat 7.0
 --oracle 10g/或以上
@@ -10,7 +10,7 @@
 --应用表 b_汉语拼音首字母
 
 create tablespace dcp
-datafile 'D:\app\Administrator\oradata\dcp\dcp.dbf'
+datafile 'D:\dcp.dbf'
 size 50M
 reuse
 autoextend on
