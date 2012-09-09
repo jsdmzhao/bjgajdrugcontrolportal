@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MobileMapper">
+	 
+	 <resultMap type="Mobile"       id="resultMobile">
+	 	<result column="N_XH"       property="n_xh"/>
+	 	<result column="RECEIVER"   property="c_jsr"/>
+	 	<result column="C_YHID"     property="c_yhid"/>
+	 	<result column="SENDTIME"   property="d_fs"/>
+	 </resultMap>
+	 
+	<select id="getMobile" parameterType="Mobile" resultType="Mobile">
+		SELECT * FROM SMS_BOXSENDED WHERE N_XH = #{n_xh}
+	</select>
+	 
+	<select id="getMobileList" resultMap="resultMobile">
+		SELECT N_XH,
+		       RECEIVER, 
+		       CONTENT, 
+		       TO_CHAR(SENDTIME,'YYYY-MM-DD hh24:MI:SS') SENDTIME
+		  FROM SMS_BOXSENDED
+		  	WHERE RECEIVER = #{c_sjhm}
+	</select>
+	
+	<delete id="deleteMobile" parameterType="int">
+		DELETE FROM SMS_BOXSENDED WHERE N_XH = #{n_xh}
+	</delete>
+	
+	<insert id="insertMobile" parameterType="hashmap">
+	    BEGIN
+		<foreach collection="list" item="item" separator=";">
+			IINSERT INTO SMS_BOXSENDING
+			  (SENDER, RECEIVER, CONTENT, SENDTIME, INSERTTIME)
+			VALUES
+			  (#{c_yhid}, FUN_GET_PHONE_FROM_YHID(#{list.c_sjhm}), #{content}, sysdate, sysdate)
+		</foreach>
+		;END;
+	</insert>
+	
+</mapper>
