@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
-    <title>内部消息 明细</title>
+    <title>手机短信 明细</title>
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
     <script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>liger/lib/js/LG.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/jquery-validation/jquery.validate.min.js" type="text/javascript"></script> 
     <script src="<%=basePath%>liger/lib/jquery-validation/jquery.metadata.js" type="text/javascript"></script>
-    <script src="<%=basePath%>liger/lib/jquery-validation/messages_cn.js" type="text/javascript"></script>
+    <script src="<%=basePath%>liger/lib/jquery-validation/mobiles_cn.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/jquery.form.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/json2.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/js/validator.js" type="text/javascript"></script>
@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
-  	<script type='text/javascript' src='<%=basePath%>dwr/interface/MessageAction.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/interface/MobileAction.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>
   	
 
@@ -45,18 +45,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
         var config = {"Form":{ 
          fields : [
-         {
-	         display:"消息标题",
-	         name:"c_bt",
-	         newline:true,
-	         labelWidth:100,
-	         width:700,
-	         space:30,
-	         type:"text",
-	         group:"基本信息",
-	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
+         {display:"接收人",name:"c_jsr",newline:true,labelWidth:100,width:700,space:30,type:"smarttext",
+       	  group:"基本信息",
+          groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },
-        {display:"发送人",name:"c_jsr",newline:true,labelWidth:100,width:700,space:30,type:"smarttext"},
          {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea"}
         ]
  }};
@@ -123,8 +115,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
 
         //<!-- 设置一些默认参数 -->
-		var editor = CKEDITOR.replace( 'c_nr' );
-        CKFinder.setupCKEditor( editor, '/ckfinder/' );
+		//var editor = CKEDITOR.replace( 'c_nr' );
+        //CKFinder.setupCKEditor( editor, '/ckfinder/' );
 
     	//$("c_tpljdz").setDisabled();
         
@@ -132,10 +124,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
         	var formMap = DWRUtil.getValues("mainform"); 
         	
-	        formMap["c_nr"] = editor.document.getBody().getHtml();
+	        //formMap["c_nr"] = editor.document.getBody().getHtml();
 	        formMap["c_jsr"] = box1.getValue();
 			
-        	MessageAction.messageSave(formMap,function (result){
+        	MobileAction.mobileSave(formMap,function (result){
         		
         		if(result == 'success'){
         			LG.showSuccess('保存成功', function () { 
