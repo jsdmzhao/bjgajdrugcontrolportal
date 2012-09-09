@@ -70,8 +70,8 @@
 	
 	<select id="getCartypeCombox" resultType="Combox">
 		SELECT N_XH VALUE,
-		       C_CPHM TEXT
-		  FROM B_CLLB
+	       C_CPHM TEXT
+	    FROM B_CLLB
 	</select>
 	
 	<delete id="deleteCar" parameterType="int">

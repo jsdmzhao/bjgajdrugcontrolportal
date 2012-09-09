@@ -3,7 +3,12 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-
+String isView = request.getParameter("isView");
+if(isView == null){
+	isView = "0";
+} else {
+	isView = "1";
+}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -169,9 +174,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        {
 	            parent.dialog_hidden();
 	        }
-	
-	
         });
+        
+        if('<%=isView%>' == '1'){
+        	$("input,select,textarea",mainform).attr("readonly", "readonly");
+        	$("input,select,textarea",mainform).attr("disabled", "disabled");
+        }
     </script>
  	<div id="uploadImageDiv" style="display: none;">
 		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_tpljdz"></iframe> <!---->

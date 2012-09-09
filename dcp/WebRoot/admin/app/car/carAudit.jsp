@@ -105,10 +105,10 @@ var dialog;
               case "view":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  //top.f_addTab(null, '查看车辆申请信息', '<%=basePath%>carUpdate?news.n_xh=' + selected.n_xh);
-		 			 dialog = $.ligerDialog.open({ url: '<%=basePath%>carUpdate?news.n_xh=' + selected.n_xh, 
-                           height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
-					  });
+                  //top.f_addTab(null, '查看车辆申请信息', '<%=basePath%>carUpdate?car.n_xh=' + selected.n_xh);
+	 			  dialog = $.ligerDialog.open({ url: '<%=basePath%>carUpdate?isView=1&car.n_xh=' + selected.n_xh, 
+                          height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+				  });
                   break;
               case "shtg":
                   var selected = grid.getSelected();
