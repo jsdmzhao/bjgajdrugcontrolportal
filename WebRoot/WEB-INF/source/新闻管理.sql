@@ -1,4 +1,5 @@
 -- Create table
+drop table b_xinwen;
 create table b_xinwen
 (
   n_xh     NUMBER(8) not null,
@@ -24,8 +25,7 @@ create table b_xinwen
   c_sftj   CHAR(1),
   c_sfzd   CHAR(1),
   n_xxxh   NUMBER(10),
-  c_sfgl   CHAR(1),
-  c_shjg   CHAR(1)
+  c_sfgl   CHAR(1)
 )
 tablespace DCP
   pctfree 10
