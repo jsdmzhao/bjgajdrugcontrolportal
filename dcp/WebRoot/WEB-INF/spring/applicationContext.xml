@@ -28,6 +28,7 @@
 	<bean id="blogService" class="com.unis.app.blog.service.BlogService" parent="absServiceAdapter"/>
 	<bean id="messageService" class="com.unis.app.message.service.MessageService" parent="absServiceAdapter"/>
 	<bean id="emailService" class="com.unis.app.email.service.EmailService" parent="absServiceAdapter"/>
+	<bean id="mobileService" class="com.unis.app.mobile.service.MobileService" parent="absServiceAdapter"/>
     
 
 </beans>
