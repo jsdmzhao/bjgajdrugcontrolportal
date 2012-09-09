@@ -24,6 +24,8 @@
 	<typeAlias alias="Message"  type="com.unis.app.message.model.Message" />
 
 	<typeAlias alias="Email"  type="com.unis.app.email.model.Email" />
+	
+	<typeAlias alias="Mobile"  type="com.unis.app.mobile.model.Mobile" />
 
 </typeAliases>
 

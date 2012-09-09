@@ -41,6 +41,10 @@
 			<param name="beanName" value="emailAction"></param>
 		</create>
 		
+		<create javascript="MobileAction" creator="spring">
+			<param name="beanName" value="mobileAction"></param>
+		</create>
+		
 		<create javascript="SysUserSvc" creator="spring">
 			<param name="beanName" value="sysUserSvc"></param>
 		</create>
@@ -119,6 +123,7 @@
 		<convert match="com.unis.app.blog.model.Blog" converter="bean"/>
 		<convert match="com.unis.app.message.model.Message" converter="bean"/>
 		<convert match="com.unis.app.email.model.Email" converter="bean"/>
+		<convert match="com.unis.app.mobile.model.Mobile" converter="bean"/>
 	
   </allow>
 
