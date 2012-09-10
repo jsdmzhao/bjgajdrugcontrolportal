@@ -71,24 +71,41 @@
 	</package>
 	
 	<package name="login" namespace="/login" extends="struts-default">
-	 <action name="view" class="com.unis.app.news.action.NewsAction" method="newsindexList">
+	
+		<!-- 拦截错误页面 -->
+		<global-results>
+			<result name="errorPage">error.jsp</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<exception-mapping result="errorPage" exception="java.lang.Exception"/>
+		</global-exception-mappings>
+		
+	 	<action name="view" class="com.unis.app.news.action.NewsAction" method="newsindexList">
 			<result name="success">/index.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
 	</package>
 	   
 	<package name="news" namespace="/news" extends="struts-default">
-		 <action name="detail" class="com.unis.app.news.action.NewsAction" method="newsQuery">
+		<!-- 拦截错误页面 -->
+		<global-results>
+			<result name="errorPage">error.jsp</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<exception-mapping result="errorPage" exception="java.lang.Exception"/>
+		</global-exception-mappings>
+	
+		<action name="detail" class="com.unis.app.news.action.NewsAction" method="newsQuery">
 			<result name="success">/news/news_detail.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
 		
-		 <action name="list" class="com.unis.app.news.action.NewsAction" method="newsQuerys">
+		<action name="list" class="com.unis.app.news.action.NewsAction" method="newsQuerys">
 			<result name="success">/news/news_list.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
-		
-		
 		
      </package>
 

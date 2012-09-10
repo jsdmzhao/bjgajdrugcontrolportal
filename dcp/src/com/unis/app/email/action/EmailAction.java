@@ -208,9 +208,11 @@ public class EmailAction {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public Map<String, Object> getEmailNoReadList(){
+	public Map<String, Object> getEmailNoReadList(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		String c_yhid = session.getAttribute("userId")+"";
 		Map<String, Object> resMap = new HashMap<String, Object>();
-		List<Email> emailList = (List<Email>) emailService.selectList("EmailMapper.getEmailNoReadList","");
+		List<Email> emailList = (List<Email>) emailService.selectList("EmailMapper.getEmailNoReadList",c_yhid);
 		resMap.put("Rows", emailList);
 		resMap.put("Total", emailList.size());
 		return resMap;

@@ -61,9 +61,10 @@
 		       C_YHID,
 		       C_IP
 		FROM B_NBYJ B
-		  WHERE B.N_XH IN (SELECT DISTINCT(N_NBYJXH)
+		  WHERE  EXISTS (SELECT 'X'
 					          FROM B_NBYJ_RECIEVE R
-					       WHERE  R.C_JSR = #{c_yhid})
+					       WHERE  R.C_JSR = #{c_yhid}
+					       	  AND R.N_NBYJXH = B.N_XH)
 	</select>
 	
 	<select id="getEmailNoReadList" resultMap="resultEmail" parameterType="string">
@@ -73,7 +74,7 @@
 		       FUN_GET_YHMC(C_YHID) C_YHID,
 		       C_IP
 		FROM B_NBYJ B
-		  WHERE EXISTS (SELECT '1'
+		  WHERE EXISTS (SELECT 'X'
 				          FROM B_NBYJ_RECIEVE R
 				         WHERE R.N_NBYJXH = B.N_XH
 				           AND R.C_JSR = #{c_yhid} AND R.C_ZT = '1')
