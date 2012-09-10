@@ -110,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  		   dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/message/messageDetail.jsp', 
                            	height: 500,width: 900,showMax: true, showToggle: true,  showMin: true,
                            	title:'内部消息'
-					  });
+					   });
                   } else {
                       LG.tip('请先提交或取消修改');
                   }

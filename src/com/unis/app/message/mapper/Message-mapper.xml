@@ -14,13 +14,14 @@
 		SELECT * FROM B_NBXX WHERE N_XH = #{n_xh}
 	</select>
 	 
-	<select id="getMessageList" resultMap="resultMessage">
+	<select id="getMessageList" resultMap="resultMessage" parameterType="string">
 		SELECT N_XH,
 		       C_BT,
 		       TO_CHAR(D_DJ,'YYYY-MM-DD hh24:MI:SS') D_DJ,
 		       FUN_GET_YHMC(C_YHID) C_YHID,
 		       C_IP
 		  FROM B_NBXX
+		 	WHERE C_YHID = #{c_yhid}
 	</select>
 	
 	<delete id="deleteMessage" parameterType="int">
@@ -78,11 +79,53 @@
 		; END;
 	</insert>
 	
+	<select id="getMessageRecieveList" resultMap="resultMessage" parameterType="string">
+		SELECT N_XH,
+		       C_BT,
+		       TO_CHAR(D_DJ,'YYYY-MM-DD hh24:MI:SS') D_DJ,
+		       FUN_GET_YHMC(C_YHID) C_YHID,
+		       C_IP
+		FROM B_NBXX B
+		  WHERE  EXISTS (SELECT 'X'
+					          FROM B_NBXX_RECIEVE R
+					       WHERE  R.C_JSR = #{c_yhid}
+					       	  AND R.N_NBXXXH = B.N_XH)
+	</select>
+	
+	<select id="getMessageNoReadList" resultMap="resultMessage" parameterType="string">
+		SELECT N_XH,
+		       C_BT,
+		       TO_CHAR(D_DJ,'YYYY-MM-DD hh24:MI:SS') D_DJ,
+		       FUN_GET_YHMC(C_YHID) C_YHID,
+		       C_IP
+		FROM B_NBXX B
+		  WHERE EXISTS (SELECT 'X'
+				          FROM B_NBXX_RECIEVE R
+				         WHERE R.N_NBXXXH = B.N_XH
+				           AND R.C_JSR = #{c_yhid} AND R.C_ZT = '1')
+	</select>
+	
 	<update id="updateMessage" parameterType="Message">
+	BEGIN
 		UPDATE B_NBXX
 		   SET  C_BT   =	#{c_bt,jdbcType=VARCHAR},							   							
-				C_NR     =	#{c_nr,jdbcType=CLOB,handler=ClobTypeHandler}							
-		WHERE N_XH = #{n_xh}
+				C_NR   =	#{c_nr,jdbcType=CLOB,handler=ClobTypeHandler}							
+		WHERE N_XH = #{n_xh};
+		
+		BEGIN
+			DELETE FROM B_NBXX_RECIEVE WHERE N_NBXXXH = #{n_xh};
+		<foreach collection="list" item="item" separator=";">
+			INSERT INTO B_NBXX_RECIEVE 
+				(N_XH,N_NBXXXH,C_JSR,C_ZT)
+			VALUES
+				(
+					seq_b_nbxx_recieve.nextval,
+					seq_b_nbxx.currval,
+					#{item.c_yhid},'0'
+			    )
+		</foreach>
+		; END;
+	END;
 	</update>
 	
 </mapper>

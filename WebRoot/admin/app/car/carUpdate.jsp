@@ -105,12 +105,6 @@ if(isView == null){
 	        //表单底部按钮 
 	        LG.setFormDefaultBtn(f_cancel,isView ? null : f_save);
 	
-	        var deptTree = {
-	            url :'../handler/tree.ashx?view=CF_Department&idfield=DeptID&textfield=DeptName&pidfield=DeptParentID',
-	            checkbox:false,
-	            nodeWidth :220
-	        };
-	
 	        //创建表单结构
 	        var mainform = $("#mainform");  
 	        mainform.ligerForm({ 
@@ -177,13 +171,11 @@ if(isView == null){
         });
         
         if('<%=isView%>' == '1'){
+        	//alert('');
         	$("input,select,textarea",mainform).attr("readonly", "readonly");
         	$("input,select,textarea",mainform).attr("disabled", "disabled");
         }
     </script>
- 	<div id="uploadImageDiv" style="display: none;">
-		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_tpljdz"></iframe> <!---->
-	</div>
 </body>
 
 </html>

@@ -68,11 +68,38 @@ public class MessageAction {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public Map<String, Object> messageList(){
+	public Map<String, Object> messageList(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		String c_yhid = session.getAttribute("userId")+"";
+		
+		Map<String, Object> sqlParamMap = new HashMap<String, Object>();
 		Map<String, Object> resMap = new HashMap<String, Object>();
-		List<Message> messageList = (List<Message>) messageService.selectList("MessageMapper.getMessageList","");
+		List<Message> messageList = (List<Message>) messageService.selectList("MessageMapper.getMessageList",c_yhid);
 		resMap.put("Rows", messageList);
 		resMap.put("Total", messageList.size());
+		return resMap;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> getMessageRecieveList(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		String c_yhid = session.getAttribute("userId")+"";
+		
+		Map<String, Object> resMap = new HashMap<String, Object>();
+		List<Message> emailList = (List<Message>) messageService.selectList("MessageMapper.getMessageRecieveList",c_yhid);
+		resMap.put("Rows", emailList);
+		resMap.put("Total", emailList.size());
+		return resMap;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> getMessageNoReadList(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		String c_yhid = session.getAttribute("userId")+"";
+		Map<String, Object> resMap = new HashMap<String, Object>();
+		List<Message> emailList = (List<Message>) messageService.selectList("MessageMapper.getMessageNoReadList",c_yhid);
+		resMap.put("Rows", emailList);
+		resMap.put("Total", emailList.size());
 		return resMap;
 	}
 	
