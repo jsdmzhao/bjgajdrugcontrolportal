@@ -95,6 +95,7 @@ A:hover {
 									</TD>
 									<TD background=images/bg.gif>
 										<DIV align=center>
+											<FONT class=p6>请关闭出错页，并联系管理员</FONT>
 											<!-- 
 											<FONT class=p6><A href="index.jsp">返回首页</A>
 												| <A href="javascript:history.go(-1)">返回出错页</A> | <A
