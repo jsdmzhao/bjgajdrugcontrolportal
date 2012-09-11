@@ -178,7 +178,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       
       function loadGrid(){
           
-	 	  MessageAction.messageList(function (data){
+	 	  MessageAction.getMessageRecieveList(function (data){
 	    	 grid.setOptions({data:data});
 	      });
       }
