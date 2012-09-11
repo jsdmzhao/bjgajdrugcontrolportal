@@ -11,7 +11,13 @@
 	 </resultMap>
 	 
 	<select id="getMessage" parameterType="Message" resultType="Message">
-		SELECT * FROM B_NBXX WHERE N_XH = #{n_xh}
+		SELECT N_XH,
+		       C_BT,
+		       TO_CHAR(D_DJ,'YYYY-MM-DD hh24:MI:SS') D_DJ,
+			   C_NR,
+			   C_IP,
+			   C_SFSC   
+		FROM B_NBXX WHERE N_XH = #{n_xh}
 	</select>
 	 
 	<select id="getMessageList" resultMap="resultMessage" parameterType="string">

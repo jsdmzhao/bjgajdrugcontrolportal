@@ -18,7 +18,9 @@ public class Message {
 	
 	private String c_sfsc;
 	
-	private String c_jsr;
+	private String c_jsr;  
+	
+	//c_zt  recieve中的默认是1，2是已签收，0是删除
 
 	public String getN_xh() {
 		return n_xh;
