@@ -75,7 +75,6 @@ public class CarAction {
 		carService.update("CarMapper.operateCar", sqlparaMap);
 		return Globals.SUCCESS;
 	}
-	
 
 	public String carView(){
 		car = (Car) carService.selectOne("CarMapper.getCar", car);
