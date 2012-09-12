@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div id="maingrid"  style="margin:2px;"></div> 
     </form> 
   <script type="text/javascript">
-var dialog;
+	  var dialog;
       //相对路径
       var rootPath = "../";
       //列表结构
@@ -106,7 +106,7 @@ var dialog;
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
                   //top.f_addTab(null, '查看车辆申请信息', '<%=basePath%>carUpdate?car.n_xh=' + selected.n_xh);
-	 			  dialog = $.ligerDialog.open({ url: '<%=basePath%>carUpdate?isView=1&car.n_xh=' + selected.n_xh, 
+	 			  dialog = $.ligerDialog.open({ url: '<%=basePath%>carView?isView=1&car.n_xh=' + selected.n_xh, 
                           height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
 				  });
                   break;
