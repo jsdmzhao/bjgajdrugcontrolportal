@@ -54,6 +54,11 @@ public class CartypeAction {
 		return Globals.SUCCESS;
 	}
 	
+	public String cartypeView(){
+		car = (Car) carService.selectOne("CarMapper.getCartype", car);
+		return Globals.SUCCESS;
+	}
+	
 	
 	public String cartypeDelete(String n_xh){
 		

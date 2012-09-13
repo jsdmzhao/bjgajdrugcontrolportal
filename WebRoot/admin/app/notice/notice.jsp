@@ -114,7 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               case "view":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  top.f_addTab(null, '查看信息', '<%=basePath%>noticeUpdate?notice.n_xh=' + selected.n_xh);
+                  top.f_addTab(null, '查看信息', '<%=basePath%>noticeView?notice.n_xh=' + selected.n_xh);
                   break;
               case "modify":
                   var selected = grid.getSelected();

@@ -95,7 +95,7 @@ var dialog;
                   if (editingrow == null) {
                 	  //top.f_addTab(null, '保存信息', '<%=basePath%>admin/app/car/cartypeDetail.jsp');
  					  dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/car/cartypeDetail.jsp', 
-                           height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+                           height: 300,width: 600,showMax: true, showToggle: true,  showMin: true
 					  });
                   } else {
                       LG.tip('请先提交或取消修改');
@@ -104,9 +104,9 @@ var dialog;
               case "view":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                 // top.f_addTab(null, '查看信息', '<%=basePath%>cartypeUpdate?cart.n_xh=' + selected.n_xh);
- 					dialog = $.ligerDialog.open({ url: '<%=basePath%>cartypeUpdate?car.n_xh=' + selected.n_xh, 
-                          height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+                 // top.f_addTab(null, '查看信息', '<%=basePath%>cartypeView?cart.n_xh=' + selected.n_xh);
+ 					dialog = $.ligerDialog.open({ url: '<%=basePath%>cartypeView?car.n_xh=' + selected.n_xh, 
+                          height: 300,width: 600,showMax: true, showToggle: true,  showMin: true
 				    });
                   break;
               case "modify":
@@ -114,7 +114,7 @@ var dialog;
                   if (!selected) { LG.tip('请选择行!'); return }
                   //top.f_addTab(null, '修改栏目信息', '<%=basePath%>cartypeUpdate?car.n_xh=' + selected.n_xh);
 					dialog = $.ligerDialog.open({ url: '<%=basePath%>cartypeUpdate?car.n_xh=' + selected.n_xh, 
-                        height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+                        height: 300,width: 600,showMax: true, showToggle: true,  showMin: true
 					});
                   /**
                   if (editingrow == null)

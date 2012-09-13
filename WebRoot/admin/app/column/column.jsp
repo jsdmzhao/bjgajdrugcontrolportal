@@ -164,15 +164,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               case "view":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  top.f_addTab(null, '查看信息', '<%=basePath%>columnUpdate?column.n_xh=' + selected.n_xh);
+                  dialog = $.ligerDialog.open({ url: '<%=basePath%>columnView?column.n_xh=' + selected.n_xh, 
+                      height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+				  });
                   break;
               case "modify":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
                   //top.f_addTab(null, '修改栏目信息', '<%=basePath%>columnUpdate?column.n_xh=' + selected.n_xh);
-		  			dialog = $.ligerDialog.open({ url: '<%=basePath%>columnUpdate?column.n_xh=' + selected.n_xh, 
-                           height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
-					  });
+		  		  dialog = $.ligerDialog.open({ url: '<%=basePath%>columnUpdate?column.n_xh=' + selected.n_xh, 
+                          height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+				  });
                   /**
                   if (editingrow == null)
                   {
