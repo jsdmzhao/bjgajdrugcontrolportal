@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         var config = {"Form":{ 
          fields : [
          {
-	         display:"栏目名称",
+	         display:"公告标题",
 	         name:"c_bt",
 	         value:"<s:property value='notice.c_bt'/>",
 	         newline:true,
@@ -55,19 +55,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         type:"text",
 	         group:"基本信息",
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
-         },
-        {display:"发送人",name:"c_yhid",newline:true,labelWidth:100,width:250,space:30,type:"text",readonly:"readonly",value:"<s:property value='notice.c_tpljdz'/>"},
-        {
-        	 //display:"上传视频",
-        	 value:"选择用户",
-	         name:"sctp",
-	         newline:false,
-	         labelWidth:100,
-	         width:220,space:30, 
-	         type:"button",
-	         cssClass:"l-button",
-	         disabled:"disabled",
-	         onclick : "openDialog('#uploadImageDiv')"
          },
          {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea", readonly:"readonly",value:"<s:property value='notice.c_nr' escape='false'/>"},
          {name:"n_xh", type:"hidden",value:"<s:property value='notice.n_xh'/>"}
@@ -165,27 +152,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         {
             parent.dialog_hidden();
         }
-
-        function openDialog(divNode){
-
-        	var dlgedit = $.ligerDialog.open({
-				width : 350, //宽度
-				height : null,
-				title : "文件上传",
-				target : $(divNode),
-				buttons: [ 
-                           { text: '关闭', onclick: function (i, d) { $("input").ligerHideTip(); d.hide(); }} 
-                          ]
-			});
-        }
-
-
-
         
     </script>
- 	<div id="uploadImageDiv" style="display: none;">
-		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_tpljdz"></iframe> <!---->
-	</div>
+
 </body>
 
 </html>

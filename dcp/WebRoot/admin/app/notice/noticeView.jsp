@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         var config = {"Form":{ 
          fields : [
          {
-	         display:"栏目名称",
+	         display:"公告标题",
 	         name:"c_bt",
 	         value:"<s:property value='notice.c_bt'/>",
 	         newline:true,
@@ -56,19 +56,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         group:"基本信息",
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },
-        {display:"发送人",name:"c_yhid",newline:true,labelWidth:100,width:250,space:30,type:"text",readonly:"readonly",value:"<s:property value='notice.c_tpljdz'/>"},
-        {
-        	 //display:"上传视频",
-        	 value:"选择用户",
-	         name:"sctp",
-	         newline:false,
-	         labelWidth:100,
-	         width:220,space:30, 
-	         type:"button",
-	         cssClass:"l-button",
-	         disabled:"disabled",
-	         onclick : "openDialog('#uploadImageDiv')"
-         },
          {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea", readonly:"readonly",value:"<s:property value='notice.c_nr' escape='false'/>"},
          {name:"n_xh", type:"hidden",value:"<s:property value='notice.n_xh'/>"}
         ]
@@ -77,6 +64,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         var forbidFields = [];
         LG.adujestConfig(config,forbidFields);
 
+        var roleids = '';
+        //当前ID
+        var currentID = '';
+        //是否新增状态
+        var isAddNew = currentID == "" || currentID == "0";
+        //是否查看状态
+        var isView = 0;
+        //是否编辑状态
+        var isEdit = !isAddNew && !isView;
 
         //覆盖本页面grid的loading效果
         LG.overrideGridLoading(); 
@@ -84,7 +80,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         //表单底部按钮 
         LG.setFormDefaultBtn(f_cancel);
 
-      
+        var deptTree = {
+            url :'../handler/tree.ashx?view=CF_Department&idfield=DeptID&textfield=DeptName&pidfield=DeptParentID',
+            checkbox:false,
+            nodeWidth :220
+        };
+
         //创建表单结构
         var mainform = $("#mainform");  
         mainform.ligerForm({ 
@@ -92,21 +93,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          fields : config.Form.fields//,
 		 //toJSON:JSON2.stringify
         });
-     
+
+        $("#RoleID").val(roleids);
+
+        var actionRoot = "";
+        if(isEdit){ 
+            $("#LoginName").attr("readonly", "readonly").removeAttr("validate");
+            mainform.attr("action", actionRoot + "newsUpdate"); 
+        }
+        if (isAddNew) {
+            mainform.attr("action", actionRoot + "newsSave");
+        }
+        else { 
+            LG.loadForm(mainform, { type: 'AjaxMemberManage', method: 'newsQuery', data: { ID: currentID} },f_loaded);
+        }  
+
+        
+          
+        if(!isView) 
+        {
+            //验证
+            jQuery.metadata.setType("attr", "validate"); 
+            LG.validate(mainform);
+        } 
+
 		function f_loaded()
         {
             if(!isView) return; 
             //查看状态，控制不能编辑
             $("input,select,textarea",mainform).attr("readonly", "readonly");
         }
-   
+
+        //<!-- 设置一些默认参数 -->
+		var editor = CKEDITOR.replace( 'c_nr' );
+        CKFinder.setupCKEditor( editor, '/ckfinder/' );
+
+    	//$("c_tpljdz").setDisabled();
+        
         function f_cancel()
         {
             parent.dialog_hidden();
         }
-
+        
     </script>
- 
+
 </body>
 
 </html>

@@ -103,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   if (editingrow == null)
                   {
                 	  //top.f_addTab(null, '保存信息', '<%=basePath%>admin/app/notice/noticeDetail.jsp');
-			  dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/notice/noticeDetail.jsp', 
+			  		  dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/notice/noticeDetail.jsp', 
                            	height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
 					  });
                   } else
@@ -114,15 +114,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               case "view":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  top.f_addTab(null, '查看信息', '<%=basePath%>noticeView?notice.n_xh=' + selected.n_xh);
+                  dialog = $.ligerDialog.open({ url: '<%=basePath%>noticeView?notice.n_xh=' + selected.n_xh, 
+                     	height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+				});
                   break;
               case "modify":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
                   //top.f_addTab(null, '修改栏目信息', '<%=basePath%>noticeUpdate?notice.n_xh=' + selected.n_xh);
-			dialog = $.ligerDialog.open({ url: '<%=basePath%>noticeUpdate?notice.n_xh=' + selected.n_xh, 
+					dialog = $.ligerDialog.open({ url: '<%=basePath%>noticeUpdate?notice.n_xh=' + selected.n_xh, 
                            	height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
-					  });
+					});
                   /**
                   if (editingrow == null)
                   {
