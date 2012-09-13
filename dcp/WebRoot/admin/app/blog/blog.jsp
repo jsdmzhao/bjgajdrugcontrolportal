@@ -80,7 +80,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             text: '修改',
             img:'<%=basePath%>liger/lib/icons/silkicons/application_edit.png',
             id: 'modify'
-        },{line:true},{
+        },{
+        	  click:toolbarBtnItemClick,
+    	      text:'查看',
+    	      img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
+    	      id:'view'    	
+ 	   },{line:true},{
             click: toolbarBtnItemClick,
             text: '删除',
             img:'<%=basePath%>liger/lib/icons/silkicons/delete.png',
@@ -103,7 +108,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               case "view":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  top.f_addTab(null, '查看日志信息', '<%=basePath%>blogUpdate?news.n_xh=' + selected.n_xh);
+                  dialog = $.ligerDialog.open({ url: '<%=basePath%>blogView?blog.n_xh=' + selected.n_xh,
+              		  title: '日志信息',	 
+                      height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+			  });
                   break;
               case "modify":
                   var selected = grid.getSelected();

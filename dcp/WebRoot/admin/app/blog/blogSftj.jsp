@@ -67,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      	var items=[{
   	        	  click:toolbarBtnItemClick,
         	      text:'查看',
-        	      img:'<%=basePath%>liger/lib/icons/silkicons/page_save.png',
+        	      img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
         	      id:'view'    	
      	   },{
             click:toolbarBtnItemClick,
@@ -91,7 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               case "view":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  dialog = $.ligerDialog.open({ url: '<%=basePath%>blogUpdate?blog.n_xh=' + selected.n_xh,
+                  dialog = $.ligerDialog.open({ url: '<%=basePath%>blogView?blog.n_xh=' + selected.n_xh,
                   		  title: '日志信息',	 
                           height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
 				  });
