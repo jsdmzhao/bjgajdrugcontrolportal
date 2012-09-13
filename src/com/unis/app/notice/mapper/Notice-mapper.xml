@@ -45,9 +45,7 @@
 	
 	<update id="updateNotice" parameterType="Notice">
 		UPDATE B_GONGGAO
-		   SET  C_BT   =	#{c_bt,jdbcType=VARCHAR},
-				C_YHID   =	#{c_yhid,jdbcType=VARCHAR}, 
-				C_YHZID   =	#{c_yhzid,jdbcType=VARCHAR}, 							   							
+		   SET  C_BT   =	#{c_bt,jdbcType=VARCHAR},							   							
 				C_NR     =	#{c_nr,jdbcType=CLOB,handler=ClobTypeHandler}							
 		WHERE N_XH = #{n_xh}
 	</update>

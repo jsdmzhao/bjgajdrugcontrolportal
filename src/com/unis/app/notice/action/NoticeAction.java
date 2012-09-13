@@ -32,20 +32,13 @@ public class NoticeAction {
 		HttpSession session = request.getSession();
 		String c_yhid = session.getAttribute("userId")+"";
 		String c_yhzid = session.getAttribute("cYhz")+"";
+		sqlParamMap.put("c_yhid", c_yhid);
+		sqlParamMap.put("c_yhzid", c_yhzid);
 		if(StringUtils.isNotEmpty(sqlParamMap.get("n_xh"))){
 			noticeService.update("NoticeMapper.updateNotice", sqlParamMap);
 		} else {
 			noticeService.insert("NoticeMapper.insertNotice", sqlParamMap);
 		}
-		return Globals.SUCCESS;
-	}
-	
-	public String noticeOperate(String operateType, String value, String n_xh){
-		Map<String, Object> sqlParamMap = new HashMap<String, Object>();
-		sqlParamMap.put("operateType", operateType);
-		sqlParamMap.put("value", value);
-		sqlParamMap.put("n_xh", n_xh);
-	    noticeService.update("NoticeMapper.operateNotice", sqlParamMap);
 		return Globals.SUCCESS;
 	}
 	

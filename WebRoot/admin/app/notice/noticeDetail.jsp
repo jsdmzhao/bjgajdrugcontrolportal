@@ -54,20 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         group:"基本信息",
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },
-        {display:"发送人",name:"c_yhid",newline:true,labelWidth:100,width:250,space:30,type:"text",readonly:"readonly"},
-        {
-        	 //display:"上传视频",
-        	 value:"选择用户",
-	         name:"sctp",
-	         newline:false,
-	         labelWidth:100,
-	         width:220,space:30, 
-	         type:"button",
-	         cssClass:"l-button",
-	         onclick : "openDialog('#uploadImageDiv')"
-         },
-         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea"},
-         {name:"c_yhzid", labelWidth:100,width:30,space:30,type:"hidden"}
+         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea"}
         ]
  }};
 
