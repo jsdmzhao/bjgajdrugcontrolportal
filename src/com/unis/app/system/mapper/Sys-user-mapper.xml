@@ -8,6 +8,7 @@
 		<result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
 		<result property="userPassword" column="USER_PASSWORD" jdbcType="VARCHAR"/>
 		<result property="userLock" column="USER_LOCK" jdbcType="CHAR"/>
+		<result property="userLockName" column="USER_LOCK_NAME" jdbcType="CHAR"/>
 		
 		<result property="roleId" column="ROLE_ID" jdbcType="DECIMAL"/>
 		<result property="roleName" column="ROLE_NAME" jdbcType="VARCHAR"/>
@@ -19,7 +20,8 @@
 					base.USER_ID,
 					base.USER_NAME,
 					base.USER_PASSWORD,
-					base.USER_LOCK
+					base.USER_LOCK,
+					case base.USER_LOCK when '1' then '已锁定'  else '未锁定' end as USER_LOCK_NAME,
 				 from SYS_USER base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
@@ -38,6 +40,7 @@
           base.USER_NAME,
           base.USER_PASSWORD,
           base.USER_LOCK,
+          case base.USER_LOCK when '1' then '已锁定'  else '未锁定' end as USER_LOCK_NAME,
           role.role_id ROLE_ID,
           role.role_name ROLE_NAME
          from SYS_USER base,SYS_GROUP_ROLE gr ,SYS_ROLE role 
