@@ -81,5 +81,5 @@ public class User {
 	public void setC_jj(String cJj) {
 		c_jj = cJj;
 	}
-	
+	 
 }
