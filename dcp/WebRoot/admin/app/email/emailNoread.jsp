@@ -70,6 +70,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             text: '查看',
             img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
             id: 'view'
+       },{line:true},{
+           click: toolbarBtnItemClick,
+           text: '签收',
+           img:'<%=basePath%>liger/lib/icons/silkicons/application_form_edit.png',
+           id: 'view'
+       },{line:true},{
+          click: toolbarBtnItemClick,
+          text: '放入垃圾箱',
+          img:'<%=basePath%>liger/lib/icons/silkicons/delete.png',
+          id: 'view'
        },{line:true}];
 	grid.toolbarManager.set('items', items);
 

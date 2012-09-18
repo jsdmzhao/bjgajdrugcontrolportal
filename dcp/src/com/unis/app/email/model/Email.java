@@ -20,7 +20,7 @@ public class Email {
 	
 	private String c_sfbc;
 	
-	private String c_zt;  //1或者空为默认、发送，2是保存草稿箱，0是删除, recieve中的默认是1，2是已签收，0是删除
+	private String c_zt;  //1或者空为默认、发送，2是保存草稿箱，0是放入垃圾箱, recieve中的默认是1，2是已签收，0是放入垃圾箱
 	
 	private String c_fj;
 	

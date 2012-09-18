@@ -210,7 +210,7 @@
 	
 	<update id="operateRecieveEmail" parameterType="hashmap">
 		UPDATE B_NBYJ_RECIEVE
-			SET C_ZT = #{value}
+			SET C_ZT = #{c_zt}
 		WHERE N_NBYJXH = #{n_xh}
 		 	AND C_JSR = #{c_yhid}
 	</update>

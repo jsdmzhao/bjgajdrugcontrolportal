@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>内部消息</title> 
+    <title>内部邮件</title> 
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
     <script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
@@ -65,17 +65,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       //加载toolbar
       LG.loadToolbar(grid, toolbarBtnItemClick);
 
-     	var items=[
-     	{
-            click: toolbarBtnItemClick,
-            text: '删除',
-            img:'<%=basePath%>liger/lib/icons/silkicons/delete.png',
-            id: 'delete'
-        },{line:true},{
+     	var items=[{
             click: toolbarBtnItemClick,
             text: '查看',
             img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
             id: 'view'
+       },{line:true},{line:true},{
+           click: toolbarBtnItemClick,
+           text: '签收',
+           img:'<%=basePath%>liger/lib/icons/silkicons/application_form_edit.png',
+           id: 'qsyj'
+       },{line:true},{
+          click: toolbarBtnItemClick,
+          text: '放入垃圾箱',
+          img:'<%=basePath%>liger/lib/icons/silkicons/delete.png',
+          id: 'hsyj'
        },{line:true}];
 	grid.toolbarManager.set('items', items);
 
@@ -93,11 +97,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          	title:'内部邮件'
 				  });
                   break;
-              case "delete":
-                  jQuery.ligerDialog.confirm('确定删除吗?', function (confirm) {
-                      if (confirm)
-                          f_delete();
-                  });
+              case "qsyj":
+            	  f_operator('2');
+                  break;
+
+              case "hsyj":
+                  //jQuery.ligerDialog.confirm('确定放入回收站吗?', function (confirm) {
+                      //if (confirm)
+                  f_operator('0');
+                  //});
                   break;
           }
       }
@@ -111,20 +119,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       }
 
       
-      function f_delete() {
+      function f_operator(value) {
           var selected = grid.getSelected();
-          
           if (selected) {
-        	  grid.deleteRow(selected);
-        	  EmailAction.emailDelete(selected.n_xh, function (result){
+        	  
+        	  EmailAction.emailRecieveOperator(selected.n_xh, value, function (result){
              	   if(result == 'success'){
-             		  LG.showSuccess('删除成功');
+             		  LG.showSuccess('操作成功');
+             		  if(value = '0'){
+	               		  grid.deleteRow(selected);
+	               	  } else {
+	               		  loadGrid();
+	               	  }
 	           	   } else {
-	           		  LG.showError('删除失败');
+	           		  LG.showError('操作失败');
 	           	   }
                });
-          }
-          else {
+          } else {
               LG.tip('请选择行!');
           }
       }

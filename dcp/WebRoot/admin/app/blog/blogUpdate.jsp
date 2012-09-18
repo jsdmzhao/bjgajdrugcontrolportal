@@ -39,6 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body style="padding-bottom:31px;">
     <form id="mainform"  method="post"></form> 
+    <div id="nr" style="display: none;"><s:property value="blog.c_nr"/></div>
     <script type="text/javascript"> 
        var config = {"Form":{ 
          fields : [
@@ -48,8 +49,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           group:"基本信息",
           groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },
-         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:640,space:30,type:"textarea",value :'<s:property value="blog.c_nr"/>',},
-		  {name:"n_xh",newline:true,labelWidth:100,width:540,space:30,type:"hidden",value :'<s:property value="blog.n_xh"/>'}
+         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:640,space:30,type:"textarea",value:$('#nr').html()},
+		 {name:"n_xh",newline:true,labelWidth:100,width:540,space:30,type:"hidden",value :'<s:property value="blog.n_xh"/>'}
         ]
 	 }};
       

@@ -103,43 +103,21 @@ String newsType = request.getParameter("newsType");
               case "修改":
              	  var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  if (editingrow == null) {
-                	  dialog = $.ligerDialog.open({ url: '<%=basePath%>newsUpdate?news.n_xh=' + selected.n_xh, 
-                          height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
-					  });
-                      //stop.f_addTab(null, '修改新闻信息', '<!%=basePath%>newsUpdate?news.n_xh=' + selected.n_xh);
-                  } else {
-                      LG.tip('请先提交或取消修改');
-                  }
-                  break;
-              case "保存":
-                  if (editingrow != null)
-                  {
-                      grid.endEdit(editingrow);
-                  } else
-                  {
-                      LG.tip('现在不在编辑状态!');
-                  }
-                  break;
-              case "取消":
-                  if (editingrow != null)
-                  {
-                      grid.cancelEdit(editingrow); 
-                  } else
-                  {
-                      LG.tip('现在不在编辑状态!');
-                  }
+                  
+               	  dialog = $.ligerDialog.open({ url: '<%=basePath%>newsUpdate?news.n_xh=' + selected.n_xh, 
+                         height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+				  });
+
                   break;
               case "查看":
             	  var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  if (editingrow == null ) {
-                      top.f_addTab(null, '查看新闻信息', '<%=basePath%>newsView?news.n_xh=' + selected.n_xh);
-                  } else {
-                      LG.tip('现在不在编辑状态!');
-                  }
+                  dialog = $.ligerDialog.open({ url: '<%=basePath%>newsView?news.n_xh=' + selected.n_xh, 
+                      height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+				  });
                   break;
               case "删除": 
+            	  if (!selected) { LG.tip('请选择行!'); return }
                   $.ligerDialog.confirm('确定删除吗?', function (confirm) {
                       if (confirm)
                           f_delete();

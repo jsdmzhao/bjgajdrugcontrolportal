@@ -26,7 +26,6 @@ public class EmailAction {
 	@Autowired
 	private AbsServiceAdapter<Integer> emailService = null;
 	
-	
 	public String emailSave(Map sqlParamMap, HttpServletRequest request){
 		
 		if(sqlParamMap.get("n_xh") != null && !"".equals(sqlParamMap.get("n_xh")) ){
@@ -131,12 +130,6 @@ public class EmailAction {
 			}
 		}
 		
-		
-		
-		
-		
-		
-		
 		//emailService.insert("EmailMapper.insertEmailRecieve", sqlParamMap);
 		
 		/**
@@ -155,6 +148,20 @@ public class EmailAction {
 		sqlParamMap.put("value", value);
 		sqlParamMap.put("n_xh", n_xh);
 	    emailService.update("EmailMapper.operateEmail", sqlParamMap);
+		return Globals.SUCCESS;
+	}
+	
+	public String emailRecieveOperator(String value, String n_xh, HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		String c_yhid = session.getAttribute("userId")+"";
+		Map<String, Object> sqlParamMap = new HashMap<String, Object>();
+		//sqlParamMap.put("operateType", operateType);
+		
+		sqlParamMap.put("c_zt", value);
+		sqlParamMap.put("n_xh", n_xh);
+		sqlParamMap.put("c_yhid", c_yhid);
+	    emailService.update("EmailMapper.operateRecieveEmail", sqlParamMap);
 		return Globals.SUCCESS;
 	}
 	

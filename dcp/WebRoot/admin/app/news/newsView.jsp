@@ -38,6 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body style="padding-bottom:31px;">
     <form id="mainform"  method="post"></form> 
+    <div id="nr" style="display: none;"><s:property value="news.c_nr"/></div>
     <script type="text/javascript"> 
     
         var config = {"Form":{ 
@@ -111,7 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          {display:"发布时间",name:"d_fbsj",newline:false,labelWidth:100,
          width:250,space:30,type:"text",value: "<s:property value='news.d_fbsj.substring(0,19)'/>",
          onclick:"WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" },
-         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea",value: "<s:property value='news.c_nr'/>" },
+         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea",value:$('#nr').html() },
          {name:"n_xh", type:"hidden",value:"<s:property value='news.n_xh'/>"},
          {name:"c_sfzd", type:"hidden",value:"<s:property value='news.c_sfzd'/>"},
          {name:"c_sfgl", type:"hidden",value:"<s:property value='news.c_sfgl'/>"},

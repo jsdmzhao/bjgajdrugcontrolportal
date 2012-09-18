@@ -34,7 +34,6 @@
 		  FROM B_LANMU
 		 START WITH C_SJLMDM = '0000'
 		CONNECT BY PRIOR C_LMDM = C_SJLMDM
-
 	</select>
 	
 	<delete id="deleteColumn" parameterType="int">

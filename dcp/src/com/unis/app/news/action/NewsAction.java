@@ -17,7 +17,6 @@ import com.unis.core.commons.Combox;
 import com.unis.core.service.AbsServiceAdapter;
 import com.unis.core.util.Globals;
 import com.unis.app.news.model.News;
-import com.unis.app.website.action.WebsiteAction;
 import com.unis.app.website.model.Website;
 
 @Controller
@@ -25,7 +24,6 @@ import com.unis.app.website.model.Website;
 public class NewsAction {
 
 	private News news;
-	
 	
 	private Map<String, Object> resMap; 
 	public Map<String, Object> getResMap() {
