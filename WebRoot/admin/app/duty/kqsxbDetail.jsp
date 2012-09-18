@@ -56,7 +56,8 @@ if(userId==null){
          {display:"人员",name:"userName",newline:false,labelWidth:100,width:200,space:30,type:"smarttext"},
          {name:"userId",type:"hidden"},        
          {display:"登记时间",name:"dDj",newline:true,labelWidth:100,width:200,space:30,type:"datetime"},
-        {display:"状态",name:"cZtName",newline:false,labelWidth:100,width:200,space:30,type:"smarttext"}
+         {display:"状态",name:"cZtName",newline:false,labelWidth:100,width:200,space:30,type:"smarttext"},
+         {name:"cZt",type:"hidden"}
         ]
  }};
 
