@@ -41,16 +41,18 @@ if(userId==null){
 	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/interface/KqCcjlSvc.js'></script>
+  	
+  		<script type='text/javascript' src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>
 
 </head> 
 <body style="padding-bottom:31px;">
     <form id="mform"  method="post"></form> 
     <script type="text/javascript"> 
-	    
+    var box1;
         var config = {"Form":{ 
          fields : [
                    {name:"nXh",type:"hidden",value:'<%=nXh %>'},
-                   {display:"人员",name:"userId",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+                   {display:"人员",name:"userId",newline:true,labelWidth:100,width:200,space:30,type:"smarttext"},
                    {display:"出差城市",name:"cCccs",newline:false,labelWidth:100,width:200,space:30,type:"text"},
                    {display:"原因",name:"cYy",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
                    {display:"开始时间",name:"dKssj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
@@ -161,6 +163,7 @@ if(userId==null){
         function f_save() {
 
         	var formMap = DWRUtil.getValues("mform"); 
+        	formMap["userId"] = box1.getValue();
 			if(isAddNew){
         	KqCcjlSvc.save(formMap,function (rdata){
         		if (rdata) {
@@ -204,6 +207,17 @@ if(userId==null){
         {
             parent.dialog_hidden();
         }
+        UserInfoSvc.choose(function(rdata){
+  			if(rdata != null){
+
+  	            box1 = $("#userId").ligerComboBox({
+  	            width : 700, 
+  	            selectBoxWidth: 698,
+  	            selectBoxHeight: 240, valueField: 'text', treeLeafOnly: false,
+  	            tree: { data:rdata}
+  	        }); 
+			}
+		});
     </script>
   
 </body>
