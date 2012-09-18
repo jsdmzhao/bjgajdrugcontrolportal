@@ -41,12 +41,12 @@ if(userId==null){
 	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/interface/KqSxbSvc.js'></script>
-
+	<script type='text/javascript' src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>
 </head> 
 <body style="padding-bottom:31px;">
     <form id="mform"  method="post"></form> 
     <script type="text/javascript"> 
-	    
+    var box1;
         var config = {"Form":{ 
          fields : [
          {name:"nXh",type:"hidden",value:'<%=nXh %>'},
@@ -157,6 +157,7 @@ if(userId==null){
 
         function f_save() {
 
+        	formMap["userId"] = box1.getValue();
         	var formMap = DWRUtil.getValues("mform"); 
 			if(isAddNew){
         	KqSxbSvc.save(formMap,function (rdata){
@@ -201,6 +202,17 @@ if(userId==null){
         {
             parent.dialog_hidden();
         }
+        UserInfoSvc.choose(function(rdata){
+  			if(rdata != null){
+
+  	            box1 = $("#userId").ligerComboBox({
+  	            width : 700, 
+  	            selectBoxWidth: 698,
+  	            selectBoxHeight: 240, valueField: 'text', treeLeafOnly: false,
+  	            tree: { data:rdata}
+  	        }); 
+			}
+		});
     </script>
   
 </body>
