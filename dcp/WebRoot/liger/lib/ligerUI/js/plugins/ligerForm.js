@@ -63,6 +63,10 @@
                 case "date":
                     jinput.ligerDateEditor(inputOptions);
                     break;
+                case "datetime":
+                	inputOptions = {showTime:true ,format:"yyyy-MM-dd hh:mm:ss"};
+                    jinput.ligerDateEditor(inputOptions);
+                    break;
                 case "float":
                 case "number":
                     inputOptions.number = true;
@@ -256,6 +260,7 @@
             var value = '';
             var readonly = '';
             var disabled = '';
+            var checked='';
             if((typeof(field.value)||'') != 'undefined' && (field.value||'') != 'undefined'){
             	value = field.value;
             }
@@ -264,6 +269,10 @@
             }
             if((typeof(field.disabled)||'') != 'undefined' && (field.disabled||'') != 'undefined'){
             	disabled = field.disabled;
+            }
+            
+            if((typeof(field.checked)||'') != 'undefined' && (field.checked||'') != 'undefined'){
+            	checked = field.checked;
             }
             var out = [];
             if (field.comboboxName && field.type == "select")
@@ -288,6 +297,11 @@
             }
             else if (field.type == "radio")
             {
+            	if(checked == true){ 
+            		   out.push('<input type="radio"checked="checked" onclick="'+field.onclick+'" ');
+            	}else {
+            		   out.push('<input type="radio" onclick="'+field.onclick+'" ');
+            	}
                 out.push('<input type="radio" onclick="'+field.onclick+'" ');
             }
             else if (field.type == "password")

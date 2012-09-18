@@ -46,14 +46,17 @@ if(userId==null){
 <body style="padding-bottom:31px;">
     <form id="mform"  method="post"></form> 
     <script type="text/javascript"> 
-    var box1;
+    var ry;
+    var zt;
+    var lx;
         var config = {"Form":{ 
          fields : [
          {name:"nXh",type:"hidden",value:'<%=nXh %>'},
-         {display:"类型",name:"nLx",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"用户ID",name:"userId",newline:false,labelWidth:100,width:200,space:30,type:"smarttext"},
-         {display:"登记时间",name:"dDj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
-         {display:"状态",name:"cZt",newline:false,labelWidth:100,width:200,space:30,type:"text"}
+         {display:"类型",name:"nLxName",newline:true,labelWidth:100,width:200,space:30,type:"smarttext"},
+         {display:"人员",name:"userName",newline:false,labelWidth:100,width:200,space:30,type:"smarttext"},
+         {name:"userId",type:"hidden"},        
+         {display:"登记时间",name:"dDj",newline:true,labelWidth:100,width:200,space:30,type:"datetime"},
+        {display:"状态",name:"cZtName",newline:false,labelWidth:100,width:200,space:30,type:"smarttext"}
         ]
  }};
 
@@ -156,9 +159,14 @@ if(userId==null){
         }
 
         function f_save() {
-
-        	formMap["userId"] = box1.getValue();
+        	
+        	
+        	
         	var formMap = DWRUtil.getValues("mform"); 
+        	
+        	formMap["userId"] = ry.getValue();
+        	formMap["cZt"] = zt.getValue();
+        	formMap["nLx"]=lx.getValue();
 			if(isAddNew){
         	KqSxbSvc.save(formMap,function (rdata){
         		if (rdata) {
@@ -183,7 +191,6 @@ if(userId==null){
     			});
         		
         	}
-			
         	
         	/**
             LG.submitForm(mform, function (data) {
@@ -202,17 +209,31 @@ if(userId==null){
         {
             parent.dialog_hidden();
         }
+        
+        
         UserInfoSvc.choose(function(rdata){
   			if(rdata != null){
-
-  	            box1 = $("#userId").ligerComboBox({
-  	            width : 700, 
-  	            selectBoxWidth: 698,
-  	            selectBoxHeight: 240, valueField: 'text', treeLeafOnly: false,
-  	            tree: { data:rdata}
+  	            	ry=$("#userName").ligerComboBox({
+  	  	                width: 180,
+  	  	                selectBoxWidth: 200,
+  	  	                selectBoxHeight: 200, valueField: 'value',treeLeafOnly:false,
+  	  	                tree: { data:rdata, checkbox: false }
   	        }); 
 			}
 		});
+        
+       zt= $("#cZtName").ligerComboBox({  
+            data: [
+                { text: '有效', id: '1' },
+                { text: '无效', id: '3' }
+            ]
+        }); 
+       lx= $("#nLxName").ligerComboBox({  
+           data: [
+               { text: '上班', id: '1' },
+               { text: '下班', id: '0' }
+           ]
+       }); 
     </script>
   
 </body>

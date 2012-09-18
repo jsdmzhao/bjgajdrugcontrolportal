@@ -51,7 +51,7 @@ if(userId==null){
         var config = {"Form":{ 
          fields : [
                    {name:"nXh",type:"hidden",value:'<%=nXh %>'},
-                   {display:"用户ID",name:"userId",newline:true,labelWidth:100,width:200,space:30,type:"smarttext"},
+                   {display:"人员",name:"userId",newline:true,labelWidth:100,width:200,space:30,type:"smarttext"},
                    {display:"值班时间",name:"dSj",newline:false,labelWidth:100,width:200,space:30,type:"date"},
                    {display:"备注",name:"cBz",newline:true,labelWidth:100,width:500,space:30,type:"textarea"}
                    ]

@@ -129,6 +129,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             { icon: 'images/3DSMAX.png', title: '值班表', url: '<%=basePath%>admin/app/duty/kqzb.jsp?userId=<%=session.getAttribute("userId")%>' },
             { icon: 'images/Program Files Folder.png', title: '我的资料', url: '<%=basePath%>admin/app/userinfo/userinfoDetail.jsp?userId=<%=session.getAttribute("userId")%>'},
             { icon: 'images/Program Files Folder.png', title: '常用网址', url: '../temp/website.jsp' },
+            
+            { icon: 'images/Alien Folder.png', title: '上班打卡', url: '../temp/sxbdk.jsp?id=1' },
+           
+            { icon: 'images/Alien Folder.png', title: '下班打卡', url: '../temp/sxbdk.jsp?id=0' },
+            
             { icon: 'images/Program Files Folder.png', title: '桌面管理', url: '<%=basePath%>admin/app/desktop/wdzm.jsp' }
         ];
              

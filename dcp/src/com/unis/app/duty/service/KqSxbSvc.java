@@ -23,6 +23,10 @@ public class KqSxbSvc  {
 	public Object save(Map p) throws SQLException {
 		return kqSxbDao.saveInfo(p);
 	}
+	
+	public Object dkInfo(Map p) throws SQLException {
+		return kqSxbDao.dkInfo(p);
+	}
 
 	public Object saveAll(Map p) throws SQLException {
 		return kqSxbDao.saveAllInfo(p);
