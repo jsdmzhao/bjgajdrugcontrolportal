@@ -26,7 +26,6 @@
        C_SHJG
 	  FROM B_XINWEN
 	 	 WHERE C_LM = #{c_lm}
-	 	 AND C_YHZID = #{c_yhzid}
 	  <if test="c_sfsh != null and c_sfsh != ''">
 	 	 AND C_SFSH = #{c_sfsh}
 	  </if>

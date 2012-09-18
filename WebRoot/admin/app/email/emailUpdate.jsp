@@ -40,6 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body style="padding-bottom:31px;">
     <form id="mainform"  method="post"></form> 
+    <div id="nr" style="display: none;"><s:property value="email.c_nr"/></div>
     <script type="text/javascript"> 
     	var box1;
     	var box2;
@@ -76,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	         cssClass:"l-button",
   	         onclick : "openDialog('#uploadImageDiv')"
            },
-         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea",value:"<s:property value='email.c_nr'/>"},
+         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea",value:$('#nr').html()},
          {name:"c_jsrValue",type:"hidden",value:"<s:property value='email.c_jsr'/>"},
          {name:"c_csrValue",type:"hidden",value:"<s:property value='email.c_csr'/>"},
          {name:"c_msrValue",type:"hidden",value:"<s:property value='email.c_msr'/>"},

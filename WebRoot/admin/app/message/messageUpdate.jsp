@@ -39,13 +39,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body style="padding-bottom:31px;">
     <form id="mainform"  method="post"></form> 
+    <div id="nr" style="display: none;"><s:property value="message.c_nr"/></div>
     <script type="text/javascript"> 
     
     
         var config = {"Form":{ 
          fields : [
          {
-	         display:"栏目名称",
+	         display:"消息标题",
 	         name:"c_bt",
 	         value:"<s:property value='message.c_bt'/>",
 	         newline:true,
@@ -58,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          },
          {display:"收信人",name:"c_jsr",newline:true,labelWidth:100,width:700,space:30,
              type:"text",value:"<s:property value='message.c_jsr'/>"},
-         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea", readonly:"readonly",value:"<s:property value='message.c_nr' escape='false'/>"},
+         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea", readonly:"readonly",value:$('#nr').html()},
          {name:"n_xh", type:"hidden",value:"<s:property value='message.n_xh'/>"}
         ]
  }};

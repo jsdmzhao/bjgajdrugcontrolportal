@@ -38,8 +38,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body style="padding-bottom:31px;">
     <form id="mainform"  method="post"></form> 
+    <div id="nr" style="display: none;"><s:property value="news.c_nr"/></div>
     <script type="text/javascript"> 
-    
         var config = {"Form":{ 
          fields : [
          {
@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              labelWidth:100,width:30,space:30,type:"checkbox"
          },
          {display:"图片名称",name:"c_tpljdz",newline:false,labelWidth:100,width:250,
-          space:30,type:"text",value: "<s:property value='news.c_tpljdz'/>" ,readonly:'readonly'},
+          space:30,type:"text",value: "<s:property value='news.c_tpljdz'/>" ,readonly:"readonly"},
          {
         	 //display:"上传图片",
    	         name:"sctp",
@@ -109,9 +109,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           width:300,space:30,type:"text",
           value: "<s:property value='news.c_lj'/>" },
          {display:"发布时间",name:"d_fbsj",newline:false,labelWidth:100,
-         width:250,space:30,type:"text",value: "<s:property value='news.d_fbsj.substring(0,19)'/>",
+         width:250,space:30,type:"text",value: "<s:property value='news.d_fbsj'/>",
          onclick:"WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" },
-         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea",value: "<s:property value='news.c_nr'/>" },
+         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea",value:$('#nr').html() },
          {name:"n_xh", type:"hidden",value:"<s:property value='news.n_xh'/>"},
          {name:"c_sfzd", type:"hidden",value:"<s:property value='news.c_sfzd'/>"},
          {name:"c_sfgl", type:"hidden",value:"<s:property value='news.c_sfgl'/>"},
@@ -184,9 +184,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $("input,select,textarea",mainform).attr("readonly", "readonly");
         }
         
-        var editor = CKEDITOR.replace( 'c_nr' );
+		//$('#c_nr').html($('nr').val());
+        var editor = CKEDITOR.replace( 'c_nr');
     	CKFinder.setupCKEditor( editor, '/ckfinder/' );
-        
+    	//editor.setData("<font></font>");
+    	//$('c_nr')
+    	
+
+     
         function f_save() {
 
         	var formMap = DWRUtil.getValues("mainform"); 
