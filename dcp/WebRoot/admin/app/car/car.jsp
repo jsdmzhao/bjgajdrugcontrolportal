@@ -74,26 +74,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       LG.loadToolbar(grid, toolbarBtnItemClick);
 
      	var items=[{
-  	        	  click:toolbarBtnItemClick,
-        	      text:'保存',
-        	      img:'<%=basePath%>liger/lib/icons/silkicons/page_save.png',
-        	      id:'save'    	
-     	   },{
             click:toolbarBtnItemClick,
             text:'新增',
             img:'<%=basePath%>liger/lib/icons/silkicons/add.png',
             id:'add'
-        },{line:true},{
+        }/**,{line:true} ,{
+  	        	  click:toolbarBtnItemClick,
+        	      text:'保存',
+        	      img:'<!%=basePath%>liger/lib/icons/silkicons/page_save.png',
+        	      id:'save'    	
+     	 },{
             click: toolbarBtnItemClick,
             text: '修改',
-            img:'<%=basePath%>liger/lib/icons/silkicons/application_edit.png',
+            img:'<!%=basePath%>liger/lib/icons/silkicons/application_edit.png',
             id: 'modify'
         },{line:true},{
             click: toolbarBtnItemClick,
             text: '删除',
-            img:'<%=basePath%>liger/lib/icons/silkicons/delete.png',
+            img:'<!%=basePath%>liger/lib/icons/silkicons/delete.png',
             id: 'delete'
-        },{line:true}];
+        },{line:true}
+        **/
+        ];
         
 	grid.toolbarManager.set('items', items);
 
