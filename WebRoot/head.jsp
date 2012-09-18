@@ -2,6 +2,8 @@
 <%
 String paths = request.getContextPath();
 String basePaths = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+paths+"/";
+
+session.setAttribute("userId","10000");
 %>
 <link rel="stylesheet" type="text/css" href="<%=basePaths%>/css/layout.css" />
 		<link rel="stylesheet" type="text/css" href="<%=basePaths%>/css/index.css" />

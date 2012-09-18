@@ -55,7 +55,7 @@ if(nLx==null){
          fields : [
          {name:"nXh",type:"hidden",value:'<%=nXh %>'},
          {name:"nLx",type:"hidden",value:'<%=nLx %>'},
-         {display:"用户ID",name:"userId",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"用户ID",name:"userId",newline:true,labelWidth:100,width:200,space:30,type:"smarttext"},
          {display:"原因",name:"cYy",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
          {display:"开始时间",name:"dKssj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
          {display:"结束时间",name:"dJssj",newline:false,labelWidth:100,width:200,space:30,type:"date"},
