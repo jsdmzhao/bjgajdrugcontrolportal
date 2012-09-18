@@ -51,7 +51,7 @@ if(userId==null){
          fields : [
          {name:"nXh",type:"hidden",value:'<%=nXh %>'},
          {display:"类型",name:"nLx",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"用户ID",name:"userId",newline:false,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"用户ID",name:"userId",newline:false,labelWidth:100,width:200,space:30,type:"smarttext"},
          {display:"登记时间",name:"dDj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
          {display:"状态",name:"cZt",newline:false,labelWidth:100,width:200,space:30,type:"text"}
         ]

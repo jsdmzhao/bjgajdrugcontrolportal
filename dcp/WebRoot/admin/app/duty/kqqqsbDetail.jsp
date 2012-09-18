@@ -51,7 +51,7 @@ if(userId==null){
         var config = {"Form":{ 
          fields : [
                    {name:"nXh",type:"hidden",value:'<%=nXh %>'},
-                   {display:"用户ID",name:"userId",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+                   {display:"用户ID",name:"userId",newline:true,labelWidth:100,width:200,space:30,type:"smarttext"},
                    {display:"日期",name:"dRq",newline:true,labelWidth:100,width:200,space:30,type:"date"},
                    {display:"事件",name:"cSj",newline:false,labelWidth:100,width:200,space:30,type:"text"},
                    {display:"填写原因",name:"cTxyy",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
