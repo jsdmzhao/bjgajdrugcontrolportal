@@ -6,9 +6,10 @@
 	<resultMap id="Result"  type="java.util.Map">
 	     	<result property="nXh" column="N_XH" jdbcType="DECIMAL"/>
 			<result property="userId" column="USER_ID" jdbcType="DECIMAL"/>
-			<result property="nLx" column="N_LX" jdbcType="VARCHAR"/>
+			<result property="nLxName" column="N_LX_NAME" jdbcType="VARCHAR"/>
 			<result property="dDj" column="D_DJ" jdbcType="VARCHAR"/>
 			<result property="cZt" column="C_ZT" jdbcType="VARCHAR"/>
+			<result property="cZtName" column="C_ZT_NAME" jdbcType="VARCHAR"/>
 		<result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
 		
 	</resultMap>
@@ -19,8 +20,10 @@
 					base.N_XH,
 					base.USER_ID,
 					base.N_LX,
-					to_char(base.D_DJ,'YYYY-MM-DD')  D_DJ,
+					case base.N_LX when 1 then '上班'  else '下班' end as N_LX_NAME, 
+					to_char(base.D_DJ,'YYYY-MM-DD HH24:mi:ss')  D_DJ,
 					base.C_ZT,
+					case base.C_ZT when '1' then '有效'  else '无效' end as C_ZT_NAME, 
 					FUN_GET_YHMC(USER_ID) USER_NAME
 				 from B_KQ_SXB base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
@@ -41,8 +44,10 @@
 					base.N_XH,
 					base.USER_ID,
 					base.N_LX,
-					to_char(base.D_DJ,'YYYY-MM-DD')  D_DJ,
+					case base.N_LX when 1 then '上班'  else '下班' end as N_LX_NAME, 
+					to_char(base.D_DJ,'YYYY-MM-DD HH24:mi:ss')  D_DJ,
 					base.C_ZT,
+					case base.C_ZT when '1' then '有效'  else '无效' end as C_ZT_NAME, 
 					FUN_GET_YHMC(USER_ID) USER_NAME
 				 from B_KQ_SXB base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
@@ -87,8 +92,29 @@
 				<!-- #{n_xh#-->
 			<if test="userId != null and userId !='' ">  ,  #{userId}</if>
 			<if test="nLx != null and nLx !='' ">  ,  #{nLx}</if>
-			<if test="dDj != null and dDj !='' ">  ,  to_date(#{dDj},'YYYY-MM-DD')</if>
+			<if test="dDj != null and dDj !='' ">  ,  to_date(#{dDj},'YYYY-MM-DD HH24:mi:ss')</if>
 			<if test="cZt != null and cZt !='' ">  ,  #{cZt}</if>
+			)
+		<selectKey resultType="string" keyProperty="id" >
+			 <!--SELECT #{nXh# AS ID FROM dual  -->
+			 SELECT  SEQ_KQ_SXB.CURRVAL  AS ID FROM dual 
+		</selectKey>
+	</insert>
+	
+	
+	<insert id="dkInfo" parameterType="java.util.Map" >
+			INSERT INTO B_KQ_SXB(
+				 N_XH
+			<if test="userId != null and userId !='' ">  , USER_ID</if>
+			<if test="nLx != null and nLx !='' ">  ,  N_LX</if>
+			  ,  D_DJ
+			  ,  C_ZT
+			)VALUES(
+				SEQ_KQ_SXB.NEXTVAL 
+				<!-- #{n_xh#-->
+			<if test="userId != null and userId !='' ">  ,  #{userId}</if>
+			<if test="nLx != null and nLx !='' ">  ,  #{nLx}</if>
+			 ,sysdate,1
 			)
 		<selectKey resultType="string" keyProperty="id" >
 			 <!--SELECT #{nXh# AS ID FROM dual  -->
@@ -107,7 +133,7 @@
 				 SEQ_KQ_SXB.NEXTVAL,  
 				  #{userId},
 			     #{nLx},
-			   to_date(#{dDj},'YYYY-MM-DD'),
+			   to_date(#{dDj},'YYYY-MM-DD HH24:mi:ss'),
 			   #{cZt}
 			)
 		<selectKey resultType="string" keyProperty="id" >
@@ -121,7 +147,7 @@
 			<trim prefix="set" prefixOverrides=","> 
 			<if test="userId != null and userId !='' ">, USER_ID =  #{userId}</if>
 			<if test="nLx != null and nLx !='' ">, N_LX =  #{nLx}</if>
-			<if test="dDj != null and dDj !='' ">, D_DJ = to_date(#{dDj},'YYYY-MM-DD')</if>
+			<if test="dDj != null and dDj !='' ">, D_DJ = to_date(#{dDj},'YYYY-MM-DD HH24:mi:ss')</if>
 			<if test="cZt != null and cZt !='' ">, C_ZT =   #{cZt}</if>
 			</trim>
 			<trim prefix="where" prefixOverrides="and |or">  
@@ -134,7 +160,7 @@
 			update B_KQ_SXB set 
 				 USER_ID =  #{userId}
 			, N_LX =  #{nLx}
-			, D_DJ =  to_date(#{dDj},'YYYY-MM-DD')
+			, D_DJ =  to_date(#{dDj},'YYYY-MM-DD HH24:mi:ss')
 			, C_ZT =   #{cZt}
 			WHERE 
 				N_XH = #{nXh}

@@ -17,6 +17,10 @@ public class KqSxbDao  extends SqlSessionDaoSupport {
 	public Object saveInfo(Map p){
 		return  getSqlSession().insert("KqSxbMapper.saveInfo", p);
 	}
+	
+	public Object dkInfo(Map p){
+		return  getSqlSession().insert("KqSxbMapper.dkInfo", p);
+	}
 
 	public Object saveAllInfo(Map p){
 		return  getSqlSession().insert("KqSxbMapper.saveAllInfo", p);
