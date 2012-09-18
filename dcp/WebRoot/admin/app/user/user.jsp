@@ -72,7 +72,7 @@
          columns: [
          { display: "账号", name: "userName", width: 180, type: "text", align: "left" }, 
          { display: "密码", name: "userPassword", width: 180, type: "text", align: "left" },
-         { display: "状态", name: "userLock", width: 180, type: "text", align: "left" }
+         { display: "状态", name: "userLockName", width: 180, type: "text", align: "left" }
          ]      
 },"Search":null};
 
