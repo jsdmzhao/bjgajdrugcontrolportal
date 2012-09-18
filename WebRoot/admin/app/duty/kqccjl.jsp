@@ -72,7 +72,7 @@
                    { display: "开始时间", name: "dKssj", width: 180, type: "text", align: "left" },
                    { display: "结束时间", name: "dJssj", width: 180, type: "text", align: "left" },
                    { display: "登记时间", name: "dDj", width: 180, type: "text", align: "left" },
-                   { display: "状态", name: "cZt", width: 180, type: "text", align: "left" }
+                   { display: "状态", name: "cZtName", width: 180, type: "text", align: "left" }
          ]      
 },"Search":null};
 

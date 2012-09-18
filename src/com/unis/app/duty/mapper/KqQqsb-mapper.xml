@@ -11,6 +11,7 @@
 			<result property="cTxyy" column="C_TXYY" jdbcType="VARCHAR"/>
 			<result property="dDj" column="D_DJ" jdbcType="VARCHAR"/>
 			<result property="cZt" column="C_ZT" jdbcType="VARCHAR"/>
+			<result property="cZtName" column="C_ZT_NAME" jdbcType="VARCHAR"/>
 		<result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
 		
 	</resultMap>
@@ -25,6 +26,7 @@
 					base.C_TXYY,
 					to_char(base.D_DJ,'YYYY-MM-DD')  D_DJ,
 					base.C_ZT,
+					case base.C_ZT when '1' then '有效'  else '无效' end as C_ZT_NAME, 
 					FUN_GET_YHMC(USER_ID) USER_NAME
 				 from  B_KQ_QQSB base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
@@ -55,6 +57,7 @@
 					base.C_TXYY,
 					to_char(base.D_DJ,'YYYY-MM-DD')  D_DJ,
 					base.C_ZT,
+					case base.C_ZT when '1' then '有效'  else '无效' end as C_ZT_NAME, 
 					FUN_GET_YHMC(USER_ID) USER_NAME
 				 from  B_KQ_QQSB base 
 		 <trim prefix="where" prefixOverrides="and |or"> 

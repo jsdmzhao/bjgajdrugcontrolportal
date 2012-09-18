@@ -71,7 +71,7 @@
                    { display: "事件", name: "cSj", width: 180, type: "text", align: "left" },
                    { display: "填写原因", name: "cTxyy", width: 180, type: "text", align: "left" },
                    { display: "登记时间", name: "dDj", width: 180, type: "text", align: "left" },
-                   { display: "状态", name: "cZt", width: 180, type: "text", align: "left" }
+                   { display: "状态", name: "cZtName", width: 180, type: "text", align: "left" }
          ]      
 },"Search":null};
 
