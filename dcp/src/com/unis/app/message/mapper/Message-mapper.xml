@@ -10,6 +10,20 @@
 	 	<result column="C_IP"   property="c_ip"/>
 	 </resultMap>
 	 
+	 <resultMap type="Message"   id="resultRecieveMessage">
+	 	<result column="N_XH"   property="n_xh"/>
+	 	<result column="C_BT"   property="c_bt"/>
+	 	<result column="C_YHID" property="c_yhid"/>
+	 	<result column="D_DJ"   property="d_dj"/>
+	 	<result column="C_IP"   property="c_ip"/>
+	 	<result column="C_ZT"   property="c_zt"/>
+	 </resultMap>
+	 
+	 <resultMap type="Message"   id="resultMessageRecieve">
+	 	<result column="C_YHID" property="c_yhid"/>
+	 	<result column="C_ZT"   property="c_zt"/>
+	 </resultMap>
+	 
 	<select id="getMessage" parameterType="Message" resultType="Message">
 		SELECT N_XH,
 		       C_BT,
@@ -63,7 +77,7 @@
 				(
 					seq_b_nbxx_recieve.nextval,
 					seq_b_nbxx.currval,
-					#{item.c_yhid},'0'
+					#{item.c_yhid},'1'
 			    )
 		</foreach>
 		; END;
@@ -85,30 +99,30 @@
 		; END;
 	</insert>
 	
-	<select id="getMessageRecieveList" resultMap="resultMessage" parameterType="string">
-		SELECT N_XH,
-		       C_BT,
-		       TO_CHAR(D_DJ,'YYYY-MM-DD hh24:MI:SS') D_DJ,
-		       FUN_GET_YHMC(C_YHID) C_YHID,
-		       C_IP
-		FROM B_NBXX B
-		  WHERE  EXISTS (SELECT 'X'
-					          FROM B_NBXX_RECIEVE R
-					       WHERE  R.C_JSR = #{c_yhid}
-					       	  AND R.N_NBXXXH = B.N_XH)
+	<select id="getMessageRecieveList" resultMap="resultRecieveMessage" parameterType="string">
+		SELECT B.N_XH,
+		       B.C_BT,
+		       TO_CHAR(B.D_DJ, 'YYYY-MM-DD hh24:MI:SS') D_DJ,
+		       FUN_GET_YHMC(B.C_YHID) C_YHID,
+		       B.C_IP,
+		       DECODE(R.C_ZT, '1', '未签收', '2', '已签收', '已删除') C_ZT
+		  FROM B_NBXX B, B_NBXX_RECIEVE R
+		 WHERE B.N_XH = R.N_NBXXXH
+		   AND R.C_JSR = #{c_yhid}
+		   AND R.C_ZT > '0'
 	</select>
 	
-	<select id="getMessageNoReadList" resultMap="resultMessage" parameterType="string">
-		SELECT N_XH,
-		       C_BT,
-		       TO_CHAR(D_DJ,'YYYY-MM-DD hh24:MI:SS') D_DJ,
-		       FUN_GET_YHMC(C_YHID) C_YHID,
-		       C_IP
-		FROM B_NBXX B
-		  WHERE EXISTS (SELECT 'X'
-				          FROM B_NBXX_RECIEVE R
-				         WHERE R.N_NBXXXH = B.N_XH
-				           AND R.C_JSR = #{c_yhid} AND R.C_ZT = '1')
+	<select id="getMessageNoReadList" resultMap="resultRecieveMessage" parameterType="string">
+		SELECT B.N_XH,
+		       B.C_BT,
+		       TO_CHAR(B.D_DJ, 'YYYY-MM-DD hh24:MI:SS') D_DJ,
+		       FUN_GET_YHMC(B.C_YHID) C_YHID,
+		       B.C_IP,
+		       DECODE(R.C_ZT, '1', '未签收', '2', '已签收', '已删除') C_ZT
+		  FROM B_NBXX B, B_NBXX_RECIEVE R
+		 WHERE B.N_XH = R.N_NBXXXH
+		   AND R.C_JSR = #{c_yhid}
+		   AND R.C_ZT = '1'
 	</select>
 	
 	<update id="updateMessage" parameterType="Message">
@@ -133,5 +147,18 @@
 		; END;
 	END;
 	</update>
+	
+	<update id="operateRecieveEmail" parameterType="hashmap">
+		UPDATE B_NBXX_RECIEVE
+			SET C_ZT = #{c_zt}
+		WHERE N_NBXXXH = #{n_xh}
+		 	AND C_JSR = #{c_yhid}
+	</update>
+	
+	<select id="getMessageQsqkList" parameterType="string" resultMap="resultMessageRecieve">
+	 SELECT FUN_GET_YHMC(C_JSR) C_YHID, DECODE(C_ZT, '1', '未签收', '2', '已签收', '已删除') C_ZT
+	  FROM B_NBXX_RECIEVE
+	 WHERE N_NBXXXH = #{n_xh}
+	</select>
 	
 </mapper>

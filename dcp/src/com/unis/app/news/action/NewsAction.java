@@ -186,6 +186,7 @@ public class NewsAction {
 		return Globals.SUCCESS;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public String newsQuerys(){
 		Querys= (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", news);
         return Globals.SUCCESS;

@@ -20,7 +20,7 @@ public class Message {
 	
 	private String c_jsr;  
 	
-	//c_zt  recieve中的默认是1，2是已签收，0是删除
+	private String c_zt; //  recieve中的默认是1，2是已签收，0是删除
 
 	public String getN_xh() {
 		return n_xh;
@@ -92,5 +92,13 @@ public class Message {
 
 	public void setC_jsr(String c_jsr) {
 		this.c_jsr = c_jsr;
+	}
+
+	public String getC_zt() {
+		return c_zt;
+	}
+
+	public void setC_zt(String c_zt) {
+		this.c_zt = c_zt;
 	}
 }

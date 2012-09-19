@@ -132,6 +132,8 @@ MENU_ICON, ISVISIBLE)values (703, '703', '7', '发件箱', 'admin/app/email/emai
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
 MENU_ICON, ISVISIBLE)values (704, '704', '7', '草稿箱', 'admin/app/email/email.jsp?c_zt=2', 'liger/lib/icons/32X32/zoom.gif', '1' );
 
+insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+MENU_ICON, ISVISIBLE)values (705, '705', '8', '垃圾箱', 'admin/app/email/emailDelete.jsp', 'liger/lib/icons/32X32/zoom.gif', '1' );
 
 --按钮
 

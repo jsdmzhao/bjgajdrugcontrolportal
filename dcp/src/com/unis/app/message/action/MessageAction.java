@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 
 import com.unis.core.service.AbsServiceAdapter;
 import com.unis.core.util.Globals;
+import com.unis.app.email.model.Email;
 import com.unis.app.message.model.Message;
 
 @Controller
@@ -27,6 +28,7 @@ public class MessageAction {
 	private AbsServiceAdapter<Integer> messageService = null;
 	
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public String messageSave(Map sqlParamMap, HttpServletRequest request){
 		
 		HttpSession session = request.getSession();
@@ -67,7 +69,7 @@ public class MessageAction {
 		return Globals.SUCCESS;
 	}
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "unused" })
 	public Map<String, Object> messageList(HttpServletRequest request){
 		HttpSession session = request.getSession();
 		String c_yhid = session.getAttribute("userId")+"";
@@ -92,6 +94,20 @@ public class MessageAction {
 		return resMap;
 	}
 	
+	public String emailRecieveOperator(String value, String n_xh, HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		String c_yhid = session.getAttribute("userId")+"";
+		Map<String, Object> sqlParamMap = new HashMap<String, Object>();
+		//sqlParamMap.put("operateType", operateType);
+		
+		sqlParamMap.put("c_zt", value);
+		sqlParamMap.put("n_xh", n_xh);
+		sqlParamMap.put("c_yhid", c_yhid);
+		messageService.update("MessageMapper.operateRecieveMessage", sqlParamMap);
+		return Globals.SUCCESS;
+	}
+
 	@SuppressWarnings("unchecked")
 	public Map<String, Object> getMessageNoReadList(HttpServletRequest request){
 		HttpSession session = request.getSession();
@@ -106,6 +122,15 @@ public class MessageAction {
 	public String messageUpdate(){
 		message = (Message) messageService.selectOne("MessageMapper.getMessage", message);
 		return Globals.SUCCESS;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> getMessageQsqkList(String n_xh){
+		Map<String, Object> resMap = new HashMap<String, Object>();
+		List<Email> messageList = (List<Email>) messageService.selectList("MessageMapper.getMessageQsqkList",n_xh);
+		resMap.put("Rows", messageList);
+		resMap.put("Total", messageList.size());
+		return resMap;
 	}
 	
 	
