@@ -196,7 +196,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           var isAddNew = e.record['__status'] == "add";
           var data = $.extend(true, {}, e.newdata);
           if (!isAddNew){
-        	  data.roleId = e.record.roleId;
+        	  data.nXh = e.record.nXh;
                   ZmcdSvc.update(data, function(rdata) {
           			if (rdata) {
           				LG.showSuccess('修改成功', function() {
