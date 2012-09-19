@@ -21,7 +21,7 @@
 					base.USER_NAME,
 					base.USER_PASSWORD,
 					base.USER_LOCK,
-					case base.USER_LOCK when '1' then '已锁定'  else '未锁定' end as USER_LOCK_NAME,
+					case base.USER_LOCK when '1' then '已锁定'  else '未锁定' end as USER_LOCK_NAME
 				 from SYS_USER base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>

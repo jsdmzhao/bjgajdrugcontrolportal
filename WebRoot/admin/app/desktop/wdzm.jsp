@@ -29,6 +29,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
 <script type='text/javascript'
 	src='<%=basePath%>dwr/interface/WdzmSvc.js'></script>
+	<script type='text/javascript'
+	src='<%=basePath%>dwr/interface/ZmcdSvc.js'></script>
+		<script type='text/javascript'
+	src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>
 </head>
 <body style="padding:10px;height:100%; text-align:center;">
    <ipnut type="hidden" id="MenuNo" value="MemberManageRole" /> 
@@ -36,6 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div id="maingrid"  style="margin:2px;"></div> 
     </form> 
   <script type="text/javascript">
+ 	 DWREngine.setAsync(false);  
       //相对路径
       var rootPath = "../";
       
@@ -43,7 +48,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			pageIndex:1,
   			pageSize:1000
   	};
+      var cdList;
       
+      var obj={};
+      ZmcdSvc.queryByPage(obj,oPage,function(cdData){
+				cdList=cdData.data;
+      });
+      
+      var userList;
+      UserInfoSvc.queryAll(obj,function(userData){
+    	   userList=userData;
+      });
+      
+     // alert($d(userList));
       //列表结构
       var grid = $("#maingrid").ligerGrid({
           columns:  [
@@ -53,12 +70,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          },
                      
                               { display: '菜单名', name: 'nCdxh', align: 'left', width: 180, minWidth: 60
-                                  , validate: { required: true }
-                                  , editor: { type: 'text' }
+                                  , validate: { required: true }, isSort: false,
+                                  editor: { type: 'select', data:cdList, valueColumnName: 'nXh', displayColumnName: 'cMc' }, 
+                                  render: function(item)
+                                     {
+                                               for (var i = 0; i < cdList.length; i++)
+                                                     {
+                                                         if (cdList[i]['nXh'] == item.nCdxh){
+                                                             return cdList[i]['cMc'];
+                                                           }
+                                                     }
+                                                  return item.nCdxh;
+                                      }
+                                                  
                                   },
-                                  { display: '用户名', name: 'userId', align: 'left', width: 300, minWidth: 60
-                                  , validate: { required: true }
-                                  , editor: { type: 'text' }
+                                  { display: '用户', name: 'userId', align: 'left', width: 300, minWidth: 60
+                                  , validate: { required: true }, isSort: false,
+                                  editor: { type: 'select', data:userList, valueColumnName: 'userId', displayColumnName: 'cXm' }, 
+                                  render: function(item)
+                                     {
+                                               for (var i = 0; i < userList.length; i++)
+                                                     {
+                                                         if (userList[i]['userId'] == item.userId){
+                                                             return userList[i]['cXm'];
+                                                           }
+                                                     }
+                                                  return item.userId;
+                                      }
+                                                  
                                   }
                                   , { display: '显示序号', name: 'nXsxh', align: 'left', width: 230, minWidth: 50
                                   , editor: { type: 'text'}
@@ -67,7 +106,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            sortName: 'RoleID', 
           width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false
       });
-
+      
       //双击事件
       LG.setGridDoubleClick(grid, 'modify');
 
@@ -201,7 +240,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           var isAddNew = e.record['__status'] == "add";
           var data = $.extend(true, {}, e.newdata);
           if (!isAddNew){
-        	  data.roleId = e.record.roleId;
+        	  data.nXh = e.record.nXh;
                   WdzmSvc.update(data, function(rdata) {
           			if (rdata) {
           				LG.showSuccess('修改成功', function() {
@@ -232,6 +271,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       {
           grid.addEditRow();
       } 
+     
   </script>
 </body>
 </html>
