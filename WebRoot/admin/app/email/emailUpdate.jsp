@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },
          {display:"收信人",name:"c_jsr",newline:true,labelWidth:100,width:700,space:30,
-          type:"smarttext",value:"<s:property value='email.c_jsr_'/>"},
+          type:"smarttext",value:""},
          {display:"抄送",name:"c_csr",newline:true,labelWidth:100,width:700,space:30,
           type:"smarttext",value:"<s:property value='email.c_csr_'/>"},
          {display:"密送",name:"c_msr",newline:true,labelWidth:100,width:700,space:30,
@@ -154,6 +154,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	//$("c_tpljdz").setDisabled();
         
     	function f_send(){
+    		
 			var formMap = DWRUtil.getValues("mainform"); 
         	
 	        formMap["c_nr"] = editor.document.getBody().getHtml();
@@ -240,7 +241,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	          }); 
    			}
    		});
-        
         
         
     </script>

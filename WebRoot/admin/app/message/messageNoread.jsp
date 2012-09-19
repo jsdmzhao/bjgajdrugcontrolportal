@@ -44,11 +44,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       var tempdata = {};
       var grid = $("#maingrid").ligerGrid({
           columns: [
-          { display: "序号", name: "n_xh", width: 70, type: "text", align: "left"},
-          { display: "接收人", name: "c_yhid", width: 120, type: "text", align: "left", editor: { type: 'text'} },
-          { display: "标题", name: "c_bt", width: 400, type: "text", align: "left", editor: { type: 'text'} },
-          { display: "添加时间", name: "d_dj", width: 160, type: "textarea", align: "left", editor: { type: 'text'} }
-          ], dataAction: 'server', pageSize: 20, toolbar: {},
+                    { display: "序号", name: "n_xh", width: 70, type: "text", align: "left"},
+                    { display: "发信人", name: "c_yhid", width: 120, type: "text", align: "left", editor: { type: 'text'} },
+                    { display: "标题", name: "c_bt", width: 300, type: "text", align: "left", editor: { type: 'text'} },
+                    { display: "添加时间", name: "d_dj", width: 160, type: "text", align: "left", editor: { type: 'text'} },
+                    { display: "签收状态", name: "c_zt", width: 100, type: "text", align: "left", editor: { type: 'text'} }
+                    ], dataAction: 'server', pageSize: 20, toolbar: {},
            sortName: 'n_xh', 
           width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false
          // ,data: tempdata
@@ -75,6 +76,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             text: '查看',
             img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
             id: 'view'
+       },{line:true},{
+           click: toolbarBtnItemClick,
+           text: '签收',
+           img:'<%=basePath%>liger/lib/icons/silkicons/application_form_edit.png',
+           id: 'qsxx'
        },{line:true}];
 	grid.toolbarManager.set('items', items);
 
@@ -121,20 +127,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   **/
                   break;
               case "delete":
-                  jQuery.ligerDialog.confirm('确定删除吗?', function (confirm) {
-                      if (confirm)
-                          f_delete();
-                  });
+            	  f_delete('0');
                   break;
-              case "save":
-                  if (editingrow != null)
-                  {
-                      grid.endEdit(editingrow);
-                  } else
-                  {
-                      LG.tip('现在不在编辑状态!');
-                  }
-                  break;
+              case "qsxx":
+            	  f_delete('2');
+            	  break;
           }
       }
       function f_reload() {
@@ -146,6 +143,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	  dialog.hidden();
       }
 
+      function f_delete() {
+    	  var selected = grid.getSelected();
+          if (selected) {
+        	  MessageAction.messageRecieveOperator(value, selected.n_xh, function (result){
+             	   if(result == 'success'){
+             		  LG.showSuccess('操作成功');
+             		  if(value == '0'){
+	               		  grid.deleteRow(selected);
+	               	  } else {
+	               		  loadGrid();
+	               	  }
+	           	   } else {
+	           		  LG.showError('操作失败');
+	           	   }
+               });
+          } else {
+              LG.tip('请选择行!');
+          }
+      }
       
       function f_delete() {
           var selected = grid.getSelected();

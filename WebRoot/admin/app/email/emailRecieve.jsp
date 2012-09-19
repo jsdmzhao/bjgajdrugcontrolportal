@@ -45,9 +45,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       var grid = $("#maingrid").ligerGrid({
           columns: [
           { display: "序号", name: "n_xh", width: 70, type: "text", align: "left"},
-          { display: "发布人", name: "c_yhid", width: 120, type: "text", align: "left", editor: { type: 'text'} },
-          { display: "标题", name: "c_bt", width: 400, type: "text", align: "left", editor: { type: 'text'} },
-          { display: "添加时间", name: "d_dj", width: 160, type: "textarea", align: "left", editor: { type: 'text'} }
+          { display: "发信人", name: "c_yhid", width: 120, type: "text", align: "left", editor: { type: 'text'} },
+          { display: "标题", name: "c_bt", width: 300, type: "text", align: "left", editor: { type: 'text'} },
+          { display: "添加时间", name: "d_dj", width: 160, type: "textarea", align: "left", editor: { type: 'text'}},
+          { display: "签收情况", name: "c_zt", width: 80, type: "textarea", align: "left", editor: { type: 'text'}}
           ], dataAction: 'server', pageSize: 20, toolbar: {},
            sortName: 'n_xh', 
           width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false
@@ -70,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             text: '查看',
             img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
             id: 'view'
-       },{line:true},{line:true},{
+       },{line:true},{
            click: toolbarBtnItemClick,
            text: '签收',
            img:'<%=basePath%>liger/lib/icons/silkicons/application_form_edit.png',
@@ -122,11 +123,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       function f_operator(value) {
           var selected = grid.getSelected();
           if (selected) {
-        	  
-        	  EmailAction.emailRecieveOperator(selected.n_xh, value, function (result){
+        	  EmailAction.emailRecieveOperator(value, selected.n_xh, function (result){
              	   if(result == 'success'){
              		  LG.showSuccess('操作成功');
-             		  if(value = '0'){
+             		  if(value == '0'){
 	               		  grid.deleteRow(selected);
 	               	  } else {
 	               		  loadGrid();

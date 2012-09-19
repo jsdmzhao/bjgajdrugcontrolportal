@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       var grid = $("#maingrid").ligerGrid({
           columns: [
           { display: "序号", name: "n_xh", width: 70, type: "text", align: "left"},
-          { display: "接收人", name: "c_yhid", width: 120, type: "text", align: "left", editor: { type: 'text'} },
+          { display: "发信人", name: "c_yhid", width: 120, type: "text", align: "left", editor: { type: 'text'} },
           { display: "标题", name: "c_bt", width: 400, type: "text", align: "left", editor: { type: 'text'} },
           { display: "添加时间", name: "d_dj", width: 160, type: "textarea", align: "left", editor: { type: 'text'} }
           ], dataAction: 'server', pageSize: 20, toolbar: {},
@@ -76,6 +76,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             text: '查看',
             img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
             id: 'view'
+       },{line:true},{
+           click: toolbarBtnItemClick,
+           text: '签收',
+           img:'<%=basePath%>liger/lib/icons/silkicons/application_form_edit.png',
+           id: 'qsxx'
        },{line:true}];
 	grid.toolbarManager.set('items', items);
 
@@ -94,11 +99,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  });
                   break;
               case "delete":
-                  jQuery.ligerDialog.confirm('确定删除吗?', function (confirm) {
-                      if (confirm)
-                          f_delete();
-                  });
+                  //jQuery.ligerDialog.confirm('确定删除吗?', function (confirm) {
+                      //if (confirm)
+                   f_delete('0');
+                  //});
                   break;
+              case "qsxx":
+            	  f_delete('2');
+            	  break;
           }
       }
       function f_reload() {
@@ -112,19 +120,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
       
       function f_delete() {
-          var selected = grid.getSelected();
-          
+    	  var selected = grid.getSelected();
           if (selected) {
-        	  grid.deleteRow(selected);
-        	  MessageAction.messageDelete(selected.n_xh, function (result){
+        	  MessageAction.messageRecieveOperator(value, selected.n_xh, function (result){
              	   if(result == 'success'){
-             		  LG.showSuccess('删除成功');
+             		  LG.showSuccess('操作成功');
+             		  if(value == '0'){
+	               		  grid.deleteRow(selected);
+	               	  } else {
+	               		  loadGrid();
+	               	  }
 	           	   } else {
-	           		  LG.showError('删除失败');
+	           		  LG.showError('操作失败');
 	           	   }
                });
-          }
-          else {
+          } else {
               LG.tip('请选择行!');
           }
       }

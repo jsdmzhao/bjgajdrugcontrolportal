@@ -11,6 +11,16 @@
 	 	<result column="C_IP"   property="c_ip"/>
 	 </resultMap>
 	 
+	 <resultMap type="Email"   id="resultRecieveEmail">
+	 	<result column="N_XH"   property="n_xh"/>
+	 	<result column="C_BT"   property="c_bt"/>
+	 	<result column="C_YHID" property="c_yhid"/>
+	 	<result column="D_DJ"   property="d_dj"/>
+	 	<result column="C_IP"   property="c_ip"/>
+	 	<result column="C_ZT"   property="c_zt"/>
+	 	
+	 </resultMap>
+	 
 	 <resultMap type="Email"   id="resultUpdateEmail">
 	 	<result column="N_XH"   property="n_xh"/>
 	 	<result column="C_BT"   property="c_bt"/>
@@ -54,17 +64,30 @@
 	</select>
 	
 	
-	<select id="getEmailRecieveList" resultMap="resultEmail" parameterType="string">
-		SELECT N_XH,
-		       C_BT,
-		       TO_CHAR(D_DJ,'YYYY-MM-DD hh24:MI:SS') D_DJ,
-		       C_YHID,
-		       C_IP
-		FROM B_NBYJ B
-		  WHERE  EXISTS (SELECT 'X'
-					          FROM B_NBYJ_RECIEVE R
-					       WHERE  R.C_JSR = #{c_yhid}
-					       	  AND R.N_NBYJXH = B.N_XH)
+	<select id="getEmailRecieveList" resultMap="resultRecieveEmail" parameterType="string">
+		SELECT B.N_XH,
+	       B.C_BT,
+	       TO_CHAR(B.D_DJ, 'YYYY-MM-DD hh24:MI:SS') D_DJ,
+	       FUN_GET_YHMC(B.C_YHID) C_YHID,
+	       B.C_IP,
+	       DECODE(R.C_ZT, '1', '未签收', '2', '已签收', '已删除') C_ZT
+	  FROM B_NBYJ B, B_NBYJ_RECIEVE R
+	 WHERE B.N_XH = R.N_NBYJXH
+	   AND R.C_JSR = #{c_yhid}
+	   AND R.C_ZT > '0'
+	</select>
+	
+	<select id="getEmailDeleteList" resultMap="resultRecieveEmail" parameterType="string">
+		SELECT B.N_XH,
+	       B.C_BT,
+	       TO_CHAR(B.D_DJ, 'YYYY-MM-DD hh24:MI:SS') D_DJ,
+	       FUN_GET_YHMC(B.C_YHID) C_YHID,
+	       B.C_IP,
+	       DECODE(R.C_ZT, '1', '未签收', '2', '已签收', '已删除') C_ZT
+	  FROM B_NBYJ B, B_NBYJ_RECIEVE R
+	 WHERE B.N_XH = R.N_NBYJXH
+	   AND R.C_JSR = #{c_yhid}
+	   AND R.C_ZT = '0'
 	</select>
 	
 	<select id="getEmailNoReadList" resultMap="resultEmail" parameterType="string">

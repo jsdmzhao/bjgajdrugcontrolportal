@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>内部消息</title> 
+    <title>内部邮件</title> 
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
     <script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
@@ -21,11 +21,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <script src="<%=basePath%>liger/lib/jquery-validation/jquery.validate.min.js" type="text/javascript"></script> 
     <script src="<%=basePath%>liger/lib/jquery-validation/jquery.metadata.js" type="text/javascript"></script>
-    <script src="<%=basePath%>liger/lib/jquery-validation/messages_cn.js" type="text/javascript"></script> 
+    <script src="<%=basePath%>liger/lib/jquery-validation/emails_cn.js" type="text/javascript"></script> 
     
     <script src='<%=basePath%>dwr/engine.js' type='text/javascript' ></script>
   	<script src='<%=basePath%>dwr/util.js' type='text/javascript' ></script>
-  	<script src='<%=basePath%>dwr/interface/MessageAction.js' type='text/javascript' ></script>
+  	<script src='<%=basePath%>dwr/interface/EmailAction.js' type='text/javascript' ></script>
     <style type="text/css">
     .l-panel td.l-grid-row-cell-editing { padding-bottom: 2px;padding-top: 2px;}
     </style>
@@ -45,8 +45,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       var grid = $("#maingrid").ligerGrid({
           columns: [
           { display: "序号", name: "n_xh", width: 70, type: "text", align: "left"},
+          { display: "发信人", name: "c_yhid", width: 120, type: "text", align: "left", editor: { type: 'text'} },
           { display: "标题", name: "c_bt", width: 300, type: "text", align: "left", editor: { type: 'text'} },
-          { display: "添加时间", name: "d_dj", width: 160, type: "text", align: "left", editor: { type: 'text'} }
+          { display: "添加时间", name: "d_dj", width: 160, type: "textarea", align: "left", editor: { type: 'text'}},
+          { display: "签收情况", name: "c_zt", width: 80, type: "textarea", align: "left", editor: { type: 'text'}}
           ], dataAction: 'server', pageSize: 20, toolbar: {},
            sortName: 'n_xh', 
           width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false
@@ -64,43 +66,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       //加载toolbar
       LG.loadToolbar(grid, toolbarBtnItemClick);
 
-     	var items=[
- 	        /**  {
- 	        	  click:toolbarBtnItemClick,
- 	        	   text:'保存',
- 	        	   img:'<!%=basePath%>liger/lib/icons/silkicons/page_save.png',
- 	        	   id:'save'    	
-     	   },**/
-     	   {
-            click:toolbarBtnItemClick,
-            text:'新增',
-            img:'<%=basePath%>liger/lib/icons/silkicons/add.png',
-            id:'add'
-        }
-     	/**
-     	,{line:true},{
-            click: toolbarBtnItemClick,
-            text: '修改',
-            img:'<！%=basePath%>liger/lib/icons/silkicons/application_edit.png',
-            id: 'modify'
-        },{line:true}
-        **/
-        ,{
-            click: toolbarBtnItemClick,
-            text: '删除',
-            img:'<%=basePath%>liger/lib/icons/silkicons/delete.png',
-            id: 'delete'
-        },{line:true},{
+     	var items=[{
             click: toolbarBtnItemClick,
             text: '查看',
             img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
             id: 'view'
        },{line:true},{
            click: toolbarBtnItemClick,
-           text: '查看签收情况',
-           img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
-           id: 'viewQsqk'
-      },{line:true}];
+           text: '删除',
+           img:'<%=basePath%>liger/lib/icons/silkicons/application_form_edit.png',
+           id: 'delete'}];
 	grid.toolbarManager.set('items', items);
 
       //工具条事件
@@ -108,61 +83,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       {
           var editingrow = grid.getEditingRow();
           switch (item.id) {
-              case "add":
-                  if (editingrow == null)
-                  {
-                	  //top.f_addTab(null, '保存信息', '<%=basePath%>admin/app/message/messageDetail.jsp');
-			  		   dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/message/messageDetail.jsp', 
-                           	height: 500,width: 900,showMax: true, showToggle: true,  showMin: true,
-                           	title:'内部消息'
-					   });
-                  } else {
-                      LG.tip('请先提交或取消修改');
-                  }
-                  break;
               case "view":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  //top.f_addTab(null, '查看信息', '<!%=basePath%>messageUpdate?message.n_xh=' + selected.n_xh);
-                  dialog = $.ligerDialog.open({ url: '<%=basePath%>messageUpdate?message.n_xh=' + selected.n_xh, 
+                  //top.f_addTab(null, '查看信息', '<!%=basePath%>emailUpdate?email.n_xh=' + selected.n_xh);
+                  dialog = $.ligerDialog.open({ url: '<%=basePath%>emailUpdate?email.n_xh=' + selected.n_xh, 
                          	height: 500,width: 900,showMax: true, showToggle: true,  showMin: true,
-                         	title:'内部消息'
+                         	title:'内部邮件'
 				  });
-                  break;
-              case "modify":
-                  var selected = grid.getSelected();
-                  if (!selected) { LG.tip('请选择行!'); return }
-                  //top.f_addTab(null, '修改栏目信息', '<!%=basePath%>messageUpdate?message.n_xh=' + selected.n_xh);
-				  dialog = $.ligerDialog.open({ url: '<%=basePath%>messageUpdate?message.n_xh=' + selected.n_xh, 
-                         	height: 500,width: 900,showMax: true, showToggle: true,  showMin: true,
-                         	title:'内部消息'
-				  });
-                  /**
-                  if (editingrow == null)
-                  {
-                      beginEdit();
-                  } else
-                  {
-                      LG.tip('请先提交或取消修改');
-                  }
-                  **/
                   break;
               case "delete":
-            	  var selected = grid.getSelected();
-                  if (!selected) { LG.tip('请选择行!'); return }
-                  jQuery.ligerDialog.confirm('确定删除吗?', function (confirm) {
-                      if (confirm)
-                          f_delete();
-                  });
+            	  f_operator();
                   break;
-              case "viewQsqk":
-                  var selected = grid.getSelected();
-                  if (!selected) { LG.tip('请选择行!'); return }
-				  dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/message/messageQsqk.jsp?n_xh=' + selected.n_xh, 
-                         	height: 430,width: 365,showMax: true, showToggle: true,  showMin: true,
-                         	title:'签收情况'
-				  });
-				  break;
           }
       }
       function f_reload() {
@@ -175,35 +107,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       }
 
       
-      function f_delete() {
+      function f_operator() {
           var selected = grid.getSelected();
-          
           if (selected) {
-        	  /**
-              LG.ajax({
-                  type: 'AjaxMemberManage',
-                  method: 'RemoveRole',
-                  loading: '正在删除中...',
-                  data: { ID: selected.RoleID },
-                  success: function () {
-                      LG.showSuccess('删除成功');
-                      f_reload();
-                  },
-                  error: function (message) {
-                      LG.showError(message);
-                  }
-              });
-              **/
-        	  grid.deleteRow(selected);
-        	  MessageAction.messageDelete(selected.n_xh, function (result){
+        	  EmailAction.emailDelete(selected.n_xh, function (result){
              	   if(result == 'success'){
-             		  LG.showSuccess('删除成功');
+             		  LG.showSuccess('操作成功');
+	               	  grid.deleteRow(selected);
 	           	   } else {
-	           		  LG.showError('删除失败');
+	           		  LG.showError('操作失败');
 	           	   }
                });
-          }
-          else {
+          } else {
               LG.tip('请选择行!');
           }
       }
@@ -234,9 +149,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   grid.loadData();
                   LG.tip('保存成功!');
               },
-              error: function (message)
+              error: function (email)
               {
-                  LG.tip(message);
+                  LG.tip(email);
               }
           });
           return false;
@@ -257,7 +172,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       
       function loadGrid(){
           
-	 	  MessageAction.messageList(function (data){
+	 	  EmailAction.getEmailDeleteList(function (data){
 	    	 grid.setOptions({data:data});
 	      });
       }

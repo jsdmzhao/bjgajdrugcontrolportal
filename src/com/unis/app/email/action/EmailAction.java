@@ -33,8 +33,8 @@ public class EmailAction {
 			String jsrStr = (String) sqlParamMap.get("c_jsr");
 			String csrStr = (String) sqlParamMap.get("c_csr");
 			String msrStr = (String) sqlParamMap.get("c_msr");
-			
-			if("1".equals(sqlParamMap.get("c_zt"))){  //发送
+			if("1".equals(sqlParamMap.get("c_zt"))){ //发送
+				
 				
 				List<Email> list = new ArrayList<Email>();
 				if(StringUtils.isNotEmpty(jsrStr)){
@@ -209,6 +209,18 @@ public class EmailAction {
 		
 		Map<String, Object> resMap = new HashMap<String, Object>();
 		List<Email> emailList = (List<Email>) emailService.selectList("EmailMapper.getEmailRecieveList",c_yhid);
+		resMap.put("Rows", emailList);
+		resMap.put("Total", emailList.size());
+		return resMap;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> getEmailDeleteList(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		String c_yhid = session.getAttribute("userId")+"";
+		
+		Map<String, Object> resMap = new HashMap<String, Object>();
+		List<Email> emailList = (List<Email>) emailService.selectList("EmailMapper.getEmailDeleteList",c_yhid);
 		resMap.put("Rows", emailList);
 		resMap.put("Total", emailList.size());
 		return resMap;
