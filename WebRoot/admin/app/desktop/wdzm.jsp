@@ -2,6 +2,11 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
+Object userId = request.getParameter("userId");
+if(userId==null){
+	userId="";
+}
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -196,7 +201,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       
 
       function loadGrid(obj){
-    	 if(!obj)obj={ };
+    	 if(!obj)obj={userId :'<%=userId%>' };
+    	// alert(obj.userId);
   		WdzmSvc.queryByPage(obj,oPage,function(rdata){
   			if(rdata == null){
   				  grid.setOptions({ data:  { Total:0, Rows:'' } });

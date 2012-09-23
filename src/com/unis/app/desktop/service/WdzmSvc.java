@@ -42,6 +42,9 @@ public class WdzmSvc  {
 	public List queryAll(Map p) throws SQLException {
 		return wdzmDao.queryAllInfo(p);
 	}
+	public List queryCd(Map p) throws SQLException {
+		return wdzmDao.queryCd(p);
+	}
 
 	public Map queryByPage(Map p, Map page) throws SQLException {
 		return wdzmDao.queryByPageInfo(p, page);
