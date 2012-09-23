@@ -855,3 +855,33 @@ values (118, 'renchao', '002912', null);
 insert into sys_user (USER_ID, USER_NAME, USER_PASSWORD, USER_LOCK)
 values (309, 'wangyanming', '111111', null);
 
+
+--桌面菜单
+
+insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
+values (SEQ_ZMCD.Nextval, '公告通知', 'temp/notice.jsp?allow=true', 'images/3DSMAX.png', null, null);
+
+insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
+values (SEQ_ZMCD.Nextval, '值班表', 'admin/app/duty/kqzb.jsp?allow=true', 'images/3DSMAX.png', null, null);
+
+insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
+values (SEQ_ZMCD.Nextval, '个人考勤', 'temp/duty.jsp?allow=true', 'images/3DSMAX.png', null, null);
+
+insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
+values (SEQ_ZMCD.Nextval, '我的资料', 'admin/app/userinfo/userinfoDetail.jsp?allow=true', 'images/Program Files Folder.png', null, null);
+
+insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
+values (SEQ_ZMCD.Nextval, '常用网址', 'temp/website.jsp', '	 images/Program Files Folder.png', null, null);
+
+insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
+values (SEQ_ZMCD.Nextval, '上班打卡', 'temp/sxbdk.jsp?id=1', 'images/Alien Folder.png', null, null);
+
+insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
+values (SEQ_ZMCD.Nextval, '下班打卡', 'temp/sxbdk.jsp?id=1', 'images/Alien Folder.png', null, null);
+
+--我的桌面初始化
+insert into B_WDZM(N_XH,C_ZDYMC,N_CDXH,USER_ID,N_XSXH,C_YXX)
+select SEQ_WDZM.Nextval,C_MC,n_xh, user_id,0,'1' from sys_user,b_zmcd;
+
+
+commit;
