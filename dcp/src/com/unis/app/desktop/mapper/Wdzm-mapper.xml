@@ -11,6 +11,17 @@
 		<result property="cYxx" column="C_YXX" jdbcType="VARCHAR"/>
 	</resultMap>
 	
+		<resultMap id="Result2"  type="java.util.Map">
+		<result property="nXh" column="N_XH" jdbcType="DECIMAL"/>
+		<result property="cZdymc" column="C_ZDYMC" jdbcType="VARCHAR"/>
+		<result property="nCdxh" column="N_CDXH" jdbcType="DECIMAL"/>
+		<result property="userId" column="USER_ID" jdbcType="DECIMAL"/>
+		<result property="nXsxh" column="N_XSXH" jdbcType="DECIMAL"/>
+		<result property="cYxx" column="C_YXX" jdbcType="VARCHAR"/>
+		<result property="cTb" column="C_TB" jdbcType="VARCHAR"/>
+		<result property="cLj" column="C_LJ" jdbcType="VARCHAR"/>
+	</resultMap>
+	
 	<select id="queryAllInfo" resultMap="Result"  parameterType="java.util.Map" >
 				 select 
 					base.N_XH,
@@ -30,6 +41,33 @@
 		</trim>
 		ORDER BY N_XH  ASC 
 	</select>
+	
+	
+	
+	<select id="queryCd" resultMap="Result2"  parameterType="java.util.Map" >
+	select * from (
+				 select 
+					base.N_XH,
+					base.C_ZDYMC,
+					base.N_CDXH,
+					base.USER_ID,
+					base.N_XSXH,
+					base.C_YXX,
+					a.C_LJ,
+					a.C_TB
+				 FROM B_WDZM BASE ,B_ZMCD a
+				 WHERE BASE.N_CDXH=A.N_XH
+				 )
+		 <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+			<if test="cZdymc != null and cZdymc !='' ">  and C_ZDYMC = #{cZdymc}</if>
+			<if test="nCdxh != null and nCdxh !='' ">  and N_CDXH = #{nCdxh}</if>
+			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
+			<if test="nXsxh != null and nXsxh !='' ">  and N_XSXH = #{nXsxh}</if>
+			<if test="cYxx != null and cYxx !='' ">  and C_YXX = #{cYxx}</if>
+		</trim>
+		ORDER BY N_XSXH  ASC 
+	</select>
 
 	<select id="queryInfo" resultMap="Result" parameterType="java.util.Map" >
 		<include refid="pagination.paginationStart"></include>
@@ -39,8 +77,8 @@
 					base.N_CDXH,
 					base.USER_ID,
 					base.N_XSXH,
-					base.C_YXX
-				 from B_WDZM base 
+					base.C_YXX 
+					FROM B_WDZM base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
 			<if test="cZdymc != null and cZdymc !='' ">  and C_ZDYMC = #{cZdymc}</if>

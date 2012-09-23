@@ -13,6 +13,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerDrag.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerDialog.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerResizable.js" type="text/javascript"></script>
+           <script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
+<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
+<script type='text/javascript'
+	src='<%=basePath%>dwr/interface/WdzmSvc.js'></script>
+	<script type='text/javascript'
+	src='<%=basePath%>dwr/interface/ZmcdSvc.js'></script>
+		
     <style type="text/css">
         .l-case-title
         {
@@ -106,6 +113,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
 </body>
 <script type="text/javascript">
+  var obj={userId:'<%=session.getAttribute("userId")%>'};
+  var cdList;
+    DWREngine.setAsync(false);  
+	WdzmSvc.queryCd(obj,function(cdData){
+	cdList=cdData;
+	});
+	
+	var links=new Array();
+	for(var i=0;i<cdList.length;i++){
+		links[i]={};
+		links[i].icon=cdList[i].cTb;
+		links[i].title=cdList[i].cZdymc;
+		links[i].url='<%=basePath%>'+cdList[i].cLj+'&userId=<%=session.getAttribute("userId")%>';
+	}
+	links[i]= { icon: 'images/Program Files Folder.png', title: '桌面管理', url: '<%=basePath%>admin/app/desktop/wdzm.jsp?userId=<%=session.getAttribute("userId")%>' };
+	
     var LINKWIDTH = 90, LINKHEIGHT = 90, TASKBARHEIGHT = 43;
     var winlinksul =  $("#winlinks ul");
     function f_open(url, title, icon) {
@@ -123,19 +146,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
         return win;
     }
-    var links = [
-            { icon: 'images/3DSMAX.png', title: '公告通知', url: '../temp/notice.jsp' },
-            { icon: 'images/3DSMAX.png', title: '个人考勤', url: '../temp/duty.jsp' },
-            { icon: 'images/3DSMAX.png', title: '值班表', url: '<%=basePath%>admin/app/duty/kqzb.jsp?userId=<%=session.getAttribute("userId")%>' },
-            { icon: 'images/Program Files Folder.png', title: '我的资料', url: '<%=basePath%>admin/app/userinfo/userinfoDetail.jsp?userId=<%=session.getAttribute("userId")%>'},
-            { icon: 'images/Program Files Folder.png', title: '常用网址', url: '../temp/website.jsp' },
-            
-            { icon: 'images/Alien Folder.png', title: '上班打卡', url: '../temp/sxbdk.jsp?id=1' },
-           
-            { icon: 'images/Alien Folder.png', title: '下班打卡', url: '../temp/sxbdk.jsp?id=0' },
-            
-            { icon: 'images/Program Files Folder.png', title: '桌面管理', url: '<%=basePath%>admin/app/desktop/wdzm.jsp' }
-        ];
+  
              
     function onResize() {
         var linksHeight = $(window).height() - TASKBARHEIGHT;

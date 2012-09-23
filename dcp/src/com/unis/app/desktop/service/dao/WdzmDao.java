@@ -38,6 +38,9 @@ public class WdzmDao extends SqlSessionDaoSupport {
 	public List queryAllInfo(Map p){
 		return getSqlSession().selectList("WdzmMapper.queryAllInfo", p);
 	}
+	public List queryCd(Map p){
+		return getSqlSession().selectList("WdzmMapper.queryCd", p);
+	}
 
 	public List queryInfo(Map p){
 		return getSqlSession().selectList("WdzmMapper.queryInfo", p);
