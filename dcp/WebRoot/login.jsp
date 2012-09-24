@@ -1,16 +1,19 @@
+<%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
+<%@page import="org.springframework.context.ApplicationContext"%>
 <%@page import="com.unis.app.userinfo.service.UserInfoSvc"%>
 <%@page import="com.unis.core.util.IPUtil"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>	
 <%
 String paths = request.getContextPath();
 String basePaths = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+paths+"/";
-
+ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());
+UserInfoSvc userInfoSvc= (UserInfoSvc) ctx.getBean("userInfoSvc");
 
 String ip=IPUtil.getUserIP(request);
 if(ip!=null){
 	Map p=new HashMap();
 	p.put("cYxip", ip);
-	List list=new UserInfoSvc().queryAll(p);
+	List list=userInfoSvc.queryAll(p);
 	if(list.size()!=0){
 		Map rp=(Map)list.get(0);
 		session.setAttribute("userId",rp.get("userId") );

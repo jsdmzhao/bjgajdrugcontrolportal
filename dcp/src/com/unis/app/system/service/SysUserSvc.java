@@ -1,16 +1,21 @@
 package com.unis.app.system.service;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.stereotype.Service ;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.unis.app.system.service.dao.SysUserDao;
+import com.unis.app.userinfo.service.UserInfoSvc;
+import com.unis.core.util.IPUtil;
 
 @Service
 @Transactional(rollbackFor={Exception.class,SQLException.class})
@@ -59,7 +64,46 @@ public class SysUserSvc  {
 		if(list.size()>0){
 			request.getSession().setAttribute("userName", list.get(0).get("userName"));
 			request.getSession().setAttribute("userId", list.get(0).get("userId"));
-			return true;
+			
+			ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());
+			UserInfoSvc userInfoSvc= (UserInfoSvc) ctx.getBean("userInfoSvc");
+
+			String ip=IPUtil.getUserIP(request);
+			if(ip!=null){
+				Map p2=new HashMap();
+				p.put("userId", list.get(0).get("userId"));
+			List list2=userInfoSvc.queryAll(p2);
+			if(list2.size()!=0){
+				Map rp=(Map)list.get(0);
+				request.getSession().setAttribute("userId",rp.get("userId") );
+				request.getSession().setAttribute("cJb",rp.get("cJb") );
+				request.getSession().setAttribute("cYhz",rp.get("cYhz") );
+				request.getSession().setAttribute("cZc",rp.get("cZc") );
+				request.getSession().setAttribute("cXm",rp.get("cXm") );
+				request.getSession().setAttribute("nXb",rp.get("nXb") );
+				request.getSession().setAttribute("dSr",rp.get("dSr") );
+				request.getSession().setAttribute("cGj",rp.get("cGj") );
+				request.getSession().setAttribute("cCsd",rp.get("cCsd") );
+				request.getSession().setAttribute("cHyzk",rp.get("cHyzk") );
+				request.getSession().setAttribute("cXl",rp.get("cXl") );
+				request.getSession().setAttribute("cByyx",rp.get("cByyx") );
+				request.getSession().setAttribute("cZy",rp.get("cZy") );
+				request.getSession().setAttribute("cKh",rp.get("cKh") );
+				request.getSession().setAttribute("cHkszd",rp.get("cHkszd") );
+				request.getSession().setAttribute("cDhhm",rp.get("cDhhm") );
+				request.getSession().setAttribute("cSjhm",rp.get("cSjhm") );
+				request.getSession().setAttribute("cYx",rp.get("cYx") );
+				request.getSession().setAttribute("cDz",rp.get("cDz") );
+				request.getSession().setAttribute("dGzsj",rp.get("dGzsj") );
+				request.getSession().setAttribute("dRzsj",rp.get("dRzsj") );
+				request.getSession().setAttribute("cJcjl",rp.get("cJcjl") );
+				request.getSession().setAttribute("cBz",rp.get("cBz") );
+				request.getSession().setAttribute("nDlcs",rp.get("nDlcs") );
+				request.getSession().setAttribute("nZxsc",rp.get("nZxsc") );
+				request.getSession().setAttribute("cLx",rp.get("cLx") );
+				request.getSession().setAttribute("cYxip",rp.get("cYxip") );
+		}
+			}
 		}
 		return null;
 	}
