@@ -133,10 +133,18 @@ String c_zt = request.getParameter("c_zt");
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
                   //top.f_addTab(null, '查看信息', '<!%=basePath%>emailUpdate?email.n_xh=' + selected.n_xh);
-                  dialog = $.ligerDialog.open({ url: '<%=basePath%>emailUpdate?email.n_xh=' + selected.n_xh, 
-                         	height: 500,width: 900,showMax: true, showToggle: true,  showMin: true,
-                         	title:'内部邮件'
-				  });
+                  if('<%=c_zt%>' == '2'){
+                	  dialog = $.ligerDialog.open({ url: '<%=basePath%>emailUpdate?email.n_xh=' + selected.n_xh, 
+                       	height: 500,width: 900,showMax: true, showToggle: true,  showMin: true,
+                       	title:'内部邮件'
+				 	 });
+                  } else {
+                	  dialog = $.ligerDialog.open({ url: '<%=basePath%>emailView?email.n_xh=' + selected.n_xh +'&type=fs', 
+                       	height: 500,width: 900,showMax: true, showToggle: true,  showMin: true,
+                       	title:'内部邮件'
+				  	  });
+                  }
+                  
                   break;
               case "viewQsqk":
                   var selected = grid.getSelected();
@@ -182,7 +190,14 @@ String c_zt = request.getParameter("c_zt");
       {
     	  dialog.hidden();
       }
-
+		
+      function dialog_repay(value){
+    	  dialog.hidden();
+    	  dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/email/emailDetail.jsp?'+value, 
+    		  height: 500,width: 900,showMax: true, showToggle: true,  showMin: true,
+              title:'回复邮件'
+  	      });
+      }
       
       function f_delete() {
           var selected = grid.getSelected();

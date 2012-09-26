@@ -33,7 +33,7 @@
 			IINSERT INTO SMS_BOXSENDING
 			  (SENDER, RECEIVER, CONTENT, SENDTIME, INSERTTIME)
 			VALUES
-			  (#{c_yhid}, FUN_GET_PHONE_FROM_YHID(#{list.c_yhid}), #{content}, sysdate, sysdate)
+			  (#{c_yhid}, FUN_GET_PHONE_FROM_YHID(#{{item.c_yhid}), #{content}, sysdate, sysdate)
 		</foreach>
 		;END;
 	</insert>

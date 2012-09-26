@@ -93,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
                   //top.f_addTab(null, '查看信息', '<!%=basePath%>emailUpdate?email.n_xh=' + selected.n_xh);
-                  dialog = $.ligerDialog.open({ url: '<%=basePath%>emailUpdate?email.n_xh=' + selected.n_xh, 
+                  dialog = $.ligerDialog.open({ url: '<%=basePath%>emailView?email.n_xh=' + selected.n_xh +'&type=js', 
                          	height: 500,width: 900,showMax: true, showToggle: true,  showMin: true,
                          	title:'内部邮件'
 				  });
@@ -117,6 +117,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       function dialog_hidden()
       {
     	  dialog.hidden();
+      }
+      
+      function dialog_repay(value){
+    	  dialog.hidden();
+    	  dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/email/emailDetail.jsp?'+value, 
+    		  height: 500,width: 900,showMax: true, showToggle: true,  showMin: true,
+             	title:'回复邮件'
+  	      });
       }
 
       

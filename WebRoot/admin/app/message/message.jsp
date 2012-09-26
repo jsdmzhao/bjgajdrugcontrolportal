@@ -124,7 +124,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
                   //top.f_addTab(null, '查看信息', '<!%=basePath%>messageUpdate?message.n_xh=' + selected.n_xh);
-                  dialog = $.ligerDialog.open({ url: '<%=basePath%>messageUpdate?message.n_xh=' + selected.n_xh, 
+                  dialog = $.ligerDialog.open({ url: '<%=basePath%>messageView?message.n_xh=' + selected.n_xh, 
                          	height: 500,width: 900,showMax: true, showToggle: true,  showMin: true,
                          	title:'内部消息'
 				  });
