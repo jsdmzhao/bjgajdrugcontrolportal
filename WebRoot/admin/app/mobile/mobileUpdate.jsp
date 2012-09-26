@@ -166,26 +166,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             parent.dialog_hidden();
         }
 
-        function openDialog(divNode){
-
-        	var dlgedit = $.ligerDialog.open({
-				width : 350, //宽度
-				height : null,
-				title : "文件上传",
-				target : $(divNode),
-				buttons: [ 
-                           { text: '关闭', onclick: function (i, d) { $("input").ligerHideTip(); d.hide(); }} 
-                          ]
-			});
-        }
-
-
-
         
     </script>
- 	<div id="uploadImageDiv" style="display: none;">
-		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_tpljdz"></iframe> <!---->
-	</div>
+
 </body>
 
 </html>

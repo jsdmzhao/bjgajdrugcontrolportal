@@ -61,11 +61,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },
          {display:"收信人",name:"c_jsr",newline:true,labelWidth:100,width:700,space:30,
-          type:"smarttext",value:""},
+          type:"smarttext",value:"<s:property value='email.c_jsr'/>"},
          {display:"抄送",name:"c_csr",newline:true,labelWidth:100,width:700,space:30,
-          type:"smarttext",value:"<s:property value='email.c_csr_'/>"},
+          type:"smarttext",value:"<s:property value='email.c_csr'/>"},
          {display:"密送",name:"c_msr",newline:true,labelWidth:100,width:700,space:30,
-          type:"smarttext",value:"<s:property value='email.c_msr_'/>"},
+          type:"smarttext",value:"<s:property value='email.c_msr'/>"},
          {display:"附件",name:"c_fj",newline:true,labelWidth:100,width:250,space:30,type:"text",readonly:"readonly",value:"<s:property value='email.c_fj'/>"},
          {
           	 value:"选择附件",

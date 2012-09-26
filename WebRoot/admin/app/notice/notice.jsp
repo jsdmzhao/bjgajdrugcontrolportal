@@ -65,13 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       //加载toolbar
       LG.loadToolbar(grid, toolbarBtnItemClick);
 
-     	var items=[
-     	           {
-     	        	  click:toolbarBtnItemClick,
-     	        	   text:'保存',
-     	        	   img:'<%=basePath%>liger/lib/icons/silkicons/page_save.png',
-     	        	   id:'save'    	
-     	   },{
+     	var items=[{
             click:toolbarBtnItemClick,
             text:'新增',
             img:'<%=basePath%>liger/lib/icons/silkicons/add.png',

@@ -236,10 +236,12 @@ String newsType = request.getParameter("newsType");
             { line: true },
             { text: '取消置顶', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/arrow_down.png" },
             { line: true },
+            /****
             { text: '高亮', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/star.png" },
             { line: true },
             { text: '取消高亮', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/star_01.png" },
             { line: true },
+            ****/
             { text: '推荐', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/flag_red.png" },
             { line: true },
             { text: '取消推荐', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/flag_yellow.png" }
