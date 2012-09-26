@@ -8,6 +8,8 @@ public class Email {
 	
 	private String c_yhid;
 	
+	private String c_yhid_;
+	
 	private String c_yhzid;
 	
 	private String c_nr;
@@ -60,6 +62,14 @@ public class Email {
 
 	public void setC_yhid(String cYhid) {
 		c_yhid = cYhid;
+	}
+
+	public String getC_yhid_() {
+		return c_yhid_;
+	}
+
+	public void setC_yhid_(String c_yhid_) {
+		this.c_yhid_ = c_yhid_;
 	}
 
 	public String getC_yhzid() {

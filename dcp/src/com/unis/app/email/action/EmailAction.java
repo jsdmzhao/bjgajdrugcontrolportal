@@ -244,7 +244,7 @@ public class EmailAction {
 	
 	
 	public String emailView(){
-		email = (Email) emailService.selectOne("EmailMapper.getEmail", email);
+		email = (Email) emailService.selectOne("EmailMapper.viewEmail", email);
 		return Globals.SUCCESS;
 	}
 	

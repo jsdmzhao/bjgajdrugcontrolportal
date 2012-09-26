@@ -24,13 +24,27 @@
 	 <resultMap type="Email"   id="resultUpdateEmail">
 	 	<result column="N_XH"   property="n_xh"/>
 	 	<result column="C_BT"   property="c_bt"/>
-	 	<result column="C_NR" property="c_nr"/>
-	 	<result column="C_JSR"   property="d_jsr"/>
-	 	<result column="C_CSR"   property="c_csr"/>
-	 	<result column="C_MSR"   property="c_msr"/>
-	 	<result column="C_JSR_"   property="c_jsr_"/>
-	 	<result column="C_CSR_"   property="c_csr_"/>
-	 	<result column="C_MSR_"   property="c_msr_"/>
+	 	<result column="C_NR"   property="c_nr"/>
+	 	<result column="C_YHID" property="c_yhid"/>
+	 	<result column="D_DJ"   property="d_dj"/>
+	 	<result column="C_JSR"  property="d_jsr"/>
+	 	<result column="C_CSR"  property="c_csr"/>
+	 	<result column="C_MSR"  property="c_msr"/>
+	 	<result column="C_JSR_" property="c_jsr_"/>
+	 	<result column="C_CSR_" property="c_csr_"/>
+	 	<result column="C_MSR_" property="c_msr_"/>
+	 </resultMap>
+	 
+	 <resultMap type="Email"   id="resultViewEmail">
+	 	<result column="N_XH"   property="n_xh"/>
+	 	<result column="C_BT"   property="c_bt"/>
+	 	<result column="C_NR"   property="c_nr"/>
+	 	<result column="C_YHID" property="c_yhid"/>
+	 	<result column="C_YHID_" property="c_yhid_"/>
+	 	<result column="D_DJ"   property="d_dj"/>
+	 	<result column="C_JSR_" property="c_jsr_"/>
+	 	<result column="C_CSR_" property="c_csr_"/>
+	 	<result column="C_MSR_" property="c_msr_"/>
 	 </resultMap>
 	 
 	 <resultMap type="Email"   id="resultEmailRecieve">
@@ -43,12 +57,28 @@
 			N_XH,
 			C_BT,
 			C_NR,
+			TO_CHAR(D_DJ,'YYYY-MM-DD HH24:MI:SS') D_DJ,
+			FUN_GET_YHMC(C_YHID) C_YHID,
 			C_JSR,
 			C_CSR,
 			C_MSR,
 			FUN_GET_MULTI_YHMC(C_JSR) C_JSR_,
 			FUN_GET_MULTI_YHMC(C_CSR) C_CSR_,
 			FUN_GET_MULTI_YHMC(C_MSR) C_MSR_
+		FROM B_NBYJ WHERE N_XH = #{n_xh}
+	</select>
+	
+	<select id="viewEmail" parameterType="Email" resultMap="resultViewEmail">
+		SELECT 
+			N_XH,
+			C_BT,
+			C_NR,
+			TO_CHAR(D_DJ,'YYYY-MM-DD HH24:MI:SS') D_DJ,
+			C_YHID,
+			FUN_GET_YHMC(C_YHID) C_YHID_,
+			FUN_GET_YHYJJSR(N_XH,'1') C_JSR_,
+			FUN_GET_YHYJJSR(N_XH,'2') C_CSR_,
+			FUN_GET_YHYJJSR(N_XH,'3') C_MSR_
 		FROM B_NBYJ WHERE N_XH = #{n_xh}
 	</select>
 	 

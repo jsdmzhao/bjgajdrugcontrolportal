@@ -259,7 +259,8 @@ fgm.on(window, "load", function() {
 								</div>
 								<div id="demo2" style="font-size: 12px;"></div>
 							</div>
-							<script language="javascript" type="text/javascript">							var demo = document.getElementById("demo");
+							<script language="javascript" type="text/javascript">							
+							var demo = document.getElementById("demo");
 							var demo1 = document.getElementById("demo1");
 							var demo2 = document.getElementById("demo2");
 							var speed=50;    //滚动速度值，值越大速度越慢
@@ -283,8 +284,7 @@ fgm.on(window, "load", function() {
 								style=" background: url('<%=basePath%>images/index/birth-bg.png') no-repeat;width: 227px;height:107px;position: relative;left: -12px;top: 10px;">
 								<div style="padding: 40px 0 0 20px; "></div>
 								<div style="text-align: right;padding: 20px 10px 0 0;">
-									<a href="#" style="color: #ff0000;font-size: 12px;">点击领取总党委和全体民警祝福
-										>></a>
+									<a href="#" style="color: #ff0000;font-size: 12px;">点击领取总党委和全体民警祝福>></a>
 								</div>
 							</div>
 					</div>
@@ -530,8 +530,7 @@ fgm.on(window, "load", function() {
 								<!-- 跳转 -->
 
 
-								<s:iterator value="resMap.Rows1" id="news" var="news" begin="0"
-									end="8">
+								<s:iterator value="resMap.Rows1" id="news" var="news" begin="0" end="8">
 									<li><a
 										href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
 

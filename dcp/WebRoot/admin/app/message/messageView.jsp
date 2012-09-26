@@ -1,17 +1,8 @@
-﻿<%@page import="org.apache.commons.lang.xwork.StringUtils"%>
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String c_jsr = request.getParameter("email.c_jsr");
-String c_jsr_ = request.getParameter("email.c_jsr_");
-
-if(StringUtils.isNotEmpty(c_jsr_)){
-	c_jsr_ = new String(c_jsr_.getBytes("ISO-8859-1"),"gb2312");
-} else {
-	c_jsr  = "";
-	c_jsr_ = "";
-}
 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -19,7 +10,7 @@ if(StringUtils.isNotEmpty(c_jsr_)){
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
-    <title>内部邮件 明细</title>
+    <title>内部消息 明细</title>
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
     <script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
@@ -29,7 +20,7 @@ if(StringUtils.isNotEmpty(c_jsr_)){
     <script src="<%=basePath%>liger/lib/js/LG.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/jquery-validation/jquery.validate.min.js" type="text/javascript"></script> 
     <script src="<%=basePath%>liger/lib/jquery-validation/jquery.metadata.js" type="text/javascript"></script>
-    <script src="<%=basePath%>liger/lib/jquery-validation/emails_cn.js" type="text/javascript"></script>
+    <script src="<%=basePath%>liger/lib/jquery-validation/messages_cn.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/jquery.form.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/json2.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/js/validator.js" type="text/javascript"></script>
@@ -43,22 +34,21 @@ if(StringUtils.isNotEmpty(c_jsr_)){
 	
 	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
-  	<script type='text/javascript' src='<%=basePath%>dwr/interface/EmailAction.js'></script>
-  	<script type='text/javascript' src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/interface/MessageAction.js'></script>
 
 </head>
 <body style="padding-bottom:31px;">
     <form id="mainform"  method="post"></form> 
+    <div id="nr" style="display: none;"><s:property value="message.c_nr"/></div>
     <script type="text/javascript"> 
-    	var box1;
-    	var box2;
-    	var box3;
+    
     
         var config = {"Form":{ 
          fields : [
          {
-	         display:"邮件标题",
+	         display:"消息标题",
 	         name:"c_bt",
+	         value:"<s:property value='message.c_bt'/>",
 	         newline:true,
 	         labelWidth:100,
 	         width:700,
@@ -67,21 +57,10 @@ if(StringUtils.isNotEmpty(c_jsr_)){
 	         group:"基本信息",
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },
-         {display:"收信人",name:"c_jsr",newline:true,labelWidth:100,width:700,space:30,type:"smarttext",value:"<%=c_jsr_%>"},
-         {display:"抄送",name:"c_csr",newline:true,labelWidth:100,width:700,space:30,type:"smarttext"},
-         {display:"密送",name:"c_msr",newline:true,labelWidth:100,width:700,space:30,type:"smarttext"},
-         {display:"附件",name:"c_fj",newline:true,labelWidth:100,width:250,space:30,type:"text",readonly:"readonly"},
-         {
-          	 value:"选择附件",
-  	         name:"scfj",
-  	         newline:false,
-  	         labelWidth:100,
-  	         width:220,space:30, 
-  	         type:"button",
-  	         cssClass:"l-button",
-  	         onclick : "openDialog('#uploadImageDiv')"
-           },
-         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea"}
+         {display:"收信人",name:"c_jsr",newline:true,labelWidth:100,width:700,space:30,
+             type:"text",value:"<s:property value='message.c_jsr'/>"},
+         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea", readonly:"readonly",value:$('#nr').html()},
+         {name:"n_xh", type:"hidden",value:"<s:property value='message.n_xh'/>"}
         ]
  }};
 
@@ -102,10 +81,10 @@ if(StringUtils.isNotEmpty(c_jsr_)){
         LG.overrideGridLoading(); 
 
         //表单底部按钮 
-        LG.setEmailFormDefaultBtn(f_cancel,isView ? null : f_save, f_send);
+        LG.setFormDefaultBtn(f_cancel,isView);
 
         var deptTree = {
-            url :'',
+            url :'../handler/tree.ashx?view=CF_Department&idfield=DeptID&textfield=DeptName&pidfield=DeptParentID',
             checkbox:false,
             nodeWidth :220
         };
@@ -131,7 +110,9 @@ if(StringUtils.isNotEmpty(c_jsr_)){
         else { 
             LG.loadForm(mainform, { type: 'AjaxMemberManage', method: 'newsQuery', data: { ID: currentID} },f_loaded);
         }  
+
         
+          
         if(!isView) 
         {
             //验证
@@ -152,50 +133,13 @@ if(StringUtils.isNotEmpty(c_jsr_)){
 
     	//$("c_tpljdz").setDisabled();
         
-    	function f_send(){
-			var formMap = DWRUtil.getValues("mainform"); 
-        	
-	        formMap["c_nr"] = editor.document.getBody().getHtml();
-	        formMap["c_zt"] = '1';
-	        
-	        if('<%=c_jsr%>' != '' && box1.getValue() == ''){
-	        	formMap["c_jsr"] = '<%=c_jsr%>';
-	        } else {
-	        	formMap["c_jsr"] = box1.getValue();
-	        }
-	        formMap["c_csr"] = box2.getValue();
-	        formMap["c_msr"] = box3.getValue();
-
-	        EmailAction.emailSave(formMap,function (result){
-        		
-        		if(result == 'success'){
-        			LG.showSuccess('发送成功', function () { 
-                        f_cancel();
-                        parent.loadGrid();
-                    });
-        		} else {
-        		    LG.showError('发送失败');
-        		}
-        	});
-    	}
-    	
         function f_save() {
 
         	var formMap = DWRUtil.getValues("mainform"); 
-        	
+     
 	        formMap["c_nr"] = editor.document.getBody().getHtml();
-	        formMap["c_zt"] = '2';
-
-	        if('<%=c_jsr%>' != '' && box1.getValue() == ''){
-	        	formMap["c_jsr"] = '<%=c_jsr%>';
-	        } else {
-	        	formMap["c_jsr"] = box1.getValue();
-	        }
-	        formMap["c_csr"] = box2.getValue();
-	        formMap["c_msr"] = box3.getValue();
 			
-        	EmailAction.emailSave(formMap,function (result){
-        		
+        	MessageAction.messageSave(formMap,function (result){
         		if(result == 'success'){
         			LG.showSuccess('保存成功', function () { 
                         f_cancel();
@@ -205,56 +149,14 @@ if(StringUtils.isNotEmpty(c_jsr_)){
         		    LG.showError('保存失败');
         		}
         	});
-        	
+
         }
-       function f_cancel()
+        function f_cancel()
         {
             parent.dialog_hidden();
         }
-
-        function openDialog(divNode){
-
-        	var dlgedit = $.ligerDialog.open({
-				width : 350, //宽度
-				height : null,
-				title : "文件上传",
-				target : $(divNode),
-				buttons: [ 
-                           { text: '关闭', onclick: function (i, d) { $("input").ligerHideTip(); d.hide(); }} 
-                          ]
-			});
-        }
-        
-        UserInfoSvc.choose(function(rdata){
-   			if(rdata != null){
-
-   	          box1= $("#c_jsr").ligerComboBox({
-   	            width : 698, 
-   	            selectBoxWidth: 698,
-   	            selectBoxHeight: 240, valueField: 'value', treeLeafOnly: true,
-   	            tree: { data:rdata}
-   	          }); 
-   	          box2= $("#c_csr").ligerComboBox({
-  	            width : 698, 
-  	            selectBoxWidth: 698,
-  	            selectBoxHeight: 240, valueField: 'value', treeLeafOnly: true,
-  	            tree: { data:rdata}
-  	          }); 
-   	       	  box3= $("#c_msr").ligerComboBox({
- 	            width : 698, 
- 	            selectBoxWidth: 698,
- 	            selectBoxHeight: 240, valueField: 'value', treeLeafOnly: true,
- 	            tree: { data:rdata}
- 	          }); 
-   			}
-   		});
-        
-        
-        
+  
     </script>
- 	<div id="uploadImageDiv" style="display: none;">
-		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_fj"></iframe> <!---->
-	</div>
 </body>
 
 </html>
