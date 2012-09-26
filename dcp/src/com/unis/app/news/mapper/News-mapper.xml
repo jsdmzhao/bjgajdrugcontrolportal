@@ -32,7 +32,7 @@
 	  <if test="c_bt != null and c_bt != ''">
 	 	 AND C_BT LIKE '%'||#{c_bt}||'%'
 	  </if>
-	  ORDER BY C_SFZD,C_SFGL,N_XXXH,D_FBSJ
+	  ORDER BY C_SFZD,D_FBSJ
 	</select>
 	
 	<select id="getNewsIndexList" parameterType="News" resultMap="resultNews">
@@ -48,7 +48,7 @@
 	  <if test="c_sfsh != null and c_sfsh != ''">
 	 	 AND C_SFSH = #{c_sfsh}
 	  </if>
-	  ORDER BY C_SFZD,C_SFGL,N_XXXH,D_FBSJ
+	  ORDER BY C_SFZD,D_FBSJ
 	</select>
 	
 	<delete id="deleteNews" parameterType="int">
@@ -151,7 +151,6 @@
 	          C_LMMC TEXT
 	   FROM B_LANMU 
 	   WHERE C_SJLMDM = '0000'
-		   	AND C_YHZID = #{c_yhzid}
 	</select>
 	 
 	<select id="getLanmuChilden" parameterType="string" resultType="Combox">  

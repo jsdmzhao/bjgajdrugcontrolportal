@@ -1,5 +1,6 @@
 package com.unis.app.news.action;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.unis.core.action.CreateIndexAction;
 import com.unis.core.commons.Combox;
 import com.unis.core.service.AbsServiceAdapter;
 import com.unis.core.util.Globals;
@@ -44,6 +46,8 @@ public class NewsAction {
 
 	@Autowired
 	private AbsServiceAdapter<Integer> newsService = null;
+	@Autowired
+	private CreateIndexAction createdIndexAction = null;
 	
 	@SuppressWarnings("unchecked")
 	public String getNewsLanmuCombox(){
@@ -86,12 +90,17 @@ public class NewsAction {
 	}
 	
 	
-	public String newsOperate(String operateType, String value, String n_xh){
+	public String newsOperate(String operateType, String value, String n_xh, HttpServletRequest request) throws IOException{
 		Map<String, Object> sqlParamMap = new HashMap<String, Object>();
+		HttpSession session = request.getSession();
+		String c_yhid = session.getAttribute("userId")+"";
+		sqlParamMap.put("c_yhid", c_yhid);
 		sqlParamMap.put("operateType", operateType);
 		sqlParamMap.put("value", value);
 		sqlParamMap.put("n_xh", n_xh);
-		sqlParamMap.put("c_yhid", "");
+		if("zd".equals(operateType) || "sh".equals(operateType)){
+			createdIndexAction.createIndexHtml("http://localhost:8080/dcp");
+		}
 	    newsService.update("NewsMapper.operateNews", sqlParamMap);
 		return Globals.SUCCESS;
 	}
@@ -208,5 +217,12 @@ public class NewsAction {
 		this.newsService = newsService;
 	}
 
-	
+	public CreateIndexAction getCreatedIndexAction() {
+		return createdIndexAction;
+	}
+
+	public void setCreatedIndexAction(CreateIndexAction createdIndexAction) {
+		this.createdIndexAction = createdIndexAction;
+	}
+
 }
