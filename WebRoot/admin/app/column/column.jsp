@@ -157,7 +157,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	  var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
                   //top.f_addTab(null, '保存信息', '<%=basePath%>admin/app/column/columnDetail.jsp?c_sjlmdm='+ selected.c_lmdm);
-                  dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/column/columnDetail.jsp?c_sjlmdm='+ selected.c_lmd, 
+                  dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/column/columnDetail.jsp?c_sjlmdm='+ selected.c_lmdm, 
                           height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
 				  });
                   break;
