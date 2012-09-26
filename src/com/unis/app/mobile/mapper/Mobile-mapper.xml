@@ -4,9 +4,9 @@
 <mapper namespace="MobileMapper">
 	 
 	 <resultMap type="Mobile"       id="resultMobile">
-	 	<result column="N_XH"       property="n_xh"/>
+	 	<result column="ID"       property="n_xh"/>
 	 	<result column="RECEIVER"   property="c_jsr"/>
-	 	<result column="C_YHID"     property="c_yhid"/>
+	 	<result column="SENDER"     property="c_yhid"/>
 	 	<result column="SENDTIME"   property="d_fs"/>
 	 </resultMap>
 	 
@@ -15,7 +15,7 @@
 	</select>
 	 
 	<select id="getMobileList" resultMap="resultMobile">
-		SELECT N_XH,
+		SELECT ID,
 		       RECEIVER, 
 		       CONTENT, 
 		       TO_CHAR(SENDTIME,'YYYY-MM-DD hh24:MI:SS') SENDTIME
@@ -33,7 +33,7 @@
 			IINSERT INTO SMS_BOXSENDING
 			  (SENDER, RECEIVER, CONTENT, SENDTIME, INSERTTIME)
 			VALUES
-			  (#{c_yhid}, FUN_GET_PHONE_FROM_YHID(#{list.c_sjhm}), #{content}, sysdate, sysdate)
+			  (#{c_yhid}, FUN_GET_PHONE_FROM_YHID(#{list.c_yhid}), #{content}, sysdate, sysdate)
 		</foreach>
 		;END;
 	</insert>
