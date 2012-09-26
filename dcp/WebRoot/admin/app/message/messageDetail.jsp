@@ -159,7 +159,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  	            box1 = $("#c_jsr").ligerComboBox({
 	  	            width : 700, 
 	  	            selectBoxWidth: 698,
-	  	            selectBoxHeight: 240, valueField: 'value', treeLeafOnly: false,
+	  	            selectBoxHeight: 240, valueField: 'value', treeLeafOnly: true,
 	  	            tree: { data:rdata}
 	  	        }); 
   			}
