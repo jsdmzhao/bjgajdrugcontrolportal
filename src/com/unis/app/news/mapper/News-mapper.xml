@@ -12,6 +12,20 @@
 	 	<result column="C_SHJG" property="c_shjg"/>
 	 	<result column="C_LM"   property="c_lm"/>
 	 </resultMap>
+	 
+	 <resultMap type="News"    id="resultIndexNews">
+	 	<result column="N_XH"   property="n_xh"/>
+	 	<result column="C_BT"   property="c_bt"/>
+	 	<result column="D_FBSJ" property="d_fbsj"/>
+	 	<result column="C_TPLJDZ" property="c_tpljdz"/>
+	 </resultMap>
+	 
+	 
+	 <resultMap type="News" id="sortNews">
+	 	<result column="C_YHZID" property="c_yhzid"/>
+	 	<result column="N_XXXH" property="n_xxxh"/>
+	 </resultMap>
+	 
 	<select id="getNews" parameterType="News" resultType="News">
 		SELECT * FROM B_XINWEN WHERE N_XH = #{n_xh}
 	</select>
@@ -32,28 +46,51 @@
 	  <if test="c_bt != null and c_bt != ''">
 	 	 AND C_BT LIKE '%'||#{c_bt}||'%'
 	  </if>
-	  ORDER BY C_SFZD,D_FBSJ
+	  ORDER BY C_SFZD DESC,D_FBSJ DESC
 	</select>
 	
-	<select id="getNewsIndexList" parameterType="News" resultMap="resultNews">
+	<select id="getNewsIndexList" parameterType="News" resultMap="resultIndexNews">
 	  SELECT N_XH,
-	   C_BT,
-       TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
-       C_SFZD,
-       C_SFGL,
-       C_SFTJ,
-       C_SHJG
+			  C_BT,
+		      TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
+			  C_TPLJDZ
 	  FROM B_XINWEN
 	 	 WHERE C_LM = #{c_lm}
-	  <if test="c_sfsh != null and c_sfsh != ''">
-	 	 AND C_SFSH = #{c_sfsh}
-	  </if>
-	  ORDER BY C_SFZD,D_FBSJ
+	 	 	<if test="c_lm != null and c_lm == '1201'">
+			 	 AND C_SFTWWZ = 1
+			 	 AND C_TPLJDZ IS NOT NULL
+		  	 </if>
+	 	 	AND C_SHJG = '1'
+	  ORDER BY C_SFZD DESC,D_FBSJ DESC
 	</select>
 	
 	<delete id="deleteNews" parameterType="int">
 		delete from B_XINWEN WHERE N_XH = #{n_xh}
 	</delete>
+	
+	<select id="sortIndexCnt" resultMap="sortNews">
+		SELECT DECODE(C_YHZID,
+              '1',
+              '总队领导',
+              '3',
+              '办公室',
+              '4',
+              '协调指导大队',
+              '9',
+              '情报中心',
+              '7',
+              '侦查大队',
+              '8',
+              '查禁大队',
+              '5',
+              '缉控大队',
+              '10',
+              '两品办') C_YHZID,
+       		COUNT(*) N_XXXH
+		  FROM B_XINWEN
+		 WHERE C_YHZID IN ('1', '3', '4', '5', '9', '7', '8', '10')
+		 GROUP BY C_YHZID ORDER BY N_XXXH DESC
+	</select>
 	
 	<insert id="insertNews" parameterType="hashmap">
 		 INSERT INTO B_XINWEN(

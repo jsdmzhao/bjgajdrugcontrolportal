@@ -30,8 +30,7 @@ public class CreateIndexAction {
 		// 获得该网页的编码
 		String encode = connection.getContentType();
 		
-		String ENCODING = encode.substring(encode.indexOf("charset=") + 8,
-				encode.length());
+		String ENCODING = encode.substring(encode.indexOf("charset=") + 8, encode.length());
 
 		// 查InputStreamReader的构造方法，ENCODING为该页面的编码
 		BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream(), ENCODING));
