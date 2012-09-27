@@ -11,8 +11,8 @@ a:hover { color:#f00;}
 .clearfloat {clear:both;height:0;font-size: 1px;line-height: 0px;} 
 
 /*body*/
-#container { width:1002px; margin: auto;background-color: #EAF3F9;}
-#container2 { width:1002px; margin: auto;background-color: #EAF3F9;}
+#container{ width:1002px; margin: auto;background-color: #EAF3F9;c'le'a}
+#container2{ width:1002px; margin: auto;background-color: #EAF3F9;}
 #container3{ width:1002px; margin: auto;background-color: #EAF3F9;}
 
 /*header*/

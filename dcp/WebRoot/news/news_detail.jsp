@@ -11,7 +11,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 		<title><s:property value="news.c_bt"/></title>
-		<link rel="stylesheet" type="text/css" href="<%=basePath%>css/layout.css" />
 		<link rel="stylesheet" type="text/css" href="<%=basePath%>css/index.css" />
 		<LINK href="<%=basePath%>css/css.css" type=text/css rel=stylesheet />
 	    <style type="text/css">
@@ -63,7 +62,7 @@ return footerhtml;
 }
 </script>
 <%@include  file="../head.jsp" %>
-<div id="container2" style="overflow:aoto;height: 100%" >
+<div id="container2" style="overflow:aoto;">
 <div style="float:left;"><div id="main"> 
 				
 					<div class="main-box" style="margin-bottom: 4px;">
@@ -207,17 +206,11 @@ width:691px; height:57px;"></div>
 <div style=" background-image: url(<%=basePath%>images/foot1.png); background-repeat:no-repeat; float:left;
 width:17px; height:57px;"></div>
 </div>
-				<div style="margin-top: 10px;float:right; width: 1000px;">
+</div>
+
+
+</div>
 <%@include file="../foot.jsp"  %>
-</div>
-</div>
-
-
-
-
-
-</div>
-
 
 
 <SCRIPT type=text/javascript>
