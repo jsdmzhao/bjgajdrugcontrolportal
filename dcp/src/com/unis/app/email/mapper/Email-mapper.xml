@@ -146,7 +146,7 @@
 		   C_YHZID  ,
 		   C_NR     ,
 		   C_IP     ,
-		   C_SFSC   , 
+		   C_FJ  , 
 		   C_ZT     ,
 		   D_DJ    ) 
 		VALUES (	            	
@@ -156,7 +156,7 @@
 	         #{c_yhzid,jdbcType=VARCHAR},          
 	         #{c_nr,javaType=String,jdbcType=CLOB,handler=ClobTypeHandler}, 
 	         #{c_ip,jdbcType=VARCHAR},
-	         #{c_sfsc,jdbcType=VARCHAR},
+	         #{c_fj,jdbcType=VARCHAR},
 	         #{c_zt,jdbcType=VARCHAR},
 	       	 sysdate      
 	    );
@@ -183,7 +183,7 @@
 		   C_YHZID  ,
 		   C_NR     ,
 		   C_IP     ,
-		   C_SFSC   , 
+		   C_FJ     , 
 		   C_ZT     ,
 		   C_JSR    ,
 		   C_CSR    ,
@@ -196,7 +196,7 @@
 	         #{c_yhzid,jdbcType=VARCHAR},          
 	         #{c_nr,javaType=String,jdbcType=CLOB,handler=ClobTypeHandler}, 
 	         #{c_ip,jdbcType=VARCHAR},
-	         #{c_sfsc,jdbcType=VARCHAR},
+	         #{c_fj,jdbcType=VARCHAR},
 	         #{c_zt,jdbcType=VARCHAR},
 	         #{c_jsr,jdbcType=VARCHAR},
 	         #{c_csr,jdbcType=VARCHAR},
