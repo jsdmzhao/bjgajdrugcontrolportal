@@ -3,7 +3,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
 
 <s:if test="resMap==null">
@@ -457,23 +459,25 @@ function fontbutton(index,mag)
 							<img class="imgdiv" src="<%=basePath%>images/4.png  " />
 						</div>
 						<div class="font1" align="center">
-							<a href="<%=basePath%>temp/blog.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">工作日志</a>
+							<a href="<%=basePath%>temp/blog.jsp"
+								onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">工作日志</a>
 						</div>
 					</div>
 					<!-- 
-					<div class="topdiv">
-					<div class="imgdiv"  >
-					<img  class="imgdiv"   src="<!%=basePath%>images/5.png  "/></div >
-					<div   class="font1"  align="center"><a href="#" onclick='Box("msg5",900,600,parahtml(900,600),fontbutton(5,1));'>工作计划</a></div>
-					</div>
-					 -->
+<div class="topdiv">
+<div class="imgdiv"  >
+<img  class="imgdiv"   src="<%=basePath%>images/5.png  "/></div >
+<div   class="font1"  align="center"><a href="#" onclick='Box("msg5",900,600,parahtml(900,600),fontbutton(5,1));'>工作计划</a></div>
+</div>
+ -->
 
 					<div class="topdiv">
 						<div class="imgdiv">
 							<img class="imgdiv" src="<%=basePath%>images/6.png  " />
 						</div>
 						<div class="font1" align="center">
-							<a href="<%=basePath%>temp/message.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">内部消息</a>
+							<a href="<%=basePath%>temp/message.jsp"
+								onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">内部消息</a>
 						</div>
 					</div>
 
@@ -484,7 +488,8 @@ function fontbutton(index,mag)
 							<img class="imgdiv" src="<%=basePath%>images/7.png  " />
 						</div>
 						<div class="font1" align="center">
-							<a href="<%=basePath%>temp/mobile.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">手机短息</a>
+							<a href="<%=basePath%>temp/mobile.jsp"
+								onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">手机短息</a>
 						</div>
 					</div>
 
@@ -552,7 +557,10 @@ function fontbutton(index,mag)
 			<param name="movie" value="<%=basePath%>images/top.swf" />
 			<param name="quality" value="high" />
 			<param name="wmode" value="opaque">
-			<embed src="<%=basePath%>images/top.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="1000" height="126" wmode="opaque"></embed>
+			<embed src="<%=basePath%>images/top.swf" quality="high"
+				pluginspage="http://www.macromedia.com/go/getflashplayer"
+				type="application/x-shockwave-flash" width="1000" height="126"
+				wmode="opaque"></embed>
 		</object>
 
 	</div>
@@ -561,47 +569,45 @@ function fontbutton(index,mag)
 		style="background: url('<%=basePath%>images/index/nav-bg.png') 0 -12px repeat-x;">
 		<div style="padding: 0 20px;">
 			<ul class="nav-ul">
-				<li>
-					<a href="<%=basePath%>index.jsp" class="current">首 页</a>
+				<li><a href="<%=basePath%>index.jsp" class="current">首 页</a>
 				</li>
-				<li class="middle">
-					<a href="http://www.xxzx.bj/" target="_blank">信息查询</a>
+				<li class="middle"><a href="http://www.xxzx.bj/"
+					target="_blank">信息查询</a>
 				</li>
-				<li class="middle">
-					<a href="<%=basePath%>news/news.jsp">新闻中心</a>
+				<li class="middle"><a href="<%=basePath%>news/news.jsp">新闻中心</a>
 				</li>
-				<li class="middle">
-					<a href="http://10.8.1.135/" target="_blank">文件交换</a>
+				<li class="middle"><a href="http://10.8.1.135/" target="_blank">文件交换</a>
 				</li>
-				<li class="middle">
-					<a href="<%=basePath%>media/deploy/Video.jsp">视频在线</a>
+				<li class="middle"><a
+					href="<%=basePath%>media/deploy/Video.jsp">视频在线</a>
 				</li>
-				<li class="middle">
-					<a href="http://anquan.zx.bj" target="_blank">信息安全</a>
+				<li class="middle"><a href="http://anquan.zx.bj"
+					target="_blank">信息安全</a>
 				</li>
-				<li class="middle">
-					<a href="<%=basePath%>admin/index.jsp">内部专区</a>
+				<li class="middle"><a href="<%=basePath%>admin/index.jsp">内部专区</a>
 				</li>
-				<li class="middle">
-					<a href="<%=basePath%>news/list?news.c_lm=1286">警钟长鸣</a>
+				<li class="middle"><a
+					href="<%=basePath%>news/list?news.c_lm=1286">警钟长鸣</a>
 				</li>
-				<li class="middle">
-					<a href="<%=basePath%>news/list?news.c_lm=229">工作交流</a>
+				<li class="middle"><a
+					href="<%=basePath%>news/list?news.c_lm=229">工作交流</a>
 				</li>
-				<li class="middle">
-					<a href="<%=basePath%>news/list?news.c_lm=12">禁毒情报</a>
+				<li class="middle"><a
+					href="<%=basePath%>news/list?news.c_lm=12">禁毒情报</a>
 				</li>
-				<li class="middle">
-					<a href="<%=basePath%>news/list?news.c_lm=13">侦查破案 </a>
+				<li class="middle"><a
+					href="<%=basePath%>news/list?news.c_lm=13">侦查破案 </a>
 				</li>
-				<li class="middle">
-					<a href="<%=basePath%>news/list?news.c_lm=1296"">学习园地</a>
+				<li class="middle"><a
+					href="<%=basePath%>news/list?news.c_lm=1296"">学习园地</a>
 				</li>
 
 			</ul>
 			<div class="clearfloat"></div>
 		</div>
-		<div style="background: url('<%=basePath%>images/index/nav-bottom.png') 0 bottom repeat-x;height: 10px;"> </div>
+		<div
+			style="background: url('<%=basePath%>images/index/nav-bottom.png') 0 bottom repeat-x;height: 10px;">
+		</div>
 	</div>
 </div>
 	
@@ -642,6 +648,7 @@ function fontbutton(index,mag)
 									<div style="white-space:normal; width:200px; overflow:auto; padding: 0px; ">
 
 										<s:iterator value="resMap.Rows3" id="news" var="news">
+
 
 											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('<%=basePath%>images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
 												<a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
@@ -686,30 +693,30 @@ function fontbutton(index,mag)
 				<div class="main-box" style="margin-bottom: 4px;">
 					<span class="title1">专栏专项工作</span>
 					<div class="main-con" style="padding: 11px;">
-						<a href="http://10.8.2.52:8030/" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
-							<img src="<%=basePath%>images/tb/12.png" /> 
-						</a> 
-						<a href="http://10.8.2.84" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
-							<img src="<%=basePath%>images/tb/2.png" />
-					    </a> 
-						<a href="http://www.sdjwspzx.bj/" onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
-							<img src="<%=basePath%>images/tb/3.png" />
-					   </a> 
-					   <a href="http://www.zz.bj/project/20091112/index.jsp/" onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
-							<img src="<%=basePath%>images/tb/5.png" /> 
-					   </a> 
-					   <a href="http://10.8.2.195:91/" onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
-							<img src="<%=basePath%>images/tb/6.png" />
-					   </a> 
-					   <a href="http://www.jdc.bj/list.php?id=233" onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
-							<img src="<%=basePath%>images/tb/9.png" /> 
-					   </a>
-					   <a href="http://10.8.2.195:96/" onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
-							<img src="<%=basePath%>images/tb/10.png" /> 
-					   </a> 
-					   <a href="http://www.jdc.bj/list/list.php?id=110" onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
-							<img src="<%=basePath%>images/tb/1.png" /> 
-					   </a>
+						<a href="http://10.8.2.52:8030/"
+							onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
+							<img src="<%=basePath%>images/tb/12.png" /> </a> <a
+							href="http://10.8.2.84"
+							onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
+							<img src="<%=basePath%>images/tb/2.png" /> </a> <a
+							href="http://www.sdjwspzx.bj/"
+							onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
+							<img src="<%=basePath%>images/tb/3.png" /> </a> <a
+							href="http://www.zz.bj/project/20091112/index.jsp/"
+							onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
+							<img src="<%=basePath%>images/tb/5.png" /> </a> <a
+							href="http://10.8.2.195:91/"
+							onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
+							<img src="<%=basePath%>images/tb/6.png" /> </a> <a
+							href="http://www.jdc.bj/list.php?id=233"
+							onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
+							<img src="<%=basePath%>images/tb/9.png" /> </a> <a
+							href="http://10.8.2.195:96/"
+							onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
+							<img src="<%=basePath%>images/tb/10.png" /> </a> <a
+							href="http://www.jdc.bj/list/list.php?id=110"
+							onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
+							<img src="<%=basePath%>images/tb/1.png" /> </a>
 					</div>
 				</div>
 				<div class="main-box" style="margin-bottom: 5px;">
@@ -735,141 +742,105 @@ function fontbutton(index,mag)
 											</div>
 										</div>
 										<ul class="items" style="display:block;">
-											<s:iterator value="resMap.RowsSort" id="news" var="news" begin="0" end="resMap.RowsSort<7?resMap.RowsSort:7">
-											<li>
-												<div style="float:left; width:90px;">
-													<a href="#"><s:property value="#news.c_yhzid"/></a>
-												</div>
-												<div style="float:left; width:40px; margin-left:20px;">
-													<a href="#"><s:property value="#news.n_xxxh"/>条</a>
-												</div>
-											</li>
-											</s:iterator>
-											<!-- 
-											<li>
-												<div style="float:left; width:60px;">
-													<a href="#">协指</a>
+											<li><div style="float:left; width:60px;">
+													<a href="#">办公室</a>
 												</div>
 												<div style="float:left; width:60px; margin-left:30px;">
 													<a href="#">0条</a>
 												</div>
-											</li>
-											<li>
-												<div style="float:left; width:60px;">
-													<a href="#">情报</a>
-												</div>
-												<div style="float:left; width:60px; margin-left:30px;">
-													<a href="#">0条</a>
-												</div>
-											</li>
-											<li>
-												<div style="float:left; width:60px;">
-													<a href="#">法制</a>
-												</div>
-												<div style="float:left; width:60px; margin-left:30px;">
-													<a href="#">0条</a>
-												</div>
-											</li>
-											<li>
-												<div style="float:left; width:60px;">
-													<a href="#">侦查</a>
-												</div>
-												<div style="float:left; width:60px; margin-left:30px;">
-													<a href="#">0条</a>
-												</div>
-											</li>
-											<li>
-												<div style="float:left; width:60px;">
-													<a href="#">查禁</a>
+												<li><div style="float:left; width:60px;">
+														<a href="#">协指</a>
 													</div>
 													<div style="float:left; width:60px; margin-left:30px;">
 														<a href="#">0条</a>
 													</div>
-											</li>
-											<li>
-												<div style="float:left; width:60px;">
-													<a href="#">缉控</a>
-												</div>
-												<div style="float:left; width:60px; margin-left:30px;">
-													<a href="#">0条</a>
-												</div>
-											</li>
-											<li>
-												<div style="float:left; width:60px;">
-													<a href="#">两品</a>
-												</div>
-												<div
-													style="float:left; width:60px; margin-left:30px;">
-													<a href="#">0条</a>
-												</div>
-											</li>
-											 -->
+													<li><div style="float:left; width:60px;">
+															<a href="#">情报</a>
+														</div>
+														<div style="float:left; width:60px; margin-left:30px;">
+															<a href="#">0条</a>
+														</div>
+														<li><div style="float:left; width:60px;">
+																<a href="#">法制</a>
+															</div>
+															<div style="float:left; width:60px; margin-left:30px;">
+																<a href="#">0条</a>
+															</div>
+															<li><div style="float:left; width:60px;">
+																	<a href="#">侦查</a>
+																</div>
+																<div style="float:left; width:60px; margin-left:30px;">
+																	<a href="#">0条</a>
+																</div>
+																<li><div style="float:left; width:60px;">
+																		<a href="#">查禁</a>
+																	</div>
+																	<div style="float:left; width:60px; margin-left:30px;">
+																		<a href="#">0条</a>
+																	</div>
+																	<li><div style="float:left; width:60px;">
+																			<a href="#">缉控</a>
+																		</div>
+																		<div style="float:left; width:60px; margin-left:30px;">
+																			<a href="#">0条</a>
+																		</div>
+																		<li><div style="float:left; width:60px;">
+																				<a href="#">两品</a>
+																			</div>
+																			<div
+																				style="float:left; width:60px; margin-left:30px;">
+																				<a href="#">0条</a>
+																			</div>
 										</ul>
 										<ul class="items">
-											<li>
-												<div style="float:left; width:60px;">
+											<li><div style="float:left; width:60px;">
 													<a href="#">东城分局</a>
 												</div>
 												<div style="float:left; width:60px; margin-left:30px;">
 													<a href="#">0条</a>
 												</div>
-											</li>
-											<li>
-												<div style="float:left; width:60px;">
-													<a href="#">西城分局</a>
-												</div>
-												<div style="float:left; width:60px; margin-left:30px;">
-													<a href="#">0条</a>
-												</div>
-											</li>
-											<li>
-												<div style="float:left; width:60px;">
-													<a href="#">崇文分局</a>
-												</div>
-												<div style="float:left; width:60px; margin-left:30px;">
-													<a href="#">0条</a>
-												</div>
-											</li>
-											<li>
-												<div style="float:left; width:60px;">
-													<a href="#">宣武分局</a>
-												</div>
-												<div style="float:left; width:60px; margin-left:30px;">
-													<a href="#">0条</a>
-												</div>
-											</li>
-											<li>
-												<div style="float:left; width:60px;">
-													<a href="#">朝阳分局</a>
-												</div>
-												<div style="float:left; width:60px; margin-left:30px;">
-													<a href="#">0条</a>
-												</div>
-											</li>
-											<li>
-												<div style="float:left; width:60px;">
-													<a href="#">丰台分局</a>
-												</div>
-												<div style="float:left; width:60px; margin-left:30px;">
-													<a href="#">0条</a>
-												</div>
-											</li>	
-											<li>
-												<div style="float:left; width:60px;">
-													<a href="#">石景山分局</a>
-												</div>
-												<div style="float:left; width:60px; margin-left:30px;">
-													<a href="#">0条</a>
-												</div>
-											</li>
-											<li>
-												<div style="float:left; width:60px;">
-													<a href="#">海淀分局</a>
-												</div>
-												<div style="float:left; width:60px; margin-left:30px;">
-													<a href="#">0条</a>
-												</div>
-											</li>
+												<li><div style="float:left; width:60px;">
+														<a href="#">西城分局</a>
+													</div>
+													<div style="float:left; width:60px; margin-left:30px;">
+														<a href="#">0条</a>
+													</div>
+													<li><div style="float:left; width:60px;">
+															<a href="#">崇文分局</a>
+														</div>
+														<div style="float:left; width:60px; margin-left:30px;">
+															<a href="#">0条</a>
+														</div>
+														<li><div style="float:left; width:60px;">
+																<a href="#">宣武分局</a>
+															</div>
+															<div style="float:left; width:60px; margin-left:30px;">
+																<a href="#">0条</a>
+															</div>
+															<li><div style="float:left; width:60px;">
+																	<a href="#">朝阳分局</a>
+																</div>
+																<div style="float:left; width:60px; margin-left:30px;">
+																	<a href="#">0条</a>
+																</div>
+																<li><div style="float:left; width:60px;">
+																		<a href="#">丰台分局</a>
+																	</div>
+																	<div style="float:left; width:60px; margin-left:30px;">
+																		<a href="#">0条</a>
+																	</div>
+																	<li><div style="float:left; width:60px;">
+																			<a href="#">石景山分局</a>
+																		</div>
+																		<div style="float:left; width:60px; margin-left:30px;">
+																			<a href="#">0条</a>
+																		</div></li>
+																	<li><div style="float:left; width:60px;">
+																			<a href="#">海淀分局</a>
+																		</div>
+																		<div style="float:left; width:60px; margin-left:30px;">
+																			<a href="#">0条</a>
+																		</div>
 										</ul>
 
 										<div style="float:right; margin-right:20px; padding-top:3px;">
@@ -961,7 +932,8 @@ function fontbutton(index,mag)
 
 
 								<s:iterator value="resMap.Rows1" id="news" var="news" begin="0" end="8">
-									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
+									<li><a
+										href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
 
 											<s:if test="#news.c_bt.length()>=15">
 												<s:property value="#news.c_bt.substring(0,15)+'...'" />
@@ -983,11 +955,14 @@ function fontbutton(index,mag)
 						<div style="float: left;padding-left: 10px;">
 							<img src="<%=basePath%>images/index/today.png" />
 						</div>
-						<div style="float: right;width: 690px;height:85px;margin-right:10px;">
+						<div
+							style="float: right;width: 690px;height:85px;margin-right:10px;">
+
 							<ul class="index-ul main-top-ul">
 								<s:iterator value="resMap.Rows2" id="news" var="news" begin="0"
 									end="8">
-									<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
+									<li><a
+										href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
 
 											<s:if test="#news.c_bt.length()>=15">
 												<s:property value="#news.c_bt.substring(0,15)+'...'" />
@@ -1012,48 +987,33 @@ function fontbutton(index,mag)
 
 						<div id="featured">
 							<ul class="ui-tabs-nav">
-								<s:iterator value="resMap.RowsPic" id="news" var="news" begin="0" end="3" status="status">
-									<li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-<s:property value='#status.count'/>">
-										<a href="#fragment-<s:property value='#status.count'/>">
-											<img src="<%=basePath%><s:property value='#news.c_tpljdz'/>" height="45px;" width="80px;" alt="" /> 
-										</a>
-									</li>
-								</s:iterator>
-								<%-- 
-									<li class="ui-tabs-nav-item" id="nav-fragment-2">
-										<a href="#fragment-2">
-											<img src="<%=basePath%>images/hdm/2.jpg" height="45px;" width="80px;" alt="" /> 
-										</a>
-									</li>
-									<li class="ui-tabs-nav-item" id="nav-fragment-3">
-										<a href="#fragment-3">
-											<img src="<%=basePath%>images/hdm/3.jpg" height="45px;" width="80px;" alt="" /> 
-										</a>
-									</li>
-									<li class="ui-tabs-nav-item" id="nav-fragment-4">
-										<a href="#fragment-4">
-											<img src="<%=basePath%>images/hdm/4.jpg" height="45px;" width="80px;" alt="" /> 
-										</a>
-									</li>
-								--%>
+								<li class="ui-tabs-nav-item ui-tabs-selected"
+									id="nav-fragment-1"><a href="#fragment-1"><img
+										src="<%=basePath%>images/hdm/1.jpg" height="45px;"
+										width="80px;" alt="" /> </a></li>
+								<li class="ui-tabs-nav-item" id="nav-fragment-2"><a
+									href="#fragment-2"><img src="<%=basePath%>images/hdm/2.jpg"
+										height="45px;" width="80px;" alt="" /> </a></li>
+								<li class="ui-tabs-nav-item" id="nav-fragment-3"><a
+									href="#fragment-3"><img src="<%=basePath%>images/hdm/3.jpg"
+										height="45px;" width="80px;" alt="" /> </a></li>
+								<li class="ui-tabs-nav-item" id="nav-fragment-4"><a
+									href="#fragment-4"><img src="<%=basePath%>images/hdm/4.jpg"
+										height="45px;" width="80px;" alt="" /> </a></li>
 							</ul>
-							
-							<s:iterator value="resMap.RowsPic" id="news" var="news" begin="0" end="3" status="status">
-								<!-- First Content -->
-								<div id="fragment-<s:property value='#status.count'/>" class="ui-tabs-panel" style="">
-									<img src="<%=basePath%><s:property value='#news.c_tpljdz'/>" alt="" width="626" height="228" />
-									<div class="info">
-										<h3>
-											<a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
-												<s:property value="#news.c_bt"/>
-											</a>
-										</h3>
-										<a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">阅读全文</a>
+							<!-- First Content -->
+							<div id="fragment-1" class="ui-tabs-panel" style="">
+								<img src="<%=basePath%>images/hdm/1.jpg" alt="" width="626"
+									height="228" />
+								<div class="info">
+									<h3>
+										<a href="http://www.duice.net/html/list_620.html">张兵副局长召集禁毒总队党委班子成员，研究了近期禁毒工作</a>
+										</h2>
+										<a href="http://www.duice.net/html/list_620.html">阅读全文</a>
 										</p>
-									</div>
 								</div>
-							</s:iterator>
-							<%--
+							</div>
+
 							<!-- Second Content -->
 							<div id="fragment-2" class="ui-tabs-panel ui-tabs-hide" style="">
 								<img src="<%=basePath%>images/hdm/2.jpg" alt="" width="626"
@@ -1067,7 +1027,7 @@ function fontbutton(index,mag)
 								</div>
 							</div>
 
-							<-- Third Content -->
+							<!-- Third Content -->
 							<div id="fragment-3" class="ui-tabs-panel ui-tabs-hide" style="">
 								<img src="<%=basePath%>images/hdm/3.jpg" alt="" width="626"
 									height="228" />
@@ -1093,13 +1053,13 @@ function fontbutton(index,mag)
 										</p>
 								</div>
 							</div>
-							 --%>
 
 						</div>
 					</div>
 				</div>
 				<div class="news">
-					<div style="background: url('<%=basePath%>images/index/news-ico.png') no-repeat;width: 92px;height: 96px;position: absolute;margin-left:660px;margin-top: -7px;"></div>
+					<div
+						style="background: url('<%=basePath%>images/index/news-ico.png') no-repeat;width: 92px;height: 96px;position: absolute;margin-left:660px;margin-top: -7px;"></div>
 					<div class="news-title">2012年全国禁毒宣传教育工作要点 青少年与合成毒品仍是重点</div>
 					<div style="padding: 10px 40px 10px 30px; height: 180px;">
 						<div style="float: left;width: 320px">
@@ -1114,7 +1074,8 @@ function fontbutton(index,mag)
 									</div>
 								</li>
 								<li><div style="float: left;">
-										<a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"
+										<a
+											href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"
 											class="awidth">北京警方破获特大团伙贩毒案</a>
 									</div>
 									<div style="float: right;">
@@ -1213,21 +1174,24 @@ function fontbutton(index,mag)
 						<div class="six-box">
 							<div class="six-con">
 								<span class="six-title">工作动态</span>
-								<div style="text-align: right;float: right;margin-left: 60px; margin-right: 10px;padding-top: 4px;">
+								<div
+									style="text-align: right;float: right;margin-left: 60px;
+									margin-right: 10px;padding-top: 4px;">
 									<a href="<%=basePath%>news/list?news.c_lm=1221">更多信息
 										&gt;&gt;</a>
 								</div>
 								<div style="padding-top: 10px;">
 									<ul class="index-ul">
-										<s:iterator value="resMap.Rows2" id="news" var="news" begin="0" end="5">
-											<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
+										<s:iterator value="resMap.Rows2" id="news" var="news"
+											begin="0" end="5">
+											<li><a
+												href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
 
 													<s:if test="#news.c_bt.length()>=25">
 														<s:property value="#news.c_bt.substring(0,25)+'...'" />
 													</s:if> <s:else>
 														<s:property value="#news.c_bt" />
-													</s:else> 
-											 </a>
+													</s:else> </a>
 											</li>
 										</s:iterator>
 									</ul>
@@ -1249,8 +1213,10 @@ function fontbutton(index,mag)
 								</div>
 								<div style="padding-top: 10px;">
 									<ul class="index-ul">
-										<s:iterator value="resMap.Rows3" id="news" var="news" begin="0" end="5">
-											<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
+										<s:iterator value="resMap.Rows3" id="news" var="news"
+											begin="0" end="5">
+											<li><a
+												href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
 
 													<s:if test="#news.c_bt.length()>=25">
 														<s:property value="#news.c_bt.substring(0,25)+'...'" />

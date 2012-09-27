@@ -49,6 +49,44 @@
 	  ORDER BY C_SFZD DESC,D_FBSJ DESC
 	</select>
 	
+	
+	
+	
+<select id="queryInfo" parameterType="java.util.Map" resultMap="resultNews">
+<include refid="pagination.paginationStart"></include>		
+ SELECT N_XH,
+	   C_BT,
+       TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
+       C_SFZD,
+       C_SFGL,
+       C_SFTJ,
+       C_SHJG
+	  FROM B_XINWEN
+	 	 WHERE C_LM = #{c_lm}
+	  <if test="c_sfsh != null and c_sfsh != ''">
+	 	 AND C_SFSH = #{c_sfsh}
+	  </if>
+	  <if test="c_bt != null and c_bt != ''">
+	 	 AND C_BT LIKE '%'||#{c_bt}||'%'
+	  </if>
+	  ORDER BY C_SFZD DESC,D_FBSJ DESC
+		<include refid="pagination.paginationLast"></include>
+	</select>
+
+
+	<select id="queryCountInfo" resultType="integer" parameterType="java.util.Map" >
+				select count(N_XH) 
+	  FROM B_XINWEN
+	 	 WHERE C_LM = #{c_lm}
+	  <if test="c_sfsh != null and c_sfsh != ''">
+	 	 AND C_SFSH = #{c_sfsh}
+	  </if>
+	  <if test="c_bt != null and c_bt != ''">
+	 	 AND C_BT LIKE '%'||#{c_bt}||'%'
+	  </if>
+	</select> 
+	
+	
 	<select id="getNewsIndexList" parameterType="News" resultMap="resultIndexNews">
 	  SELECT N_XH,
 			  C_BT,

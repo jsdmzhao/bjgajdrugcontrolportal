@@ -89,13 +89,6 @@
 	   
 	<package name="news" namespace="/news" extends="struts-default">
 		<!-- 拦截错误页面 -->
-		<global-results>
-			<result name="errorPage">error.jsp</result>
-		</global-results>
-		
-		<global-exception-mappings>
-			<exception-mapping result="errorPage" exception="java.lang.Exception"/>
-		</global-exception-mappings>
 	
 		<action name="detail" class="com.unis.app.news.action.NewsAction" method="newsQuery">
 			<result name="success">/news/news_detail.jsp</result>

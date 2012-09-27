@@ -19,6 +19,7 @@ import com.unis.core.commons.Combox;
 import com.unis.core.service.AbsServiceAdapter;
 import com.unis.core.util.Globals;
 import com.unis.app.news.model.News;
+import com.unis.app.pagination.Pagination;
 import com.unis.app.website.model.Website;
 
 @Controller
@@ -201,12 +202,12 @@ public class NewsAction {
 		return Globals.SUCCESS;
 	}
 	
-	@SuppressWarnings("unchecked")
+/*	@SuppressWarnings("unchecked")
 	public String newsQuerys(){
 		Querys= (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", news);
         return Globals.SUCCESS;
 	}
-	
+*/	
 	public News getNews() {
 		return news;
 	}
@@ -231,4 +232,70 @@ public class NewsAction {
 		this.createdIndexAction = createdIndexAction;
 	}
 
+	
+	
+	
+	public List queryInfo(Map p){
+		return newsService.selectList("NewsMapper.queryInfo", p);
+	}
+
+	public Object queryCountInfo(Map p) {
+		return newsService.selectOne("NewsMapper.queryCountInfo", p);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public String newsQuerys(){
+		
+		System.out.println("@@@@@@@@@@@zl add@@@@@@@@@@");
+		resMap = new HashMap<String, Object>();
+		
+		String c_lm="";
+		String c_bt="";
+		int pageIndex=1;
+		int pageSize=2;
+		
+		if(news.getC_lm()!=null){
+			c_lm=news.getC_lm();
+			
+		}
+		if(news.getC_bt()!=null){
+			c_lm=news.getC_bt();
+			
+		}
+		if(news.getPageIndex()!=null ){
+			pageIndex=news.getPageIndex();
+			
+		}
+		if(news.getPageSize()!=null){
+			pageSize=news.getPageSize();
+			
+		}
+		Map p=new HashMap();
+		p.put("c_lm", c_lm);
+		p.put("c_bt", c_bt);
+		Map page=new HashMap();
+		page.put("pageIndex", pageIndex);
+		page.put("pageSize", pageSize);
+		
+		String count = String.valueOf((Integer)queryCountInfo(p));
+		if("0".equals(count)){
+			return null;
+		}else{ 
+			page.put("recordCount", count);
+			Pagination pagination = new Pagination(page);
+			page.put("pageCount", pagination.getPageCount());
+			p.put("startIndex", pagination.getStartIndex());
+			p.put("lastIndex", pagination.getLastIndex());
+			List<News> list = queryInfo(p);
+			//Map retMap = new HashMap();
+			
+			resMap.put("data", list);
+			resMap.put("page", page);
+			
+			return Globals.SUCCESS;
+			
+		}
+	}
+	
+	
 }
