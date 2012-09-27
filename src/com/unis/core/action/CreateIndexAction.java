@@ -34,7 +34,9 @@ public class CreateIndexAction {
 
 		// 查InputStreamReader的构造方法，ENCODING为该页面的编码
 		BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream(), ENCODING));
-		filDir = sysDir.substring(0, sysDir.indexOf("bin"));
+		if(sysDir.indexOf("bin") > -1){
+			filDir = sysDir.substring(0, sysDir.indexOf("bin"));
+		}
 		System.out.println(filDir+"webapps\\dcp\\");
 		File file = new File(filDir+"webapps\\dcp\\index.html");
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file)));

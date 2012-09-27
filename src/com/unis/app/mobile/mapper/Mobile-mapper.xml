@@ -11,7 +11,7 @@
 	 </resultMap>
 	 
 	<select id="getMobile" parameterType="Mobile" resultType="Mobile">
-		SELECT * FROM SMS_BOXSENDED WHERE N_XH = #{n_xh}
+		SELECT * FROM SMS_BOXSENDED WHERE ID = #{n_xh}
 	</select>
 	 
 	<select id="getMobileList" resultMap="resultMobile">
@@ -24,16 +24,16 @@
 	</select>
 	
 	<delete id="deleteMobile" parameterType="int">
-		DELETE FROM SMS_BOXSENDED WHERE N_XH = #{n_xh}
+		DELETE FROM SMS_BOXSENDED WHERE ID = #{n_xh}
 	</delete>
 	
 	<insert id="insertMobile" parameterType="hashmap">
 	    BEGIN
 		<foreach collection="list" item="item" separator=";">
 			IINSERT INTO SMS_BOXSENDING
-			  (SENDER, RECEIVER, CONTENT, SENDTIME, INSERTTIME)
+			  (ID,SENDER, RECEIVER, CONTENT, SENDTIME, INSERTTIME)
 			VALUES
-			  (#{c_yhid}, FUN_GET_PHONE_FROM_YHID(#{{item.c_yhid}), #{content}, sysdate, sysdate)
+			  (SEQ_SMS_SENDING.NEXTVAL,#{c_yhid}, FUN_GET_PHONE_FROM_YHID(#{{item.c_yhid}), #{content}, sysdate, sysdate)
 		</foreach>
 		;END;
 	</insert>

@@ -13,7 +13,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>主页</title>
+<title>北京公安局禁毒总队</title>
 <link rel="stylesheet" type="text/css" href="<%=basePath%>css/layout.css" />
 <link rel="stylesheet" type="text/css" href="<%=basePath%>css/index.css" />
 <link href="<%=basePath%>css/css.css" rel="stylesheet" type="text/css" />
@@ -537,7 +537,7 @@ function fontbutton(index,mag)
 		</div>
 		<div style="float:right; padding-top:4px;padding-right:10px;">
 			<a href=#
-				onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.alioooo.comt');">设为主页</a>
+				onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('<%=basePath%>');">设为主页</a>
 		</div>
 		<div style="float:right; padding-top:7px; padding-right:2px;">
 			<IMG src="<%=basePath%>images/3.jpg" />
@@ -911,26 +911,33 @@ function fontbutton(index,mag)
 			<div id="side">
 				<div class="search-box">
 					<div style="float: right;padding-right: 70px;padding-bottom: 5px;">
-						<form action="#" name="search" style="margin-top: 10px;">
-							<table border="0" cellpadding="0" cellspacing="0"
-								class="tab_search">
+						<form action="<%=basePath%>newsSearch" name="search" style="margin-top: 10px;" onsubmit="return search();">
+							<table border="0" cellpadding="0" cellspacing="0" class="tab_search">
 								<tr>
-									<td><input type="text" name="q" title="Search"
-										class="searchinput" id="searchinput"
-										onkeydown="if (event.keyCode==13) {}"
-										onblur="if(this.value=='')value='请输入要搜索的内容..';"
-										onfocus="if(this.value=='请输入要搜索的内容..')value='';"
-										value="请输入要搜索的内容.." size="10" /></td>
-									<td><input type="image" width="21" height="17"
-										class="searchaction"
-										onclick="if(document.forms['search'].searchinput.value=='- Search Products -')document.forms['search'].searchinput.value='';"
-										alt="Search" src="<%=basePath%>images/magglass.gif" border="0"
-										hspace="2" /></td>
+									<td>
+										<input type="text" name="keyWord" title="Search" class="searchinput" id="searchInput"
+										 		onkeydown="if (event.keyCode==13) {}"
+												onblur="if(this.value=='')value='请输入要搜索的内容..';"
+												onfocus="if(this.value=='请输入要搜索的内容..')value='';"
+												value="请输入要搜索的内容.." size="10" />
+									</td>
+									<td>
+										<input type="image" width="21" height="17" class="searchaction" alt="Search"
+												src="<%=basePath%>images/magglass.gif" border="0" hspace="2" /></td>
 								</tr>
 							</table>
 						</form>
-
-
+						<script language="javascript" type="text/javascript">
+							function search(){
+								var searchInput = document.getElementById("searchInput").value;
+								alert(searchInput);
+								return false;
+								if(searchInput == '请输入要搜索的内容..' || searchInput == ''){
+									alert('请输入要搜索的内容..');
+									return false;
+								}
+							}
+						</script>
 					</div>
 					<div class="clearfloat"></div>
 				</div>
