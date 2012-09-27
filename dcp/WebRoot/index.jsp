@@ -735,7 +735,7 @@ function fontbutton(index,mag)
 											</div>
 										</div>
 										<ul class="items" style="display:block;">
-											<s:iterator value="resMap.RowsSort" id="news" var="news" begin="0" end="resMap.RowsSort<7?resMap.RowsSort:7">
+											<s:iterator value="resMap.RowsSort" id="news" var="news" begin="0" end="resMap.RowsSort。size()<7?resMap.RowsSort。size():7">
 											<li>
 												<div style="float:left; width:90px;">
 													<a href="#"><s:property value="#news.c_yhzid"/></a>
@@ -908,12 +908,29 @@ function fontbutton(index,mag)
 
 
 			</div>
+			
 			<div id="side">
 				<div class="search-box">
 					<div style="float: right;padding-right: 70px;padding-bottom: 5px;">
+<<<<<<< .mine
+						<form action="" id="searchForm" name="searchForm" style="margin-top: 10px;">
+							<table border="0" cellpadding="0" cellspacing="0"
+								class="tab_search" >
+=======
 						<form action="<%=basePath%>newsSearch" name="search" style="margin-top: 10px;" onsubmit="return search();">
 							<table border="0" cellpadding="0" cellspacing="0" class="tab_search">
+>>>>>>> .r308
 								<tr>
+<<<<<<< .mine
+									<td><input type="text" title="Search"
+										class="searchinput" id="searchinput"
+										onkeydown="if (event.keyCode==13) {}"
+										onblur="if(this.value==''){value='请输入要搜索的内容..';}"
+										onfocus="if(this.value=='请输入要搜索的内容..'){value='';}" value="请输入要搜索的内容.." size="10"/></td>
+									<td><img width="21" height="17" class="searchaction" onclick="onSearch();"
+										 src="<%=basePath%>images/magglass.gif" border="0"
+										hspace="2" /></td>
+=======
 									<td>
 										<input type="text" name="keyWord" title="Search" class="searchinput" id="searchInput"
 										 		onkeydown="if (event.keyCode==13) {}"
@@ -924,6 +941,7 @@ function fontbutton(index,mag)
 									<td>
 										<input type="image" width="21" height="17" class="searchaction" alt="Search"
 												src="<%=basePath%>images/magglass.gif" border="0" hspace="2" /></td>
+>>>>>>> .r308
 								</tr>
 							</table>
 						</form>
@@ -941,6 +959,22 @@ function fontbutton(index,mag)
 					</div>
 					<div class="clearfloat"></div>
 				</div>
+				<script>
+			function onSearch(){
+				if($("#searchinput").val()=='请输入要搜索的内容..'||$("#searchinput").val()=="")
+				{
+					$("#searchinput").attr("value","");
+					 return false;
+				}else{
+			    var val=encodeURI(encodeURI($("#searchinput").val()));
+				 window.location.href="<%=basePath%>news/list?news.c_bt="+val;
+				}
+			}
+			
+			          
+			</script>
+				
+				
 				<div style="height:30px; padding-left:12px; padding-top:5px;">
 					<div style="float:left;">
 						<div style="float: left;">
