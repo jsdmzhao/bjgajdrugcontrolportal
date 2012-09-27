@@ -124,10 +124,10 @@
               '缉控大队',
               '10',
               '两品办') C_YHZID,
-       		COUNT(*) N_XXXH
-		  FROM B_XINWEN
-		 WHERE C_YHZID IN ('1', '3', '4', '5', '9', '7', '8', '10')
-		 GROUP BY C_YHZID ORDER BY N_XXXH DESC
+           TO_CHAR(COUNT(*)) N_XXXH
+      FROM B_XINWEN
+     WHERE C_YHZID IN ('1', '3', '4', '5', '9', '7', '8', '10')
+     GROUP BY C_YHZID ORDER BY COUNT(*) DESC
 	</select>
 	
 	<insert id="insertNews" parameterType="hashmap">

@@ -93,6 +93,8 @@ public class NewsAction {
 	
 	public String newsOperate(String operateType, String value, String n_xh, HttpServletRequest request) throws IOException{
 		Map<String, Object> sqlParamMap = new HashMap<String, Object>();
+		String path = request.getContextPath();
+		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 		HttpSession session = request.getSession();
 		String c_yhid = session.getAttribute("userId")+"";
 		sqlParamMap.put("c_yhid", c_yhid);
@@ -100,7 +102,7 @@ public class NewsAction {
 		sqlParamMap.put("value", value);
 		sqlParamMap.put("n_xh", n_xh);
 		if("zd".equals(operateType) || "sh".equals(operateType)){
-			createdIndexAction.createIndexHtml("http://localhost:8080/dcp/index.jsp");
+			createdIndexAction.createIndexHtml(basePath+"index.jsp");
 		}
 	    newsService.update("NewsMapper.operateNews", sqlParamMap);
 		return Globals.SUCCESS;
