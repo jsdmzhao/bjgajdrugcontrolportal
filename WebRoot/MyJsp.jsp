@@ -24,9 +24,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	CreateIndexAction idx  = new CreateIndexAction();
 	idx.createIndexHtml(basePath);
-	//String sysDir = System.getProperty("user.dir");
-	//String filDir = sysDir.substring(1, sysDir.indexOf("bin"));
-	//System.out.println(filDir+"webapps\\dcp\\");
 	%>
 
   </head>
