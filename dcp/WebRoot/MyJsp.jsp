@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'MyJsp.jsp' starting page</title>
+    <title>生成首页静态页面</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -21,14 +21,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<%
-	
+    out.println("开始生成首页静态页面...................");
+	out.println("<br/>");
+	out.println("<br/>");
+	out.println("......................请稍候.........................");
+	out.println("<br/>");
+	out.println("<br/>");
 	CreateIndexAction idx  = new CreateIndexAction();
-	idx.createIndexHtml(basePath);
+	idx.createIndexHtml(basePath+"index.jsp");
+	out.println("成功生成首页静态页面...................");
 	%>
 
   </head>
   
   <body>
-    This is my JSP page. <br>
   </body>
 </html>

@@ -99,7 +99,7 @@ public class NewsAction {
 		sqlParamMap.put("value", value);
 		sqlParamMap.put("n_xh", n_xh);
 		if("zd".equals(operateType) || "sh".equals(operateType)){
-			createdIndexAction.createIndexHtml("http://localhost:8080/dcp");
+			createdIndexAction.createIndexHtml("http://localhost:8080/dcp/index.jsp");
 		}
 	    newsService.update("NewsMapper.operateNews", sqlParamMap);
 		return Globals.SUCCESS;
@@ -174,6 +174,12 @@ public class NewsAction {
 		 websites = (List<Website>) newsService.selectList("WebsiteMapper.getWebsiteLists", "1005");
 		resMap.put("Rows15", websites);
 		
+		n.setC_lm("1201");
+		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList",n);
+		resMap.put("RowsPic", newsList1);
+		
+		newsList1 = (List<News>) newsService.selectList("NewsMapper.sortIndexCnt","");
+		resMap.put("RowsSort", newsList1);
 		
 		return  Globals.SUCCESS;
 	}
