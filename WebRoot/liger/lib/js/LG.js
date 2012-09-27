@@ -253,7 +253,7 @@ function $d(obj,preBlank){
     {
         if (!form) return null;
         var group = { op: "and", rules: [] };
-        $(":input", form).not(":submit, :reset, :image,:button, [disabled]")
+        $(":input", form).not(":submit, :reset, :image,:button, [disabled],:smarttext")
         .each(function ()
         {
             if (!this.name) return;

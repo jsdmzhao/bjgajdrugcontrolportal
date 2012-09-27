@@ -29,6 +29,11 @@
 	type="text/css" />
 <script src="<%=basePath%>liger/lib/js/common.js" type="text/javascript"></script>
 <script src="<%=basePath%>liger/lib/js/LG.js" type="text/javascript"></script>
+
+    <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerForm.js" type="text/javascript"></script>
+    <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerTree.js" type="text/javascript"></script>
+
+
 <script src="<%=basePath%>liger/lib/js/ligerui.expand.js"
 	type="text/javascript"></script>
 <script src="<%=basePath%>liger/lib/json2.js" type="text/javascript"></script>
@@ -36,6 +41,8 @@
 <script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
 <script type='text/javascript'
 	src='<%=basePath%>dwr/interface/KqCcjlSvc.js'></script>
+<script type='text/javascript'
+	src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>	
 
 </head>
 <body style="padding:10px;height:100%; text-align:center;">
@@ -104,7 +111,17 @@
  			space : 30,
  			type : "date",
  			cssClass : "field"
- 		} ],
+ 		}, {
+ 			display : "人员",
+ 			name : "userId",
+ 			newline : false,
+ 			labelWidth : 60,
+ 			width : 100,
+ 			space : 30,
+ 			type : "smarttext",
+ 			cssClass : "field"
+ 		}  
+ 		],
  		toJSON : JSON2.stringify
  	});
 
@@ -211,6 +228,16 @@
 	      {
 	    	  dialog.hidden();
 	      }
+		    UserInfoSvc.choose(function(rdata){
+	  			if(rdata != null){
+	  	            	$("#userId").ligerComboBox({
+	  	  	                width: 180,
+	  	  	                selectBoxWidth: 200,
+	  	  	                selectBoxHeight: 200, valueField: 'value',treeLeafOnly:false,
+	  	  	                tree: { data:rdata, checkbox: false }
+	  	        }); 
+				}
+			});
 	</script>
 
 

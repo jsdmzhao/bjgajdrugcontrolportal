@@ -62,18 +62,18 @@ public class SysUserSvc  {
 	public Object login(Map p,HttpServletRequest request) throws SQLException {
 		List<Map> list=sysUserDao.queryAllInfo(p);
 		if(list.size()>0){
-			request.getSession().setAttribute("userName", list.get(0).get("userName"));
-			request.getSession().setAttribute("userId", list.get(0).get("userId"));
+	//		request.getSession().setAttribute("userName", list.get(0).get("userName"));
+	//		request.getSession().setAttribute("userId", list.get(0).get("userId"));
 			
-			ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());
-			UserInfoSvc userInfoSvc= (UserInfoSvc) ctx.getBean("userInfoSvc");
+	//		ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());
+	//		UserInfoSvc userInfoSvc= (UserInfoSvc) ctx.getBean("userInfoSvc");
 
-			String ip=IPUtil.getUserIP(request);
-			if(ip!=null){
-				Map p2=new HashMap();
-				p.put("userId", list.get(0).get("userId"));
-			List list2=userInfoSvc.queryAll(p2);
-			if(list2.size()!=0){
+	//		String ip=IPUtil.getUserIP(request);
+		//	if(ip!=null){
+	//			Map p2=new HashMap();
+	//			p.put("userId", list.get(0).get("userId"));
+	//		List list2=userInfoSvc.queryAll(p2);
+	//		if(list2.size()!=0){
 				Map rp=(Map)list.get(0);
 				request.getSession().setAttribute("userId",rp.get("userId") );
 				request.getSession().setAttribute("cJb",rp.get("cJb") );
@@ -102,8 +102,10 @@ public class SysUserSvc  {
 				request.getSession().setAttribute("nZxsc",rp.get("nZxsc") );
 				request.getSession().setAttribute("cLx",rp.get("cLx") );
 				request.getSession().setAttribute("cYxip",rp.get("cYxip") );
-		}
-			}
+				
+				return true;
+	//	}
+		//	}
 		}
 		return null;
 	}
