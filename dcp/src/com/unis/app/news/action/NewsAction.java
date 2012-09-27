@@ -246,13 +246,12 @@ public class NewsAction {
 	@SuppressWarnings("unchecked")
 	public String newsQuerys(){
 		
-		System.out.println("@@@@@@@@@@@zl add@@@@@@@@@@");
 		resMap = new HashMap<String, Object>();
 		
 		String c_lm="";
 		String c_bt="";
 		int pageIndex=1;
-		int pageSize=2;
+		int pageSize=10;
 		
 		if(news.getC_lm()!=null){
 			c_lm=news.getC_lm();
