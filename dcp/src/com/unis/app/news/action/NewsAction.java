@@ -1,6 +1,8 @@
 package com.unis.app.news.action;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -246,7 +248,7 @@ public class NewsAction {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public String newsQuerys(){
+	public String newsQuerys() throws UnsupportedEncodingException{
 		
 		resMap = new HashMap<String, Object>();
 		
@@ -260,9 +262,11 @@ public class NewsAction {
 			
 		}
 		if(news.getC_bt()!=null){
-			c_lm=news.getC_bt();
-			
+			c_bt=news.getC_bt();
+			c_bt = URLDecoder.decode(c_bt, "UTF-8");
 		}
+		
+		
 		if(news.getPageIndex()!=null ){
 			pageIndex=news.getPageIndex();
 			
@@ -280,7 +284,7 @@ public class NewsAction {
 		
 		String count = String.valueOf((Integer)queryCountInfo(p));
 		if("0".equals(count)){
-			return null;
+			return Globals.SUCCESS;
 		}else{ 
 			page.put("recordCount", count);
 			Pagination pagination = new Pagination(page);
