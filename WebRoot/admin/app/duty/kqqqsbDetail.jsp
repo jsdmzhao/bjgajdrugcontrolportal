@@ -52,8 +52,11 @@ if(userId==null){
         var config = {"Form":{ 
          fields : [
                    {name:"nXh",type:"hidden",value:'<%=nXh %>'},
+                   {name:"nXh",type:"hidden",value:'<%=nXh %>'},
+                   <%if("".equals(userId)){%>
                    {display:"人员",name:"userName",newline:false,labelWidth:100,width:200,space:30,type:"smarttext"},
-                   {name:"userId",type:"hidden"},  
+                   <%}%>
+                   {name:"userId",value:"<%=userId%>",type:"hidden"},  
                    {display:"日期",name:"dRq",newline:true,labelWidth:100,width:200,space:30,type:"date"},
                    {display:"事件",name:"cSj",newline:false,labelWidth:100,width:200,space:30,type:"text"},
                    {display:"填写原因",name:"cTxyy",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
@@ -163,7 +166,9 @@ if(userId==null){
         function f_save() {
 
         	var formMap = DWRUtil.getValues("mform"); 
-        	formMap["userId"] = ry.getValue();
+       	 <%if("".equals(userId)){%>
+     	formMap["userId"] = ry.getValue();
+     	   <%}%>
         	formMap["cZt"] = zt.getValue();
 			if(isAddNew){
         	KqQqsbSvc.save(formMap,function (rdata){
@@ -209,7 +214,7 @@ if(userId==null){
             parent.dialog_hidden();
         }
         
-        UserInfoSvc.choose(function(rdata){
+        UserInfoSvc.chooseOnlyUser(function(rdata){
   			if(rdata != null){
   	            	ry=$("#userName").ligerComboBox({
   	  	                width: 180,

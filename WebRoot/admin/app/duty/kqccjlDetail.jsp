@@ -53,8 +53,10 @@ if(userId==null){
         var config = {"Form":{ 
          fields : [
                    {name:"nXh",type:"hidden",value:'<%=nXh %>'},
+                   <%if("".equals(userId)){%>
                    {display:"人员",name:"userName",newline:false,labelWidth:100,width:200,space:30,type:"smarttext"},
-                   {name:"userId",type:"hidden"},  
+                   <%}%>
+                   {name:"userId",value:"<%=userId%>",type:"hidden"},  
                    {display:"出差城市",name:"cCccs",newline:false,labelWidth:100,width:200,space:30,type:"text"},
                    {display:"原因",name:"cYy",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
                    {display:"开始时间",name:"dKssj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
@@ -166,7 +168,10 @@ if(userId==null){
         function f_save() {
 
         	var formMap = DWRUtil.getValues("mform"); 
+        	
+        	 <%if("".equals(userId)){%>
         	formMap["userId"] = ry.getValue();
+        	   <%}%>
         	formMap["cZt"] = zt.getValue();
 			if(isAddNew){
         	KqCcjlSvc.save(formMap,function (rdata){
@@ -212,7 +217,7 @@ if(userId==null){
             parent.dialog_hidden();
         }
         
-        UserInfoSvc.choose(function(rdata){
+        UserInfoSvc.chooseOnlyUser(function(rdata){
   			if(rdata != null){
   	            	ry=$("#userName").ligerComboBox({
   	  	                width: 180,

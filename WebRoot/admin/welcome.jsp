@@ -68,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         </div>
 
-        <p style="margin:10px;">您可以快速进行产品增加管理操作</p>
+        <p style="margin:10px;">您可以快速进行信息管理操作</p>
 
          <p style="margin:10px;">也可以快速进行系统权限的管理操作，全部的菜单都在左侧。。。</p>
        
