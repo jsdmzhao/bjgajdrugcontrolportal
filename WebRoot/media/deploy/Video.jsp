@@ -18,6 +18,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 <link rel="stylesheet" href="<%=basePath %>css/layout.css" type="text/css" media="screen" />
 <script language="javascript">AC_FL_RunContent = 0;</script>
 <script src="AC_RunActiveContent.js" language="javascript"></script>
+
+<script type="text/javascript" src="<%=basePath%>js/jquery-1.2.6.pack.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/jquery-ui.min.js"></script>
 </head>
 
 <body>
@@ -26,15 +30,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="side" style="margin-right: 65px;">
 <div class="search-box">
 						<div style="float: right;padding-right: 70px;padding-bottom: 5px;">  		
-				<form action="#" name="search"  style="margin-top: 10px;">
+					<form action="" id="searchForm" name="searchForm" style="margin-top: 10px;">
 <table border="0" cellpadding="0" cellspacing="0" class="tab_search">
 <tr>
-<td>
-<input type="text" name="q" title="Search" class="searchinput" id="searchinput" onkeydown="if (event.keyCode==13) {}" onblur="if(this.value=='')value='请输入要搜索的内容..';" onfocus="if(this.value=='请输入要搜索的内容..')value='';" value="请输入要搜索的内容.." size="10"/>
-</td>
-<td>
-<input type="image" width="21" height="17" class="searchaction" onclick="if(document.forms['search'].searchinput.value=='- Search Products -')document.forms['search'].searchinput.value='';" alt="Search" src="images/magglass.gif" border="0" hspace="2"/>
-</td>
+<td><input type="text" title="Search"
+										class="searchinput" id="searchinput"
+										onkeydown="if (event.keyCode==13) {}"
+										onblur="if(this.value==''){value='请输入要搜索的内容..';}"
+										onfocus="if(this.value=='请输入要搜索的内容..'){value='';}" value="请输入要搜索的内容.." size="10"/></td>
+									<td><img width="21" height="17" class="searchaction" onclick="onSearch();"
+										 src="<%=basePath%>images/magglass.gif" border="0"
+										hspace="2" /></td>
 </tr>
 </table>
 </form>
@@ -42,7 +48,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							
 						</div>
 						<div class="clearfloat"></div>
-					</div>
+					</div><script>
+			function onSearch(){
+				if($("#searchinput").val()=='请输入要搜索的内容..'||$("#searchinput").val()=="")
+				{
+					$("#searchinput").attr("value","");
+					 return false;
+				}else{
+			    var val=encodeURI(encodeURI($("#searchinput").val()));
+				 window.location.href="<%=basePath%>news/list?news.c_bt="+val;
+				}
+			}
+			
+			          
+			</script>
 		</div>
 	
 	<div style=" width:1008px; height:480px; float:left;">
