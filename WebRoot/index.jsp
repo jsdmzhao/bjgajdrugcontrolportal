@@ -260,24 +260,24 @@ fgm.on(window, "load", function() {
 								<div id="demo2" style="font-size: 12px;"></div>
 							</div>
 							<script language="javascript" type="text/javascript">							
-							var demo = document.getElementById("demo");
-							var demo1 = document.getElementById("demo1");
-							var demo2 = document.getElementById("demo2");
-							var speed=50;    //滚动速度值，值越大速度越慢
-							var nnn=200/demo1.offsetHeight;
-							for(i=0;i<nnn;i++){demo1.innerHTML+="<br />"+ demo1.innerHTML}
-							demo2.innerHTML = demo1.innerHTML    //克隆demo2为demo1
-							function Marquee(){
-							    if(demo2.offsetTop-demo.scrollTop<=0)    //当滚动至demo1与demo2交界时
-							        demo.scrollTop-=demo1.offsetHeight    //demo跳到最顶端
-							    else{
-							        demo.scrollTop++     //如果是横向的 将 所有的 height top 改成 width left
-							    }
-							}
-							var MyMar = setInterval(Marquee,speed);        //设置定时器
-							demo.onmouseover = function(){clearInterval(MyMar)}    //鼠标经过时清除定时器达到滚动停止的目的
-							demo.onmouseout = function(){MyMar = setInterval(Marquee,speed)}    //鼠标移开时重设定时器
-							-->
+								var demo = document.getElementById("demo");
+								var demo1 = document.getElementById("demo1");
+								var demo2 = document.getElementById("demo2");
+								var speed=50;    //滚动速度值，值越大速度越慢
+								var nnn=200/demo1.offsetHeight;
+								for(i=0;i<nnn;i++){demo1.innerHTML+="<br />"+ demo1.innerHTML}
+								demo2.innerHTML = demo1.innerHTML    //克隆demo2为demo1
+								function Marquee(){
+								    if(demo2.offsetTop-demo.scrollTop<=0)    //当滚动至demo1与demo2交界时
+								        demo.scrollTop-=demo1.offsetHeight    //demo跳到最顶端
+								    else{
+								        demo.scrollTop++     //如果是横向的 将 所有的 height top 改成 width left
+								    }
+								}
+								var MyMar = setInterval(Marquee,speed);        //设置定时器
+								demo.onmouseover = function(){clearInterval(MyMar)}    //鼠标经过时清除定时器达到滚动停止的目的
+								demo.onmouseout = function(){MyMar = setInterval(Marquee,speed)}    //鼠标移开时重设定时器
+							
 							</script>
 
 							<div
@@ -971,13 +971,67 @@ fgm.on(window, "load", function() {
 					<div
 						style="background: url('images/index/bg-6.png') no-repeat;width: 747px;height: 184px;">
 						<div>
-
+							<div id="three-pass-one" class="three-pass">光荣榜</div>
 							<div id="three-pass-two" class="three-pass">常用网站导航</div>
 							<div id="three-pass-three" class="three-pass-hover">使用工具导航
 							</div>
 							<div class="clearfloat"></div>
 						</div>
-						<div class="pass-cont-one">one</div>
+						<div class="pass-cont-one">
+							<ul id="demo0">
+								<li id="demo11"></li>
+								<li><a href="http://jdcjsr-zyk.zx.ga/" target="_blank"><img
+										src="<%=basePath%>images/index/one.png" />
+								</a>
+								</li>
+								<li><a href="http://www.js/site/boot/wnl.htm"
+									target="_blank"><img
+										src="<%=basePath%>images/index/two.png" />
+								</a>
+								</li>
+								<li><a href="http://10.6.1.37:8001/beeaweb/ "
+									target="_blank"><img
+										src="<%=basePath%>images/index/three.png" />
+								</a>
+								</li>
+								<li><a href="http://jy-zyk.zx.ga/" target="_black"><img
+										src="<%=basePath%>images/index/four.png" />
+								</a>
+								</li>
+								<li><a href="http://10.48.6.9/ip4/index.asp"
+									target="_blank"><img
+										src="<%=basePath%>images/index/five.png" />
+								</a>
+								</li>
+								<li><a href="http://10.12.62.149/article/cxdh.htm"
+									target="_blank"><img
+										src="<%=basePath%>images/index/six.png" />
+								</a>
+								</li>
+								<li id="demo22"></li>
+							</ul>
+						</div>
+						<%--<script language="javascript" type="text/javascript">							
+							var demo0 = document.getElementById("demo0");
+							var demo11 = document.getElementById("demo11");
+							var demo22 = document.getElementById("demo22");
+							var speed=50;    //滚动速度值，值越大速度越慢
+							var nnn=200/demo11.offsetHeight;
+							for(i=0;i<nnn;i++){demo11.innerHTML+="<br />"+ demo11.innerHTML}
+							demo22.innerHTML = demo11.innerHTML    //克隆demo2为demo1
+							function Marquee(){
+							    if(demo22.offsetTop-demo0.scrollTop<=0)    //当滚动至demo1与demo2交界时
+							        demo0.scrollTop-=demo11.offsetHeight    //demo跳到最顶端
+							    else{
+							        demo0.scrollTop++     //如果是横向的 将 所有的 height top 改成 width left
+							    }
+							}
+							var MyMar = setInterval(Marquee,speed);        //设置定时器
+							demo0.onmouseover = function(){clearInterval(MyMar)}    //鼠标经过时清除定时器达到滚动停止的目的
+							demo0.onmouseout = function(){MyMar = setInterval(Marquee,speed)}    //鼠标移开时重设定时器
+						
+						</script>
+						--%>
 						<div class="pass-cont-two">
 							<div style="width: 700px;padding: 5px; ">
 								<div>
