@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
@@ -5,7 +6,23 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	
-	String lx=request.getParameter("news.c_lm");
+	Object lx=request.getParameter("news.c_lm");
+	
+	Object bt=request.getParameter("news.c_bt");
+	
+	if(lx==null){
+		lx="";
+	}
+	
+	if(bt==null){
+		bt="";
+	}else{
+		
+     bt = URLEncoder.encode(bt.toString(), "UTF-8");  	
+	}
+		
+	
+	
 %>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -142,8 +159,9 @@ DIV.digg SPAN.disabled {
 </head>
 <body>
 	<script type="text/javascript" src="<%=basePath%>js/lightBox.js"></script>
-	<script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
-	<script type="text/javascript" src="<%=basePath%>js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/jquery-1.2.6.pack.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/jquery-ui.min.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function(){
 		$("#featured > ul").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 5000, true);
@@ -185,22 +203,36 @@ footerhtml+='<input type="image" alt="Cancel" src="<%=basePath%>images/cancel_bu
 		<div
 			style=" width:1000px; height:26px; background-image:url(<%=basePath%>images/headbg.jpg)">
 			<div style="float:left; margin-left:20px;">当前位置>></div>
+				<form action="" id="searchForm" name="searchForm" >
 			<table border="0" cellpadding="0" cellspacing="0"
 				style="float:right; margin-right:20px;" class="tab_search">
 				<tr>
-					<td><input type="text" name="q" title="Search"
-						class="searchinput" id="searchinput"
-						onkeydown="if (event.keyCode==13) {}"
-						onblur="if(this.value=='')value='请输入要搜索的内容..';"
-						onfocus="if(this.value=='请输入要搜索的内容..')value='';"
-						value="请输入要搜索的内容.." size="10" /></td>
-					<td><input name="image" type="image" class="searchaction"
-						onclick="if(document.forms['search'].searchinput.value=='- Search Products -')document.forms['search'].searchinput.value='';"
-						src="<%=basePath%>images/magglass.gif" alt="Search" width="21"
-						height="17" hspace="2" border="0" /></td>
+					<td><input type="text" title="Search"
+										class="searchinput" id="searchinput"
+										onkeydown="if (event.keyCode==13) {}"
+										onblur="if(this.value==''){value='请输入要搜索的内容..';}"
+										onfocus="if(this.value=='请输入要搜索的内容..'){value='';}" value="请输入要搜索的内容.." size="10"/></td>
+									<td><img width="21" height="17" class="searchaction" onclick="onSearch();"
+										 src="<%=basePath%>images/magglass.gif" border="0"
+										hspace="2" /></td>
 				</tr>
 			</table>
+			</form>
 		</div>
+		<script>
+			function onSearch(){
+				if($("#searchinput").val()=='请输入要搜索的内容..'||$("#searchinput").val()=="")
+				{
+					$("#searchinput").attr("value","");
+					 return false;
+				}else{
+			    var val=encodeURI(encodeURI($("#searchinput").val()));
+				 window.location.href="<%=basePath%>news/list?news.c_bt="+val;
+				}
+			}
+			
+			          
+			</script>
 		<div
 			style=" width:1004px; height:500px; background-color:#FFFFFF; padding-bottom:40px;">
 			<div
@@ -294,15 +326,15 @@ footerhtml+='<input type="image" alt="Cancel" src="<%=basePath%>images/cancel_bu
 				<div style="width:670px; height:30px;margin-left:10px;">
 				
 					<div class="digg">
-           <span class="disabled"> <a href="<%=basePath %>news/list?news.c_lm=<%=lx %>&news.pageIndex=1">首页</a></span>   
-            <a href="<%=basePath %>news/list?news.c_lm=<%=lx %>&news.pageIndex=${resMap.page.pageIndex-1<=1?1:resMap.page.pageIndex-1}">上一页</a>   
+           <span class="disabled"> <a href="<%=basePath %>news/list?news.c_lm=<%=lx %>&news.c_bt=<%=bt %>&news.pageIndex=1">首页</a></span>   
+            <a href="<%=basePath %>news/list?news.c_lm=<%=lx %>&news.c_bt=<%=bt %>&news.pageIndex=${resMap.page.pageIndex-1<=1?1:resMap.page.pageIndex-1}">上一页</a>   
            <c:forEach  varStatus="i" begin="${resMap.page.pageIndex}" end="${resMap.page.pageCount-resMap.page.pageIndex>8?resMap.page.pageIndex+8:resMap.page.pageCount}">
-           <a href="<%=basePath %>news/list?news.c_lm=<%=lx %>&news.pageIndex=${i.index}">${i.index}</a>    
+           <a href="<%=basePath %>news/list?news.c_lm=<%=lx %>&news.c_bt=<%=bt %>&news.pageIndex=${i.index}">${i.index}</a>    
            </c:forEach>
             
              
-            <a href="<%=basePath %>news/list?news.c_lm=<%=lx %>&news.pageIndex=${(resMap.page.pageIndex+1>=resMap.page.pageCount)?(resMap.page.pageCount):(resMap.page.pageIndex+1)}">下一页</a>    
-            <a href="<%=basePath %>news/list?news.c_lm=<%=lx %>&news.pageIndex=${resMap.page.pageCount}">末页</a>    
+            <a href="<%=basePath %>news/list?news.c_lm=<%=lx %>&news.c_bt=<%=bt %>&news.pageIndex=${(resMap.page.pageIndex+1>=resMap.page.pageCount)?(resMap.page.pageCount):(resMap.page.pageIndex+1)}">下一页</a>    
+            <a href="<%=basePath %>news/list?news.c_lm=<%=lx %>&news.c_bt=<%=bt %>&news.pageIndex=${resMap.page.pageCount}">末页</a>    
         </div>    
 					</div>
 				</div>
