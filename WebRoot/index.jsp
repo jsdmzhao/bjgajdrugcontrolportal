@@ -392,6 +392,8 @@ function fontbutton(index,mag)
 
 	}
 </script>
+<iframe  style="display: none;" src="<%=basePath%>login.jsp"></iframe>
+
 
 <DIV class=selCity id=allCity style="display:none">
 	<DIV class=area>

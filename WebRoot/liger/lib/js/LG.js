@@ -261,7 +261,7 @@ function $d(obj,preBlank){
             if ($(this).val() == null || $(this).val() == "") return;
             var ltype = $(this).attr("ltype");
             var optionsJSON = $(this).attr("ligerui"), options;
-            alert(optionsJSON);
+          //  alert(optionsJSON);
             if (optionsJSON)
             {
                 options = JSON2.parse(optionsJSON);
@@ -474,7 +474,7 @@ function $d(obj,preBlank){
                 success: success,
                 beforeSubmit: function (formData, jqForm, options)
                 {
-                	alert($d(formData));
+                //	alert($d(formData));
                     //针对复选框和单选框 处理
                     $(":checkbox,:radio", jqForm).each(function ()
                     {
