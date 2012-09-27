@@ -63,5 +63,5 @@ if(ip!=null){
 
 %>
 <Script>
-alert('<%=ip%>');
+alert('<%=session.getAttribute("cXm")%>,欢迎光临！');
 </Script>

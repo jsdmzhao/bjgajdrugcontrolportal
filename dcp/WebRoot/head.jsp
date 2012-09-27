@@ -61,8 +61,7 @@ if(mag==1)//选择按钮样式
 }else
 {
 footerhtml='<input type="image" alt="Cancel" src="<%=basePaths%>images/send_button.gif" class="btn" onclick=alert("Sumbited!"); />';
-footerhtml+='<input type="image" alt="Cancel" src="<%=basePaths%>
-	images/cancel_button.gif" class="btn" id="msg'
+footerhtml+='<input type="image" alt="Cancel" src="<%=basePaths%>images/cancel_button.gif" class="btn" id="msg'
 					+ index + 'cancel" />';
 		}
 		return footerhtml;
@@ -375,7 +374,7 @@ footerhtml+='<input type="image" alt="Cancel" src="<%=basePaths%>
 		style="background: url('<%=basePaths%>images/index/nav-bg.png') 0 -12px repeat-x;">
 		<div style="padding: 0 20px;">
 			<ul class="nav-ul">
-				<li><a href="<%=basePaths%>index.jsp" class="current">首 页</a>
+				<li><a href="<%=basePaths%>" class="current">首 页</a>
 				</li>
 				<li class="middle"><a href="http://www.xxzx.bj/"
 					target="_blank">信息查询</a>
