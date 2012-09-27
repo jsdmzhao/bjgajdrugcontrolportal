@@ -912,17 +912,13 @@ function fontbutton(index,mag)
 			<div id="side">
 				<div class="search-box">
 					<div style="float: right;padding-right: 70px;padding-bottom: 5px;">
-<<<<<<< .mine
+
 						<form action="" id="searchForm" name="searchForm" style="margin-top: 10px;">
 							<table border="0" cellpadding="0" cellspacing="0"
 								class="tab_search" >
-=======
-						<form action="<%=basePath%>newsSearch" name="search" style="margin-top: 10px;" onsubmit="return search();">
-							<table border="0" cellpadding="0" cellspacing="0" class="tab_search">
->>>>>>> .r308
+
 								<tr>
-<<<<<<< .mine
-									<td><input type="text" title="Search"
+						<td><input type="text" title="Search"
 										class="searchinput" id="searchinput"
 										onkeydown="if (event.keyCode==13) {}"
 										onblur="if(this.value==''){value='请输入要搜索的内容..';}"
@@ -930,32 +926,10 @@ function fontbutton(index,mag)
 									<td><img width="21" height="17" class="searchaction" onclick="onSearch();"
 										 src="<%=basePath%>images/magglass.gif" border="0"
 										hspace="2" /></td>
-=======
-									<td>
-										<input type="text" name="keyWord" title="Search" class="searchinput" id="searchInput"
-										 		onkeydown="if (event.keyCode==13) {}"
-												onblur="if(this.value=='')value='请输入要搜索的内容..';"
-												onfocus="if(this.value=='请输入要搜索的内容..')value='';"
-												value="请输入要搜索的内容.." size="10" />
-									</td>
-									<td>
-										<input type="image" width="21" height="17" class="searchaction" alt="Search"
-												src="<%=basePath%>images/magglass.gif" border="0" hspace="2" /></td>
->>>>>>> .r308
 								</tr>
 							</table>
 						</form>
-						<script language="javascript" type="text/javascript">
-							function search(){
-								var searchInput = document.getElementById("searchInput").value;
-								alert(searchInput);
-								return false;
-								if(searchInput == '请输入要搜索的内容..' || searchInput == ''){
-									alert('请输入要搜索的内容..');
-									return false;
-								}
-							}
-						</script>
+					
 					</div>
 					<div class="clearfloat"></div>
 				</div>
@@ -970,8 +944,7 @@ function fontbutton(index,mag)
 				 window.location.href="<%=basePath%>news/list?news.c_bt="+val;
 				}
 			}
-			
-			          
+
 			</script>
 				
 				
