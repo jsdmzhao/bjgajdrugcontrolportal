@@ -84,7 +84,7 @@
 	height: 23px;
 	line-height: 23px;
 	text-indent: 20px;
-		padding-left:10px;
+	padding-left:10px;
 }
 
 .index-ul li.three{
@@ -92,7 +92,7 @@
 	height: 23px;
 	line-height: 23px;
 	text-indent: 20px;
-		padding-left:10px;
+	padding-left:10px;
 }
 
 .index-ul li.four{
@@ -100,7 +100,7 @@
 	height: 23px;
 	line-height: 23px;
 	text-indent: 20px;
-		padding-left:10px;
+	padding-left:10px;
 }
 
 .index-ul li.five{
@@ -324,9 +324,17 @@ margin-bottom: 4px;
 
 .pass-cont-one{
 	display: none;
-	
+	margin:0 auto;
+	padding:15px;
+	background-color: white;
+	height: 123px;
 }
- 
+
+.pass-cont-one ul li{
+	float: left;
+	margin-left: 12px;
+}
+
 .pass-cont-two{
 	display: none;
 
@@ -339,6 +347,7 @@ margin-bottom: 4px;
 	background-color: white;
 	height: 123px;
 }
+
 .pass-cont-three ul li{
 	float: left;
 	margin-left: 12px;
