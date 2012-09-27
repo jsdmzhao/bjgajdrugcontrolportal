@@ -8,6 +8,14 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	
+	Object userId=request.getParameter("userId");
+	String str="";
+	if(userId!=null){
+		str="&userId="+userId;
+	}else{
+		userId="";
+		
+	}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -29,9 +37,6 @@
 	type="text/css" />
 <script src="<%=basePath%>liger/lib/js/common.js" type="text/javascript"></script>
 <script src="<%=basePath%>liger/lib/js/LG.js" type="text/javascript"></script>
-
-    <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerForm.js" type="text/javascript"></script>
-    <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerTree.js" type="text/javascript"></script>
 
 
 <script src="<%=basePath%>liger/lib/js/ligerui.expand.js"
@@ -60,6 +65,9 @@
 		<div id="maingrid"></div>
 
 	<script type="text/javascript">
+	
+  DWREngine.setAsync(false); 
+  
   var dlgedit=null;
   var Validator = null;
   var edittype=null;
@@ -70,7 +78,13 @@
 	var oPage={
 			pageIndex:1,
 			pageSize:1000
-	}
+	};
+	
+	 var userList;
+    UserInfoSvc.chooseOnlyUser(function(userData){
+  	   userList=userData;
+    });
+    
 	 var config ={"Grid":{
          columns: [
                    { display: "人员", name: "userName", width: 180, type: "text", align: "left" },
@@ -111,16 +125,23 @@
  			space : 30,
  			type : "date",
  			cssClass : "field"
- 		}, {
+ 		}
+ 		<%if("".equals(userId)){%>
+ 		, 
+ 		{
  			display : "人员",
- 			name : "userId",
+ 			name : "userName",
  			newline : false,
  			labelWidth : 60,
  			width : 100,
  			space : 30,
- 			type : "smarttext",
+ 			type : "select",
+ 			options: {
+ 			valueFieldID: "userId",
+ 			data : userList},
  			cssClass : "field"
  		}  
+ 		<%}%>
  		],
  		toJSON : JSON2.stringify
  	});
@@ -158,6 +179,9 @@
 
     	function loadGrid(obj){
     		if(!obj)obj={};
+    		<%if(!"".equals(userId)){%>
+    			obj.userId='<%=userId%>';
+    		<%}%>
     		KqCcjlSvc.queryByPage(obj,oPage,function(rdata){
     			if(rdata == null){
     				  grid.setOptions({ data:  { Total:0, Rows:""  } });
@@ -174,7 +198,7 @@
           switch (item.id) {
               case "add":
             	//  f_dialog("add","新增上下班信息");
-            	   dialog = $.ligerDialog.open({ title :'新增信息',url: '<%=basePath%>admin/app/duty/kqccjlDetail.jsp', 
+            	   dialog = $.ligerDialog.open({ title :'新增信息',url: '<%=basePath%>admin/app/duty/kqccjlDetail.jsp?a=1<%=str%>', 
                        height: 350,width: 720,showMax: true, showToggle: true,  showMin: true
 				  });
             	//  top.f_openDialog(null,'新增上下班信息','<%=basePath%>admin/app/user/userDetail.jsp' );
@@ -182,13 +206,13 @@
             //  case "view":
             //      var selected = grid.getSelected();
             //      if (!selected) { LG.tip('请选择行!'); return }
-            //      top.f_addTab(null, '查看上下班信息', '<%=basePath%>admin/app/duty/kqccjlDetail.jsp?IsView=1&ID=' + selected.UserID);
+            //      top.f_addTab(null, '查看上下班信息', '<%=basePath%>admin/app/duty/kqccjlDetail.jsp?IsView=1&ID=' + selected.UserID+'<%=str%>');
             //      break;
               case "modify":
             	  
             	  var selected = grid.getSelected();
                         if (!selected) { LG.tip('请选择行!'); return }
-                       dialog = $.ligerDialog.open({ title :'修改信息',url: '<%=basePath%>admin/app/duty/kqccjlDetail.jsp?nXh=' + selected.nXh, 
+                       dialog = $.ligerDialog.open({ title :'修改信息',url: '<%=basePath%>admin/app/duty/kqccjlDetail.jsp?nXh=' + selected.nXh+'<%=str%>', 
                        height: 350,width: 720,showMax: true, showToggle: true,  showMin: true
 				  });
                        break;
@@ -228,16 +252,6 @@
 	      {
 	    	  dialog.hidden();
 	      }
-		    UserInfoSvc.choose(function(rdata){
-	  			if(rdata != null){
-	  	            	$("#userId").ligerComboBox({
-	  	  	                width: 180,
-	  	  	                selectBoxWidth: 200,
-	  	  	                selectBoxHeight: 200, valueField: 'value',treeLeafOnly:false,
-	  	  	                tree: { data:rdata, checkbox: false }
-	  	        }); 
-				}
-			});
 	</script>
 
 

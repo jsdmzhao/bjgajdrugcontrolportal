@@ -253,7 +253,7 @@ function $d(obj,preBlank){
     {
         if (!form) return null;
         var group = { op: "and", rules: [] };
-        $(":input", form).not(":submit, :reset, :image,:button, [disabled],:smarttext")
+        $(":input", form).not(":submit, :reset, :image,:button, [disabled]")
         .each(function ()
         {
             if (!this.name) return;
@@ -261,6 +261,7 @@ function $d(obj,preBlank){
             if ($(this).val() == null || $(this).val() == "") return;
             var ltype = $(this).attr("ltype");
             var optionsJSON = $(this).attr("ligerui"), options;
+            alert(optionsJSON);
             if (optionsJSON)
             {
                 options = JSON2.parse(optionsJSON);

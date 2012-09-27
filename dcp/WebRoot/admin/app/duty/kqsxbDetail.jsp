@@ -53,8 +53,11 @@ if(userId==null){
          fields : [
          {name:"nXh",type:"hidden",value:'<%=nXh %>'},
          {display:"类型",name:"nLxName",newline:true,labelWidth:100,width:200,space:30,type:"smarttext"},
+         {name:"nXh",type:"hidden",value:'<%=nXh %>'},
+         <%if("".equals(userId)){%>
          {display:"人员",name:"userName",newline:false,labelWidth:100,width:200,space:30,type:"smarttext"},
-         {name:"userId",type:"hidden"},        
+         <%}%>
+         {name:"userId",value:"<%=userId%>",type:"hidden"},  
          {display:"登记时间",name:"dDj",newline:true,labelWidth:100,width:200,space:30,type:"datetime"},
          {display:"状态",name:"cZtName",newline:false,labelWidth:100,width:200,space:30,type:"smarttext"},
          {name:"cZt",type:"hidden"}
@@ -165,7 +168,9 @@ if(userId==null){
         	
         	var formMap = DWRUtil.getValues("mform"); 
         	
-        	formMap["userId"] = ry.getValue();
+       	 <%if("".equals(userId)){%>
+     	formMap["userId"] = ry.getValue();
+     	   <%}%>
         	formMap["cZt"] = zt.getValue();
         	formMap["nLx"]=lx.getValue();
 			if(isAddNew){
@@ -212,7 +217,7 @@ if(userId==null){
         }
         
         
-        UserInfoSvc.choose(function(rdata){
+        UserInfoSvc.chooseOnlyUser(function(rdata){
   			if(rdata != null){
   	            	ry=$("#userName").ligerComboBox({
   	  	                width: 180,

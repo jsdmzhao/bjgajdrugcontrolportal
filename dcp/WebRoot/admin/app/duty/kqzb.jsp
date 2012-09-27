@@ -8,6 +8,15 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	
+	Object userId=request.getParameter("userId");
+	String str="";
+	if(userId!=null){
+		str="&userId="+userId;
+	}else{
+		userId="";
+		
+	}
+	
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -36,7 +45,8 @@
 <script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
 <script type='text/javascript'
 	src='<%=basePath%>dwr/interface/KqZbSvc.js'></script>
-
+<script type='text/javascript'
+	src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>	
 </head>
 <body style="padding:10px;height:100%; text-align:center;">
 <div id="mainsearch" style="width: 98%">
@@ -53,6 +63,7 @@
 		<div id="maingrid"></div>
 
 	<script type="text/javascript">
+	 DWREngine.setAsync(false); 
   var dlgedit=null;
   var Validator = null;
   var edittype=null;
@@ -64,6 +75,11 @@
 			pageIndex:1,
 			pageSize:1000
 	}
+	
+	var userList;
+    UserInfoSvc.chooseOnlyUser(function(userData){
+  	   userList=userData;
+    });
 	 var config ={"Grid":{
          columns: [
 { display: "人员", name: "userName", width: 180, type: "text", align: "left" },
@@ -100,7 +116,22 @@
  			space : 30,
  			type : "date",
  			cssClass : "field"
- 		} ],
+ 		} <%if("".equals(userId)){%>
+ 		, 
+ 		{
+ 			display : "人员",
+ 			name : "userName",
+ 			newline : false,
+ 			labelWidth : 60,
+ 			width : 100,
+ 			space : 30,
+ 			type : "select",
+ 			options: {
+ 			valueFieldID: "userId",
+ 			data : userList},
+ 			cssClass : "field"
+ 		}  
+ 		<%}%>],
  		toJSON : JSON2.stringify
  	});
 
@@ -153,7 +184,7 @@
           switch (item.id) {
               case "add":
             	//  f_dialog("add","新增上下班信息");
-            	   dialog = $.ligerDialog.open({ title :'新增信息',url: '<%=basePath%>admin/app/duty/kqzbDetail.jsp', 
+            	   dialog = $.ligerDialog.open({ title :'新增信息',url: '<%=basePath%>admin/app/duty/kqzbDetail.jsp?a=1<%=str%>', 
                        height: 250,width: 720,showMax: true, showToggle: true,  showMin: true
 				  });
             	//  top.f_openDialog(null,'新增上下班信息','<%=basePath%>admin/app/user/userDetail.jsp' );
@@ -161,13 +192,13 @@
             //  case "view":
             //      var selected = grid.getSelected();
             //      if (!selected) { LG.tip('请选择行!'); return }
-            //      top.f_addTab(null, '查看上下班信息', '<%=basePath%>admin/app/duty/kqzbDetail.jsp?IsView=1&ID=' + selected.UserID);
+            //      top.f_addTab(null, '查看上下班信息', '<%=basePath%>admin/app/duty/kqzbDetail.jsp?IsView=1&ID=' + selected.UserID)+'<%=str%>';
             //      break;
               case "modify":
             	  
             	  var selected = grid.getSelected();
                         if (!selected) { LG.tip('请选择行!'); return }
-                       dialog = $.ligerDialog.open({ title :'修改信息',url: '<%=basePath%>admin/app/duty/kqzbDetail.jsp?nXh=' + selected.nXh, 
+                       dialog = $.ligerDialog.open({ title :'修改信息',url: '<%=basePath%>admin/app/duty/kqzbDetail.jsp?nXh=' + selected.nXh+'<%=str%>', 
                        height: 250,width: 720,showMax: true, showToggle: true,  showMin: true
 				  });
                        break;
