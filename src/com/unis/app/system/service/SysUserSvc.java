@@ -71,10 +71,10 @@ public class SysUserSvc  {
 	//		String ip=IPUtil.getUserIP(request);
 		//	if(ip!=null){
 				Map p2=new HashMap();
-				p.put("userId", list.get(0).get("userId"));
+				p2.put("userId", list.get(0).get("userId"));
 			List list2=userInfoSvc.queryAll(p2);
 			if(list2.size()!=0){
-				Map rp=(Map)list.get(0);
+				Map rp=(Map)list2.get(0);
 				request.getSession().setAttribute("userId",rp.get("userId") );
 				request.getSession().setAttribute("cJb",rp.get("cJb") );
 				request.getSession().setAttribute("cYhz",rp.get("cYhz") );

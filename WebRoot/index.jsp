@@ -505,7 +505,6 @@ function fontbutton(index,mag)
 		<DIV class=r>
 			<DIV class="topCtiy clear">
 				<UL>
-
 					<LI class=i2 id=changeCity>选择内容</LI>
 				</UL>
 			</DIV>
@@ -588,7 +587,7 @@ function fontbutton(index,mag)
 					<a href="<%=basePath%>news/list?news.c_lm=1286">警钟长鸣</a>
 				</li>
 				<li class="middle">
-					<a href="<%=basePath%>news/list?news.c_lm=229">工作交流</a>
+					<a href="<%=basePath%>rydt.sp">荣誉殿堂</a>
 				</li>
 				<li class="middle">
 					<a href="<%=basePath%>news/list?news.c_lm=12">禁毒情报</a>
@@ -618,10 +617,7 @@ function fontbutton(index,mag)
 					<div class="main-top-con" style="height: 220px;font-size:14px; ">
 						<ul class="index-ul">
 							<li>领 导：易阳</li>
-							<li>办公室：李可俭、张世强<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								薛状、董永蕙</li>
-							<br />
+							<li>办公室：李可俭、张世强</li>
 							<li>协 指：陈述</li>
 							<li>情 报：王琪、郝铁彬</li>
 							<li>侦 查：姚庆生、张静、李志新</li>
@@ -1422,13 +1418,13 @@ function fontbutton(index,mag)
 					<div
 						style="background: url('images/index/bg-6.png') no-repeat;width: 747px;height: 184px;">
 						<div>
-							<div id="three-pass-one" class="three-pass">光荣榜</div>
+							<%--<div id="three-pass-one" class="three-pass">光荣榜</div>--%>
 							<div id="three-pass-two" class="three-pass">常用网站导航</div>
 							<div id="three-pass-three" class="three-pass-hover">使用工具导航
 							</div>
 							<div class="clearfloat"></div>
 						</div>
-						<div class="pass-cont-one">
+						<%--<div class="pass-cont-one">
 							<ul id="demo0">
 								<li id="demo11"></li>
 								<li><a href="http://jdcjsr-zyk.zx.ga/" target="_blank"><img

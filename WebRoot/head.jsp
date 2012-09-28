@@ -200,6 +200,12 @@ footerhtml+='<input type="image" alt="Cancel" src="<%=basePaths%>images/cancel_b
 	}
 </script>
 
+
+<%if(session.getAttribute("userId")!=null&&session.getAttribute("userId")!="0"){
+	%>
+	
+
+
 <DIV class=selCity id=allCity style="display:none">
 	<DIV class=area>
 		<div class=bodydiv>
@@ -321,7 +327,9 @@ footerhtml+='<input type="image" alt="Cancel" src="<%=basePaths%>images/cancel_b
 	</DIV>
 </DIV>
 
-
+	<%
+	
+} %>
 <div id="container">
 	<div
 		style="width:1001px; height:25px; background-image:url(<%=basePaths%>images/headbg.jpg)">
@@ -395,7 +403,7 @@ footerhtml+='<input type="image" alt="Cancel" src="<%=basePaths%>images/cancel_b
 					href="<%=basePaths%>news/list?news.c_lm=1286">警钟长鸣</a>
 				</li>
 				<li class="middle"><a
-					href="<%=basePaths%>news/list?news.c_lm=229">工作交流</a>
+					href="<%=basePaths%>rydt.jsp">荣誉殿堂</a>
 				</li>
 				<li class="middle"><a
 					href="<%=basePaths%>news/list?news.c_lm=12">禁毒情报</a>

@@ -9,22 +9,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>��ҳ</title>
-<link rel="stylesheet" type="text/css" href="http://localhost:9080/dcp/css/layout.css" />
-<link rel="stylesheet" type="text/css" href="http://localhost:9080/dcp/css/index.css" />
-<link href="http://localhost:9080/dcp/css/css.css" rel="stylesheet" type="text/css" />
-<link href="http://localhost:9080/dcp/css/base.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="http://localhost:9080/dcp/highslide/highslide-with-html.js"></script>
-<link rel="stylesheet" type="text/css" href="http://localhost:9080/dcp/highslide/highslide.css" />
-<link href="http://localhost:9080/dcp/css/Wygkcn_home.css" rel="stylesheet" type="text/css" />
-<link href="http://localhost:9080/dcp/css/Wygkcn_Index.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="http://localhost:9080/dcp/js/lightBox.js"></script>
-<script type="text/javascript" src="http://localhost:9080/dcp/js/jquery-1.2.6.pack.js"></script>
-<script type="text/javascript" src="http://localhost:9080/dcp/js/jquery.min.js"></script>
-<script type="text/javascript" src="http://localhost:9080/dcp/js/jquery-ui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/dcp/css/layout.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/dcp/css/index.css" />
+<link href="http://localhost:8080/dcp/css/css.css" rel="stylesheet" type="text/css" />
+<link href="http://localhost:8080/dcp/css/base.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://localhost:8080/dcp/highslide/highslide-with-html.js"></script>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/dcp/highslide/highslide.css" />
+<link href="http://localhost:8080/dcp/css/Wygkcn_home.css" rel="stylesheet" type="text/css" />
+<link href="http://localhost:8080/dcp/css/Wygkcn_Index.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://localhost:8080/dcp/js/lightBox.js"></script>
+<script type="text/javascript" src="http://localhost:8080/dcp/js/jquery-1.2.6.pack.js"></script>
+<script type="text/javascript" src="http://localhost:8080/dcp/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://localhost:8080/dcp/js/jquery-ui.min.js"></script>
 
 <!-- ������ -->
-<script type="text/javascript" src="http://localhost:9080/dcp/highslide/highslide-with-html.js"></script>
-<link rel="stylesheet" type="text/css" href="http://localhost:9080/dcp/highslide/highslide.css" />
+<script type="text/javascript" src="http://localhost:8080/dcp/highslide/highslide-with-html.js"></script>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/dcp/highslide/highslide.css" />
 <!-- ������ -->
 
 <script type="text/javascript">
@@ -36,7 +36,7 @@ hs.wrapperClassName = 'draggable-header';
 <style>
 body {
 	font-size: 14px;
-	background-image: url('http://localhost:9080/dcp/images/bg11.jpg');
+	background-image: url('http://localhost:8080/dcp/images/bg11.jpg');
 	background-repeat: repeat;
 }
 </style>
@@ -125,10 +125,10 @@ fgm.on(window, "load", function() {
 </script>
 
 </head>
-<body style="font-size:14px; background-image: url('http://localhost:9080/dcp/images/bg11.jpg'); background-repeat: repeat;">
+<body style="font-size:14px; background-image: url('http://localhost:8080/dcp/images/bg11.jpg'); background-repeat: repeat;">
 
 <script type="text/javascript">
-	hs.graphicsDir = 'http://localhost:9080/dcp/highslide/graphics/';
+	hs.graphicsDir = 'http://localhost:8080/dcp/highslide/graphics/';
 	hs.outlineType = 'rounded-white';
 	hs.wrapperClassName = 'draggable-header';
 
@@ -245,12 +245,12 @@ function fontbutton(index,mag)
 	var footerhtml
 	if(mag==1)//ѡ��ť��ʽ
 	{
-	 footerhtml='<input type="image" alt="Cancel" src="http://localhost:9080/dcp/images/cancel_button.gif" class="btn" id="msg'+index+'cancel" />';	
+	 footerhtml='<input type="image" alt="Cancel" src="http://localhost:8080/dcp/images/cancel_button.gif" class="btn" id="msg'+index+'cancel" />';	
 	
 	}else
 	{
-		footerhtml='<input type="image" alt="Cancel" src="http://localhost:9080/dcp/images/send_button.gif" class="btn" onclick=alert("Sumbited!"); />';
-		footerhtml+='<input type="image" alt="Cancel" src="http://localhost:9080/dcp/images/cancel_button.gif" class="btn" id="msg'+ index + 'cancel" />';
+		footerhtml='<input type="image" alt="Cancel" src="http://localhost:8080/dcp/images/send_button.gif" class="btn" onclick=alert("Sumbited!"); />';
+		footerhtml+='<input type="image" alt="Cancel" src="http://localhost:8080/dcp/images/cancel_button.gif" class="btn" id="msg'+ index + 'cancel" />';
 	}
 		return footerhtml;
 
@@ -371,128 +371,11 @@ function fontbutton(index,mag)
 	}
 </script>
 
-<DIV class=selCity id=allCity style="display:none">
-	<DIV class=area>
-		<div class=bodydiv>
-			<div class=headdiv>
-				<div id="div1" class="headdivcenter">
-
-
-					<div class="topdiv">
-						<div class="imgdiv">
-							<img class="imgdiv" src="http://localhost:9080/dcp/images/1.png  " />
-						</div>
-						<div class="font1" align="center">
-							<a href="#"
-								onclick='Box("msg1",900,600,parahtml("http://localhost:9080/dcp/desktop/index.jsp",900,600),fontbutton(1,1))'>�ҵ�����</a>
-						</div>
-					</div>
-
-					<div class="topdiv">
-						<div class="imgdiv">
-							<img class="imgdiv" src="http://localhost:9080/dcp/images/9.png  " />
-						</div>
-						<div class="font1" align="center">
-							<a href="http://localhost:9080/dcp/temp/news.jsp"
-								onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">���Ź���</a>
-						</div>
-					</div>
-
-
-					<div class="topdiv">
-						<div class="imgdiv">
-							<img class="imgdiv" src="http://localhost:9080/dcp/images/3.png  " />
-						</div>
-						<div class="font1" align="center">
-							<a href="http://localhost:9080/dcp/temp/car.jsp"
-								onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">��������</a>
-						</div>
-					</div>
-
-					<div class="topdiv">
-						<div class="imgdiv">
-							<img class="imgdiv" src="http://localhost:9080/dcp/images/8.png  " />
-						</div>
-						<div class="font1" align="center">
-							<a href="http://localhost:9080/dcp/temp/email.jsp"
-								onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">�ڲ��ʼ�</a>
-						</div>
-					</div>
-
-					<div class="topdiv">
-						<div class="imgdiv">
-							<img class="imgdiv" src="http://localhost:9080/dcp/images/2.png  " />
-						</div>
-						<div class="font1" align="center">
-							<a href="http://localhost:9080/dcp/temp/duty.jsp"
-								onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">�������</a>
-						</div>
-					</div>
-
-
-					<div class="topdiv">
-						<div class="imgdiv">
-							<img class="imgdiv" src="http://localhost:9080/dcp/images/4.png  " />
-						</div>
-						<div class="font1" align="center">
-							<a href="http://localhost:9080/dcp/temp/blog.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">������־</a>
-						</div>
-					</div>
-					<!-- 
-					<div class="topdiv">
-					<div class="imgdiv"  >
-					<img  class="imgdiv"   src="<!%=basePath%>images/5.png  "/></div >
-					<div   class="font1"  align="center"><a href="#" onclick='Box("msg5",900,600,parahtml(900,600),fontbutton(5,1));'>�����ƻ�</a></div>
-					</div>
-					 -->
-
-					<div class="topdiv">
-						<div class="imgdiv">
-							<img class="imgdiv" src="http://localhost:9080/dcp/images/6.png  " />
-						</div>
-						<div class="font1" align="center">
-							<a href="http://localhost:9080/dcp/temp/message.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">�ڲ���Ϣ</a>
-						</div>
-					</div>
-
-
-
-					<div class="topdiv">
-						<div class="imgdiv">
-							<img class="imgdiv" src="http://localhost:9080/dcp/images/7.png  " />
-						</div>
-						<div class="font1" align="center">
-							<a href="http://localhost:9080/dcp/temp/mobile.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">�ֻ��Ϣ</a>
-						</div>
-					</div>
-
-
-				</div>
-			</div>
-		</div>
-
-		<DIV class=none>
-			<A id=foldin href="javascript:;">����</A>
-		</DIV>
-	</DIV>
-</DIV>
-<DIV class=header>
-	<DIV class=area>
-		<DIV class=r>
-			<DIV class="topCtiy clear">
-				<UL>
-
-					<LI class=i2 id=changeCity>ѡ������</LI>
-				</UL>
-			</DIV>
-		</DIV>
-	</DIV>
-</DIV>
 
 
 <div id="container">
 	<div
-		style="width:1001px; height:25px; background-image:url(http://localhost:9080/dcp/images/headbg.jpg)">
+		style="width:1001px; height:25px; background-image:url(http://localhost:8080/dcp/images/headbg.jpg)">
 		<div style="float:left; padding-top:4px; padding-left:20px;">
 			<div id="timeShow"></div>
 		</div>
@@ -503,7 +386,7 @@ function fontbutton(index,mag)
 				onclick='Box("msg3",259,90,parahtml2(259,90),fontbutton(3,1));'>��ϵ����</a>
 		</div>
 		<div style="float:right; padding-top:8px; padding-right:2px;">
-			<IMG src="http://localhost:9080/dcp/images/2.jpg" />
+			<IMG src="http://localhost:8080/dcp/images/2.jpg" />
 		</div>
 		<div style="float:right; padding-top:4px;padding-right:10px;">
 			<a
@@ -511,14 +394,14 @@ function fontbutton(index,mag)
 				style="cursor:hand;">�ղر�վ</a>
 		</div>
 		<div style="float:right; padding-top:7px; padding-right:2px;">
-			<IMG src="http://localhost:9080/dcp/images/1.jpg" />
+			<IMG src="http://localhost:8080/dcp/images/1.jpg" />
 		</div>
 		<div style="float:right; padding-top:4px;padding-right:10px;">
 			<a href=#
 				onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.alioooo.comt');">��Ϊ��ҳ</a>
 		</div>
 		<div style="float:right; padding-top:7px; padding-right:2px;">
-			<IMG src="http://localhost:9080/dcp/images/3.jpg" />
+			<IMG src="http://localhost:8080/dcp/images/3.jpg" />
 		</div>
 	</div>
 	<div id="header">
@@ -527,59 +410,59 @@ function fontbutton(index,mag)
 		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
 			codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
 			width="1000" height="126">
-			<param name="movie" value="http://localhost:9080/dcp/images/top.swf" />
+			<param name="movie" value="http://localhost:8080/dcp/images/top.swf" />
 			<param name="quality" value="high" />
 			<param name="wmode" value="opaque">
-			<embed src="http://localhost:9080/dcp/images/top.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="1000" height="126" wmode="opaque"></embed>
+			<embed src="http://localhost:8080/dcp/images/top.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="1000" height="126" wmode="opaque"></embed>
 		</object>
 
 	</div>
 	<div class="clearfloat"></div>
 	<div id="nav"
-		style="background: url('http://localhost:9080/dcp/images/index/nav-bg.png') 0 -12px repeat-x;">
+		style="background: url('http://localhost:8080/dcp/images/index/nav-bg.png') 0 -12px repeat-x;">
 		<div style="padding: 0 20px;">
 			<ul class="nav-ul">
 				<li>
-					<a href="http://localhost:9080/dcp/index.jsp" class="current">�� ҳ</a>
+					<a href="http://localhost:8080/dcp/index.jsp" class="current">�� ҳ</a>
 				</li>
 				<li class="middle">
 					<a href="http://www.xxzx.bj/" target="_blank">��Ϣ��ѯ</a>
 				</li>
 				<li class="middle">
-					<a href="http://localhost:9080/dcp/news/news.jsp">��������</a>
+					<a href="http://localhost:8080/dcp/news/news.jsp">��������</a>
 				</li>
 				<li class="middle">
 					<a href="http://10.8.1.135/" target="_blank">�ļ�����</a>
 				</li>
 				<li class="middle">
-					<a href="http://localhost:9080/dcp/media/deploy/Video.jsp">��Ƶ����</a>
+					<a href="http://localhost:8080/dcp/media/deploy/Video.jsp">��Ƶ����</a>
 				</li>
 				<li class="middle">
 					<a href="http://anquan.zx.bj" target="_blank">��Ϣ��ȫ</a>
 				</li>
 				<li class="middle">
-					<a href="http://localhost:9080/dcp/admin/index.jsp">�ڲ�ר��</a>
+					<a href="http://localhost:8080/dcp/admin/index.jsp">�ڲ�ר��</a>
 				</li>
 				<li class="middle">
-					<a href="http://localhost:9080/dcp/news/list?news.c_lm=1286">���ӳ���</a>
+					<a href="http://localhost:8080/dcp/news/list?news.c_lm=1286">���ӳ���</a>
 				</li>
 				<li class="middle">
-					<a href="http://localhost:9080/dcp/news/list?news.c_lm=229">��������</a>
+					<a href="http://localhost:8080/dcp/news/list?news.c_lm=229">��������</a>
 				</li>
 				<li class="middle">
-					<a href="http://localhost:9080/dcp/news/list?news.c_lm=12">���鱨</a>
+					<a href="http://localhost:8080/dcp/news/list?news.c_lm=12">���鱨</a>
 				</li>
 				<li class="middle">
-					<a href="http://localhost:9080/dcp/news/list?news.c_lm=13">����ư� </a>
+					<a href="http://localhost:8080/dcp/news/list?news.c_lm=13">����ư� </a>
 				</li>
 				<li class="middle">
-					<a href="http://localhost:9080/dcp/news/list?news.c_lm=1296"">ѧϰ԰��</a>
+					<a href="http://localhost:8080/dcp/news/list?news.c_lm=1296"">ѧϰ԰��</a>
 				</li>
 
 			</ul>
 			<div class="clearfloat"></div>
 		</div>
-		<div style="background: url('http://localhost:9080/dcp/images/index/nav-bottom.png') 0 bottom repeat-x;height: 10px;"> </div>
+		<div style="background: url('http://localhost:8080/dcp/images/index/nav-bottom.png') 0 bottom repeat-x;height: 10px;"> </div>
 	</div>
 </div>
 	
@@ -621,80 +504,80 @@ function fontbutton(index,mag)
 
 										
 
-											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:9080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
-												<a href="http://localhost:9080/dcp/news/detail?news.n_xh=1438">
+											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:8080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
+												<a href="http://localhost:8080/dcp/news/detail?news.n_xh=1438">
 													&#21271;&#20140;&#24066;2009&#24180;&#19978;&#21322;&#24180;&#27602;&#24773;&#24418;&#21183;&#20998;&#26512; </a> &nbsp;&nbsp;&nbsp;
-													<img src="http://localhost:9080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
+													<img src="http://localhost:8080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
 											</div>
 										
 
-											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:9080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
-												<a href="http://localhost:9080/dcp/news/detail?news.n_xh=1393">
+											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:8080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
+												<a href="http://localhost:8080/dcp/news/detail?news.n_xh=1393">
 													&#20851;&#20110;&#36716;&#21457;&#22269;&#23478;&#31105;&#27602;&#22996;&#37096;&#32626;&#24320;&#23637;&#23089;&#20048;&#26381;&#21153;&#22330;&#25152;&#28041;&#27602;&#38382;&#39064;&#19987;&#39033;&#27835;&#29702;&#34892;&#21160;&#30340;&#36890;&#30693; </a> &nbsp;&nbsp;&nbsp;
-													<img src="http://localhost:9080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
+													<img src="http://localhost:8080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
 											</div>
 										
 
-											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:9080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
-												<a href="http://localhost:9080/dcp/news/detail?news.n_xh=1084">
+											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:8080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
+												<a href="http://localhost:8080/dcp/news/detail?news.n_xh=1084">
 													&#20851;&#20110;&#19978;&#25253;&#23089;&#20048;&#22330;&#25152;&#31105;&#27602;&#25945;&#32946;&#22521;&#35757;&#24773;&#20917;&#30340;&#36890;&#30693; </a> &nbsp;&nbsp;&nbsp;
-													<img src="http://localhost:9080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
+													<img src="http://localhost:8080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
 											</div>
 										
 
-											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:9080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
-												<a href="http://localhost:9080/dcp/news/detail?news.n_xh=720">
+											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:8080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
+												<a href="http://localhost:8080/dcp/news/detail?news.n_xh=720">
 													&#21271;&#20140;&#24066;&#31105;&#27602;&#22996;&#21592;&#20250;&#21150;&#20844;&#23460;&#20851;&#20110;&#22312;&#28041;&#27602;&#39640;&#21457;&#26696;&#22320;&#21306;&#24320;&#19987;&#39033;&#25972;&#27835;&#24037;&#20316;&#30340;&#36890;&#30693; </a> &nbsp;&nbsp;&nbsp;
-													<img src="http://localhost:9080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
+													<img src="http://localhost:8080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
 											</div>
 										
 
-											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:9080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
-												<a href="http://localhost:9080/dcp/news/detail?news.n_xh=719">
+											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:8080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
+												<a href="http://localhost:8080/dcp/news/detail?news.n_xh=719">
 													&#21271;&#20140;&#24066;&#20844;&#23433;&#23616;&#20851;&#20110;&#21360;&#21457;&#24320;&#23637;&#25171;&#20987;&#21644;&#27835;&#29702; </a> &nbsp;&nbsp;&nbsp;
-													<img src="http://localhost:9080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
+													<img src="http://localhost:8080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
 											</div>
 										
 
-											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:9080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
-												<a href="http://localhost:9080/dcp/news/detail?news.n_xh=415">
+											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:8080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
+												<a href="http://localhost:8080/dcp/news/detail?news.n_xh=415">
 													2009&#24180;&#21271;&#20140;&#24066;&#20844;&#23433;&#31105;&#27602;&#24037;&#20316;&#35201;&#28857; </a> &nbsp;&nbsp;&nbsp;
-													<img src="http://localhost:9080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
+													<img src="http://localhost:8080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
 											</div>
 										
 
-											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:9080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
-												<a href="http://localhost:9080/dcp/news/detail?news.n_xh=251">
+											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:8080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
+												<a href="http://localhost:8080/dcp/news/detail?news.n_xh=251">
 													&#36890; &#30693; </a> &nbsp;&nbsp;&nbsp;
-													<img src="http://localhost:9080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
+													<img src="http://localhost:8080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
 											</div>
 										
 
-											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:9080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
-												<a href="http://localhost:9080/dcp/news/detail?news.n_xh=248">
+											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:8080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
+												<a href="http://localhost:8080/dcp/news/detail?news.n_xh=248">
 													&#20851;&#20110;&#21548;&#21462;&#24320;&#23637;&ldquo;&#26149;&#39118;&rdquo;&#19987;&#39033;&#34892;&#21160;&#24773;&#20917;&#30340;&#36890;&#30693; </a> &nbsp;&nbsp;&nbsp;
-													<img src="http://localhost:9080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
+													<img src="http://localhost:8080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
 											</div>
 										
 
-											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:9080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
-												<a href="http://localhost:9080/dcp/news/detail?news.n_xh=243">
+											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:8080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
+												<a href="http://localhost:8080/dcp/news/detail?news.n_xh=243">
 													&#20851;&#20110;&#22312;&#24320;&#23637;&#25171;&#20987;&#22806;&#22269;&#20154;&#22312;&#20140;&#28041;&#27602;&#36829;&#27861;&#29359;&#32618;&#19987;&#39033;&#34892;&#21160;&#24037;&#20316;&#20013;&#39044;&#23457;&#20808;&#26399;&#20171;&#20837;&#30340;&#36890;&#30693; </a> &nbsp;&nbsp;&nbsp;
-													<img src="http://localhost:9080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
+													<img src="http://localhost:8080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
 											</div>
 										
 
-											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:9080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
-												<a href="http://localhost:9080/dcp/news/detail?news.n_xh=232">
+											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:8080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
+												<a href="http://localhost:8080/dcp/news/detail?news.n_xh=232">
 													&#20851;&#20110;&#26149;&#33410;&#26399;&#38388;&#21152;&#24378;&#23089;&#20048;&#22330;&#25152;&#12289;&#28041;&#27602;&#37325;&#28857;&#22320;&#21306; </a> &nbsp;&nbsp;&nbsp;
-													<img src="http://localhost:9080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
+													<img src="http://localhost:8080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
 											</div>
 										
 
-											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:9080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
-												<a href="http://localhost:9080/dcp/news/detail?news.n_xh=228">
+											<div style="float: left;padding-left: 6px;margin-bottom: 10px; background:url('http://localhost:8080/dcp/images/index/li.png') 0 8px no-repeat;border-bottom: 1px dashed #CCCCCC;">
+												<a href="http://localhost:8080/dcp/news/detail?news.n_xh=228">
 													&#20851;&#20110;&#36716;&#21457;&#23425;&#22799;&#33258;&#27835;&#21306;&#20844;&#23433;&#26426;&#20851;&#26597;&#33719;&#19968;&#36215;&#32858;&#20247;&#21560;&#39135;&#27695;&#33018;&#37230;&#26696;&#20214;&#24773;&#20917;&#30340;&#36890;&#30693; </a> &nbsp;&nbsp;&nbsp;
-													<img src="http://localhost:9080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
+													<img src="http://localhost:8080/dcp/images/new.gif" />&nbsp;&nbsp;&nbsp;
 											</div>
 										
 									</div>
@@ -723,7 +606,7 @@ function fontbutton(index,mag)
 							</script>
 
 							<div
-								style=" background: url('http://localhost:9080/dcp/images/index/birth-bg.png') no-repeat;width: 227px;height:107px;position: relative;left: -12px;top: 10px;">
+								style=" background: url('http://localhost:8080/dcp/images/index/birth-bg.png') no-repeat;width: 227px;height:107px;position: relative;left: -12px;top: 10px;">
 								<div style="padding: 40px 0 0 20px; "></div>
 								<div style="text-align: right;padding: 20px 10px 0 0;">
 									<a href="#" style="color: #ff0000;font-size: 12px;">�����ȡ�ܵ�ί��ȫ����ף��>></a>
@@ -735,28 +618,28 @@ function fontbutton(index,mag)
 					<span class="title1">ר��ר���</span>
 					<div class="main-con" style="padding: 11px;">
 						<a href="http://10.8.2.52:8030/" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
-							<img src="http://localhost:9080/dcp/images/tb/12.png" /> 
+							<img src="http://localhost:8080/dcp/images/tb/12.png" /> 
 						</a> 
 						<a href="http://10.8.2.84" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
-							<img src="http://localhost:9080/dcp/images/tb/2.png" />
+							<img src="http://localhost:8080/dcp/images/tb/2.png" />
 					    </a> 
 						<a href="http://www.sdjwspzx.bj/" onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
-							<img src="http://localhost:9080/dcp/images/tb/3.png" />
+							<img src="http://localhost:8080/dcp/images/tb/3.png" />
 					   </a> 
 					   <a href="http://www.zz.bj/project/20091112/index.jsp/" onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
-							<img src="http://localhost:9080/dcp/images/tb/5.png" /> 
+							<img src="http://localhost:8080/dcp/images/tb/5.png" /> 
 					   </a> 
 					   <a href="http://10.8.2.195:91/" onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
-							<img src="http://localhost:9080/dcp/images/tb/6.png" />
+							<img src="http://localhost:8080/dcp/images/tb/6.png" />
 					   </a> 
 					   <a href="http://www.jdc.bj/list.php?id=233" onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
-							<img src="http://localhost:9080/dcp/images/tb/9.png" /> 
+							<img src="http://localhost:8080/dcp/images/tb/9.png" /> 
 					   </a>
 					   <a href="http://10.8.2.195:96/" onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
-							<img src="http://localhost:9080/dcp/images/tb/10.png" /> 
+							<img src="http://localhost:8080/dcp/images/tb/10.png" /> 
 					   </a> 
 					   <a href="http://www.jdc.bj/list/list.php?id=110" onclick="return hs.htmlExpand(this, { objectType: 'iframe'} )">
-							<img src="http://localhost:9080/dcp/images/tb/1.png" /> 
+							<img src="http://localhost:8080/dcp/images/tb/1.png" /> 
 					   </a>
 					</div>
 				</div>
@@ -1001,7 +884,7 @@ function fontbutton(index,mag)
 						<ul class="index-ul">
 							
 								<li><a
-									href="http://localhost:9080/dcp/news/detail?news.n_xh=5435">
+									href="http://localhost:8080/dcp/news/detail?news.n_xh=5435">
 
 										
 											&#24352;&#26032;&#26539;&#22312;&#20840;&#22269;&#31038;&#21306;&#25106;&#27602;&#31038;&#21306;&#24247;&#22797;&#24037;...
@@ -1009,7 +892,7 @@ function fontbutton(index,mag)
 								</li>
 							
 								<li><a
-									href="http://localhost:9080/dcp/news/detail?news.n_xh=3809">
+									href="http://localhost:8080/dcp/news/detail?news.n_xh=3809">
 
 										 
 											&#20851;&#20110;&#21152;&#24378;&#21560;&#27602;&#26816;&#27979;&#24037;&#20316;&#30340;&#24847;&#35265;
@@ -1017,7 +900,7 @@ function fontbutton(index,mag)
 								</li>
 							
 								<li><a
-									href="http://localhost:9080/dcp/news/detail?news.n_xh=3808">
+									href="http://localhost:8080/dcp/news/detail?news.n_xh=3808">
 
 										
 											&#20844;&#23433;&#37096;&#20851;&#20110;&#31038;&#21306;&#25106;&#27602;&#20154;&#21592;&#20986;&#22269;&#65288;&#22659;...
@@ -1025,7 +908,7 @@ function fontbutton(index,mag)
 								</li>
 							
 								<li><a
-									href="http://localhost:9080/dcp/news/detail?news.n_xh=3807">
+									href="http://localhost:8080/dcp/news/detail?news.n_xh=3807">
 
 										
 											&#20844;&#23433;&#37096;&#12289;&#21355;&#29983;&#37096;&#20851;&#20110;&#20844;&#23433;&#26426;&#20851;&#24378;&#21046;...
@@ -1033,7 +916,7 @@ function fontbutton(index,mag)
 								</li>
 							
 								<li><a
-									href="http://localhost:9080/dcp/news/detail?news.n_xh=3806">
+									href="http://localhost:8080/dcp/news/detail?news.n_xh=3806">
 
 										 
 											&#21560;&#27602;&#25104;&#30270;&#35748;&#23450;&#21150;&#27861;
@@ -1041,7 +924,7 @@ function fontbutton(index,mag)
 								</li>
 							
 								<li><a
-									href="http://localhost:9080/dcp/news/detail?news.n_xh=3776">
+									href="http://localhost:8080/dcp/news/detail?news.n_xh=3776">
 
 										
 											&#20851;&#20110;&#23545;2011&#24180;1&#26376;&#20840;&#24066;&#21508;&#32423;&#20844;...
@@ -1049,7 +932,7 @@ function fontbutton(index,mag)
 								</li>
 							
 								<li><a
-									href="http://localhost:9080/dcp/news/detail?news.n_xh=3770">
+									href="http://localhost:8080/dcp/news/detail?news.n_xh=3770">
 
 										
 											&#21271;&#20140;&#24066;&#20844;&#23433;&#23616;&#20851;&#20110;&#21360;&#21457;&#38598;&#20013;&#24320;&#23637;&#25490;...
@@ -1057,7 +940,7 @@ function fontbutton(index,mag)
 								</li>
 							
 								<li><a
-									href="http://localhost:9080/dcp/news/detail?news.n_xh=3730">
+									href="http://localhost:8080/dcp/news/detail?news.n_xh=3730">
 
 										
 											&#20851;&#20110;2010&#24180;&#20840;&#22269;&#19978;&#32593;&#21560;&#27602;&#20154;&#21592;...
@@ -1066,7 +949,7 @@ function fontbutton(index,mag)
 							
 						</ul>
 						<div style="text-align: right;padding: 10px 20px 0 0;">
-							<a href="http://localhost:9080/dcp/news/list?news.c_lm=1189">�����Ϣ &gt;&gt;</a>
+							<a href="http://localhost:8080/dcp/news/list?news.c_lm=1189">�����Ϣ &gt;&gt;</a>
 						</div>
 					</div>
 				</div>
@@ -1089,7 +972,7 @@ function fontbutton(index,mag)
 									<td><input type="image" width="21" height="17"
 										class="searchaction"
 										onclick="if(document.forms['search'].searchinput.value=='- Search Products -')document.forms['search'].searchinput.value='';"
-										alt="Search" src="http://localhost:9080/dcp/images/magglass.gif" border="0"
+										alt="Search" src="http://localhost:8080/dcp/images/magglass.gif" border="0"
 										hspace="2" /></td>
 								</tr>
 							</table>
@@ -1102,7 +985,7 @@ function fontbutton(index,mag)
 				<div style="height:30px; padding-left:12px; padding-top:5px;">
 					<div style="float:left;">
 						<div style="float: left;">
-							<img src="http://localhost:9080/dcp/images/tb/11.png" />
+							<img src="http://localhost:8080/dcp/images/tb/11.png" />
 						</div>
 						<div style="float: left; padding-top: 3px;">
 							<span
@@ -1116,7 +999,7 @@ function fontbutton(index,mag)
 					<div class="side-title"></div>
 					<div class="side-con" style="height: 86px;">
 						<div style="float: left;padding-left: 10px;">
-							<img src="http://localhost:9080/dcp/images/index/index2_03.png" />
+							<img src="http://localhost:8080/dcp/images/index/index2_03.png" />
 						</div>
 						<div
 							style="float: right;width: 690px;height:85px;margin-right:10px;">
@@ -1126,63 +1009,63 @@ function fontbutton(index,mag)
 
 
 								
-									<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=10000186">
+									<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=10000186">
 
 											 
 												&#26032;&#28155;&#21152;&#26032;&#38395;
 											 </a>
 									</li>
 								
-									<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=5722">
+									<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=5722">
 
 											
 												&#26131;&#38451;&#21103;&#24635;&#38431;&#38271;&#21069;&#24448;&#21271;&#20140;&#35199;&#31449;&#36814;&#25509;2...
 											  </a>
 									</li>
 								
-									<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=5714">
+									<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=5714">
 
 											
 												&#37329;&#24535;&#28023;&#25919;&#22996;&#19982;&#27665;&#35686;&#19968;&#36215;&#19978;&#20844;&#20132;&#36710;&#25191;...
 											  </a>
 									</li>
 								
-									<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=5706">
+									<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=5706">
 
 											
 												&#26131;&#38451;&#21103;&#24635;&#38431;&#38271;&#24102;&#38431;&#21442;&#21152;&#20840;&#22269;&#32521;&#27602;&#25191;...
 											  </a>
 									</li>
 								
-									<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=5689">
+									<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=5689">
 
 											
 												&#36213;&#25991;&#24544;&#24635;&#38431;&#38271;&#21040;&ldquo;&#20004;&#20250;&rdquo;&#23433;&#20445;&#19968;&#32447;...
 											  </a>
 									</li>
 								
-									<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=5688">
+									<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=5688">
 
 											
 												&#31105;&#27602;&#24635;&#38431;&#25919;&#22996;&#37329;&#24535;&#28023;&#21069;&#24448;&#19996;&#21333;&#24635;&#38431;...
 											  </a>
 									</li>
 								
-									<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=5684">
+									<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=5684">
 
 											 
 												&#37329;&#24535;&#28023;&#25919;&#22996;&#19982;&#27665;&#35686;&#19968;&#21516;&#25191;&#21220;
 											 </a>
 									</li>
 								
-									<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=5682">
+									<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=5682">
 
 											
 												&#36213;&#25991;&#24544;&#24635;&#38431;&#38271;&#12289;&#37329;&#24535;&#28023;&#25919;&#22996;&#32452;&#32455;&#21484;...
 											  </a>
 									</li>
 								
-									<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=5663">
+									<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=5663">
 
 											
 												&#26611;&#27589;&#12289;&#24352;&#32487;&#23439;&#21103;&#24635;&#38431;&#38271;&#24102;&#38431;&#21069;&#24448;&#24066;...
@@ -1200,68 +1083,68 @@ function fontbutton(index,mag)
 					<div class="side-title"></div>
 					<div class="side-con" style="height: 86px;">
 						<div style="float: left;padding-left: 10px;">
-							<img src="http://localhost:9080/dcp/images/index/today.png" />
+							<img src="http://localhost:8080/dcp/images/index/today.png" />
 						</div>
 						<div style="float: right;width: 690px;height:85px;margin-right:10px;">
 							<ul class="index-ul main-top-ul">
 								
-									<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=4585">
+									<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=4585">
 
 											
 												&#21327;&#35843;&#25351;&#23548;&#22823;&#38431;&#21484;&#24320;&#20250;&#35758;&#30740;&#31350;&#35752;&#35770;&#31105;...
 											  </a>
 									</li>
 								
-									<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=4584">
+									<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=4584">
 
 											
 												&#21327;&#35843;&#25351;&#23548;&#22823;&#38431;&#19982;&#31105;&#27602;&#25945;&#32946;&#22522;&#22320;&#23601;&#25307;...
 											  </a>
 									</li>
 								
-									<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=4032">
+									<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=4032">
 
 											
 												&#21327;&#35843;&#25351;&#23548;&#22823;&#38431;&#21484;&#24320;&#32039;&#24613;&#20250;&#35758;&#36805;&#36895;&#33853;...
 											  </a>
 									</li>
 								
-									<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=3773">
+									<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=3773">
 
 											
 												&#21327;&#35843;&#25351;&#23548;&#22823;&#38431;&#21484;&#24320;&#20840;&#20307;&#20826;&#21592;&#20250;&#35758;&#36805;...
 											  </a>
 									</li>
 								
-									<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=3319">
+									<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=3319">
 
 											
 												&#21327;&#35843;&#25351;&#23548;&#22823;&#38431;&#32452;&#32455;&#21484;&#24320;&#20250;&#35758;&#37096;&#32626;&#31105;...
 											  </a>
 									</li>
 								
-									<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=3242">
+									<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=3242">
 
 											
 												&#21327;&#35843;&#25351;&#23548;&#22788;&#21484;&#24320;&#22269;&#24198;&#23433;&#20840;&#20445;&#21355;&#24037;&#20316;...
 											  </a>
 									</li>
 								
-									<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=3241">
+									<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=3241">
 
 											
 												&#21327;&#35843;&#25351;&#23548;&#22788;&#32452;&#32455;&#20840;&#24066;&#31038;&#21306;&#33647;&#29289;&#32500;&#25345;...
 											  </a>
 									</li>
 								
-									<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=3043">
+									<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=3043">
 
 											
 												&#36213;&#25991;&#24544;&#22788;&#38271;&#21069;&#24448;&#21271;&#20140;&#24066;&#31105;&#27602;&#25945;&#32946;&#22522;...
 											  </a>
 									</li>
 								
-									<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=3023">
+									<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=3023">
 
 											
 												&#24066;&#31105;&#27602;&#21150;&#32452;&#32455;&#21484;&#24320;&#20840;&#24066;&#25106;&#27602;&#24247;&#22797;&#22330;...
@@ -1287,25 +1170,25 @@ function fontbutton(index,mag)
 								
 									<li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-1">
 										<a href="#fragment-1">
-											<img src="http://localhost:9080/dcp//upload/2012-02-26/0eef77fb_557_268.jpg" height="45px;" width="80px;" alt="" /> 
+											<img src="http://localhost:8080/dcp//upload/2012-02-26/0eef77fb_557_268.jpg" height="45px;" width="80px;" alt="" /> 
 										</a>
 									</li>
 								
 									<li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-2">
 										<a href="#fragment-2">
-											<img src="http://localhost:9080/dcp//upload/2012-02-27/1feacfff_557_268.jpg" height="45px;" width="80px;" alt="" /> 
+											<img src="http://localhost:8080/dcp//upload/2012-02-27/1feacfff_557_268.jpg" height="45px;" width="80px;" alt="" /> 
 										</a>
 									</li>
 								
 									<li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-3">
 										<a href="#fragment-3">
-											<img src="http://localhost:9080/dcp//upload/2012-01-06/f5202344_557_268.jpg" height="45px;" width="80px;" alt="" /> 
+											<img src="http://localhost:8080/dcp//upload/2012-01-06/f5202344_557_268.jpg" height="45px;" width="80px;" alt="" /> 
 										</a>
 									</li>
 								
 									<li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-4">
 										<a href="#fragment-4">
-											<img src="http://localhost:9080/dcp//upload/2012-01-06/619e8110_557_268.jpg" height="45px;" width="80px;" alt="" /> 
+											<img src="http://localhost:8080/dcp//upload/2012-01-06/619e8110_557_268.jpg" height="45px;" width="80px;" alt="" /> 
 										</a>
 									</li>
 								
@@ -1315,56 +1198,56 @@ function fontbutton(index,mag)
 							
 								<!-- First Content -->
 								<div id="fragment-1" class="ui-tabs-panel" style="">
-									<img src="http://localhost:9080/dcp//upload/2012-02-26/0eef77fb_557_268.jpg" alt="" width="626" height="228" />
+									<img src="http://localhost:8080/dcp//upload/2012-02-26/0eef77fb_557_268.jpg" alt="" width="626" height="228" />
 									<div class="info">
 										<h3>
-											<a href="http://localhost:9080/dcp/news/detail?news.n_xh=5573">
+											<a href="http://localhost:8080/dcp/news/detail?news.n_xh=5573">
 												&#23004;&#33391;&#26635;&#21103;&#23616;&#38271;&#20986;&#24109;&ldquo;&#31105;&#27602;&#27969;&#21160;&#22823;&#35838;&#22530;&rdquo;&#36208;&#36827;&#21830;&#19994;&#34903;&#20027;&#39064;&#23459;&#20256;&#26085;&#27963;&#21160;
 											</a>
 										</h3>
-										<a href="http://localhost:9080/dcp/news/detail?news.n_xh=5573">�Ķ�ȫ��</a>
+										<a href="http://localhost:8080/dcp/news/detail?news.n_xh=5573">�Ķ�ȫ��</a>
 										</p>
 									</div>
 								</div>
 							
 								<!-- First Content -->
 								<div id="fragment-2" class="ui-tabs-panel" style="">
-									<img src="http://localhost:9080/dcp//upload/2012-02-27/1feacfff_557_268.jpg" alt="" width="626" height="228" />
+									<img src="http://localhost:8080/dcp//upload/2012-02-27/1feacfff_557_268.jpg" alt="" width="626" height="228" />
 									<div class="info">
 										<h3>
-											<a href="http://localhost:9080/dcp/news/detail?news.n_xh=5570">
+											<a href="http://localhost:8080/dcp/news/detail?news.n_xh=5570">
 												&#23004;&#33391;&#26635;&#21103;&#23616;&#38271;&#28145;&#20837;&#22522;&#23618;&#35843;&#30740;&#25106;&#27602;&#20154;&#21592;&#31649;&#29702;&#19982;&#26381;&#21153;&#24037;&#20316;
 											</a>
 										</h3>
-										<a href="http://localhost:9080/dcp/news/detail?news.n_xh=5570">�Ķ�ȫ��</a>
+										<a href="http://localhost:8080/dcp/news/detail?news.n_xh=5570">�Ķ�ȫ��</a>
 										</p>
 									</div>
 								</div>
 							
 								<!-- First Content -->
 								<div id="fragment-3" class="ui-tabs-panel" style="">
-									<img src="http://localhost:9080/dcp//upload/2012-01-06/f5202344_557_268.jpg" alt="" width="626" height="228" />
+									<img src="http://localhost:8080/dcp//upload/2012-01-06/f5202344_557_268.jpg" alt="" width="626" height="228" />
 									<div class="info">
 										<h3>
-											<a href="http://localhost:9080/dcp/news/detail?news.n_xh=5323">
+											<a href="http://localhost:8080/dcp/news/detail?news.n_xh=5323">
 												&#31105;&#27602;&#24635;&#38431;&#36805;&#36895;&#36143;&#24443;&#33853;&#23454;&#24066;&#23616;&#20826;&#22996;&#25193;&#22823;&#20250;&#35758;&#31934;&#31070;
 											</a>
 										</h3>
-										<a href="http://localhost:9080/dcp/news/detail?news.n_xh=5323">�Ķ�ȫ��</a>
+										<a href="http://localhost:8080/dcp/news/detail?news.n_xh=5323">�Ķ�ȫ��</a>
 										</p>
 									</div>
 								</div>
 							
 								<!-- First Content -->
 								<div id="fragment-4" class="ui-tabs-panel" style="">
-									<img src="http://localhost:9080/dcp//upload/2012-01-06/619e8110_557_268.jpg" alt="" width="626" height="228" />
+									<img src="http://localhost:8080/dcp//upload/2012-01-06/619e8110_557_268.jpg" alt="" width="626" height="228" />
 									<div class="info">
 										<h3>
-											<a href="http://localhost:9080/dcp/news/detail?news.n_xh=5320">
+											<a href="http://localhost:8080/dcp/news/detail?news.n_xh=5320">
 												&#26611;&#27589;&#21103;&#20027;&#20219;&#20986;&#24109;&#39318;&#37117;&#38470;&#31354;&#37038;&#27602;&#21697;&#26597;&#32521;&#29616;&#22330;&#34920;&#24432;&#22823;&#20250;
 											</a>
 										</h3>
-										<a href="http://localhost:9080/dcp/news/detail?news.n_xh=5320">�Ķ�ȫ��</a>
+										<a href="http://localhost:8080/dcp/news/detail?news.n_xh=5320">�Ķ�ȫ��</a>
 										</p>
 									</div>
 								</div>
@@ -1375,14 +1258,14 @@ function fontbutton(index,mag)
 					</div>
 				</div>
 				<div class="news">
-					<div style="background: url('http://localhost:9080/dcp/images/index/news-ico.png') no-repeat;width: 92px;height: 96px;position: absolute;margin-left:660px;margin-top: -7px;"></div>
+					<div style="background: url('http://localhost:8080/dcp/images/index/news-ico.png') no-repeat;width: 92px;height: 96px;position: absolute;margin-left:660px;margin-top: -7px;"></div>
 					<div class="news-title">2012��ȫ����������Ҫ�� ��������ϳɶ�Ʒ�����ص�</div>
 					<div style="padding: 10px 40px 10px 30px; height: 180px;">
 						<div style="float: left;width: 320px">
 							<ul class="index-ul">
 								<li><div style="float: left;">
 										<a
-											href="http://localhost:9080/dcp/news/detail?news.n_xh=5320"
+											href="http://localhost:8080/dcp/news/detail?news.n_xh=5320"
 											class="awidth">��������1�������ƻ�Ʒ��30 </a>
 									</div>
 									<div style="float: right;">
@@ -1390,7 +1273,7 @@ function fontbutton(index,mag)
 									</div>
 								</li>
 								<li><div style="float: left;">
-										<a href="http://localhost:9080/dcp/news/detail?news.n_xh=5320"
+										<a href="http://localhost:8080/dcp/news/detail?news.n_xh=5320"
 											class="awidth">���������ƻ��ش��Żﷷ����</a>
 									</div>
 									<div style="float: right;">
@@ -1399,7 +1282,7 @@ function fontbutton(index,mag)
 								</li>
 								<li><div style="float: left;">
 										<a
-											href="http://localhost:9080/dcp/news/detail?news.n_xh=5320"
+											href="http://localhost:8080/dcp/news/detail?news.n_xh=5320"
 											class="awidth">��������1�������ƻ�Ʒ��3</a>
 									</div>
 									<div style="float: right;">
@@ -1408,7 +1291,7 @@ function fontbutton(index,mag)
 								</li>
 								<li><div style="float: left;">
 										<a
-											href="http://localhost:9080/dcp/news/detail?news.n_xh=5320"
+											href="http://localhost:8080/dcp/news/detail?news.n_xh=5320"
 											class="awidth">���������ƻ��ش��Żﷷ</a>
 									</div>
 									<div style="float: right;">
@@ -1417,7 +1300,7 @@ function fontbutton(index,mag)
 								</li>
 								<li><div style="float: left;">
 										<a
-											href="http://localhost:9080/dcp/news/detail?news.n_xh=5320"
+											href="http://localhost:8080/dcp/news/detail?news.n_xh=5320"
 											class="awidth">���������ƻ��ش��Żﷷ����</a>
 									</div>
 									<div style="float: right;">
@@ -1430,7 +1313,7 @@ function fontbutton(index,mag)
 							<ul class="index-ul">
 								<li><div style="float: left;">
 										<a
-											href="http://localhost:9080/dcp/news/detail?news.n_xh=5320"
+											href="http://localhost:8080/dcp/news/detail?news.n_xh=5320"
 											class="awidth">���������������ȡ��Ч��</a>
 									</div>
 									<div style="float: right;">
@@ -1439,7 +1322,7 @@ function fontbutton(index,mag)
 								</li>
 								<li><div style="float: left;">
 										<a
-											href="http://localhost:9080/dcp/news/detail?news.n_xh=5320"
+											href="http://localhost:8080/dcp/news/detail?news.n_xh=5320"
 											class="awidth">������Զ��־Ը�ߴ�ӿ�չ��</a>
 									</div>
 									<div style="float: right;">
@@ -1448,7 +1331,7 @@ function fontbutton(index,mag)
 								</li>
 								<li><div style="float: left;">
 										<a
-											href="http://localhost:9080/dcp/news/detail?news.n_xh=5320"
+											href="http://localhost:8080/dcp/news/detail?news.n_xh=5320"
 											class="awidth">������Զ��־Ը�ߴ�ӿ��׷�</a>
 									</div>
 									<div style="float: right;">
@@ -1457,7 +1340,7 @@ function fontbutton(index,mag)
 								</li>
 								<li><div style="float: left;">
 										<a
-											href="http://localhost:9080/dcp/news/detail?news.n_xh=5320"
+											href="http://localhost:8080/dcp/news/detail?news.n_xh=5320"
 											class="awidth">���������������ȡ��Ч��</a>
 									</div>
 									<div style="float: right;">
@@ -1466,7 +1349,7 @@ function fontbutton(index,mag)
 								</li>
 								<li><div style="float: left;">
 										<a
-											href="http://localhost:9080/dcp/news/detail?news.n_xh=5320"
+											href="http://localhost:8080/dcp/news/detail?news.n_xh=5320"
 											class="awidth">���������������ȡ������Ч��</a>
 									</div>
 									<div style="float: right;">
@@ -1482,7 +1365,7 @@ function fontbutton(index,mag)
 					</div>
 				</div>
 				<div style="height: 94px;margin-bottom: 4px;">
-					<img src="http://localhost:9080/dcp/images/guanggao.png" />
+					<img src="http://localhost:8080/dcp/images/guanggao.png" />
 				</div>
 				<div style="margin-bottom: 4px;">
 					<div class="six-left">
@@ -1490,13 +1373,13 @@ function fontbutton(index,mag)
 							<div class="six-con">
 								<span class="six-title">������̬</span>
 								<div style="text-align: right;float: right;margin-left: 60px; margin-right: 10px;padding-top: 4px;">
-									<a href="http://localhost:9080/dcp/news/list?news.c_lm=1221">�����Ϣ
+									<a href="http://localhost:8080/dcp/news/list?news.c_lm=1221">�����Ϣ
 										&gt;&gt;</a>
 								</div>
 								<div style="padding-top: 10px;">
 									<ul class="index-ul">
 										
-											<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=4585">
+											<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=4585">
 
 													
 														&#21327;&#35843;&#25351;&#23548;&#22823;&#38431;&#21484;&#24320;&#20250;&#35758;&#30740;&#31350;&#35752;&#35770;&#31105;&#27602;&#39064;&#26448;&#30005;&#24433;&#12298;&#29233;&#22312;&#20154;&#38388;...
@@ -1504,7 +1387,7 @@ function fontbutton(index,mag)
 											 </a>
 											</li>
 										
-											<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=4584">
+											<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=4584">
 
 													
 														&#21327;&#35843;&#25351;&#23548;&#22823;&#38431;&#19982;&#31105;&#27602;&#25945;&#32946;&#22522;&#22320;&#23601;&#25307;&#21215;&#19987;&#32844;&#31105;&#27602;&#24037;&#20316;&#32773;&#24037;&#20316;...
@@ -1512,7 +1395,7 @@ function fontbutton(index,mag)
 											 </a>
 											</li>
 										
-											<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=4032">
+											<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=4032">
 
 													
 														&#21327;&#35843;&#25351;&#23548;&#22823;&#38431;&#21484;&#24320;&#32039;&#24613;&#20250;&#35758;&#36805;&#36895;&#33853;&#23454;&#24066;&#23616;&#32426;&#24459;&#20316;&#39118;&#25972;&#39039;&#24037;...
@@ -1520,7 +1403,7 @@ function fontbutton(index,mag)
 											 </a>
 											</li>
 										
-											<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=3773">
+											<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=3773">
 
 													
 														&#21327;&#35843;&#25351;&#23548;&#22823;&#38431;&#21484;&#24320;&#20840;&#20307;&#20826;&#21592;&#20250;&#35758;&#36805;&#36895;&#20256;&#36798;&#24066;&#23616;&#12289;&#24635;&#38431;&#39046;&#23548;...
@@ -1528,7 +1411,7 @@ function fontbutton(index,mag)
 											 </a>
 											</li>
 										
-											<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=3319">
+											<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=3319">
 
 													 
 														&#21327;&#35843;&#25351;&#23548;&#22823;&#38431;&#32452;&#32455;&#21484;&#24320;&#20250;&#35758;&#37096;&#32626;&#31105;&#27602;&#22522;&#30784;&#35843;&#26597;&#24037;&#20316;
@@ -1536,7 +1419,7 @@ function fontbutton(index,mag)
 											 </a>
 											</li>
 										
-											<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=3242">
+											<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=3242">
 
 													 
 														&#21327;&#35843;&#25351;&#23548;&#22788;&#21484;&#24320;&#22269;&#24198;&#23433;&#20840;&#20445;&#21355;&#24037;&#20316;&#37096;&#32626;&#20250;
@@ -1558,48 +1441,48 @@ function fontbutton(index,mag)
 								<div
 									style="text-align: right;float: right;margin-left: 60px;
 									margin-right: 10px;padding-top: 4px;">
-									<a href="http://localhost:9080/dcp/news/list?news.c_lm=1196">�����Ϣ
+									<a href="http://localhost:8080/dcp/news/list?news.c_lm=1196">�����Ϣ
 										&gt;&gt;</a>
 								</div>
 								<div style="padding-top: 10px;">
 									<ul class="index-ul">
 										
-											<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=1438">
+											<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=1438">
 
 													 
 														&#21271;&#20140;&#24066;2009&#24180;&#19978;&#21322;&#24180;&#27602;&#24773;&#24418;&#21183;&#20998;&#26512;
 													 </a>
 											</li>
 										
-											<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=1393">
+											<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=1393">
 
 													
 														&#20851;&#20110;&#36716;&#21457;&#22269;&#23478;&#31105;&#27602;&#22996;&#37096;&#32626;&#24320;&#23637;&#23089;&#20048;&#26381;&#21153;&#22330;&#25152;&#28041;&#27602;&#38382;&#39064;&#19987;&#39033;...
 													  </a>
 											</li>
 										
-											<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=1084">
+											<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=1084">
 
 													 
 														&#20851;&#20110;&#19978;&#25253;&#23089;&#20048;&#22330;&#25152;&#31105;&#27602;&#25945;&#32946;&#22521;&#35757;&#24773;&#20917;&#30340;&#36890;&#30693;
 													 </a>
 											</li>
 										
-											<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=720">
+											<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=720">
 
 													
 														&#21271;&#20140;&#24066;&#31105;&#27602;&#22996;&#21592;&#20250;&#21150;&#20844;&#23460;&#20851;&#20110;&#22312;&#28041;&#27602;&#39640;&#21457;&#26696;&#22320;&#21306;&#24320;&#19987;&#39033;&#25972;...
 													  </a>
 											</li>
 										
-											<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=719">
+											<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=719">
 
 													 
 														&#21271;&#20140;&#24066;&#20844;&#23433;&#23616;&#20851;&#20110;&#21360;&#21457;&#24320;&#23637;&#25171;&#20987;&#21644;&#27835;&#29702;
 													 </a>
 											</li>
 										
-											<li><a href="http://localhost:9080/dcp/news/detail?news.n_xh=415">
+											<li><a href="http://localhost:8080/dcp/news/detail?news.n_xh=415">
 
 													 
 														2009&#24180;&#21271;&#20140;&#24066;&#20844;&#23433;&#31105;&#27602;&#24037;&#20316;&#35201;&#28857;
@@ -1623,14 +1506,14 @@ function fontbutton(index,mag)
 								<div
 									style="text-align: right;float: right;margin-left: 60px;
 									margin-right: 10px;padding-top: 4px;">
-									<a href="http://localhost:9080/dcp/news/list?news.c_lm=1197">�����Ϣ
+									<a href="http://localhost:8080/dcp/news/list?news.c_lm=1197">�����Ϣ
 										&gt;&gt;</a>
 								</div>
 								<div style="padding-top: 10px;">
 									<ul class="index-ul">
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5723">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5723">
 
 													 
 														&#31105;&#27602;&#24635;&#38431;&#20026;&#36864;&#20241;&#27665;&#35686;&#26472;&#29747;&#21516;&#24535;&#20030;&#34892;&#27426;&#36865;&#20250;
@@ -1638,7 +1521,7 @@ function fontbutton(index,mag)
 											</li>
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5675">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5675">
 
 													
 														&#20004;&#20250;&#23433;&#20445;&#19987;&#21002;&#20043;&#19968;&#65306;&#25391;&#22859;&#31934;&#31070;&#20445;&#20004;&#20250; &#22810;&#25514;&#24182;&#20030;&#28040;&#27602;&#24739; ...
@@ -1646,7 +1529,7 @@ function fontbutton(index,mag)
 											</li>
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5674">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5674">
 
 													 
 														&#20004;&#20250;&#23433;&#20445;&#19987;&#21002;&#20043;&#20116;&#65306;&#20840;&#35686;&#21160;&#21592;&#24537;&#20004;&#20250; &#26080;&#31169;&#22857;&#29486;&#20445;&#23433;&#20840;
@@ -1654,7 +1537,7 @@ function fontbutton(index,mag)
 											</li>
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5673">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5673">
 
 													
 														&#20004;&#20250;&#23433;&#20445;&#24037;&#20316;&#19987;&#21002;&#20043;&#22235;&#65306;&#32943;&#21507;&#33510;&#12289;&#33021;&#25112;&#26007;&#12289;&#35762;&#22857;&#29486;&#12289;&#20445;&#24179;...
@@ -1662,7 +1545,7 @@ function fontbutton(index,mag)
 											</li>
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5634">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5634">
 
 													
 														&ldquo;&#20004;&#21697;&rdquo;&#22823;&#38431;&#25191;&#21220;&#27665;&#35686;&#20197;&#33391;&#22909;&#30340;&#31934;&#31070;&#38754;&#35980;&#22859;&#25112;&#22312;&ldquo;&#20004;&#20250;&rdquo;...
@@ -1670,7 +1553,7 @@ function fontbutton(index,mag)
 											</li>
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5592">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5592">
 
 													 
 														&#31532;&#19968;&#20826;&#25903;&#37096;&#27979;&#39564;&#31572;&#26696;
@@ -1691,14 +1574,14 @@ function fontbutton(index,mag)
 								<div
 									style="text-align: right;float: right;margin-left: 60px;
 									margin-right: 10px;padding-top: 4px;">
-									<a href="http://localhost:9080/dcp/news/list?news.c_lm=1198">�����Ϣ
+									<a href="http://localhost:8080/dcp/news/list?news.c_lm=1198">�����Ϣ
 										&gt;&gt;</a>
 								</div>
 								<div style="padding-top: 10px;">
 									<ul class="index-ul">
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5736">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5736">
 
 													
 														&#20013;&#20849;&#21271;&#20140;&#24066;&#20844;&#23433;&#23616;&#31105;&#27602;&#24635;&#38431;&#22996;&#21592;&#20250;&#20851;&#20110;&#34920;&#24432;&#20840;&#22269;&#20004;&#20250;&#23433;&#20445;...
@@ -1706,7 +1589,7 @@ function fontbutton(index,mag)
 											</li>
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5721">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5721">
 
 													
 														&#21271;&#20140;&#24066;&#20844;&#23433;&#23616;&#20851;&#20110;&#28041;&#27602;&#37325;&#28857;&#20154;&#21592;&#31215;&#20998;&#39044;&#35686;&#21644;&#20998;&#31867;&#22788;&#32622;&#30340;&#24037;...
@@ -1714,7 +1597,7 @@ function fontbutton(index,mag)
 											</li>
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5720">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5720">
 
 													
 														&#20844;&#23433;&#31105;&#27602;&#31616;&#25253;&#31532;&#21313;&#19968;&#26399; &#26397;&#38451;&#20998;&#23616;&#22810;&#38169;&#24182;&#20030;&#20445;&#20004;&#20250;&#32521;&#27602;&#25171;...
@@ -1722,7 +1605,7 @@ function fontbutton(index,mag)
 											</li>
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5717">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5717">
 
 													
 														&#20844;&#23433;&#31105;&#27602;&#31616;&#25253;&#31532;&#21313;&#26399;  &#28145;&#20837;&#30740;&#21028; &#24773;&#25253;&#23548;&#20390;&#31105;&#27602;&#24773;&#25253;&#20449;...
@@ -1730,7 +1613,7 @@ function fontbutton(index,mag)
 											</li>
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5715">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5715">
 
 													
 														&#21271;&#20140;&#24066;&#20844;&#23433;&#23616;&#31105;&#27602;&#24635;&#38431;&#20851;&#20110;&#34920;&#24432;&#26597;&#31105;&#22823;&#38431;&#20840;&#20307;&#21442;&#25112;&#27665;&#35686;&#30340;...
@@ -1738,7 +1621,7 @@ function fontbutton(index,mag)
 											</li>
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5697">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5697">
 
 													
 														&#31105;&#27602;&#24037;&#20316;&#31616;&#25253;&#31532;&#19971;&#26399;  &#21271;&#20140;&#24066;&#21484;&#24320;2012&#24180;&#31105;&#27602;&#23459;&#20256;...
@@ -1762,14 +1645,14 @@ function fontbutton(index,mag)
 								<div
 									style="text-align: right;float: right;margin-left: 60px;
 									margin-right: 10px;padding-top: 4px;">
-									<a href="http://localhost:9080/dcp/news/list?news.c_lm=1199">�����Ϣ
+									<a href="http://localhost:8080/dcp/news/list?news.c_lm=1199">�����Ϣ
 										&gt;&gt;</a>
 								</div>
 								<div style="padding-top: 10px;">
 									<ul class="index-ul">
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5734">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5734">
 
 													 
 														&#28041;&#27602;&#36829;&#27861;&#29359;&#32618;&#23244;&#30097;&#20154;&#32641;&#25276;&#38590;&#39064;&#20043;&#23545;&#31574;&#24605;&#32771;
@@ -1777,7 +1660,7 @@ function fontbutton(index,mag)
 											</li>
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5732">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5732">
 
 													 
 														&#22797;&#26086;&#22823;&#23398;&#32593;&#32476;&#23398;&#38498;&#24320;&#23637;&#26032;&#26149;&#31105;&#27602;&#23459;&#20256;&#37038;&#20214;&#21457;&#36865;&#27963;&#21160;
@@ -1785,7 +1668,7 @@ function fontbutton(index,mag)
 											</li>
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5731">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5731">
 
 													 
 														&#27888;&#22269;&#20005;&#24809;&#27602;&#36137;&#19981;&#25163;&#36719;
@@ -1793,7 +1676,7 @@ function fontbutton(index,mag)
 											</li>
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5728">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5728">
 
 													
 														&#24191;&#35199;&#21335;&#23425;&#31215;&#26497;&#25506;&#32034;&#28041;&#27602;&#32593;&#19978;&#20316;&#25112;&#25216;&#27861;&#30772;&#33719;&#19968;&#25209;&#37325;&#29305;&#22823;&#27602;&#21697;...
@@ -1801,7 +1684,7 @@ function fontbutton(index,mag)
 											</li>
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5727">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5727">
 
 													 
 														&#19978;&#28023;&#24066;1&#33267;2&#26376;&#21560;&#27602;&#20154;&#21592;&#21160;&#24577;&#31649;&#25511;&#24773;&#20917;&#36890;&#25253;
@@ -1809,7 +1692,7 @@ function fontbutton(index,mag)
 											</li>
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5726">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5726">
 
 													 
 														&#27695;&#33018;&#37230;&#25104;&#20026;&#20013;&#22269;&#22823;&#38470;&#31532;&#19977;&#26368;&#24120;&#28389;&#29992;&#27602;&#21697;
@@ -1830,49 +1713,49 @@ function fontbutton(index,mag)
 								<div
 									style="text-align: right;float: right;margin-left: 60px;
 									margin-right: 10px;padding-top: 4px;">
-									<a href="http://localhost:9080/dcp/news/list?news.c_lm=1191">�����Ϣ
+									<a href="http://localhost:8080/dcp/news/list?news.c_lm=1191">�����Ϣ
 										&gt;&gt;</a>
 								</div>
 								<div style="padding-top: 10px;">
 									<ul class="index-ul">
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5707">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5707">
 
 													 
 														&#39034;&#20041;&#20998;&#23616;&#32521;&#27602;&#25171;&#20987;&#24037;&#20316;&#25104;&#32489;&#31361;&#20986;
 													 </a></li>
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5700">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5700">
 
 													 
 														&#36890;&#24030;&#20998;&#23616;&#38470;&#31354;&#37038;&#27602;&#21697;&#26597;&#32521;&#19987;&#39033;&#25171;&#20987;&#25112;&#26524;&#20016;&#30805;
 													 </a></li>
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5698">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5698">
 
 													 
 														&#26397;&#38451;&#20998;&#23616;&ldquo;&#20004;&#20250;&rdquo;&#26399;&#38388;&#25472;&#36215;&#25171;&#20987;&#27602;&#21697;&#29359;&#32618;&#26032;&#39640;&#28526;
 													 </a></li>
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5668">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5668">
 
 													 
 														&#26124;&#24179;&#20998;&#23616;&#30772;&#33719;&#19968;&#36215;&#29305;&#22823;&#36816;&#36755;&#27602;&#21697;&#26696;
 													 </a></li>
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5665">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5665">
 
 													
 														&#28023;&#28096;&#21306;&#31105;&#27602;&#21150;&#34892;&#21160;&#31215;&#26497;&#35748;&#30495;&#33853;&#23454;&#21560;&#27602;&#20154;&#21592;&#21160;&#24577;&#31649;&#25511;&#31532;&#20108;&#38454;...
 													  </a></li>
 										
 											<li><a
-												href="http://localhost:9080/dcp/news/detail?news.n_xh=5639">
+												href="http://localhost:8080/dcp/news/detail?news.n_xh=5639">
 
 													 
 														&#25151;&#23665;&#20998;&#23616;&#36830;&#32493;&#30772;&#33719;&#20004;&#36215;&#29305;&#22823;&#36137;&#27602;&#26696;&#20214;
@@ -1888,7 +1771,7 @@ function fontbutton(index,mag)
 					<div class="clearfloat"></div>
 				</div>
 				<div style="margin-bottom: 4px;">
-					<img src="http://localhost:9080/dcp/images/temp2.png" />
+					<img src="http://localhost:8080/dcp/images/temp2.png" />
 				</div>
 				<div style="height: 184px;margin-bottom: 4px;">
 
@@ -1906,31 +1789,31 @@ function fontbutton(index,mag)
 							<ul id="demo0">
 								<li id="demo11"></li>
 								<li><a href="http://jdcjsr-zyk.zx.ga/" target="_blank"><img
-										src="http://localhost:9080/dcp/images/index/one.png" />
+										src="http://localhost:8080/dcp/images/index/one.png" />
 								</a>
 								</li>
 								<li><a href="http://www.js/site/boot/wnl.htm"
 									target="_blank"><img
-										src="http://localhost:9080/dcp/images/index/two.png" />
+										src="http://localhost:8080/dcp/images/index/two.png" />
 								</a>
 								</li>
 								<li><a href="http://10.6.1.37:8001/beeaweb/ "
 									target="_blank"><img
-										src="http://localhost:9080/dcp/images/index/three.png" />
+										src="http://localhost:8080/dcp/images/index/three.png" />
 								</a>
 								</li>
 								<li><a href="http://jy-zyk.zx.ga/" target="_black"><img
-										src="http://localhost:9080/dcp/images/index/four.png" />
+										src="http://localhost:8080/dcp/images/index/four.png" />
 								</a>
 								</li>
 								<li><a href="http://10.48.6.9/ip4/index.asp"
 									target="_blank"><img
-										src="http://localhost:9080/dcp/images/index/five.png" />
+										src="http://localhost:8080/dcp/images/index/five.png" />
 								</a>
 								</li>
 								<li><a href="http://10.12.62.149/article/cxdh.htm"
 									target="_blank"><img
-										src="http://localhost:9080/dcp/images/index/six.png" />
+										src="http://localhost:8080/dcp/images/index/six.png" />
 								</a>
 								</li>
 								<li id="demo22"></li>
@@ -2039,7 +1922,7 @@ function fontbutton(index,mag)
 										
 
 
-											<a href="http://10.11.91.1:9080/roots/index1.jsp"> &#23459;&#27494;&#20998;&#23616; </a>
+											<a href="http://10.11.91.1:8080/roots/index1.jsp"> &#23459;&#27494;&#20998;&#23616; </a>
 
 										
 
@@ -2241,31 +2124,31 @@ function fontbutton(index,mag)
 						<div class="pass-cont-three">
 							<ul>
 								<li><a href="http://jdcjsr-zyk.zx.ga/" target="_blank"><img
-										src="http://localhost:9080/dcp/images/index/one.png" />
+										src="http://localhost:8080/dcp/images/index/one.png" />
 								</a>
 								</li>
 								<li><a href="http://www.js/site/boot/wnl.htm"
 									target="_blank"><img
-										src="http://localhost:9080/dcp/images/index/two.png" />
+										src="http://localhost:8080/dcp/images/index/two.png" />
 								</a>
 								</li>
 								<li><a href="http://10.6.1.37:8001/beeaweb/ "
 									target="_blank"><img
-										src="http://localhost:9080/dcp/images/index/three.png" />
+										src="http://localhost:8080/dcp/images/index/three.png" />
 								</a>
 								</li>
 								<li><a href="http://jy-zyk.zx.ga/" target="_black"><img
-										src="http://localhost:9080/dcp/images/index/four.png" />
+										src="http://localhost:8080/dcp/images/index/four.png" />
 								</a>
 								</li>
 								<li><a href="http://10.48.6.9/ip4/index.asp"
 									target="_blank"><img
-										src="http://localhost:9080/dcp/images/index/five.png" />
+										src="http://localhost:8080/dcp/images/index/five.png" />
 								</a>
 								</li>
 								<li><a href="http://10.12.62.149/article/cxdh.htm"
 									target="_blank"><img
-										src="http://localhost:9080/dcp/images/index/six.png" />
+										src="http://localhost:8080/dcp/images/index/six.png" />
 								</a>
 								</li>
 							</ul>

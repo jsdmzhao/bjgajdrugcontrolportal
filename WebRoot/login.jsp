@@ -4,10 +4,14 @@
 <%@page import="com.unis.core.util.IPUtil"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>	
 <%
-String paths = request.getContextPath();
-String basePaths = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+paths+"/";
+
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());
 UserInfoSvc userInfoSvc= (UserInfoSvc) ctx.getBean("userInfoSvc");
+
+
+String temp_r = request.getParameter("temp_r");
 
 String ip=IPUtil.getUserIP(request);
 if(ip!=null){
@@ -44,12 +48,29 @@ if(ip!=null){
 		session.setAttribute("cLx",rp.get("cLx") );
 		session.setAttribute("cYxip",rp.get("cYxip") );
 		
+		if(temp_r==null){
+		%>
+		<Script>
+		 window.location.href="<%=basePath%>index.html";
+		</Script>
+			
+			
+		<%}
+		
 		
 	}else{
 		session.setAttribute("cXm", "游客");
 		session.setAttribute("userId", "0");
 		session.setAttribute("cYhz", "0");
 		session.setAttribute("cLx", "0");
+		if(temp_r==null){
+		%>
+		<Script>
+		 window.location.href="<%=basePath%>index_.html";
+		</Script>
+			
+		<%
+		}
 	}
 	
 }else{
@@ -57,11 +78,23 @@ if(ip!=null){
 	session.setAttribute("userId", "0");
 	session.setAttribute("cYhz", "0");
 	session.setAttribute("cLx", "0");
-	
+	if(temp_r==null){
+	%>
+		<Script>
+		 window.location.href="<%=basePath%>index_.html";
+		</Script>
+			
+		<%
+	}
 }
 
-
+if(session.getAttribute("temp")==null){
 %>
 <Script>
 alert('<%=session.getAttribute("cXm")%>,欢迎光临！');
 </Script>
+	
+<%
+
+session.setAttribute("temp","1");
+}%>

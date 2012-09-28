@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
-if(session.getAttribute("userId")==null){
+if(session.getAttribute("userId")==null||session.getAttribute("userId")=="0"){
 	%>
 	<script> 
 	
@@ -78,7 +78,7 @@ if(session.getAttribute("userId")==null){
 				北京禁毒网站后台管理
 			</div>
 			<div class="l-topmenu-welcome">
-				<span class="l-topmenu-username"></span>欢迎您 &nbsp; <%=session.getAttribute("userName") %>[
+				<span class="l-topmenu-username"></span>欢迎您 &nbsp; <%=session.getAttribute("cXm") %>[
 				<a href="javascript:f_changepassword()">修改密码</a>] &nbsp; [
 				<a href="javascript:f_login()">切换用户</a>] [
 				<a href="<%=basePath%>admin/login.jsp?Action=out">退出</a>]
