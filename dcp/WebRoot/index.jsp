@@ -178,35 +178,17 @@ fgm.on(window, "load", function() {
 		$(document).ready(function(){
 			$("#featured > ul").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 5000, true);
 			
-			$("#three-pass-one").click(function(){
-				$("#three-pass-one").removeClass("three-pass");
-				$("#three-pass-one").addClass("three-pass-hover");
-				
-				$("#three-pass-two").removeClass("three-pass-hover");
-				$("#three-pass-two").addClass("three-pass");
-				
-				$("#three-pass-three").removeClass("three-pass-hover");
-				$("#three-pass-three").addClass("three-pass");
-				
-				$(".pass-cont-one").show();
-				$(".pass-cont-two").hide();
-				$(".pass-cont-three").hide();
-			});
-			
+		
 			$("#three-pass-two").click(function(){
 				
 				$("#three-pass-two").removeClass("three-pass");
 				$("#three-pass-two").addClass("three-pass-hover");
 				
-				$("#three-pass-one").removeClass("three-pass-hover");
-				$("#three-pass-one").addClass("three-pass");
-				
 				$("#three-pass-three").removeClass("three-pass-hover");
 				$("#three-pass-three").addClass("three-pass");
 				
-				$(".pass-cont-one").hide();
-				$(".pass-cont-two").show();
 				$(".pass-cont-three").hide();
+				$(".pass-cont-two").show();
 			});
 			
 			$("#three-pass-three").click(function(){
@@ -217,10 +199,7 @@ fgm.on(window, "load", function() {
 				$("#three-pass-two").removeClass("three-pass-hover");
 				$("#three-pass-two").addClass("three-pass");
 				
-				$("#three-pass-one").removeClass("three-pass-hover");
-				$("#three-pass-one").addClass("three-pass");
 				
-				$(".pass-cont-one").hide();
 				$(".pass-cont-two").hide();
 				$(".pass-cont-three").show();
 			});
@@ -261,54 +240,6 @@ function fontbutton(index,mag)
 
 	}
 
-	$(document).ready(function() {
-		$("#three-pass-one").click(function() {
-			$("#three-pass-one").removeClass("three-pass");
-			$("#three-pass-one").addClass("three-pass-hover");
-
-			$("#three-pass-two").removeClass("three-pass-hover");
-			$("#three-pass-two").addClass("three-pass");
-
-			$("#three-pass-three").removeClass("three-pass-hover");
-			$("#three-pass-three").addClass("three-pass");
-
-			$(".pass-cont-one").show();
-			$(".pass-cont-two").hide();
-			$(".pass-cont-three").hide();
-		});
-
-		$("#three-pass-two").click(function() {
-
-			$("#three-pass-two").removeClass("three-pass");
-			$("#three-pass-two").addClass("three-pass-hover");
-
-			$("#three-pass-one").removeClass("three-pass-hover");
-			$("#three-pass-one").addClass("three-pass");
-
-			$("#three-pass-three").removeClass("three-pass-hover");
-			$("#three-pass-three").addClass("three-pass");
-
-			$(".pass-cont-one").hide();
-			$(".pass-cont-two").show();
-			$(".pass-cont-three").hide();
-		});
-
-		$("#three-pass-three").click(function() {
-
-			$("#three-pass-three").removeClass("three-pass");
-			$("#three-pass-three").addClass("three-pass-hover");
-
-			$("#three-pass-two").removeClass("three-pass-hover");
-			$("#three-pass-two").addClass("three-pass");
-
-			$("#three-pass-one").removeClass("three-pass-hover");
-			$("#three-pass-one").addClass("three-pass");
-
-			$(".pass-cont-one").hide();
-			$(".pass-cont-two").hide();
-			$(".pass-cont-three").show();
-		});
-	});
 </script>
 <%
 	GregorianCalendar d = new GregorianCalendar();
@@ -392,7 +323,7 @@ function fontbutton(index,mag)
 
 	}
 </script>
-<iframe  style="display: none;" src="<%=basePath%>login.jsp"></iframe>
+<iframe  style="display: none;" src="<%=basePath%>login.jsp?temp_r=zl"></iframe>
 
 
 <DIV class=selCity id=allCity style="display:none">
@@ -1234,8 +1165,8 @@ function fontbutton(index,mag)
 										<s:iterator value="resMap.Rows2" id="news" var="news" begin="0" end="5">
 											<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
 
-													<s:if test="#news.c_bt.length()>=25">
-														<s:property value="#news.c_bt.substring(0,25)+'...'" />
+													<s:if test="#news.c_bt.length()>=15">
+														<s:property value="#news.c_bt.substring(0,15)+'...'" />
 													</s:if> <s:else>
 														<s:property value="#news.c_bt" />
 													</s:else> 
@@ -1264,8 +1195,8 @@ function fontbutton(index,mag)
 										<s:iterator value="resMap.Rows3" id="news" var="news" begin="0" end="5">
 											<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
 
-													<s:if test="#news.c_bt.length()>=25">
-														<s:property value="#news.c_bt.substring(0,25)+'...'" />
+													<s:if test="#news.c_bt.length()>=15">
+														<s:property value="#news.c_bt.substring(0,15)+'...'" />
 													</s:if> <s:else>
 														<s:property value="#news.c_bt" />
 													</s:else> </a>
@@ -1288,7 +1219,7 @@ function fontbutton(index,mag)
 								<div
 									style="text-align: right;float: right;margin-left: 60px;
 									margin-right: 10px;padding-top: 4px;">
-									<a href="<%=basePath%>news/list?news.c_lm=1197">更多信息
+									<a href="<%=basePath%>news/list?news.c_lm=1196">更多信息
 										&gt;&gt;</a>
 								</div>
 								<div style="padding-top: 10px;">
@@ -1298,8 +1229,8 @@ function fontbutton(index,mag)
 											<li><a
 												href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
 
-													<s:if test="#news.c_bt.length()>=25">
-														<s:property value="#news.c_bt.substring(0,25)+'...'" />
+													<s:if test="#news.c_bt.length()>=15">
+														<s:property value="#news.c_bt.substring(0,15)+'...'" />
 													</s:if> <s:else>
 														<s:property value="#news.c_bt" />
 													</s:else> </a>
@@ -1329,8 +1260,8 @@ function fontbutton(index,mag)
 											<li><a
 												href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
 
-													<s:if test="#news.c_bt.length()>=25">
-														<s:property value="#news.c_bt.substring(0,25)+'...'" />
+													<s:if test="#news.c_bt.length()>=15">
+														<s:property value="#news.c_bt.substring(0,15)+'...'" />
 													</s:if> <s:else>
 														<s:property value="#news.c_bt" />
 													</s:else> </a>
@@ -1363,8 +1294,8 @@ function fontbutton(index,mag)
 											<li><a
 												href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
 
-													<s:if test="#news.c_bt.length()>=25">
-														<s:property value="#news.c_bt.substring(0,25)+'...'" />
+													<s:if test="#news.c_bt.length()>=15">
+														<s:property value="#news.c_bt.substring(0,15)+'...'" />
 													</s:if> <s:else>
 														<s:property value="#news.c_bt" />
 													</s:else> </a>
@@ -1394,8 +1325,8 @@ function fontbutton(index,mag)
 											<li><a
 												href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
 
-													<s:if test="#news.c_bt.length()>=25">
-														<s:property value="#news.c_bt.substring(0,25)+'...'" />
+													<s:if test="#news.c_bt.length()>=15">
+														<s:property value="#news.c_bt.substring(0,15)+'...'" />
 													</s:if> <s:else>
 														<s:property value="#news.c_bt" />
 													</s:else> </a></li>
@@ -1418,67 +1349,12 @@ function fontbutton(index,mag)
 					<div
 						style="background: url('images/index/bg-6.png') no-repeat;width: 747px;height: 184px;">
 						<div>
-							<%--<div id="three-pass-one" class="three-pass">光荣榜</div>--%>
 							<div id="three-pass-two" class="three-pass">常用网站导航</div>
 							<div id="three-pass-three" class="three-pass-hover">使用工具导航
 							</div>
 							<div class="clearfloat"></div>
 						</div>
-						<%--<div class="pass-cont-one">
-							<ul id="demo0">
-								<li id="demo11"></li>
-								<li><a href="http://jdcjsr-zyk.zx.ga/" target="_blank"><img
-										src="<%=basePath%>images/index/one.png" />
-								</a>
-								</li>
-								<li><a href="http://www.js/site/boot/wnl.htm"
-									target="_blank"><img
-										src="<%=basePath%>images/index/two.png" />
-								</a>
-								</li>
-								<li><a href="http://10.6.1.37:8001/beeaweb/ "
-									target="_blank"><img
-										src="<%=basePath%>images/index/three.png" />
-								</a>
-								</li>
-								<li><a href="http://jy-zyk.zx.ga/" target="_black"><img
-										src="<%=basePath%>images/index/four.png" />
-								</a>
-								</li>
-								<li><a href="http://10.48.6.9/ip4/index.asp"
-									target="_blank"><img
-										src="<%=basePath%>images/index/five.png" />
-								</a>
-								</li>
-								<li><a href="http://10.12.62.149/article/cxdh.htm"
-									target="_blank"><img
-										src="<%=basePath%>images/index/six.png" />
-								</a>
-								</li>
-								<li id="demo22"></li>
-							</ul>
-						</div>
-						<%--<script language="javascript" type="text/javascript">							
-							var demo0 = document.getElementById("demo0");
-							var demo11 = document.getElementById("demo11");
-							var demo22 = document.getElementById("demo22");
-							var speed=50;    //滚动速度值，值越大速度越慢
-							var nnn=200/demo11.offsetHeight;
-							for(i=0;i<nnn;i++){demo11.innerHTML+="<br />"+ demo11.innerHTML}
-							demo22.innerHTML = demo11.innerHTML    //克隆demo2为demo1
-							function Marquee(){
-							    if(demo22.offsetTop-demo0.scrollTop<=0)    //当滚动至demo1与demo2交界时
-							        demo0.scrollTop-=demo11.offsetHeight    //demo跳到最顶端
-							    else{
-							        demo0.scrollTop++     //如果是横向的 将 所有的 height top 改成 width left
-							    }
-							}
-							var MyMar = setInterval(Marquee,speed);        //设置定时器
-							demo0.onmouseover = function(){clearInterval(MyMar)}    //鼠标经过时清除定时器达到滚动停止的目的
-							demo0.onmouseout = function(){MyMar = setInterval(Marquee,speed)}    //鼠标移开时重设定时器
-						
-						</script>
-						--%>
+			
 						<div class="pass-cont-two">
 							<div style="width: 700px;padding: 5px; ">
 								<div>
@@ -1550,6 +1426,7 @@ function fontbutton(index,mag)
 									</div>
 								</div>
 							</div>
+							
 							<div style="width: 700px; float: left;padding: 5px;">
 								<div>
 									<div style="float: left;margin-left: 10px; width: 40px;">禁毒</div>
@@ -1567,6 +1444,10 @@ function fontbutton(index,mag)
 									</div>
 								</div>
 							</div>
+							
+							
+							
+							
 
 						</div>
 
