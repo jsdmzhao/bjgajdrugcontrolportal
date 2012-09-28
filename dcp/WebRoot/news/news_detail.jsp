@@ -5,6 +5,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <%@taglib  prefix="s" uri="/struts-tags"%>
 <%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%> 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -84,7 +85,7 @@ return footerhtml;
 							</div>
 							<div style="background: url('<%=basePath%>images/index/birth-bg.png') no-repeat;width: 227px;height:107px;position: relative;left: -12px;top: 10px;">
 								<div style="padding: 40px 0 0 20px;">
-									严静，李小璐
+									
 								</div>
 								<div style="text-align: right;padding: 20px 10px 0 0;">
 									<a href="#" style="color: #ff0000;">点击领取总队党委祝福 >></a>
@@ -179,7 +180,7 @@ width:23px; height:7px;"></div>
 </div>
 <div >
 <div style=" margin-left:1px; padding-left:20px; padding-right:20px;  background-image:url(<%=basePath%>images/cn.png);
-width:683px; height:100%;">
+width:683px; height:1300px">
 
 <div style="height:5px; width:100%; margin-top:10px; margin-bottom:20px;float: left;">
   <div style="float:left;">发布时间：   <s:property value="news.d_fbsj"/></div>
@@ -189,8 +190,7 @@ width:683px; height:100%;">
 
 
 <div style="_height: 1340px;overflow: visible;min-height: 1340px;" id="nr">
-   <s:property value="news.c_nr" escape="false"/>
-
+   <s:property value="news.c_nr.length()>1000?(news.c_nr.substring(0,2450)+'              ……'):news.c_nr" escape="false"/>
 
 </div>
 
