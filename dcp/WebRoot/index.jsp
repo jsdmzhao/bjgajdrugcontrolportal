@@ -1147,10 +1147,9 @@ function fontbutton(index,mag)
 				<div style="margin-bottom: 4px;">
 					<div class="six-left">
 						<div class="six-box">
-							<div class="six-con">
-								<span class="six-title">工作动态</span>
+							<div class="six-con">禁毒动态</span>
 								<div style="text-align: right;float: right;margin-left: 60px; margin-right: 10px;padding-top: 4px;">
-									<a href="<%=basePath%>news/list?news.c_lm=1221">更多
+									<a href="<%=basePath%>news/list?news.c_lm=1193">更多
 										&gt;&gt;</a>
 								</div>
 								<div style="padding-top: 10px;">
