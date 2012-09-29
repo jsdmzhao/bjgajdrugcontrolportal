@@ -518,7 +518,7 @@ function fontbutton(index,mag)
 					<a href="<%=basePath%>news/list?news.c_lm=1286">警钟长鸣</a>
 				</li>
 				<li class="middle">
-					<a href="<%=basePath%>rydt.sp">荣誉殿堂</a>
+					<a href="<%=basePath%>rydt.jsp">荣誉殿堂</a>
 				</li>
 				<li class="middle">
 					<a href="<%=basePath%>news/list?news.c_lm=12">禁毒情报</a>
@@ -547,14 +547,14 @@ function fontbutton(index,mag)
 					<span class="title1">今日值班</span>
 					<div class="main-top-con" style="height: 220px;font-size:14px; ">
 						<ul class="index-ul">
-							<li>领 导：易阳</li>
-							<li>办公室：李可俭、张世强</li>
-							<li>协 指：陈述</li>
-							<li>情 报：王琪、郝铁彬</li>
-							<li>侦 查：姚庆生、张静、李志新</li>
-							<li>查 禁：梁冲、王飞</li>
-							<li>缉 控：田亮、车佳音</li>
-							<li>两品办：王官龙</li>
+							<li>领 导：柳毅</li>
+							<li>办公室：车克俭、张建群</li>
+							<li>协 指：钟平</li>
+							<li>情 报：严建、文武</li>
+							<li>侦 查：姚庆生、张静</li>
+							<li>查 禁：姜新春</li>
+							<li>缉 控：高立国、熊良</li>
+							<li>两品办：顾猛、陈志文</li>
 						</ul>
 					</div>
 				</div>
@@ -1141,8 +1141,17 @@ function fontbutton(index,mag)
 						<a href="#">更多 &gt;&gt;</a>
 					</div>
 				</div>
-				<div style="height: 94px;margin-bottom: 4px;">
-					<img src="<%=basePath%>images/guanggao.png" />
+				<div style="height: 60px;margin-bottom: 4px;">
+					<!--  <img src="<%=basePath%>images/guanggao.png" />-->
+					
+					<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+			codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
+			width="745" height="60">
+			<param name="movie" value="<%=basePath%>images/end.swf" />
+			<param name="quality" value="high" />
+			<param name="wmode" value="opaque">
+			<embed src="<%=basePath%>images/end.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="745" height="60" wmode="opaque"></embed>
+		</object>
 				</div>
 				<div style="margin-bottom: 4px;">
 					<div class="six-left">
@@ -1340,7 +1349,7 @@ function fontbutton(index,mag)
 					<div class="clearfloat"></div>
 				</div>
 				<div style="margin-bottom: 4px;">
-					<img src="<%=basePath%>images/temp2.png" />
+					<img src="<%=basePath%>images/1002-200.jpg" width="746px" />
 				</div>
 				<div style="height: 184px;margin-bottom: 4px;">
 
