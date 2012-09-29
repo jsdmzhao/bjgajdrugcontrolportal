@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</script>
 		</div>
 	
-	<div style=" width:1000px; height:1100px; float:;">
+	<div style=" width:1000px; height:1000px; float:;">
 	<img src="rydt.jpg" width:"759px"; height:"615px"; align="middle" style="margin-left: 120px;margin-top: 20px"/>
 	  
 	</div>	

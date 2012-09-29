@@ -41,8 +41,9 @@ hs.wrapperClassName = 'draggable-header';
 <style>
 body {
 	font-size: 14px;
-	background-image: url('<%=basePath%>images/bg11.jpg');
+	background-image: url('<%=basePath%>images/3333.jpg');
 	background-repeat: repeat;
+	text-align:center;
 }
 </style>
 <script>
@@ -130,8 +131,7 @@ fgm.on(window, "load", function() {
 </script>
 
 </head>
-<body style="font-size:14px; background-image: url('<%=basePath%>images/bg11.jpg'); background-repeat: repeat;">
-
+<body style="font-size:14px;">
 <script type="text/javascript">
 	hs.graphicsDir = '<%=basePath%>highslide/graphics/';
 	hs.outlineType = 'rounded-white';
@@ -443,7 +443,10 @@ function fontbutton(index,mag)
 	</DIV>
 </DIV>
 
+<div style="height:300px;">
 
+<img src="<%=basePath%>images/1111.jpg" width="100%" height="100%"/>
+</div>
 <div id="container">
 	<div
 		style="width:1001px; height:25px; background-image:url(<%=basePath%>images/headbg.jpg)">
@@ -1489,8 +1492,9 @@ function fontbutton(index,mag)
 			</div>
 		</div>
 	</div>
+	
+	</div>
 	<%@include file="foot.jsp"%>
-
 
 </body>
 </html>

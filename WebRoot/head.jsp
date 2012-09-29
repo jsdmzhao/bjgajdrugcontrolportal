@@ -423,3 +423,7 @@ footerhtml+='<input type="image" alt="Cancel" src="<%=basePaths%>images/cancel_b
 		</div>
 	</div>
 </div>
+<div style="height:300px;">
+
+<img src="<%=basePaths%>images/1111.jpg" width="100%" height="100%"/>
+</div>
