@@ -36,8 +36,8 @@
           #{c_yhzid,jdbcType=VARCHAR},         
           #{c_nr,jdbcType=CLOB,handler=ClobTypeHandler},           
           sysdate,           
-          '0',           
-          '0'      
+          '',           
+          ''      
 	    )  
 	</insert>
 	
@@ -49,7 +49,7 @@
 		       DECODE(C_SHJG,'0','不通过','1','通过','未审核') C_SHJG,
 		       DECODE(C_SFTJ,'0','不推荐','1','推荐','不推荐') C_SFTJ
 		  FROM B_RIZHI
-		  WHERE ROWNUM &lt; 2000
+		  WHERE C_YHID = #{c_yhid}
 		  ORDER BY N_XH DESC
 	</select>
 	

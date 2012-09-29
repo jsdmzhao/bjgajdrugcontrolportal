@@ -70,18 +70,18 @@ return footerhtml;
 						<span class="title1">公 告 栏</span>	
 						<div class="main-con" style="height: 410px;">
 							<ul class="index-ul">
-								<li><a href="#">北京进一步提高见义勇为人员奖励...</a></li>
-								<li><a href="#">省公安厅党委代表10万民警在雨花...</a></li>
-								<li><a href="#">北京警方全力确保清明期间治安良...</a></li>
-								<li><a href="#">北京警方开展金银珠宝营业场所拉...</a></li>
-								<li><a href="#">北京进一步提高见义勇为人员奖励...</a></li>
-								<li><a href="#">省公安厅党委代表10万民警在雨花...</a></li>
-								<li><a href="#">北京警方全力确保清明期间治安良...</a></li>
-								<li><a href="#">北京警方开展金银珠宝营业场所拉...</a></li>
-								<li><a href="#">北京进一步提高见义勇为人员奖励...</a></li>
+								<li><a href="#">北京进一步提高见义勇为人员...</a></li>
+								<li><a href="#">省公安厅党委代表10万民警在...</a></li>
+								<li><a href="#">北京警方全力确保清明期间治...</a></li>
+								<li><a href="#">北京警方开展金银珠宝营业场...</a></li>
+								<li><a href="#">北京进一步提高见义勇为人员...</a></li>
+								<li><a href="#">省公安厅党委代表10万民警在...</a></li>
+								<li><a href="#">北京警方全力确保清明期间治...</a></li>
+								<li><a href="#">北京警方开展金银珠宝营业场...</a></li>
+								<li><a href="#">北京进一步提高见义勇为人员...</a></li>
 							</ul>
 							<div style="text-align: right;padding:20px 20px 10px 0px;font-size: 14px;">
-								<a href="#">更多信息》</a>
+								<a href="#">更多》</a>
 							</div>
 							<div style="background: url('<%=basePath%>images/index/birth-bg.png') no-repeat;width: 227px;height:107px;position: relative;left: -12px;top: 10px;">
 								<div style="padding: 40px 0 0 20px;">
@@ -97,17 +97,17 @@ return footerhtml;
 						<span class="title1">专栏专项工作</span>	
 						<div class="main-con" style="height: 230px;">
 							<ul class="index-ul">
-								<li><a href="#">北京进一步提高见义勇为人员奖励...</a></li>
-								<li><a href="#">省公安厅党委代表10万民警在雨花...</a></li>
-								<li><a href="#">北京警方全力确保清明期间治安良...</a></li>
-								<li><a href="#">北京警方开展金银珠宝营业场所拉..</a></li>
+								<li><a href="#">北京进一步提高见义勇为人员...</a></li>
+								<li><a href="#">省公安厅党委代表10万民警在...</a></li>
+								<li><a href="#">北京警方全力确保清明期间治...</a></li>
+								<li><a href="#">北京警方开展金银珠宝营业场..</a></li>
 								<li><a href="#">北京警方引进无人侦察机</a></li>
-								<li><a href="#">盱眙城区银行自助服务区专职巡逻...</a></li>
+								<li><a href="#">盱眙城区银行自助服务区专职...</a></li>
 								<li><a href="#">北京警方引进无人侦察机</a></li>
-								<li><a href="#">盱眙城区银行自助服务区专职巡逻...</a></li>
+								<li><a href="#">盱眙城区银行自助服务区专职...</a></li>
 							</ul> 
 							<div style="text-align: right;padding: 10px 20px 0 0;">
-								<a href="#">更多信息 >></a>
+								<a href="#">更多 >></a>
 							</div>
 						</div>
 					</div>
@@ -183,8 +183,9 @@ width:23px; height:7px;"></div>
 width:683px; height:1300px">
 
 <div style="height:5px; width:100%; margin-top:10px; margin-bottom:20px;float: left;">
-  <div style="float:left;">发布时间：   <s:property value="news.d_fbsj"/></div>
-  <div style="float:left; margin-left:50px;">发布人  ：</div>
+  <div style="float:left;">发布时间：<s:property value="news.d_fbsj"/></div>
+  <div style="float:left; margin-left:50px;">发布人  ：<s:property value="news.c_yhid"/></div>
+  <div style="float:left; margin-left:50px;">发布单位  ：<s:property value="news.c_yhzid"/></div>
 </div>
 <hr style="border-bootom: 1px dashed #000000;"/>
 

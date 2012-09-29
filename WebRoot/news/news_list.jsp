@@ -289,8 +289,7 @@ footerhtml+='<input type="image" alt="Cancel" src="<%=basePath%>images/cancel_bu
 								<li><s:if test="#news.c_bt.length()>=30">
 										<div style="float:left; margin-left:20px; margin-right:10px;">
 
-											<a
-												href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>"><s:property
+											<a href="view/detail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank"><s:property
 													value="#news.c_bt.substring(0,30)+'...'" /> </a>
 										</div>
 										<div style="float:right; margin-left:10px; margin-right:10px;">

@@ -106,7 +106,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   break;
               case "shbtg":
             	  var selected = grid.getSelected();
+            	  
                   if (!selected) { LG.tip('请选择行!'); return }
+				  if(selected.c_shjg == '不通过' || selected.c_shjg == '通过' ){
+            		  alert('该条日志已经被审核，不能在进行审核！');
+            		  returned;
+            	  }
                   jQuery.ligerDialog.confirm('确定不通过吗?', function (confirm) {
                       if (confirm)
                           f_operator('sh','0');

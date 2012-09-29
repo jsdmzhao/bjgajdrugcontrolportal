@@ -5,7 +5,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
 String userName = (String) session.getAttribute("cXm");
-SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 String dateStr = sdf.format(new Date());
 String c_mc = userName + " " + dateStr + "工作日志";
 %>

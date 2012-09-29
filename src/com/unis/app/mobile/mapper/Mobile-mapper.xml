@@ -31,9 +31,9 @@
 	    BEGIN
 		<foreach collection="list" item="item" separator=";">
 			IINSERT INTO SMS_BOXSENDING
-			  (ID,SENDER, RECEIVER, CONTENT, SENDTIME, INSERTTIME)
+			  (ID, SENDER, RECEIVER, CONTENT, SENDTIME, INSERTTIME)
 			VALUES
-			  (SEQ_SMS_SENDING.NEXTVAL,#{c_yhid}, FUN_GET_PHONE_FROM_YHID(#{{item.c_yhid}), #{content}, sysdate, sysdate)
+			  (SEQ_SMS_SENDING.NEXTVAL,#{c_yhid}, FUN_GET_PHONE_FROM_YHID(#{item.c_yhid}), #{content}, sysdate, sysdate)
 		</foreach>
 		;END;
 	</insert>
