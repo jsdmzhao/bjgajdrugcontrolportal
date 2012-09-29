@@ -29,6 +29,24 @@
 	<select id="getNews" parameterType="News" resultType="News">
 		SELECT * FROM B_XINWEN WHERE N_XH = #{n_xh}
 	</select>
+	
+	<select id="getIndexNews" parameterType="News" resultType="News">
+		SELECT 
+		   N_XH,
+		   C_BT,
+	       TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
+	       C_NR,
+	       FUN_GET_YHMC(C_YHID) C_YHID,
+	       DECODE(C_YHZID,'1','总队领导',
+		       		  '3','办公室',
+		       		  '4','协调指导大队',
+		       		  '9','情报中心',
+		       		  '7','侦查大队',
+		       		  '8','查禁大队',
+		       		  '5','缉控大队',
+		       		  '10','两品办')  C_YHZID
+	FROM B_XINWEN WHERE N_XH = #{n_xh}
+	</select>
 	 
 	<select id="getNewsList" parameterType="News" resultMap="resultNews">
 	  SELECT N_XH,
@@ -103,7 +121,6 @@
 	  FROM B_XINWEN
 	 	 WHERE C_LM = #{c_lm}
 	 	 	<if test="c_lm != null and c_lm == '1201'">
-			 	 AND C_SFTWWZ = 1
 			 	 AND C_TPLJDZ IS NOT NULL
 		  	 </if>
 	 	 	AND C_SHJG = '1'

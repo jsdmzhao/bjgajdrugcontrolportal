@@ -44,8 +44,10 @@ public class BlogAction {
 	}
 
 	@SuppressWarnings("unchecked")
-	public Map<String, Object> blogList(){
+	public Map<String, Object> blogList(HttpServletRequest request){
 		Map<String, Object> resMap = new HashMap<String, Object>();
+		HttpSession session = request.getSession();
+		String c_yhid = session.getAttribute("userId")+"";
 		List<Blog> blogList = (List<Blog>) blogService.selectList("BlogMapper.getBlogList",c_yhid);
 		resMap.put("Rows", blogList);
 		resMap.put("Total", blogList.size());
@@ -57,9 +59,11 @@ public class BlogAction {
 		return Globals.SUCCESS;
 	}
 	
-	public String blogOperator(String type, String value, String n_xh){
+	public String blogOperator(String type, String value, String n_xh, HttpServletRequest request){
+		HttpSession session = request.getSession();
+		String c_yhid = session.getAttribute("userId")+"";
 		Map<String, Object> sqlparaMap = new HashMap<String, Object>();
-		sqlparaMap.put("c_shr", "");
+		sqlparaMap.put("c_shr", c_yhid);
 		sqlparaMap.put("type", type);
 		sqlparaMap.put("c_shjg", value);
 		sqlparaMap.put("n_xh", n_xh);

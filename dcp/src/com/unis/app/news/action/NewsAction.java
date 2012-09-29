@@ -99,7 +99,9 @@ public class NewsAction {
 		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 		HttpSession session = request.getSession();
 		String c_yhid = session.getAttribute("userId")+"";
+		String c_yhzid = session.getAttribute("cYhz")+"";
 		sqlParamMap.put("c_yhid", c_yhid);
+		sqlParamMap.put("c_yhzid", c_yhzid);
 		sqlParamMap.put("operateType", operateType);
 		sqlParamMap.put("value", value);
 		sqlParamMap.put("n_xh", n_xh);
@@ -141,13 +143,13 @@ public class NewsAction {
 		n.setC_lm("1195");
 		List<News> newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
 		resMap.put("Rows1", newsList1);
-		n.setC_lm("1221");
+		n.setC_lm("1193");
 		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
 		resMap.put("Rows2", newsList1);
 		n.setC_lm("1255");
 		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
 		resMap.put("Rows3", newsList1);
-		n.setC_lm("1196");
+		n.setC_lm("1247");
 		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
 		resMap.put("Rows4", newsList1);
 		n.setC_lm("1197");
@@ -202,7 +204,7 @@ public class NewsAction {
 	}
 	
 	public String newsQuery(){
-		news = (News) newsService.selectOne("NewsMapper.getNews", news);
+		news = (News) newsService.selectOne("NewsMapper.getIndexNews", news);
 		return Globals.SUCCESS;
 	}
 	
