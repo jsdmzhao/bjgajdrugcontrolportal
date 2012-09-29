@@ -1,5 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
+<%
+String path2 = request.getContextPath();
+String basePath2 = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path2 + "/";
+%>
 
 <div id="container3">
 			<div class="clearfloat"></div>
@@ -9,3 +13,8 @@
 				<div>推荐使用Internet Explorer 6.0 以上版本Web浏览器，1024*768分辨率 浏览本站</div>				
 			</div>
 		</div>
+		
+<div style="height:300px;">
+
+<img src="<%=basePath2%>images/2222.jpg" width="100%" height="100%"/>
+</div>
