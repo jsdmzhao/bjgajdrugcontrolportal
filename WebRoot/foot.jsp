@@ -13,8 +13,3 @@ String basePath2 = request.getScheme() + "://" + request.getServerName() + ":" +
 				<div>推荐使用Internet Explorer 6.0 以上版本Web浏览器，1024*768分辨率 浏览本站</div>				
 			</div>
 		</div>
-		
-<div style="height:300px;">
-
-<img src="<%=basePath2%>images/2222.jpg" width="100%" height="100%"/>
-</div>
