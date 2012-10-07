@@ -98,7 +98,7 @@
 
 
 	<select id="queryCountInfo" resultType="integer" parameterType="java.util.Map" >
-				select count(N_XH) 
+	select count(N_XH) 
 	  FROM B_XINWEN
 	  where 1=1
 	   <if test="c_lm != null and c_lm != ''">
@@ -122,9 +122,26 @@
 	 	 WHERE C_LM = #{c_lm}
 	 	 	<if test="c_lm != null and c_lm == '1201'">
 			 	 AND C_TPLJDZ IS NOT NULL
-		  	 </if>
+		  	</if>
 	 	 	AND C_SHJG = '1'
 	  ORDER BY C_SFZD DESC,D_FBSJ DESC
+	</select>
+	
+	
+	<select id="getNewsCenterList" parameterType="hashmap" resultMap="resultIndexNews">
+	 SELECT N_XH,C_BT,D_FBSJ,C_TPLJDZ FROM  (
+	  SELECT N_XH,
+			  C_BT,
+		      TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
+			  C_TPLJDZ
+	  FROM B_XINWEN
+	 	 WHERE C_LM = #{c_lm}
+	 	 	<if test="c_lm != null and c_lm == '1201'">
+			 	 AND C_TPLJDZ IS NOT NULL
+		  	</if>
+	 	 	AND C_SHJG = '1'
+	  ORDER BY C_SFZD DESC,D_FBSJ DESC
+	  ) WHERE ROWNUM &lt; #{rownum}
 	</select>
 	
 	<delete id="deleteNews" parameterType="int">

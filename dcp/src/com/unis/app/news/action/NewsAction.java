@@ -197,6 +197,40 @@ public class NewsAction {
 		return Globals.SUCCESS;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public String newsCenter(){
+		Map<String, Object> sqlParamMap = new HashMap<String, Object>();
+		
+		resMap = new HashMap<String, Object>();
+		
+		sqlParamMap.put("c_lm", "1193");//禁毒动态
+		sqlParamMap.put("rownum", "10");
+		List<News> newsList = (List<News>) newsService.selectList("NewsMapper.getNewsCenterList", sqlParamMap);
+		resMap.put("Rows1", newsList);
+		
+		sqlParamMap.put("c_lm", "1189");//禁毒情报
+		sqlParamMap.put("rownum", "10");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsCenterList", sqlParamMap);
+		resMap.put("Rows2", newsList);
+		
+		sqlParamMap.put("c_lm", "1223");//禁毒在线
+		sqlParamMap.put("rownum", "10");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsCenterList", sqlParamMap);
+		resMap.put("Rows3", newsList);
+		
+		sqlParamMap.put("c_lm", "1190");//侦察破案
+		sqlParamMap.put("rownum", "10");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsCenterList", sqlParamMap);
+		resMap.put("Rows4", newsList);
+		
+		sqlParamMap.put("c_lm", "1219");//新闻时事
+		sqlParamMap.put("rownum", "10");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsCenterList", sqlParamMap);
+		resMap.put("Rows5", newsList);
+		
+		return Globals.SUCCESS;
+	}
+	
 	public String newsDelete(String n_xh){
 		
 		newsService.update("NewsMapper.deleteNews", n_xh);
@@ -241,15 +275,17 @@ public class NewsAction {
 	
 	
 	
+	@SuppressWarnings("rawtypes")
 	public List queryInfo(Map p){
 		return newsService.selectList("NewsMapper.queryInfo", p);
 	}
 
+	@SuppressWarnings("rawtypes")
 	public Object queryCountInfo(Map p) {
 		return newsService.selectOne("NewsMapper.queryCountInfo", p);
 	}
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public String newsQuerys() throws UnsupportedEncodingException{
 		
 		resMap = new HashMap<String, Object>();
