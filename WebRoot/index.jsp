@@ -450,15 +450,13 @@ function fontbutton(index,mag)
 		<div style="float:left; padding-top:4px; padding-left:20px;">
 			限行尾号：<%=wh%></div>
 		<div style="float:right; padding-top:4px; padding-right:10px;">
-			<a href="#"
-				onclick='Box("msg3",259,90,parahtml2(259,90),fontbutton(3,1));'>联系我们</a>
+			<a href="#" onclick='Box("msg3",259,90,parahtml2(259,90),fontbutton(3,1));'>联系我们</a>
 		</div>
 		<div style="float:right; padding-top:8px; padding-right:2px;">
 			<IMG src="<%=basePath%>images/2.jpg" />
 		</div>
 		<div style="float:right; padding-top:4px;padding-right:10px;">
-			<a
-				onClick="window.external.AddFavorite(location.href,document.title)"
+			<a onClick="window.external.AddFavorite(location.href,document.title)"
 				style="cursor:hand;">收藏本站</a>
 		</div>
 		<div style="float:right; padding-top:7px; padding-right:2px;">
@@ -652,7 +650,6 @@ function fontbutton(index,mag)
 											<ul>
 												<li class="tabcurrent">总队各单位</li>
 												<li>各区县分局</li>
-
 											</ul>
 											<div style="display:none;">
 												<span class="switchBtn"><a href="#" class="prevNot">左</a><a
@@ -812,9 +809,9 @@ function fontbutton(index,mag)
 
 				<div class="main-box" style="margin-bottom: 4px;">
 					<span class="title1">禁毒情报</span>
-					<div class="main-con" style="height: 365px;">
+					<div class="main-con" style="height: 285px;">
 						<ul class="index-ul">
-							<s:iterator value="resMap.Rows9" id="news" var="news" begin="0" end="12">
+							<s:iterator value="resMap.Rows9" id="news" var="news" begin="0" end="9">
 								<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
 
 										<s:if test="#news.c_bt.length()>=13">
@@ -1038,8 +1035,7 @@ function fontbutton(index,mag)
 						<div style="float: left;width: 320px">
 							<ul class="index-ul">
 								<li><div style="float: left;">
-										<a
-											href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"
+										<a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"
 											class="awidth">北京警方1月以来破获毒品案30 </a>
 									</div>
 									<div style="float: right;">
@@ -1159,18 +1155,22 @@ function fontbutton(index,mag)
 									<a href="<%=basePath%>news/list?news.c_lm=1193">更多
 										&gt;&gt;</a>
 								</div>
-								<div style="padding-top: 10px;">
+								<div style="padding-top: 10px; margin-right: 10px;">
 									<ul class="index-ul">
 										<s:iterator value="resMap.Rows2" id="news" var="news" begin="0" end="5">
-											<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
-
-													<s:if test="#news.c_bt.length()>=15">
-														<s:property value="#news.c_bt.substring(0,15)+'...'" />
-													</s:if> <s:else>
-														<s:property value="#news.c_bt" />
-													</s:else> 
-													&nbsp;&nbsp;<s:property value="#news.d_fbsj.substring(0,10)"/>
-											 </a>
+											<li>
+												<div style="float: left;">
+													<a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">
+														<s:if test="#news.c_bt.length()>=16">
+															<s:property value="#news.c_bt.substring(0,16)+'...'" />
+														</s:if> <s:else>
+															<s:property value="#news.c_bt" />
+														</s:else>
+													</a>
+												</div>
+												<div style="float: right;">
+													<span class="time"><s:property value="#news.d_fbsj.substring(0,10)"/></span>
+												</div>
 											</li>
 										</s:iterator>
 									</ul>
@@ -1190,18 +1190,22 @@ function fontbutton(index,mag)
 									<a href="<%=basePath%>news/list?news.c_lm=1255">更多
 										&gt;&gt;</a>
 								</div>
-								<div style="padding-top: 10px;">
+								<div style="padding-top: 10px; margin-right: 10px;">
 									<ul class="index-ul">
 										<s:iterator value="resMap.Rows3" id="news" var="news" begin="0" end="5">
-											<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
-
-													<s:if test="#news.c_bt.length()>=15">
-														<s:property value="#news.c_bt.substring(0,15)+'...'" />
-													</s:if> <s:else>
-														<s:property value="#news.c_bt" />
-													</s:else> 
-													&nbsp;&nbsp;<s:property value="#news.d_fbsj.substring(0,10)"/>
+											<li>
+												<div style="float: left;">
+													<a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">
+														<s:if test="#news.c_bt.length()>=16">
+															<s:property value="#news.c_bt.substring(0,16)+'...'" />
+														</s:if> <s:else>
+															<s:property value="#news.c_bt" />
+														</s:else>
 													</a>
+												</div>
+												<div style="float: right;">
+													<span class="time"><s:property value="#news.d_fbsj.substring(0,10)"/></span>
+												</div>
 											</li>
 										</s:iterator>
 									</ul>
@@ -1224,19 +1228,23 @@ function fontbutton(index,mag)
 									<a href="<%=basePath%>news/list?news.c_lm=1247">更多
 										&gt;&gt;</a>
 								</div>
-								<div style="padding-top: 10px;">
+								<div style="padding-top: 10px; margin-right: 10px;">
 									<ul class="index-ul">
 										<s:iterator value="resMap.Rows4" id="news" var="news"
 											begin="0" end="5">
-											<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
-
-													<s:if test="#news.c_bt.length()>=15">
-														<s:property value="#news.c_bt.substring(0,15)+'...'" />
-													</s:if> <s:else>
-														<s:property value="#news.c_bt" />
-													</s:else> 
-													&nbsp;&nbsp;<s:property value="#news.d_fbsj.substring(0,10)"/>
+											<li>
+												<div style="float: left;">
+													<a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">
+														<s:if test="#news.c_bt.length()>=16">
+															<s:property value="#news.c_bt.substring(0,16)+'...'" />
+														</s:if> <s:else>
+															<s:property value="#news.c_bt" />
+														</s:else>
 													</a>
+												</div>
+												<div style="float: right;">
+													<span class="time"><s:property value="#news.d_fbsj.substring(0,10)"/></span>
+												</div>
 											</li>
 										</s:iterator>
 									</ul>
@@ -1256,20 +1264,23 @@ function fontbutton(index,mag)
 									<a href="<%=basePath%>news/list?news.c_lm=1197">更多
 										&gt;&gt;</a>
 								</div>
-								<div style="padding-top: 10px;">
+								<div style="padding-top: 10px; margin-right: 10px;">
 									<ul class="index-ul">
 										<s:iterator value="resMap.Rows5" id="news" var="news"
 											begin="0" end="5">
-											<li><a
-												href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
-
-													<s:if test="#news.c_bt.length()>=15">
-														<s:property value="#news.c_bt.substring(0,15)+'...'" />
-													</s:if> <s:else>
-														<s:property value="#news.c_bt" />
-													</s:else> 
-													&nbsp;&nbsp;<s:property value="#news.d_fbsj.substring(0,10)"/>
+											<li>
+												<div style="float: left;">
+													<a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">
+														<s:if test="#news.c_bt.length()>=16">
+															<s:property value="#news.c_bt.substring(0,16)+'...'" />
+														</s:if> <s:else>
+															<s:property value="#news.c_bt" />
+														</s:else>
 													</a>
+												</div>
+												<div style="float: right;">
+													<span class="time"><s:property value="#news.d_fbsj.substring(0,10)"/></span>
+												</div>
 											</li>
 										</s:iterator>
 									</ul>
@@ -1292,19 +1303,23 @@ function fontbutton(index,mag)
 									<a href="<%=basePath%>news/list?news.c_lm=1198">更多
 										&gt;&gt;</a>
 								</div>
-								<div style="padding-top: 10px;">
+								<div style="padding-top: 10px; margin-right: 10px;">
 									<ul class="index-ul">
 										<s:iterator value="resMap.Rows6" id="news" var="news"
 											begin="0" end="5">
-											<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
-
-													<s:if test="#news.c_bt.length()>=15">
-														<s:property value="#news.c_bt.substring(0,15)+'...'" />
-													</s:if> <s:else>
-														<s:property value="#news.c_bt" />
-													</s:else> 
-													&nbsp;&nbsp;<s:property value="#news.d_fbsj.substring(0,10)"/>
+											<li>
+												<div style="float: left;">
+													<a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">
+														<s:if test="#news.c_bt.length()>=16">
+															<s:property value="#news.c_bt.substring(0,16)+'...'" />
+														</s:if> <s:else>
+															<s:property value="#news.c_bt" />
+														</s:else>
 													</a>
+												</div>
+												<div style="float: right;">
+													<span class="time"><s:property value="#news.d_fbsj.substring(0,10)"/></span>
+												</div>
 											</li>
 										</s:iterator>
 									</ul>
@@ -1323,19 +1338,24 @@ function fontbutton(index,mag)
 									margin-right: 10px;padding-top: 4px;">
 									<a href="<%=basePath%>news/list?news.c_lm=1191">更多&gt;&gt;</a>
 								</div>
-								<div style="padding-top: 10px;">
+								<div style="padding-top: 10px; margin-right: 10px;">
 									<ul class="index-ul">
 										<s:iterator value="resMap.Rows7" id="news" var="news"
 											begin="0" end="5">
-											<li><a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
-
-													<s:if test="#news.c_bt.length()>=15">
-														<s:property value="#news.c_bt.substring(0,15)+'...'" />
-													</s:if> <s:else>
-														<s:property value="#news.c_bt" />
-													</s:else> 
-													&nbsp;&nbsp;<s:property value="#news.d_fbsj.substring(0,10)"/>
-													</a></li>
+											<li>
+												<div style="float: left;">
+													<a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">
+														<s:if test="#news.c_bt.length()>=16">
+															<s:property value="#news.c_bt.substring(0,16)+'...'" />
+														</s:if> <s:else>
+															<s:property value="#news.c_bt" />
+														</s:else>
+													</a>
+												</div>
+												<div style="float: right;">
+													<span class="time"><s:property value="#news.d_fbsj.substring(0,10)"/></span>
+												</div>
+											</li>
 										</s:iterator>
 									</ul>
 								</div>
