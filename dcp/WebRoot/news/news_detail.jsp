@@ -191,7 +191,13 @@ width:683px; height:1300px">
 
 
 <div style="_height: 1340px;overflow: visible;min-height: 1340px;" id="nr">
-   <s:property value="news.c_nr.length()>1000?(news.c_nr.substring(0,2450)+'              ……'):news.c_nr" escape="false"/>
+	<s:if test="news.c_nr.length()>2450">
+	 	<s:property value="news.c_nr.substring(0,2450)+'              ……'" escape="false"/>
+	</s:if>
+	<s:else>
+		<s:property value="news.c_nr" escape="false"/>
+	</s:else>
+   <%--<s:property value="news.c_nr.length()>1000?(news.c_nr.substring(0,2450)+'              ……'):news.c_nr" escape="false"/>--%>
 
 </div>
 
