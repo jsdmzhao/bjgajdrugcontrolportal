@@ -83,7 +83,6 @@
 		
 	 	<action name="view" class="com.unis.app.news.action.NewsAction" method="newsindexList">
 			<result name="success">/index.jsp</result>
-			<result name="error">../error.jsp</result>
 		</action>
 	</package>
 	   
@@ -96,6 +95,10 @@
 		
 		<action name="list" class="com.unis.app.news.action.NewsAction" method="newsQuerys">
 			<result name="success">/news/news_list.jsp</result>
+		</action>
+		
+		<action name="center" class="com.unis.app.news.action.NewsAction" method="newsCenter">
+			<result name="success">/news/news.jsp</result>
 		</action>
 		
      </package>
