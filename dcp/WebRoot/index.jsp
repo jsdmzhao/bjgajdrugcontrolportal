@@ -495,7 +495,7 @@ function fontbutton(index,mag)
 					<a href="http://www.xxzx.bj/" target="_blank">信息查询</a>
 				</li>
 				<li class="middle">
-					<a href="<%=basePath%>news/news.jsp">新闻中心</a>
+					<a href="<%=basePath%>news/center">新闻中心</a>
 				</li>
 				<li class="middle">
 					<a href="http://10.8.1.135/" target="_blank">文件交换</a>
