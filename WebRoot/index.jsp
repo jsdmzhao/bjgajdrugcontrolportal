@@ -1019,102 +1019,61 @@ fgm.on(window, "load", function() {
 				</div>
 				<div class="news">
 					<div style="background: url('<%=basePath%>images/index/news-ico.png') no-repeat;width: 92px;height: 96px;position: absolute;margin-left:660px;margin-top: -7px;"></div>
-					<div class="news-title">2012年全国禁毒宣传教育工作要点 青少年与合成毒品仍是重点</div>
+					
+					<div class="news-title">
+						<s:iterator value="resMap.Rows16" id="news" var="news" begin="0" end="0" status="status">
+							<a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>" class="awidth">
+								<s:if test="#news.c_bt.length()>=30">
+									<s:property value="#news.c_bt.substring(0,30)+'...'" />
+								</s:if> <s:else>
+									<s:property value="#news.c_bt" />
+								</s:else>
+							</a>
+						</s:iterator>
+					</div>
 					<div style="padding: 10px 40px 10px 30px; height: 180px;">
 						<div style="float: left;width: 320px">
 							<ul class="index-ul">
-								<li><div style="float: left;">
-										<a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"
-											class="awidth">北京警方1月以来破获毒品案30 </a>
-									</div>
-									<div style="float: right;">
-										<span class="time">2012-04-12</span>
-									</div>
-								</li>
-								<li><div style="float: left;">
-										<a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"
-											class="awidth">北京警方破获特大团伙贩毒案</a>
-									</div>
-									<div style="float: right;">
-										<span class="time">2012-04-12</span>
-									</div>
-								</li>
-								<li><div style="float: left;">
-										<a
-											href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"
-											class="awidth">北京警方1月以来破获毒品案3</a>
-									</div>
-									<div style="float: right;">
-										<span class="time">2012-04-12</span>
-									</div>
-								</li>
-								<li><div style="float: left;">
-										<a
-											href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"
-											class="awidth">北京警方破获特大团伙贩</a>
-									</div>
-									<div style="float: right;">
-										<span class="time">2012-04-12</span>
-									</div>
-								</li>
-								<li><div style="float: left;">
-										<a
-											href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"
-											class="awidth">北京警方破获特大团伙贩毒案</a>
-									</div>
-									<div style="float: right;">
-										<span class="time">2012-04-12</span>
-								</li>
-
+							
+								<s:iterator value="resMap.Rows16" id="news" var="news" begin="1" end="5" status="status">
+									<li>
+										<div style="float: left;">
+											<a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"
+												class="awidth">
+												<s:if test="#news.c_bt.length()>=14">
+													<s:property value="#news.c_bt.substring(0,14)+'...'" />
+												</s:if> <s:else>
+													<s:property value="#news.c_bt" />
+												</s:else> 
+											</a>
+										</div>
+										<div style="float: right;">
+											<span class="time"><s:property value="#news.d_fbsj.substring(0,10)" /></span>
+										</div>
+									</li>
+								</s:iterator>
+								
 							</ul>
 						</div>
 						<div style="float: right;width: 320px">
 							<ul class="index-ul">
-								<li><div style="float: left;">
-										<a
-											href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"
-											class="awidth">北京禁毒流动大课堂取得效果</a>
-									</div>
-									<div style="float: right;">
-										<span class="time">2012-04-12</span>
-									</div>
-								</li>
-								<li><div style="float: left;">
-										<a
-											href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"
-											class="awidth">阳光致远禁毒志愿者大队开展锋</a>
-									</div>
-									<div style="float: right;">
-										<span class="time">2012-04-12</span>
-									</div>
-								</li>
-								<li><div style="float: left;">
-										<a
-											href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"
-											class="awidth">阳光致远禁毒志愿者大队开雷锋</a>
-									</div>
-									<div style="float: right;">
-										<span class="time">2012-04-12</span>
-									</div>
-								</li>
-								<li><div style="float: left;">
-										<a
-											href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"
-											class="awidth">北京禁毒流动大课堂取得效果</a>
-									</div>
-									<div style="float: right;">
-										<span class="time">2012-04-12</span>
-									</div>
-								</li>
-								<li><div style="float: left;">
-										<a
-											href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"
-											class="awidth">北京禁毒流动大课堂取得良好效果</a>
-									</div>
-									<div style="float: right;">
-										<span class="time">2012-04-12</span>
-									</div>
-								</li>
+								<s:iterator value="resMap.Rows16" id="news" var="news" begin="6" end="10" status="status">
+									<li>
+										<div style="float: left;">
+											<a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>"
+												class="awidth">
+												<s:if test="#news.c_bt.length()>=14">
+													<s:property value="#news.c_bt.substring(0,14)+'...'" />
+												</s:if> <s:else>
+													<s:property value="#news.c_bt" />
+												</s:else> 
+											</a>
+										</div>
+										<div style="float: right;">
+											<span class="time"><s:property value="#news.d_fbsj.substring(0,10)" /></span>
+										</div>
+									</li>
+								</s:iterator>
 							</ul>
 						</div>
 						<div class="clearfloat"></div>

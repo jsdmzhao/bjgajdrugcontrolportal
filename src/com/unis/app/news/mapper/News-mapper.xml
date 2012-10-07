@@ -27,7 +27,32 @@
 	 </resultMap>
 	 
 	<select id="getNews" parameterType="News" resultType="News">
-		SELECT * FROM B_XINWEN WHERE N_XH = #{n_xh}
+		SELECT N_XH,
+		       C_BT,
+		       C_SFTWWZ,
+		       C_TPLJDZ,
+		       C_TPKD,
+		       C_TPGD,
+		       C_SFSCSP,
+		       C_SPLJDZ,
+		       C_LJ,
+		       C_JJ,
+		       C_NR,
+		       TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
+		       C_LM,
+		       C_YHID,
+		       C_YHZID,
+		       C_SFSH,
+		       C_SHR,
+		       TO_CHAR(D_SHSJ, 'YYYY-MM-DD HH24:MI:SS') D_SHSJ,
+		       N_YDCS,
+		       C_SFTJ,
+		       C_SFZD,
+		       C_SFGL,
+		       N_XXXH,
+		       C_SHJG
+		  FROM B_XINWEN
+		 WHERE N_XH = #{n_xh}
 	</select>
 	
 	<select id="getIndexNews" parameterType="News" resultType="News">

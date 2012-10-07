@@ -130,6 +130,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   **/
                   break;
               case "delete":
+            	  var selected = grid.getSelected();
+                  if (!selected) { LG.tip('请选择行!'); return }
                   jQuery.ligerDialog.confirm('确定删除吗?', function (confirm) {
                       if (confirm)
                           f_delete();
