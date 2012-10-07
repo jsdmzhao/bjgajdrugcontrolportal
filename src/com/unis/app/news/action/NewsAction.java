@@ -1,4 +1,4 @@
-﻿package com.unis.app.news.action;
+package com.unis.app.news.action;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
