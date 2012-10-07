@@ -223,9 +223,9 @@ String newsType = request.getParameter("newsType");
             { text: '修改', click: itemclick, img: "<%=basePath%>liger/lib/icons/miniicons/page_edit.gif" },
             { line: true },
 			/****
-            //{ text: '保存', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/page_save.png" },
+            //{ text: '保存', click: itemclick, img: "<!%=basePath%>liger/lib/icons/silkicons/page_save.png" },
             //{ line: true },
-            //{ text: '取消', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/cancel.png" },
+            //{ text: '取消', click: itemclick, img: "<!%=basePath%>liger/lib/icons/silkicons/cancel.png" },
             //{ line: true },
             ****/
             { text: '查看', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png" },
@@ -237,9 +237,9 @@ String newsType = request.getParameter("newsType");
             { text: '取消置顶', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/arrow_down.png" },
             { line: true },
             /****
-            { text: '高亮', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/star.png" },
+            { text: '高亮', click: itemclick, img: "<!%=basePath%>liger/lib/icons/silkicons/star.png" },
             { line: true },
-            { text: '取消高亮', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/star_01.png" },
+            { text: '取消高亮', click: itemclick, img: "<!%=basePath%>liger/lib/icons/silkicons/star_01.png" },
             { line: true },
             ****/
             { text: '推荐', click: itemclick, img: "<%=basePath%>liger/lib/icons/silkicons/flag_red.png" },
@@ -308,7 +308,7 @@ String newsType = request.getParameter("newsType");
                 validate: { required: true },
                 editor: { type: 'text' }
                 }, 
-                { display: '状态', name: 'operate', editor: { type: 'text' },align: 'left', width: 200, minWidth: 50
+                { display: '状态', name: 'operate', editor: { type: 'text' },align: 'left', width: 120, minWidth: 50
                 },{
 					name: 'c_sfzd',editor: {type: 'hidden'},hide : '1'
                 },{
@@ -383,13 +383,15 @@ String newsType = request.getParameter("newsType");
 				if(sfzd == '1'){
 					rowData += "<span style=width:33%><img src='<%=basePath%>liger/lib/icons/silkicons/arrow_up.png'/>置顶&nbsp;&nbsp;</span>";
 			    }else {
-					rowData += "<span style=width:33%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
+					rowData += "<span style=width:33%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
 				}
+				/**
 				if(sfgl == '1'){
-					rowData += "<img src='<%=basePath%>liger/lib/icons/silkicons/star.png'/>高亮&nbsp;&nbsp;";
+					rowData += "<img src='<!%=basePath%>liger/lib/icons/silkicons/star.png'/>高亮&nbsp;&nbsp;";
 				}else {
 					rowData += "<span style=width:33%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
 				}
+				**/
 				if(sftj == '1'){
 					rowData += "<img src='<%=basePath%>liger/lib/icons/silkicons/flag_red.png'/>推荐&nbsp;&nbsp;";
 				}else {

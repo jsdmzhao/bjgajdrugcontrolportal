@@ -95,12 +95,30 @@ String newsType = request.getParameter("newsType");
                   }
                   break;
               case "审核通过": 
+            	  var selected = grid.getSelected();
+                  if (!selected) { 
+                	  LG.tip('请选择行!'); return ;
+                  }else{
+                	  if(selected.c_shjg == '0' || selected.c_shjg == '1'){
+                		  LG.showSuccess('该条新闻已经被审核，不能在进行审核！');
+                		  return ;
+                	  }
+                  }
                   $.ligerDialog.confirm('确定审核通过吗?', function (confirm) {
                       if (confirm)
                     	  f_operate('sh','1');
                   });
                   break;
               case "审核不通过": 
+            	  var selected = grid.getSelected();
+                  if (!selected) { 
+                	  LG.tip('请选择行!'); return ;
+                  }else{
+                	  if(selected.c_shjg == '0' || selected.c_shjg == '1'){
+                		  LG.showSuccess('该条新闻已经被审核，不能在进行审核！');
+                		  return ;
+                	  }
+                  }
                   $.ligerDialog.confirm('确定审核不通过吗?', function (confirm) {
                       if (confirm)
                     	  f_operate('sh','0');
@@ -145,7 +163,7 @@ String newsType = request.getParameter("newsType");
       function f_operate(operateType,value){
           
     	  var selected = grid.getSelected();
-    	  //alert(selected.c_sfzd); return;
+    	  //alert(selected.c_shjg); return;
           if (selected){
 	    	  NewsAction.newsOperate(operateType , value,selected.n_xh, function (data){
 	   	    	 if(data == 'success'){
@@ -228,7 +246,7 @@ String newsType = request.getParameter("newsType");
                 validate: { required: true },
                 editor: { type: 'text' }
                 }, 
-                { display: '状态', name: 'operate', editor: { type: 'text' },align: 'left', width: 200, minWidth: 50
+                { display: '状态', name: 'operate', editor: { type: 'text' },align: 'left', width: 120, minWidth: 50
                 },{
 					name: 'c_shjg',editor: {type: 'hidden'},hide : '1'
                 }], 

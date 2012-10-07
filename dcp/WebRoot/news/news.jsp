@@ -171,7 +171,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<img src="<%=basePath%>images/newspic/bg.jpg" />
 					</div>
 					<div class="six-title">新闻时事</div>
-					<div style="float:right; margin:8px 5px 3px 3px;">更多&gt;&gt;</div>
+					<div style="float:right; margin:8px 5px 3px 3px;">
+						<a href="<%=basePath%>news/list?news.c_lm=1219">更多&gt;&gt;</a>
+					</div>
 				</div>
 				<div style="width:470px; height:200px; background-color: #EFEFEF">
 					<table align="center" width="96%">
@@ -216,7 +218,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<img src="<%=basePath%>images/newspic/bg.jpg" />
 					</div>
 					<div class="six-title">禁毒动态</div>
-					<div style="float:right; margin:8px 5px 3px 3px;">更多&gt;&gt;</div>
+					<div style="float:right; margin:8px 5px 3px 3px;">
+						<a href="<%=basePath%>news/list?news.c_lm=1193">更多&gt;&gt;</a>
+					</div>
 				</div>
 				<div style="width:470px; height:200px; background-color: #EFEFEF">
 					<table align="center" width="96%">
@@ -261,7 +265,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<img src="<%=basePath%>images/newspic/bg.jpg" />
 					</div>
 					<div class="six-title">侦察破案</div>
-					<div style="float:right; margin:8px 5px 3px 3px;">更多&gt;&gt;</div>
+					<div style="float:right; margin:8px 5px 3px 3px;">
+						<a href="<%=basePath%>news/list?news.c_lm=1190">更多&gt;&gt;</a>
+					</div>
 				</div>
 				<div style="width:470px; height:200px; background-color: #EFEFEF">
 					<table align="center" width="96%">
