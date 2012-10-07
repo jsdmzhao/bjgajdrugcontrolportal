@@ -1,4 +1,4 @@
-package com.unis.app.news.action;
+﻿package com.unis.app.news.action;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -83,10 +83,17 @@ public class NewsAction {
 		return comboxList;
 	}
 	
-	public String newsSave(Map<String, String> sqlParamMap){
+	public String newsSave(Map<String, String> sqlParamMap, HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		
 		if(StringUtils.isNotEmpty(sqlParamMap.get("n_xh"))){
 			newsService.update("NewsMapper.updateNews", sqlParamMap);
 		} else {
+			String c_yhid = session.getAttribute("userId")+"";
+			String c_yhzid = session.getAttribute("cYhz")+"";
+			sqlParamMap.put("c_yhid", c_yhid);
+			sqlParamMap.put("c_yhzid", c_yhzid);
 			newsService.insert("NewsMapper.insertNews", sqlParamMap);
 		}
 		return Globals.SUCCESS;
@@ -105,10 +112,10 @@ public class NewsAction {
 		sqlParamMap.put("operateType", operateType);
 		sqlParamMap.put("value", value);
 		sqlParamMap.put("n_xh", n_xh);
+	    newsService.update("NewsMapper.operateNews", sqlParamMap);
 		if("zd".equals(operateType) || "sh".equals(operateType)){
 			createdIndexAction.createIndexHtml(basePath+"index.jsp");
 		}
-	    newsService.update("NewsMapper.operateNews", sqlParamMap);
 		return Globals.SUCCESS;
 	}
 	
@@ -236,9 +243,12 @@ public class NewsAction {
 		return Globals.SUCCESS;
 	}
 	
-	public String newsDelete(String n_xh){
-		
+	public String newsDelete(String n_xh, HttpServletRequest request) throws IOException{
+		String path = request.getContextPath();
+		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 		newsService.update("NewsMapper.deleteNews", n_xh);
+
+		createdIndexAction.createIndexHtml(basePath+"index.jsp");
 		return Globals.SUCCESS;
 	}
 	
