@@ -117,6 +117,7 @@ String newsType = request.getParameter("newsType");
 				  });
                   break;
               case "删除": 
+            	  var selected = grid.getSelected();
             	  if (!selected) { LG.tip('请选择行!'); return }
                   $.ligerDialog.confirm('确定删除吗?', function (confirm) {
                       if (confirm)

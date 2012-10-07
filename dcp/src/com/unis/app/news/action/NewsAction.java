@@ -181,6 +181,11 @@ public class NewsAction {
 		 websites = (List<Website>) newsService.selectList("WebsiteMapper.getWebsiteLists", "1005");
 		resMap.put("Rows15", websites);
 		
+		
+		n.setC_lm("1081");//要闻导读
+		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList",n);
+		resMap.put("Rows16", newsList1);
+		
 		n.setC_lm("1201");
 		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList",n);
 		resMap.put("RowsPic", newsList1);

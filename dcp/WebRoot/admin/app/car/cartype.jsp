@@ -127,7 +127,8 @@ var dialog;
                   **/
                   break;
               case "delete":
-            	  if (!selected) { LG.tip('请选择行!'); return }
+            	  var selected = grid.getSelected();
+                  if (!selected) { LG.tip('请选择行!'); return }
                   jQuery.ligerDialog.confirm('确定删除吗?', function (confirm) {
                       if (confirm)
                           f_delete();
