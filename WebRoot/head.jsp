@@ -1,71 +1,62 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String paths = request.getContextPath();
-	String basePaths = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ paths + "/";
+	String basePaths = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + paths + "/";
 
 	session.setAttribute("userId", "10000");
 %>
 <link rel="stylesheet" type="text/css" href="<%=basePaths%>css/layout.css" />
 <link rel="stylesheet" type="text/css" href="<%=basePaths%>css/index.css" />
-<LINK href="<%=basePaths%>css/css.css" type=text/css rel=stylesheet />
+<link href="<%=basePaths%>css/css.css" type=text/css rel=stylesheet />
 <link href="<%=basePaths%>css/base.css" rel="stylesheet" type="text/css" />
 
 <!-- 弹出窗 -->
-<script type="text/javascript" src="<%=basePaths%>highslide/highslide-with-html.js"></script>
+<script type="text/javascript" src="<%=basePaths%>highslide/highslide-with-html.js" />
 <link rel="stylesheet" type="text/css" href="<%=basePaths%>highslide/highslide.css" />
 <!-- 弹出窗 -->
 
 <script type="text/javascript">
-hs.graphicsDir = '../highslide/graphics/';
-hs.outlineType = 'rounded-white';
-hs.wrapperClassName = 'draggable-header';
+	hs.graphicsDir = '../highslide/graphics/';
+	hs.outlineType = 'rounded-white';
+	hs.wrapperClassName = 'draggable-header';
 </script>
 
 <script type="text/javascript" src="<%=basePaths%>js/lightBox.js"></script>
 
 <head>
-<style>
-body {
-	font-size: 14px;
-	background-image: url('<%=basePaths%>images/bg11.jpg');
-	background-repeat: repeat;
-}
+<style type="text/css">
+	body {
+		font-size: 14px;
+		background-image: url('<%=basePaths%>images/bg11.jpg');
+		background-repeat: repeat;
+	}
 </style>
 </head>
-
 
 <script type="text/javascript">
 
 
-/*弹出内容*/
-function parahtml(url,width,height)
-{
-var htmls= '<iframe src="'+url+'" width='+width+' height='+height+' frameborder="0"></iframe>';
-return htmls;
-}
-function parahtml2(width,height)
-{
-var htmls='<div style="width='+width+' height='+height+'">联系人：黄园<Br />联系电话：<Br />邮箱地址：huangyuanaccp@163.com</div>';
-return htmls;
-}
-/*底部样式*/
-function fontbutton(index,mag)
-{
-var footerhtml
-if(mag==1)//选择按钮样式
-{
- footerhtml='<input type="image" alt="Cancel" src="<%=basePaths%>images/cancel_button.gif" class="btn" id="msg'+index+'cancel" />';	
-
-}else
-{
-footerhtml='<input type="image" alt="Cancel" src="<%=basePaths%>images/send_button.gif" class="btn" onclick=alert("Sumbited!"); />';
-footerhtml+='<input type="image" alt="Cancel" src="<%=basePaths%>images/cancel_button.gif" class="btn" id="msg'
-					+ index + 'cancel" />';
+	/*弹出内容*/
+	function parahtml(url,width,height) {
+		var htmls= '<iframe src="'+url+'" width='+width+' height='+height+' frameborder="0"></iframe>';
+		return htmls;
+	}
+	function parahtml2(width,height) {
+		var htmls='<div style="width='+width+' height='+height+'">联系人：黄园<Br />联系电话：<Br />邮箱地址：huangyuanaccp@163.com</div>';
+		return htmls;
+	}
+	/*底部样式*/
+	function fontbutton(index,mag) {
+		var footerhtml
+		if(mag==1)//选择按钮样式
+		{
+		 footerhtml='<input type="image" alt="Cancel" src="<%=basePaths%>images/cancel_button.gif" class="btn" id="msg'+index+'cancel" />';	
+		}else {
+			footerhtml='<input type="image" alt="Cancel" src="<%=basePaths%>images/send_button.gif" class="btn" onclick=alert("Sumbited!"); />';
+			footerhtml+='<input type="image" alt="Cancel" src="<%=basePaths%>images/cancel_button.gif" class="btn" id="msg'
+								+ index + 'cancel" />';
 		}
 		return footerhtml;
-
 	}
 
 	$(document).ready(function() {
@@ -192,7 +183,7 @@ footerhtml+='<input type="image" alt="Cancel" src="<%=basePaths%>images/cancel_b
 		if (today.getDay() == 6)
 			day = "星期六"
 
-		date = "现在时间是：" + (today.getYear()) + "年" + (today.getMonth() + 1)
+		date = "" + (today.getYear()) + "年" + (today.getMonth() + 1)
 				+ "月" + today.getDate() + "日&nbsp;" + day;
 
 		document.getElementById("timeShow").innerHTML = date;
@@ -201,11 +192,8 @@ footerhtml+='<input type="image" alt="Cancel" src="<%=basePaths%>images/cancel_b
 </script>
 
 
-<%if(session.getAttribute("userId")!=null&&session.getAttribute("userId")!="0"){
-	%>
+<% if(session.getAttribute("userId")!=null && session.getAttribute("userId")!="0"){ %>
 	
-
-
 <DIV class=selCity id=allCity style="display:none">
 	<DIV class=area>
 		<div class=bodydiv>
@@ -228,8 +216,7 @@ footerhtml+='<input type="image" alt="Cancel" src="<%=basePaths%>images/cancel_b
 							<img class="imgdiv" src="<%=basePaths%>images/9.png  " />
 						</div>
 						<div class="font1" align="center">
-							<a href="<%=basePaths%>temp/news.jsp"
-								onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">新闻管理</a>
+							<a href="<%=basePaths%>temp/news.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">新闻管理</a>
 						</div>
 					</div>
 
@@ -239,8 +226,7 @@ footerhtml+='<input type="image" alt="Cancel" src="<%=basePaths%>images/cancel_b
 							<img class="imgdiv" src="<%=basePaths%>images/3.png  " />
 						</div>
 						<div class="font1" align="center">
-							<a href="<%=basePaths%>temp/car.jsp"
-								onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">车辆管理</a>
+							<a href="<%=basePaths%>temp/car.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">车辆管理</a>
 						</div>
 					</div>
 
@@ -275,12 +261,12 @@ footerhtml+='<input type="image" alt="Cancel" src="<%=basePaths%>images/cancel_b
 						</div>
 					</div>
 					<!-- 
-<div class="topdiv">
-<div class="imgdiv"  >
-<img  class="imgdiv"   src="<%=basePaths%>images/5.png  "/></div >
-<div   class="font1"  align="center"><a href="#" onclick='Box("msg5",900,600,parahtml(900,600),fontbutton(5,1));'>工作计划</a></div>
-</div>
- -->
+					<div class="topdiv">
+					<div class="imgdiv"  >
+					<img  class="imgdiv"   src="<!%=basePaths%>images/5.png  "/></div >
+					<div   class="font1"  align="center"><a href="#" onclick='Box("msg5",900,600,parahtml(900,600),fontbutton(5,1));'>工作计划</a></div>
+					</div>
+					 -->
 
 					<div class="topdiv">
 						<div class="imgdiv">
@@ -309,27 +295,26 @@ footerhtml+='<input type="image" alt="Cancel" src="<%=basePaths%>images/cancel_b
 			</div>
 		</div>
 
-		<DIV class=none>
-			<A id=foldin href="javascript:;">收起</A>
-		</DIV>
-	</DIV>
-</DIV>
-<DIV class=header>
-	<DIV class=area>
-		<DIV class=r>
-			<DIV class="topCtiy clear">
-				<UL>
+		<div class=none>
+			<a id=foldin href="javascript:;">收起</a>
+		</div>
+	</div>
+</div>
+<div class=header>
+	<div class=area>
+		<div class=r>
+			<div class="topCtiy clear">
+				<ul>
+					<LI class=i2 id=changeCity>我的工作区</LI>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
 
-					<LI class=i2 id=changeCity>选择内容</LI>
-				</UL>
-			</DIV>
-		</DIV>
-	</DIV>
-</DIV>
-
-	<%
-	
-} %>
+<%
+} 
+%>
 
 <div id="container">
 	<div
@@ -337,50 +322,38 @@ footerhtml+='<input type="image" alt="Cancel" src="<%=basePaths%>images/cancel_b
 		<div style="float:left; padding-top:4px; padding-left:20px;">
 			<div id="timeShow"></div>
 		</div>
-		<div style="float:left; padding-top:4px; padding-left:20px;">
-			今日限行尾号：<%=wh%></div>
+		<div style="float:left; padding-top:4px; padding-left:20px;">限行尾号：<%=wh%></div>
 		<div style="float:right; padding-top:4px; padding-right:10px;">
-			<a href="#"
-				onclick='Box("msg3",259,90,parahtml2(259,90),fontbutton(3,1));'>联系我们</a>
+			<a href="#" onclick='Box("msg3",259,90,parahtml2(259,90),fontbutton(3,1));'>联系我们</a>
 		</div>
 		<div style="float:right; padding-top:8px; padding-right:2px;">
 			<IMG src="<%=basePaths%>images/2.jpg" />
 		</div>
 		<div style="float:right; padding-top:4px;padding-right:10px;">
-			<a
-				onClick="window.external.AddFavorite(location.href,document.title)"
-				style="cursor:hand;">收藏本站</a>
+			<a onClick="window.external.AddFavorite(location.href,document.title)" style="cursor:hand;">收藏本站</a>
 		</div>
 		<div style="float:right; padding-top:7px; padding-right:2px;">
 			<IMG src="<%=basePaths%>images/1.jpg" />
 		</div>
 		<div style="float:right; padding-top:4px;padding-right:10px;">
-			<a href=#
-				onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.alioooo.comt');">设为主页</a>
+			<a href=# onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.alioooo.comt');">设为主页</a>
 		</div>
 		<div style="float:right; padding-top:7px; padding-right:2px;">
 			<IMG src="<%=basePaths%>images/3.jpg" />
 		</div>
 	</div>
 	<div id="header">
-
-
-		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
-			codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
+		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
 			width="1000" height="126">
 			<param name="movie" value="<%=basePaths%>images/top.swf" />
 			<param name="quality" value="high" />
 			<param name="wmode" value="opaque">
-			<embed src="<%=basePaths%>images/top.swf" quality="high"
-				pluginspage="http://www.macromedia.com/go/getflashplayer"
-				type="application/x-shockwave-flash" width="1000" height="126"
-				wmode="opaque"></embed>
+			<embed src="<%=basePaths%>images/top.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer"
+				type="application/x-shockwave-flash" width="1000" height="126" wmode="opaque"></embed>
 		</object>
-
 	</div>
 	<div class="clearfloat"></div>
-	<div id="nav"
-		style="background: url('<%=basePaths%>images/index/nav-bg.png') 0 -12px repeat-x;">
+	<div id="nav" style="background: url('<%=basePaths%>images/index/nav-bg.png') 0 -12px repeat-x;">
 		<div style="padding: 0 20px;">
 			<ul class="nav-ul">
 				<li><a href="<%=basePaths%>" class="current">首 页</a>
@@ -388,7 +361,7 @@ footerhtml+='<input type="image" alt="Cancel" src="<%=basePaths%>images/cancel_b
 				<li class="middle"><a href="http://www.xxzx.bj/"
 					target="_blank">信息查询</a>
 				</li>
-				<li class="middle"><a href="<%=basePaths%>news/news.jsp">新闻中心</a>
+				<li class="middle"><a href="<%=basePaths%>news/center">新闻中心</a>
 				</li>
 				<li class="middle"><a href="http://10.8.1.135/" target="_blank">文件交换</a>
 				</li>
@@ -419,8 +392,7 @@ footerhtml+='<input type="image" alt="Cancel" src="<%=basePaths%>images/cancel_b
 			</ul>
 			<div class="clearfloat"></div>
 		</div>
-		<div
-			style="background: url('<%=basePaths%>images/index/nav-bottom.png') 0 bottom repeat-x;height: 10px;">
+		<div style="background: url('<%=basePaths%>images/index/nav-bottom.png') 0 bottom repeat-x;height: 10px;">
 		</div>
 	</div>
 </div>

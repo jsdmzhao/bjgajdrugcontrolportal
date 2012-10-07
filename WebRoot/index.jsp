@@ -33,19 +33,20 @@
 <!-- 弹出窗 -->
 
 <script type="text/javascript">
-hs.graphicsDir = '../highslide/graphics/';
-hs.outlineType = 'rounded-white';
-hs.wrapperClassName = 'draggable-header';
+	hs.graphicsDir = '../highslide/graphics/';
+	hs.outlineType = 'rounded-white';
+	hs.wrapperClassName = 'draggable-header';
 </script>
 
-<style>
-body {
-	font-size: 14px;
-	background-image: url('<%=basePath%>images/bg11.jpg');
-	background-repeat: repeat;
-}
+<style type="text/css">
+	body {
+		font-size: 14px;
+		background-image: url('<%=basePath%>images/bg11.jpg');
+		background-repeat: repeat;
+	}
 </style>
-<script>
+
+<script type="text/javascript">
 var fgm = {
  $: function(id) {
   return typeof id === "object" ? id : document.getElementById(id);
@@ -142,13 +143,10 @@ fgm.on(window, "load", function() {
 				
 				if(GetObj("S_MenuMy_"+id_num+i)){
 					GetObj("S_MenuMy_"+id_num+i).className='';
-					
 				}
 				if(GetObj("S_ContMy_"+id_num+i)){
 					GetObj("S_ContMy_"+id_num+i).style.display='none';
-					
 				}
-				
 			}
 			if(GetObj("S_MenuMy_"+id_num+num)){
 				GetObj("S_MenuMy_"+id_num+num).className='selectd';
@@ -163,21 +161,14 @@ fgm.on(window, "load", function() {
 		function GetObj(objName){
 			
 			if(document.getElementById){
-				
 				return eval('document.getElementById("'+objName+'")');		
-				
 			}else {
-				
 				return eval('document.all.'+objName);		
-				
 			}
-			
 		}
 
 		$(document).ready(function(){
 			$("#featured > ul").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 5000, true);
-			
-		
 			$("#three-pass-two").click(function(){
 				
 				$("#three-pass-two").removeClass("three-pass");
@@ -198,7 +189,6 @@ fgm.on(window, "load", function() {
 				$("#three-pass-two").removeClass("three-pass-hover");
 				$("#three-pass-two").addClass("three-pass");
 				
-				
 				$(".pass-cont-two").hide();
 				$(".pass-cont-three").show();
 			});
@@ -206,59 +196,58 @@ fgm.on(window, "load", function() {
 	</script>
 	
 	<!-- HEAD.JSP BEGIN -->
-	<%-- <%@include file="head.jsp"--%> 
-	
+	<%--<%@include file="head.jsp"%>--%>
+
 	<script type="text/javascript">
 
 
-/*弹出内容*/
-function parahtml(url,width,height)
-{
-var htmls= '<iframe src="'+url+'" width='+width+' height='+height+' frameborder="0"></iframe>';
-return htmls;
-}
-function parahtml2(width,height)
-{
-var htmls='<div style="width='+width+' height='+height+'">联系人：黄园<Br />联系电话：<Br />邮箱地址：huangyuanaccp@163.com</div>';
-return htmls;
-}
-/*底部样式*/
-function fontbutton(index,mag)
-{
-	var footerhtml
-	if(mag==1)//选择按钮样式
-	{
-	 footerhtml='<input type="image" alt="Cancel" src="<%=basePath%>images/cancel_button.gif" class="btn" id="msg'+index+'cancel" />';	
-	
-	}else
-	{
-		footerhtml='<input type="image" alt="Cancel" src="<%=basePath%>images/send_button.gif" class="btn" onclick=alert("Sumbited!"); />';
-		footerhtml+='<input type="image" alt="Cancel" src="<%=basePath%>images/cancel_button.gif" class="btn" id="msg'+ index + 'cancel" />';
-	}
-		return footerhtml;
-
-	}
+		/*弹出内容*/
+		function parahtml(url,width,height)
+		{
+		var htmls= '<iframe src="'+url+'" width='+width+' height='+height+' frameborder="0"></iframe>';
+		return htmls;
+		}
+		function parahtml2(width,height)
+		{
+		var htmls='<div style="width='+width+' height='+height+'">联系人：黄园<Br />联系电话：<Br />邮箱地址：huangyuanaccp@163.com</div>';
+		return htmls;
+		}
+		/*底部样式*/
+		function fontbutton(index,mag){
+			var footerhtml
+			if(mag==1)//选择按钮样式
+			{
+			 footerhtml='<input type="image" alt="Cancel" src="<%=basePath%>images/cancel_button.gif" class="btn" id="msg'+index+'cancel" />';	
+			
+			}else
+			{
+				footerhtml='<input type="image" alt="Cancel" src="<%=basePath%>images/send_button.gif" class="btn" onclick=alert("Sumbited!"); />';
+				footerhtml+='<input type="image" alt="Cancel" src="<%=basePath%>images/cancel_button.gif" class="btn" id="msg'+ index + 'cancel" />';
+			}
+				return footerhtml;
+		
+			}
 
 </script>
-<%
-	GregorianCalendar d = new GregorianCalendar();
-	int week = d.get(Calendar.DAY_OF_WEEK);
-	String wh = "";
-	if (week == 1) {
-		wh = "3和8";
-	} else if (week == 2) {
-		wh = "4和9";
-	} else if (week == 3) {
-		wh = "5和0";
-	} else if (week == 4) {
-		wh = "1和6";
-	} else if (week == 5) {
-		wh = "2和7";
-	} else {
-		wh = "无停驶尾号";
-	}
-%>
-<script language="javascript">
+	<%
+		GregorianCalendar d = new GregorianCalendar();
+		int week = d.get(Calendar.DAY_OF_WEEK);
+		String wh = "";
+		if (week == 1) {
+			wh = "3和8";
+		} else if (week == 2) {
+			wh = "4和9";
+		} else if (week == 3) {
+			wh = "5和0";
+		} else if (week == 4) {
+			wh = "1和6";
+		} else if (week == 5) {
+			wh = "2和7";
+		} else {
+			wh = "无停驶尾号";
+		}
+	%>
+	<script language="javascript">
 	jQuery(function() {
 		$("#changeCity").click(function(a) {
 			$("#allCity").slideDown(300);
@@ -322,128 +311,129 @@ function fontbutton(index,mag)
 
 	}
 </script>
-<iframe  style="display: none;" src="<%=basePath%>login.jsp?temp_r=zl"></iframe>
+	<iframe style="display: none;" src="<%=basePath%>login.jsp?temp_r=zl"></iframe>
 
 
-<DIV class=selCity id=allCity style="display:none">
-	<DIV class=area>
-		<div class=bodydiv>
-			<div class=headdiv>
-				<div id="div1" class="headdivcenter">
+	<DIV class=selCity id=allCity style="display:none">
+		<DIV class=area>
+			<div class=bodydiv>
+				<div class=headdiv>
+					<div id="div1" class="headdivcenter">
 
 
-					<div class="topdiv">
-						<div class="imgdiv">
-							<img class="imgdiv" src="<%=basePath%>images/1.png  " />
+						<div class="topdiv">
+							<div class="imgdiv">
+								<img class="imgdiv" src="<%=basePath%>images/1.png  " />
+							</div>
+							<div class="font1" align="center">
+								<a href="#"
+									onclick='Box("msg1",900,600,parahtml("<%=basePath%>desktop/index.jsp",900,600),fontbutton(1,1))'>我的桌面</a>
+							</div>
 						</div>
-						<div class="font1" align="center">
-							<a href="#"
-								onclick='Box("msg1",900,600,parahtml("<%=basePath%>desktop/index.jsp",900,600),fontbutton(1,1))'>我的桌面</a>
+
+						<div class="topdiv">
+							<div class="imgdiv">
+								<img class="imgdiv" src="<%=basePath%>images/9.png  " />
+							</div>
+							<div class="font1" align="center">
+								<a href="<%=basePath%>temp/news.jsp"
+									onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">新闻管理</a>
+							</div>
 						</div>
+
+
+						<div class="topdiv">
+							<div class="imgdiv">
+								<img class="imgdiv" src="<%=basePath%>images/3.png  " />
+							</div>
+							<div class="font1" align="center">
+								<a href="<%=basePath%>temp/car.jsp"
+									onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">车辆管理</a>
+							</div>
+						</div>
+
+						<div class="topdiv">
+							<div class="imgdiv">
+								<img class="imgdiv" src="<%=basePath%>images/8.png  " />
+							</div>
+							<div class="font1" align="center">
+								<a href="<%=basePath%>temp/email.jsp"
+									onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">内部邮件</a>
+							</div>
+						</div>
+
+						<div class="topdiv">
+							<div class="imgdiv">
+								<img class="imgdiv" src="<%=basePath%>images/2.png  " />
+							</div>
+							<div class="font1" align="center">
+								<a href="<%=basePath%>temp/duty.jsp"
+									onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">考勤情况</a>
+							</div>
+						</div>
+
+
+						<div class="topdiv">
+							<div class="imgdiv">
+								<img class="imgdiv" src="<%=basePath%>images/4.png  " />
+							</div>
+							<div class="font1" align="center">
+								<a href="<%=basePath%>temp/blog.jsp"
+									onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">工作日志</a>
+							</div>
+						</div>
+						<!-- 
+						<div class="topdiv">
+							<div class="imgdiv"><img class="imgdiv" src="<!%=basePath%>images/5.png"/></div >
+							<div class="font1" align="center"><a href="#" onclick='Box("msg5",900,600,parahtml(900,600),fontbutton(5,1));'>工作计划</a></div>
+						</div>
+					 	-->
+						<div class="topdiv">
+							<div class="imgdiv">
+								<img class="imgdiv" src="<%=basePath%>images/6.png  " />
+							</div>
+							<div class="font1" align="center">
+								<a href="<%=basePath%>temp/message.jsp"
+									onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">内部消息</a>
+							</div>
+						</div>
+
+
+
+						<div class="topdiv">
+							<div class="imgdiv">
+								<img class="imgdiv" src="<%=basePath%>images/7.png  " />
+							</div>
+							<div class="font1" align="center">
+								<a href="<%=basePath%>temp/mobile.jsp"
+									onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">手机短息</a>
+							</div>
+						</div>
+
 					</div>
+				</div>
+			</div>
 
-					<div class="topdiv">
-						<div class="imgdiv">
-							<img class="imgdiv" src="<%=basePath%>images/9.png  " />
-						</div>
-						<div class="font1" align="center">
-							<a href="<%=basePath%>temp/news.jsp"
-								onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">新闻管理</a>
-						</div>
-					</div>
-
-
-					<div class="topdiv">
-						<div class="imgdiv">
-							<img class="imgdiv" src="<%=basePath%>images/3.png  " />
-						</div>
-						<div class="font1" align="center">
-							<a href="<%=basePath%>temp/car.jsp"
-								onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">车辆管理</a>
-						</div>
-					</div>
-
-					<div class="topdiv">
-						<div class="imgdiv">
-							<img class="imgdiv" src="<%=basePath%>images/8.png  " />
-						</div>
-						<div class="font1" align="center">
-							<a href="<%=basePath%>temp/email.jsp"
-								onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">内部邮件</a>
-						</div>
-					</div>
-
-					<div class="topdiv">
-						<div class="imgdiv">
-							<img class="imgdiv" src="<%=basePath%>images/2.png  " />
-						</div>
-						<div class="font1" align="center">
-							<a href="<%=basePath%>temp/duty.jsp"
-								onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">考勤情况</a>
-						</div>
-					</div>
-
-
-					<div class="topdiv">
-						<div class="imgdiv">
-							<img class="imgdiv" src="<%=basePath%>images/4.png  " />
-						</div>
-						<div class="font1" align="center">
-							<a href="<%=basePath%>temp/blog.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">工作日志</a>
-						</div>
-					</div>
-					<!-- 
-					<div class="topdiv">
-					<div class="imgdiv"  >
-					<img  class="imgdiv"   src="<!%=basePath%>images/5.png  "/></div >
-					<div   class="font1"  align="center"><a href="#" onclick='Box("msg5",900,600,parahtml(900,600),fontbutton(5,1));'>工作计划</a></div>
-					</div>
-					 -->
-
-					<div class="topdiv">
-						<div class="imgdiv">
-							<img class="imgdiv" src="<%=basePath%>images/6.png  " />
-						</div>
-						<div class="font1" align="center">
-							<a href="<%=basePath%>temp/message.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">内部消息</a>
-						</div>
-					</div>
-
-
-
-					<div class="topdiv">
-						<div class="imgdiv">
-							<img class="imgdiv" src="<%=basePath%>images/7.png  " />
-						</div>
-						<div class="font1" align="center">
-							<a href="<%=basePath%>temp/mobile.jsp" onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">手机短息</a>
-						</div>
-					</div>
-
-
+			<div class=none>
+				<A id=foldin href="javascript:;">收起</A>
+			</div>
+		</div>
+	</div>
+	<div class=header>
+		<div class=area>
+			<div class=r>
+				<div class="topCtiy clear">
+					<UL>
+						<LI class=i2 id=changeCity>我的办公区</LI>
+					</UL>
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<DIV class=none>
-			<A id=foldin href="javascript:;">收起</A>
-		</DIV>
-	</DIV>
-</DIV>
-<DIV class=header>
-	<DIV class=area>
-		<DIV class=r>
-			<DIV class="topCtiy clear">
-				<UL>
-					<LI class=i2 id=changeCity>我的办公区</LI>
-				</UL>
-			</DIV>
-		</DIV>
-	</DIV>
-</DIV>
-<div id="container" style="margin-top: 10px">
-	<div
-		style="width:1001px; height:25px; background-image:url(<%=basePath%>images/headbg.jpg)">
+
+	<div id="container" style="margin-top: 10px">
+	<div style="width:1001px; height:25px; background-image:url(<%=basePath%>images/headbg.jpg)">
 		<div style="float:left; padding-top:4px; padding-left:20px;">
 			<div id="timeShow"></div>
 		</div>
@@ -471,7 +461,6 @@ function fontbutton(index,mag)
 		</div>
 	</div>
 	<div id="header">
-
 
 		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
 			codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"

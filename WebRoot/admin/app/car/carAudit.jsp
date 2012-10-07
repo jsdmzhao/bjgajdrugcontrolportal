@@ -111,16 +111,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  });
                   break;
               case "shtg":
-                  var selected = grid.getSelected();
-                  if (!selected) { LG.tip('请选择行!'); return }
+				  var selected = grid.getSelected();
+            	  
+                  if (!selected) { 
+                	  LG.tip('请选择行!'); return; 
+                  } else {
+					  if(selected.c_shjg == '不同意' || selected.c_shjg == '同意' ){
+						  LG.showSuccess('该条车辆申请记录已经被审核，不能在进行审核！');
+	            		  returned;
+	            	  }
+                  }
                   jQuery.ligerDialog.confirm('确定通过吗?', function (confirm) {
                       if (confirm)
                     	  f_operator('1');
                   });
                   break;
               case "shbtg":
-            	  var selected = grid.getSelected();
-                  if (!selected) { LG.tip('请选择行!'); return }
+				  var selected = grid.getSelected();
+            	  
+                  if (!selected) { 
+                	  LG.tip('请选择行!'); return; 
+                  } else {
+					  if(selected.c_shjg == '不同意' || selected.c_shjg == '同意' ){
+						  LG.showSuccess('该条车辆申请记录已经被审核，不能在进行审核！');
+	            		  returned;
+	            	  }
+                  }
                   jQuery.ligerDialog.confirm('确定不通过吗?', function (confirm) {
                       if (confirm)
                           f_operator('0');
