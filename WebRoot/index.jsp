@@ -879,8 +879,7 @@ fgm.on(window, "load", function() {
 						<div style="float: left;padding-left: 10px;">
 							<img src="<%=basePath%>images/index/index2_03.png" />
 						</div>
-						<div
-							style="float: right;width: 690px;height:85px;margin-right:10px;">
+						<div style="float: right;width: 690px;height:85px;margin-right:10px;">
 
 							<ul class="index-ul main-top-ul">
 								<!-- 跳转 -->
@@ -961,7 +960,7 @@ fgm.on(window, "load", function() {
 								<!-- First Content -->
 								<div id="fragment-<s:property value='#status.count'/>" class="ui-tabs-panel" style="">
 									<img src="<%=basePath%><s:property value='#news.c_tpljdz'/>" alt="" width="626" height="228" />
-									<div class="info">
+									<div class="info" style="width: 99%">
 										<h3>
 											<a href="<%=basePath%>news/detail?news.n_xh=<s:property value="#news.n_xh"/>">
 												<s:property value="#news.c_bt"/>
@@ -972,47 +971,6 @@ fgm.on(window, "load", function() {
 									</div>
 								</div>
 							</s:iterator>
-							<%--
-							<!-- Second Content -->
-							<div id="fragment-2" class="ui-tabs-panel ui-tabs-hide" style="">
-								<img src="<%=basePath%>images/hdm/2.jpg" alt="" width="626"
-									height="228" />
-								<div class="info">
-									<h3>
-										<a href="http://www.duice.net/html/list_620.html">张兵副局长召集禁毒总队党委班子成员，研究了近期禁毒工作</a>
-										</h2>
-										<a href="http://www.duice.net/html/list_620.html">阅读全文</a>
-										</p>
-								</div>
-							</div>
-
-							<-- Third Content -->
-							<div id="fragment-3" class="ui-tabs-panel ui-tabs-hide" style="">
-								<img src="<%=basePath%>images/hdm/3.jpg" alt="" width="626"
-									height="228" />
-								<div class="info">
-									<h3>
-										<a href="http://www.duice.net/html/list_620.html">张兵副局长召集禁毒总队党委班子成员，研究了近期禁毒工作</a>
-										</h2>
-										<a href="http://www.duice.net/html/list_620.html">阅读全文</a>
-										</p>
-								</div>
-							</div>
-
-							<!-- Fourth Content -->
-							<div id="fragment-4" class="ui-tabs-panel ui-tabs-hide" style="">
-								<img src="<%=basePath%>images/hdm/4.jpg" alt="" width="626"
-									height="228" />
-								<div class="info">
-									<h3>
-										<a href="http://www.duice.net/html/list_620.html">张兵副局长召集禁毒总队党委班子成员，研究了近期禁毒工作</a>
-										</h2>
-										<p>
-											<a href="http://www.duice.net/html/list_620.html">阅读全文</a>
-										</p>
-								</div>
-							</div>
-							 --%>
 
 						</div>
 					</div>
