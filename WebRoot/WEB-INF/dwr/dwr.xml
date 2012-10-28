@@ -109,6 +109,13 @@
 			<param name="beanName" value="zmcdSvc"></param>
 		</create>
 	
+	<create javascript="HyjlSvc" creator="spring">
+			<param name="beanName" value="hyjlSvc"></param>
+		</create>
+		
+		<create javascript="ClxxSvc" creator="spring">
+			<param name="beanName" value="clxxSvc"></param>
+		</create>
 		
 
 		

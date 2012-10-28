@@ -1,4 +1,5 @@
-﻿<%@page import="com.unis.app.system.service.SysRoleSvc"%>
+﻿<%@page import="com.unis.app.userinfo.service.UserInfoSvc"%>
+<%@page import="com.unis.app.system.service.SysRoleSvc"%>
 <%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
 <%@page import="org.springframework.context.ApplicationContext"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
@@ -16,6 +17,9 @@
 		userId="";
 		
 	}
+	
+	ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());
+	UserInfoSvc userInfoSvc= (UserInfoSvc) ctx.getBean("userInfoSvc");
 	
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -181,16 +185,24 @@
 
 
 <div id='external-events'>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' value="保存值班信息" onclick="abc();">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' value="保存值班信息" onclick="abc();"><br/>
+<input type='checkbox' id='drop-remove' checked="checked"/> <label for='drop-remove'>不允许人员重复</label>
 <h4>值班人员</h4>
-<div class='external-event' id='1'>黄园</div>
-<div class='external-event' id='2'>马勤彰</div>
-<div class='external-event' id='3'>郑龙</div>
-<div class='external-event' id='4'>袁超</div>
-<div class='external-event' id='5'>喻其昌</div>
-<p>
-<input type='checkbox' id='drop-remove' /> <label for='drop-remove'>不允许人员重复</label>
-</p>
+<%
+List<Map> list=userInfoSvc.chooseWithDep();
+for(int i=0;i<list.size();i++){
+	
+	%>
+	<div class='external-event' id='<%=list.get(i).get("id") %>'><%=list.get(i).get("text") %></div>
+	
+	<%
+}
+
+
+
+%>
+
+
 </div>
 
 <div id='calendar'></div>
@@ -208,9 +220,6 @@ function abc(){
 	alert(t[0].start);
 	
 	alert(t[0].end);
-	
-	
-	
 	
 }
 
