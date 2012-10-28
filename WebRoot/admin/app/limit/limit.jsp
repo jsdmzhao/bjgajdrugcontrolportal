@@ -236,7 +236,7 @@ Date.prototype.format = function(format)
 
 
 <div id='external-events'>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' value="保存限行信息" onclick="abc();"><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' value="保存限行信息" onclick="save();"><br/>
 <input type='checkbox' id='drop-remove'/> <label for='drop-remove'>不允许尾号重复</label>
 <h4>尾号</h4>
 	<div class='external-event' id='0'>0</div>
@@ -262,12 +262,12 @@ Date.prototype.format = function(format)
 <div id='calendar'></div>
 
 <script>
-function abc(){
+function save(){
 	var arr=new Array();
 	var t=$('#calendar').fullCalendar( 'clientEvents' );
 	
-	arr[0]={dXxrqBegin:($('#calendar').fullCalendar( 'getView' ).start).format('yyyy-MM-dd')+"",
-	dXxrqEnd:($('#calendar').fullCalendar( 'getView' ).end).format('yyyy-MM-dd')+""};
+	arr[0]={dXxrqBegin:($('#calendar').fullCalendar( 'getView' ).visStart).format('yyyy-MM-dd')+"",
+	dXxrqEnd:($('#calendar').fullCalendar( 'getView' ).visEnd).format('yyyy-MM-dd')+""};
 	
 	for(var i=0;i<t.length;i++){
 		var obj={};
