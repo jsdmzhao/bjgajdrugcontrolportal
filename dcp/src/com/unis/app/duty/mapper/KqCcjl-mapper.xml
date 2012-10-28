@@ -29,7 +29,7 @@
 					to_char(base.D_JSSJ,'YYYY-MM-DD')  D_JSSJ,
 					to_char(base.D_DJ,'YYYY-MM-DD')  D_DJ,
 					base.C_ZT,
-					case base.C_ZT when '1' then '有效'  else '无效' end as C_ZT_NAME, 
+					case base.C_ZT when '1' then '请假'  else '销假' end as C_ZT_NAME, 
 					FUN_GET_YHMC(USER_ID) USER_NAME
 				 from B_KQ_CCJL base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
@@ -63,7 +63,7 @@
 					to_char(base.D_JSSJ,'YYYY-MM-DD')  D_JSSJ,
 					to_char(base.D_DJ,'YYYY-MM-DD')  D_DJ,
 					base.C_ZT,
-					case base.C_ZT when '1' then '有效'  else '无效' end as C_ZT_NAME, 
+					case base.C_ZT when '1' then '请假'  else '销假' end as C_ZT_NAME, 
 					FUN_GET_YHMC(USER_ID) USER_NAME
 				 from B_KQ_CCJL base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
