@@ -26,7 +26,7 @@
 					base.C_CJRY,
 					base.C_BZ,
 					base.C_ZT,
-					case base.C_ZT when '1' then '有效'  else '无效' end as C_ZT_NAME, 
+					case base.C_ZT when '1' then '有效'  else '无效' end as C_ZT_NAME
 				 from B_HYJL base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
@@ -55,7 +55,7 @@
 					base.C_CJRY,
 					base.C_BZ,
 					base.C_ZT,
-					case base.C_ZT when '1' then '有效'  else '无效' end as C_ZT_NAME, 
+					case base.C_ZT when '1' then '有效'  else '无效' end as C_ZT_NAME
 				 from B_HYJL base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>

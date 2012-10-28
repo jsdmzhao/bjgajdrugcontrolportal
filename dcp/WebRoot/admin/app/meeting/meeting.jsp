@@ -45,7 +45,7 @@
 <script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
 <script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
 <script type='text/javascript'
-	src='<%=basePath%>dwr/interface/KqCcjlSvc.js'></script>
+	src='<%=basePath%>dwr/interface/HyjlSvc.js'></script>
 <script type='text/javascript'
 	src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>	
 
@@ -87,13 +87,10 @@
     
 	 var config ={"Grid":{
          columns: [
-                   { display: "人员", name: "userName", width: 180, type: "text", align: "left" },
-                   { display: "请假类别", name: "cDd", width: 180, type: "text", align: "left" },
-                    { display: "原因", name: "cYy", width: 180, type: "text", align: "left" },
-                   { display: "开始时间", name: "dKssj", width: 180, type: "text", align: "left" },
-                   { display: "结束时间", name: "dJssj", width: 180, type: "text", align: "left" },
-                   { display: "登记时间", name: "dDj", width: 180, type: "text", align: "left" },
-                   { display: "状态", name: "cZtName", width: 180, type: "text", align: "left" }
+                   { display: "会议主题", name: "cHyzt", width: 180, type: "text", align: "left" },
+                   { display: "会议地点", name: "cHydd", width: 180, type: "text", align: "left" },
+                    { display: "日期", name: "dRq", width: 180, type: "text", align: "left" },
+                   { display: "人员", name: "cCjry", width: 180, type: "text", align: "left" },
          ]      
 },"Search":null};
 
@@ -109,7 +106,7 @@
  	$("#formsearch").ligerForm( {
  		fields : [ {
  			display : "日期范围",
- 			name : "dDjBeg",
+ 			name : "dRqBeg",
  			newline : false,
  			labelWidth : 80,
  			width : 100,
@@ -118,7 +115,7 @@
  			cssClass : "field"
  		}, {
  			display : "至",
- 			name : "dDjEnd",
+ 			name : "dRqEnd",
  			newline : false,
  			labelWidth : 30,
  			width : 100,
@@ -126,22 +123,6 @@
  			type : "date",
  			cssClass : "field"
  		}
- 		<%if("".equals(userId)){%>
- 		, 
- 		{
- 			display : "人员",
- 			name : "userName",
- 			newline : false,
- 			labelWidth : 60,
- 			width : 100,
- 			space : 30,
- 			type : "select",
- 			options: {
- 			valueFieldID: "userId",
- 			data : userList},
- 			cssClass : "field"
- 		}  
- 		<%}%>
  		],
  		toJSON : JSON2.stringify
  	});
@@ -182,7 +163,7 @@
     		<%if(!"".equals(userId)){%>
     			obj.userId='<%=userId%>';
     		<%}%>
-    		KqCcjlSvc.queryByPage(obj,oPage,function(rdata){
+    		HyjlSvc.queryByPage(obj,oPage,function(rdata){
     			if(rdata == null){
     				  grid.setOptions({ data:  { Total:0, Rows:""  } });
     			}else{
@@ -198,7 +179,7 @@
           switch (item.id) {
               case "add":
             	//  f_dialog("add","新增上下班信息");
-            	   dialog = $.ligerDialog.open({ title :'新增信息',url: '<%=basePath%>admin/app/duty/kqccjlDetail.jsp?a=1<%=str%>', 
+            	   dialog = $.ligerDialog.open({ title :'新增信息',url: '<%=basePath%>admin/app/meeting/meetingDetail.jsp?a=1<%=str%>', 
                        height: 350,width: 720,showMax: true, showToggle: true,  showMin: true
 				  });
             	//  top.f_openDialog(null,'新增上下班信息','<%=basePath%>admin/app/user/userDetail.jsp' );
@@ -206,13 +187,13 @@
             //  case "view":
             //      var selected = grid.getSelected();
             //      if (!selected) { LG.tip('请选择行!'); return }
-            //      top.f_addTab(null, '查看上下班信息', '<%=basePath%>admin/app/duty/kqccjlDetail.jsp?IsView=1&ID=' + selected.UserID+'<%=str%>');
+            //      top.f_addTab(null, '查看上下班信息', '<%=basePath%>admin/app/meeting/meetingDetail.jsp?IsView=1&ID=' + selected.UserID+'<%=str%>');
             //      break;
               case "modify":
             	  
             	  var selected = grid.getSelected();
                         if (!selected) { LG.tip('请选择行!'); return }
-                       dialog = $.ligerDialog.open({ title :'修改信息',url: '<%=basePath%>admin/app/duty/kqccjlDetail.jsp?nXh=' + selected.nXh+'<%=str%>', 
+                       dialog = $.ligerDialog.open({ title :'修改信息',url: '<%=basePath%>admin/app/meeting/meetingDetail.jsp?nXh=' + selected.nXh+'<%=str%>', 
                        height: 350,width: 720,showMax: true, showToggle: true,  showMin: true
 				  });
                        break;
@@ -231,7 +212,7 @@
 		function f_remove() {
 			var selected = grid.getSelected();
 			if (selected) {
-				KqCcjlSvc.remove(selected, function(rdata) {
+				HyjlSvc.remove(selected, function(rdata) {
 					if (rdata) {
 						LG.showSuccess('删除成功');
 						loadGrid();

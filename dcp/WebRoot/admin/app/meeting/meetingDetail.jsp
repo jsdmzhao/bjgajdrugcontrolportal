@@ -40,7 +40,7 @@ if(userId==null){
     
 	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
-  	<script type='text/javascript' src='<%=basePath%>dwr/interface/KqCcjlSvc.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/interface/HyjlSvc.js'></script>
   	
   		<script type='text/javascript' src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>
 
@@ -53,16 +53,14 @@ if(userId==null){
         var config = {"Form":{ 
          fields : [
                    {name:"nXh",type:"hidden",value:'<%=nXh %>'},
-                   <%if("".equals(userId)){%>
-                   {display:"人员",name:"userName",newline:false,labelWidth:100,width:200,space:30,type:"smarttext"},
-                   <%}%>
-                   {name:"userId",value:"<%=userId%>",type:"hidden"},  
-                   {display:"请假类别",name:"cDd",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-                   {display:"原因",name:"cYy",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
-                   {display:"开始时间",name:"dKssj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
-                   {display:"结束时间",name:"dJssj",newline:false,labelWidth:100,width:200,space:30,type:"date"},
-                   {display:"登记时间",name:"dDj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
+                   {display:"会议主题",name:"cHyzt",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+                   {display:"会议地点",name:"cHydd",newline:false,labelWidth:100,width:200,space:30,type:"text"},
+                   {display:"日期",name:"dRq",newline:true,labelWidth:100,width:200,space:30,type:"date"},
                    {display:"状态",name:"cZtName",newline:false,labelWidth:100,width:200,space:30,type:"smarttext"},
+                   {display:"人员",name:"cCjry",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
+                   {display:"会议内容",name:"cHynr",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
+                   {display:"备注",name:"cBz",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
+                
                    {name:"cZt",type:"hidden"}
                    ]
  }};
@@ -112,7 +110,7 @@ if(userId==null){
         }
         else { 
              var obj={nXh:'<%=nXh%>'};
-        	KqCcjlSvc.queryAll(obj, function (rdata)
+        	HyjlSvc.queryAll(obj, function (rdata)
                     {
         		    if(rdata != null){
         		    	var data=rdata[0];
@@ -169,12 +167,9 @@ if(userId==null){
 
         	var formMap = DWRUtil.getValues("mform"); 
         	
-        	 <%if("".equals(userId)){%>
-        	formMap["userId"] = ry.getValue();
-        	   <%}%>
         	formMap["cZt"] = zt.getValue();
 			if(isAddNew){
-        	KqCcjlSvc.save(formMap,function (rdata){
+        	HyjlSvc.save(formMap,function (rdata){
         		if (rdata) {
 					LG.showSuccess('保存成功', function() {
 						  f_cancel();
@@ -185,7 +180,7 @@ if(userId==null){
 				}
 			});
         	}else{
-        	   	KqCcjlSvc.update(formMap,function (rdata){
+        	   	HyjlSvc.update(formMap,function (rdata){
         	   		if (rdata) {
     					LG.showSuccess('修改成功', function() {
     						  f_cancel();
@@ -230,8 +225,8 @@ if(userId==null){
         
        zt= $("#cZtName").ligerComboBox({  
             data: [
-                { text: '请假', id: '1' },
-                { text: '销假', id: '0' }
+                { text: '有效', id: '1' },
+                { text: '无效', id: '0' }
             ]
         }); 
     </script>
