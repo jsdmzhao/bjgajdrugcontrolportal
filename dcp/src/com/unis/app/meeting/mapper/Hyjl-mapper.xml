@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="HyjlMapper">
+	
+	<resultMap id="Result"  type="java.util.Map">
+	     	<result property="nXh" column="N_XH" jdbcType="DECIMAL"/>
+			<result property="userId" column="USER_ID" jdbcType="DECIMAL"/>
+			<result property="cDd" column="C_DD" jdbcType="VARCHAR"/>
+			<result property="cYy" column="C_YY" jdbcType="VARCHAR"/>
+			<result property="dKssj" column="D_KSSJ" jdbcType="VARCHAR"/>
+			<result property="dJssj" column="D_JSSJ" jdbcType="VARCHAR"/>
+			<result property="dDj" column="D_DJ" jdbcType="VARCHAR"/>
+			<result property="cZt" column="C_ZT" jdbcType="VARCHAR"/>
+			<result property="cZtName" column="C_ZT_NAME" jdbcType="VARCHAR"/>
+			
+			<result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
+		
+	</resultMap>
+	 
+
+	<select id="queryAllInfo" resultMap="Result"  parameterType="java.util.Map" >
+				 select 
+					base.N_XH,
+					base.USER_ID,
+					base.C_DD,
+					base.C_YY,
+					to_char(base.D_KSSJ,'YYYY-MM-DD')  D_KSSJ,
+					to_char(base.D_JSSJ,'YYYY-MM-DD')  D_JSSJ,
+					to_char(base.D_DJ,'YYYY-MM-DD')  D_DJ,
+					base.C_ZT,
+					case base.C_ZT when '1' then '请假'  else '销假' end as C_ZT_NAME, 
+					FUN_GET_YHMC(USER_ID) USER_NAME
+				 from B_KQ_CCJL base 
+		 <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
+			<if test="cDd != null and cDd !='' ">  and C_DD = #{cDd}</if>
+			<if test="cYy != null and cYy !='' ">  and C_YY = #{cYy}</if>
+			
+			<if test="dKssjBeg != null and dKssjBeg !='' ">  and D_KSSJ &gt;= to_date(#{dKssjBeg},'YYYY-MM-DD')</if>
+			<if test="dKssjEnd != null and dKssjEnd !='' "> and D_KSSJ &lt;= to_date(#{dKssjEnd},'YYYY-MM-DD')</if>
+			
+			<if test="dJssjBeg != null and dJssjBeg !='' ">  and D_JSSJ &gt;= to_date(#{dJssjBeg},'YYYY-MM-DD')</if>
+			<if test="dJssjEnd != null and dJssjEnd !='' "> and D_JSSJ &lt;= to_date(#{dJssjEnd},'YYYY-MM-DD')</if>
+			
+			<if test="dDjBeg != null and dDjBeg !='' ">  and D_DJ &gt;= to_date(#{dDjBeg},'YYYY-MM-DD')</if>
+			<if test="dDjEnd != null and dDjEnd !='' "> and D_DJ &lt;= to_date(#{dDjEnd},'YYYY-MM-DD')</if>
+			
+			<if test="cZt != null and cZt !='' ">  and C_ZT = #{cZt}</if>
+		</trim>
+		ORDER BY base.N_XH  DESC
+	</select>
+
+	<select id="queryInfo" resultMap="Result" parameterType="java.util.Map" >
+		<include refid="pagination.paginationStart"></include>
+							 select 
+					base.N_XH,
+					base.USER_ID,
+					base.C_DD,
+					base.C_YY,
+					to_char(base.D_KSSJ,'YYYY-MM-DD')  D_KSSJ,
+					to_char(base.D_JSSJ,'YYYY-MM-DD')  D_JSSJ,
+					to_char(base.D_DJ,'YYYY-MM-DD')  D_DJ,
+					base.C_ZT,
+					case base.C_ZT when '1' then '请假'  else '销假' end as C_ZT_NAME, 
+					FUN_GET_YHMC(USER_ID) USER_NAME
+				 from B_KQ_CCJL base 
+		 <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
+			<if test="cDd != null and cDd !='' ">  and C_DD = #{cDd}</if>
+			<if test="cYy != null and cYy !='' ">  and C_YY = #{cYy}</if>
+			
+			<if test="dKssjBeg != null and dKssjBeg !='' ">  and D_KSSJ &gt;= to_date(#{dKssjBeg},'YYYY-MM-DD')</if>
+			<if test="dKssjEnd != null and dKssjEnd !='' "> and D_KSSJ &lt;= to_date(#{dKssjEnd},'YYYY-MM-DD')</if>
+			
+			<if test="dJssjBeg != null and dJssjBeg !='' ">  and D_JSSJ &gt;= to_date(#{dJssjBeg},'YYYY-MM-DD')</if>
+			<if test="dJssjEnd != null and dJssjEnd !='' "> and D_JSSJ &lt;= to_date(#{dJssjEnd},'YYYY-MM-DD')</if>
+			
+			<if test="dDjBeg != null and dDjBeg !='' ">  and D_DJ &gt;= to_date(#{dDjBeg},'YYYY-MM-DD')</if>
+			<if test="dDjEnd != null and dDjEnd !='' "> and D_DJ &lt;= to_date(#{dDjEnd},'YYYY-MM-DD')</if>
+			
+			<if test="cZt != null and cZt !='' ">  and C_ZT = #{cZt}</if>
+		</trim>
+		ORDER BY base.N_XH  DESC
+		<include refid="pagination.paginationLast"></include>
+	</select>
+
+
+	<select id="queryCountInfo" resultType="integer" parameterType="java.util.Map" >
+				select count(base.N_XH) from B_KQ_CCJL base
+		  <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
+			<if test="cDd != null and cDd !='' ">  and C_DD = #{cDd}</if>
+			<if test="cYy != null and cYy !='' ">  and C_YY = #{cYy}</if>
+			
+			<if test="dKssjBeg != null and dKssjBeg !='' ">  and D_KSSJ &gt;= to_date(#{dKssjBeg},'YYYY-MM-DD')</if>
+			<if test="dKssjEnd != null and dKssjEnd !='' "> and D_KSSJ &lt;= to_date(#{dKssjEnd},'YYYY-MM-DD')</if>
+			
+			<if test="dJssjBeg != null and dJssjBeg !='' ">  and D_JSSJ &gt;= to_date(#{dJssjBeg},'YYYY-MM-DD')</if>
+			<if test="dJssjEnd != null and dJssjEnd !='' "> and D_JSSJ &lt;= to_date(#{dJssjEnd},'YYYY-MM-DD')</if>
+			
+			<if test="dDjBeg != null and dDjBeg !='' ">  and D_DJ &gt;= to_date(#{dDjBeg},'YYYY-MM-DD')</if>
+			<if test="dDjEnd != null and dDjEnd !='' "> and D_DJ &lt;= to_date(#{dDjEnd},'YYYY-MM-DD')</if>
+			
+			<if test="cZt != null and cZt !='' ">  and C_ZT = #{cZt}</if>
+		</trim>
+		ORDER BY base.N_XH  DESC
+	</select> 
+	
+	
+
+	<insert id="saveInfo" parameterType="java.util.Map" >
+			INSERT INTO B_KQ_CCJL(
+				 N_XH
+			<if test="userId != null and userId !='' ">  , USER_ID</if>
+			<if test="cDd != null and cDd !='' ">  ,  C_DD</if>
+			<if test="cYy != null and cYy !='' ">  ,  C_YY</if>
+			<if test="dKssj != null and dKssj !='' ">  ,  D_KSSJ</if>
+			<if test="dJssj != null and dJssj !='' ">  ,  D_JSSJ</if>
+			<if test="dDj != null and dDj !='' ">  ,  D_DJ</if>
+			<if test="cZt != null and cZt !='' ">  ,  C_ZT</if>
+			)VALUES(
+				SEQ_KQ_CCJL.NEXTVAL 
+				<!-- #{n_xh#-->
+			<if test="userId != null and userId !='' ">  ,  #{userId}</if>
+			<if test="cDd != null and cDd !='' ">  ,  #{cDd}</if>
+			<if test="cYy != null and cYy !='' ">  ,  #{cYy}</if>
+			<if test="dKssj != null and dKssj !='' ">  ,  to_date(#{dKssj},'YYYY-MM-DD')</if>
+			<if test="dJssj != null and dJssj !='' ">  ,  to_date(#{dJssj},'YYYY-MM-DD')</if>
+			<if test="dDj != null and dDj !='' ">  ,  to_date(#{dDj},'YYYY-MM-DD')</if>
+			<if test="cZt != null and cZt !='' ">  ,  #{cZt}</if>
+			)
+		<selectKey resultType="string" keyProperty="id" >
+			 <!--SELECT #{nXh# AS ID FROM dual  -->
+			 SELECT  SEQ_KQ_CCJL.CURRVAL  AS ID FROM dual 
+		</selectKey>
+	</insert>
+
+	<insert id="saveAllInfo" parameterType="java.util.Map" >
+			INSERT INTO B_KQ_CCJL(
+				N_XH,
+				USER_ID,
+				C_DD,
+				C_YY,
+				D_KSSJ,
+				D_JSSJ,
+				D_DJ,
+				C_ZT
+			)VALUES(
+				 SEQ_KQ_CCJL.NEXTVAL,  
+				  #{userId},
+			     #{cDd},
+			   #{cYy},
+			   to_date(#{dKssj},'YYYY-MM-DD')
+			    to_date(#{dJssj},'YYYY-MM-DD'),
+			   to_date(#{dDj},'YYYY-MM-DD'),
+			   #{cZt}
+			)
+		<selectKey resultType="string" keyProperty="id" >
+			 <!--SELECT #{nXh# AS ID FROM dual --> 
+			 SELECT  SEQ_KQ_CCJL.CURRVAL  AS ID FROM dual 
+		</selectKey>
+	</insert>
+
+	<update id="updateInfo" parameterType="java.util.Map"> 
+			update B_KQ_CCJL 
+			<trim prefix="set" prefixOverrides=","> 
+			<if test="userId != null and userId !='' ">, USER_ID =  #{userId}</if>
+			<if test="cDd != null and cDd !='' ">, C_DD =  #{cDd}</if>
+			<if test="cYy != null and cYy !='' ">,C_YY =  #{cYy}</if>
+			<if test="dKssj != null and dKssj !='' ">, D_KSSJ =   to_date(#{dKssj},'YYYY-MM-DD')</if>
+			<if test="dJssj != null and dJssj !='' ">, D_JSSJ =   to_date(#{dJssj},'YYYY-MM-DD')</if>
+			<if test="dDj != null and dDj !='' ">, D_DJ = to_date(#{dDj},'YYYY-MM-DD')</if>
+			<if test="cZt != null and cZt !='' ">, C_ZT =   #{cZt}</if>
+			</trim>
+			<trim prefix="where" prefixOverrides="and |or">  
+				<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+				<if test="nXhs ">,= null and nXhs !='' ">  and  N_XH in (${nXhs})</if>
+			</trim>
+	</update> 
+
+	<update id="updateAllInfo" parameterType="java.util.Map"> 
+			update B_KQ_CCJL set 
+				 USER_ID =  #{userId}
+			, C_DD =  #{cDd}
+			,C_YY =  #{cYy}
+			, D_KSSJ =  to_date(#{dKssj},'YYYY-MM-DD')
+			, D_JSSJ = to_date(#{dJssj},'YYYY-MM-DD')
+			, D_DJ =  to_date(#{dDj},'YYYY-MM-DD')
+			, C_ZT =   #{cZt}
+			WHERE 
+				N_XH = #{nXh}
+	</update> 
+
+	<delete id="removeInfo" parameterType="java.util.Map"> 
+			 DELETE FROM B_KQ_CCJL
+			 WHERE
+			<!--N_XH = #{nXh#
+			<![CDATA[ BTN_ID IN (${userIds}) ]]>--> 
+			 N_XH =#{nXh} 
+	</delete> 
+</mapper>

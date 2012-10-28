@@ -71,6 +71,30 @@ public class UserInfoSvc  {
 		return list;
 	}
 	
+	public List<Map> chooseWithDep() throws SQLException {
+		
+		List<Map> rlist=new ArrayList();
+		Map p=new HashMap();
+		p.put("nBxh", "DEP");
+		List<Map> list=dmDao.queryAllInfo(p);
+		for (int i = 0; i < list.size(); i++) {
+			Map tp=list.get(i);
+			Map ctp=new HashMap();
+			ctp.put("cYhz", tp.get("cDm"));
+			List<Map> clist=userDao.queryAllInfo(ctp);
+			for (int j = 0; j < clist.size(); j++) {
+				Map cp=clist.get(j);
+				cp.put("text", tp.get("cMc")+""+cp.get("cXm"));
+				cp.put("value", cp.get("userId"));
+				cp.put("id", cp.get("userId"));
+				rlist.add(cp);
+			}
+		}
+		return rlist;
+	}
+	
+	
+	
 	public List chooseOnlyUser() throws SQLException {
 		Map ctp=new HashMap();
 		List<Map> clist=userDao.queryAllInfo(ctp);
