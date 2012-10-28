@@ -33,6 +33,55 @@
 <script type='text/javascript' src='<%=basePath%>js/jquery-ui-1.8.23.custom.min.js'></script>
 <script type='text/javascript' src='<%=basePath%>js/fullcalendar/fullcalendar.min.js'></script>
 <script src="<%=basePath%>liger/lib/js/LG.js" type="text/javascript"></script>
+
+
+	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/interface/ClxxSvc.js'></script>
+
+<script type="text/javascript">
+DWREngine.setAsync(false); 
+
+var resArr=new Array();
+ClxxSvc.queryAll(null,function(res){
+	
+	for(var i=0;i<res.length;i++){
+		var obj={id:res[i].cXxwh,title:res[i].cXxwh,start:res[i].dXxrq};
+		resArr[i]=obj;
+	}
+	
+	
+});
+
+
+
+
+
+Date.prototype.format = function(format)
+{
+    var o =
+    {
+        "M+" : this.getMonth()+1, //month
+        "d+" : this.getDate(),    //day
+        "h+" : this.getHours(),   //hour
+        "m+" : this.getMinutes(), //minute
+        "s+" : this.getSeconds(), //second
+        "q+" : Math.floor((this.getMonth()+3)/3),  //quarter
+        "S" : this.getMilliseconds() //millisecond
+    }
+    if(/(y+)/.test(format))
+    format=format.replace(RegExp.$1,(this.getFullYear()+"").substr(4 - RegExp.$1.length));
+    for(var k in o)
+    if(new RegExp("("+ k +")").test(format))
+    format = format.replace(RegExp.$1,RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
+    return format;
+}
+
+//var ddd = new Date();
+//alert(ddd.format('yyyy-MM-dd hh:mm:ss'));
+</script>
+
+
 <script type='text/javascript'>
 
 	$(document).ready(function() {
@@ -65,6 +114,8 @@
 	
 		/* initialize the calendar
 		-----------------------------------------------------------------*/
+	
+		
 		
 		$('#calendar').fullCalendar({
 			header: {
@@ -87,7 +138,7 @@
 			 //$('#calendar').fullCalendar('removeEvents', event.id);
 			 
 			 },
-			
+			 events:resArr,
 			 editable: true,
 			droppable: true, // this allows things to be dropped onto the calendar !!!
 			drop: function(date, allDay) { // this function is called when something is dropped
@@ -212,17 +263,29 @@
 
 <script>
 function abc(){
+	var arr=new Array();
 	var t=$('#calendar').fullCalendar( 'clientEvents' );
 	
-	alert(t);
+	arr[0]={dXxrqBegin:($('#calendar').fullCalendar( 'getView' ).start).format('yyyy-MM-dd')+"",
+	dXxrqEnd:($('#calendar').fullCalendar( 'getView' ).end).format('yyyy-MM-dd')+""};
 	
-	alert(t[0].id);
+	for(var i=0;i<t.length;i++){
+		var obj={};
+		if(t[i].start!=null){
+			obj.dXxrq=(t[i].start).format('yyyy-MM-dd')+"";
+		}
+		obj.cXxwh=t[i].id+"";
+		arr[i+1]=obj;
+		
+	}
 	
-	alert(t[0].title);
-	
-	alert(t[0].start);
-	
-	alert(t[0].end);
+	ClxxSvc.saveInfo(arr,function (rdata){
+		if (rdata) {
+			alert('保存成功');
+		} else {
+			alert('保存失败');
+		}
+	});
 	
 }
 
