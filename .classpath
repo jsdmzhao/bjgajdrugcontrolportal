@@ -18,7 +18,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-pool.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/dwr.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/fckeditor-java-core-2.6.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/freemarker-2.3.16.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/imageinfo-1.7.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/javassist-3.12.0.GA.jar"/>
@@ -32,7 +31,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/log4j-1.2.16.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mybatis-3.0.5.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mybatis-spring-1.0.1.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mysql-connector-java-3.2.0-alpha-bin.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/ognl-3.0.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/ojdbc14.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/org.springframework.aop-3.0.5.RELEASE.jar"/>
@@ -54,5 +52,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2-spring-plugin-2.2.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xwork-core-2.2.1.jar"/>
 	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.j2eedt.core.MYECLIPSE_JAVAEE_6_CONTAINER"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jackson-all-1.8.2.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

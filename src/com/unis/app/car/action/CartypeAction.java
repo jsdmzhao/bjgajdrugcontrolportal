@@ -28,12 +28,16 @@ public class CartypeAction {
 	public String cartypeSave(Map<String, String> sqlParamMap,HttpServletRequest request){
 		HttpSession session = request.getSession();
 		String c_yhid = session.getAttribute("userId")+"";
-		String c_yhzid = session.getAttribute("cYhz")+"";
+		//String c_yhzid = session.getAttribute("cYhz")+"";
 		sqlParamMap.put("c_yhid", c_yhid);
-		sqlParamMap.put("c_yhzid", c_yhzid);
+		//sqlParamMap.put("c_yhzid", c_yhzid);
+		
 		if(StringUtils.isNotEmpty(sqlParamMap.get("n_xh"))){
 			carService.update("CarMapper.updateCartype", sqlParamMap);
 		} else {
+			sqlParamMap.put("n_xslc", "0");
+			sqlParamMap.put("n_hyzl", "0");
+			sqlParamMap.put("n_pjyh", "0");
 			carService.insert("CarMapper.insertCartype", sqlParamMap);
 		}
 		return Globals.SUCCESS;

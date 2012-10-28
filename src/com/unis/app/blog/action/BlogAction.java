@@ -1,13 +1,20 @@
 package com.unis.app.blog.action;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.xwork.StringUtils;
+import org.apache.struts2.ServletActionContext;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -23,6 +30,10 @@ public class BlogAction {
 	private Blog blog;
 	
 	private String c_yhid;
+	
+	private Integer pagesize;
+	
+	private Integer page;
 	
 	@Autowired
 	private AbsServiceAdapter<Integer> blogService = null;
@@ -44,14 +55,60 @@ public class BlogAction {
 	}
 
 	@SuppressWarnings("unchecked")
-	public Map<String, Object> blogList(HttpServletRequest request){
-		Map<String, Object> resMap = new HashMap<String, Object>();
+	public void blogList() throws JsonGenerationException, JsonMappingException, IOException{
+		
+		Map<String, String> sqlParamMap = new HashMap<String, String>();
+		
+		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
+		
 		String c_yhid = session.getAttribute("userId")+"";
-		List<Blog> blogList = (List<Blog>) blogService.selectList("BlogMapper.getBlogList",c_yhid);
+		
+		sqlParamMap.put("c_yhid", c_yhid);
+		sqlParamMap.put("start", String.valueOf(((page.intValue()-1)*pagesize.intValue())));
+		sqlParamMap.put("limit", String.valueOf((page.intValue()*pagesize.intValue())));
+		
+		Map<String, Object> resMap = new HashMap<String, Object>();
+		List<Blog> blogList = (List<Blog>) blogService.selectList("BlogMapper.getBlogPageList",sqlParamMap);
+		Long cnt = (Long) blogService.selectOne("BlogMapper.getBlogPageListCnt",sqlParamMap);
+
 		resMap.put("Rows", blogList);
-		resMap.put("Total", blogList.size());
-		return resMap;
+		resMap.put("Total", cnt);
+
+		ObjectMapper mapper = new ObjectMapper();
+		
+    	HttpServletResponse response = ServletActionContext.getResponse();
+    	response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		mapper.writeValue(out, resMap);
+		out.flush();
+		out.close();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void blogPageList() throws IOException{
+		
+		Map<String, String> sqlParamMap = new HashMap<String, String>();
+		
+		sqlParamMap.put("start", String.valueOf(((page.intValue()-1)*pagesize.intValue())));
+		sqlParamMap.put("limit", String.valueOf((page.intValue()*pagesize.intValue())));
+		sqlParamMap.put("c_yhid", "");
+		
+		Map<String, Object> resMap = new HashMap<String, Object>();
+		List<Blog> blogList = (List<Blog>) blogService.selectList("BlogMapper.getBlogPageList",sqlParamMap);
+		Long cnt = (Long) blogService.selectOne("BlogMapper.getBlogPageListCnt",sqlParamMap);
+
+		resMap.put("Rows", blogList);
+		resMap.put("Total", cnt);
+
+		ObjectMapper mapper = new ObjectMapper();
+		
+    	HttpServletResponse response = ServletActionContext.getResponse();
+    	response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		mapper.writeValue(out, resMap);
+		out.flush();
+		out.close();
 	}
 	
 	public String blogUpdate(){
@@ -112,6 +169,22 @@ public class BlogAction {
 
 	public void setBlogService(AbsServiceAdapter<Integer> blogService) {
 		this.blogService = blogService;
+	}
+
+	public Integer getPagesize() {
+		return pagesize;
+	}
+
+	public void setPagesize(Integer pagesize) {
+		this.pagesize = pagesize;
+	}
+
+	public Integer getPage() {
+		return page;
+	}
+
+	public void setPage(Integer page) {
+		this.page = page;
 	}
 
 	

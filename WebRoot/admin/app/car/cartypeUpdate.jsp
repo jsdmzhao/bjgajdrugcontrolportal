@@ -29,6 +29,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerTree.js" type="text/javascript"></script>
     <script src="<%=basePath%>js/formUtil.js" type="text/javascript"></script>
     
+    <script type="text/javascript" src="<%=basePath%>js/My97DatePicker/WdatePicker.js"></script>
+    
     <script type="text/javascript" src="<%=basePath%>ckeditor/ckeditor.js"></script>
 	<script type="text/javascript" src="<%=basePath%>ckfinder/ckfinder.js"></script>
 	
@@ -57,6 +59,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	      groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },
          {display:"车牌号码",name:"c_cphm",newline:true,labelWidth:100,width:400,space:30,type:"text",value:"<s:property value='car.c_cphm'/>"},
+         {display:"购买时间",name:"d_gmsj",newline:true,labelWidth:100,width:400,space:30,type:"text",value:"<s:property value='car.d_gmsj.substring(0,10)'/>",
+         onclick:"WdatePicker({dateFmt:'yyyy-MM-dd'})"},
          {name:"n_xh", type:"hidden",value:"<s:property value='car.n_xh'/>"}
         ]
  }};

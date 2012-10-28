@@ -47,9 +47,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           { display: "标题", name: "c_bt", width:300, type: "text", align: "left", editor: { type: 'text' } },
           { display: "添加时间", name: "d_dj", width: 160, type: "text", align: "left", editor: { type: 'text'} },
           { display: "状态", name: "c_shjg", width: 160, type: "text", align: "left", editor: { type: 'text'} }
-          ], dataAction: 'server', pageSize: 20, toolbar: {},
-           sortName: 'n_xh', 
-          width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false,
+          ], dataAction: 'server', pageSize: 20, toolbar: {},  url:'<%=basePath%>blogPageList',
+           sortName: 'n_xh', width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false,
           data: tempdata
       });
 
@@ -144,7 +143,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	           		  LG.showSuccess('审核失败');
 	           	   }
                });
-        	  loadGrid();
+        	  grid.loadData();
           }
           else {
               LG.tip('请选择行!');
@@ -174,6 +173,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		} else {
       			LG.showSuccess('保存失败');
       		}
+        	grid.loadData();
           });
 
           return false;
@@ -195,7 +195,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           grid.addEditRow();
       } 
 
-	  loadGrid();
+	  //loadGrid();
       
       function loadGrid(){
       

@@ -54,7 +54,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         group:"基本信息",
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },
-         {display:"车牌号码",name:"c_cphm",newline:true,labelWidth:100,width:400,space:30,type:"text"}
+         {display:"车牌号码",name:"c_cphm",newline:true,labelWidth:100,width:400,space:30,type:"text"},
+         {display:"购买时间",name:"d_gmsj",newline:true,labelWidth:100,width:400,space:30,type:"date"}
         ]
  }};
 

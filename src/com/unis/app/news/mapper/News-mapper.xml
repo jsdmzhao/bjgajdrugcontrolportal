@@ -118,7 +118,7 @@
 	 	 AND C_BT LIKE '%${c_bt}%' 
 	  </if>
 	  ORDER BY C_SFZD DESC,D_FBSJ DESC
-		<include refid="pagination.paginationLast"></include>
+		<include refid="pagination.paginationStart"></include>	
 	</select>
 
 

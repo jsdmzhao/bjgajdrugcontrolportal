@@ -30,6 +30,14 @@ public class Car {
 	
 	private String d_shsj;
 	
+	private String n_xslc;
+	
+	private String d_gmsj;
+	
+	private String n_hyzl;
+	
+	private String n_pjyh;
+	
 	
 	public String getN_xh() {
 		return n_xh;
@@ -141,6 +149,38 @@ public class Car {
 
 	public void setD_shsj(String dShsj) {
 		d_shsj = dShsj;
+	}
+
+	public String getD_gmsj() {
+		return d_gmsj;
+	}
+
+	public void setD_gmsj(String d_gmsj) {
+		this.d_gmsj = d_gmsj;
+	}
+
+	public String getN_xslc() {
+		return n_xslc;
+	}
+
+	public void setN_xslc(String n_xslc) {
+		this.n_xslc = n_xslc;
+	}
+
+	public String getN_hyzl() {
+		return n_hyzl;
+	}
+
+	public void setN_hyzl(String n_hyzl) {
+		this.n_hyzl = n_hyzl;
+	}
+
+	public String getN_pjyh() {
+		return n_pjyh;
+	}
+
+	public void setN_pjyh(String n_pjyh) {
+		this.n_pjyh = n_pjyh;
 	}
 
 }
