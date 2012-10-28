@@ -16,6 +16,7 @@
 		userId="";
 		
 	}
+	
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -23,7 +24,7 @@
 
 <head>
 <base href="<%=basePath%>">
-<title>出差</title>
+<title>值班</title>
 <link
 	href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css"
 	rel="stylesheet" type="text/css" />
@@ -37,18 +38,15 @@
 	type="text/css" />
 <script src="<%=basePath%>liger/lib/js/common.js" type="text/javascript"></script>
 <script src="<%=basePath%>liger/lib/js/LG.js" type="text/javascript"></script>
-
-
 <script src="<%=basePath%>liger/lib/js/ligerui.expand.js"
 	type="text/javascript"></script>
 <script src="<%=basePath%>liger/lib/json2.js" type="text/javascript"></script>
 <script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
 <script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
 <script type='text/javascript'
-	src='<%=basePath%>dwr/interface/KqCcjlSvc.js'></script>
+	src='<%=basePath%>dwr/interface/KqZbSvc.js'></script>
 <script type='text/javascript'
 	src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>	
-
 </head>
 <body style="padding:10px;height:100%; text-align:center;">
 <div id="mainsearch" style="width: 98%">
@@ -65,9 +63,7 @@
 		<div id="maingrid"></div>
 
 	<script type="text/javascript">
-	
-  DWREngine.setAsync(false); 
-  
+	 DWREngine.setAsync(false); 
   var dlgedit=null;
   var Validator = null;
   var edittype=null;
@@ -78,22 +74,17 @@
 	var oPage={
 			pageIndex:1,
 			pageSize:1000
-	};
+	}
 	
-	 var userList;
+	var userList;
     UserInfoSvc.chooseOnlyUser(function(userData){
   	   userList=userData;
     });
-    
 	 var config ={"Grid":{
          columns: [
-                   { display: "人员", name: "userName", width: 180, type: "text", align: "left" },
-                   { display: "请假类别", name: "cDd", width: 180, type: "text", align: "left" },
-                    { display: "原因", name: "cYy", width: 180, type: "text", align: "left" },
-                   { display: "开始时间", name: "dKssj", width: 180, type: "text", align: "left" },
-                   { display: "结束时间", name: "dJssj", width: 180, type: "text", align: "left" },
-                   { display: "登记时间", name: "dDj", width: 180, type: "text", align: "left" },
-                   { display: "状态", name: "cZtName", width: 180, type: "text", align: "left" }
+{ display: "人员", name: "userName", width: 180, type: "text", align: "left" },
+ { display: "值班时间", name: "dSj", width: 180, type: "text", align: "left" },
+                   { display: "备注", name: "cBz", width: 180, type: "text", align: "left" }
          ]      
 },"Search":null};
 
@@ -109,7 +100,7 @@
  	$("#formsearch").ligerForm( {
  		fields : [ {
  			display : "日期范围",
- 			name : "dDjBeg",
+ 			name : "dSjBeg",
  			newline : false,
  			labelWidth : 80,
  			width : 100,
@@ -118,15 +109,14 @@
  			cssClass : "field"
  		}, {
  			display : "至",
- 			name : "dDjEnd",
+ 			name : "dSjEnd",
  			newline : false,
  			labelWidth : 30,
  			width : 100,
  			space : 30,
  			type : "date",
  			cssClass : "field"
- 		}
- 		<%if("".equals(userId)){%>
+ 		} <%if("".equals(userId)){%>
  		, 
  		{
  			display : "人员",
@@ -141,8 +131,7 @@
  			data : userList},
  			cssClass : "field"
  		}  
- 		<%}%>
- 		],
+ 		<%}%>],
  		toJSON : JSON2.stringify
  	});
 
@@ -179,10 +168,7 @@
 
     	function loadGrid(obj){
     		if(!obj)obj={};
-    		<%if(!"".equals(userId)){%>
-    			obj.userId='<%=userId%>';
-    		<%}%>
-    		KqCcjlSvc.queryByPage(obj,oPage,function(rdata){
+    		KqZbSvc.queryByPage(obj,oPage,function(rdata){
     			if(rdata == null){
     				  grid.setOptions({ data:  { Total:0, Rows:""  } });
     			}else{
@@ -198,22 +184,22 @@
           switch (item.id) {
               case "add":
             	//  f_dialog("add","新增上下班信息");
-            	   dialog = $.ligerDialog.open({ title :'新增信息',url: '<%=basePath%>admin/app/duty/kqccjlDetail.jsp?a=1<%=str%>', 
-                       height: 350,width: 720,showMax: true, showToggle: true,  showMin: true
+            	   dialog = $.ligerDialog.open({ title :'新增信息',url: '<%=basePath%>admin/app/duty/kqzbDetail.jsp?a=1<%=str%>', 
+                       height: 250,width: 720,showMax: true, showToggle: true,  showMin: true
 				  });
             	//  top.f_openDialog(null,'新增上下班信息','<%=basePath%>admin/app/user/userDetail.jsp' );
                   break;
             //  case "view":
             //      var selected = grid.getSelected();
             //      if (!selected) { LG.tip('请选择行!'); return }
-            //      top.f_addTab(null, '查看上下班信息', '<%=basePath%>admin/app/duty/kqccjlDetail.jsp?IsView=1&ID=' + selected.UserID+'<%=str%>');
+            //      top.f_addTab(null, '查看上下班信息', '<%=basePath%>admin/app/duty/kqzbDetail.jsp?IsView=1&ID=' + selected.UserID)+'<%=str%>';
             //      break;
               case "modify":
             	  
             	  var selected = grid.getSelected();
                         if (!selected) { LG.tip('请选择行!'); return }
-                       dialog = $.ligerDialog.open({ title :'修改信息',url: '<%=basePath%>admin/app/duty/kqccjlDetail.jsp?nXh=' + selected.nXh+'<%=str%>', 
-                       height: 350,width: 720,showMax: true, showToggle: true,  showMin: true
+                       dialog = $.ligerDialog.open({ title :'修改信息',url: '<%=basePath%>admin/app/duty/kqzbDetail.jsp?nXh=' + selected.nXh+'<%=str%>', 
+                       height: 250,width: 720,showMax: true, showToggle: true,  showMin: true
 				  });
                        break;
             	 
@@ -231,7 +217,7 @@
 		function f_remove() {
 			var selected = grid.getSelected();
 			if (selected) {
-				KqCcjlSvc.remove(selected, function(rdata) {
+				KqZbSvc.remove(selected, function(rdata) {
 					if (rdata) {
 						LG.showSuccess('删除成功');
 						loadGrid();

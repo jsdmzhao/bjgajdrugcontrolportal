@@ -49,7 +49,7 @@ MENU_ICON, ISVISIBLE)values (403, '403', '4', '出差', 'admin/app/duty/kqybjl.j
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
 MENU_ICON, ISVISIBLE)values (404, '404', '4', '市内外出', 'admin/app/duty/kqybjl.jsp?lx=SNWC', 'liger/lib/icons/32X32/sitemap.gif', '1' );
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
-MENU_ICON, ISVISIBLE)values (405, '405', '4', '请销假', 'admin/app/duty/kqqxj。jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+MENU_ICON, ISVISIBLE)values (405, '405', '4', '请销假', 'admin/app/duty/kqccjl.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
 MENU_ICON, ISVISIBLE)values (406, '406', '4', '值班管理', 'admin/app/duty/kqzb.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
 
