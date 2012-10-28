@@ -33,7 +33,29 @@
 <script type='text/javascript' src='<%=basePath%>js/jquery-ui-1.8.23.custom.min.js'></script>
 <script type='text/javascript' src='<%=basePath%>js/fullcalendar/fullcalendar.min.js'></script>
 <script src="<%=basePath%>liger/lib/js/LG.js" type="text/javascript"></script>
+
+	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/interface/KqZbSvc.js'></script>
+
+
+
 <script type='text/javascript'>
+
+
+
+DWREngine.setAsync(false); 
+
+var resArr=new Array();
+KqZbSvc.queryAll(null,function(res){
+	
+	for(var i=0;i<res.length;i++){
+		var obj={id:res[i].userId,title:res[i].userName,start:res[i].dSj};
+		resArr[i]=obj;
+	}
+	
+	
+});
 
 	$(document).ready(function() {
 	
@@ -70,7 +92,7 @@
 			header: {
 				left: 'prev,next today',
 				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
+				right: 'month'
 				
 			},
 			height:'500',
@@ -87,7 +109,7 @@
 			 //$('#calendar').fullCalendar('removeEvents', event.id);
 			 
 			 },
-			
+			 events:resArr,
 			 editable: true,
 			droppable: true, // this allows things to be dropped onto the calendar !!!
 			drop: function(date, allDay) { // this function is called when something is dropped
@@ -179,47 +201,169 @@
 		}
 
 </style>
+
+<style type="text/css">
+
+ul {
+ list-style: none;
+}
+#faq {
+}
+#faq li {
+ margin-left: -30px;
+}
+#faq dl {
+ margin: 0;
+ padding:0;
+ display:inline;
+}
+#faq dt {
+ font-weight:bold;
+ cursor:pointer;
+ line-height: 25px;
+ border-bottom:1px #ccc dotted;
+}
+#faq dd {
+ display:none;
+ margin:0;
+ line-height: 180%;
+}
+</style>
+<script type="text/javascript">
+var lastFaqClick=null;
+window.onload=function(){
+  var faq=document.getElementById("faq");
+  var dls=faq.getElementsByTagName("dl");
+  for (var i=0,dl;dl=dls[i];i++){
+    var dt=dl.getElementsByTagName("dt")[0];//取得标题
+     dt.id = "faq_dt_"+(Math.random()*100);
+     dt.onclick=function(){
+       var p=this.parentNode;//取得父节点
+        if (lastFaqClick!=null&&lastFaqClick.id!=this.id){
+          var dds=lastFaqClick.parentNode.getElementsByTagName("dd");
+          for (var i=0,dd;dd=dds[i];i++)
+            dd.style.display='none';
+        }
+        lastFaqClick=this;
+        var dds=p.getElementsByTagName("dd");//取得对应子节点，也就是说明部分
+        var tmpDisplay='none';
+        if (gs(dds[0],'display')=='none')
+          tmpDisplay='block';
+        for (var i=0;i<dds.length;i++)
+          dds[i].style.display=tmpDisplay;
+      }
+  }
+}
+
+function gs(d,a){
+  if (d.currentStyle){
+    var curVal=d.currentStyle[a]
+  }else{
+    var curVal=document.defaultView.getComputedStyle(d, null)[a]
+  }
+  return curVal;
+}
+
+Date.prototype.format = function(format)
+{
+    var o =
+    {
+        "M+" : this.getMonth()+1, //month
+        "d+" : this.getDate(),    //day
+        "h+" : this.getHours(),   //hour
+        "m+" : this.getMinutes(), //minute
+        "s+" : this.getSeconds(), //second
+        "q+" : Math.floor((this.getMonth()+3)/3),  //quarter
+        "S" : this.getMilliseconds() //millisecond
+    }
+    if(/(y+)/.test(format))
+    format=format.replace(RegExp.$1,(this.getFullYear()+"").substr(4 - RegExp.$1.length));
+    for(var k in o)
+    if(new RegExp("("+ k +")").test(format))
+    format = format.replace(RegExp.$1,RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
+    return format;
+}
+
+//var ddd = new Date();
+//alert(ddd.format('yyyy-MM-dd hh:mm:ss'));
+
+
+
+</script>
 </head>
 <body>
 <div id='wrap'>
 
 
 <div id='external-events'>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' value="保存值班信息" onclick="abc();"><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' value="保存值班信息" onclick="save();"><br/>
 <input type='checkbox' id='drop-remove' checked="checked"/> <label for='drop-remove'>不允许人员重复</label>
 <h4>值班人员</h4>
+
+<ul id="faq">
+
 <%
-List<Map> list=userInfoSvc.chooseWithDep();
+List<Map<String,Object>> list=userInfoSvc.choose();
 for(int i=0;i<list.size();i++){
 	
 	%>
-	<div class='external-event' id='<%=list.get(i).get("id") %>'><%=list.get(i).get("text") %></div>
+	  <li>
+    <dl>
+     
+      <dd>
+	 <dt><%=list.get(i).get("text") %></dt><dd>
+	
+	
 	
 	<%
-}
+	List<Map> clist=(List)list.get(i).get("children");
+	for(int j=0;j<clist.size();j++){
+	
+	%>
+	
+	<div class='external-event' id='<%=clist.get(j).get("id") %>'><%=clist.get(j).get("text") %></div>
+	<%}%>
+	
+	</dd>
+	 </dl>
+  </li>
+	<%}%>
 
 
 
-%>
-
+ </ul>
 
 </div>
 
 <div id='calendar'></div>
 
 <script>
-function abc(){
+
+function save(){
+	
+	var arr=new Array();
 	var t=$('#calendar').fullCalendar( 'clientEvents' );
 	
-	alert(t);
+	arr[0]={dSjBeg:($('#calendar').fullCalendar( 'getView' ).visStart).format('yyyy-MM-dd')+"",
+			dSjEnd:($('#calendar').fullCalendar( 'getView' ).visEnd).format('yyyy-MM-dd')+""};
 	
-	alert(t[0].id);
+	for(var i=0;i<t.length;i++){
+		var obj={};
+		if(t[i].start!=null){
+			obj.dSj=(t[i].start).format('yyyy-MM-dd')+"";
+		}
+		obj.userId=t[i].id+"";
+		arr[i+1]=obj;
+		
+	}
 	
-	alert(t[0].title);
-	
-	alert(t[0].start);
-	
-	alert(t[0].end);
+	KqZbSvc.saveInfo(arr,function (rdata){
+		if (rdata) {
+			alert('保存成功');
+		} else {
+			alert('保存失败');
+		}
+	});
 	
 }
 

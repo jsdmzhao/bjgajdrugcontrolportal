@@ -30,7 +30,7 @@
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
 			
 			<if test="dSjBeg != null and dSjBeg !='' ">  and D_SJ &gt;= to_date(#{dSjBeg},'YYYY-MM-DD')</if>
-			<if test="dSjEnd != null and ddSjEnd !='' "> and D_SJ &lt;= to_date(#{dSjEnd},'YYYY-MM-DD')</if>
+			<if test="dSjEnd != null and ddSjEnd !='' "> and D_SJ &lt; to_date(#{dSjEnd},'YYYY-MM-DD')</if>
 			
 			<if test="cBz != null and cBz !='' ">  and C_BZ = #{cBz}</if>
 		</trim>
@@ -53,7 +53,7 @@
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
 			
 			<if test="dSjBeg != null and dSjBeg !='' ">  and D_SJ &gt;= to_date(#{dSjBeg},'YYYY-MM-DD')</if>
-			<if test="dSjEnd != null and ddSjEnd !='' "> and D_SJ &lt;= to_date(#{dSjEnd},'YYYY-MM-DD')</if>
+			<if test="dSjEnd != null and ddSjEnd !='' "> and D_SJ &lt; to_date(#{dSjEnd},'YYYY-MM-DD')</if>
 			
 			<if test="cBz != null and cBz !='' ">  and C_BZ = #{cBz}</if>
 		</trim>
@@ -69,7 +69,7 @@
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
 			
 			<if test="dSjBeg != null and dSjBeg !='' ">  and D_SJ &gt;= to_date(#{dSjBeg},'YYYY-MM-DD')</if>
-			<if test="dSjEnd != null and ddSjEnd !='' "> and D_SJ &lt;= to_date(#{dSjEnd},'YYYY-MM-DD')</if>
+			<if test="dSjEnd != null and ddSjEnd !='' "> and D_SJ &lt; to_date(#{dSjEnd},'YYYY-MM-DD')</if>
 			
 			<if test="cBz != null and cBz !='' ">  and C_BZ = #{cBz}</if>
 		</trim>

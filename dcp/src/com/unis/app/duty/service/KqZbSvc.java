@@ -24,6 +24,21 @@ public class KqZbSvc  {
 	public Object saveAll(Map p) throws SQLException {
 		return kqZbDao.saveAllInfo(p);
 	}
+	
+	public Object saveInfo(List<Map<String,String>> list) throws SQLException {
+		
+		List<Map> tlist=queryAll(list.get(0));
+			for (int i = 0; i < tlist.size(); i++) {
+				remove(tlist.get(i));
+		}
+		
+		for (int i = 1; i < list.size(); i++) {
+			
+				save(list.get(i));
+		}
+		return true;
+	}
+
 
 	public Object remove(Map p) throws SQLException {
 		return kqZbDao.removeInfo(p);

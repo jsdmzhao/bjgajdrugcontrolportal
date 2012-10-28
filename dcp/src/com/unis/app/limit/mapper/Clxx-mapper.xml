@@ -9,6 +9,8 @@
 			<result property="dXxrq" column="D_XXRQ" jdbcType="VARCHAR"/>
 			<result property="cBz" column="C_BZ" jdbcType="VARCHAR"/>
 			<result property="cZt" column="C_ZT" jdbcType="VARCHAR"/>
+			<result property="cZtName" column="C_ZT_NAME" jdbcType="VARCHAR"/>
+			
 		
 	</resultMap>
 	 
@@ -29,7 +31,7 @@
 			<if test="cBz != null and cBz !='' ">  and C_BZ = #{cBz}</if>
 			
 			<if test="dXxrqBegin != null and dXxrqBegin !='' ">  and D_XXRQ &gt;= to_date(#{dXxrqBegin},'YYYY-MM-DD')</if>
-			<if test="dXxrqEnd != null and dXxrqEnd !='' "> and D_XXRQ &lt;= to_date(#{dXxrqjEnd},'YYYY-MM-DD')</if>
+			<if test="dXxrqEnd != null and dXxrqEnd !='' "> and D_XXRQ &lt; to_date(#{dXxrqEnd},'YYYY-MM-DD')</if>
 			
 			<if test="cZt != null and cZt !='' ">  and C_ZT = #{cZt}</if>
 		</trim>
@@ -53,7 +55,7 @@
 			<if test="cBz != null and cBz !='' ">  and C_BZ = #{cBz}</if>
 			
 			<if test="dXxrqBegin != null and dXxrqBegin !='' ">  and D_XXRQ &gt;= to_date(#{dXxrqBegin},'YYYY-MM-DD')</if>
-			<if test="dXxrqEnd != null and dXxrqEnd !='' "> and D_XXRQ &lt;= to_date(#{dXxrqjEnd},'YYYY-MM-DD')</if>
+			<if test="dXxrqEnd != null and dXxrqEnd !='' "> and D_XXRQ &lt; to_date(#{dXxrqjEnd},'YYYY-MM-DD')</if>
 			
 			<if test="cZt != null and cZt !='' ">  and C_ZT = #{cZt}</if>
 		</trim>
@@ -71,7 +73,7 @@
 			<if test="cBz != null and cBz !='' ">  and C_BZ = #{cBz}</if>
 			
 			<if test="dXxrqBegin != null and dXxrqBegin !='' ">  and D_XXRQ &gt;= to_date(#{dXxrqBegin},'YYYY-MM-DD')</if>
-			<if test="dXxrqEnd != null and dXxrqEnd !='' "> and D_XXRQ &lt;= to_date(#{dXxrqjEnd},'YYYY-MM-DD')</if>
+			<if test="dXxrqEnd != null and dXxrqEnd !='' "> and D_XXRQ &lt; to_date(#{dXxrqjEnd},'YYYY-MM-DD')</if>
 			
 			<if test="cZt != null and cZt !='' ">  and C_ZT = #{cZt}</if>
 		</trim>
