@@ -75,6 +75,7 @@ String newsType = request.getParameter("newsType");
 
       var newsType = '<%=newsType %>';
       var dialog ;
+      
   
       //验证
       var maingform = $("#mainform");

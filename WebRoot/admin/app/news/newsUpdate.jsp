@@ -53,6 +53,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         group:"基本信息",
 	         value: "<s:property value='news.c_bt'/>", 
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
+         },{display:"文章栏目",
+        	 type:"text",
+             name:"c_lmName",
+             value: "<s:property value='news.c_lm_'/>",
+             newline:true,
+             labelWidth:100,
+             width:408
+         },{
+        	 type:"hidden",
+             name:"c_lm",
+         },{
+   	         name:"wzlm",
+   	         newline:false,
+   	         width:120,//space:30, 
+   	         type:"button",
+   	         cssClass:"l-button",
+   	         value:"选择栏目",
+   	         onclick : "selectLanmu()"
          },
          {display:"是否图文文章",
              name:"c_sftwwz",
@@ -116,7 +134,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          {name:"c_sfzd", type:"hidden",value:"<s:property value='news.c_sfzd'/>"},
          {name:"c_sfgl", type:"hidden",value:"<s:property value='news.c_sfgl'/>"},
          {name:"c_sftj", type:"hidden",value:"<s:property value='news.c_sftj'/>"},
-         {name:"c_lm", type:"hidden",value:"<s:property value='news.c_lm'/>"},
          {name:"n_xxxh", type:"hidden",value:"<s:property value='news.n_xxxh'/>"}
         ]
  }};
@@ -125,6 +142,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         LG.adujestConfig(config,forbidFields);
 
         var roleids = '';
+        
+        var dig;
         //当前ID
         var currentID = '';
         //是否新增状态
@@ -236,6 +255,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             });
             **/
         }
+    	
+    	function submit_lanmu(text,value){
+    		$("#c_lm").val(value);
+    		$("#c_lmName").val(text);
+    		dig.hidden();
+    	}
+    	
+    	function close_lanmu(){
+    		dig.hidden();
+    	}
+    	
         function f_cancel()
         {
         	parent.dialog_hidden();
@@ -256,6 +286,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           ]
 			});
         }
+		
+		function selectLanmu(){
+			
+			dig = $.ligerDialog.open({
+        		url: '<%=basePath%>admin/app/news/selectLanmu.jsp', height: 400,width: 700
+        	});
+		}
 
         $(function(){
        	 if ($.browser.msie) {

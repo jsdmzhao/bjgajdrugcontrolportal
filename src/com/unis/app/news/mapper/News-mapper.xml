@@ -39,7 +39,7 @@
 		       C_JJ,
 		       C_NR,
 		       TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
-		       C_LM,
+		       FUN_GET_MULTI_LMMC(C_LM) C_LM_,
 		       C_YHID,
 		       C_YHZID,
 		       C_SFSH,
@@ -75,14 +75,14 @@
 	 
 	<select id="getNewsList" parameterType="News" resultMap="resultNews">
 	  SELECT N_XH,
-	   C_BT,
-       TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
-       C_SFZD,
-       C_SFGL,
-       C_SFTJ,
-       C_SHJG
+		   C_BT,
+	       TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
+	       C_SFZD,
+	       C_SFGL,
+	       C_SFTJ,
+	       C_SHJG
 	  FROM B_XINWEN
-	 	 WHERE C_LM = #{c_lm}
+	 WHERE INSTR(C_LM,';'||#{c_lm}||';') > 0
 	  <if test="c_sfsh != null and c_sfsh != ''">
 	 	 AND C_SFSH = #{c_sfsh}
 	  </if>
@@ -109,7 +109,7 @@
 	 	 1=1
 	 	 
 	 	  <if test="c_lm != null and c_lm != ''">
-	 	  and  C_LM = #{c_lm}
+	 	  and  INSTR(C_LM,';'||#{c_lm}||';') > 0
 	 	 </if>
 	  <if test="c_sfsh != null and c_sfsh != ''">
 	 	 AND C_SFSH = #{c_sfsh}
@@ -127,7 +127,7 @@
 	  FROM B_XINWEN
 	  where 1=1
 	   <if test="c_lm != null and c_lm != ''">
-	 	 and C_LM = #{c_lm}
+	 	 and INSTR(C_LM,';'||#{c_lm}||';') > 0
 	 	 </if>
 	  <if test="c_sfsh != null and c_sfsh != ''">
 	 	 AND C_SFSH = #{c_sfsh}
@@ -144,7 +144,7 @@
 		      TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
 			  C_TPLJDZ
 	  FROM B_XINWEN
-	 	 WHERE C_LM = #{c_lm}
+	 	 WHERE INSTR(C_LM,';'||#{c_lm}||';') > 0
 	 	 	<if test="c_lm != null and c_lm == '1201'">
 			 	 AND C_TPLJDZ IS NOT NULL
 		  	</if>
@@ -160,7 +160,7 @@
 		      TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
 			  C_TPLJDZ
 	  FROM B_XINWEN
-	 	 WHERE C_LM = #{c_lm}
+	 	 WHERE INSTR(C_LM,';'||#{c_lm}||';') > 0
 	 	 	<if test="c_lm != null and c_lm == '1201'">
 			 	 AND C_TPLJDZ IS NOT NULL
 		  	</if>
@@ -289,13 +289,16 @@
 	          C_LMMC TEXT
 	   FROM B_LANMU 
 	   WHERE C_SJLMDM = '0000'
+	   	AND C_YHZID = '0'
+	   	ORDER BY C_LMMC
 	</select>
 	 
-	<select id="getLanmuChilden" parameterType="string" resultType="Combox">  
+	<select id="getLanmuChilden" parameterType="hashmap" resultType="Combox">  
 	  SELECT C_LMDM VALUE,
 	         C_LMMC TEXT
 	  FROM B_LANMU
 		WHERE C_SJLMDM = #{c_sjlmdm}
+		AND C_YHZID = '0'
 	</select>
 	
 	

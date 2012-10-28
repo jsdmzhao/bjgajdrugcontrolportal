@@ -28,6 +28,8 @@ public class News {
 	
 	private String c_lm;
 	
+	private String c_lm_;
+	
 	private String c_yhid;
 	
 	private String c_yhzid;
@@ -173,6 +175,14 @@ public class News {
 
 	public void setC_lm(String c_lm) {
 		this.c_lm = c_lm;
+	}
+
+	public String getC_lm_() {
+		return c_lm_;
+	}
+
+	public void setC_lm_(String c_lm_) {
+		this.c_lm_ = c_lm_;
 	}
 
 	public String getC_yhid() {
