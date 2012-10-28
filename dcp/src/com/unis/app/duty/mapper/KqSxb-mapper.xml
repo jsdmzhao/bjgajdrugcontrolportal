@@ -6,6 +6,8 @@
 	<resultMap id="Result"  type="java.util.Map">
 	     	<result property="nXh" column="N_XH" jdbcType="DECIMAL"/>
 			<result property="userId" column="USER_ID" jdbcType="DECIMAL"/>
+			<result property="cDd" column="C_DD" jdbcType="VARCHAR"/>
+			<result property="cYy" column="C_YY" jdbcType="VARCHAR"/>
 			<result property="nLxName" column="N_LX_NAME" jdbcType="VARCHAR"/>
 			<result property="dDj" column="D_DJ" jdbcType="VARCHAR"/>
 			<result property="cZt" column="C_ZT" jdbcType="VARCHAR"/>
@@ -19,6 +21,8 @@
 				 select 
 					base.N_XH,
 					base.USER_ID,
+					base.C_DD,
+					base.C_YY,
 					base.N_LX,
 					case base.N_LX when 1 then '上班'  else '下班' end as N_LX_NAME, 
 					to_char(base.D_DJ,'YYYY-MM-DD HH24:mi:ss')  D_DJ,
@@ -43,6 +47,8 @@
 								 select 
 					base.N_XH,
 					base.USER_ID,
+					base.C_DD,
+					base.C_YY,
 					base.N_LX,
 					case base.N_LX when 1 then '上班'  else '下班' end as N_LX_NAME, 
 					to_char(base.D_DJ,'YYYY-MM-DD HH24:mi:ss')  D_DJ,
@@ -84,6 +90,8 @@
 			INSERT INTO B_KQ_SXB(
 				 N_XH
 			<if test="userId != null and userId !='' ">  , USER_ID</if>
+			<if test="cDd != null and cDd !='' ">  , C_DD</if>
+			<if test="cYy != null and cYy !='' ">  , C_YY</if>
 			<if test="nLx != null and nLx !='' ">  ,  N_LX</if>
 			<if test="dDj != null and dDj !='' ">  ,  D_DJ</if>
 			<if test="cZt != null and cZt !='' ">  ,  C_ZT</if>
@@ -91,6 +99,8 @@
 				SEQ_KQ_SXB.NEXTVAL 
 				<!-- #{n_xh#-->
 			<if test="userId != null and userId !='' ">  ,  #{userId}</if>
+			<if test="cDd != null and cDd !='' ">  , #{cDd}</if>
+				<if test="cYy != null and cYy !='' ">  , #{cYy}</if>
 			<if test="nLx != null and nLx !='' ">  ,  #{nLx}</if>
 			<if test="dDj != null and dDj !='' ">  ,  to_date(#{dDj},'YYYY-MM-DD HH24:mi:ss')</if>
 			<if test="cZt != null and cZt !='' ">  ,  #{cZt}</if>
@@ -126,12 +136,16 @@
 			INSERT INTO B_KQ_SXB(
 				N_XH,
 				USER_ID,
+				C_DD,
+				C_YY,
 				N_LX,
 				D_DJ,
 				C_ZT
 			)VALUES(
 				 SEQ_KQ_SXB.NEXTVAL,  
 				  #{userId},
+				   #{cDd},
+				   #{cYy},
 			     #{nLx},
 			   to_date(#{dDj},'YYYY-MM-DD HH24:mi:ss'),
 			   #{cZt}
@@ -146,6 +160,8 @@
 			update B_KQ_SXB 
 			<trim prefix="set" prefixOverrides=","> 
 			<if test="userId != null and userId !='' ">, USER_ID =  #{userId}</if>
+						<if test="cDd != null and cDd !='' ">  C_DD=#{cDd}</if>
+			<if test="cYy != null and cYy !='' ">  C_YY=#{cYy}</if>
 			<if test="nLx != null and nLx !='' ">, N_LX =  #{nLx}</if>
 			<if test="dDj != null and dDj !='' ">, D_DJ = to_date(#{dDj},'YYYY-MM-DD HH24:mi:ss')</if>
 			<if test="cZt != null and cZt !='' ">, C_ZT =   #{cZt}</if>
@@ -159,6 +175,8 @@
 	<update id="updateAllInfo" parameterType="java.util.Map"> 
 			update B_KQ_SXB set 
 				 USER_ID =  #{userId}
+				 , C_DD=#{cDd}
+				 , C_YY=#{cYy}
 			, N_LX =  #{nLx}
 			, D_DJ =  to_date(#{dDj},'YYYY-MM-DD HH24:mi:ss')
 			, C_ZT =   #{cZt}

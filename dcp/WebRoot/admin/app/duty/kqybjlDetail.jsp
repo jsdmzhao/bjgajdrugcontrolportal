@@ -60,11 +60,12 @@ if(nLx==null){
          {display:"人员",name:"userName",newline:false,labelWidth:100,width:200,space:30,type:"smarttext"},
          <%}%>
          {name:"userId",value:"<%=userId%>",type:"hidden"},  
-         {display:"原因",name:"cYy",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
+         {display:"地点",name:"cDd",newline:false,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"事由",name:"cYy",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
          {display:"开始时间",name:"dKssj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
          {display:"结束时间",name:"dJssj",newline:false,labelWidth:100,width:200,space:30,type:"date"},
          {display:"登记时间",name:"dDj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
-         {display:"状态",name:"cZtName",newline:false,labelWidth:100,width:200,space:30,type:"smarttext"},
+         {display:"是否用车",name:"cZtName",newline:false,labelWidth:100,width:200,space:30,type:"smarttext"},
          {name:"cZt",type:"hidden"}
         ]
  }};
@@ -231,8 +232,8 @@ if(nLx==null){
         
        zt= $("#cZtName").ligerComboBox({  
             data: [
-                { text: '有效', id: '1' },
-                { text: '无效', id: '3' }
+                { text: '是', id: '1' },
+                { text: '否', id: '0' }
             ]
         }); 
     </script>

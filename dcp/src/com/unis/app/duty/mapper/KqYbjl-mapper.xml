@@ -6,6 +6,7 @@
 		<resultMap id="Result"  type="java.util.Map">
 	     	<result property="nXh" column="N_XH" jdbcType="DECIMAL"/>
 			<result property="userId" column="USER_ID" jdbcType="DECIMAL"/>
+			<result property="cDd" column="C_DD" jdbcType="VARCHAR"/>
 			<result property="nLx" column="N_LX" jdbcType="VARCHAR"/>
 			<result property="cYy" column="C_YY" jdbcType="VARCHAR"/>
 			<result property="dKssj" column="D_KSSJ" jdbcType="VARCHAR"/>
@@ -22,13 +23,14 @@
 				 select 
 					base.N_XH,
 					base.USER_ID,
+					base.C_DD,
 					base.N_LX,
 					base.C_YY,
 					to_char(base.D_KSSJ,'YYYY-MM-DD')  D_KSSJ,
 					to_char(base.D_JSSJ,'YYYY-MM-DD')  D_JSSJ,
 					to_char(base.D_DJ,'YYYY-MM-DD')  D_DJ,
 					base.C_ZT,
-					case base.C_ZT when '1' then '有效'  else '无效' end as C_ZT_NAME, 
+					case base.C_ZT when '1' then '是'  else '否' end as C_ZT_NAME, 
 					FUN_GET_YHMC(USER_ID) USER_NAME
 				 from B_KQ_YBJL base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
@@ -56,13 +58,14 @@
 							 select 
 					base.N_XH,
 					base.USER_ID,
+					base.C_DD,
 					base.N_LX,
 					base.C_YY,
 					to_char(base.D_KSSJ,'YYYY-MM-DD')  D_KSSJ,
 					to_char(base.D_JSSJ,'YYYY-MM-DD')  D_JSSJ,
 					to_char(base.D_DJ,'YYYY-MM-DD')  D_DJ,
 					base.C_ZT,
-					case base.C_ZT when '1' then '有效'  else '无效' end as C_ZT_NAME, 
+					case base.C_ZT when '1' then '是'  else '否' end as C_ZT_NAME, 
 					FUN_GET_YHMC(USER_ID) USER_NAME
 				 from B_KQ_YBJL base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
@@ -115,6 +118,7 @@
 			INSERT INTO B_KQ_YBJL(
 				 N_XH
 			<if test="userId != null and userId !='' ">  , USER_ID</if>
+			<if test="cDd != null and cDd !='' ">  , C_DD</if>
 			<if test="nLx != null and nLx !='' ">  ,  N_LX</if>
 			<if test="cYy != null and cYy !='' ">  ,  C_YY</if>
 			<if test="dKssj != null and dKssj !='' ">  ,  D_KSSJ</if>
@@ -125,6 +129,7 @@
 				SEQ_KQ_YBJL.NEXTVAL 
 				<!-- #{n_xh#-->
 			<if test="userId != null and userId !='' ">  ,  #{userId}</if>
+			<if test="cDd != null and cDd !='' ">  , #{cDd}</if>
 			<if test="nLx != null and nLx !='' ">  ,  #{nLx}</if>
 			<if test="cYy != null and cYy !='' ">  ,  #{cYy}</if>
 			<if test="dKssj != null and dKssj !='' ">  ,  to_date(#{dKssj},'YYYY-MM-DD')</if>
@@ -142,6 +147,7 @@
 			INSERT INTO B_KQ_YBJL(
 				N_XH,
 				USER_ID,
+				C_DD,
 				N_LX,
 				C_YY,
 				D_KSSJ,
@@ -151,6 +157,7 @@
 			)VALUES(
 				 SEQ_KQ_YBJL.NEXTVAL,  
 				  #{userId},
+				   #{cDd},
 			     #{nLx},
 			   #{cYy},
 			   to_date(#{dKssj},'YYYY-MM-DD')
@@ -168,6 +175,7 @@
 			update B_KQ_YBJL 
 			<trim prefix="set" prefixOverrides=","> 
 			<if test="userId != null and userId !='' ">, USER_ID =  #{userId}</if>
+			<if test="cDd != null and cDd !='' ">  C_DD=#{cDd}</if>
 			<if test="nLx != null and nLx !='' ">, N_LX =  #{nLx}</if>
 			<if test="cYy != null and cYy !='' ">,C_YY =  #{cYy}</if>
 			<if test="dKssj != null and dKssj !='' ">, D_KSSJ =   to_date(#{dKssj},'YYYY-MM-DD')</if>
@@ -184,6 +192,7 @@
 	<update id="updateAllInfo" parameterType="java.util.Map"> 
 			update B_KQ_YBJL set 
 				 USER_ID =  #{userId}
+				 , C_DD=#{cDd}
 			, N_LX =  #{nLx}
 			,C_YY =  #{cYy}
 			, D_KSSJ =  to_date(#{dKssj},'YYYY-MM-DD')
