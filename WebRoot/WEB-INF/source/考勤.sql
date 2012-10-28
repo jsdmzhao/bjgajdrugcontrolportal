@@ -222,6 +222,70 @@ COMMENT ON COLUMN B_KQ_QQSB.C_ZT IS
 '状态';
 
 
+/*==============================================================*/
+/* Table: B_KQ_ZBZ                                             */
+/*==============================================================*/
+CREATE TABLE B_KQ_ZBZ  (
+   N_XH                 NUMBER(8)       NOT NULL,
+   C_ZM                 VARCHAR2(200),                
+   USER_ID              NUMBER(8),
+   C_JB                 VARCHAR2(200),
+   C_ZT                 CHAR(1),
+   CONSTRAINT PK_B_KQ_ZBZ PRIMARY KEY (N_XH)
+);
+
+/*==============================================================*/
+/* Table: B_HYJL                                             */
+/*==============================================================*/
+CREATE TABLE B_HYJL  (
+   N_XH                 NUMBER(8)                       NOT NULL,
+   C_HYZT                VARCHAR2(200),
+   C_HYDD                VARCHAR2(200),
+   D_RQ                 DATE,
+   C_HYNR                VARCHAR2(4000),
+   C_CJRY               VARCHAR2(4000),
+   C_BZ              VARCHAR2(4000),
+   C_ZT                 CHAR(1),
+   CONSTRAINT PK_B_HYJL PRIMARY KEY (N_XH)
+);
+
+/*==============================================================*/
+/* Table: B_CLXX                                             */
+/*==============================================================*/
+CREATE TABLE B_CLXX  (
+   N_XH                 NUMBER(8)                       NOT NULL,
+   C_XXWH               VARCHAR2(200),
+   D_XXRQ                 DATE,
+   C_BZ              VARCHAR2(4000),
+   C_ZT                 CHAR(1),
+   CONSTRAINT PK_B_CLXX PRIMARY KEY (N_XH)
+);
+
+create sequence SEQ_KQ_ZBZ
+minvalue 10000000
+maxvalue 99999999
+start with 10000000
+increment by 1
+cache 20;
+
+
+create sequence SEQ_HYJL
+minvalue 10000000
+maxvalue 99999999
+start with 10000000
+increment by 1
+cache 20;
+
+
+create sequence SEQ_CLXX
+minvalue 10000000
+maxvalue 99999999
+start with 10000000
+increment by 1
+cache 20;
+
+
+
 create sequence SEQ_KQ_SXB
 minvalue 10000000
 maxvalue 99999999
