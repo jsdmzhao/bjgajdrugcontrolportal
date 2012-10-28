@@ -49,7 +49,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           options:{
              valueField:"value",
              textFiled:"text",
-         	 data : tempdata
+         	 data : tempdata,
+             selectBoxHeight :200,
           },
 	         group:"基本信息",
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"

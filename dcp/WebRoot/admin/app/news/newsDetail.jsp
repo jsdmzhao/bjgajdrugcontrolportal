@@ -54,6 +54,23 @@ String newsType = request.getParameter("newsType");
 	         type:"text",
 	         group:"基本信息",
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
+         },{display:"文章栏目",
+        	 type:"text",
+             name:"c_lmName",
+             newline:true,
+             labelWidth:100,
+             width:408
+         },{
+        	 type:"hidden",
+             name:"c_lm",
+         },{
+   	         name:"wzlm",
+   	         newline:false,
+   	         width:120,//space:30, 
+   	         type:"button",
+   	         cssClass:"l-button",
+   	         value:"选择栏目",
+   	         onclick : "selectLanmu()"
          },
          {display:"是否图片文章",
              name:"c_sftwwz",
@@ -113,6 +130,7 @@ String newsType = request.getParameter("newsType");
         LG.adujestConfig(config,forbidFields);
 
         var roleids = '';
+        var dig;
         //当前ID
         var currentID = '';
         //是否新增状态
@@ -219,11 +237,30 @@ String newsType = request.getParameter("newsType");
             });
             **/
         }
+        
+		function selectLanmu(){
+			
+			dig = $.ligerDialog.open({
+        		url: '<%=basePath%>admin/app/news/selectLanmu.jsp', height: 400,width: 700
+        	});
+		}
+		
+		
         function f_cancel()
         {
             parent.dialog_hidden();
         }
 
+        function submit_lanmu(text,value){
+    		$("#c_lm").val(value);
+    		$("#c_lmName").val(text);
+    		dig.hidden();
+    	}
+    	
+    	function close_lanmu(){
+    		dig.hidden();
+    	}
+    	
         function openDialog(divNode){
 
         	var dlgedit = $.ligerDialog.open({

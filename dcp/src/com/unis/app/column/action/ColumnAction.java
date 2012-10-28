@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.unis.core.commons.Combox;
 import com.unis.core.service.AbsServiceAdapter;
 import com.unis.core.util.Globals;
 import com.unis.app.column.model.Column;
@@ -59,6 +60,17 @@ public class ColumnAction {
 		resMap.put("Rows", columnList);
 		resMap.put("Total", columnList.size());
 		return resMap;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public String columnSelectList(){
+		StringBuffer sbf = new StringBuffer();
+		//Map<String, Object> resMap = new HashMap<String, Object>();
+		List<Combox> comboxList = (List<Combox>) columnService.selectList("ColumnMapper.getColumnSelectList","");
+		for(Combox combox : comboxList){
+			sbf.append("<option value='"+combox.getValue()+"'>"+combox.getText()+"</option>");
+		}
+		return sbf.toString();
 	}
 	
 	public String columnUpdate(){

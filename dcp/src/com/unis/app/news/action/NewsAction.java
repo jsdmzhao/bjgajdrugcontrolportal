@@ -53,13 +53,15 @@ public class NewsAction {
 	private CreateIndexAction createdIndexAction = null;
 	
 	@SuppressWarnings("unchecked")
-	public String getNewsLanmuCombox(){
+	public String getNewsLanmuCombox(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		String c_yhzid = session.getAttribute("cYhz")+"";
 		StringBuffer sbf = new StringBuffer("[");
-		List<Combox> comboxList = (List<Combox>) newsService.selectList("NewsMapper.getNewsLanmuCombox", "0");
+		List<Combox> comboxList = (List<Combox>) newsService.selectList("NewsMapper.getNewsLanmuCombox", c_yhzid);
 		
 		for(Combox combox : comboxList){
 			sbf.append("{text:'"+combox.getText()+"', value:'"+combox.getValue()+"'");
-			List<Combox> childList = getLanmuChilden(combox.getValue());
+			List<Combox> childList = getLanmuChilden(combox.getValue(),c_yhzid);
 			if(!childList.isEmpty()){
 				sbf.append(",children: [");
 				for(Combox combChild : childList){
@@ -78,8 +80,11 @@ public class NewsAction {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Combox> getLanmuChilden(String c_sjdm){
-		List<Combox> comboxList = (List<Combox>) newsService.selectList("NewsMapper.getLanmuChilden", c_sjdm);
+	public List<Combox> getLanmuChilden(String c_sjdm,String c_yhzid){
+		Map<String, Object> sqlParamMap = new HashMap<String, Object>();
+		sqlParamMap.put("c_sjlmdm", c_sjdm);
+		sqlParamMap.put("c_yhzid", c_yhzid);
+		List<Combox> comboxList = (List<Combox>) newsService.selectList("NewsMapper.getLanmuChilden", sqlParamMap);
 		return comboxList;
 	}
 	

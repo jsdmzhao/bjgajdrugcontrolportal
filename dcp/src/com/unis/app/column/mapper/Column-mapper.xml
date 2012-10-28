@@ -32,8 +32,23 @@
 		       DECODE(C_SFNR, '1', '是', '否') C_SFNR,
 		       NVL(N_XSXH, '') N_XSXH
 		  FROM B_LANMU
+		  WHERE C_YHZID = '0'
 		 START WITH C_SJLMDM = '0000'
 		CONNECT BY PRIOR C_LMDM = C_SJLMDM
+	</select>
+	
+	<select id="getColumnSelectList" resultType="Combox">
+		SELECT C_LMDM VALUE,
+       (CASE C_SJLMDM
+         WHEN '0000' THEN
+          C_LMMC
+         ELSE
+          '|--' || C_LMMC
+       END) TEXT
+  FROM B_LANMU
+ WHERE C_YHZID = '0'
+ START WITH C_SJLMDM = '0000'
+CONNECT BY PRIOR C_LMDM = C_SJLMDM
 	</select>
 	
 	<delete id="deleteColumn" parameterType="int">
