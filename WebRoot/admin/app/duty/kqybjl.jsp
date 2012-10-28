@@ -12,15 +12,19 @@
 	String lx=request.getParameter("lx");
 	String lxms="";
 	String nLx="";
-	if("WC".equals(lx)){
-		lxms="外出";
+	if("CQ".equals(lx)){
+		lxms="出勤";
 		nLx="1";
-	}else if("QJ".equals(lx)){
-		lxms="请假";
+	}else if("HYPX".equals(lx)){
+		lxms="会议培训";
 		nLx="2";
-	}else{
-		lxms="补休";
+	}else if("CC".equals(lx)){
+		lxms="出差";
 		nLx="3";
+	}
+	else{
+		lxms="市内外出";
+		nLx="4";
 	}
 	
 	Object userId=request.getParameter("userId");
@@ -98,11 +102,11 @@
 	 var config ={"Grid":{
          columns: [
 { display: "人员", name: "userName", width: 180, type: "text", align: "left" },
- { display: "原因", name: "cYy", width: 180, type: "text", align: "left" },
+ { display: "事由", name: "cYy", width: 180, type: "text", align: "left" },
          { display: "开始时间", name: "dKssj", width: 180, type: "text", align: "left" },
          { display: "结束时间", name: "dJssj", width: 180, type: "text", align: "left" },
          { display: "登记时间", name: "dDj", width: 180, type: "text", align: "left" },
-         { display: "状态", name: "cZtName", width: 180, type: "text", align: "left" }
+         { display: "是否用车", name: "cZtName", width: 180, type: "text", align: "left" }
          ]      
 },"Search":null};
 

@@ -6,7 +6,7 @@
 	<resultMap id="Result"  type="java.util.Map">
 	     	<result property="nXh" column="N_XH" jdbcType="DECIMAL"/>
 			<result property="userId" column="USER_ID" jdbcType="DECIMAL"/>
-			<result property="cCccs" column="C_CCCS" jdbcType="VARCHAR"/>
+			<result property="cDd" column="C_DD" jdbcType="VARCHAR"/>
 			<result property="cYy" column="C_YY" jdbcType="VARCHAR"/>
 			<result property="dKssj" column="D_KSSJ" jdbcType="VARCHAR"/>
 			<result property="dJssj" column="D_JSSJ" jdbcType="VARCHAR"/>
@@ -23,7 +23,7 @@
 				 select 
 					base.N_XH,
 					base.USER_ID,
-					base.C_CCCS,
+					base.C_DD,
 					base.C_YY,
 					to_char(base.D_KSSJ,'YYYY-MM-DD')  D_KSSJ,
 					to_char(base.D_JSSJ,'YYYY-MM-DD')  D_JSSJ,
@@ -35,7 +35,7 @@
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
-			<if test="cCccs != null and cCccs !='' ">  and C_CCCS = #{cCccs}</if>
+			<if test="cDd != null and cDd !='' ">  and C_DD = #{cDd}</if>
 			<if test="cYy != null and cYy !='' ">  and C_YY = #{cYy}</if>
 			
 			<if test="dKssjBeg != null and dKssjBeg !='' ">  and D_KSSJ &gt;= to_date(#{dKssjBeg},'YYYY-MM-DD')</if>
@@ -57,7 +57,7 @@
 							 select 
 					base.N_XH,
 					base.USER_ID,
-					base.C_CCCS,
+					base.C_DD,
 					base.C_YY,
 					to_char(base.D_KSSJ,'YYYY-MM-DD')  D_KSSJ,
 					to_char(base.D_JSSJ,'YYYY-MM-DD')  D_JSSJ,
@@ -69,7 +69,7 @@
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
-			<if test="cCccs != null and cCccs !='' ">  and C_CCCS = #{cCccs}</if>
+			<if test="cDd != null and cDd !='' ">  and C_DD = #{cDd}</if>
 			<if test="cYy != null and cYy !='' ">  and C_YY = #{cYy}</if>
 			
 			<if test="dKssjBeg != null and dKssjBeg !='' ">  and D_KSSJ &gt;= to_date(#{dKssjBeg},'YYYY-MM-DD')</if>
@@ -93,7 +93,7 @@
 		  <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
-			<if test="cCccs != null and cCccs !='' ">  and C_CCCS = #{cCccs}</if>
+			<if test="cDd != null and cDd !='' ">  and C_DD = #{cDd}</if>
 			<if test="cYy != null and cYy !='' ">  and C_YY = #{cYy}</if>
 			
 			<if test="dKssjBeg != null and dKssjBeg !='' ">  and D_KSSJ &gt;= to_date(#{dKssjBeg},'YYYY-MM-DD')</if>
@@ -116,7 +116,7 @@
 			INSERT INTO B_KQ_CCJL(
 				 N_XH
 			<if test="userId != null and userId !='' ">  , USER_ID</if>
-			<if test="cCccs != null and cCccs !='' ">  ,  C_CCCS</if>
+			<if test="cDd != null and cDd !='' ">  ,  C_DD</if>
 			<if test="cYy != null and cYy !='' ">  ,  C_YY</if>
 			<if test="dKssj != null and dKssj !='' ">  ,  D_KSSJ</if>
 			<if test="dJssj != null and dJssj !='' ">  ,  D_JSSJ</if>
@@ -126,7 +126,7 @@
 				SEQ_KQ_CCJL.NEXTVAL 
 				<!-- #{n_xh#-->
 			<if test="userId != null and userId !='' ">  ,  #{userId}</if>
-			<if test="cCccs != null and cCccs !='' ">  ,  #{cCccs}</if>
+			<if test="cDd != null and cDd !='' ">  ,  #{cDd}</if>
 			<if test="cYy != null and cYy !='' ">  ,  #{cYy}</if>
 			<if test="dKssj != null and dKssj !='' ">  ,  to_date(#{dKssj},'YYYY-MM-DD')</if>
 			<if test="dJssj != null and dJssj !='' ">  ,  to_date(#{dJssj},'YYYY-MM-DD')</if>
@@ -143,7 +143,7 @@
 			INSERT INTO B_KQ_CCJL(
 				N_XH,
 				USER_ID,
-				C_CCCS,
+				C_DD,
 				C_YY,
 				D_KSSJ,
 				D_JSSJ,
@@ -152,7 +152,7 @@
 			)VALUES(
 				 SEQ_KQ_CCJL.NEXTVAL,  
 				  #{userId},
-			     #{cCccs},
+			     #{cDd},
 			   #{cYy},
 			   to_date(#{dKssj},'YYYY-MM-DD')
 			    to_date(#{dJssj},'YYYY-MM-DD'),
@@ -169,7 +169,7 @@
 			update B_KQ_CCJL 
 			<trim prefix="set" prefixOverrides=","> 
 			<if test="userId != null and userId !='' ">, USER_ID =  #{userId}</if>
-			<if test="cCccs != null and cCccs !='' ">, C_CCCS =  #{cCccs}</if>
+			<if test="cDd != null and cDd !='' ">, C_DD =  #{cDd}</if>
 			<if test="cYy != null and cYy !='' ">,C_YY =  #{cYy}</if>
 			<if test="dKssj != null and dKssj !='' ">, D_KSSJ =   to_date(#{dKssj},'YYYY-MM-DD')</if>
 			<if test="dJssj != null and dJssj !='' ">, D_JSSJ =   to_date(#{dJssj},'YYYY-MM-DD')</if>
@@ -185,7 +185,7 @@
 	<update id="updateAllInfo" parameterType="java.util.Map"> 
 			update B_KQ_CCJL set 
 				 USER_ID =  #{userId}
-			, C_CCCS =  #{cCccs}
+			, C_DD =  #{cDd}
 			,C_YY =  #{cYy}
 			, D_KSSJ =  to_date(#{dKssj},'YYYY-MM-DD')
 			, D_JSSJ = to_date(#{dJssj},'YYYY-MM-DD')

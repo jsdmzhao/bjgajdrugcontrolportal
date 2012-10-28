@@ -6,6 +6,8 @@
 	<resultMap id="Result"  type="java.util.Map">
 	     	<result property="nXh" column="N_XH" jdbcType="DECIMAL"/>
 			<result property="userId" column="USER_ID" jdbcType="DECIMAL"/>
+			<result property="cDd" column="C_DD" jdbcType="VARCHAR"/>
+			<result property="cYy" column="C_YY" jdbcType="VARCHAR"/>
 			<result property="dSj" column="D_SJ" jdbcType="VARCHAR"/>
 			<result property="cBz" column="C_BZ" jdbcType="VARCHAR"/>
 		<result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
@@ -17,6 +19,8 @@
 				 select 
 					base.N_XH,
 					base.USER_ID,
+					base.C_DD,
+					base.C_YY,
 					to_char(base.D_SJ,'YYYY-MM-DD')  D_SJ,
 					base.C_BZ,
 					FUN_GET_YHMC(USER_ID) USER_NAME
@@ -38,6 +42,8 @@
 						 select 
 					base.N_XH,
 					base.USER_ID,
+					base.C_DD,
+					base.C_YY,
 					to_char(base.D_SJ,'YYYY-MM-DD')  D_SJ,
 					base.C_BZ,
 					FUN_GET_YHMC(USER_ID) USER_NAME
@@ -76,12 +82,16 @@
 			INSERT INTO B_KQ_ZB(
 				 N_XH
 			<if test="userId != null and userId !='' ">  , USER_ID</if>
+			<if test="cDd != null and cDd !='' ">  , C_DD</if>
+			<if test="cYy != null and cYy !='' ">  , C_YY</if>
 			<if test="dSj != null and dSj !='' ">  ,  D_SJ</if>
 			<if test="cBz != null and cBz !='' ">  ,  C_BZ</if>
 			)VALUES(
 				SEQ_KQ_ZB.NEXTVAL 
 				<!-- #{n_xh#-->
 			<if test="userId != null and userId !='' ">  ,  #{userId}</if>
+			<if test="cDd != null and cDd !='' ">  , #{cDd}</if>
+			<if test="cYy != null and cYy !='' ">  , #{cYy}</if>
 			<if test="dSj != null and dSj !='' ">  ,  to_date(#{dSj},'YYYY-MM-DD')</if>
 			<if test="cBz != null and cBz !='' ">  ,  #{cBz}</if>
 			)
@@ -95,11 +105,15 @@
 			INSERT INTO B_KQ_ZB(
 				N_XH,
 				USER_ID,
+				C_DD,
+				C_YY,
 				D_SJ,
 				C_BZ
 			)VALUES(
 				 SEQ_KQ_ZB.NEXTVAL,  
 				  #{userId},
+				  #{cDd},
+				   #{cYy},
 			   to_date(#{dSj},'YYYY-MM-DD'),
 			   #{cBz}
 			)
@@ -113,6 +127,9 @@
 			update B_KQ_ZB 
 			<trim prefix="set" prefixOverrides=","> 
 			<if test="userId != null and userId !='' ">, USER_ID =  #{userId}</if>
+			<if test="cDd != null and cDd !='' ">  C_DD=#{cDd}</if>
+			<if test="cYy != null and cYy !='' ">  C_YY=#{cYy}</if>
+			
 			<if test="dSj != null and dSj !='' ">, D_SJ = to_date(#{dSj},'YYYY-MM-DD')</if>
 			<if test="cBz != null and cBz !='' ">, C_BZ =   #{cBz}</if>
 			</trim>
@@ -125,6 +142,8 @@
 	<update id="updateAllInfo" parameterType="java.util.Map"> 
 			update B_KQ_ZB set 
 				 USER_ID =  #{userId}
+				 , C_DD=#{cDd}
+				 , C_YY=#{cYy}
 			, D_SJ =  to_date(#{dSj},'YYYY-MM-DD')
 			, C_BZ =   #{cBz}
 			WHERE 

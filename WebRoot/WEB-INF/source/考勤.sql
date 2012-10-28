@@ -16,6 +16,8 @@ CREATE TABLE B_KQ_ZB  (
    N_XH                 NUMBER(8)                       NOT NULL,
    D_SJ                 DATE,
    USER_ID              NUMBER(8),
+   C_DD                 VARCHAR2(200),
+   C_YY                 VARCHAR2(4000),
    C_BZ                 VARCHAR2(200),
    CONSTRAINT PK_B_ZHIBAN PRIMARY KEY (N_XH)
 );
@@ -28,6 +30,12 @@ COMMENT ON COLUMN B_KQ_ZB.N_XH IS
 
 COMMENT ON COLUMN B_KQ_ZB.D_SJ IS
 '时间';
+
+COMMENT ON COLUMN B_KQ_ZB.C_DD IS
+'地点';
+
+COMMENT ON COLUMN B_KQ_ZB.C_YY IS
+'原因';
 
 COMMENT ON COLUMN B_KQ_ZB.USER_ID IS
 '人员';
@@ -43,6 +51,8 @@ CREATE TABLE B_KQ_SXB  (
    N_XH                 NUMBER(8)                       NOT NULL,
    N_LX                 NUMBER(4),
    USER_ID              NUMBER(8),
+   C_DD                 VARCHAR2(200),
+   C_YY                 VARCHAR2(4000),
    D_DJ                 DATE,
    C_ZT                 CHAR(1),
    CONSTRAINT PK_B_KQ_SXB PRIMARY KEY (N_XH)
@@ -60,6 +70,12 @@ COMMENT ON COLUMN B_KQ_SXB.N_LX IS
 COMMENT ON COLUMN B_KQ_SXB.USER_ID IS
 '用户ID';
 
+COMMENT ON COLUMN B_KQ_SXB.C_DD IS
+'地点';
+
+COMMENT ON COLUMN B_KQ_SXB.C_YY IS
+'原因';
+
 COMMENT ON COLUMN B_KQ_SXB.D_DJ IS
 '登记时间';
 
@@ -74,6 +90,7 @@ COMMENT ON COLUMN B_KQ_SXB.C_ZT IS
 CREATE TABLE B_KQ_YBJL  (
    N_XH                 NUMBER(8)                      NOT NULL,
    USER_ID              NUMBER(8),
+   C_DD                 VARCHAR2(200),
    N_LX                 NUMBER(4),
    C_YY                 VARCHAR2(4000),
    D_KSSJ               DATE,
@@ -91,6 +108,9 @@ COMMENT ON COLUMN B_KQ_YBJL.N_XH IS
 
 COMMENT ON COLUMN B_KQ_YBJL.USER_ID IS
 '用户ID';
+
+COMMENT ON COLUMN B_KQ_YBJL.C_DD IS
+'地点';
 
 COMMENT ON COLUMN B_KQ_YBJL.N_LX IS
 '类型';
@@ -119,7 +139,7 @@ COMMENT ON COLUMN B_KQ_YBJL.C_ZT IS
 CREATE TABLE B_KQ_CCJL  (
    N_XH                 NUMBER(8)                       NOT NULL,
    USER_ID              NUMBER(8),
-   C_CCCS               VARCHAR2(100),
+   C_DD                 VARCHAR2(200),
    C_YY                 VARCHAR2(4000),
    D_KSSJ               DATE,
    D_JSSJ               DATE,
@@ -137,8 +157,8 @@ COMMENT ON COLUMN B_KQ_CCJL.N_XH IS
 COMMENT ON COLUMN B_KQ_CCJL.USER_ID IS
 '用户ID';
 
-COMMENT ON COLUMN B_KQ_CCJL.C_CCCS IS
-'出差城市';
+COMMENT ON COLUMN B_KQ_CCJL.C_DD IS
+'地点';
 
 COMMENT ON COLUMN B_KQ_CCJL.C_YY IS
 '原因';
@@ -164,6 +184,7 @@ COMMENT ON COLUMN B_KQ_CCJL.C_ZT IS
 CREATE TABLE B_KQ_QQSB  (
    N_XH                 NUMBER(8)                       NOT NULL,
    USER_ID              NUMBER(8),
+   C_DD                 VARCHAR2(200),
    D_RQ                 DATE,
    C_SJ                 VARCHAR2(4000),
    C_TXYY               VARCHAR2(4000),
@@ -180,6 +201,10 @@ COMMENT ON COLUMN B_KQ_QQSB.N_XH IS
 
 COMMENT ON COLUMN B_KQ_QQSB.USER_ID IS
 '用户ID';
+
+COMMENT ON COLUMN B_KQ_QQSB.C_DD IS
+'地点';
+
 
 COMMENT ON COLUMN B_KQ_QQSB.D_RQ IS
 '日期';
