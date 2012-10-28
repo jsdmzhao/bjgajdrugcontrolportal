@@ -84,7 +84,7 @@ public class UserInfoSvc  {
 			List<Map> clist=userDao.queryAllInfo(ctp);
 			for (int j = 0; j < clist.size(); j++) {
 				Map cp=clist.get(j);
-				cp.put("text", tp.get("cMc")+""+cp.get("cXm"));
+				cp.put("text", tp.get("cMc")+"----"+cp.get("cXm"));
 				cp.put("value", cp.get("userId"));
 				cp.put("id", cp.get("userId"));
 				rlist.add(cp);
