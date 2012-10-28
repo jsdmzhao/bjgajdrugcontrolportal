@@ -1,4 +1,5 @@
-﻿<%@page import="com.unis.app.system.service.SysRoleSvc"%>
+﻿<%@page import="com.unis.app.userinfo.service.UserInfoSvc"%>
+<%@page import="com.unis.app.system.service.SysRoleSvc"%>
 <%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
 <%@page import="org.springframework.context.ApplicationContext"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
@@ -16,246 +17,220 @@
 		userId="";
 		
 	}
+	
+	ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());
+	UserInfoSvc userInfoSvc= (UserInfoSvc) ctx.getBean("userInfoSvc");
+	
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<base href="<%=basePath%>">
-<title>出差</title>
-<link
-	href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css"
-	rel="stylesheet" type="text/css" />
-<link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css"
-	rel="stylesheet" type="text/css" />
-<script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js"
-	type="text/javascript"></script>
-<script src="<%=basePath%>liger/lib/ligerUI/js/ligerui.min.js"
-	type="text/javascript"></script>
-<link href="<%=basePath%>liger/lib/css/common.css" rel="stylesheet"
-	type="text/css" />
-<script src="<%=basePath%>liger/lib/js/common.js" type="text/javascript"></script>
+<link rel='stylesheet' type='text/css' href='<%=basePath%>js/fullcalendar/fullcalendar.css' />
+<link rel='stylesheet' type='text/css' href='<%=basePath%>js/fullcalendar/fullcalendar.print.css' media='print' />
+<script type='text/javascript' src='<%=basePath%>js/jquery-1.8.1.min.js'></script>
+<script type='text/javascript' src='<%=basePath%>js/jquery-ui-1.8.23.custom.min.js'></script>
+<script type='text/javascript' src='<%=basePath%>js/fullcalendar/fullcalendar.min.js'></script>
 <script src="<%=basePath%>liger/lib/js/LG.js" type="text/javascript"></script>
+<script type='text/javascript'>
 
+	$(document).ready(function() {
+	
+	
+		/* initialize the external events
+		-----------------------------------------------------------------*/
+	
+		$('#external-events div.external-event').each(function() {
+		
+			// create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+			// it doesn't need to have a start or end
+			var eventObject = {
+				title: $.trim($(this).text()), // use the element's text as the event title
+				id: $(this).attr("id")
+			};
+			
+			// store the Event Object in the DOM element so we can get to it later
+			$(this).data('eventObject', eventObject);
+			
+			// make the event draggable using jQuery UI
+			$(this).draggable({
+				zIndex: 999,
+				revert: true,      // will cause the event to go back to its
+				revertDuration: 0  //  original position after the drag
+			});
+			
+		});
+	
+	
+		/* initialize the calendar
+		-----------------------------------------------------------------*/
+		
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month'
+				
+			},
+			height:'500',
+			 eventClick: function(event) {//alert(event.id); 
+			 
+				 if(confirm("是否删除 "+event.title+" 的限行信息")) { 
+		           
+		            	$('#calendar').fullCalendar('removeEvents', event.id);
+		                    } 
+				 else{
+		               return false;
+		                    }
 
-<script src="<%=basePath%>liger/lib/js/ligerui.expand.js"
-	type="text/javascript"></script>
-<script src="<%=basePath%>liger/lib/json2.js" type="text/javascript"></script>
-<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
-<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
-<script type='text/javascript'
-	src='<%=basePath%>dwr/interface/KqCcjlSvc.js'></script>
-<script type='text/javascript'
-	src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>	
+			 //$('#calendar').fullCalendar('removeEvents', event.id);
+			 
+			 },
+			
+			 editable: true,
+			droppable: true, // this allows things to be dropped onto the calendar !!!
+			drop: function(date, allDay) { // this function is called when something is dropped
+			
+				// retrieve the dropped element's stored Event Object
+				var originalEventObject = $(this).data('eventObject');
+				
+				// we need to copy it, so that multiple events don't have a reference to the same object
+				var copiedEventObject = $.extend({}, originalEventObject);
+				
+				// assign it the date that was reported
+				copiedEventObject.start = date;
+				copiedEventObject.allDay = allDay;
+				
+				// render the event on the calendar
+				// the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+				$('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+				
+				
+				
+				
+			
+				
+				// is the "remove after drop" checkbox checked?
+				if ($('#drop-remove').is(':checked')) {
+					// if so, remove the element from the "Draggable Events" list
+					$(this).remove();
+				}
+				
+			}
+		});
+		
+		
+	});
 
+</script>
+<style type='text/css'>
+
+	body {
+		margin-top: 40px;
+		text-align: center;
+		font-size: 14px;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		}
+		
+	#wrap {
+		width: 1100px;
+		margin: 0 auto;
+		}
+		
+	#external-events {
+		float: left;
+		width: 150px;
+		padding: 0 10px;
+		border: 1px solid #ccc;
+		background: #eee;
+		text-align: left;
+		}
+		
+	#external-events h4 {
+		font-size: 16px;
+		margin-top: 0;
+		padding-top: 1em;
+		}
+		
+	.external-event { /* try to mimick the look of a real event */
+		margin: 10px 0;
+		padding: 2px 4px;
+		background: #3366CC;
+		color: #fff;
+		font-size: .85em;
+		cursor: pointer;
+		}
+		
+	#external-events p {
+		margin: 1.5em 0;
+		font-size: 11px;
+		color: #666;
+		}
+		
+	#external-events p input {
+		margin: 0;
+		vertical-align: middle;
+		}
+
+	#calendar {
+		float: right;
+		width: 900px;
+		}
+
+</style>
 </head>
-<body style="padding:10px;height:100%; text-align:center;">
-<div id="mainsearch" style="width: 98%">
-			<div class="searchtitle">
-				<span>搜索</span>
-				<img src="<%=basePath%>liger/lib/icons/32X32/searchtool.gif" />
-				<div class="togglebtn"></div>
-			</div>
-			<div class="navline" style="margin-bottom: 4px; margin-top: 4px;"></div>
-			<div class="searchbox">
-				<form id="formsearch" class="l-form"></form>
-			</div>
-		</div>
-		<div id="maingrid"></div>
+<body>
+<div id='wrap'>
 
-	<script type="text/javascript">
+
+<div id='external-events'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' value="保存限行信息" onclick="abc();"><br/>
+<input type='checkbox' id='drop-remove'/> <label for='drop-remove'>不允许尾号重复</label>
+<h4>尾号</h4>
+	<div class='external-event' id='0'>0</div>
+	<div class='external-event' id='1'>1</div>
+<div class='external-event' id='2'>2</div>
+<div class='external-event' id='3'>3</div>
+<div class='external-event' id='4'>4</div>
+<div class='external-event' id='5'>5</div>
+<div class='external-event' id='6'>6</div>
+<div class='external-event' id='7'>7</div>
+<div class='external-event' id='8'>8</div>
+<div class='external-event' id='9'>9</div>
+<div class='external-event' id='不限行'>不限行</div>
+<div class='external-event' id='不限行'>不限行</div>
+<div class='external-event' id='不限行'>不限行</div>
+<div class='external-event' id='不限行'>不限行</div>
+<div class='external-event' id='不限行'>不限行</div>
+<div class='external-event' id='不限行'>不限行</div>
+
+
+</div>
+
+<div id='calendar'></div>
+
+<script>
+function abc(){
+	var t=$('#calendar').fullCalendar( 'clientEvents' );
 	
-  DWREngine.setAsync(false); 
-  
-  var dlgedit=null;
-  var Validator = null;
-  var edittype=null;
-  var rowi=0;
-  
-  var dialog ;
-  
-	var oPage={
-			pageIndex:1,
-			pageSize:1000
-	};
+	alert(t);
 	
-	 var userList;
-    UserInfoSvc.chooseOnlyUser(function(userData){
-  	   userList=userData;
-    });
-    
-	 var config ={"Grid":{
-         columns: [
-                   { display: "人员", name: "userName", width: 180, type: "text", align: "left" },
-                   { display: "请假类别", name: "cDd", width: 180, type: "text", align: "left" },
-                    { display: "原因", name: "cYy", width: 180, type: "text", align: "left" },
-                   { display: "开始时间", name: "dKssj", width: 180, type: "text", align: "left" },
-                   { display: "结束时间", name: "dJssj", width: 180, type: "text", align: "left" },
-                   { display: "登记时间", name: "dDj", width: 180, type: "text", align: "left" },
-                   { display: "状态", name: "cZtName", width: 180, type: "text", align: "left" }
-         ]      
-},"Search":null};
-
-     var grid = $("#maingrid").ligerGrid({
-         columns: config.Grid.columns, pageSize: 20, toolbar: {},
-         sortName: 'UserID', 
-         width: '98%', height: '100%',heightDiff:-10, checkbox: false
-     });
-   //双击事件
- 	LG.setGridDoubleClick(grid, 'modify');
-
- 	//搜索表单应用ligerui样式
- 	$("#formsearch").ligerForm( {
- 		fields : [ {
- 			display : "日期范围",
- 			name : "dDjBeg",
- 			newline : false,
- 			labelWidth : 80,
- 			width : 100,
- 			space : 10,
- 			type : "date",
- 			cssClass : "field"
- 		}, {
- 			display : "至",
- 			name : "dDjEnd",
- 			newline : false,
- 			labelWidth : 30,
- 			width : 100,
- 			space : 30,
- 			type : "date",
- 			cssClass : "field"
- 		}
- 		<%if("".equals(userId)){%>
- 		, 
- 		{
- 			display : "人员",
- 			name : "userName",
- 			newline : false,
- 			labelWidth : 60,
- 			width : 100,
- 			space : 30,
- 			type : "select",
- 			options: {
- 			valueFieldID: "userId",
- 			data : userList},
- 			cssClass : "field"
- 		}  
- 		<%}%>
- 		],
- 		toJSON : JSON2.stringify
- 	});
-
- 	//增加搜索按钮,并创建事件
- 	LG.appendSearchButtons("#formsearch", grid);
-
-      //加载toolbar
-      LG.loadToolbar(grid, toolbarBtnItemClick);
-      	
-      	var items=[{
-			            click:toolbarBtnItemClick,
-			            text:'新增',
-			            img:'<%=basePath%>liger/lib/icons/silkicons/add.png',
-			            id:'add'
-			        },{line:true},{
-                        click: toolbarBtnItemClick,
-                        text: '修改',
-                        img:'<%=basePath%>liger/lib/icons/silkicons/application_edit.png',
-                        id: 'modify'
-                    },{line:true},{
-                        click: toolbarBtnItemClick,
-                        text: '删除',
-                        img:'<%=basePath%>liger/lib/icons/silkicons/delete.png',
-                        id: 'delete'
-                   // }
-                    //,{line:true},{
-                      //  click: toolbarBtnItemClick,
-	                  // text: '查看',
-	                  //  img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
-	                   // id: 'view'
-                   },
-                   {line:true}];
-    	grid.toolbarManager.set('items', items);
-
-    	function loadGrid(obj){
-    		if(!obj)obj={};
-    		<%if(!"".equals(userId)){%>
-    			obj.userId='<%=userId%>';
-    		<%}%>
-    		KqCcjlSvc.queryByPage(obj,oPage,function(rdata){
-    			if(rdata == null){
-    				  grid.setOptions({ data:  { Total:0, Rows:""  } });
-    			}else{
-    				  grid.setOptions({ data:  { Total:rdata.page.recordCount, Rows:rdata.data  } });
-        		}
-    		});
-    	}
-     
-    	loadGrid();
-     //     alert($d(grid.data ));
-      //工具条事件
-      function toolbarBtnItemClick(item) {
-          switch (item.id) {
-              case "add":
-            	//  f_dialog("add","新增上下班信息");
-            	   dialog = $.ligerDialog.open({ title :'新增信息',url: '<%=basePath%>admin/app/duty/kqccjlDetail.jsp?a=1<%=str%>', 
-                       height: 350,width: 720,showMax: true, showToggle: true,  showMin: true
-				  });
-            	//  top.f_openDialog(null,'新增上下班信息','<%=basePath%>admin/app/user/userDetail.jsp' );
-                  break;
-            //  case "view":
-            //      var selected = grid.getSelected();
-            //      if (!selected) { LG.tip('请选择行!'); return }
-            //      top.f_addTab(null, '查看上下班信息', '<%=basePath%>admin/app/duty/kqccjlDetail.jsp?IsView=1&ID=' + selected.UserID+'<%=str%>');
-            //      break;
-              case "modify":
-            	  
-            	  var selected = grid.getSelected();
-                        if (!selected) { LG.tip('请选择行!'); return }
-                       dialog = $.ligerDialog.open({ title :'修改信息',url: '<%=basePath%>admin/app/duty/kqccjlDetail.jsp?nXh=' + selected.nXh+'<%=str%>', 
-                       height: 350,width: 720,showMax: true, showToggle: true,  showMin: true
-				  });
-                       break;
-            	 
-				break;
-			case "delete":
-				jQuery.ligerDialog.confirm('确定删除吗?', function(confirm) {
-					if (confirm)
-						f_remove();
-				});
-				break;
-			}
-		}
-
-
-		function f_remove() {
-			var selected = grid.getSelected();
-			if (selected) {
-				KqCcjlSvc.remove(selected, function(rdata) {
-					if (rdata) {
-						LG.showSuccess('删除成功');
-						loadGrid();
-					} else {
-						LG.showError('删除失败');
-					}
-				});
-			} else {
-				LG.tip('请选择行!');
-			}
-		}
-
-		function f_reload() {
-			  grid.loadData();
-		}
+	alert(t[0].id);
 	
-		  function dialog_hidden()
-	      {
-	    	  dialog.hidden();
-	      }
-	</script>
+	alert(t[0].title);
+	
+	alert(t[0].start);
+	
+	alert(t[0].end);
+	
+}
+
+</script>
 
 
-		
-		
+
+<div style='clear:both'></div>
+</div>
 </body>
 </html>
