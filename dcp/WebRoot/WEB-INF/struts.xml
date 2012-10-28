@@ -29,10 +29,16 @@
 			<result name="success">/admin/app/car/cartype{1}.jsp</result>
 		</action>
 		
+		
+				
+		<action name="*PageList" class="{1}Action" method="{1}PageList">
+		</action>
+		
 		<!-- 通配符配置 -->
     	<action name="*List" class="{1}Action" method="{1}List">
 			<result name="success">/{1}/{1}_list.jsp</result>
 		</action>
+
 		
 		<action name="*Save" class="{1}Action" method="{1}Save">
 			<result name="success" type="chain">{1}List</result>

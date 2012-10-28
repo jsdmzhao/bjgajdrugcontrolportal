@@ -1,13 +1,19 @@
 package com.unis.app.car.action;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 import org.apache.commons.lang.xwork.StringUtils;
+import org.apache.struts2.ServletActionContext;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -24,6 +30,12 @@ public class CarAction {
 	private Car car;
 	
 	private String c_yhid;
+	
+	private Integer pagesize;
+	
+	private Integer page;
+	
+	private String type;
 	
 	@Autowired
 	private AbsServiceAdapter<Integer> carService = null;
@@ -43,7 +55,38 @@ public class CarAction {
 	}
 
 	@SuppressWarnings("unchecked")
-	public Map<String, Object> carList(String type,HttpServletRequest request){
+	public void carList() throws IOException{
+		
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = request.getSession();
+		String userId =  session.getAttribute("userId")+"";
+		Map<String, String> sqlParamMap = new HashMap<String, String>();
+		
+		sqlParamMap.put("type", type);
+		sqlParamMap.put("c_yhid", userId);
+		sqlParamMap.put("start", String.valueOf(((page.intValue()-1)*pagesize.intValue())));
+		sqlParamMap.put("limit", String.valueOf((page.intValue()*pagesize.intValue())));
+		Map<String, Object> resMap = new HashMap<String, Object>();
+
+		List<Car> carList = (List<Car>) carService.selectList("CarMapper.getCarPageList",sqlParamMap);
+		Long cnt = (Long) carService.selectOne("CarMapper.getCarPageListCnt","");
+
+		resMap.put("Rows", carList);
+		resMap.put("Total", cnt);
+
+		ObjectMapper mapper = new ObjectMapper();
+		
+    	HttpServletResponse response = ServletActionContext.getResponse();
+    	response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		mapper.writeValue(out, resMap);
+		out.flush();
+		out.close();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> carUserList(String type,HttpServletRequest request){
+		
 		HttpSession session = request.getSession();
 		String userId =  session.getAttribute("userId")+"";
 		Map<String, String> sqlParamMap = new HashMap<String, String>();
@@ -68,8 +111,13 @@ public class CarAction {
 	}
 	
 	public String carOperator(String value, String n_xh){
+		
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = request.getSession();
+		String userId =  session.getAttribute("userId")+"";
+		
 		Map<String, Object> sqlparaMap = new HashMap<String, Object>();
-		sqlparaMap.put("c_shr", "");
+		sqlparaMap.put("c_shr", userId);
 		sqlparaMap.put("c_shjg", value);
 		sqlparaMap.put("n_xh", n_xh);
 		carService.update("CarMapper.operateCar", sqlparaMap);
@@ -118,5 +166,29 @@ public class CarAction {
 		this.carService = carService;
 	}
 
+	public Integer getPagesize() {
+		return pagesize;
+	}
+
+	public void setPagesize(Integer pagesize) {
+		this.pagesize = pagesize;
+	}
+
+	public Integer getPage() {
+		return page;
+	}
+
+	public void setPage(Integer page) {
+		this.page = page;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+ 
 	
 }

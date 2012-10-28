@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -65,7 +66,7 @@ A:hover {
 								<TR>
 									<TD><FONT class=p2>&nbsp;&nbsp;&nbsp; <FONT
 											color=#ff0000><IMG height=13 src="images/emessage.gif"
-												width=12>&nbsp;无法访问本页的原因是：</FONT>
+												width=12>&nbsp;无法访问本页的原因是：<s:property value="exception"/></FONT>
 									</FONT>
 									</TD>
 								</TR>

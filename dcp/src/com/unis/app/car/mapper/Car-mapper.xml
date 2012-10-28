@@ -7,6 +7,7 @@
 	 	<result column="N_XH"     property="n_xh"/>
 	 	<result column="C_CPHM"   property="c_cphm"/>
 	 	<result column="C_YHZID"  property="c_yhzid"/>
+	 	<result column="D_GMSJ"  property="d_gmsj"/>
 	 	<result column="D_DJ"   property="d_dj"/>
 	 </resultMap>
 	 
@@ -34,21 +35,42 @@
 			   TO_CHAR(D_GDSJ,'YYYY-MM-DD HH24:MI:SS') D_GDSJ
 	    FROM B_CLSQ WHERE N_XH = #{n_xh}
 	</select>
-	 
+	
 	<select id="getCarList" resultMap="resultCar" parameterType="hashmap">
 		SELECT N_XH,
-			   FUN_GET_CPHM(N_CLLBXH) N_CLLBXH,
-			   FUN_GET_YHMC(C_YHID) C_YHID,
-		       C_SQSY,
-		       TO_CHAR(D_CCSJ,'YYYY-MM-DD HH24:MI:SS') D_CCSJ,
-		       TO_CHAR(D_GDSJ,'YYYY-MM-DD HH24:MI:SS') D_GDSJ,
-		       DECODE(C_SHJG,'1','同意','0','不同意','等待审核') C_SHJG,
-		       TO_CHAR(D_DJ,'YYYY-MM-DD HH24:MI:SS') D_DJ
-		  FROM B_CLSQ
-		  <if test="type != null and type == 'yh' ">
-		  WHERE C_YHID = #{c_yhid}
-		  </if>
-		  ORDER BY N_XH DESC
+             FUN_GET_CPHM(N_CLLBXH) N_CLLBXH,
+             FUN_GET_YHMC(C_YHID) C_YHID,
+             C_SQSY,
+             TO_CHAR(D_CCSJ, 'YYYY-MM-DD HH24:MI:SS') D_CCSJ,
+             TO_CHAR(D_GDSJ, 'YYYY-MM-DD HH24:MI:SS') D_GDSJ,
+             DECODE(C_SHJG, '1', '同意', '0', '不同意', '等待审核') C_SHJG,
+             TO_CHAR(D_DJ, 'YYYY-MM-DD HH24:MI:SS') D_DJ
+        FROM B_CLSQ
+        <if test="type != null and type == 'yh'">
+	 	 WHERE C_YHID = #{c_yhid}
+	  	</if>
+       ORDER BY N_XH DESC
+	</select>
+	 
+	<select id="getCarPageList" resultMap="resultCar" parameterType="hashmap">
+	SELECT N_XH,N_CLLBXH, C_YHID, C_SQSY, D_CCSJ, D_GDSJ, C_SHJG, D_DJ
+	  FROM (SELECT S.*, ROWNUM RN
+	          FROM (SELECT N_XH,
+	                       FUN_GET_CPHM(N_CLLBXH) N_CLLBXH,
+	                       FUN_GET_YHMC(C_YHID) C_YHID,
+	                       C_SQSY,
+	                       TO_CHAR(D_CCSJ, 'YYYY-MM-DD HH24:MI:SS') D_CCSJ,
+	                       TO_CHAR(D_GDSJ, 'YYYY-MM-DD HH24:MI:SS') D_GDSJ,
+	                       DECODE(C_SHJG, '1', '同意', '0', '不同意', '等待审核') C_SHJG,
+	                       TO_CHAR(D_DJ, 'YYYY-MM-DD HH24:MI:SS') D_DJ
+	                  FROM B_CLSQ
+	                 ORDER BY N_XH DESC) S
+	         WHERE ROWNUM &lt;= #{limit}) T
+	 WHERE T.RN &gt; #{start}
+	</select>
+	
+	<select id="getCarPageListCnt" resultType="long">
+		SELECT COUNT(*) Total FROM B_CLSQ
 	</select>
 	
 	<select id="getCartypeList" resultMap="resultCartype">
@@ -62,6 +84,7 @@
 		       		  '5','缉控大队',
 		       		  '10','两品办')  C_YHZID ,
 		       C_CPHM,
+		       TO_CHAR(D_GMSJ,'YYYY-MM-DD') D_GMSJ,
 		       TO_CHAR(D_DJ,'YYYY-MM-DD HH24:MI:SS') D_DJ
 		  FROM B_CLLB
 		  ORDER BY N_XH DESC
@@ -72,9 +95,15 @@
 		SELECT N_XH VALUE,
 	       C_CPHM TEXT
 	    FROM B_CLLB
+       WHERE NOT EXISTS
+      	 (SELECT 'X'
+           FROM B_CLSQ S
+          WHERE S.N_CLLBXH = B_CLLB.N_XH
+            AND S.D_GDSJ >
+                TO_DATE(TO_CHAR(SYSDATE, 'YYYY-MM-DD'), 'YYYY-MM-DD'))
 	</select>
 	
-	<delete id="deleteCar" parameterType="int">
+	<delete id="deleteCar" parameterType="long">
 		DELETE FROM B_CLSQ WHERE N_XH = #{n_xh}
 	</delete>
 	
@@ -106,11 +135,19 @@
 		INSERT INTO B_CLLB(
 		   N_XH    ,
 		   C_CPHM  ,
+		   D_GMSJ  ,
+		   N_XSLC  ,
+		   N_HYZL  ,
+		   N_PJYH  ,
 		   C_YHZID ,
 		   D_DJ    ) 
 		VALUES (	            	
 	      seq_b_cllb.nextval,        
           #{c_cphm,jdbcType=VARCHAR}, 
+          TO_DATE(#{d_gmsj,jdbcType=VARCHAR},'YYYY-MM-DD'), 
+          #{n_xslc,jdbcType=VARCHAR}, 
+          #{n_hyzl,jdbcType=VARCHAR}, 
+          #{n_pjyh,jdbcType=VARCHAR},
           #{c_yhzid,jdbcType=VARCHAR}, 
        	  sysdate      
 	    )  
@@ -137,7 +174,11 @@
 	<update id="updateCartype" parameterType="hashmap">
 		UPDATE B_CLLB
 		   SET  C_CPHM   =	#{c_cphm,jdbcType=VARCHAR},
-		   		C_YHZID  =  #{c_yhzid,jdbcType=VARCHAR}
+		   		D_GMSJ   =  TO_DATE(#{d_gmsj,jdbcType=VARCHAR},'YYYY-MM-DD'),
+		   		C_YHZID  =  #{c_yhzid,jdbcType=VARCHAR},
+		   		N_XSLC   =  NVL(#{n_xslc,jdbcType=VARCHAR},0), 
+          		N_HYZL   =  NVL(#{n_hyzl,jdbcType=VARCHAR},0), 
+          		N_PJYH   =  NVL(#{n_pjyh,jdbcType=VARCHAR},0)
 		WHERE N_XH = #{n_xh}
 	</update>
 	

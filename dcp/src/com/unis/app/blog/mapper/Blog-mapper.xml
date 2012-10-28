@@ -49,8 +49,35 @@
 		       DECODE(C_SHJG,'0','不通过','1','通过','未审核') C_SHJG,
 		       DECODE(C_SFTJ,'0','不推荐','1','推荐','不推荐') C_SFTJ
 		  FROM B_RIZHI
-		  WHERE C_YHID = #{c_yhid}
+		  <if test="c_yhid != null and c_yhid != '' ">
+		  	WHERE C_YHID = #{c_yhid}
+		  </if>
 		  ORDER BY N_XH DESC
+	</select>
+	
+	<select id="getBlogPageList" resultMap="resultBlog" parameterType="hashmap">
+	SELECT N_XH, C_BT, D_DJ, C_SHJG, C_SHJG
+	  FROM (SELECT S.*, ROWNUM RN
+	          FROM (SELECT N_XH,
+				       C_BT,
+				       TO_CHAR(D_DJ,'YYYY-MM-DD HH24:MI:SS') D_DJ,
+				       DECODE(C_SHJG,'0','不通过','1','通过','未审核') C_SHJG,
+				       DECODE(C_SFTJ,'0','不推荐','1','推荐','不推荐') C_SFTJ
+				  FROM B_RIZHI
+				  <if test="c_yhid != null and c_yhid != '' ">
+				  	WHERE C_YHID = #{c_yhid}
+				  </if>
+				  ORDER BY N_XH DESC) S
+	         WHERE ROWNUM &lt;= #{limit}) T
+	 WHERE T.RN &gt; #{start}
+	</select>
+	
+	<select id="getBlogPageListCnt" resultType="long" parameterType="hashmap">
+		SELECT COUNT(*) Total
+		  FROM B_RIZHI
+		  <if test="c_yhid != null and c_yhid != '' ">
+		  	WHERE C_YHID = #{c_yhid}
+		  </if>
 	</select>
 	
 	<update id="updateBlog" parameterType="hashmap">

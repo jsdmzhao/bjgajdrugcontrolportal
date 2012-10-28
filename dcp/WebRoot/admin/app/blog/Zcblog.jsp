@@ -8,12 +8,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>车辆管理</title> 
+    <title>侦查日志 管理</title> 
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
     <script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/ligerUI/js/ligerui.min.js" type="text/javascript"></script>   
-    <link href="<%=basePath%>liger/lib/css/common.css" rel="stylesheet" type="text/css" />  
+    <link href="<%=basePath%>liger/lib/css/common.css" rel="st ylesheet" type="text/css" />  
     <script src="<%=basePath%>liger/lib/js/common.js" type="text/javascript"></script>   
     <script src="<%=basePath%>liger/lib/js/LG.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/js/ligerui.expand.js" type="text/javascript"></script> 
@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>liger/lib/jquery-validation/messages_cn.js" type="text/javascript"></script> 
     <script src='<%=basePath%>dwr/engine.js' type='text/javascript' ></script>
   	<script src='<%=basePath%>dwr/util.js' type='text/javascript' ></script>
-  	<script src='<%=basePath%>dwr/interface/CarAction.js' type='text/javascript' ></script>
+  	<script src='<%=basePath%>dwr/interface/BlogAction.js' type='text/javascript' ></script>
   	
     <style type="text/css">
     .l-panel td.l-grid-row-cell-editing { padding-bottom: 2px;padding-top: 2px;}
@@ -36,29 +36,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div id="maingrid"  style="margin:2px;"></div> 
     </form> 
   <script type="text/javascript">
-	  var dialog;
+  	  var dialog;
       //相对路径
       var rootPath = "../";
       //列表结构
       var tempdata = ""; 
       var grid = $("#maingrid").ligerGrid({
           columns: [
-          { name: "n_xh", editor: {type: 'hidden'},hide : '1' },
-          { display: "车牌", name: "n_cllbxh", width:140, type: "text", align: "left"
+          { display: "序号", name: "n_xh", width: 100,name: "n_xh", editor: {type: 'text'} },
+          { display: "标题", name: "c_bt", width:300, type: "text", align: "left"
               , validate: { required: true }
               , editor: { type: 'text' }
-          },{ display: "申请人", name: "c_yhid", width: 100, type: "text", align: "left"
-              , validate: { required: true }
-	          , editor: { type: 'text' }
-	      },
-          { display: "申请事由", name: "c_sqsy", width: 300, type: "text", align: "left", editor: { type: 'text'} },
-          { display: "出车时间", name: "d_ccsj", width: 160, type: "text", align: "left", editor: { type: 'text'}},
-          { display: "归队时间", name: "d_gdsj", width: 160, type: "text", align: "left", editor: { type: 'text'}},
-          { display: "审核状态", name: "c_shjg", width: 80, type: "text", align: "left", editor: { type: 'text'}},
-          { display: "添加时间", name: "d_dj", width: 160, type: "text", align: "left", editor: { type: 'text'}}
-          ], dataAction: 'server', pageSize: 20, type: 'sh',toolbar: { },sortName: 'n_xh', url:'<%=basePath%>carList',
-		 width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false,
-          data: tempdata, parms:[{name:'type',value:'sh'}] 
+          },{ display: "添加时间", name: "d_dj", width: 160, type: "text", align: "left", editor: { type: 'text'}}
+          ], dataAction: 'server', pageSize: 20, toolbar: {},
+           sortName: 'n_xh', url: '<%=basePath%>blogList',
+          width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false,
+          data: tempdata
       });
 
       //双击事件
@@ -72,12 +65,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       //加载toolbar
       LG.loadToolbar(grid, toolbarBtnItemClick);
 
-     	var items=[{ text: '查看', id:'view', click: toolbarBtnItemClick, img: "<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png" },
-     	           { line: true },	
-     	           { text: '审核通过', id:'shtg', click: toolbarBtnItemClick, img: "<%=basePath%>liger/lib/icons/silkicons/flag_red.png" },
-     	           { line: true },
-     	           { text: '审核不通过', id:'shbtg', click: toolbarBtnItemClick, img: "<%=basePath%>liger/lib/icons/silkicons/flag_yellow.png" }
-     	          ];
+     	var items=[
+     	/**{
+  	        	  click:toolbarBtnItemClick,
+        	      text:'保存',
+        	      img:'<!%=basePath%>liger/lib/icons/silkicons/page_save.png',
+        	      id:'save'    	
+     	   },**/{
+            click:toolbarBtnItemClick,
+            text:'新增',
+            img:'<%=basePath%>liger/lib/icons/silkicons/add.png',
+            id:'add'
+        },{line:true},{
+            click: toolbarBtnItemClick,
+            text: '修改',
+            img:'<%=basePath%>liger/lib/icons/silkicons/application_edit.png',
+            id: 'modify'
+        },{
+        	  click:toolbarBtnItemClick,
+    	      text:'查看',
+    	      img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
+    	      id:'view'    	
+ 	   },{line:true},{
+            click: toolbarBtnItemClick,
+            text: '删除',
+            img:'<%=basePath%>liger/lib/icons/silkicons/delete.png',
+            id: 'delete'
+        },{line:true}];
         
 	grid.toolbarManager.set('items', items);
 
@@ -87,58 +101,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           var editingrow = grid.getEditingRow();
           switch (item.id) {
               case "add":
-                  //top.f_addTab(null, '增加车辆申请信息', '<%=basePath%>admin/app/car/carDetail.jsp');
-		  			dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/car/carDetail.jsp', 
-                           height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
-					  });
-                  /**
-                  if (editingrow == null)
-                  {
-                      addNewRow();
-                  } else
-                  {
-                      LG.tip('请先提交或取消修改');
-                  }
-                  **/
+                  dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/blog/blogDetail.jsp', 
+                  		  title: '日志信息',
+                          height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+				  });
                   break;
               case "view":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  //top.f_addTab(null, '查看车辆申请信息', '<%=basePath%>carUpdate?car.n_xh=' + selected.n_xh);
-	 			  dialog = $.ligerDialog.open({ url: '<%=basePath%>carView?isView=1&car.n_xh=' + selected.n_xh, 
+                  dialog = $.ligerDialog.open({ url: '<%=basePath%>blogView?blog.n_xh=' + selected.n_xh,
+              		  title: '日志信息',	 
+                      height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+			  });
+                  break;
+              case "modify":
+                  var selected = grid.getSelected();
+                  if (!selected) { LG.tip('请选择行!'); return }
+                  dialog = $.ligerDialog.open({ url: '<%=basePath%>blogUpdate?blog.n_xh=' + selected.n_xh,
+                  		  title: '日志信息',	 
                           height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
 				  });
                   break;
-              case "shtg":
-				  var selected = grid.getSelected();
-            	  
-                  if (!selected) { 
-                	  LG.tip('请选择行!'); return; 
-                  } else {
-					  if(selected.c_shjg == '不同意' || selected.c_shjg == '同意' ){
-						  LG.showSuccess('该条车辆申请记录已经被审核，不能在进行审核！');
-	            		  returned;
-	            	  }
-                  }
-                  jQuery.ligerDialog.confirm('确定通过吗?', function (confirm) {
+              case "delete":
+            	  var selected = grid.getSelected();
+                  if (!selected) { LG.tip('请选择行!'); return }
+                  jQuery.ligerDialog.confirm('确定删除吗?', function (confirm) {
                       if (confirm)
-                    	  f_operator('1');
-                  });
-                  break;
-              case "shbtg":
-				  var selected = grid.getSelected();
-            	  
-                  if (!selected) { 
-                	  LG.tip('请选择行!'); return; 
-                  } else {
-					  if(selected.c_shjg == '不同意' || selected.c_shjg == '同意' ){
-						  LG.showSuccess('该条车辆申请记录已经被审核，不能在进行审核！');
-	            		  returned;
-	            	  }
-                  }
-                  jQuery.ligerDialog.confirm('确定不通过吗?', function (confirm) {
-                      if (confirm)
-                          f_operator('0');
+                          f_delete();
                   });
                   break;
               case "save":
@@ -155,19 +144,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       function f_reload() {
           grid.loadData();
       }
-      function f_operator(value) {
+      function f_delete() {
           var selected = grid.getSelected();
           if (selected) {
+
         	  grid.deleteRow(selected);
-        	  CarAction.carOperator(value,selected.n_xh, function (result){
+        	  BlogAction.blogDelete(selected.n_xh, function (result){
              	   if(result == 'success'){
-             		  LG.showSuccess('审核成功');
+             		  LG.showSuccess('删除成功');
 	           	   } else {
-	           		  LG.showSuccess('审核失败');
+	           		  LG.showSuccess('删除失败');
 	           	   }
                });
-        	  //loadGrid();
-        	  grid.loadData();
           }
           else {
               LG.tip('请选择行!');
@@ -191,9 +179,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           if (!isAddNew){
               data.n_xh = e.record.n_xh;
           }
-          CarAction.carSave(data, function (result){
+          BlogAction.blogSave(data, function (result){
         	if(result == 'success'){
         		LG.showSuccess('保存成功');
+            	grid.loadData();
       		} else {
       			LG.showSuccess('保存失败');
       		}
@@ -201,6 +190,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
           return false;
       }); 
+      
+      function dialog_hidden()
+      {
+    	  dialog.hidden();
+      }
 
       function beginEdit()
       {
@@ -213,15 +207,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           grid.addEditRow();
       } 
 
-      function dialog_hidden()
-      {
-    	  dialog.hidden();
-      }
 	  //loadGrid();
       
       function loadGrid(){
       
-    	CarAction.carList('sh',function (data){
+    	BlogAction.blogList(function (data){
   	    	grid.setOptions({data:data});
   	    });
   	  }
