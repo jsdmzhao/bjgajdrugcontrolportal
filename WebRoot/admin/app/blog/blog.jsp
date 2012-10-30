@@ -210,10 +210,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  //loadGrid();
       
       function loadGrid(){
-      
+    	grid.loadData();
+    	/**
     	BlogAction.blogList(function (data){
   	    	grid.setOptions({data:data});
   	    });
+    	**/
   	  }
   </script>
 </body>

@@ -1,6 +1,6 @@
 
 button {cursor:pointer;}
-.i-top { width:940px; height:25px; padding:0 10px; overflow:hidden; margin:0 auto 10px auto; line-height:25px; border-bottom:1px solid #E9E9E9; background: #EEEFEF url(http://misc.web.xunlei.com/www_5_1/newimages/1.png) repeat-x 0 -88px; }
+.i-top { width:940px; height:25px; padding:0 10px; overflow:hidden; margin:0 auto 10px auto; line-height:25px; border-bottom:1px solid #E9E9E9; background: #EEEFEF url(http://misc.web.xunlei.com/www_5_1/../newimages/1.png) repeat-x 0 -88px; }
 .i-top .logo { width:200px; height:20px; margin:0 auto; padding:2px 740px 3px 0; color:#D9DADD; overflow:hidden; float:none; }
 .i-top .logo a { background:none; display:inline; float:none; margin:0; padding:0; height:auto; }
 .i-top .pd { width:740px; margin:-25px auto 0 auto; padding-left:200px; color:#838383; text-align:right; font-family:simsun; overflow:hidden; }
@@ -18,7 +18,7 @@ button {cursor:pointer;}
 .channel-top dl dd { display:inline; }
 /**/
 .channel-nav {
-	width:977px;
+	width:980px;
 	height:37px;
 	overflow:hidden;
 	background:url(../newimages/toolbar.png) no-repeat;
@@ -35,6 +35,7 @@ button {cursor:pointer;}
 .channel-nav ul { width:977px; height:33px; line-height:33px; font-size:14px; overflow:hidden; position:absolute; top:1px; left:4px; }
 .channel-nav li { height:33px; overflow:hidden; float:left; padding-left:2px; background:url(../newimages/4322.png) no-repeat; position:relative; left:-2px; }
 .channel-nav li a { float:left; padding:0 26px; color:#fff; }
+.channel-nav li a:visited { float:left; padding:0 26px; color:#fff; }
 .channel-nav li a:hover, .channel-nav li.selected a { text-decoration:none; background:url(../newimages/1.png) no-repeat 50% -40px; }
 .channel-nav .search { position:absolute; width:226px; height:20px; top:8px; left:726px; overflow:hidden; background:url(../newimages/1.png) no-repeat -720px -40px; }
 .channel-nav .search input { position:absolute; width:150px; height:16px; top:2px; left:20px; font-size:12px; line-height:16px; background:none; border:none; }

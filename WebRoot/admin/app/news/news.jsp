@@ -44,9 +44,11 @@ String newsType = request.getParameter("newsType");
 <body style="padding:2px;height:100%; text-align:center;">
   <input type="hidden" name="MenuNo" value="NewsGridTable"/>
   <div id="layout">
+     <!-- 
     <div position="left" title="主菜单模块" id="mainmenu" style="width:100%;height:95%;overflow: auto;">
         <ul id="maintree"></ul>
      </div>
+      -->
      
     <div position="center" title="子菜单列表"> 
         <form id="mainform">
@@ -261,6 +263,7 @@ String newsType = request.getParameter("newsType");
 
     var tempdata={};
     
+    <%--
     var tree = $("#maintree").ligerTree({
         checkbox: false,
         onClick: function (node)
@@ -281,7 +284,7 @@ String newsType = request.getParameter("newsType");
     NewsAction.getNewsLanmuCombox(function(data){
     	tree.setData(eval(data));
     });
-    
+    --%>
     var layout = $("#layout").ligerLayout({ leftWidth: 140 });
 
 

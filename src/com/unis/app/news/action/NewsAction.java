@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 
 import org.apache.commons.lang.xwork.StringUtils;
+import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -20,9 +21,9 @@ import com.unis.core.action.CreateIndexAction;
 import com.unis.core.commons.Combox;
 import com.unis.core.service.AbsServiceAdapter;
 import com.unis.core.util.Globals;
+import com.unis.core.util.PageModel;
 import com.unis.app.news.model.News;
 import com.unis.app.pagination.Pagination;
-import com.unis.app.website.model.Website;
 
 @Controller
 @Scope(value="prototype")
@@ -30,7 +31,12 @@ public class NewsAction {
 
 	private News news;
 	
+	private String pageNo;
+	
 	private Map<String, Object> resMap; 
+	
+	private PageModel pageModel;
+	
 	public Map<String, Object> getResMap() {
 		return resMap;
 	}
@@ -141,6 +147,31 @@ public class NewsAction {
 		return resMap;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public String newsCenterList(){
+		
+		pageModel = new PageModel();
+		
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = request.getSession();
+		String c_yhid = session.getAttribute("userId")+"";
+		String c_yhzid = session.getAttribute("cYhz")+"";
+		
+		news.setC_yhzid(c_yhzid);
+		news.setC_yhid(c_yhid);
+		news.setStart(String.valueOf(((Integer.parseInt(pageNo) -1)*Globals.pageSize)));
+		news.setLimit(String.valueOf((Integer.parseInt(pageNo)*Globals.pageSize)));
+		
+		List<News> newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexPageList", news);
+		Long totalRecords = (Long) newsService.selectOne("NewsMapper.getNewsIndexPageCnt", news);
+		      
+		pageModel.setList(newsList);
+		pageModel.setTotalRecords(totalRecords);
+		pageModel.setPageNo(Long.valueOf(pageNo));
+		
+		return Globals.SUCCESS;
+	}
+	
 	public String newsUpdate(){
 		news = (News) newsService.selectOne("NewsMapper.getNews", news);
 		//newsService.update("NewsMapper.updateNews", news);
@@ -148,66 +179,106 @@ public class NewsAction {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public String  newsindexList(){
-
+	public String  newsIndexList(){
+		
+		Map<String, Object> sqlParamMap = new HashMap<String, Object>();
+		
 		resMap = new HashMap<String, Object>();
-		News n =new News();
-		n.setC_lm("1195");
-		List<News> newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
-		resMap.put("Rows1", newsList1);
-		n.setC_lm("1193");
-		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
-		resMap.put("Rows2", newsList1);
-		n.setC_lm("1255");
-		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
-		resMap.put("Rows3", newsList1);
-		n.setC_lm("1247");
-		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
-		resMap.put("Rows4", newsList1);
-		n.setC_lm("1197");
-		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
-		resMap.put("Rows5", newsList1);
-		n.setC_lm("1198");
-		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
-		resMap.put("Rows6", newsList1);
-		n.setC_lm("1199");
-		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
-		resMap.put("Rows7", newsList1);
-		n.setC_lm("1191");
-		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
-		resMap.put("Rows8", newsList1);
-		n.setC_lm("1189");
-		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
-		resMap.put("Rows9", newsList1);
-		n.setC_lm("1237");
-		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", n);
-		resMap.put("Rows10", newsList1);
-		List<Website> websites = (List<Website>) newsService.selectList("WebsiteMapper.getWebsiteLists", "1001");
-		resMap.put("Rows11", websites);
-		 websites = (List<Website>) newsService.selectList("WebsiteMapper.getWebsiteLists", "1002");
-		resMap.put("Rows12", websites);
-		 websites = (List<Website>) newsService.selectList("WebsiteMapper.getWebsiteLists", "1003");
-		resMap.put("Rows13", websites);
-		 websites = (List<Website>) newsService.selectList("WebsiteMapper.getWebsiteLists", "1004");
-		resMap.put("Rows14", websites);
-		 websites = (List<Website>) newsService.selectList("WebsiteMapper.getWebsiteLists", "1005");
-		resMap.put("Rows15", websites);
 		
+		//领导动态
+		sqlParamMap.put("c_lm", "1195");
+		sqlParamMap.put("rownum", "14");
+		List<News> newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("lddtList", newsList);
 		
-		n.setC_lm("1081");//要闻导读
-		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList",n);
-		resMap.put("Rows16", newsList1);
+		//领导动态有图的三个
+		sqlParamMap.put("c_lm", "1195");
+		sqlParamMap.put("rownum", "4");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("hdpList", newsList);
 		
-		n.setC_lm("1201");
-		newsList1 = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList",n);
-		resMap.put("RowsPic", newsList1);
+		//通知通报
+		sqlParamMap.put("c_lm", "1194");
+		sqlParamMap.put("rownum", "8");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("tztbList", newsList);
 		
-		newsList1 = (List<News>) newsService.selectList("NewsMapper.sortIndexCnt","");
-		resMap.put("RowsSort", newsList1);
+		//队伍建设
+		sqlParamMap.put("c_lm", "1196");
+		sqlParamMap.put("rownum", "7");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("dwjsList", newsList);
+		
+		//公告栏
+		sqlParamMap.put("c_lm", "1200");
+		sqlParamMap.put("rownum", "11");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("gglList", newsList);
+		
+		//禁毒动态
+		sqlParamMap.put("c_lm", "1193");
+		sqlParamMap.put("rownum", "8");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("jddtList", newsList);
+		
+		//禁毒文件
+		sqlParamMap.put("c_lm", "1197");
+		sqlParamMap.put("rownum", "8");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("jdwjList", newsList);
+		
+		//区县警讯
+		sqlParamMap.put("c_lm", "1199");
+		sqlParamMap.put("rownum", "8");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("qxjxList", newsList);
+		
+		//媒体关注
+		sqlParamMap.put("c_lm", "1198");
+		sqlParamMap.put("rownum", "8");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("mtgzList", newsList);
+		
+		//全国导航
+		sqlParamMap.put("c_lm", "1202");
+		sqlParamMap.put("rownum", "");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexNoLimitList", sqlParamMap);
+		//List<Website> websites = (List<Website>) newsService.selectList("WebsiteMapper.getWebsiteLists", "1202");
+		resMap.put("qgdhList", newsList);
+		
+		//市局导航
+		sqlParamMap.put("c_lm", "1203");
+		sqlParamMap.put("rownum", "");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexNoLimitList", sqlParamMap);
+		resMap.put("sjdhList", newsList);
+		
+		//分县局导航
+		sqlParamMap.put("c_lm", "1205");
+		sqlParamMap.put("rownum", "");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexNoLimitList", sqlParamMap);
+		resMap.put("fxjdhList", newsList);
+		
+		//禁毒导航
+		sqlParamMap.put("c_lm", "1204");
+		sqlParamMap.put("rownum", "");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexNoLimitList", sqlParamMap);
+		resMap.put("jddhList", newsList);
+		
+		//信息排行
+		newsList = (List<News>) newsService.selectList("NewsMapper.sortIndexCnt","");
+		resMap.put("xxphList", newsList);
 		
 		return  Globals.SUCCESS;
 	}
 	
+	public String getPageNo() {
+		return pageNo;
+	}
+
+	public void setPageNo(String pageNo) {
+		this.pageNo = pageNo;
+	}
+
 	public String newsView(){
 		news = (News) newsService.selectOne("NewsMapper.getNews", news);
 		//newsService.update("NewsMapper.updateNews", news);
@@ -216,10 +287,12 @@ public class NewsAction {
 	
 	@SuppressWarnings("unchecked")
 	public String newsCenter(){
+		
 		Map<String, Object> sqlParamMap = new HashMap<String, Object>();
 		
 		resMap = new HashMap<String, Object>();
 		
+		/*
 		sqlParamMap.put("c_lm", "1193");//禁毒动态
 		sqlParamMap.put("rownum", "10");
 		List<News> newsList = (List<News>) newsService.selectList("NewsMapper.getNewsCenterList", sqlParamMap);
@@ -239,21 +312,22 @@ public class NewsAction {
 		sqlParamMap.put("rownum", "10");
 		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsCenterList", sqlParamMap);
 		resMap.put("Rows4", newsList);
+		*/
 		
 		sqlParamMap.put("c_lm", "1219");//新闻时事
 		sqlParamMap.put("rownum", "10");
-		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsCenterList", sqlParamMap);
+		List<News> newsList = (List<News>) newsService.selectList("NewsMapper.getNewsCenterList", sqlParamMap);
 		resMap.put("Rows5", newsList);
 		
 		return Globals.SUCCESS;
 	}
 	
 	public String newsDelete(String n_xh, HttpServletRequest request) throws IOException{
-		String path = request.getContextPath();
-		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+		//String path = request.getContextPath();
+		//String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 		newsService.update("NewsMapper.deleteNews", n_xh);
 
-		createdIndexAction.createIndexHtml(basePath+"index.jsp");
+		//createdIndexAction.createIndexHtml(basePath+"index.jsp");
 		return Globals.SUCCESS;
 	}
 	
@@ -262,7 +336,13 @@ public class NewsAction {
 		return Globals.SUCCESS;
 	}
 	
-/*	@SuppressWarnings("unchecked")
+	public String newsDetail(){
+		news = (News) newsService.selectOne("NewsMapper.getIndexNews", news);
+		return Globals.SUCCESS;
+	}
+	
+/*	
+ * @SuppressWarnings("unchecked")
 	public String newsQuerys(){
 		Querys= (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", news);
         return Globals.SUCCESS;
@@ -317,22 +397,21 @@ public class NewsAction {
 		
 		if(news.getC_lm()!=null){
 			c_lm=news.getC_lm();
-			
 		}
+		
 		if(news.getC_bt()!=null){
 			c_bt=news.getC_bt();
 			c_bt = URLDecoder.decode(c_bt, "UTF-8");
 		}
 		
-		
 		if(news.getPageIndex()!=null ){
 			pageIndex=news.getPageIndex();
-			
 		}
+		
 		if(news.getPageSize()!=null){
 			pageSize=news.getPageSize();
-			
 		}
+		
 		Map p=new HashMap();
 		p.put("c_lm", c_lm);
 		p.put("c_bt", c_bt);
@@ -359,6 +438,14 @@ public class NewsAction {
 			
 		}
 	}
+
+	public PageModel getPageModel() {
+		return pageModel;
+	}
+
+	public void setPageModel(PageModel pageModel) {
+		this.pageModel = pageModel;
+	}
 	
-	
+	 
 }

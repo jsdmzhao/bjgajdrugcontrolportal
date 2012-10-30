@@ -8,7 +8,6 @@ public class PageModel {
 	
 	private Integer pageSize = Globals.pageSize;
 	
-	@SuppressWarnings("unchecked")
 	private List list;
 	
 	private Long totalRecords;
@@ -21,12 +20,10 @@ public class PageModel {
 		this.pageNo = pageNo;
 	}
 
-	@SuppressWarnings("unchecked")
 	public List getList() {
 		return list;
 	}
 
-	@SuppressWarnings("unchecked")
 	public void setList(List list) {
 		this.list = list;
 	}

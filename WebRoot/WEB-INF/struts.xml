@@ -13,9 +13,11 @@
 	<!-- 
 		<constant name="struts.objectFactory" value="spring" />
 	 -->
-	
+	 
 	<package name="front" namespace="/" extends="struts-default">
-	
+		
+		<default-action-ref name="newsIndexList"/>
+				
 		<!-- 拦截错误页面 -->
 		<global-results>
 			<result name="errorPage">error.jsp</result>
@@ -25,15 +27,27 @@
 			<exception-mapping result="errorPage" exception="java.lang.Exception"/>
 		</global-exception-mappings>
 		
+		
+		<!-- 首页 -->
+		<action name="newsIndexList" class="newsAction" method="newsIndexList">
+			<result>/index.jsp</result>
+		</action>
+		
 		<action name="cartype*" class="cartypeAction" method="cartype{1}">
 			<result name="success">/admin/app/car/cartype{1}.jsp</result>
 		</action>
-		
-		
-				
-		<action name="*PageList" class="{1}Action" method="{1}PageList">
+			
+		<action name="newsCenterList" class="newsAction" method="newsCenterList">
+			<result name="success">/news.jsp</result>
+		</action>
+	
+		<action name="newsDetail" class="newsAction" method="newsDetail">
+			<result name="success">/news_detail.jsp</result>
 		</action>
 		
+		<action name="*PageList" class="{1}Action" method="{1}PageList">
+		</action>
+				
 		<!-- 通配符配置 -->
     	<action name="*List" class="{1}Action" method="{1}List">
 			<result name="success">/{1}/{1}_list.jsp</result>
@@ -76,6 +90,15 @@
 		
 	</package>
 	
+	<package name="admin" namespace="/admin" extends="struts-default">
+		
+		<default-action-ref name="index"/>
+				
+		<action name="index">
+			<result>/admin/login.jsp</result>
+		</action>
+	</package>
+	
 	<package name="login" namespace="/login" extends="struts-default">
 	
 		<!-- 拦截错误页面 -->
@@ -87,7 +110,7 @@
 			<exception-mapping result="errorPage" exception="java.lang.Exception"/>
 		</global-exception-mappings>
 		
-	 	<action name="view" class="com.unis.app.news.action.NewsAction" method="newsindexList">
+	 	<action name="view" class="newsAction" method="newsindexList">
 			<result name="success">/index.jsp</result>
 		</action>
 	</package>
@@ -95,15 +118,13 @@
 	<package name="news" namespace="/news" extends="struts-default">
 		<!-- 拦截错误页面 -->
 	
-		<action name="detail" class="com.unis.app.news.action.NewsAction" method="newsQuery">
-			<result name="success">/news/news_detail.jsp</result>
-		</action>
+	
 		
-		<action name="list" class="com.unis.app.news.action.NewsAction" method="newsQuerys">
+		<action name="list" class="newsAction" method="newsQuerys">
 			<result name="success">/news/news_list.jsp</result>
 		</action>
 		
-		<action name="center" class="com.unis.app.news.action.NewsAction" method="newsCenter">
+		<action name="center" class="newsAction" method="newsCenter">
 			<result name="success">/news/news.jsp</result>
 		</action>
 		
