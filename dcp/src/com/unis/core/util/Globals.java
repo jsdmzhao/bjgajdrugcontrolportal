@@ -5,7 +5,7 @@ package com.unis.core.util;
  */
 public class Globals {
 
-	public final static Integer pageSize = 10;
+	public final static Integer pageSize = 15;
 	
 	public final static String SUCCESS = "success";
 	

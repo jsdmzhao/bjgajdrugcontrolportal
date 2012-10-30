@@ -18,6 +18,7 @@
 	 	<result column="C_BT"   property="c_bt"/>
 	 	<result column="D_FBSJ" property="d_fbsj"/>
 	 	<result column="C_TPLJDZ" property="c_tpljdz"/>
+	 	<result column="C_LJ" property="c_lj"/>
 	 </resultMap>
 	 
 	 
@@ -82,7 +83,7 @@
 	       C_SFTJ,
 	       C_SHJG
 	  FROM B_XINWEN
-	 WHERE INSTR(C_LM,';'||#{c_lm}||';') > 0
+	 WHERE C_LM LIKE ';'||#{c_lm}||';'
 	  <if test="c_sfsh != null and c_sfsh != ''">
 	 	 AND C_SFSH = #{c_sfsh}
 	  </if>
@@ -92,7 +93,34 @@
 	  ORDER BY C_SFZD DESC,D_FBSJ DESC
 	</select>
 	
+	<select id="getNewsIndexPageList" parameterType="News" resultMap="resultNews">
+	SELECT N_XH,C_BT, D_FBSJ, C_SFZD, C_SFGL, C_SFTJ, C_SHJG
+	  FROM (SELECT S.*, ROWNUM RN
+	          FROM (
+				  SELECT N_XH,
+					   C_BT,
+				       TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
+				       C_SFZD,
+				       C_SFGL,
+				       C_SFTJ,
+				       C_SHJG
+				  FROM B_XINWEN
+				 WHERE C_LM LIKE ';'||#{c_lm}||';'
+				  <if test="c_bt != null and c_bt != ''">
+				 	 AND C_BT LIKE '%'||#{c_bt}||'%'
+				  </if>
+				  ORDER BY C_SFZD DESC,D_FBSJ DESC) S
+	         WHERE ROWNUM &lt;= #{limit}) T
+	 WHERE T.RN &gt; #{start}
+	</select>
 	
+	<select id="getNewsIndexPageCnt" parameterType="News" resultType="long">
+	 SELECT COUNT(*) CNT
+	  FROM B_XINWEN WHERE C_LM LIKE ';'||#{c_lm}||';'
+	  <if test="c_bt != null and c_bt != ''">
+	 	 AND C_BT LIKE '%'||#{c_bt}||'%'
+	  </if>
+	</select>
 	
 	
 <select id="queryInfo" parameterType="java.util.Map" resultMap="resultNews">
@@ -109,7 +137,7 @@
 	 	 1=1
 	 	 
 	 	  <if test="c_lm != null and c_lm != ''">
-	 	  and  INSTR(C_LM,';'||#{c_lm}||';') > 0
+	 	  and  C_LM LIKE ';'||#{c_lm}||';'
 	 	 </if>
 	  <if test="c_sfsh != null and c_sfsh != ''">
 	 	 AND C_SFSH = #{c_sfsh}
@@ -127,7 +155,7 @@
 	  FROM B_XINWEN
 	  where 1=1
 	   <if test="c_lm != null and c_lm != ''">
-	 	 and INSTR(C_LM,';'||#{c_lm}||';') > 0
+	 	 and C_LM LIKE ';'||#{c_lm}||';'
 	 	 </if>
 	  <if test="c_sfsh != null and c_sfsh != ''">
 	 	 AND C_SFSH = #{c_sfsh}
@@ -139,17 +167,31 @@
 	
 	
 	<select id="getNewsIndexList" parameterType="News" resultMap="resultIndexNews">
-	  SELECT N_XH,
+	  SELECT N_XH,C_BT,D_FBSJ,C_TPLJDZ,C_LJ FROM (
+	    SELECT N_XH,
 			  C_BT,
 		      TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
-			  C_TPLJDZ
-	  FROM B_XINWEN
-	 	 WHERE INSTR(C_LM,';'||#{c_lm}||';') > 0
-	 	 	<if test="c_lm != null and c_lm == '1201'">
+			  C_TPLJDZ,
+			  C_LJ
+	  	FROM B_XINWEN
+	 	 WHERE C_LM LIKE ';'||#{c_lm}||';'
+	 	 	<if test="c_lm != null and c_lm == '1195' and rownum == 4 ">
 			 	 AND C_TPLJDZ IS NOT NULL
 		  	</if>
 	 	 	AND C_SHJG = '1'
-	  ORDER BY C_SFZD DESC,D_FBSJ DESC
+	  	ORDER BY C_SFZD DESC,D_FBSJ DESC
+	  ) WHERE ROWNUM &lt; #{rownum}
+	</select>
+	
+	<select id="getNewsIndexNoLimitList" parameterType="News" resultMap="resultIndexNews">
+	    SELECT N_XH,
+			  C_BT,
+		      TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
+			  C_TPLJDZ,
+			  C_LJ
+	  	FROM B_XINWEN
+	 	 WHERE C_LM LIKE ';'||#{c_lm}||';'
+	 	 	AND C_SHJG = '1'
 	</select>
 	
 	
@@ -160,7 +202,7 @@
 		      TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
 			  C_TPLJDZ
 	  FROM B_XINWEN
-	 	 WHERE INSTR(C_LM,';'||#{c_lm}||';') > 0
+	 	 WHERE C_LM LIKE ';'||#{c_lm}||';'
 	 	 	<if test="c_lm != null and c_lm == '1201'">
 			 	 AND C_TPLJDZ IS NOT NULL
 		  	</if>

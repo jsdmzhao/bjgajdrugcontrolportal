@@ -544,7 +544,7 @@ function fontbutton(index,mag)
 											</div>
 										</div>
 										<ul class="items" style="display:block;">
-											<s:iterator value="resMap.RowsSort" id="news" var="news" begin="0" end="resMap.RowsSort。size()<7?resMap.RowsSort。size():7">
+											<s:iterator value="resMap.RowsSort" id="news" var="news" begin="0" end="resMap.RowsSort.size()<7?resMap.RowsSort。size():7">
 											<li>
 												<div style="float:left; width:90px;">
 													<a href="#"><s:property value="#news.c_yhzid"/></a>

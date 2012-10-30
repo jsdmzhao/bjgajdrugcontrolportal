@@ -56,6 +56,14 @@ public class News {
 	
 	private Integer pageSize;  
 	
+	private String  start_time;
+	
+	private String  end_time;
+	
+	private String start;
+	
+	private String limit;
+	
 	
 	public Integer getPageIndex() {
 		return pageIndex;
@@ -271,6 +279,38 @@ public class News {
 
 	public void setC_shjg(String cShjg) {
 		c_shjg = cShjg;
+	}
+
+	public String getStart_time() {
+		return start_time;
+	}
+
+	public void setStart_time(String start_time) {
+		this.start_time = start_time;
+	}
+
+	public String getEnd_time() {
+		return end_time;
+	}
+
+	public void setEnd_time(String end_time) {
+		this.end_time = end_time;
+	}
+
+	public String getStart() {
+		return start;
+	}
+
+	public void setStart(String start) {
+		this.start = start;
+	}
+
+	public String getLimit() {
+		return limit;
+	}
+
+	public void setLimit(String limit) {
+		this.limit = limit;
 	}
 	
 }
