@@ -31,13 +31,14 @@ public class ClxxSvc  {
 	}
 	
 	public Object saveInfo(List<Map<String,String>> list) throws SQLException {
+		System.out.println(list);
 		   Map p=new HashMap();
 		List<Map> tlist=queryAll(p);
 			for (int i = 0; i < tlist.size(); i++) {
 				remove(tlist.get(i));
 		}
 		
-		for (int i = 1; i < list.size(); i++) {
+		for (int i = 0; i < list.size(); i++) {
 			
 				save(list.get(i));
 		}
