@@ -29,154 +29,131 @@
 <head>
 <link rel='stylesheet' type='text/css' href='<%=basePath%>js/fullcalendar/fullcalendar.css' />
 <link rel='stylesheet' type='text/css' href='<%=basePath%>js/fullcalendar/fullcalendar.print.css' media='print' />
-<script type='text/javascript' src='<%=basePath%>js/jquery-1.8.1.min.js'></script>
-<script type='text/javascript' src='<%=basePath%>js/jquery-ui-1.8.23.custom.min.js'></script>
-<script type='text/javascript' src='<%=basePath%>js/fullcalendar/fullcalendar.min.js'></script>
+
 <script src="<%=basePath%>liger/lib/js/LG.js" type="text/javascript"></script>
+
+
+    <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
+    <script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
+    <script src="<%=basePath%>liger/lib/ligerUI/js/core/base.js" type="text/javascript"></script>
+    <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerDrag.js" type="text/javascript"></script>
 
 
 	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/interface/ClxxSvc.js'></script>
 
+
+
 <script type="text/javascript">
-DWREngine.setAsync(false); 
-
-var resArr=new Array();
-ClxxSvc.queryAll(null,function(res){
-	
-	for(var i=0;i<res.length;i++){
-		var obj={id:res[i].cXxwh,title:res[i].cXxwh,start:res[i].dXxrq};
-		resArr[i]=obj;
-	}
-	
-	
-});
 
 
 
 
 
-Date.prototype.format = function(format)
+
+$(function ()
 {
-    var o =
-    {
-        "M+" : this.getMonth()+1, //month
-        "d+" : this.getDate(),    //day
-        "h+" : this.getHours(),   //hour
-        "m+" : this.getMinutes(), //minute
-        "s+" : this.getSeconds(), //second
-        "q+" : Math.floor((this.getMonth()+3)/3),  //quarter
-        "S" : this.getMilliseconds() //millisecond
-    }
-    if(/(y+)/.test(format))
-    format=format.replace(RegExp.$1,(this.getFullYear()+"").substr(4 - RegExp.$1.length));
-    for(var k in o)
-    if(new RegExp("("+ k +")").test(format))
-    format = format.replace(RegExp.$1,RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
-    return format;
-}
 
-//var ddd = new Date();
-//alert(ddd.format('yyyy-MM-dd hh:mm:ss'));
-</script>
+    $('.box,.receive').ligerDrag({ proxy: 'clone', revert: true, receive: '.receive',
+        onStartDrag: function ()
+        {
 
+            this.set({ cursor: "not-allowed" });
+        },
+        onDragEnter: function (receive, source, e)
+        {
+			
+            this.set({ cursor: "pointer" });
+            //this.proxy.html("释放注入颜色");
+        },
+        onDragLeave: function (receive, source, e)
+        {
+            this.set({ cursor: "not-allowed" });
+            //this.proxy.html("");
+        },
+        onDrop: function (receive, source, e)
+        {
 
-<script type='text/javascript'>
-
-	$(document).ready(function() {
 	
-	
-		/* initialize the external events
-		-----------------------------------------------------------------*/
-	
-		$('#external-events div.external-event').each(function() {
+	//alert(this.target.text());
+	//alert(this.proxy.text());
+            if (!this.proxy) return;
+            this.proxy.hide();
+
+            var bgcolor = this.proxy.css('backgroundColor');
+            if (this.target.hasClass("receive"))
+            {
+                //颜色调换
+                this.target.css("backgroundColor", $(receive).css("backgroundColor"));
+               this.target.text( $(receive).text());
+               
+
+            }
+            $(receive).css("backgroundColor", bgcolor);
+            $(receive).text(this.proxy.text());
+          
+  
+        }
+    });
+    
+  DWREngine.setAsync(false); 
+
+  var resArr=new Array();
+  ClxxSvc.queryAll(null,function(res){
+  	
+  	for(var i=0;i<res.length;i++){
+  		var obj={id:res[i].cXxwh,title:res[i].cXxwh,start:res[i].dXxrq};
+  		resArr[i]=obj;
+  		 //  alert('#'+res[i].cXxwh+'-');
+  		 if(res[i].cXxwh!='\n'){
+ 		   $('#'+res[i].cBz).css("backgroundColor" ,"#AFCCF1");
+  		 }
+  		   $('#'+res[i].cBz).text(res[i].cXxwh);
+  		
+  		
+  	}
+  	
+  	
+  });
+});
+function save(){
+	var arr=new Array();
+	$('#mydiv div').each(function(i){
 		
-			// create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-			// it doesn't need to have a start or end
-			var eventObject = {
-				title: $.trim($(this).text()), // use the element's text as the event title
-				id: $(this).attr("id")
-			};
+		if($(this).attr('id')){
 			
-			// store the Event Object in the DOM element so we can get to it later
-			$(this).data('eventObject', eventObject);
-			
-			// make the event draggable using jQuery UI
-			$(this).draggable({
-				zIndex: 999,
-				revert: true,      // will cause the event to go back to its
-				revertDuration: 0  //  original position after the drag
-			});
-			
-		});
-	
-	
-		/* initialize the calendar
-		-----------------------------------------------------------------*/
-	
-		
-		
-		$('#calendar').fullCalendar({
-			header: {
-				left: 'prev,next today',
-				center: 'title',
-				right: 'month'
-				
-			},
-			height:'500',
-			 eventClick: function(event) {//alert(event.id); 
-			 
-				 if(confirm("是否删除 "+event.title+" 的限行信息")) { 
-		           
-		            	$('#calendar').fullCalendar('removeEvents', event.id);
-		                    } 
-				 else{
-		               return false;
-		                    }
-
-			 //$('#calendar').fullCalendar('removeEvents', event.id);
-			 
-			 },
-			 events:resArr,
-			 editable: true,
-			droppable: true, // this allows things to be dropped onto the calendar !!!
-			drop: function(date, allDay) { // this function is called when something is dropped
-			
-				// retrieve the dropped element's stored Event Object
-				var originalEventObject = $(this).data('eventObject');
-				
-				// we need to copy it, so that multiple events don't have a reference to the same object
-				var copiedEventObject = $.extend({}, originalEventObject);
-				
-				// assign it the date that was reported
-				copiedEventObject.start = date;
-				copiedEventObject.allDay = allDay;
-				
-				// render the event on the calendar
-				// the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-				$('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-				
-				
-				
-				
-			
-				
-				// is the "remove after drop" checkbox checked?
-				if ($('#drop-remove').is(':checked')) {
-					// if so, remove the element from the "Draggable Events" list
-					$(this).remove();
-				}
-				
-			}
-		});
+	    var obj={};
+	   // alert($(this).text());
+	    obj.cXxwh=$(this).text();
+	    obj.cBz=$(this).attr('id');
+	    arr.push(obj);
+	    
+		}
 		
 		
 	});
+	
+//	alert(arr.length);
+	
+	ClxxSvc.saveInfo(arr,function (rdata){
+		if (rdata) {
+			alert('保存成功');
+		} else {
+			alert('保存失败');
+		}
+	});
+	
+
+}
+
+
 
 </script>
-<style type='text/css'>
-
+<style type="text/css">
+*{
+-moz-user-select:none
+} 
 	body {
 		margin-top: 40px;
 		text-align: center;
@@ -228,72 +205,137 @@ Date.prototype.format = function(format)
 		float: right;
 		width: 900px;
 		}
+.proxy
+{
+    border: 1px splid #333;
+    position: absolute;
+    z-index: 4;
+    background: #f1f1f1;
+}
+.box
+{
+    width: 110px;
+    height: 30px;
+    border: 2px solid #bbb;
+        text-align: center;
+    margin: 5px;
+}
+.receive
+{
+    width: 110px;
+    height: 30px;
+    border: 1px solid #bbb;
+    float: left;
+    margin: 4px; 
+}
 
+.title
+{
+    width: 120px;
+    height: 150px;
+    border: 1px solid #bbb;
+    float: left;
+    margin: 4px; 
+
+}
+
+.txt
+{
+    width: 110px;
+    height: 50px;
+    float: left;
+    margin: 4px; 
+}
 </style>
 </head>
-<body>
-<div id='wrap'>
-
-
+<body style="padding: 10px " onselectstart="return false;">
 <div id='external-events'>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' value="保存限行信息" onclick="save();"><br/>
-<input type='checkbox' id='drop-remove'/> <label for='drop-remove'>不允许尾号重复</label>
-<h4>尾号</h4>
-	<div class='external-event' id='0'>0</div>
-	<div class='external-event' id='1'>1</div>
-<div class='external-event' id='2'>2</div>
-<div class='external-event' id='3'>3</div>
-<div class='external-event' id='4'>4</div>
-<div class='external-event' id='5'>5</div>
-<div class='external-event' id='6'>6</div>
-<div class='external-event' id='7'>7</div>
-<div class='external-event' id='8'>8</div>
-<div class='external-event' id='9'>9</div>
-<div class='external-event' id='不限行'>不限行</div>
-<div class='external-event' id='不限行'>不限行</div>
-<div class='external-event' id='不限行'>不限行</div>
-<div class='external-event' id='不限行'>不限行</div>
-<div class='external-event' id='不限行'>不限行</div>
-<div class='external-event' id='不限行'>不限行</div>
+<input type='button' value='保存限行信息' onclick='save();'>
+<h4>限行尾号</h4>
+<div class="box" style="background: #AFCCF1;position: relative;">0
+</div>
+<div class="box fc-event-title" style="background: #AFCCF1;">1
+</div>
+<div class="box" style="background: #AFCCF1;">2
+</div>
+<div class="box" style="background: #AFCCF1;">3
+</div>
+<div class="box" style="background: #AFCCF1;">4
+</div>
+<div class="box" style="background: #AFCCF1;">5
+</div>
+ <div class="box" style="background: #AFCCF1;">6
+</div>
+<div class="box" style="background: #AFCCF1;">7
+</div>
+<div class="box" style="background: #AFCCF1;">8
+</div>
+<div class="box" style="background: #AFCCF1;">9
+</div>
+<div class="box" style="background: #AFCCF1;">不限行
+</div>
+
+</div>
+
+<div style=" position:absolute; top:60px;left:200px; width:920px; " id="mydiv">
+<div class="title"><div class="txt">周日</div>
+<div class="receive" id='sun1'>
+</div>
+
+<div class="receive" id='sun2'>
+</div>
+</div>
+<div class="title"><div class="txt">周一</div>
+<div class="receive" id='mon1'>
+</div>
+
+<div class="receive" id='mon2'>
+</div>
+</div>
+<div class="title"><div class="txt">周二</div>
+<div class="receive" id='tue1'>
+</div>
+
+<div class="receive" id='tue2'>
+</div>
+</div>
+<div class="title"><div class="txt">周三</div>
+<div class="receive" id='wed1'>
+</div>
+
+<div class="receive" id='wed2'>
+</div>
+</div>
+<div class="title"><div class="txt">周四</div>
+<div class="receive" id='thu1'>
+</div>
+
+<div class="receive" id='thu2'>
+</div>
+</div>
+<div class="title"><div class="txt">周五</div>
+<div class="receive" id='fri1'>
+</div>
+
+<div class="receive" id='fri2'>
+</div>
+</div> 
+<div class="title">
+<div class="txt">周六</div>
+<div class="receive" id='sat1'>
+</div>
+
+<div class="receive" id='sat2'>
+</div>
+</div>
+
 
 
 </div>
 
-<div id='calendar'></div>
-
-<script>
-function save(){
-	var arr=new Array();
-	var t=$('#calendar').fullCalendar( 'clientEvents' );
-	
-	arr[0]={dXxrqBegin:($('#calendar').fullCalendar( 'getView' ).visStart).format('yyyy-MM-dd')+"",
-	dXxrqEnd:($('#calendar').fullCalendar( 'getView' ).visEnd).format('yyyy-MM-dd')+""};
-	
-	for(var i=0;i<t.length;i++){
-		var obj={};
-		if(t[i].start!=null){
-			obj.dXxrq=(t[i].start).format('yyyy-MM-dd')+"";
-		}
-		obj.cXxwh=t[i].id+"";
-		arr[i+1]=obj;
-		
-	}
-	
-	ClxxSvc.saveInfo(arr,function (rdata){
-		if (rdata) {
-			alert('保存成功');
-		} else {
-			alert('保存失败');
-		}
-	});
-	
-}
-
-</script>
-
-
-
-<div style='clear:both'></div>
+<div id="message">
+</div>
+<div style="display: none">
 </div>
 </body>
 </html>

@@ -31,8 +31,8 @@ public class ClxxSvc  {
 	}
 	
 	public Object saveInfo(List<Map<String,String>> list) throws SQLException {
-		   
-		List<Map> tlist=queryAll(list.get(0));
+		   Map p=new HashMap();
+		List<Map> tlist=queryAll(p);
 			for (int i = 0; i < tlist.size(); i++) {
 				remove(tlist.get(i));
 		}
