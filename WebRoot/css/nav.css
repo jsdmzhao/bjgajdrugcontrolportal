@@ -1,0 +1,124 @@
+
+ul,ol,li,dl,dt,dd {
+	padding:0px;
+	margin:0px;
+	list-style-type: none;
+}
+a{
+	text-decoration: none;
+}
+.menu {
+	padding: 0px 10px 0px 10px;
+	margin: auto auto 10px;
+	line-height: 37px;
+	width:980px;
+	height:37px;
+	text-align: center;
+	background-image: url(../newimages/toolbar.png);
+	background-position: left top;
+	/**
+	width:980px;
+	height:37px;
+	overflow:hidden;
+	background:url(../newimages/toolbar.png) no-repeat;
+	position:relative;
+	margin-top: 4px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	padding-top: 4px;
+	padding-right: 2px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+
+	**/
+}
+.menu a {
+	padding-right: 15px; 
+	display: block; 
+	padding-left: 15px; 
+	float: left; 
+	padding-bottom: 0px; 
+	color: #fff; 
+	padding-top: 0px;
+	width: 105px;
+}
+.menu a:hover {
+	padding-right: 15px; 
+	background: url(../images/nav_hover.jpg);
+	background-repeat: repeat-x;
+	background-position: left top; 
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.menu a:visited {
+	padding-right: 15px; 
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.menu .select {
+	padding-right: 15px; 
+	background: url(../images/nav_link.jpg);
+	background-repeat: repeat-x;
+	background-position: left top; 
+}
+div.menu {
+	
+}
+div.menu-list {
+	border-right: #d6d6d6 1px solid; 
+	padding-right: 0px; border-top: #d6d6d6 1px solid; 
+	display: none; padding-left: 0px; 
+	background: #fff; filter: alpha(opacity=90); 
+	padding-bottom: 5px; border-left: #d6d6d6 1px solid; 
+	width: 100px; 
+	padding-top: 0px; 
+	border-bottom: #d6d6d6 1px solid; 
+	position: absolute; 
+	opacity: 0.8;
+}
+div.menu-list ul {
+	padding-right: 0px; 
+	padding-left: 0px; 
+	padding-bottom: 0px; 
+	margin: 0px; 
+	padding-top: 0px;
+}
+div.menu-list ul li {
+	padding-right: 0px; 
+	padding-left: 0px; 
+	padding-bottom: 0px; 
+	margin: 0px; 
+	padding-top: 0px;
+}
+div.menu-list ul li {
+	margin: 5px 5px 0px; 
+	list-style-type: none;
+}
+div.menu-list ul li a {
+	display: block; 
+	width: 100%; 
+	cursor: pointer; 
+	color: #000; 
+	line-height: 25px; 
+	height: 25px; 
+	text-align: center; 
+	text-decoration: none;
+}
+div.menu-list ul li a span {
+	display: block; 
+	width: 100%; 
+	height: 100%
+}
+div.menu-list ul li a:hover {
+	background: url(../images/nav_hover.jpg);
+	background-repeat: repeat-x;
+	background-position: left top; 
+	color: #fff;
+}
+div.menu-list ul li a:hover span {
+
+}
+

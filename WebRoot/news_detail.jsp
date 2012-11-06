@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<LINK rel=stylesheet type=text/css href="css/szxue.css">
 	<link rel="stylesheet" rev="stylesheet" href="css/comic.css" type="text/css" media="all" />
 	<SCRIPT language=javascript src="js/jquery.js"></SCRIPT>
-	<SCRIPT language=javascript src="js/szxue.js"></SCRIPT>
+	<script type="text/javascript" src="<%=basePath%>js/date.js"></script>
 	
 	<style type="text/css">
 		body { padding:0px; margin:0px; }
@@ -36,14 +36,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
 <div id="container_detail">
+	<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="984" height=99">
+      <param name="movie" value="flash/banner_top.swf" />
+      <param name="quality" value="high" />
+      <embed src="flash/banner_top.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="984" height="99"></embed>
+    </object>
+  <!--  
 	<div id="banner_top">
 	  <div id="favor"><img src="newimages/4.png" width="15" height="12" />设为首页&nbsp;<img src="newimages/2.png" width="18" height="14" />&nbsp;加入收藏</div>
   </div>
+  -->
 	<div id="banner_bottom">
 	  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="980" height="152">
         <param name="movie" value="flash/Banner.swf" />
         <param name="quality" value="high" />
-        <embed src="Banner.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="980" height="152"></embed>
+        <embed src="flash/Banner.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="980" height="152"></embed>
       </object>
   </div>
 	<div>
@@ -104,9 +111,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<ul>
 						<li><img src="newimages/menu_5.png" /></li>
 					</ul>
-					<ul>
-						<li><img src="newimages/menu_5.png" /></li>
-					</ul>
                     <ul>
 						<li><img src="newimages/menu_6.png" /></li>
 					</ul>
@@ -116,11 +120,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<ul>
 						<li><img src="newimages/menu_8.png" /></li>
 					</ul>
+					<ul>
+						<li><img src="newimages/menu_9.png" /></li>
+					</ul>
 				</div>
 			</div>
 			<div id="ljcsc">
 					<img src="newimages/menu_ljksc.png" />
 			</div>
+			<div id="ljcsc">
+					<img src="newimages/menu_gzjdts.png" />
+			</div>
+			<!-- 
             <div class="tztb_div" style="height:140px;">
 				<div class="tztb_title">
 					<div class="tztb_title_content">
@@ -143,11 +154,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</ul>
                  </div>
 			</div>
+			-->
 		</div>
+	
 		<div id="news_center">
 			<div class="news_center_title">
-				<div class="news_center_title_font">工作动态</div>
-				<div class="news_center_title_more">您现在所在的位置： 首页》》工作动态</div>
+				<div class="news_center_title_font">
+					<s:if test="news.c_lm_.indexOf(';') > -1">
+						<s:property value="news.c_lm_.substring(0,news.c_lm_.indexOf(';'))"/>
+					</s:if>
+					<s:else>
+						<s:property value="news.c_lm_"/>
+					</s:else>
+				</div>
+				<div class="news_center_title_more">
+					<font color="#DF7024" size="2">您现在所在的位置： 首页&nbsp;&gt;&gt;&nbsp;<s:property value="news.c_lm_"/></font>
+				</div>
 			</div>
 			<div class="news_content_center_content" style="padding:10px 0px 10px 20px;">
 				<div style="font-size: 24px; font-weight:800; color:#F00; margin-top: 20px;line-height: 50px;"><s:property value="news.c_bt"/></div>
@@ -167,7 +189,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 				</div>
 				<br/>
-				<div id="thetd" style="line-height: 22px; text-align: left; margin-top: 50px;"><s:property value="news.c_nr" escape="false"/></div>
+				<div id="thetd" style="line-height: 22px; width: 710px; text-align: left; margin-top: 50px;"><s:property value="news.c_nr" escape="false"/></div>
 			</div>
 			
             

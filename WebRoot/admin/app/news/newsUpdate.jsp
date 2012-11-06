@@ -63,6 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          },{
         	 type:"hidden",
              name:"c_lm",
+             value: "<s:property value='news.c_lm'/>",
          },{
    	         name:"wzlm",
    	         newline:false,

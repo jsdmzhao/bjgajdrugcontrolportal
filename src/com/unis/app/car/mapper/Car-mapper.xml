@@ -63,14 +63,21 @@
 	                       TO_CHAR(D_GDSJ, 'YYYY-MM-DD HH24:MI:SS') D_GDSJ,
 	                       DECODE(C_SHJG, '1', '同意', '0', '不同意', '等待审核') C_SHJG,
 	                       TO_CHAR(D_DJ, 'YYYY-MM-DD HH24:MI:SS') D_DJ
-	                  FROM B_CLSQ
+	                  FROM B_CLSQ  
+	                  <if test="type != null and type == 'sh'">
+				 		 WHERE C_SFSH = '0'
+				  	  </if>
 	                 ORDER BY N_XH DESC) S
 	         WHERE ROWNUM &lt;= #{limit}) T
 	 WHERE T.RN &gt; #{start}
 	</select>
 	
-	<select id="getCarPageListCnt" resultType="long">
-		SELECT COUNT(*) Total FROM B_CLSQ
+	<select id="getCarPageListCnt" resultType="long" parameterType="hashmap">
+		SELECT COUNT(*) Total 
+			FROM B_CLSQ 
+		<if test="type != null and type == 'sh'">
+ 		 WHERE C_SFSH = '0'
+  	  </if> 
 	</select>
 	
 	<select id="getCartypeList" resultMap="resultCartype">
@@ -91,7 +98,7 @@
 	</select>
 	
 	
-	<select id="getCartypeCombox" resultType="Combox">
+	<select id="getCartypeCombox" resultType="Combox" parameterType="string">
 		SELECT N_XH VALUE,
 	       C_CPHM TEXT
 	    FROM B_CLLB
@@ -100,7 +107,8 @@
            FROM B_CLSQ S
           WHERE S.N_CLLBXH = B_CLLB.N_XH
             AND S.D_GDSJ >
-                TO_DATE(TO_CHAR(SYSDATE, 'YYYY-MM-DD'), 'YYYY-MM-DD'))
+                TO_DATE(TO_CHAR(SYSDATE, 'YYYY-MM-DD'), 'YYYY-MM-DD')
+         ) AND C_YHZID = #{c_yhzid}
 	</select>
 	
 	<delete id="deleteCar" parameterType="long">
@@ -119,6 +127,7 @@
 		   C_SQSY    ,
 		   D_CCSJ    ,
 		   D_GDSJ    ,
+		   C_SFSH    ,
 		   D_DJ    ) 
 		VALUES (	            	
 	      seq_b_clsq.nextval,        
@@ -126,7 +135,8 @@
           #{c_yhid,jdbcType=VARCHAR},         
           #{c_sqsy,jdbcType=VARCHAR},           
           TO_DATE(#{d_ccsj,jdbcType=DATE},'YYYY-MM-DD HH24:MI:SS'),           
-          TO_DATE(#{d_gdsj,jdbcType=DATE},'YYYY-MM-DD HH24:MI:SS'),           
+          TO_DATE(#{d_gdsj,jdbcType=DATE},'YYYY-MM-DD HH24:MI:SS'),
+          '0',           
        	  sysdate      
 	    )  
 	</insert>

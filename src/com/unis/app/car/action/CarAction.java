@@ -60,16 +60,18 @@ public class CarAction {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
 		String userId =  session.getAttribute("userId")+"";
+		String yhzId =  session.getAttribute("cYhz")+"";
 		Map<String, String> sqlParamMap = new HashMap<String, String>();
 		
 		sqlParamMap.put("type", type);
 		sqlParamMap.put("c_yhid", userId);
+		sqlParamMap.put("c_yhzid", yhzId);
 		sqlParamMap.put("start", String.valueOf(((page.intValue()-1)*pagesize.intValue())));
 		sqlParamMap.put("limit", String.valueOf((page.intValue()*pagesize.intValue())));
 		Map<String, Object> resMap = new HashMap<String, Object>();
 
 		List<Car> carList = (List<Car>) carService.selectList("CarMapper.getCarPageList",sqlParamMap);
-		Long cnt = (Long) carService.selectOne("CarMapper.getCarPageListCnt","");
+		Long cnt = (Long) carService.selectOne("CarMapper.getCarPageListCnt",sqlParamMap);
 
 		resMap.put("Rows", carList);
 		resMap.put("Total", cnt);
@@ -100,8 +102,10 @@ public class CarAction {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Combox> getCartypeCombox(){
-		List<Combox> comboxList = (List<Combox>) carService.selectList("CarMapper.getCartypeCombox", "");
+	public List<Combox> getCartypeCombox(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		String yhzId =  session.getAttribute("cYhz")+"";
+		List<Combox> comboxList = (List<Combox>) carService.selectList("CarMapper.getCartypeCombox", yhzId);
 		return comboxList;
 	}
 	

@@ -40,6 +40,7 @@
 		       C_JJ,
 		       C_NR,
 		       TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
+		       C_LM,
 		       FUN_GET_MULTI_LMMC(C_LM) C_LM_,
 		       C_YHID,
 		       C_YHZID,
@@ -62,6 +63,7 @@
 		   C_BT,
 	       TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
 	       C_NR,
+	       FUN_GET_MULTI_LMMC(C_LM) C_LM_,
 	       FUN_GET_YHMC(C_YHID) C_YHID,
 	       DECODE(C_YHZID,'1','总队领导',
 		       		  '3','办公室',
@@ -71,7 +73,7 @@
 		       		  '8','查禁大队',
 		       		  '5','缉控大队',
 		       		  '10','两品办')  C_YHZID
-	FROM B_XINWEN WHERE N_XH = #{n_xh}
+		FROM B_XINWEN WHERE N_XH = #{n_xh}
 	</select>
 	 
 	<select id="getNewsList" parameterType="News" resultMap="resultNews">
@@ -83,7 +85,7 @@
 	       C_SFTJ,
 	       C_SHJG
 	  FROM B_XINWEN
-	 WHERE C_LM LIKE ';'||#{c_lm}||';'
+	 WHERE C_LM LIKE '%;'||#{c_lm}||';%'
 	  <if test="c_sfsh != null and c_sfsh != ''">
 	 	 AND C_SFSH = #{c_sfsh}
 	  </if>
@@ -105,7 +107,10 @@
 				       C_SFTJ,
 				       C_SHJG
 				  FROM B_XINWEN
-				 WHERE C_LM LIKE ';'||#{c_lm}||';'
+				 WHERE 1 = 1
+				  <if test="c_lm != null and c_lm != ''">
+				 	 AND C_LM LIKE '%;'||#{c_lm}||';%'
+				  </if>
 				  <if test="c_bt != null and c_bt != ''">
 				 	 AND C_BT LIKE '%'||#{c_bt}||'%'
 				  </if>
@@ -116,9 +121,13 @@
 	
 	<select id="getNewsIndexPageCnt" parameterType="News" resultType="long">
 	 SELECT COUNT(*) CNT
-	  FROM B_XINWEN WHERE C_LM LIKE ';'||#{c_lm}||';'
+	  FROM B_XINWEN 
+ 	WHERE 1 = 1
+	  <if test="c_lm != null and c_lm != ''">
+	 	AND C_LM LIKE '%;'||#{c_lm}||';%'
+	  </if>
 	  <if test="c_bt != null and c_bt != ''">
-	 	 AND C_BT LIKE '%'||#{c_bt}||'%'
+	 	AND C_BT LIKE '%'||#{c_bt}||'%'
 	  </if>
 	</select>
 	
@@ -135,9 +144,8 @@
 	  FROM B_XINWEN
 	 	 WHERE  
 	 	 1=1
-	 	 
 	 	  <if test="c_lm != null and c_lm != ''">
-	 	  and  C_LM LIKE ';'||#{c_lm}||';'
+	 	  and  C_LM LIKE '%;'||#{c_lm}||';%'
 	 	 </if>
 	  <if test="c_sfsh != null and c_sfsh != ''">
 	 	 AND C_SFSH = #{c_sfsh}
@@ -155,7 +163,7 @@
 	  FROM B_XINWEN
 	  where 1=1
 	   <if test="c_lm != null and c_lm != ''">
-	 	 and C_LM LIKE ';'||#{c_lm}||';'
+	 	 and C_LM LIKE '%;'||#{c_lm}||';%'
 	 	 </if>
 	  <if test="c_sfsh != null and c_sfsh != ''">
 	 	 AND C_SFSH = #{c_sfsh}
@@ -174,8 +182,8 @@
 			  C_TPLJDZ,
 			  C_LJ
 	  	FROM B_XINWEN
-	 	 WHERE C_LM LIKE ';'||#{c_lm}||';'
-	 	 	<if test="c_lm != null and c_lm == '1195' and rownum == 4 ">
+	 	 WHERE C_LM LIKE '%;'||#{c_lm}||';%'
+	 	 	<if test="c_lm != null and c_lm == '1081' and rownum == 4 ">
 			 	 AND C_TPLJDZ IS NOT NULL
 		  	</if>
 	 	 	AND C_SHJG = '1'
@@ -190,7 +198,7 @@
 			  C_TPLJDZ,
 			  C_LJ
 	  	FROM B_XINWEN
-	 	 WHERE C_LM LIKE ';'||#{c_lm}||';'
+	 	 WHERE C_LM LIKE '%;'||#{c_lm}||';%'
 	 	 	AND C_SHJG = '1'
 	</select>
 	
@@ -202,7 +210,7 @@
 		      TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
 			  C_TPLJDZ
 	  FROM B_XINWEN
-	 	 WHERE C_LM LIKE ';'||#{c_lm}||';'
+	 	 WHERE C_LM LIKE '%;'||#{c_lm}||';%'
 	 	 	<if test="c_lm != null and c_lm == '1201'">
 			 	 AND C_TPLJDZ IS NOT NULL
 		  	</if>
@@ -278,7 +286,7 @@
 	         #{c_yhid,jdbcType=VARCHAR},            
 	         #{c_yhzid,jdbcType=VARCHAR},         
 	         '0',           
-	         #{n_ydcs,jdbcType=NUMERIC},          
+	         '0',          
 	         #{c_sftj,jdbcType=VARCHAR},          
 	         #{c_sfzd,jdbcType=VARCHAR},          
 	       	 #{n_xxxh,jdbcType=NUMERIC}         
@@ -298,16 +306,7 @@
 				C_JJ     =	#{c_jj,jdbcType=VARCHAR},     							
 				C_NR     =	#{c_nr,jdbcType=CLOB,handler=ClobTypeHandler},     							
 				D_FBSJ   =	to_date(#{d_fbsj,jdbcType=VARCHAR},'yyyy-mm-dd hh24:mi:ss'),      							
-				C_LM     =	#{c_lm,jdbcType=VARCHAR},     							
-				C_YHID   =	#{c_yhid,jdbcType=VARCHAR},     							
-				C_YHZID  =	#{c_yhzid,jdbcType=VARCHAR},  							
-				C_SFSH   =	#{c_sfsh,jdbcType=VARCHAR},   							
-				C_SHR    =	#{c_shr,jdbcType=VARCHAR},    							
-				D_SHSJ   =	to_date(#{d_shsj,jdbcType=VARCHAR},'yyyy-mm-dd hh24:mi:ss'),    							
-				N_YDCS   =	#{n_ydcs,jdbcType=NUMERIC},   							
-				C_SFTJ   =	#{c_sftj,jdbcType=VARCHAR},   							
-				C_SFZD   =	#{c_sfzd,jdbcType=VARCHAR},   							
-				N_XXXH   =	#{n_xxxh,jdbcType=NUMERIC}    							
+				C_LM     =	#{c_lm,jdbcType=VARCHAR}    							
 		WHERE N_XH = #{n_xh}
 	</update>
 	
@@ -329,7 +328,7 @@
 	<select id="getNewsLanmuCombox" resultType="Combox" parameterType="string">  
 	   SELECT C_LMDM VALUE,
 	          C_LMMC TEXT
-	   FROM B_LANMU 
+	    FROM B_LANMU 
 	   WHERE C_SJLMDM = '0000'
 	   	AND C_YHZID = '0'
 	   	ORDER BY C_LMMC
@@ -343,5 +342,10 @@
 		AND C_YHZID = '0'
 	</select>
 	
+	<select id="getLanmuName" parameterType="string" resultType="string">  
+	  SELECT C_LMMC
+		 FROM B_LANMU
+	  WHERE C_LMDM = #{c_lmdm}
+	</select>
 	
 </mapper>

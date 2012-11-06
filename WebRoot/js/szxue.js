@@ -132,24 +132,70 @@ function SNmenuNav(){
 
 $(function(){
 	SNmenuNav();
-	SNTabFlash();	
-	SNpromArea();
-	SNTabchange("SNpromAnnMain","SNpromAnn");   //促销公告
-	SNexpress();
-	SNgroupScroll();
-	SearchFocus()
-	onlineserver($("#onlinefloat"));
-	SNrankingTop("SNrankTop01","SNTop01");
-	SNrankingTop("SNrankTop02","SNTop02");
-	SNrankingTop("SNrankTop03","SNTop03");
-	SNrankingTop("SNrankTop04","SNTop04");
-     function lazyload(option){var settings={defObj:null,defHeight:0};settings=$.extend(settings,option||{});var defHeight=settings.defHeight,defObj=(typeof settings.defObj=="object")?settings.defObj.find("img"):$(settings.defObj).find("img");var pageTop=function(){var d=document,y=(navigator.userAgent.toLowerCase().match(/iPad/i)=="ipad")?window.pageYOffset:Math.max(d.documentElement.scrollTop,d.body.scrollTop);return d.documentElement.clientHeight+y-settings.defHeight};var imgLoad=function(){defObj.each(function(){if($(this).offset().top<=pageTop()){var src2=$(this).attr("src2");if(src2){$(this).attr("src",src2).removeAttr("src2")}}})};$(window).bind("scroll",function(){imgLoad()})};
-	lazyload({defObj:"#snfoor01"});
-	lazyload({defObj:"#snfoor02"});
-	lazyload({defObj:"#snfoor03"});
-	lazyload({defObj:"#snfoor04"});
-	lazyload({defObj:"#snfoor05"});
-	lazyload({defObj:"#snfoor06"});
-	lazyload({defObj:"#snfoor07"});
-	lazyload({defObj:".ad80"});		     	
+	//SNTabFlash();	
+	//SNpromArea();
+	//SNTabchange("SNpromAnnMain","SNpromAnn");   //促销公告
+	//SNexpress();
+	//SNgroupScroll();
+	//SearchFocus()
+	//onlineserver($("#onlinefloat"));
+	//SNrankingTop("SNrankTop01","SNTop01");
+	//SNrankingTop("SNrankTop02","SNTop02");
+	//SNrankingTop("SNrankTop03","SNTop03");
+	// SNrankingTop("SNrankTop04","SNTop04");
+	
+	function lazyload(option) {
+		var settings = {
+			defObj : null,
+			defHeight : 0
+		};
+		settings = $.extend(settings, option || {});
+		var defHeight = settings.defHeight, defObj = (typeof settings.defObj == "object") ? settings.defObj
+				.find("img")
+				: $(settings.defObj).find("img");
+		var pageTop = function() {
+			var d = document, y = (navigator.userAgent.toLowerCase().match(
+					/iPad/i) == "ipad") ? window.pageYOffset : Math.max(
+					d.documentElement.scrollTop, d.body.scrollTop);
+			return d.documentElement.clientHeight + y - settings.defHeight
+		};
+		var imgLoad = function() {
+			defObj.each(function() {
+				if ($(this).offset().top <= pageTop()) {
+					var src2 = $(this).attr("src2");
+					if (src2) {
+						$(this).attr("src", src2).removeAttr("src2")
+					}
+				}
+			})
+		};
+		$(window).bind("scroll", function() {
+			imgLoad()
+		})
+	}
+	;
+	lazyload({
+		defObj : "#snfoor01"
+	});
+	lazyload({
+		defObj : "#snfoor02"
+	});
+	lazyload({
+		defObj : "#snfoor03"
+	});
+	lazyload({
+		defObj : "#snfoor04"
+	});
+	lazyload({
+		defObj : "#snfoor05"
+	});
+	lazyload({
+		defObj : "#snfoor06"
+	});
+	lazyload({
+		defObj : "#snfoor07"
+	});
+	lazyload({
+		defObj : ".ad80"
+	});
 })
