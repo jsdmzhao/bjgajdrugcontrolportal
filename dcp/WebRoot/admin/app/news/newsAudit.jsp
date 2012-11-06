@@ -308,7 +308,7 @@ String newsType = request.getParameter("newsType");
         }
 
 		var btValue = document.getElementById("bt").value;
-    	NewsAction.newsList(newsType,btValue,function (data){
+    	NewsAction.newsList(newsType,btValue, '0', function (data){
   	    	//newsdata = JSON2.stringify(data);
   	    	for(var i=0;i<data.Rows.length;i++){
   	    		var rowData = "<div style='width:100%;height:100%;'>";

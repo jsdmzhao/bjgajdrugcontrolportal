@@ -10,20 +10,19 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-
 import org.apache.commons.lang.xwork.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.unis.app.news.model.News;
+import com.unis.app.pagination.Pagination;
 import com.unis.core.action.CreateIndexAction;
 import com.unis.core.commons.Combox;
 import com.unis.core.service.AbsServiceAdapter;
 import com.unis.core.util.Globals;
 import com.unis.core.util.PageModel;
-import com.unis.app.news.model.News;
-import com.unis.app.pagination.Pagination;
 
 @Controller
 @Scope(value="prototype")
@@ -131,7 +130,7 @@ public class NewsAction {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public Map<String, Object> newsList(String c_lm,String c_bt, HttpServletRequest request){
+	public Map<String, Object> newsList(String c_lm,String c_bt, String c_sfsh, HttpServletRequest request){
 		HttpSession session = request.getSession();
 		String c_yhid = session.getAttribute("userId")+"";
 		String c_yhzid = session.getAttribute("cYhz")+"";
@@ -140,6 +139,7 @@ public class NewsAction {
 		news.setC_bt(c_bt);
 		news.setC_yhzid(c_yhzid);
 		news.setC_yhid(c_yhid);
+		news.setC_sfsh(c_sfsh);
 		Map<String, Object> resMap = new HashMap<String, Object>();
 		List<News> newsList = (List<News>) newsService.selectList("NewsMapper.getNewsList", news);
 		resMap.put("Rows", newsList);
@@ -148,7 +148,7 @@ public class NewsAction {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public String newsCenterList(){
+	public String newsCenterList() throws UnsupportedEncodingException{
 		
 		pageModel = new PageModel();
 		
@@ -157,17 +157,26 @@ public class NewsAction {
 		String c_yhid = session.getAttribute("userId")+"";
 		String c_yhzid = session.getAttribute("cYhz")+"";
 		
+		//if(StringUtils.isNotEmpty(news.getC_bt())){
+			//news.setC_bt(URLDecoder.decode(news.getC_bt(), "UTF-8"));
+		//}
 		news.setC_yhzid(c_yhzid);
 		news.setC_yhid(c_yhid);
-		news.setStart(String.valueOf(((Integer.parseInt(pageNo) -1)*Globals.pageSize)));
+		news.setStart(String.valueOf(((Integer.parseInt(pageNo)-1)*Globals.pageSize)));
 		news.setLimit(String.valueOf((Integer.parseInt(pageNo)*Globals.pageSize)));
 		
 		List<News> newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexPageList", news);
 		Long totalRecords = (Long) newsService.selectOne("NewsMapper.getNewsIndexPageCnt", news);
+		String keyWords = "信息检索";
+		if(StringUtils.isNotEmpty(news.getC_lm())){
+			keyWords = (String) newsService.selectOne("NewsMapper.getLanmuName", news.getC_lm());
+		}
+		
 		      
 		pageModel.setList(newsList);
 		pageModel.setTotalRecords(totalRecords);
 		pageModel.setPageNo(Long.valueOf(pageNo));
+		pageModel.setKeyWords(keyWords);
 		
 		return Globals.SUCCESS;
 	}
@@ -185,14 +194,14 @@ public class NewsAction {
 		
 		resMap = new HashMap<String, Object>();
 		
-		//领导动态
-		sqlParamMap.put("c_lm", "1195");
+		//工作要闻
+		sqlParamMap.put("c_lm", "1081");
 		sqlParamMap.put("rownum", "14");
 		List<News> newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
 		resMap.put("lddtList", newsList);
 		
-		//领导动态有图的三个
-		sqlParamMap.put("c_lm", "1195");
+		//工作要闻有图的三个
+		sqlParamMap.put("c_lm", "1081");
 		sqlParamMap.put("rownum", "4");
 		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
 		resMap.put("hdpList", newsList);

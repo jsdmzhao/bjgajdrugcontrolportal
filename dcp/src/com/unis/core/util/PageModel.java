@@ -8,9 +8,11 @@ public class PageModel {
 	
 	private Integer pageSize = Globals.pageSize;
 	
-	private List list;
+	private List<?> list;
 	
 	private Long totalRecords;
+	
+	private String keyWords;
 
 	public Long getPageNo() {
 		return pageNo;
@@ -20,11 +22,11 @@ public class PageModel {
 		this.pageNo = pageNo;
 	}
 
-	public List getList() {
+	public List<?> getList() {
 		return list;
 	}
 
-	public void setList(List list) {
+	public void setList(List<?> list) {
 		this.list = list;
 	}
 
@@ -69,6 +71,22 @@ public class PageModel {
 	public long  getBottomPage() {
 		
 		return getTotalPages();
+	}
+
+	public Integer getPageSize() {
+		return pageSize;
+	}
+
+	public void setPageSize(Integer pageSize) {
+		this.pageSize = pageSize;
+	}
+
+	public String getKeyWords() {
+		return keyWords;
+	}
+
+	public void setKeyWords(String keyWords) {
+		this.keyWords = keyWords;
 	}
 
 }
