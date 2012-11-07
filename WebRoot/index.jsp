@@ -57,10 +57,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    </object>
 	--%>
 	<div id="banner_top">
-	
+	<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="984" height=99">
+      <param name="movie" value="flash/banner_top.swf" />
+      <param name="quality" value="high" />
+      <embed src="flash/banner_top.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="984" height="99"></embed>
+    </object><%--
 		  <div id="favor"><img src="newimages/4.png" width="15" height="12" />设为首页&nbsp;<img src="newimages/2.png" width="18" height="14" />&nbsp;加入收藏</div>
 		 
-		  <%--<div>
+		  --%><%--<div>
 			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
 				codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,42,0"
 				id="banner_top" width="633" height="504">
@@ -238,37 +242,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div id="pic_link_1">
 			<div id="pic_link_1_list">
 				<ul>
-					<li><a href='newsCenterList?news.c_lm=1108&pageNo=1'><img src="newimages/lkjsc.png" /></a></li>
+					<li><a href='newsCenterList?news.c_lm=1108&pageNo=1'><img src="newimages/list_1.png" /></a></li>
 				</ul>
 				<ul>
-					<li><a href='newsCenterList?news.c_lm=1100&pageNo=1'><img src="newimages/zgjdtsc.png" /></a></li>
+					<li><a href='newsCenterList?news.c_lm=1100&pageNo=1'><img src="newimages/list_2.png" /></a></li>
 				</ul>
 				<ul>
-					<li><a href='newsCenterList?news.c_lm=1101&pageNo=1'><img src="newimages/qbxx.png" /></a></li>
+					<li><a href='newsCenterList?news.c_lm=1101&pageNo=1'><img src="newimages/list_3.png" /></a></li>
 				</ul>
 				<ul>
-					<li><a href='newsCenterList?news.c_lm=1102&pageNo=1'><img src="newimages/ddgj.png" /></a></li>
+					<li><a href='newsCenterList?news.c_lm=1102&pageNo=1'><img src=newimages/list_4.png /></a></li>
 				</ul>
 				<ul>
-					<li><a href='newsCenterList?news.c_lm=1103&pageNo=1'><img src="newimages/dlsj.png" /></a></li>
+					<li><a href='newsCenterList?news.c_lm=1103&pageNo=1'><img src="newimages/list_6.png" /></a></li>
 				</ul>
 				<ul>
-					<li><a href='newsCenterList?news.c_lm=1104&pageNo=1'><img src="newimages/dyjl.png" /></a></li>
+					<li><a href='newsCenterList?news.c_lm=1104&pageNo=1'><img src="newimages/list_7.png" /></a></li>
 				</ul>
 				<ul>
-					<li><a href='newsCenterList?news.c_lm=1267&pageNo=1'><img src="newimages/dtgk.png" /></a></li>
+					<li><a href='newsCenterList?news.c_lm=1267&pageNo=1'><img src="newimages/list_8.png" /></a></li>
 				</ul>
 				<ul>
-					<li><a href='newsCenterList?news.c_lm=1105&pageNo=1'><img src="newimages/lpgl.png" /></a></li>
+					<li><a href='newsCenterList?news.c_lm=1105&pageNo=1'><img src="newimages/list_9.png" /></a></li>
 				</ul>
 				<ul>
-					<li><a href='newsCenterList?news.c_lm=1188&pageNo=1'><img src="newimages/yfjy.png" /></a></li>
+					<li><a href='newsCenterList?news.c_lm=1188&pageNo=1'><img src="newimages/list_10.png" /></a></li>
 				</ul>
 				<ul>
-					<li><a href='newsCenterList?news.c_lm=1106&pageNo=1'><img src="newimages/jwbz.png" /></a></li>
+					<li><a href='newsCenterList?news.c_lm=1106&pageNo=1'><img src="newimages/list_11.png" /></a></li>
 				</ul>
 				<ul>
-					<li><a href='newsCenterList?news.c_lm=1107&pageNo=1'><img src="newimages/zfgf.png" /></a></li>
+					<li><a href='newsCenterList?news.c_lm=1107&pageNo=1'><img src="newimages/list_5.png" /></a></li>
 				</ul>
 			</div>
 		</div>
@@ -288,6 +292,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="jrzb_title_img"><img src="newimages/content_title_img.png" /></div>
 							<div class="jrzb_title_font">今日值班</div>
 						</div>
+					</div>
+					<div style="padding: 2px;">
+						值班领导：
 					</div>
 				</div>
 				<div class="jrzb_div" style="height:105px;">
@@ -483,19 +490,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div style="padding-top:3px; padding-left:-10px;width: 740px;">
 				<img src="newimages/wjfb_hy_qw_jh.png" usemap="#planetmap"/>
 				<map name="planetmap" id="planetmap"> 
-					<area shape="rect" coords="0,0,106,78" href="" alt="文件发布" />
-					<area shape="rect" coords="106,0,216,78" href="" alt="会议提醒" />
-					<area shape="rect" coords="216,0,331,78" href="" alt="勤务安排" />
-					<area shape="rect" coords="331,0,464,78" href="" alt="文件交换" />
-					<area shape="rect" coords="464,0,588,78" href="" alt="电视电话会议" />
-					<area shape="rect" coords="588,0,731,78" href="" alt="会议室管理" />
+					<area shape="rect" coords="0,0,106,78" href="newsCenterList?news.c_lm=1140&pageNo=1" alt="文件发布" />
+					<area shape="rect" coords="106,0,216,78" href="newsCenterList?news.c_lm=1141&pageNo=1" alt="会议提示" />
+					<area shape="rect" coords="216,0,331,78" href="newsCenterList?news.c_lm=1142&pageNo=1" alt="勤务安排" />
+					<area shape="rect" coords="331,0,464,78" href="newsCenterList?news.c_lm=1186&pageNo=1" alt="文件交换" />
+					<area shape="rect" coords="464,0,588,78" href="newsCenterList?news.c_lm=1143&pageNo=1" alt="电视电话会议" />
+					<area shape="rect" coords="588,0,731,78" href="newsCenterList?news.c_lm=1144&pageNo=1" alt="会议室管理" />
 				</map> 
 			</div>
 		</div>
 		<div id="ztzl_title"></div>
 		<div id="ztzl_content">
 			<div id="ztzl_content_left">
-				<div class="ztzl_img_div"><img src="newimages/zdzxx.png" /></div>
+				<div class="ztzl_img_div"><a href="newsCenterList?news.c_lm=1145&pageNo=1"><img src="newimages/zdzxx.png" /></a></div>
 				<div class="ztzl_img_div"><a href="<%=basePath%>admin"><img src="newimages/bgpt.png" /></a></div>
 				<div class="xxph_div">
 						<div class="xxph_title_content">
