@@ -19,7 +19,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<LINK rel=stylesheet type=text/css href="css/szxue.css">
 	<link rel="stylesheet" rev="stylesheet" href="css/comic.css" type="text/css" media="all" />
 	<SCRIPT language=javascript src="js/jquery.js"></SCRIPT>
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/nav.css">
 	<script type="text/javascript" src="<%=basePath%>js/date.js"></script>
+	
+	<script type="text/javascript" src="<%=basePath%>js/menu.js"></script>
 	
 	<style type="text/css">
 		body { padding:0px; margin:0px; }
@@ -53,41 +56,62 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <embed src="flash/Banner.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="980" height="152"></embed>
       </object>
   </div>
-	<div>
-	  <div class="channel-nav">
-        <ul>
-          <li ><a href='<%=basePath%>'><span>首页</span></a></li>
-          <li><a href='http://www.xxzx.bj'><span>信息查询</span></a></li>
-          <li><a href='http://www.anquan.zx.bj'><span>信息安全</span></a></li>
-          <li><a href='newsCenterList?news.c_lm=1239&pageNo=1'><span>视频在线</span></a></li>
-          <li><a href='ftp://ftp.jdc.bj'><span>工作交流</span></a></li>
-          <li><a href='newsCenterList?news.c_lm=1291&pageNo=1'><span>光荣榜</span></a></li>
-          <li><a href='newsCenterList?news.c_lm=1297&pageNo=1'><span>学习专栏</span></a></li>
-          <li><a href='newsCenterList?news.c_lm=1214&pageNo=1'><span>法律法规</span></a></li>
-		  <li><a href='newsCenterList?news.c_lm=1286&pageNo=1'><span>警钟长鸣</span></a></li>
-        </ul>
-      </div>
+	  <div class="menu">
+		    <a href="<%=basePath%>">首页</a>
+		    <a href="http://www.xxzx.bj">信息查询</a> 
+		    <a href="http://www.anquan.zx.bj">信息安全</a> 
+		    <a href="newsCenterList?news.c_lm=1239&pageNo=1">视频在线</a> 
+		    <a href="ftp://ftp.jdc.bj">工作交流</a> 
+		    <a href="newsCenterList?news.c_lm=1291&pageNo=1">光荣榜</a> 
+		    <a href="newsCenterList?news.c_lm=1297&pageNo=1">学习专栏</a>
+		    <a href="newsCenterList?news.c_lm=1214&pageNo=1" onMouseOver="mouseover(this, 1)" onmouseout="mouseout()">法律法规</a> 
+		    <a href="newsCenterList?news.c_lm=1286&pageNo=1">纪检监察</a> 
+		</div>
+		
+		<div class="menu-list" id="menu1" onmouseover="_mouseover()" onmouseout="_mouseout()">
+		  <ul>
+		      <li><a href="newsCenterList?news.c_lm=1305&pageNo=1"><span>法律汇编</span></a> </li>
+		      <li><a href="newsCenterList?news.c_lm=1209&pageNo=1"><span>法规汇编</span></a> </li>
+		      <li><a href="newsCenterList?news.c_lm=1307&pageNo=1"><span>规章汇编</span></a></li> 
+		      <li><a href="newsCenterList?news.c_lm=1312&pageNo=1"><span>规范性文件</span></a></li>
+		  </ul>
+		</div>
+		
 			<div id="search_bar">
-				<div style="float:left; padding-top:5px;margin-left:20px;">
-					<img src="newimages/3.png" width="16" height="16" />&nbsp;<strong>&nbsp;今天是：</strong>2012年10月29日&nbsp;&nbsp;&nbsp;&nbsp;星期五
-				</div>
-				<div style="float:left; padding-top:5px;">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="newimages/12312.jpg"
-						width="14" height="13" />&nbsp;&nbsp;<strong>限行尾号：</strong>&nbsp;&nbsp;****和****
-				</div>
-				<div style="float:right; width:270px;">
-					<div style="float:left;">
-						<form>
-							<input onclick="if(this.value=='请输入您想搜索的内容')this.value=''"
-								value="请输入您想搜索的内容" type="text"
-								style="background-image:url(newimages/ss.png); border:0px; padding-left:35px; background-repeat:no-repeat; padding-top:5px;BORDER: #A9cfe5 1px solid;  height:24px; width:162px; " /><input
-								type="button"
-								style="border:0px; margin-left:10px; height:24px; width:52px;background-image:url(newimages/ssb.png); padding-top:4px; " />
-
-						</form>
-					</div>
+			<div style="float:left; padding-top:5px;margin-left:20px;">
+				<img src="newimages/3.png" width="16" height="16" />&nbsp;<strong>&nbsp;今天是：</strong>
+				<script type="text/javascript">
+					WriteFullDate();
+				</script>
+			</div>
+			<div style="float:left; padding-top:5px;">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="newimages/12312.jpg"
+					width="14" height="13" />&nbsp;&nbsp;<strong>车辆限行尾号：</strong>7 和 2 
+			</div>
+			<div style="float:right; width:270px;">
+				<div style="float:left;">
+					<form id="searchForm" action="newsCenterList?pageNo=1" method="post" >
+						<input onFocus="if (value =='请输入您想搜索的内容'){value =''}" onblur="if (value ==''){value='请输入您想搜索的内容'}"
+							value="请输入您想搜索的内容" type="text" name="news.c_bt"
+							style="background-image:url(newimages/ss.png); border:0px; padding-left:35px; background-repeat:no-repeat; padding-top:5px;BORDER: #A9cfe5 1px solid;  height:24px; width:162px; " />
+						<input type="button" onclick="search();" style="border:0px; margin-left:10px; height:24px; width:52px;background-image:url(newimages/ssb.png); padding-top:4px; " />
+					</form>
+					
+					
+					<script type="text/javascript">
+						function search(){
+							if(document.all["news.c_bt"].value != '请输入您想搜索的内容'){
+								document.getElementById("searchForm").submit();
+							}else{
+								alert('请输入查询关键字');
+								return false;
+							}
+						}
+					</script>
+					
 				</div>
 			</div>
+		</div>
 	
 	<div style="width:980px;">
 		<div id="menu_list_left">
@@ -97,39 +121,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>				
 				<div class="menu_content_list">
 					<ul>
-						<li><img src="newimages/menu_1.png" /></li>
+						<li><a href='newsCenterList?news.c_lm=1101&pageNo=1'><img src="newimages/menu_1.png" /></a></li>
 					</ul>
 					<ul>
-						<li><img src="newimages/menu_2.png" /></li>
+						<li><a href='newsCenterList?news.c_lm=1188&pageNo=1'><img src="newimages/menu_2.png" /></a></li>
 					</ul>
 					<ul>
-						<li><img src="newimages/menu_3.png" /></li>
+						<li><a href='newsCenterList?news.c_lm=1102&pageNo=1'><img src="newimages/menu_3.png" /></a></li>
 					</ul>
                     <ul>
-						<li><img src="newimages/menu_4.png" /></li>
+						<li><a href='newsCenterList?news.c_lm=1103&pageNo=1'><img src="newimages/menu_4.png" /></a></li>
 					</ul>
 					<ul>
-						<li><img src="newimages/menu_5.png" /></li>
+						<li><a href='newsCenterList?news.c_lm=1104&pageNo=1'><img src="newimages/menu_5.png" /></a></li>
 					</ul>
                     <ul>
-						<li><img src="newimages/menu_6.png" /></li>
+						<li><a href='newsCenterList?news.c_lm=1105&pageNo=1'><img src="newimages/menu_6.png" /></a></li>
 					</ul>
 					<ul>
-						<li><img src="newimages/menu_7.png" /></li>
+						<li><a href='newsCenterList?news.c_lm=1267&pageNo=1'><img src="newimages/menu_7.png" /></a></li>
 					</ul>
 					<ul>
-						<li><img src="newimages/menu_8.png" /></li>
+						<li><a href='newsCenterList?news.c_lm=1107&pageNo=1'><img src="newimages/menu_8.png" /></a></li>
 					</ul>
 					<ul>
-						<li><img src="newimages/menu_9.png" /></li>
+						<li><a href='newsCenterList?news.c_lm=1106&pageNo=1'><img src="newimages/menu_9.png" /></a></li>
 					</ul>
 				</div>
 			</div>
 			<div id="ljcsc">
-					<img src="newimages/menu_ljksc.png" />
+					<a href='newsCenterList?news.c_lm=1108&pageNo=1'><img src="newimages/menu_ljksc.png" /></a>
 			</div>
 			<div id="ljcsc">
-					<img src="newimages/menu_gzjdts.png" />
+					<a href='newsCenterList?news.c_lm=1100&pageNo=1'><img src="newimages/menu_gzjdts.png" /></a>
 			</div>
 			<!-- 
             <div class="tztb_div" style="height:140px;">
@@ -210,7 +234,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	  总访问次数：10325
 		</div>
 	</div>
-</div>
 </div>
 </body>
 </html>
