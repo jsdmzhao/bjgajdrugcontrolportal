@@ -147,11 +147,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       function f_delete() {
           var selected = grid.getSelected();
           if (selected) {
-
-        	  grid.deleteRow(selected);
+        	  
         	  BlogAction.blogDelete(selected.n_xh, function (result){
              	   if(result == 'success'){
              		  LG.showSuccess('删除成功');
+             		  grid.deleteRow(selected);
 	           	   } else {
 	           		  LG.showSuccess('删除失败');
 	           	   }
@@ -172,6 +172,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           }
           return true;
       });
+      
       grid.bind('afterSubmitEdit', function (e)
       {
           var isAddNew = e.record['__status'] == "add";
@@ -181,13 +182,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           }
           BlogAction.blogSave(data, function (result){
         	if(result == 'success'){
+        		grid.loadData();
         		LG.showSuccess('保存成功');
-            	grid.loadData();
       		} else {
       			LG.showSuccess('保存失败');
       		}
           });
-
           return false;
       }); 
       
@@ -209,12 +209,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	  //loadGrid();
       
-      function loadGrid(){
+      //function loadGrid(){
       
-    	BlogAction.blogList(function (data){
-  	    	grid.setOptions({data:data});
-  	    });
-  	  }
+      //	BlogAction.blogList(function (data){
+  	  //  	grid.setOptions({data:data});
+  	 //   });
+  	 // }
   </script>
 </body>
 </html>

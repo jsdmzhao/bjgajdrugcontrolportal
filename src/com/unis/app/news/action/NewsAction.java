@@ -21,6 +21,7 @@ import com.unis.app.pagination.Pagination;
 import com.unis.core.action.CreateIndexAction;
 import com.unis.core.commons.Combox;
 import com.unis.core.service.AbsServiceAdapter;
+import com.unis.core.util.DateUtil;
 import com.unis.core.util.Globals;
 import com.unis.core.util.PageModel;
 
@@ -248,6 +249,12 @@ public class NewsAction {
 		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
 		resMap.put("mtgzList", newsList);
 		
+		//滚动专题专栏
+		sqlParamMap.put("c_lm", "1283");
+		sqlParamMap.put("rownum", "");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexNoLimitList", sqlParamMap);
+		resMap.put("ztzlList", newsList);
+		
 		//全国导航
 		sqlParamMap.put("c_lm", "1202");
 		sqlParamMap.put("rownum", "");
@@ -276,6 +283,9 @@ public class NewsAction {
 		//信息排行
 		newsList = (List<News>) newsService.selectList("NewsMapper.sortIndexCnt","");
 		resMap.put("xxphList", newsList);
+		
+		//当前日期
+		resMap.put("sysdate", DateUtil.getSysDate("yyyy-MM-dd"));
 		
 		return  Globals.SUCCESS;
 	}

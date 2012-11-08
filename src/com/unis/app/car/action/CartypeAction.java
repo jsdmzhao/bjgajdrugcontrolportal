@@ -35,9 +35,9 @@ public class CartypeAction {
 		if(StringUtils.isNotEmpty(sqlParamMap.get("n_xh"))){
 			carService.update("CarMapper.updateCartype", sqlParamMap);
 		} else {
-			sqlParamMap.put("n_xslc", "0");
-			sqlParamMap.put("n_hyzl", "0");
-			sqlParamMap.put("n_pjyh", "0");
+			//sqlParamMap.put("n_xslc", "0");
+			//sqlParamMap.put("n_hyzl", "0");
+			//sqlParamMap.put("n_pjyh", "0");
 			carService.insert("CarMapper.insertCartype", sqlParamMap);
 		}
 		return Globals.SUCCESS;

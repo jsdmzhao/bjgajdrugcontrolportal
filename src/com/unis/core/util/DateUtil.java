@@ -7,7 +7,22 @@ import java.util.Calendar;
 import java.util.Date;
 
 
+/**
+ * @author MaQinZh
+ *
+ */
 public class DateUtil {
+	
+	/**
+	 * 
+	 * @param formateType
+	 * 
+	 */
+	public static String getSysDate(String formatType) {
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat(formatType);
+		return sdf.format(date);
+	}
 	
 	/**
      * 获得指定日期的前一天

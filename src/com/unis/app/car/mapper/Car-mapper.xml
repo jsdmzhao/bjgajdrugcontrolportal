@@ -155,9 +155,14 @@
 	      seq_b_cllb.nextval,        
           #{c_cphm,jdbcType=VARCHAR}, 
           TO_DATE(#{d_gmsj,jdbcType=VARCHAR},'YYYY-MM-DD'), 
-          #{n_xslc,jdbcType=VARCHAR}, 
-          #{n_hyzl,jdbcType=VARCHAR}, 
-          #{n_pjyh,jdbcType=VARCHAR},
+          #{n_xslc,jdbcType=NUMERIC}, 
+          #{n_hyzl,jdbcType=NUMERIC}, 
+          <if test="n_hyzl == 0">
+   			 0,
+   		  </if>
+   		  <if test="n_hyzl != 0">
+   		 	 #{n_xslc,jdbcType=NUMERIC}/#{n_hyzl,jdbcType=NUMERIC},
+   		  </if>
           #{c_yhzid,jdbcType=VARCHAR}, 
        	  sysdate      
 	    )  
@@ -187,8 +192,13 @@
 		   		D_GMSJ   =  TO_DATE(#{d_gmsj,jdbcType=VARCHAR},'YYYY-MM-DD'),
 		   		C_YHZID  =  #{c_yhzid,jdbcType=VARCHAR},
 		   		N_XSLC   =  NVL(#{n_xslc,jdbcType=VARCHAR},0), 
-          		N_HYZL   =  NVL(#{n_hyzl,jdbcType=VARCHAR},0), 
-          		N_PJYH   =  NVL(#{n_pjyh,jdbcType=VARCHAR},0)
+          		<if test="n_hyzl == 0">
+          			0,
+          		</if>
+          		<if test="n_hyzl != 0">
+          			N_PJYH   =  NVL(#{n_xslc,jdbcType=NUMERIC}/#{n_hyzl,jdbcType=NUMERIC},0),
+          		</if>
+          		N_HYZL   =  NVL(#{n_hyzl,jdbcType=VARCHAR},0)
 		WHERE N_XH = #{n_xh}
 	</update>
 	
