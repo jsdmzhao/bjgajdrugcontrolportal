@@ -3,7 +3,7 @@ package com.unis.core.util;
 import java.security.MessageDigest;
 
 /**
- * MD5¼Ó½âÃÜ
+ * MD5ï¿½Ó½ï¿½ï¿½ï¿½
  */
 public class MD5 {
     

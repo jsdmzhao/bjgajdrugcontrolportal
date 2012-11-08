@@ -61,7 +61,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          {display:"车牌号码",name:"c_cphm",newline:true,labelWidth:100,width:400,space:30,type:"text",value:"<s:property value='car.c_cphm'/>"},
          {display:"购买时间",name:"d_gmsj",newline:true,labelWidth:100,width:400,space:30,type:"text",value:"<s:property value='car.d_gmsj.substring(0,10)'/>",
          onclick:"WdatePicker({dateFmt:'yyyy-MM-dd'})"},
-         {name:"n_xh", type:"hidden",value:"<s:property value='car.n_xh'/>"}
+         {name:"n_xh", type:"hidden",value:"<s:property value='car.n_xh'/>"},
+         {display:"行驶里程",name:"n_xslc",newline:true,labelWidth:100,width:400,space:30,type:"number",value:"<s:property value='car.n_xslc'/>"},
+         {display:"耗油总量",name:"n_hyzl",newline:true,labelWidth:100,width:400,space:30,type:"number",value:"<s:property value='car.n_hyzl'/>"}
         ]
  }};
 

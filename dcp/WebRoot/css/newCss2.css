@@ -43,11 +43,7 @@ body {
 }
 
 #banner_top {
-	text-align: center;
-	margin-left: 2px;
-	width: 978px;
 	background-image: url(../newimages/banner_top.png);
-	overflow: hidden;
 	height: 99px;
 }
 
@@ -156,7 +152,7 @@ body {
 
 #red_lddt_title_div {
 	border-bottom: dashed 1px #a9cfe5;
-	padding: 7px 4px 7px 25px;
+	padding: 10px;
 	float: left;
 	width: 380px;
 }
@@ -643,10 +639,6 @@ body {
 }
 
 #ljcsc {
-	margin-top: 10px;
-}
-
-#gzjdts {
 	margin-top: 10px;
 }
 

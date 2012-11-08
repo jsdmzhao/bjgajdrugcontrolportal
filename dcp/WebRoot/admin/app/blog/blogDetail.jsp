@@ -145,7 +145,7 @@ String c_mc = userName + " " + dateStr + "工作日志";
 	        		if(result == 'success'){
         			LG.showSuccess('保存成功', function () { 
                         f_cancel();
-                        parent.loadGrid();
+                        parent.f_reload();
                     });
         		} else {
         		 	LG.showError('保存失败');

@@ -62,9 +62,11 @@ public class BlogAction {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
 		
-		String c_yhid = session.getAttribute("userId")+"";
+		//String c_yhid = session.getAttribute("userId")+"";
+		String c_jb = session.getAttribute("cJb")+"";
 		
-		sqlParamMap.put("c_yhid", c_yhid);
+		//sqlParamMap.put("c_yhid", c_yhid);
+		sqlParamMap.put("c_jb", c_jb);
 		sqlParamMap.put("start", String.valueOf(((page.intValue()-1)*pagesize.intValue())));
 		sqlParamMap.put("limit", String.valueOf((page.intValue()*pagesize.intValue())));
 		
@@ -92,7 +94,7 @@ public class BlogAction {
 		
 		sqlParamMap.put("start", String.valueOf(((page.intValue()-1)*pagesize.intValue())));
 		sqlParamMap.put("limit", String.valueOf((page.intValue()*pagesize.intValue())));
-		sqlParamMap.put("c_yhid", "");
+		sqlParamMap.put("c_jb", "");
 		
 		Map<String, Object> resMap = new HashMap<String, Object>();
 		List<Blog> blogList = (List<Blog>) blogService.selectList("BlogMapper.getBlogPageList",sqlParamMap);

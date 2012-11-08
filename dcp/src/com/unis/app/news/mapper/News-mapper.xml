@@ -331,6 +331,7 @@
 	    FROM B_LANMU 
 	   WHERE C_SJLMDM = '0000'
 	   	AND C_YHZID = '0'
+	   	AND N_YXX = 1
 	   	ORDER BY C_LMMC
 	</select>
 	 
@@ -338,7 +339,8 @@
 	  SELECT C_LMDM VALUE,
 	         C_LMMC TEXT
 	  FROM B_LANMU
-		WHERE C_SJLMDM = #{c_sjlmdm}
+	 WHERE C_SJLMDM = #{c_sjlmdm}
+		AND N_YXX = 1
 		AND C_YHZID = '0'
 	</select>
 	

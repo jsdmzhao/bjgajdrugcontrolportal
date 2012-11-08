@@ -64,8 +64,8 @@
 				       DECODE(C_SHJG,'0','不通过','1','通过','未审核') C_SHJG,
 				       DECODE(C_SFTJ,'0','不推荐','1','推荐','不推荐') C_SFTJ
 				  FROM B_RIZHI
-				  <if test="c_yhid != null and c_yhid != '' ">
-				  	WHERE C_YHID = #{c_yhid}
+				  <if test="c_jb != null and c_jb != '' ">
+				  	WHERE C_JB &gt;= #{c_jb}
 				  </if>
 				  ORDER BY N_XH DESC) S
 	         WHERE ROWNUM &lt;= #{limit}) T
@@ -75,8 +75,8 @@
 	<select id="getBlogPageListCnt" resultType="long" parameterType="hashmap">
 		SELECT COUNT(*) Total
 		  FROM B_RIZHI
-		  <if test="c_yhid != null and c_yhid != '' ">
-		  	WHERE C_YHID = #{c_yhid}
+		  <if test="c_jb != null and c_jb != '' ">
+		  	WHERE C_JB &gt;= #{c_jb}
 		  </if>
 	</select>
 	
