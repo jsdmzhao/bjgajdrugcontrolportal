@@ -1,3 +1,6 @@
+<%@page import="com.unis.app.limit.service.ClxxSvc"%>
+<%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
+<%@page import="org.springframework.context.ApplicationContext"%>
 <%@page import="java.net.URLDecoder"%>
 <%@page import="org.apache.commons.lang.xwork.StringUtils"%>
 <%@page import="java.net.URLEncoder"%>
@@ -143,7 +146,12 @@ if(c_bt == null){
 		</div>
 		<div style="float:left; padding-top:5px;">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="newimages/12312.jpg"
-				width="14" height="13" />&nbsp;&nbsp;<strong>车辆限行尾号：</strong>7 和 2 
+				width="14" height="13" />&nbsp;&nbsp;<strong>车辆限行尾号：</strong>
+					<%
+					ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());
+					ClxxSvc clxxSvc= (ClxxSvc) ctx.getBean("clxxSvc");
+					out.print(clxxSvc.getWh());
+					%>
 		</div>
 		<div style="float:right; width:270px;">
 			<div style="float:left;">

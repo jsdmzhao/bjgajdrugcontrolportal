@@ -1,4 +1,7 @@
-﻿<%@page import="java.net.URLDecoder"%>
+﻿<%@page import="com.unis.app.limit.service.ClxxSvc"%>
+<%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
+<%@page import="org.springframework.context.ApplicationContext"%>
+<%@page import="java.net.URLDecoder"%>
 <%@page import="org.apache.commons.lang.xwork.StringUtils"%>
 <%@page import="java.net.URLEncoder"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
@@ -16,6 +19,14 @@ String c_bt = (String)request.getParameter("news.c_bt");
 if(c_bt == null){
 	c_bt = "";
 }
+
+ 
+ String n_xh = (String)request.getParameter("n_xh");
+ if(n_xh == null){
+	 n_xh = "";
+ }
+ 
+
 
 %>
 
@@ -143,7 +154,12 @@ if(c_bt == null){
 		</div>
 		<div style="float:left; padding-top:5px;">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="newimages/12312.jpg"
-				width="14" height="13" />&nbsp;&nbsp;<strong>车辆限行尾号：</strong>7 和 2 
+				width="14" height="13" />&nbsp;&nbsp;<strong>车辆限行尾号：</strong>
+					<%
+					ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());
+					ClxxSvc clxxSvc= (ClxxSvc) ctx.getBean("clxxSvc");
+					out.print(clxxSvc.getWh());
+					%>
 		</div>
 		<div style="float:right; width:270px;">
 			<div style="float:left;">
@@ -246,10 +262,10 @@ if(c_bt == null){
 codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
  width="700" height="440" align="middle">
 <param name="allowScriptAccess" value="sameDomain" />
-<param name="movie" value="<%=basePath %>video/dynamic_flash_video_gallery.swf?flashvars=abc" />
+<param name="movie" value="<%=basePath %>video/dynamic_flash_video_gallery.swf?flashvars=<%=n_xh %>" />
 <param name="quality" value="high" /><param name="bgcolor" value="#F4FBFF" />
 
-<embed src="<%=basePath %>video/dynamic_flash_video_gallery.swf?flashvars=abc" quality="high" bgcolor="#F4FBFF"
+<embed src="<%=basePath %>video/dynamic_flash_video_gallery.swf?flashvars=<%=n_xh %>" quality="high" bgcolor="#F4FBFF"
  width="700" height="440" align="middle" allowScriptAccess="sameDomain" flashvars="video/list。jsp?abc=10"
   type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
 </object>

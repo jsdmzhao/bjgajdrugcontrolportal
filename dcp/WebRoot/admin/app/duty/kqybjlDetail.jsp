@@ -179,6 +179,13 @@ if(nLx==null){
         	KqYbjlSvc.save(formMap,function (rdata){
         		if (rdata) {
 					LG.showSuccess('保存成功', function() {
+						  
+						  if(zt.getValue()==1){
+							  
+							 var car_dialog = parent.$.ligerDialog.open({ url: '<%=basePath%>admin/app/car/carDetail.jsp', 
+		                          height: 500,width: 800,showMax: true, showToggle: true,  showMin: true
+						  });
+						  }
 						  f_cancel();
 	                      parent.loadGrid();
 					});

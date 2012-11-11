@@ -8,7 +8,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
-String n_xh=request.getParameter("n_xh");
+String n_xh=request.getParameter("param");
 ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());
 NewsService newsService= (NewsService) ctx.getBean("newsService");
 
@@ -23,6 +23,9 @@ news.setC_yhzid(c_yhzid);
 news.setC_yhid(c_yhid);
 news.setC_lm("1239");
 news.setC_sfscsp("1");
+
+news.setStart("0");
+news.setLimit("1000");
 
 List<News> list= (List<News>) newsService.selectList("NewsMapper.getNewsIndexPageList", news);
 

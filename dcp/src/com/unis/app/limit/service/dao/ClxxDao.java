@@ -71,5 +71,10 @@ public class ClxxDao  extends SqlSessionDaoSupport {
 			return retMap;
 		}
 	}
+	public List getWh(Map p) {
+		return  getSqlSession().selectList("ClxxMapper.getWh", p);
+	}
+
+	
 
 }
