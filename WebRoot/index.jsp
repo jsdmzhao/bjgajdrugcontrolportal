@@ -1,4 +1,7 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+﻿<%@page import="com.unis.app.limit.service.ClxxSvc"%>
+<%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
+<%@page import="org.springframework.context.ApplicationContext"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
@@ -47,6 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body> 
+  	<iframe style="display: none;" src="<%=basePath%>login.jsp?temp_r=zl"></iframe>
   <%--<%@include  file="../head.jsp" %>--%>
 	<div id="container">
 		<div id="banner_top">
@@ -124,7 +128,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div style="float:left; padding-top:5px;">
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="newimages/12312.jpg"
-					width="14" height="13" />&nbsp;&nbsp;<strong>车辆限行尾号：</strong>7 和 2 
+					width="14" height="13" />&nbsp;&nbsp;<strong>车辆限行尾号：</strong>
+					<%
+					ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());
+					ClxxSvc clxxSvc= (ClxxSvc) ctx.getBean("clxxSvc");
+					out.print(clxxSvc.getWh());
+					%>
 			</div>
 			<div style="float:right; width:270px;">
 				<div style="float:left;">

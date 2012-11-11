@@ -13,6 +13,12 @@
 			
 		
 	</resultMap>
+	
+	<resultMap id="Result2"  type="java.util.Map">
+			<result property="cXxwh" column="C_XXWH" jdbcType="VARCHAR"/>
+			
+		
+	</resultMap>
 	 
 
 	<select id="queryAllInfo" resultMap="Result"  parameterType="java.util.Map" >
@@ -34,6 +40,17 @@
 			<if test="dXxrqEnd != null and dXxrqEnd !='' "> and D_XXRQ &lt; to_date(#{dXxrqEnd},'YYYY-MM-DD')</if>
 			
 			<if test="cZt != null and cZt !='' ">  and C_ZT = #{cZt}</if>
+		</trim>
+		ORDER BY base.N_XH  DESC
+	</select>
+	
+	
+	<select id="getWh" resultMap="Result2"  parameterType="java.util.Map" >
+				 select 
+					base.C_XXWH
+				 from B_CLXX base 
+		 <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="cBz != null and cBz !='' ">   C_BZ like  '%${cBz}%'    </if>
 		</trim>
 		ORDER BY base.N_XH  DESC
 	</select>
