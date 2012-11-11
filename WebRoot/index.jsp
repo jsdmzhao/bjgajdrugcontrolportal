@@ -379,7 +379,7 @@ fgm.on(window, "load", function() {
 							</div>
 							<div class="font1" align="center">
 								<a href="<%=basePath%>temp/duty.jsp"
-									onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">考勤情况</a>
+									onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">警务管理</a>
 							</div>
 						</div>
 

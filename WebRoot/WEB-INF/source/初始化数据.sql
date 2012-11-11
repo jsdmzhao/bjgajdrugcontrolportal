@@ -873,13 +873,13 @@ insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
 values (SEQ_ZMCD.Nextval, '值班表', 'admin/app/duty/kqzb.jsp?allow=true', 'images/3DSMAX.png', null, null);
 
 insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
-values (SEQ_ZMCD.Nextval, '个人考勤', 'temp/duty.jsp?allow=true', 'images/3DSMAX.png', null, null);
+values (SEQ_ZMCD.Nextval, '警务管理', 'temp/duty.jsp?allow=true', 'images/3DSMAX.png', null, null);
 
 insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
 values (SEQ_ZMCD.Nextval, '我的资料', 'admin/app/userinfo/userinfoDetail.jsp?allow=true', 'images/Program Files Folder.png', null, null);
 
 insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
-values (SEQ_ZMCD.Nextval, '常用网址', 'temp/website.jsp', '	 images/Program Files Folder.png', null, null);
+values (SEQ_ZMCD.Nextval, '常用网址', 'temp/website.jsp?allow=true', '	 images/Program Files Folder.png', null, null);
 
 insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
 values (SEQ_ZMCD.Nextval, '上班打卡', 'temp/sxbdk.jsp?id=1', 'images/Alien Folder.png', null, null);

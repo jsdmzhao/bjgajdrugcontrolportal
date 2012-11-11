@@ -22,6 +22,12 @@ public class KqYbjlDao  extends SqlSessionDaoSupport {
 		return  getSqlSession().insert("KqYbjlMapper.saveAllInfo", p);
 	}
 	
+	
+	
+	public Object setDkInfo(Map p){
+		return  getSqlSession().insert("KqYbjlMapper.setDkInfo", p);
+	}
+	
 	public Object saveGRInfo(Map p){
 		return  getSqlSession().insert("KqYbjlMapper.saveGRInfo", p);
 	}

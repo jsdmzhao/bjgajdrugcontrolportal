@@ -50,16 +50,16 @@ String id= request.getParameter("id");
 			    <script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
 <script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
 <script type='text/javascript'
-	src='<%=basePath%>dwr/interface/KqSxbSvc.js'></script>
+	src='<%=basePath%>dwr/interface/KqYbjlSvc.js'></script>
 	</head>
 	<body>
 
  <script type="text/javascript"> 
 
 
-        	var formMap = {userId:'<%=session.getAttribute("userId") %>',nLx:<%=id%>};
+        	var formMap = {userId:'<%=session.getAttribute("userId") %>',cYy:'<%=("0".equals(id))?"上班":"下班" %>',nLx:1};
 		
-        	KqSxbSvc.dkInfo(formMap,function (rdata){
+        	KqYbjlSvc.setDkInfo(formMap,function (rdata){
         		if (rdata) {
 					alert('打卡成功', function() {
 					});

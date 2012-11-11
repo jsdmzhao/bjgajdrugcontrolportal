@@ -170,6 +170,37 @@
 			 SELECT  SEQ_KQ_YBJL.CURRVAL  AS ID FROM dual 
 		</selectKey>
 	</insert>
+	
+	
+		<insert id="setDkInfo" parameterType="java.util.Map" >
+			INSERT INTO B_KQ_YBJL(
+				N_XH,
+				USER_ID,
+				C_DD,
+				N_LX,
+				C_YY,
+				D_KSSJ,
+				D_JSSJ,
+				D_DJ,
+				C_ZT
+			)VALUES(
+				 SEQ_KQ_YBJL.NEXTVAL,  
+				  #{userId},
+				   '单位',
+			     #{nLx},
+			   #{cYy},
+			   sysdate,
+			    sysdate,
+			   sysdate,
+			   '0'
+			)
+		<selectKey resultType="string" keyProperty="id" >
+			 <!--SELECT #{nXh# AS ID FROM dual --> 
+			 SELECT  SEQ_KQ_YBJL.CURRVAL  AS ID FROM dual 
+		</selectKey>
+	</insert>
+	
+	
 
 	<update id="updateInfo" parameterType="java.util.Map"> 
 			update B_KQ_YBJL 

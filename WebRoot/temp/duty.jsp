@@ -58,9 +58,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			style="width: 99.2%; margin: 0 auto; margin-top: 3px;">
 			<div position="left" title="主要菜单" id="mainmenu"></div>
 			<div position="center" id="framecenter">
-				<div tabid="home" title="考勤管理">
-					<iframe frameborder="0" name="home" id="home" src="<%=basePath%>admin/app/duty/kqsxb.jsp"></iframe>
+				<div tabid="home" title="出勤">
+					<iframe frameborder="0" name="home" id="home" src="<%=basePath%>admin/app/duty/kqybjl.jsp?lx=CQ&userId=<%=session.getAttribute("userId")%>"></iframe>
 				</div>
+				
 			</div>
 		</div>
 		<script type="text/javascript">
@@ -163,36 +164,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             LG.prevDialogImage();
 
             var mainmenu = $("#mainmenu");
-
+            
             var menus=[
                      { "children":[{
                     "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                    "text":"上下班",
-                    "MenuUrl":"<%=basePath%>admin/app/duty/kqsxb.jsp?userId=<%=session.getAttribute("userId")%>",
+                    "text":"出勤",
+                    "MenuUrl":"<%=basePath%>admin/app/duty/kqybjl.jsp?lx=CQ&userId=<%=session.getAttribute("userId")%>",
                     },{
                         "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                        "text":"外出记录",
-                        "MenuUrl":"<%=basePath%>admin/app/duty/kqybjl.jsp?lx=WC&userId=<%=session.getAttribute("userId")%>",
+                        "text":"会议培训",
+                        "MenuUrl":"<%=basePath%>admin/app/duty/kqybjl.jsp?lx=HYPX&userId=<%=session.getAttribute("userId")%>",
                         },{
                             "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                            "text":"请假记录",
-                            "MenuUrl":"<%=basePath%>admin/app/duty/kqybjl.jsp?LX=QJ&userId=<%=session.getAttribute("userId")%>",
+                            "text":"出差",
+                            "MenuUrl":"<%=basePath%>admin/app/duty/kqybjl.jsp?lx=CC&userId=<%=session.getAttribute("userId")%>",
                             },{
                                 "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                                "text":"出差记录",
-                                "MenuUrl":"<%=basePath%>admin/app/duty/kqccjl.jsp?userId=<%=session.getAttribute("userId")%>",
+                                "text":"市内外出",
+                                "MenuUrl":"<%=basePath%>admin/app/duty/kqybjl.jsp?lx=WC&userId=<%=session.getAttribute("userId")%>",
                                 },{
                                     "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                                    "text":"补休记录",
-                                    "MenuUrl":"<%=basePath%>admin/app/duty/kqybjl.jsp?lx=BX&userId=<%=session.getAttribute("userId")%>",
-                                    },{
-                                        "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                                        "text":"缺勤申辩",
-                                        "MenuUrl":"<%=basePath%>admin/app/duty/kqqqsb.jsp?userId=<%=session.getAttribute("userId")%>",
-                                        }
+                                    "text":"请销假",
+                                    "MenuUrl":"<%=basePath%>admin/app/duty/kqccjl.jsp?userId=<%=session.getAttribute("userId")%>",
+                                    }
                     ],
-                    "MenuName":"考勤管理",
-                    "text":"考勤管理"
+                    "MenuName":"警务管理",
+                    "text":"警务管理"
                     }]; 
             
             $(menus).each(function (i, menu)

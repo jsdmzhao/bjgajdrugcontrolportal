@@ -23,7 +23,14 @@ public class KqYbjlSvc  {
 	public Object save(Map p) throws SQLException {
 		return kqYbjlDao.saveInfo(p);
 	}
-
+	
+	//
+	public Object setDkInfo(Map p) throws SQLException {
+		return kqYbjlDao.setDkInfo(p);
+	}
+	
+	
+	
 	public Object saveAll(Map p) throws SQLException {
 		return kqYbjlDao.saveAllInfo(p);
 	}
