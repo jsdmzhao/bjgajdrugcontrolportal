@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Sample Help File - Help</title>
+<style type="text/css">
+<!--
+.generalText {
+	font-family: tahoma, verdana, arial, helvetica, sans-serif;
+	font-size: 11px;
+}
+-->
+</style>
+</head>
+
+<body class="generalText">
+<p>Thank you for downloading: <strong>Dynamic_flash_video_gallery.fla</strong></p>
+<p>Included are:</p>
+<p>&nbsp;</p>
+<ul>
+	<li>MX2004 Flash File : dynamic_flash_video_gallery_2004.fla </li>
+	<li>Flash 8 Flash File : dynamic_flash_video_gallery.fla </li>
+    <li>xml files : list1.xml </li>
+</ul>
+<p>Font(s) used:</p>
+<ul>
+	<li>Veranda</li>
+</ul>
+<p>How to modify the file: </p>
+<p><strong>Instruction 1:</strong> </p>
+<p>first this file include dynamic_xml_list.fla, list1.xml,thumb folder and contentpic folder. </p>
+<p>you can find a file named list1.xml. example :</p>
+<p>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;<br />
+  &lt;item&gt;<br />
+&lt;list name=&quot;Intro something.Please custom your title text content&quot; videotitle=&quot;Matrix film demo 1&quot; link=&quot;video/ani1.flv&quot; &gt;<br />
+&lt;thumb&gt;thumb/1.jpg&lt;/thumb&gt; <br />
+&lt;/list&gt; <br />
+&lt;list name=&quot;Intro something.Please custom your title text content&quot; videotitle=&quot;Final matrix demo 2&quot; link=&quot;video/ani2.flv&quot; &gt;<br />
+&lt;thumb&gt;thumb/2.jpg&lt;/thumb&gt; <br />
+&lt;/list&gt; <br />
+<br />
+&lt;/item&gt;</p>
+<p>Attributes: </p>
+<p>name is your item buttontitle. </p>
+<p>videotitle is your playing video title.</p>
+<p>link is your video url address.</p>
+<p>&lt;thumb&gt;&lt;/thumb&gt; your need put your thumb image path into here,for example: &lt;thumb&gt;thumb/1.jpg&lt;/thumb&gt;</p>
+<p><strong>Instruction 2:</strong><br />
+open the fla files . you will find the ActionScript on the first frame. I have add commnets on it. like:</p>
+<p>//useage:<br />
+  //you can modify the fellow code:<br />
+  var easing = true;
+  //true or false mean easing or not.<br />
+  var auto = false;
+  //true or false mean autoscroll or not<br />
+  var mouseWheel = true;
+  //true or fale mean support mousewheel or not.<br />
+  var mouseCoord = true;
+  //true or false mean use mouse coordinates or not.<br />
+  var barVisual = true;
+  //when useing mouse Coordinates you can set scroll bar hid or not. false mean hid.Note:If you<br />
+  //didn't use mouse coordinates and set barVisual = false.you will only use mouseWheel scroll<br />
+//content.</p>
+<p>you can modify the code. and you don't need modify the othe code. </p>
+<p>if you want to change the layouts . Note the height of maskedView MovieClip is same with the scrollBg. If your want change the item style. you can find the item movieClip in flash library. you only doubleclick it and modify . enjoy it . </p>
+<p>video section:</p>
+<p>If you want to change the video control assets. you need open the layer folder which named video.the selected every item and change it. </p>
+<p>if you have other question ,please contact me: ry_wang@163.com <br />
+  <br />
+Good Luck using the file in your projects! </p>
+</body>
+</html>
