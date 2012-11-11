@@ -54,7 +54,12 @@ public class UserInfoDao  extends SqlSessionDaoSupport {
 	public List queryInfo(Map p){
 		return  getSqlSession().selectList("UserInfoMapper.queryInfo", p);
 	}
-
+	
+	public List getSr(){
+		return  getSqlSession().selectList("UserInfoMapper.getSr" );
+	}
+	
+	
 	public Object queryCountInfo(Map p) {
 		return  getSqlSession().selectOne("UserInfoMapper.queryCountInfo", p);
 	}

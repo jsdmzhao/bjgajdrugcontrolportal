@@ -40,7 +40,21 @@
 			<result property="cXm" column="C_XM" jdbcType="VARCHAR"/>
 			<result property="cYhz" column="C_YHZ" jdbcType="VARCHAR"/>
 	</resultMap>
+	
+<resultMap id="Result2"  type="java.util.Map">
+			<result property="cXm" column="C_XM" jdbcType="VARCHAR"/>
+	</resultMap>
 
+
+<select id="getSr" resultMap="Result2"  parameterType="java.util.Map" >
+    select 
+          base.C_XM
+         from B_YH base 
+  where  to_char(D_SR,'mm-dd') = to_char(sysdate,'mm-dd')
+    ORDER BY base.N_XH  DESC
+	</select>
+	
+	
 	<select id="queryAllInfo" resultMap="Result"  parameterType="java.util.Map" >
 				 select 
 					base.N_XH,
