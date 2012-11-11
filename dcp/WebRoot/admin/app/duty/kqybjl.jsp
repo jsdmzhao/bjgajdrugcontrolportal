@@ -191,6 +191,9 @@
     	function loadGrid(obj){
     		if(!obj)obj={};
     		obj.nLx='<%=nLx%>';
+    		<%if(!"".equals(userId)){%>
+			obj.userId='<%=userId%>';
+		<%}%>
     		KqYbjlSvc.queryByPage(obj,oPage,function(rdata){
     			if(rdata == null){
     				  grid.setOptions({ data:  { Total:0, Rows:""  } });
@@ -207,7 +210,7 @@
           switch (item.id) {
               case "add":
             	//  f_dialog("add","新增上下班信息");
-            	   dialog = $.ligerDialog.open({ title :'新增信息',url: '<%=basePath%>admin/app/duty/kqybjlDetail.jsp?nLx=<%=nLx%>'+'<%=str%>', 
+            	   dialog = $.ligerDialog.open({ title :'新增信息',url: '<%=basePath%>admin/app/duty/kqybjlDetail.jsp?nLx=<%=nLx%>'+'<%=str%>&userId=<%=userId%>', 
                        height: 350,width: 720,showMax: true, showToggle: true,  showMin: true
 				  });
             	//  top.f_openDialog(null,'新增上下班信息','<%=basePath%>admin/app/user/userDetail.jsp' );
@@ -215,13 +218,13 @@
             //  case "view":
             //      var selected = grid.getSelected();
             //      if (!selected) { LG.tip('请选择行!'); return }
-            //      top.f_addTab(null, '查看上下班信息', '<%=basePath%>admin/app/duty/kqybjlDetail.jsp?IsView=1&nLx=<%=nLx%>&ID=' + selected.UserID+'<%=str%>');
+            //      top.f_addTab(null, '查看上下班信息', '<%=basePath%>admin/app/duty/kqybjlDetail.jsp?IsView=1&nLx=<%=nLx%>&ID=' + selected.UserID+'<%=str%>&userId=<%=userId%>');
             //      break;
               case "modify":
             	  
             	  var selected = grid.getSelected();
                         if (!selected) { LG.tip('请选择行!'); return }
-                       dialog = $.ligerDialog.open({ title :'修改信息',url: '<%=basePath%>admin/app/duty/kqybjlDetail.jsp?nLx=<%=nLx%>&nXh=' + selected.nXh+'<%=str%>', 
+                       dialog = $.ligerDialog.open({ title :'修改信息',url: '<%=basePath%>admin/app/duty/kqybjlDetail.jsp?nLx=<%=nLx%>&nXh=' + selected.nXh+'<%=str%>&userId=<%=userId%>', 
                        height: 350,width: 720,showMax: true, showToggle: true,  showMin: true
 				  });
                        break;
