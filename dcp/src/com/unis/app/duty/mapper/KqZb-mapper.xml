@@ -13,7 +13,19 @@
 		<result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
 		
 	</resultMap>
+	
+	<resultMap id="Result2"  type="java.util.Map">
+		<result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
+		
+	</resultMap>
 	 
+<select id="getZb" resultMap="Result2"  parameterType="java.util.Map" >
+				 select 
+					FUN_GET_YHMC(USER_ID) USER_NAME
+				 from B_KQ_ZB base where d_sj like sysdate
+		        ORDER BY base.N_XH  DESC
+	</select>
+
 
 	<select id="queryAllInfo" resultMap="Result"  parameterType="java.util.Map" >
 				 select 

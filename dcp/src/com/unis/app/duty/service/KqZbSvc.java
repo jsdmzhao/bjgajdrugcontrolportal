@@ -56,6 +56,19 @@ public class KqZbSvc  {
 		return kqZbDao.queryAllInfo(p);
 	}
 	
+	
+	public String getZb() throws SQLException {
+		String returnValue="";
+		 List<Map> list=kqZbDao.getZb();
+		 for (int i = 0; i < list.size(); i++) {
+			 returnValue=returnValue+list.get(i).get("userName")+"，";
+		}
+		 if(returnValue.length()>0){
+			 returnValue=returnValue.substring(0, returnValue.length()-1);
+		 }
+		 return returnValue;
+	}
+	
 
 	public Map queryByPage(Map p, Map page) throws SQLException {
 		return kqZbDao.queryByPageInfo(p, page);

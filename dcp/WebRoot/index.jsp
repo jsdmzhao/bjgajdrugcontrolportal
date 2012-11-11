@@ -1,4 +1,6 @@
-﻿<%@page import="com.unis.app.limit.service.ClxxSvc"%>
+﻿<%@page import="com.unis.app.userinfo.service.UserInfoSvc"%>
+<%@page import="com.unis.app.duty.service.KqZbSvc"%>
+<%@page import="com.unis.app.limit.service.ClxxSvc"%>
 <%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
 <%@page import="org.springframework.context.ApplicationContext"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
@@ -311,7 +313,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 					</div>
 					<div style="padding: 2px;">
-						值班领导：
+					<% 
+					KqZbSvc kqZbSvc= (KqZbSvc) ctx.getBean("kqZbSvc");
+					out.print(kqZbSvc.getZb());
+					
+					%>
 					</div>
 				</div>
 				<div class="jrzb_div" style="height:105px;">
@@ -320,6 +326,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="jrzb_title_img"><img src="newimages/content_title_img.png" /></div>
 							<div class="jrzb_title_font">生日祝福</div>
 						</div>
+						
+					</div>
+						<div style="padding: 2px;">
+					<% 
+					UserInfoSvc userInfoSvc= (UserInfoSvc) ctx.getBean("userInfoSvc");
+					out.print(userInfoSvc.getSr());
+					
+					%>
 					</div>
 				</div>
 				<div class="jrzb_div">

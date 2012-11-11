@@ -1,5 +1,6 @@
 package  com.unis.app.duty.service.dao;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,6 +53,10 @@ public class KqZbDao  extends SqlSessionDaoSupport {
 
 	public Object queryCountInfo(Map p) {
 		return  getSqlSession().selectOne("KqZbMapper.queryCountInfo", p);
+	}
+	
+	public List getZb() throws SQLException {
+		return  getSqlSession().selectList("KqZbMapper.getZb");
 	}
 
 	public Map queryByPageInfo(Map p, Map page){
