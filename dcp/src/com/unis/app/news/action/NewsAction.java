@@ -178,7 +178,10 @@ public class NewsAction {
 		pageModel.setTotalRecords(totalRecords);
 		pageModel.setPageNo(Long.valueOf(pageNo));
 		pageModel.setKeyWords(keyWords);
-		
+		//news.c_lm=1239
+		if("1239".equals(news.getC_lm())){
+			return Globals.INPUT;
+		}
 		return Globals.SUCCESS;
 	}
 	
