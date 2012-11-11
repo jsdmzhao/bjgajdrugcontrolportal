@@ -89,8 +89,13 @@ public class ClxxSvc  {
 			 if(wh1.equals(wh2)){
 				 return " "+wh1+" ";
 				 
-			 }else{
+			 }else {
+				if(wh1.length()>0&&wh2.length()>0){
 				 return " "+wh1+" 和  "+ wh2+" ";
+				}else{
+					return " "+wh1+"   "+ wh2+" ";
+					
+				}
 				 
 			 }
 					 

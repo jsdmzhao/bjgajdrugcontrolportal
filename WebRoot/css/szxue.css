@@ -90,7 +90,8 @@ A.visited {
 	DISPLAY: none
 }
 .clear {
-	DISPLAY: block; HEIGHT: 0px; CLEAR: both; FONT-SIZE: 0px; OVERFLOW: hidden
+	DISPLAY: block; HEIGHT: 0px; CLEAR: both; /*FONT-SIZE: 0px;*/
+	 OVERFLOW: hidden
 }
 .clearfix:after {
 	DISPLAY: block; HEIGHT: 0px; VISIBILITY: hidden; CLEAR: both; OVERFLOW: hidden; CONTENT: "."
