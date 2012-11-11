@@ -9,6 +9,11 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
+String userId=session.getAttribute("userId")+"";
+if("null".equals(userId)){
+	userId="0";
+}
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -318,6 +323,7 @@ fgm.on(window, "load", function() {
 </script>
 	<iframe style="display: none;" src="<%=basePath%>login.jsp?temp_r=zl"></iframe>
 
+<%if(!"0".equals(userId)){ %>
 
 	<DIV class=selCity id=allCity style="display:none">
 		<DIV class=area>
@@ -435,7 +441,7 @@ fgm.on(window, "load", function() {
 			</div>
 		</div>
 	</div>
-  	
+  	<%} %>
   	
   <%--<%@include  file="../head.jsp" %>--%>
 	<div id="container">
