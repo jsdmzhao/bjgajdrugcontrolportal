@@ -52,7 +52,7 @@
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="cBz != null and cBz !='' ">   C_BZ like  '%${cBz}%'    </if>
 		</trim>
-		ORDER BY base.N_XH  DESC
+		ORDER BY base.C_XXWH  DESC
 	</select>
 
 	<select id="queryInfo" resultMap="Result" parameterType="java.util.Map" >
