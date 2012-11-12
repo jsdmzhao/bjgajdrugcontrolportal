@@ -40,7 +40,9 @@ function Box(objID,W,H,inner,footerInner){
 		winalter(BodyRid).style.height=winalter(BodyLid).clientHeight+"px";		
 		obj.style.cssText+=";position:absolute;left:50%;top:50%;z-index:901;";		
 		obj.style.marginLeft=-obj.scrollWidth/2+"px";
-		obj.style.marginTop=-obj.scrollHeight/2+"px";	
+		//obj.style.marginTop=-obj.scrollHeight/2+"px";	
+	//	obj.style.marginLeft="400px";
+		obj.style.marginTop="600px";	
 		
 				
 		var mask=true;//是否创建遮罩层
@@ -83,8 +85,10 @@ function Box(objID,W,H,inner,footerInner){
 				var x = e.clientX - moveX;
 				var y = e.clientY - moveY;
 					if ( x > 0 &&( x + w < iWidth) && y > 0 && (y + h < iHeight) ) {
-						obj.style.left = x + "px";
-						obj.style.top = y + "px";
+					//	obj.style.left = x + "px";
+					//	obj.style.top = y + "px";
+							obj.style.left = x + "px";
+							obj.style.top = y + "px";
 						obj.style.margin = "auto";
 						}
 					}
