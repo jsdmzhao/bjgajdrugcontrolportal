@@ -28,6 +28,12 @@
 	 	<result column="N_XXXH" property="n_xxxh"/>
 	 </resultMap>
 	 
+	 <resultMap type="News" id="resultVideoNews">
+	 	<result column="C_BT" property="c_bt"/>
+	 	<result column="D_FBSJ" property="d_fbsj"/>
+	 		<result column="C_SPLJDZ" property="c_spljdz"/>
+	 </resultMap>
+	 
 	<select id="getNews" parameterType="News" resultType="News">
 		SELECT N_XH,
 		       C_BT,
@@ -93,6 +99,32 @@
 	  <if test="c_bt != null and c_bt != ''">
 	 	 AND C_BT LIKE '%'||#{c_bt}||'%'
 	  </if>
+		   <if test="c_sfscsp != null and c_sfscsp != ''">
+				 	 AND C_SFSCSP = #{c_sfscsp}
+		</if>
+		
+				  
+	  ORDER BY C_SFZD DESC,D_FBSJ DESC
+	</select>
+	
+		<select id="getVideoNewsList" parameterType="News" resultMap="resultVideoNews">
+	  SELECT N_XH,
+		   C_BT,
+	       TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
+	       C_SPLJDZ
+	  FROM B_XINWEN
+	 WHERE C_LM LIKE '%;'||#{c_lm}||';%'
+	  <if test="c_sfsh != null and c_sfsh != ''">
+	 	 AND C_SFSH = #{c_sfsh}
+	  </if>
+	  <if test="c_bt != null and c_bt != ''">
+	 	 AND C_BT LIKE '%'||#{c_bt}||'%'
+	  </if>
+		   <if test="c_sfscsp != null and c_sfscsp != ''">
+				 	 AND C_SFSCSP = #{c_sfscsp}
+		</if>
+		
+				  
 	  ORDER BY C_SFZD DESC,D_FBSJ DESC
 	</select>
 	
