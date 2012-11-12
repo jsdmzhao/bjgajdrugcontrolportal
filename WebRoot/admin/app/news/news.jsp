@@ -35,6 +35,7 @@ String newsType = request.getParameter("newsType");
     <script src='<%=basePath%>dwr/engine.js' type='text/javascript' ></script>
   	<script src='<%=basePath%>dwr/util.js' type='text/javascript' ></script>
   	<script src='<%=basePath%>dwr/interface/NewsAction.js' type='text/javascript' ></script>
+  	<script src='<%=basePath%>dwr/interface/ColumnAction.js' type='text/javascript' ></script>
   	
   	
     <style type="text/css">
@@ -44,15 +45,19 @@ String newsType = request.getParameter("newsType");
 <body style="padding:2px;height:100%; text-align:center;">
   <input type="hidden" name="MenuNo" value="NewsGridTable"/>
   <div id="layout">
-     
+     <!--
     <div position="left" title="主菜单模块" id="mainmenu" style="width:100%;height:95%;overflow: auto;">
         <ul id="maintree"></ul>
      </div>
-     <!--  -->
+     -->
      
     <div position="center" title="子菜单列表"> 
         <form id="mainform">
 				<DIV class=l-panel-search>
+					<DIV class=l-panel-search-item>文章栏目</DIV>
+					<DIV class=l-panel-search-item id="selectLm">
+						 <input type="text" id="comboLanmu" />
+					</DIV>
 					<DIV class=l-panel-search-item>标题：</DIV>
 					<DIV class=l-panel-search-item>
 						<INPUT id="bt" name="bt" type="text" class="l-text" style="width: 200px;"  ltype="text">
@@ -74,6 +79,12 @@ String newsType = request.getParameter("newsType");
   </ul>
 
   <script type="text/javascript">
+
+  	var str = "<select id=\"selectLanmu\" value='<%=newsType%>'><option value=''>全部栏目</option>";
+	ColumnAction.columnSelectList(function(data){
+		document.getElementById("selectLm").innerHTML = str + data + "</select>"
+			
+	});
 
       var newsType = '<%=newsType %>';
       var dialog ;
@@ -260,9 +271,9 @@ String newsType = request.getParameter("newsType");
         { field: 'MenuParentNo', op: 'isnull' }
         ]
     };
-
+	
+    <%--
     var tempdata={};
-    
     
     var tree = $("#maintree").ligerTree({
         checkbox: false,
@@ -284,6 +295,7 @@ String newsType = request.getParameter("newsType");
     NewsAction.getNewsLanmuCombox(function(data){
     	tree.setData(eval(data));
     });
+    --%>
     <%----%>
     var layout = $("#layout").ligerLayout({ leftWidth: 140 });
 
@@ -374,9 +386,10 @@ String newsType = request.getParameter("newsType");
     }
 	
     function loadGrid(newsType){
-        if(newsType == undefined || newsType == ''){
-			newType = '1';
-        }
+        //if(newsType == undefined || newsType == ''){
+		//	newsType = '1';
+        //}
+        var newsType = document.getElementById("selectLanmu").value;
         var btValue = document.getElementById("bt").value;
     	NewsAction.newsList(newsType,btValue,'',function (data){
   	    	//newsdata = JSON2.stringify(data);

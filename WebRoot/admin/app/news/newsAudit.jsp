@@ -35,6 +35,7 @@ String newsType = request.getParameter("newsType");
     <script src='<%=basePath%>dwr/engine.js' type='text/javascript' ></script>
   	<script src='<%=basePath%>dwr/util.js' type='text/javascript' ></script>
   	<script src='<%=basePath%>dwr/interface/NewsAction.js' type='text/javascript' ></script>
+  	<script src='<%=basePath%>dwr/interface/ColumnAction.js' type='text/javascript' ></script>
   	
   	
     <style type="text/css">
@@ -44,32 +45,44 @@ String newsType = request.getParameter("newsType");
 <body style="padding:2px;height:100%; text-align:center;">
   <input type="hidden" name="MenuNo" value="NewsGridTable"/>
   <div id="layout">
+    <!--
     <div position="left" title="主菜单模块" id="mainmenu" style="width:100%;height:95%;overflow: auto;">
         <ul id="maintree"></ul>
      </div>
+     -->
     <div position="center" title="子菜单列表"> 
         <form id="mainform">
-        <DIV class=l-panel-search>
-			<DIV class=l-panel-search-item>标题：</DIV>
-			<DIV class=l-panel-search-item>
-				<INPUT id="bt" name="bt" type="text" class="l-text" style="width: 200px;"  ltype="text">
-			</DIV>
-			<DIV class=l-panel-search-item>
-				<DIV style="WIDTH: 100px" id=searchbtn class=l-btn  ligeruiid="searchbtn" onclick="search();">
-					搜索
-					<DIV class=l-btn-l></DIV>
-					<DIV class=l-btn-r></DIV>
-					<SPAN></SPAN>
+	        <DIV class=l-panel-search>
+				<DIV class=l-panel-search-item>文章栏目</DIV>
+				<DIV class=l-panel-search-item id="selectLm">
+					 <input type="text" id="comboLanmu" />
+				</DIV>
+				<DIV class=l-panel-search-item>标题：</DIV>
+				<DIV class=l-panel-search-item>
+					<INPUT id="bt" name="bt" type="text" class="l-text" style="width: 200px;"  ltype="text">
+				</DIV>
+				<DIV class=l-panel-search-item>
+					<DIV style="WIDTH: 100px" id=searchbtn class=l-btn  ligeruiid="searchbtn" onclick="search();">
+						搜索
+						<DIV class=l-btn-l></DIV>
+						<DIV class=l-btn-r></DIV>
+						<SPAN></SPAN>
+					</DIV>
 				</DIV>
 			</DIV>
-		</DIV>
-        <div id="maingrid"  style="margin:2px;"></div> 
+	        <div id="maingrid"  style="margin:2px;"></div> 
         </form>
     </div>
   </div>
   <ul class="iconlist">
   </ul>
   <script type="text/javascript">
+  
+  	  var dialog;
+ 	  var str = "<select id=\"selectLanmu\" value='<%=newsType%>'><option value=''>全部栏目</option>";
+	  ColumnAction.columnSelectList(function(data){
+		document.getElementById("selectLm").innerHTML = str + data + "</select>"
+	  });
 
       var newsType = '<%=newsType %>';
   
@@ -86,14 +99,12 @@ String newsType = request.getParameter("newsType");
           switch (item.text)
           {
           		  case "查看":
-            	  var selected = grid.getSelected();
-                  if (!selected) { LG.tip('请选择行!'); return }
-                  if (editingrow == null ) {
-                      top.f_addTab(null, '查看新闻信息', '<%=basePath%>newsView?news.n_xh=' + selected.n_xh);
-                  } else {
-                      LG.tip('现在不在编辑状态!');
-                  }
-                  break;
+          		  var selected = grid.getSelected();
+                   if (!selected) { LG.tip('请选择行!'); return }
+                    dialog = $.ligerDialog.open({ url: '<%=basePath%>newsView?news.n_xh=' + selected.n_xh, 
+                        height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+  				  });
+                    break;
               case "审核通过": 
             	  var selected = grid.getSelected();
                   if (!selected) { 
@@ -195,6 +206,7 @@ String newsType = request.getParameter("newsType");
         ]
     };
 
+    <%--
     var tempdata={};
     
     var tree = $("#maintree").ligerTree({
@@ -217,7 +229,7 @@ String newsType = request.getParameter("newsType");
     NewsAction.getNewsLanmuCombox(function(data){
     	tree.setData(eval(data));
     });
-
+	--%>
     var layout = $("#layout").ligerLayout({ leftWidth: 140 });
 
 
@@ -303,10 +315,8 @@ String newsType = request.getParameter("newsType");
     }
 	
     function loadGrid(newsType){
-        if(newsType == undefined || newsType == ''){
-			newType = '1';
-        }
 
+        var newsType = document.getElementById("selectLanmu").value;
 		var btValue = document.getElementById("bt").value;
     	NewsAction.newsList(newsType,btValue, '0', function (data){
   	    	//newsdata = JSON2.stringify(data);
