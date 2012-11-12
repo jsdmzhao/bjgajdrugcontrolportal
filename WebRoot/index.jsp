@@ -9,11 +9,6 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-
-String userId=session.getAttribute("userId")+"";
-if("null".equals(userId)){
-	userId="0";
-}
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -29,9 +24,7 @@ if("null".equals(userId)){
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/newCss.css"/>
 	<link rel="stylesheet" rev="text/css" href="<%=basePath%>css/comic.css" type="text/css" media="all" />
-	
-	 <link rel="stylesheet" type="text/css" href="<%=basePath%>css/szxue.css">
-	
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/szxue.css">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/nav.css">
 	<script type="text/javascript" src="<%=basePath%>js/jquery.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/szxue.js"></script>
@@ -39,6 +32,7 @@ if("null".equals(userId)){
 	<script type="text/javascript" src="<%=basePath%>js/date.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/tab.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/maquee.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/swfobject.js"></script>
 
 	<style type="text/css">
 		body { padding:0px; margin:0px; }
@@ -55,126 +49,12 @@ if("null".equals(userId)){
 		.ny2010 td img{ width:220px; height:36px; display:block; margin:0 5px 2px 0; padding:1px; border:1px solid #CCCCCC;}
 				
 	</style>
-<link rel="stylesheet" type="text/css" href="<%=basePath%>css/layout.css" />
-<link rel="stylesheet" type="text/css" href="<%=basePath%>css/index.css" />
-<link href="<%=basePath%>css/css.css" rel="stylesheet" type="text/css" />
-<link href="<%=basePath%>css/base.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<%=basePath%>highslide/highslide-with-html.js"></script>
-<link rel="stylesheet" type="text/css" href="<%=basePath%>highslide/highslide.css" />
-<link href="<%=basePath%>css/Wygkcn_home.css" rel="stylesheet" type="text/css" />
-<link href="<%=basePath%>css/Wygkcn_Index.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<%=basePath%>js/lightBox.js"></script>
-<script type="text/javascript" src="<%=basePath%>js/jquery-1.2.6.pack.js"></script>
-<script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>js/jquery-ui.min.js"></script>
 
-<!-- 弹出窗 -->
-<script type="text/javascript" src="<%=basePath%>highslide/highslide-with-html.js"></script>
-<link rel="stylesheet" type="text/css" href="<%=basePath%>highslide/highslide.css" />
-<!-- 弹出窗 -->
-
-<script type="text/javascript">
-	hs.graphicsDir = '../highslide/graphics/';
-	hs.outlineType = 'rounded-white';
-	hs.wrapperClassName = 'draggable-header';
-</script>
-
-<style type="text/css">
-	body {
-		font-size: 14px;
-		background-image: url('<%=basePath%>images/bg11.jpg');
-		background-repeat: repeat;
-	}
-</style>
-
-<script type="text/javascript">
-var fgm = {
- $: function(id) {
-  return typeof id === "object" ? id : document.getElementById(id);
- },
- $$: function(tagName, oParent) {
-  return (oParent || document).getElementsByTagName(tagName);
- },
- $$$: function(className, element, tagName) {
-  var i = 0, aClass = [], reClass = new RegExp("(^|\\s)" + className + "(\\s|$)"), aElement = fgm.$$(tagName || "*", element || document);
-  for (i = 0; i < aElement.length; i++) reClass.test(aElement[i].className) && aClass.push(aElement[i]);
-  return aClass;
- },
- index: function(element) {
-  var aChildren = element.parentNode.children, i;
-  for(i = 0; i < aChildren.length; i++) if(aChildren[i] === element) return i;
-  return -1;
- },
- on: function(element, type, handler) {
-  return element.addEventListener ? element.addEventListener(type, handler, !1) : element.attachEvent("on" + type, handler); 
- },
- bind: function(object, handler) {
-  return function() {
-   return handler.apply(object, arguments);
-  }; 
- }
-};
-function Tab(id) {
- var that = this;
- this.obj = fgm.$(id);
- this.oTab = fgm.$$$("tab", this.obj)[0];
- this.aTab = fgm.$$("li", this.oTab);
- this.oSwitch = fgm.$$$("switchBtn", this.oTab)[0];
- this.oPrev = fgm.$$("a", this.oSwitch)[0];
- this.oNext = fgm.$$("a", this.oSwitch)[1];
- this.aItems = fgm.$$$("items", this.obj);
- this.iNow = 0;  
- fgm.on(this.oSwitch, "click", fgm.bind(this, this.fnClick));
- fgm.on(this.oTab, "mouseover", fgm.bind(this, this.fnMouseOver));
-}
-Tab.prototype = {
- fnMouseOver: function(ev) {
-  var oEv = ev || event,
-  oTarget = oEv.target || oEv.srcElement;
-  oTarget.tagName.toUpperCase() === "LI" && (this.iNow = fgm.index(oTarget));
-  this.fnSwitch();
- },
- fnClick: function(ev) {
-  var oEv = ev || event,
-  oTarget = oEv.target || oEv.srcElement,
-  i;
-  switch(fgm.index(oTarget)) {
-   case 0:
-    if(oTarget.className == "prev") {
-     this.aTab[this.iNow].style.display = "block";
-     this.iNow--; 
-    };
-    break;
-   case 1:
-    if(oTarget.className == "next") {     
-     for(i = 0; i < this.iNow; i++) this.aTab[i].style.display = "none";
-     this.iNow++; 
-    };
-    break;
-  };
-  this.aTab[this.iNow].style.display = "block";  
-  this.fnSwitch(); 
- },
- fnSwitch: function() {
-  for(var i = 0; i < this.aTab.length; i++) (this.aTab[i].className = "", this.aItems[i].style.display = "none"); 
-  this.aTab[this.iNow].className = "tabcurrent";
-  this.aItems[this.iNow].style.display = "block";
-  this.oPrev.className = this.iNow == 0 ? "prevNot" : "prev";
-  this.oNext.className = this.iNow == this.aTab.length - 1 ? "nextNot" : "next";
- }
-};
-//应用
-fgm.on(window, "load", function() {
- var aItem = fgm.$$$("item"),
- i = 0;
- for(; i < aItem.length; i++) new Tab(aItem[i]);
-});
-</script>
   </head>
   
   <body> 
   	<iframe style="display: none;" src="<%=basePath%>login.jsp?temp_r=zl"></iframe>
-  	
+
   <%--<%@include  file="../head.jsp" %>--%>
 	<div id="container">
 		<div id="banner_top">
@@ -208,7 +88,7 @@ fgm.on(window, "load", function() {
 		  	<img src="newimages/4.png" width="15" height="12" />
 		  	<a href="#" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('<%=basePath%>');" ><font color="white">设为首页</font></a>&nbsp;
 		  	<img src="newimages/2.png" width="18" height="14" />&nbsp;
-		  	<a href="#" onclick="javascript:window.external.AddFavorite('<%=basePath%>', '北京禁毒信息网');" ><font color="white">加入收藏</font></a>
+		  	<a href="#" onclick="window.external.AddFavorite('<%=basePath%>', '北京禁毒信息网');" ><font color="white">加入收藏</font></a>
 		  </div>
 		 
 		</div>
@@ -358,22 +238,21 @@ fgm.on(window, "load", function() {
 				
 				<s:iterator value="resMap.lddtList" var="news" begin="1">
 					<div id="lddt_news_list">
-						<div id="lddt_news_list_c" style="width:280px;">
+						<div id="lddt_news_list_c" style="width:270px;">
 							<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 							<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+								<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+									<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+								</s:if>
 								<s:property value="#news.c_bt"/>
 							</a>
 						</div>
 						<div id="lddt_news_list_d">
-							<!--  
-							<s:if test="#news.c_tpljdz != '' ">
-								<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" />
-							</s:if>
-							<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								<img src="newimages/new.gif" style="margin-top: 6px;"/>
-							</s:if>
-							-->
 							<s:property value="#news.d_fbsj.substring(0,10)"/>
+							<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+								<!-- <img src="newimages/new.gif" style="margin-top: 6px;"/> -->
+								[新]
+							</s:if>
 						</div>
 					</div>
 				</s:iterator>
@@ -415,14 +294,26 @@ fgm.on(window, "load", function() {
 				<ul>
 					<li><a href='newsCenterList?news.c_lm=1107&pageNo=1' target="_blank"><img src="newimages/list_5.png" /></a></li>
 				</ul>
+				<ul>
+					<li><a href='newsCenterList?news.c_lm=1190&pageNo=1' target="_blank"><img src="newimages/list_12.png" /></a></li>
+				</ul>
+				<ul>
+					<li><a href='newsCenterList?news.c_lm=1192&pageNo=1' target="_blank"><img src="newimages/list_13.png" /></a></li>
+				</ul>
+				<ul>
+					<li><a href='newsCenterList?news.c_lm=1191&pageNo=1' target="_blank"><img src="newimages/list_14.png" /></a></li>
+				</ul>
 			</div>
 		</div>
 		<div id="pic_link_2">
-		  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="976" height="80">
-	        <param name="movie" value="images/end.swf" />
-	        <param name="quality" value="high" />
-	        <embed src="images/end.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="976" height="80"></embed>
-	      </object>
+			<div id="swfContent"></div>
+			<script type="text/javascript"> 
+				var xmlData="<list><item><img>newimages/01.png</img><url></url></item><item><img>newimages/02.png</img><url></url></item><item><img>newimages/03.png</img><url></url></item></list>";
+				var flashvars = {xmlData:xmlData};
+				var params = {menu:false,wmode:"opaque"};
+				var attributes = {};
+				swfobject.embedSWF("flash/lanren.swf", "swfContent", "978", "70", "9","expressInstall.swf", flashvars, params, attributes);
+			</script>
 		</div>
 		<div id="jwgk_title"></div>
 		<div id="jwgk_content">
@@ -492,14 +383,20 @@ fgm.on(window, "load", function() {
 					
 					<s:iterator value="resMap.tztbList" var="news">
 						<div id="lddt_news_list">
-							<div id="lddt_news_list_c" style="width:390px;">
+							<div id="lddt_news_list_c" style="width:380px;">
 								<img src="newimages/dote.gif" style="margin-top:6px;"/>
 								<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+										<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+									</s:if>
 									<s:property value="#news.c_bt"/>
 								</a>
 							</div>
 							<div id="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+								[新]
+								</s:if>
 							</div>
 						</div>
 					</s:iterator>
@@ -515,14 +412,20 @@ fgm.on(window, "load", function() {
 					
 					<s:iterator value="resMap.dwjsList" var="news">
 						<div id="lddt_news_list">
-							<div id="lddt_news_list_c" style="width:390px;">
+							<div id="lddt_news_list_c" style="width:380px;">
 								<img src="newimages/dote.gif" style="margin-top:6px;"/>
-								<a title="<s:property value="#news.c_bt"/>"href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+								<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+										<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+									</s:if>
 									<s:property value="#news.c_bt"/>
 								</a>
 							</div>
 							<div id="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+									[新]
+								</s:if>
 							</div>
 						</div>
 					</s:iterator>
@@ -545,6 +448,9 @@ fgm.on(window, "load", function() {
 								<div id="lddt_news_list_ggl" style="width:200px;">
 									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 									<a title="<s:property value="#news.c_bt"/>"href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+											<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+										</s:if>
 										<s:property value="#news.c_bt"/>
 									</a>
 								</div>
@@ -633,7 +539,6 @@ fgm.on(window, "load", function() {
 					            </UL>
 					          </DD>
 					        </DL>
-					 
 					    </DIV>
 					  </DIV>
 					</div>
@@ -696,7 +601,7 @@ fgm.on(window, "load", function() {
 												</s:iterator>
 											</ul>
 											<ul class="items">
-												<li>
+												<li style="margin-top: -3px;">
 													<div style="float:left; width:60px;">
 														<a href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>">东城分局</a>
 													</div>
@@ -704,7 +609,7 @@ fgm.on(window, "load", function() {
 														<a href="#">0条</a>
 													</div>
 												</li>
-												<li>
+												<li style="margin-top: -3px;">
 													<div style="float:left; width:60px;">
 														<a href="#">西城分局</a>
 													</div>
@@ -712,7 +617,7 @@ fgm.on(window, "load", function() {
 														<a href="#">0条</a>
 													</div>
 												</li>
-												<li>
+												<li style="margin-top: -3px;">
 													<div style="float:left; width:60px;">
 														<a href="#">崇文分局</a>
 													</div>
@@ -720,7 +625,7 @@ fgm.on(window, "load", function() {
 														<a href="#">0条</a>
 													</div>
 												</li>
-												<li>
+												<li style="margin-top: -3px;">
 													<div style="float:left; width:60px;">
 														<a href="#">宣武分局</a>
 													</div>
@@ -728,7 +633,7 @@ fgm.on(window, "load", function() {
 														<a href="#">0条</a>
 													</div>
 												</li>
-												<li>
+												<li style="margin-top: -3px;">
 													<div style="float:left; width:60px;">
 														<a href="#">朝阳分局</a>
 													</div>
@@ -736,7 +641,7 @@ fgm.on(window, "load", function() {
 														<a href="#">0条</a>
 													</div>
 												</li>
-												<li>
+												<li style="margin-top: -3px;">
 													<div style="float:left; width:60px;">
 														<a href="#">丰台分局</a>
 													</div>
@@ -744,7 +649,7 @@ fgm.on(window, "load", function() {
 														<a href="#">0条</a>
 													</div>
 												</li>	
-												<li>
+												<li style="margin-top: -3px;">
 													<div style="float:left; width:60px;">
 														<a href="#">石景山分局</a>
 													</div>
@@ -752,7 +657,7 @@ fgm.on(window, "load", function() {
 														<a href="#">0条</a>
 													</div>
 												</li>
-												<li>
+												<li style="margin-top: -3px;">
 													<div style="float:left; width:60px;">
 														<a href="#">海淀分局</a>
 													</div>
@@ -782,11 +687,17 @@ fgm.on(window, "load", function() {
 							<div id="lddt_news_list_c" style="width:260px;">
 								<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 								<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+										<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+									</s:if>
 									<s:property value="#news.c_bt"/>
 								</a>
 							</div>
 							<div id="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+									[新]
+								</s:if>
 							</div>
 						</div>
 					</s:iterator>
@@ -803,11 +714,17 @@ fgm.on(window, "load", function() {
 							<div id="lddt_news_list_c" style="width:260px;">
 								<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 								<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+										<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+									</s:if>
 									<s:property value="#news.c_bt"/>
 								</a>
 							</div>
 							<div id="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+									[新]
+								</s:if>
 							</div>
 						</div>
 					</s:iterator>
@@ -824,14 +741,20 @@ fgm.on(window, "load", function() {
 				<div class="ztzl_content_center_content">
 					<s:iterator value="resMap.qxjxList" var="news">
 						<div id="lddt_news_list">
-							<div id="lddt_news_list_c" style="width:220px;">
+							<div id="lddt_news_list_c" style="width:210px;">
 								<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 								<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+										<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+									</s:if>
 									<s:property value="#news.c_bt"/>
 								</a>
 							</div>
 							<div id="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+									[新]
+								</s:if>
 							</div>
 						</div>
 					</s:iterator>
@@ -845,14 +768,20 @@ fgm.on(window, "load", function() {
 				<div class="ztzl_content_center_content">
 					<s:iterator value="resMap.mtgzList" var="news">
 						<div id="lddt_news_list">
-							<div id="lddt_news_list_c" style="width:220px;">
+							<div id="lddt_news_list_c" style="width:210px;">
 								<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 								<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+										<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+									</s:if>
 									<s:property value="#news.c_bt"/>
 								</a>
 							</div>
 							<div id="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+									[新]
+								</s:if>
 							</div>
 						</div>
 					</s:iterator>
@@ -907,7 +836,7 @@ fgm.on(window, "load", function() {
 				Copyright © 2002-2012 北京市公安局禁毒总队 版权所有<br />
 			</div>
 			<div id="bottom_right" style="text-align: left;">
-				<!-- 在线人数：2<br /> 信息总数：46033<br /> 总访问次数：10325 -->
+				在线人数：2<br /> 信息总数：46033<br /> 总访问次数：10325
 			</div>
 		</div>
 	</div>
