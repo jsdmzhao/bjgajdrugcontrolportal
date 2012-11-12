@@ -213,7 +213,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			-->
 		</div>
 	
-		<div id="news_center">
+		<div id="news_center" style="background: url(newimages/bg2.png) repeat">
 			<div class="news_center_title">
 				<div class="news_center_title_font">
 					<s:if test="news.c_lm_.indexOf(';') > -1">
