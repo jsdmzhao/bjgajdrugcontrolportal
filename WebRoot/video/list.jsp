@@ -3,7 +3,7 @@
 <%@page import="com.unis.app.news.action.NewsAction"%>
 <%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
 <%@page import="org.springframework.context.ApplicationContext"%>
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -24,15 +24,13 @@ news.setC_yhid(c_yhid);
 news.setC_lm("1239");
 news.setC_sfscsp("1");
 
-news.setStart("0");
-news.setLimit("1000");
 
-List<News> list= (List<News>) newsService.selectList("NewsMapper.getNewsIndexPageList", news);
+List<News> list= (List<News>) newsService.selectList("NewsMapper.getVideoNewsList", news);
 
 List<News> newsList=new ArrayList();
 if(n_xh!=null&&!"".equals(n_xh)){
 	news.setN_xh(n_xh);
-	newsList= (List<News>) newsService.selectList("NewsMapper.getNewsIndexPageList", news);
+	newsList= (List<News>) newsService.selectList("NewsMapper.getVideoNewsList", news);
 }
 
 
@@ -47,7 +45,7 @@ newsList.addAll(list);
 	%>
 	
 	<list name="<%=news_r.getC_bt() %>" videotitle="<%=news_r.getC_bt() %>" link="<%=basePath %><%=news_r.getC_spljdz() %>" >
-       <thumb><%=basePath %><%=news_r.getC_tpkd() %></thumb>      
+       <thumb><%=basePath %>video/images/1.jpg</thumb>      
    </list>  
 	<%
 }

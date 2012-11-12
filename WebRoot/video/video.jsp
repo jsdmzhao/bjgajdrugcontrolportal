@@ -23,7 +23,7 @@ if(c_bt == null){
  
  String n_xh = (String)request.getParameter("n_xh");
  if(n_xh == null){
-	 n_xh = "";
+	 n_xh = "0";
  }
  
 
@@ -262,11 +262,11 @@ if(c_bt == null){
 codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
  width="700" height="440" align="middle">
 <param name="allowScriptAccess" value="sameDomain" />
-<param name="movie" value="<%=basePath %>video/dynamic_flash_video_gallery.swf?flashvars=<%=n_xh %>" />
+<param name="movie" value="<%=basePath %>video/dynamic_flash_video_gallery.swf?flashvars=list.jsp" />
 <param name="quality" value="high" /><param name="bgcolor" value="#F4FBFF" />
 
-<embed src="<%=basePath %>video/dynamic_flash_video_gallery.swf?flashvars=<%=n_xh %>" quality="high" bgcolor="#F4FBFF"
- width="700" height="440" align="middle" allowScriptAccess="sameDomain" flashvars="video/list。jsp?abc=10"
+<embed src="<%=basePath %>video/dynamic_flash_video_gallery.swf?flashvars=list.jsp" quality="high" bgcolor="#F4FBFF"
+ width="700" height="440" align="middle" allowScriptAccess="sameDomain" 
   type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
 </object>
 
