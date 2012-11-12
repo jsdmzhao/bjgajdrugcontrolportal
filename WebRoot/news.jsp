@@ -117,23 +117,23 @@ if(c_bt == null){
       </object>
    </div>
   <div class="menu">
-	    <a href="<%=basePath%>">首页</a>
-	    <a href="http://www.xxzx.bj">信息查询</a> 
-	    <a href="http://www.anquan.zx.bj">信息安全</a> 
-	    <a href="newsCenterList?news.c_lm=1239&pageNo=1">视频在线</a> 
-	    <a href="ftp://ftp.jdc.bj">工作交流</a> 
-	    <a href="newsCenterList?news.c_lm=1291&pageNo=1">光荣榜</a> 
-	    <a href="newsCenterList?news.c_lm=1297&pageNo=1">学习专栏</a>
-	    <a href="newsCenterList?news.c_lm=1214&pageNo=1" onMouseOver="mouseover(this, 1)" onmouseout="mouseout()">法律法规</a> 
-	    <a href="newsCenterList?news.c_lm=1286&pageNo=1">纪检监察</a> 
+	    <a href="<%=basePath%>" target="_blank">首页</a>
+	    <a href="http://www.xxzx.bj" target="_blank">信息查询</a> 
+	    <a href="http://www.anquan.zx.bj" target="_blank">信息安全</a> 
+	    <a href="newsCenterList?news.c_lm=1239&pageNo=1" target="_blank">视频在线</a> 
+	    <a href="ftp://ftp.jdc.bj" target="_blank">工作交流</a> 
+	    <a href="newsCenterList?news.c_lm=1291&pageNo=1" target="_blank">光荣榜</a> 
+	    <a href="newsCenterList?news.c_lm=1297&pageNo=1" target="_blank">学习专栏</a>
+	    <a href="newsCenterList?news.c_lm=1214&pageNo=1" target="_blank" onMouseOver="mouseover(this, 1)" onmouseout="mouseout()">法律法规</a> 
+	    <a href="newsCenterList?news.c_lm=1286&pageNo=1" target="_blank">纪检监察</a> 
 	</div>
 		
 	<div class="menu-list" id="menu1" onmouseover="_mouseover()" onmouseout="_mouseout()">
 	  <ul>
-	      <li><a href="newsCenterList?news.c_lm=1305&pageNo=1"><span>法律汇编</span></a> </li>
-	      <li><a href="newsCenterList?news.c_lm=1209&pageNo=1"><span>法规汇编</span></a> </li>
-	      <li><a href="newsCenterList?news.c_lm=1307&pageNo=1"><span>规章汇编</span></a></li> 
-	      <li><a href="newsCenterList?news.c_lm=1312&pageNo=1"><span>规范性文件</span></a></li>
+	      <li><a href="newsCenterList?news.c_lm=1305&pageNo=1" target="_blank"><span>法律汇编</span></a> </li>
+	      <li><a href="newsCenterList?news.c_lm=1209&pageNo=1" target="_blank"><span>法规汇编</span></a> </li>
+	      <li><a href="newsCenterList?news.c_lm=1307&pageNo=1" target="_blank"><span>规章汇编</span></a></li> 
+	      <li><a href="newsCenterList?news.c_lm=1312&pageNo=1" target="_blank"><span>规范性文件</span></a></li>
 	  </ul>
 	</div>
 		
@@ -173,31 +173,31 @@ if(c_bt == null){
 				</div>				
 				<div class="menu_content_list">
 					<ul>
-						<li><a href='newsCenterList?news.c_lm=1101&pageNo=1'><img src="newimages/menu_1.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1101&pageNo=1' target="_blank"><img src="newimages/menu_1.png" /></a></li>
 					</ul>
 					<ul>
-						<li><a href='newsCenterList?news.c_lm=1188&pageNo=1'><img src="newimages/menu_2.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1188&pageNo=1' target="_blank"><img src="newimages/menu_2.png" /></a></li>
 					</ul>
 					<ul>
-						<li><a href='newsCenterList?news.c_lm=1102&pageNo=1'><img src="newimages/menu_3.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1102&pageNo=1' target="_blank"><img src="newimages/menu_3.png" /></a></li>
 					</ul>
                     <ul>
-						<li><a href='newsCenterList?news.c_lm=1103&pageNo=1'><img src="newimages/menu_4.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1103&pageNo=1' target="_blank"><img src="newimages/menu_4.png" /></a></li>
 					</ul>
 					<ul>
-						<li><a href='newsCenterList?news.c_lm=1104&pageNo=1'><img src="newimages/menu_5.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1104&pageNo=1' target="_blank"><img src="newimages/menu_5.png" /></a></li>
 					</ul>
                     <ul>
-						<li><a href='newsCenterList?news.c_lm=1105&pageNo=1'><img src="newimages/menu_6.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1105&pageNo=1' target="_blank"><img src="newimages/menu_6.png" /></a></li>
 					</ul>
 					<ul>
-						<li><a href='newsCenterList?news.c_lm=1267&pageNo=1'><img src="newimages/menu_7.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1267&pageNo=1' target="_blank"><img src="newimages/menu_7.png" /></a></li>
 					</ul>
 					<ul>
-						<li><a href='newsCenterList?news.c_lm=1107&pageNo=1'><img src="newimages/menu_8.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1107&pageNo=1' target="_blank"><img src="newimages/menu_8.png" /></a></li>
 					</ul>
 					<ul>
-						<li><a href='newsCenterList?news.c_lm=1106&pageNo=1'><img src="newimages/menu_9.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1106&pageNo=1' target="_blank"><img src="newimages/menu_9.png" /></a></li>
 					</ul>
 				</div>
 			</div>
@@ -256,7 +256,13 @@ if(c_bt == null){
 							<div id="lddt_news_list_c" style="width:600px;" >
 								<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 								<a title="<s:property value='#news.c_bt'/>" href="newsDetail?news.n_xh=<s:property value='#news.n_xh'/>" target="_blank">
+									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+										<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+									</s:if>
 									<s:property value="#news.c_bt"/>
+									<s:if test="#news.d_fbsj.substring(0,10) == pageModel.sysdate">
+									[新]
+									</s:if>
 								</a>
 							</div>
 							<div id="lddt_news_list_d">

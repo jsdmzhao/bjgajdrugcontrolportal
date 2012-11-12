@@ -11,6 +11,7 @@
 	 	<result column="C_SFTJ" property="c_sftj"/>
 	 	<result column="C_SHJG" property="c_shjg"/>
 	 	<result column="C_LM"   property="c_lm"/>
+	 	<result column="C_TPLJDZ"   property="c_tpljdz"/>
 	 </resultMap>
 	 
 	 <resultMap type="News"    id="resultIndexNews">
@@ -96,7 +97,7 @@
 	</select>
 	
 	<select id="getNewsIndexPageList" parameterType="News" resultMap="resultNews">
-	SELECT N_XH,C_BT, D_FBSJ, C_SFZD, C_SFGL, C_SFTJ, C_SHJG
+	SELECT N_XH,C_BT, D_FBSJ, C_SFZD, C_SFGL, C_SFTJ, C_SHJG,C_TPLJDZ
 	  FROM (SELECT S.*, ROWNUM RN
 	          FROM (
 				  SELECT N_XH,
@@ -105,7 +106,8 @@
 				       C_SFZD,
 				       C_SFGL,
 				       C_SFTJ,
-				       C_SHJG
+				       C_SHJG,
+				       C_TPLJDZ
 				  FROM B_XINWEN
 				 WHERE 1 = 1
 				  <if test="c_lm != null and c_lm != ''">

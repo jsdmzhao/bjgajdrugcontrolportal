@@ -13,6 +13,8 @@ public class PageModel {
 	private Long totalRecords;
 	
 	private String keyWords;
+	
+	private String sysdate;
 
 	public Long getPageNo() {
 		return pageNo;
@@ -87,6 +89,14 @@ public class PageModel {
 
 	public void setKeyWords(String keyWords) {
 		this.keyWords = keyWords;
+	}
+
+	public String getSysdate() {
+		return sysdate;
+	}
+
+	public void setSysdate(String sysdate) {
+		this.sysdate = sysdate;
 	}
 
 }
