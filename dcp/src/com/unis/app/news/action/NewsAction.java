@@ -178,6 +178,7 @@ public class NewsAction {
 		pageModel.setTotalRecords(totalRecords);
 		pageModel.setPageNo(Long.valueOf(pageNo));
 		pageModel.setKeyWords(keyWords);
+		pageModel.setSysdate(DateUtil.getSysDate("yyyy-MM-dd"));
 		//news.c_lm=1239
 		if("1239".equals(news.getC_lm())){
 			return Globals.INPUT;
