@@ -92,17 +92,19 @@
 	       C_SFTJ,
 	       C_SHJG
 	  FROM B_XINWEN
-	 WHERE C_LM LIKE '%;'||#{c_lm}||';%'
+	 WHERE  1 = 1
+	 <if test="c_lm != null and c_lm != ''">
+	 	 AND C_LM LIKE '%;'||#{c_lm}||';%'
+	  </if>
 	  <if test="c_sfsh != null and c_sfsh != ''">
 	 	 AND C_SFSH = #{c_sfsh}
 	  </if>
 	  <if test="c_bt != null and c_bt != ''">
 	 	 AND C_BT LIKE '%'||#{c_bt}||'%'
 	  </if>
-		   <if test="c_sfscsp != null and c_sfscsp != ''">
-				 	 AND C_SFSCSP = #{c_sfscsp}
-		</if>
-		
+	  <if test="c_sfscsp != null and c_sfscsp != ''">
+		 AND C_SFSCSP = #{c_sfscsp}
+	  </if>
 				  
 	  ORDER BY C_SFZD DESC,D_FBSJ DESC
 	</select>
