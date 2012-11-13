@@ -49,8 +49,9 @@ String newsType = request.getParameter("newsType");
     <div position="left" title="主菜单模块" id="mainmenu" style="width:100%;height:95%;overflow: auto;">
         <ul id="maintree"></ul>
      </div>
+     <div position="center" title="子菜单列表"> 
      -->
-    <div position="center" title="子菜单列表"> 
+   
         <form id="mainform">
 	        <DIV class=l-panel-search>
 				<DIV class=l-panel-search-item>文章栏目</DIV>
@@ -72,7 +73,7 @@ String newsType = request.getParameter("newsType");
 			</DIV>
 	        <div id="maingrid"  style="margin:2px;"></div> 
         </form>
-    </div>
+    <%--</div>--%>
   </div>
   <ul class="iconlist">
   </ul>

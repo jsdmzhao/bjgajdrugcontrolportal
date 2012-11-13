@@ -91,7 +91,16 @@ public class ClxxSvc  {
 				 
 			 }else {
 				if(wh1.length()>0&&wh2.length()>0){
-				 return " "+wh1+" 和  "+ wh2+" ";
+					if(!wh1.equals("不限行") && !wh2.equals("不限行")){
+						
+						if(Integer.parseInt(wh2) > Integer.parseInt(wh2)){
+							return " "+wh1+" 和  "+ wh2+" ";
+						} else {
+							return " "+wh2+" 和  "+ wh1+" ";
+						}
+					}
+					return " "+wh1+" 和  "+ wh2+" ";
+				 
 				}else{
 					return " "+wh1+"   "+ wh2+" ";
 					
