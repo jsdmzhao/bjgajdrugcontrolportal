@@ -109,7 +109,7 @@
 	  ORDER BY C_SFZD DESC,D_FBSJ DESC
 	</select>
 	
-		<select id="getVideoNewsList" parameterType="News" resultMap="resultVideoNews">
+	<select id="getVideoNewsList" parameterType="News" resultMap="resultVideoNews">
 	  SELECT N_XH,
 		   C_BT,
 	       TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
@@ -137,10 +137,10 @@
 				  SELECT N_XH,
 					   C_BT,
 				       TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
-				       C_SFZD,
-				       C_SFGL,
-				       C_SFTJ,
-				       C_SHJG,
+				       NVL(C_SFZD,'0') C_SFZD,
+				       NVL(C_SFGL,'0') C_SFGL,
+				       NVL(C_SFTJ,'0') C_SFTJ,
+				       NVL(C_SHJG,'0') C_SHJG,
 				       C_TPLJDZ
 				  FROM B_XINWEN
 				 WHERE 1 = 1
@@ -149,6 +149,9 @@
 				  </if>
 				  <if test="c_bt != null and c_bt != ''">
 				 	 AND C_BT LIKE '%'||#{c_bt}||'%'
+				  </if>
+				   <if test="c_sfsh != null and c_sfsh != ''">
+				 	 AND C_SFSH = #{c_sfsh}
 				  </if>
 				  ORDER BY C_SFZD DESC,D_FBSJ DESC) S
 	         WHERE ROWNUM &lt;= #{limit}) T
@@ -164,6 +167,9 @@
 	  </if>
 	  <if test="c_bt != null and c_bt != ''">
 	 	AND C_BT LIKE '%'||#{c_bt}||'%'
+	  </if>
+	  <if test="c_sfsh != null and c_sfsh != ''">
+	 	 AND C_SFSH = #{c_sfsh}
 	  </if>
 	</select>
 	

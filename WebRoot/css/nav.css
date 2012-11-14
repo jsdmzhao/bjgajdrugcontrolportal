@@ -9,9 +9,9 @@ a{
 }
 .menu {
 	padding: 0px 10px 0px 10px;
-	margin: auto auto 10px;
+	margin: 0px 0px 10px 0px;
 	line-height: 37px;
-	width:980px;
+	width:981px;
 	height:37px;
 	text-align: center;
 	background-image: url(../newimages/toolbar.png);

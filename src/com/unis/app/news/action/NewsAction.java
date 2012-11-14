@@ -1,6 +1,7 @@
 package com.unis.app.news.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.HashMap;
@@ -8,10 +9,12 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.xwork.StringUtils;
 import org.apache.struts2.ServletActionContext;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -36,6 +39,10 @@ public class NewsAction {
 	private Map<String, Object> resMap; 
 	
 	private PageModel pageModel;
+	
+	private Integer pagesize;
+	
+	private Integer page;
 	
 	public Map<String, Object> getResMap() {
 		return resMap;
@@ -146,6 +153,37 @@ public class NewsAction {
 		resMap.put("Rows", newsList);
 		resMap.put("Total", newsList.size());
 		return resMap;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void newsPageList() throws IOException{
+		
+		//HttpServletRequest request = ServletActionContext.getRequest();
+		//HttpSession session = request.getSession();
+		
+		//String c_yhid = session.getAttribute("userId")+"";
+		//String c_yhzid = session.getAttribute("cYhz")+"";
+		
+		//news.setC_yhzid(c_yhzid);
+		//news.setC_yhid(c_yhid);
+		
+		news.setStart(String.valueOf(((page.intValue()-1)*pagesize.intValue())));
+		news.setLimit(String.valueOf((page.intValue()*pagesize.intValue())));
+
+		List<News> newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexPageList", news);
+		Long totalRecords = (Long) newsService.selectOne("NewsMapper.getNewsIndexPageCnt", news);
+		Map<String, Object> resMap = new HashMap<String, Object>();
+
+		resMap.put("Rows", newsList);
+		resMap.put("Total", totalRecords);
+		
+		ObjectMapper mapper = new ObjectMapper();
+    	HttpServletResponse response = ServletActionContext.getResponse();
+    	response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		mapper.writeValue(out, resMap);
+		out.flush();
+		out.close();
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -371,31 +409,6 @@ public class NewsAction {
         return Globals.SUCCESS;
 	}
 */	
-	public News getNews() {
-		return news;
-	}
-
-	public void setNews(News news) {
-		this.news = news;
-	}
-
-	public AbsServiceAdapter<Integer> getNewsService() {
-		return newsService;
-	}
-
-	public void setNewsService(AbsServiceAdapter<Integer> newsService) {
-		this.newsService = newsService;
-	}
-
-	public CreateIndexAction getCreatedIndexAction() {
-		return createdIndexAction;
-	}
-
-	public void setCreatedIndexAction(CreateIndexAction createdIndexAction) {
-		this.createdIndexAction = createdIndexAction;
-	}
-
-	
 	
 	
 	@SuppressWarnings("rawtypes")
@@ -469,6 +482,44 @@ public class NewsAction {
 	public void setPageModel(PageModel pageModel) {
 		this.pageModel = pageModel;
 	}
-	
+
+	public Integer getPagesize() {
+		return pagesize;
+	}
+
+	public void setPagesize(Integer pagesize) {
+		this.pagesize = pagesize;
+	}
+
+	public Integer getPage() {
+		return page;
+	}
+
+	public void setPage(Integer page) {
+		this.page = page;
+	}
+	public News getNews() {
+		return news;
+	}
+
+	public void setNews(News news) {
+		this.news = news;
+	}
+
+	public AbsServiceAdapter<Integer> getNewsService() {
+		return newsService;
+	}
+
+	public void setNewsService(AbsServiceAdapter<Integer> newsService) {
+		this.newsService = newsService;
+	}
+
+	public CreateIndexAction getCreatedIndexAction() {
+		return createdIndexAction;
+	}
+
+	public void setCreatedIndexAction(CreateIndexAction createdIndexAction) {
+		this.createdIndexAction = createdIndexAction;
+	}
 	 
 }
