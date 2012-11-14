@@ -236,7 +236,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         			LG.showSuccess('保存成功', function () { 
                         //win.LG.closeAndReloadParent(null, "maingrid")
         				 f_cancel();
-        				 parent.loadGrid("<s:property value='news.c_lm'/>");
+        				 parent.search();
                     });
         		} else {
         		 	LG.showError('保存失败');

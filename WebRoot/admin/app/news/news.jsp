@@ -1,9 +1,14 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+﻿<%@page import="org.apache.commons.lang.xwork.StringUtils"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
-String newsType = request.getParameter("newsType");
+String newsType = (String)request.getParameter("newsType");
+if(newsType == null){
+	newsType = "";
+}
+
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -57,7 +62,7 @@ String newsType = request.getParameter("newsType");
 				<DIV class=l-panel-search>
 					<DIV class=l-panel-search-item>文章栏目</DIV>
 					<DIV class=l-panel-search-item id="selectLm">
-						 <input type="text" id="comboLanmu" />
+					
 					</DIV>
 					<DIV class=l-panel-search-item>标题：</DIV>
 					<DIV class=l-panel-search-item>
@@ -96,7 +101,7 @@ String newsType = request.getParameter("newsType");
       $.metadata.setType("attr", "validate");
       LG.validate(maingform, { debug: true });
       //覆盖本页面grid的loading效果
-      LG.overrideGridLoading(); 
+      //LG.overrideGridLoading(); 
 
       function itemclick(item)
       {
@@ -178,7 +183,11 @@ String newsType = request.getParameter("newsType");
           }
       }
       function search(){
-  		  loadGrid(newsType);
+    	  var newsType = document.getElementById("selectLanmu").value;
+          var btValue = document.getElementById("bt").value;
+          grid.changePage("first"); 
+          grid.setOptions({parms:[{name:'news.c_lm',value:newsType},{name:'news.c_bt',value:btValue}]});
+          grid.loadData();
   	  }
       
       function dialog_hidden()
@@ -189,7 +198,8 @@ String newsType = request.getParameter("newsType");
       
       function f_reload()
       {
-          loadGrid(newsType);
+    	  search();
+          //loadGrid(newsType);
       }
       function f_delete()
       { 
@@ -224,7 +234,8 @@ String newsType = request.getParameter("newsType");
 	    	  NewsAction.newsOperate(operateType , value, selected.n_xh, function (data){
 	   	    	 if(data == 'success'){
 	   	    		LG.showSuccess('操作成功');
-	   	    		loadGrid(newsType);
+	   	    		//loadGrid(newsType);
+	   	    		search();
 	    	     }
 	   	      });
           }else{
@@ -311,8 +322,21 @@ String newsType = request.getParameter("newsType");
     	alert(JSON2.stringify(data));
     });
     **/
-    var grid = $("#maingrid").ligerGrid({
-        //headerImg:"<%=basePath%>liger/lib/icons/silkicons/table.png",title:'表格表头',
+    
+    $.ligerDefaults.Grid.formatters['statueType'] = function (num, column) {
+	    //num 当前的值
+		//column 列信息
+    	if(num == '1'){
+    		if(column.name == 'c_sftj'){
+				return "<div style='width:100%;height:100%;'><img src='<%=basePath%>liger/lib/icons/silkicons/flag_red.png' /></div>";
+    		} else if(column.name == 'c_sfzd'){
+			 	return "<div style='width:100%;height:100%;'><img src='<%=basePath%>liger/lib/icons/silkicons/arrow_up.png' /></div>";
+    		}
+    	}
+	};
+
+	var grid = $("#maingrid") .ligerGrid( {
+		//headerImg:" <%=basePath%>liger/lib/icons/silkicons/table.png",title:'表格表头',
         columns: [
                 { display: '序号', name: 'n_xh', align: 'left', width: 50, minWidth: 60, 
                 validate: { required: true }  ,
@@ -325,21 +349,24 @@ String newsType = request.getParameter("newsType");
                 { display: '发布时间', name: 'd_fbsj', align: 'left', width: 100, minWidth: 60, 
                 validate: { required: true },
                 editor: { type: 'text' }
-                }, 
-                { display: '状态', name: 'operate', editor: { type: 'text' },align: 'left', width: 120, minWidth: 50
                 },{
-					name: 'c_sfzd',editor: {type: 'hidden'},hide : '1'
+                	display: '置顶',
+					name: 'c_sfzd',
+					type:'statueType',
+					align: 'center', width: 60
+					//hide : '1'
                 },{
-					name: 'c_sfgl',editor: {type: 'hidden'},hide : '1'
-                },{
-					name: 'c_sftj',editor: {type: 'hidden'},hide : '1'
+                	display: '推荐',
+                	//hide : '1',
+					name: 'c_sftj',
+					align: 'center', width: 60,
+					type:'statueType' 
                 }], 
                 dataAction: 'server', pageSize: 20, toolbar: toolbarOptions, sortName: 'MenuID',
 		        width: '98%', height: '100%', heightDiff: -5, checkbox: false, usePager: true, enabledEdit: true, 
 		        clickToEdit: false, fixedCellHeight: true, rowHeight: 25,
-		        render: function (item) {
-                    return "<div style='width:100%;height:100%;'><img src='../" + item.MenuIcon + "' /></div>";
-                }
+		        url:'<%=basePath%>newsPageList',parms:[{name:'news.c_lm',value:''},{name:'news.c_bt',value:''}]
+		        
     });
 
     grid.bind('beforeSubmitEdit', function (e) {
@@ -363,7 +390,8 @@ String newsType = request.getParameter("newsType");
             data: data,
             success: function ()
             {
-                loadGrid(newsType);
+                //loadGrid(newsType);
+                search();
                 LG.tip('保存成功!');
             },
             error: function (message)
