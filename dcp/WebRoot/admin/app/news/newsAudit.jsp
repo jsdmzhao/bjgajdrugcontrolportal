@@ -56,7 +56,7 @@ String newsType = request.getParameter("newsType");
 	        <DIV class=l-panel-search>
 				<DIV class=l-panel-search-item>文章栏目</DIV>
 				<DIV class=l-panel-search-item id="selectLm">
-					 <input type="text" id="comboLanmu" />
+					 
 				</DIV>
 				<DIV class=l-panel-search-item>标题：</DIV>
 				<DIV class=l-panel-search-item>
@@ -140,12 +140,17 @@ String newsType = request.getParameter("newsType");
       }
 
       function search(){
-  		  loadGrid(newsType);
+    	  var newsType = document.getElementById("selectLanmu").value;
+          var btValue = document.getElementById("bt").value;
+          grid.changePage("first"); 
+          grid.setOptions({parms:[{name:'news.c_lm',value:newsType},{name:'news.c_bt',value:btValue},{name:'news.c_sfsh',value:0}]});
+          grid.loadData();
   	  }
   	  
       function f_reload()
       {
-  		  loadGrid(newsType);
+  		  //loadGrid(newsType);
+  		  search();
       }
       function f_delete()
       { 
@@ -180,7 +185,8 @@ String newsType = request.getParameter("newsType");
 	    	  NewsAction.newsOperate(operateType , value,selected.n_xh, function (data){
 	   	    	 if(data == 'success'){
 	   	    		LG.showSuccess('审核成功');
-	   	    		loadGrid(newsType);
+	   	    		//loadGrid(newsType);
+	   	    		search();
 	    	     }
 	   	      });
           }else{
@@ -244,6 +250,15 @@ String newsType = request.getParameter("newsType");
     	alert(JSON2.stringify(data));
     });
     **/
+    
+    $.ligerDefaults.Grid.formatters['statueType'] = function (num, column) {
+	    //num 当前的值
+		//column 列信息
+    	if(num == '1'){
+			return "<div style='width:100%;height:100%;'><img src='<%=basePath%>liger/lib/icons/silkicons/flag_red.png' /></div>";
+    	}
+	};
+    
     var grid = $("#maingrid").ligerGrid({
         //headerImg:"<%=basePath%>liger/lib/icons/silkicons/table.png",title:'表格表头',
         columns: [
@@ -259,11 +274,12 @@ String newsType = request.getParameter("newsType");
                 validate: { required: true },
                 editor: { type: 'text' }
                 }, 
-                { display: '状态', name: 'operate', editor: { type: 'text' },align: 'left', width: 120, minWidth: 50
+                { display: '状态', name: 'c_shjg', type:'statueType' ,align: 'left', width: 120, minWidth: 50
                 },{
 					name: 'c_shjg',editor: {type: 'hidden'},hide : '1'
                 }], 
                 dataAction: 'server', pageSize: 20, toolbar: toolbarOptions, sortName: 'MenuID',
+                url:'<%=basePath%>newsPageList',parms:[{name:'news.c_lm',value:''},{name:'news.c_bt',value:''},{name:'news.c_sfsh',value:0}],
 		        width: '98%', height: '100%', heightDiff: -5, checkbox: false, usePager: true, enabledEdit: true, 
 		        clickToEdit: false, fixedCellHeight: true, rowHeight: 25,
 		        render: function (item) {
