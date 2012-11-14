@@ -85,15 +85,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	      </object>
 	   </div>
 	  <div class="menu">
-		    <a href="<%=basePath%>" target="_blank">首页</a>
+		    <a href="<%=basePath%>">首页</a>
 		    <a href="http://www.xxzx.bj" target="_blank">信息查询</a> 
 		    <a href="http://www.anquan.zx.bj" target="_blank">信息安全</a> 
-		    <a href="newsCenterList?news.c_lm=1239&pageNo=1" target="_blank">视频在线</a> 
+		    <a href="newsCenterList?news.c_lm=1239&pageNo=1">视频在线</a> 
 		    <a href="ftp://ftp.jdc.bj" target="_blank">工作交流</a> 
-		    <a href="newsCenterList?news.c_lm=1291&pageNo=1" target="_blank">光荣榜</a> 
-		    <a href="newsCenterList?news.c_lm=1297&pageNo=1" target="_blank">学习专栏</a>
+		    <a href="newsCenterList?news.c_lm=1291&pageNo=1">光荣榜</a> 
+		    <a href="newsCenterList?news.c_lm=1297&pageNo=1">学习专栏</a>
 		    <a href="newsCenterList?news.c_lm=1214&pageNo=1" onMouseOver="mouseover(this, 1)" onmouseout="mouseout()">法律法规</a> 
-		    <a href="newsCenterList?news.c_lm=1286&pageNo=1" target="_blank">纪检监察</a> 
+		    <a href="newsCenterList?news.c_lm=1286&pageNo=1">纪检监察</a> 
 		</div>
 		
 		<div class="menu-list" id="menu1" onmouseover="_mouseover()" onmouseout="_mouseout()">
@@ -153,39 +153,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>				
 				<div class="menu_content_list">
 					<ul>
-						<li><a href='newsCenterList?news.c_lm=1101&pageNo=1' target="_blank"><img src="newimages/menu_1.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1101&pageNo=1'><img src="newimages/menu_1.png" /></a></li>
 					</ul>
 					<ul>
-						<li><a href='newsCenterList?news.c_lm=1188&pageNo=1' target="_blank"><img src="newimages/menu_2.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1188&pageNo=1'><img src="newimages/menu_2.png" /></a></li>
 					</ul>
 					<ul>
-						<li><a href='newsCenterList?news.c_lm=1102&pageNo=1' target="_blank"><img src="newimages/menu_3.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1102&pageNo=1'><img src="newimages/menu_3.png" /></a></li>
 					</ul>
                     <ul>
-						<li><a href='newsCenterList?news.c_lm=1103&pageNo=1' target="_blank"><img src="newimages/menu_4.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1103&pageNo=1'><img src="newimages/menu_4.png" /></a></li>
 					</ul>
 					<ul>
-						<li><a href='newsCenterList?news.c_lm=1104&pageNo=1' target="_blank"><img src="newimages/menu_5.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1104&pageNo=1'><img src="newimages/menu_5.png" /></a></li>
 					</ul>
                     <ul>
-						<li><a href='newsCenterList?news.c_lm=1105&pageNo=1' target="_blank"><img src="newimages/menu_6.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1105&pageNo=1'><img src="newimages/menu_6.png" /></a></li>
 					</ul>
 					<ul>
-						<li><a href='newsCenterList?news.c_lm=1267&pageNo=1' target="_blank"><img src="newimages/menu_7.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1267&pageNo=1'><img src="newimages/menu_7.png" /></a></li>
 					</ul>
 					<ul>
-						<li><a href='newsCenterList?news.c_lm=1107&pageNo=1' target="_blank"><img src="newimages/menu_8.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1107&pageNo=1'><img src="newimages/menu_8.png" /></a></li>
 					</ul>
 					<ul>
-						<li><a href='newsCenterList?news.c_lm=1106&pageNo=1' target="_blank"><img src="newimages/menu_9.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1106&pageNo=1'><img src="newimages/menu_9.png" /></a></li>
 					</ul>
 				</div>
 			</div>
 			<div id="ljcsc">
-					<a href='newsCenterList?news.c_lm=1108&pageNo=1' target="_blank"><img src="newimages/menu_ljksc.png" /></a>
+					<a href='newsCenterList?news.c_lm=1108&pageNo=1'><img src="newimages/menu_ljksc.png" /></a>
 			</div>
 			<div id="gzjdts">
-					<a href='newsCenterList?news.c_lm=1100&pageNo=1' target="_blank"><img src="newimages/menu_gzjdts.png" /></a>
+					<a href='newsCenterList?news.c_lm=1100&pageNo=1'><img src="newimages/menu_gzjdts.png" /></a>
 			</div>
 			<!-- 
             <div class="tztb_div" style="height:140px;">
@@ -224,7 +224,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</s:else>
 				</div>
 				<div class="news_center_title_more">
-					<font color="#DF7024" size="2">您现在所在的位置： 首页&nbsp;&gt;&gt;&nbsp;<s:property value="news.c_lm_"/></font>
+					<font color="#DF7024" size="2">您现在所在的位置：<a href="<%=basePath%>"><font color="#DF7024" size="2">首页</font></a>&nbsp;&gt;&gt;&nbsp;<s:property value="news.c_lm_"/></font>
 				</div>
 			</div>
 			<div class="news_content_center_content" style="padding:10px 0px 10px 20px;">
