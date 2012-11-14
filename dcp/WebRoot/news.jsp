@@ -52,8 +52,13 @@ if(c_bt == null){
 	<script type="text/javascript">
 	
 		function search(){
-			if(document.all["news.c_bt"].value != '请输入您想搜索的内容'){
-				document.getElementById("searchForm").submit();
+			if(document.all["news.c_bt"].value != '请输入您想搜索的内容' && document.all["news.c_bt"].value != ''){
+				var searchForm=document.getElementById("searchForm");
+				
+				with(searchForm){
+					action="newsCenterList?pageNo=1";
+					submit();
+				}
 			}else{
 				alert('请输入查询关键字');
 				return false;
@@ -64,7 +69,7 @@ if(c_bt == null){
 			var searchForm=document.getElementById("searchForm");
 			
 			with(searchForm){
-				action="newsCenterList?pageNo="+pageNo;
+				action="newsCenterList?news.c_lm=<%=c_lm%>&pageNo="+pageNo;
 				submit();
 			}
 		}
@@ -117,23 +122,23 @@ if(c_bt == null){
       </object>
    </div>
   <div class="menu">
-	    <a href="<%=basePath%>" target="_blank">首页</a>
+	    <a href="<%=basePath%>">首页</a>
 	    <a href="http://www.xxzx.bj" target="_blank">信息查询</a> 
 	    <a href="http://www.anquan.zx.bj" target="_blank">信息安全</a> 
-	    <a href="newsCenterList?news.c_lm=1239&pageNo=1" target="_blank">视频在线</a> 
+	    <a href="newsCenterList?news.c_lm=1239&pageNo=1">视频在线</a> 
 	    <a href="ftp://ftp.jdc.bj" target="_blank">工作交流</a> 
-	    <a href="newsCenterList?news.c_lm=1291&pageNo=1" target="_blank">光荣榜</a> 
-	    <a href="newsCenterList?news.c_lm=1297&pageNo=1" target="_blank">学习专栏</a>
-	    <a href="newsCenterList?news.c_lm=1214&pageNo=1" target="_blank" onMouseOver="mouseover(this, 1)" onmouseout="mouseout()">法律法规</a> 
-	    <a href="newsCenterList?news.c_lm=1286&pageNo=1" target="_blank">纪检监察</a> 
+	    <a href="newsCenterList?news.c_lm=1291&pageNo=1">光荣榜</a> 
+	    <a href="newsCenterList?news.c_lm=1297&pageNo=1">学习专栏</a>
+	    <a href="newsCenterList?news.c_lm=1214&pageNo=1" onMouseOver="mouseover(this, 1)" onmouseout="mouseout()">法律法规</a> 
+	    <a href="newsCenterList?news.c_lm=1286&pageNo=1">纪检监察</a> 
 	</div>
 		
 	<div class="menu-list" id="menu1" onmouseover="_mouseover()" onmouseout="_mouseout()">
 	  <ul>
-	      <li><a href="newsCenterList?news.c_lm=1305&pageNo=1" target="_blank"><span>法律汇编</span></a> </li>
-	      <li><a href="newsCenterList?news.c_lm=1209&pageNo=1" target="_blank"><span>法规汇编</span></a> </li>
-	      <li><a href="newsCenterList?news.c_lm=1307&pageNo=1" target="_blank"><span>规章汇编</span></a></li> 
-	      <li><a href="newsCenterList?news.c_lm=1312&pageNo=1" target="_blank"><span>规范性文件</span></a></li>
+	      <li><a href="newsCenterList?news.c_lm=1305&pageNo=1"><span>法律汇编</span></a> </li>
+	      <li><a href="newsCenterList?news.c_lm=1209&pageNo=1"><span>法规汇编</span></a> </li>
+	      <li><a href="newsCenterList?news.c_lm=1307&pageNo=1"><span>规章汇编</span></a></li> 
+	      <li><a href="newsCenterList?news.c_lm=1312&pageNo=1"><span>规范性文件</span></a></li>
 	  </ul>
 	</div>
 		
@@ -156,9 +161,8 @@ if(c_bt == null){
 		<div style="float:right; width:270px;">
 			<div style="float:left;">
 			<form id="searchForm"  method="post" >
-				<input name="news.c_lm" type="hidden" value="<%=c_lm %>"/>
-				<input onFocus="if (value =='请输入您想搜索的内容'){value =''}" onblur="if (value ==''){value='请输入您想搜索的内容'}"
-					value="<%=c_bt %>" type="text" name="news.c_bt"
+				<input onFocus="if (value =='请输入您想搜索的内容'){value =''}"
+					value="<%=c_bt %>" type="text" name="news.c_bt"  onblur="if (value ==''){value='请输入您想搜索的内容'}"
 					style="background-image:url(newimages/ss.png); border:0px; padding-left:35px; background-repeat:no-repeat; padding-top:5px;BORDER: #A9cfe5 1px solid;  height:24px; width:162px; " />
 				<input type="button" onclick="search();" style="border:0px; margin-left:10px; height:24px; width:52px;background-image:url(newimages/ssb.png); padding-top:4px; " />
 			</form>
@@ -173,31 +177,31 @@ if(c_bt == null){
 				</div>				
 				<div class="menu_content_list">
 					<ul>
-						<li><a href='newsCenterList?news.c_lm=1101&pageNo=1' target="_blank"><img src="newimages/menu_1.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1101&pageNo=1'><img src="newimages/menu_1.png" /></a></li>
 					</ul>
 					<ul>
-						<li><a href='newsCenterList?news.c_lm=1188&pageNo=1' target="_blank"><img src="newimages/menu_2.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1188&pageNo=1'><img src="newimages/menu_2.png" /></a></li>
 					</ul>
 					<ul>
-						<li><a href='newsCenterList?news.c_lm=1102&pageNo=1' target="_blank"><img src="newimages/menu_3.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1102&pageNo=1'><img src="newimages/menu_3.png" /></a></li>
 					</ul>
                     <ul>
-						<li><a href='newsCenterList?news.c_lm=1103&pageNo=1' target="_blank"><img src="newimages/menu_4.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1103&pageNo=1'><img src="newimages/menu_4.png" /></a></li>
 					</ul>
 					<ul>
-						<li><a href='newsCenterList?news.c_lm=1104&pageNo=1' target="_blank"><img src="newimages/menu_5.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1104&pageNo=1'><img src="newimages/menu_5.png" /></a></li>
 					</ul>
                     <ul>
-						<li><a href='newsCenterList?news.c_lm=1105&pageNo=1' target="_blank"><img src="newimages/menu_6.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1105&pageNo=1'><img src="newimages/menu_6.png" /></a></li>
 					</ul>
 					<ul>
-						<li><a href='newsCenterList?news.c_lm=1267&pageNo=1' target="_blank"><img src="newimages/menu_7.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1267&pageNo=1'><img src="newimages/menu_7.png" /></a></li>
 					</ul>
 					<ul>
-						<li><a href='newsCenterList?news.c_lm=1107&pageNo=1' target="_blank"><img src="newimages/menu_8.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1107&pageNo=1'><img src="newimages/menu_8.png" /></a></li>
 					</ul>
 					<ul>
-						<li><a href='newsCenterList?news.c_lm=1106&pageNo=1' target="_blank"><img src="newimages/menu_9.png" /></a></li>
+						<li><a href='newsCenterList?news.c_lm=1106&pageNo=1'><img src="newimages/menu_9.png" /></a></li>
 					</ul>
 				</div>
 			</div>
@@ -246,7 +250,7 @@ if(c_bt == null){
 			<div class="news_center_title">
 				<div class="news_center_title_font"><s:property value="pageModel.keyWords"/></div>
 				<div class="news_center_title_more">
-					<font color="#DF7024" size="2">您现在所在的位置： 首页&nbsp;&gt;&gt;&nbsp;<s:property value="pageModel.keyWords"/></font>
+					<font color="#DF7024" size="2">您现在所在的位置： <a href="<%=basePath%>"><font color="#DF7024" size="2">首页</font></a>&nbsp;&gt;&gt;&nbsp;<s:property value="pageModel.keyWords"/></font>
 				</div>
 			</div>
 			<div class="news_content_center_content">
