@@ -26,6 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" rev="text/css" href="<%=basePath%>css/comic.css" type="text/css" media="all" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/szxue.css">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/nav.css">
+<link rel="stylesheet" href="<%=basePath%>css/sexylightbox.css" type="text/css" media="all" />
 	<script type="text/javascript" src="<%=basePath%>js/jquery.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/szxue.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/menu.js"></script>
@@ -33,6 +34,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=basePath%>js/tab.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/maquee.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/swfobject.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/sexylightbox.v2.3.jquery.min.js"></script>
+	
+<script type="text/javascript" src="<%=basePath%>js/lightBox.js"></script>
 
 	<style type="text/css">
 		body { padding:0px; margin:0px; }
@@ -47,9 +52,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		.ny2010{ width:970px; margin:0 auto;}
 		.ny2010 a{ text-decoration:none; color:#333333; font-size:12px;}
 		.ny2010 td img{ width:220px; height:36px; display:block; margin:0 5px 2px 0; padding:1px; border:1px solid #CCCCCC;}
+		
+		
 				
 	</style>
 
+
+
+<script type="text/javascript">
+
+
+	/*弹出内容*/
+	function parahtml(url,width,height) {
+		var htmls= '<iframe src="'+url+'" width='+width+' height='+height+' frameborder="0"></iframe>';
+		return htmls;
+	}
+	
+	/*底部样式*/
+	function fontbutton(index,mag) {
+		var footerhtml;
+		if(mag==1)//选择按钮样式
+		{
+		 footerhtml='<input type="image" alt="Cancel" src="<%=basePath%>images/cancel_button.gif" class="btn" id="msg'+index+'cancel" />';	
+		}else {
+			footerhtml='<input type="image" alt="Cancel" src="<%=basePath%>images/send_button.gif" class="btn" onclick=alert("Sumbited!"); />';
+			footerhtml+='<input type="image" alt="Cancel" src="<%=basePath%>images/cancel_button.gif" class="btn" id="msg'
+								+ index + 'cancel" />';
+		}
+		return footerhtml;
+	}
+
+
+	/*gzy*/
+	$(document).ready(function(){
+      SexyLightbox.initialize({color:'white', dir: 'sexyimages'});
+    });
+</script>
   </head>
   
   <body> 
@@ -561,7 +599,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div id="ztzl_content">
 			<div id="ztzl_content_left">
 				<div class="ztzl_img_div"><a href="newsCenterList?news.c_lm=1145&pageNo=1" target="_blank"><img src="newimages/zdzxx.png" /></a></div>
-				<div class="ztzl_img_div"><a href="<%=basePath%>admin" target="_blank"><img src="newimages/bgpt.png" /></a></div>
+				<div class="ztzl_img_div"><a href="<%=basePath%>desktop/index.jsp?TB_iframe=true&height=600&width=900" rel="sexylightbox[22]" title="办公平台"
+								<%--  onclick='Box("msg1",900,600,parahtml("<%=basePath%>desktop/index.jsp",900,600),fontbutton(1,1))' gzy--%>><img src="newimages/bgpt.png" /></a></div>
 				<div class="xxph_div">
 						<div class="xxph_title_content">
 							<div class="jrzb_title_img"><img src="newimages/content_title_img.png" /></div>
