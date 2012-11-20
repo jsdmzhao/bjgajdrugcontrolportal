@@ -53,41 +53,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		.ny2010 a{ text-decoration:none; color:#333333; font-size:12px;}
 		.ny2010 td img{ width:220px; height:36px; display:block; margin:0 5px 2px 0; padding:1px; border:1px solid #CCCCCC;}
 		
-		
-				
 	</style>
 
-
-
-<script type="text/javascript">
-
-
-	/*弹出内容*/
-	function parahtml(url,width,height) {
-		var htmls= '<iframe src="'+url+'" width='+width+' height='+height+' frameborder="0"></iframe>';
-		return htmls;
-	}
+	<script type="text/javascript">
 	
-	/*底部样式*/
-	function fontbutton(index,mag) {
-		var footerhtml;
-		if(mag==1)//选择按钮样式
-		{
-		 footerhtml='<input type="image" alt="Cancel" src="<%=basePath%>images/cancel_button.gif" class="btn" id="msg'+index+'cancel" />';	
-		}else {
-			footerhtml='<input type="image" alt="Cancel" src="<%=basePath%>images/send_button.gif" class="btn" onclick=alert("Sumbited!"); />';
-			footerhtml+='<input type="image" alt="Cancel" src="<%=basePath%>images/cancel_button.gif" class="btn" id="msg'
-								+ index + 'cancel" />';
+		/*弹出内容*/
+		function parahtml(url,width,height) {
+			var htmls= '<iframe src="'+url+'" width='+width+' height='+height+' frameborder="0"></iframe>';
+			return htmls;
 		}
-		return footerhtml;
-	}
-
-
-	/*gzy*/
-	$(document).ready(function(){
-      SexyLightbox.initialize({color:'white', dir: 'sexyimages'});
-    });
-</script>
+		
+		/*底部样式*/
+		function fontbutton(index,mag) {
+			var footerhtml;
+			if(mag==1)//选择按钮样式
+			{
+			 footerhtml='<input type="image" alt="Cancel" src="<%=basePath%>images/cancel_button.gif" class="btn" id="msg'+index+'cancel" />';	
+			}else {
+				footerhtml='<input type="image" alt="Cancel" src="<%=basePath%>images/send_button.gif" class="btn" onclick=alert("Sumbited!"); />';
+				footerhtml+='<input type="image" alt="Cancel" src="<%=basePath%>images/cancel_button.gif" class="btn" id="msg'
+									+ index + 'cancel" />';
+			}
+			return footerhtml;
+		}
+	
+		/*gzy*/
+		$(document).ready(function(){
+	      SexyLightbox.initialize({color:'white', dir: 'sexyimages'});
+	    });
+	</script>
   </head>
   
   <body> 
@@ -97,30 +91,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div id="container">
 		<div id="banner_top">
 			<div style="margin-left: 450px; padding-top:40px;">
-		      <object
-		        classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
-		        codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
-		        id="banner_t"
-		        width="278" height="34"
-		      >
+			  <%-- 
+		      <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
+		        id="banner_t" width="278" height="34" >
 		        <param name="movie" value="flash/banner_t.swf">
 		        <param name="bgcolor" value="#FFFFFF">
 		        <param name="quality" value="high">
-		        <param name="seamlesstabbing" value="false">
+		        <param name="wmode" value="transparent">
 		        <param name="allowscriptaccess" value="samedomain">
-		        <embed
-		          type="application/x-shockwave-flash"
-		          pluginspage="http://www.adobe.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"
-		          name="banner_t"
-		          width="278" height="34"
-		          src="flash/banner_t.swf"
-		          bgcolor="#FFFFFF"
-		          quality="high"
-		        >
-		          <noembed>
-		          </noembed>
-		        </embed>
+		        <embed type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"
+		          name="banner_t" width="278" height="34" src="flash/banner_t.swf" bgcolor="#FFFFFF" quality="high" >  </embed>
 		      </object>
+		      --%>
+		      <object type="application/x-shockwave-flash" data="flash/banner_t.swf" width="278" height="34">
+				<param name="movie" value="flash/banner_t.swf" />
+				<param name="wmode" value="transparent" />
+			  </object>
 		    </div>
 		  <div id="favor">
 		  	<img src="newimages/4.png" width="15" height="12" />
@@ -132,11 +118,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	  		
 	    <div id="banner_bottom"  style="margin-left:2px;">
+	       <%--
 		  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="978" height="152">
 	        <param name="movie" value="flash/Banner.swf" />
 	        <param name="quality" value="high" />
+	        <param value="transparent">
 	        <embed src="flash/Banner.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="978" height="152"></embed>
 	      </object>
+	       --%>
+	     <object type="application/x-shockwave-flash" data="flash/Banner.swf" width="978" height="152">
+			<param name="movie" value="flash/Banner.swf" />
+			<param name="wmode" value="transparent" />
+		 </object>
+				     
 	   </div>
 
 	    <div class="menu">

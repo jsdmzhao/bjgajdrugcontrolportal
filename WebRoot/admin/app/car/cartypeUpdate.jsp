@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              valueField:"value",
              textFiled:"text",
          	 data : tempdata,
-             value:"<s:property value='car.c_yhzid'/>"
+             value:"<s:property value='car.c_yhzid_'/>"
           },
 	      group:"基本信息",
 	      groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"

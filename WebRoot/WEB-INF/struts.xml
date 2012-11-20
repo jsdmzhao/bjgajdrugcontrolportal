@@ -36,6 +36,22 @@
 		<action name="cartype*" class="cartypeAction" method="cartype{1}">
 			<result name="success">/admin/app/car/cartype{1}.jsp</result>
 		</action>
+		
+		<action name="carCost*" class="carCostAction" method="carCost{1}">
+			<result name="success">/admin/app/car/carCost{1}.jsp</result>
+		</action>
+		
+		<action name="carCheck*" class="carCheckAction" method="carCheck{1}">
+			<result name="success">/admin/app/car/carCheck{1}.jsp</result>
+		</action>
+		
+		<action name="carRepair*" class="carRepairAction" method="carRepair{1}">
+			<result name="success">/admin/app/car/carRepair{1}.jsp</result>
+		</action>
+		
+		<action name="carKeep*" class="carKeepAction" method="carKeep{1}">
+			<result name="success">/admin/app/car/carKeep{1}.jsp</result>
+		</action>
 			
 		<action name="newsCenterList" class="newsAction" method="newsCenterList">
 			<result name="success">/news.jsp</result>
@@ -99,36 +115,7 @@
 			<result>/admin/login.jsp</result>
 		</action>
 	</package>
-	
-	<package name="login" namespace="/login" extends="struts-default">
-	
-		<!-- 拦截错误页面 -->
-		<global-results>
-			<result name="errorPage">error.jsp</result>
-		</global-results>
-		
-		<global-exception-mappings>
-			<exception-mapping result="errorPage" exception="java.lang.Exception"/>
-		</global-exception-mappings>
-		
-	 	<action name="view" class="newsAction" method="newsindexList">
-			<result name="success">/index.jsp</result>
-		</action>
-	</package>
 	   
-	<package name="news" namespace="/news" extends="struts-default">
-		<!-- 拦截错误页面 -->
 	
-	
-		
-		<action name="list" class="newsAction" method="newsQuerys">
-			<result name="success">/news/news_list.jsp</result>
-		</action>
-		
-		<action name="center" class="newsAction" method="newsCenter">
-			<result name="success">/news/news.jsp</result>
-		</action>
-		
-     </package>
 
 </struts>

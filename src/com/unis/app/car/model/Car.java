@@ -14,6 +14,8 @@ public class Car {
 	
 	private String n_cllbxh;
 	
+	private String n_cllbxh_;
+	
 	private String c_sqsy;
 	
 	private String d_ccsj;
@@ -38,6 +40,7 @@ public class Car {
 	
 	private String n_pjyh;
 	
+	private String c_sfxz;
 	
 	public String getN_xh() {
 		return n_xh;
@@ -85,6 +88,14 @@ public class Car {
 
 	public void setN_cllbxh(String nCllbxh) {
 		n_cllbxh = nCllbxh;
+	}
+
+	public String getN_cllbxh_() {
+		return n_cllbxh_;
+	}
+
+	public void setN_cllbxh_(String n_cllbxh_) {
+		this.n_cllbxh_ = n_cllbxh_;
 	}
 
 	public String getC_sqsy() {
@@ -181,6 +192,14 @@ public class Car {
 
 	public void setN_pjyh(String n_pjyh) {
 		this.n_pjyh = n_pjyh;
+	}
+
+	public String getC_sfxz() {
+		return c_sfxz;
+	}
+
+	public void setC_sfxz(String c_sfxz) {
+		this.c_sfxz = c_sfxz;
 	}
 
 }

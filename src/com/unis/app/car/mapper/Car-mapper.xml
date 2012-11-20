@@ -14,6 +14,7 @@
 	 <resultMap type="Car"    id="resultCar">
 	 	<result column="N_XH"     property="n_xh"/>
 	 	<result column="N_CLLBXH"   property="n_cllbxh"/>
+	 	<result column="N_CLLBXH_"  property="n_cllbxh_"/>
 	 	<result column="C_YHID"   property="c_yhid"/>
 	 	<result column="C_SQSY"   property="c_sqsy"/>
 	 	<result column="D_CCSJ"   property="d_ccsj"/>
@@ -29,6 +30,7 @@
     <select id="getCar" parameterType="Car" resultType="Car">
 		SELECT N_XH,
 			   N_CLLBXH,
+			   FUN_GET_CPHM(N_CLLBXH) N_CLLBXH_,
 			   FUN_GET_YHMC(C_YHID) C_YHID,
 			   C_SQSY,
 			   TO_CHAR(D_CCSJ,'YYYY-MM-DD HH24:MI:SS') D_CCSJ,
@@ -38,7 +40,8 @@
 	
 	<select id="getCarList" resultMap="resultCar" parameterType="hashmap">
 		SELECT N_XH,
-             FUN_GET_CPHM(N_CLLBXH) N_CLLBXH,
+             N_CLLBXH,
+	         FUN_GET_CPHM(N_CLLBXH) N_CLLBXH_,
              FUN_GET_YHMC(C_YHID) C_YHID,
              C_SQSY,
              TO_CHAR(D_CCSJ, 'YYYY-MM-DD HH24:MI:SS') D_CCSJ,
@@ -53,10 +56,11 @@
 	</select>
 	 
 	<select id="getCarPageList" resultMap="resultCar" parameterType="hashmap">
-	SELECT N_XH,N_CLLBXH, C_YHID, C_SQSY, D_CCSJ, D_GDSJ, C_SHJG, D_DJ
+	SELECT N_XH,N_CLLBXH, N_CLLBXH_, C_YHID, C_SQSY, D_CCSJ, D_GDSJ, C_SHJG, D_DJ
 	  FROM (SELECT S.*, ROWNUM RN
 	          FROM (SELECT N_XH,
-	                       FUN_GET_CPHM(N_CLLBXH) N_CLLBXH,
+	                       N_CLLBXH,
+	                       FUN_GET_CPHM(N_CLLBXH) N_CLLBXH_,
 	                       FUN_GET_YHMC(C_YHID) C_YHID,
 	                       C_SQSY,
 	                       TO_CHAR(D_CCSJ, 'YYYY-MM-DD HH24:MI:SS') D_CCSJ,
@@ -77,7 +81,7 @@
 			FROM B_CLSQ 
 		<if test="type != null and type == 'sh'">
  		 WHERE C_SFSH = '0'
-  	  </if> 
+  	    </if> 
 	</select>
 	
 	<select id="getCartypeList" resultMap="resultCartype">
@@ -98,6 +102,18 @@
 	</select>
 	
 	
+	<select id="getCartypeCombox" resultType="Combox" parameterType="hashmap">
+		SELECT N_XH VALUE,
+	       C_CPHM TEXT
+	    FROM B_CLLB
+       WHERE C_SFXZ = '1' 
+       <if test="c_yhzid != null and c_yhzid != '' ">
+ 		 AND C_YHZID = #{c_yhzid}
+  	   </if>
+	</select>
+	
+	<!-- 
+	getCartypeSelectList
 	<select id="getCartypeCombox" resultType="Combox" parameterType="string">
 		SELECT N_XH VALUE,
 	       C_CPHM TEXT
@@ -110,6 +126,8 @@
                 TO_DATE(TO_CHAR(SYSDATE, 'YYYY-MM-DD'), 'YYYY-MM-DD')
          ) AND C_YHZID = #{c_yhzid}
 	</select>
+	
+	 -->
 	
 	<delete id="deleteCar" parameterType="long">
 		DELETE FROM B_CLSQ WHERE N_XH = #{n_xh}
@@ -186,6 +204,12 @@
 		WHERE N_XH = #{n_xh}
 	</update>
 	
+	<update id="backCar" parameterType="int">
+		UPDATE B_CLLB
+		   SET  C_SFXZ  =  '1'
+		WHERE N_XH = #{n_xh}
+	</update>
+	
 	<update id="updateCartype" parameterType="hashmap">
 		UPDATE B_CLLB
 		   SET  C_CPHM   =	#{c_cphm,jdbcType=VARCHAR},
@@ -202,6 +226,13 @@
 		WHERE N_XH = #{n_xh}
 	</update>
 	
-	
+	<select id="getCartypeSelectList" resultType="Combox" parameterType="hashmap">
+	   SELECT N_XH VALUE,
+	       C_CPHM TEXT
+	  FROM B_CLLB 
+	  <if test="c_yhzid != null and c_yhzid != '' ">
+	 	WHERE C_YHZID = #{c_yhzid}
+	  </if>
+	</select>
 	
 </mapper>

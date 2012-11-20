@@ -2,8 +2,6 @@ package com.unis.core.service;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
-
 import com.unis.core.database.IDataSetProvider;
 
 /**
@@ -47,8 +45,6 @@ public abstract class AbsServiceAdapter<T> {
      * @return
      */
     public List<?> selectList(String statmentId, Object o) {
-    	System.out.println("@@@@AbsServiceAdapter@@selectList@statmentId : " +statmentId);
-    	System.out.println("@@@@AbsServiceAdapter@@selectList@o : " +o);
         return dataSetProvider.selectList(statmentId, o);
     };
 

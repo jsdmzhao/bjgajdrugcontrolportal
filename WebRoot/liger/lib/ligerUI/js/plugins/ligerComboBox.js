@@ -63,7 +63,7 @@
         {
             return 'ComboBox';
         },
-        _extendMethods: function ()
+        _extendMethods: function ()t
         {
             return $.ligerMethos.ComboBox;
         },

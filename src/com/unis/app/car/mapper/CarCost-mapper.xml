@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CarCostMapper">
+
+	 <resultMap type="CarCost"     id="resultCarCost">
+	 	<result column="N_XH"      property="n_xh"/>
+	 	<result column="N_CLLBXH"  property="n_cllbxh"/>
+	 	<result column="C_JYBH"    property="c_jybh"/>
+	 	<result column="N_JYSL"    property="n_jysl"/>
+	 	<result column="D_JYRQ"    property="d_jyrq"/>
+	 </resultMap>
+
+	<select id="getCarCost" parameterType="CarCost" resultType="CarCost">
+		 SELECT   N_XH      ,
+				  N_CLLBXH  ,
+				  TO_CHAR(D_JYRQ,'YYYY-MM-DD') D_JYRQ ,
+				  C_JYDD    ,
+				  C_JYBH    ,
+				  N_LCBDS   ,
+				  N_JYSL    ,
+				  N_DJ      ,
+				  N_JYJE    ,
+				  N_YKYE    ,
+				  TO_CHAR(D_DJ,'YYYY-MM-DD') D_DJ ,
+				  FUN_GET_CPHMYHZ(N_CLLBXH)  C_YHZID_ ,
+				  C_YHZID   ,
+				  C_YHID     
+		FROM B_YHLC WHERE N_XH = #{n_xh}
+	</select>
+	
+	
+	<delete id="deleteCarCost" parameterType="int">
+		DELETE FROM B_YHLC WHERE N_XH = #{n_xh}
+	</delete>
+	
+	<insert id="insertCarCost" parameterType="hashmap">
+		 INSERT INTO B_YHLC(
+		      N_XH      ,
+			  N_CLLBXH  ,
+			  D_JYRQ    ,
+			  C_JYDD    ,
+			  C_JYBH    ,
+			  N_LCBDS   ,
+			  N_JYSL    ,
+			  N_DJ      ,
+			  N_JYJE    ,
+			  N_YKYE    ,
+			  D_DJ      ,
+			  C_YHZID   ,
+			  C_YHID    ) 
+		VALUES (	            	
+	          seq_b_yhlc.nextval,        
+              #{n_cllbxh,jdbcType=NUMERIC},  
+			  TO_DATE(#{d_jyrq,jdbcType=DATE},'YYYY-MM-DD'),
+			  #{c_jydd,jdbcType=VARCHAR}, 
+			  #{c_jybh,jdbcType=VARCHAR},
+			  #{n_lcbds,jdbcType=NUMERIC},
+			  #{n_jysl,jdbcType=NUMERIC},
+			  #{n_dj,jdbcType=NUMERIC},
+			  #{n_jyje,jdbcType=NUMERIC},
+			  #{n_ykye,jdbcType=NUMERIC},
+			  SYSDATE,
+			  #{c_yhzid,jdbcType=VARCHAR}, 
+			  #{c_yhid,jdbcType=VARCHAR}
+	    )  
+	</insert>
+	
+	<select id="getCarCostPageList" resultMap="resultCarCost" parameterType="hashmap">
+	SELECT N_XH, N_CLLBXH, C_JYBH, N_JYSL, D_JYRQ
+	  FROM (SELECT S.*, ROWNUM RN
+	          FROM (SELECT N_XH,
+				       FUN_GET_CPHM(N_CLLBXH) N_CLLBXH,
+				       C_JYBH||'#' C_JYBH,
+				       N_JYSL,
+				       TO_CHAR(D_JYRQ,'YYYY-MM-DD') D_JYRQ
+				  FROM B_YHLC
+				  <if test="n_cllbxh != null and n_cllbxh != '' ">
+				  	WHERE N_CLLBXH = #{n_cllbxh}
+				  </if>
+				  ORDER BY N_XH DESC) S
+	         WHERE ROWNUM &lt;= #{limit}) T
+	 WHERE T.RN &gt; #{start}
+	</select>
+	
+	<select id="getCarCostPageListCnt" resultType="long" parameterType="hashmap">
+		SELECT COUNT(*) Total
+		  FROM B_YHLC
+		  <if test="n_cllbxh != null and n_cllbxh != '' ">
+			WHERE N_CLLBXH = #{n_cllbxh}
+		  </if>
+	</select>
+	
+	<update id="updateCarCost" parameterType="hashmap">
+		UPDATE B_YHLC
+	      SET N_CLLBXH  =  #{n_cllbxh,jdbcType=NUMERIC},
+			  D_JYRQ    =  TO_DATE(#{d_jyrq,jdbcType=DATE},'YYYY-MM-DD'),
+			  C_JYDD    =  #{c_jydd,jdbcType=VARCHAR},
+			  C_JYBH    =  #{c_jybh,jdbcType=VARCHAR}, 
+			  N_LCBDS   =  #{n_lcbds,jdbcType=NUMERIC},
+			  N_JYSL    =  #{n_jysl,jdbcType=NUMERIC},
+			  N_DJ      =  #{n_dj,jdbcType=NUMERIC},
+			  N_JYJE    =  #{n_jyje,jdbcType=NUMERIC},
+			  N_YKYE    =  #{n_ykye,jdbcType=NUMERIC}
+		WHERE N_XH = #{n_xh}
+	</update>
+	
+	
+</mapper>

@@ -15,7 +15,7 @@ if(isView == null){
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
-    <title>栏目 明细</title>
+    <title>车辆 明细</title>
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
     <script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>

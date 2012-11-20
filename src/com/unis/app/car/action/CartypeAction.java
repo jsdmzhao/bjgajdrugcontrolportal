@@ -1,17 +1,23 @@
 package com.unis.app.car.action;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.xwork.StringUtils;
+import org.apache.struts2.ServletActionContext;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.unis.core.commons.Combox;
 import com.unis.core.service.AbsServiceAdapter;
 import com.unis.core.util.Globals;
 import com.unis.app.car.model.Car;
@@ -19,8 +25,10 @@ import com.unis.app.car.model.Car;
 @Controller
 @Scope(value="prototype")
 public class CartypeAction {
-
+	
 	private Car car;
+	
+	private String c_yhzid;
 	
 	@Autowired
 	private AbsServiceAdapter<Integer> carService = null;
@@ -53,6 +61,46 @@ public class CartypeAction {
 		return resMap;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public String cartypeSelectList(String c_yhzid){
+		
+		//HttpSession session = request.getSession();
+		//String c_yhzid = session.getAttribute("cYhz")+"";
+		Map<String, String> sqlParamMap = new HashMap<String, String>();
+		sqlParamMap.put("c_yhzid", c_yhzid);
+		
+		StringBuffer sbf = new StringBuffer();
+		List<Combox> comboxList = (List<Combox>) carService.selectList("CarMapper.getCartypeSelectList",sqlParamMap);
+		for(Combox combox : comboxList){
+			sbf.append("<option value='"+combox.getValue()+"'>"+combox.getText()+"</option>");
+		}
+		return sbf.toString();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Combox> cartypeCombox() throws IOException{
+		
+		//HttpServletRequest request = ServletActionContext.getRequest();
+		
+		//HttpSession session = request.getSession();
+		//String yhzId =  session.getAttribute("cYhz")+"";
+		
+		Map<String, String> sqlParamMap = new HashMap<String, String>();
+		sqlParamMap.put("c_yhzid", c_yhzid);
+		
+		List<Combox> comboxList = (List<Combox>) carService.selectList("CarMapper.getCartypeCombox", sqlParamMap);
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+    	HttpServletResponse response = ServletActionContext.getResponse();
+    	response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+    	mapper.writeValue(out, comboxList);
+		out.flush();
+		out.close();
+		return comboxList;
+	}
+	
 	public String cartypeUpdate(){
 		car = (Car) carService.selectOne("CarMapper.getCartype", car);
 		return Globals.SUCCESS;
@@ -79,6 +127,16 @@ public class CartypeAction {
 	public void setCar(Car car) {
 		this.car = car;
 	}
+
+	public String getC_yhzid() {
+		return c_yhzid;
+	}
+
+
+	public void setC_yhzid(String c_yhzid) {
+		this.c_yhzid = c_yhzid;
+	}
+
 
 	public AbsServiceAdapter<Integer> getCarService() {
 		return carService;

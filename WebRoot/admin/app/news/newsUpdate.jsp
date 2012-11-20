@@ -50,6 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         width:700,
 	         space:30,
 	         type:"text",
+	         validate: { required: true},
 	         group:"基本信息",
 	         value: "<s:property value='news.c_bt'/>", 
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
@@ -58,6 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              name:"c_lmName",
              value: "<s:property value='news.c_lm_'/>",
              newline:true,
+             validate: { required: true},
              labelWidth:100,
              width:408
          },{
@@ -127,7 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          {display:"链接",name:"c_lj",newline:true,labelWidth:100,
           width:300,space:30,type:"text",
           value: "<s:property value='news.c_lj'/>" },
-         {display:"发布时间",name:"d_fbsj",newline:false,labelWidth:100,
+         {display:"发布时间",name:"d_fbsj",newline:false,labelWidth:100,validate: { required: true},
          width:250,space:30,type:"text",value: "<s:property value='news.d_fbsj'/>",
          onclick:"WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" },
          {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea",value:$('#nr').html() },
@@ -213,6 +215,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
      
         function f_save() {
+    		
+        	//验证
+        	if (!LG.validator.form()) {
+                LG.showInvalid();
+                return false;
+            }
 
         	var formMap = DWRUtil.getValues("mainform"); 
 

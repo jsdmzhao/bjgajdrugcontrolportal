@@ -19,6 +19,14 @@
 
 	<typeAlias alias="Car"  type="com.unis.app.car.model.Car" />
 	
+	<typeAlias alias="CarCost"  type="com.unis.app.car.model.CarCost" />
+	
+	<typeAlias alias="CarCheck"  type="com.unis.app.car.model.CarCheck" />
+	
+	<typeAlias alias="CarRepair"  type="com.unis.app.car.model.CarRepair" />
+	
+	<typeAlias alias="CarKeep"  type="com.unis.app.car.model.CarKeep" />
+	
 	<typeAlias alias="Blog"  type="com.unis.app.blog.model.Blog" />
 
 	<typeAlias alias="Message"  type="com.unis.app.message.model.Message" />

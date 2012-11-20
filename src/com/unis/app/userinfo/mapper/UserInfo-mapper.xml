@@ -273,7 +273,7 @@
 			   #{cZc},
 			   #{cXm},
 			   #{nXb},
-			   to_date(#{dSr},,'YYYY-MM-DD')
+			   to_date(#{dSr},'YYYY-MM-DD')
 			   #{cGj},
 			   #{cCsd},
 			   #{cHyzk},
@@ -286,12 +286,12 @@
 			   #{cSjhm},
 			  #{cYx},
 			   #{cDz},
-			    to_date(#{dGzsj},,'YYYY-MM-DD')
-			   to_date(#{dRzsj},,'YYYY-MM-DD')
+			    to_date(#{dGzsj},'YYYY-MM-DD')
+			   to_date(#{dRzsj},'YYYY-MM-DD')
 			   #{cJcjl},
 			   #{cBz},
 			   #{nDlcs},
-			   to_date(#{nZxsc},,'YYYY-MM-DD')
+			   to_date(#{nZxsc},'YYYY-MM-DD')
 			   #{cLx}
 			   #{cYxip}
 			)
@@ -323,8 +323,8 @@
 			<if test="cSjhm != null and cSjhm !='' ">, C_SJHM =  #{cSjhm}</if>
 			<if test="cYx != null and cYx !='' ">, C_YX =  #{cYx}</if>
 			<if test="cDz != null and cDz !='' ">,C_DZ  =  #{cDz}</if>
-			<if test="dGzsj != null and dGzsj !='' ">, D_GZSJ =   to_date(#{dGzsj}='YYYY-MM-DD')</if>
-			<if test="dRzsj != null and dRzsj !='' ">, D_RZSJ =   to_date(#{dRzsj}='YYYY-MM-DD')</if>
+			<if test="dGzsj != null and dGzsj !='' ">, D_GZSJ =   to_date(#{dGzsj},'YYYY-MM-DD')</if>
+			<if test="dRzsj != null and dRzsj !='' ">, D_RZSJ =   to_date(#{dRzsj},'YYYY-MM-DD')</if>
 			<if test="cJcjl != null and cJcjl !='' ">,C_JCJL  =  #{cJcjl}</if>
 			<if test="cBz != null and cBz !='' ">, C_BZ =  #{cBz}</if>
 			<if test="nDlcs != null and nDlcs !='' ">, N_DLCS =  #{nDlcs}</if>
@@ -359,8 +359,8 @@
 			, C_SJHM =  #{cSjhm}
 			, C_YX =  #{cYx}
 			,C_DZ  =  #{cDz}
-			, D_GZSJ =   to_date(#{dGzsj}='YYYY-MM-DD')
-			, D_RZSJ =   to_date(#{dRzsj}='YYYY-MM-DD')
+			, D_GZSJ =   to_date(#{dGzsj},'YYYY-MM-DD')
+			, D_RZSJ =   to_date(#{dRzsj},'YYYY-MM-DD')
 			,C_JCJL  =  #{cJcjl}
 			, C_BZ =  #{cBz}
 			, N_DLCS =  #{nDlcs}
