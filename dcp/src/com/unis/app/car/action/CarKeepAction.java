@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 import org.apache.commons.lang.xwork.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -17,61 +18,62 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.unis.app.car.model.Car;
+import com.unis.app.car.model.CarKeep;
+import com.unis.core.commons.Combox;
 import com.unis.core.service.AbsServiceAdapter;
 import com.unis.core.util.Globals;
 
 @Controller
 @Scope(value="prototype")
-public class CarAction {
+public class CarKeepAction {
 
-	private Car car;
+	private CarKeep carKeep;
 	
-	private String c_yhid;
+	private String n_cllbxh;
 	
 	private Integer pagesize;
 	
 	private Integer page;
 	
-	private String type;
 	
 	@Autowired
 	private AbsServiceAdapter<Integer> carService = null;
 	
-	public String carSave(Map<String, String> sqlParamMap,HttpServletRequest request){
+	public String carKeepSave(Map<String, String> sqlParamMap,HttpServletRequest request){
 		HttpSession session = request.getSession();
 		String userId = session.getAttribute("userId")+"";
 		String yhzId = session.getAttribute("cYhz")+"";
 		sqlParamMap.put("c_yhid", userId);
 		sqlParamMap.put("c_yhzid", yhzId);
 		if(StringUtils.isNotEmpty(sqlParamMap.get("n_xh"))){
-			carService.update("CarMapper.updateCar", sqlParamMap);
+			carService.update("CarKeepMapper.updateCarKeep", sqlParamMap);
 		} else {
-			carService.insert("CarMapper.insertCar", sqlParamMap);
+			carService.insert("CarKeepMapper.insertCarKeep", sqlParamMap);
 		}
 		return Globals.SUCCESS;
 	}
 
 	@SuppressWarnings("unchecked")
-	public void carList() throws IOException{
+	public void carKeepPageList() throws IOException{
 		
 		HttpServletRequest request = ServletActionContext.getRequest();
+		
 		HttpSession session = request.getSession();
 		String userId =  session.getAttribute("userId")+"";
 		String yhzId =  session.getAttribute("cYhz")+"";
 		Map<String, String> sqlParamMap = new HashMap<String, String>();
 		
-		sqlParamMap.put("type", type);
+		sqlParamMap.put("n_cllbxh", n_cllbxh);
 		sqlParamMap.put("c_yhid", userId);
 		sqlParamMap.put("c_yhzid", yhzId);
 		sqlParamMap.put("start", String.valueOf(((page.intValue()-1)*pagesize.intValue())));
 		sqlParamMap.put("limit", String.valueOf((page.intValue()*pagesize.intValue())));
 		Map<String, Object> resMap = new HashMap<String, Object>();
 
-		List<Car> carList = (List<Car>) carService.selectList("CarMapper.getCarPageList",sqlParamMap);
-		Long cnt = (Long) carService.selectOne("CarMapper.getCarPageListCnt",sqlParamMap);
+		List<CarKeep> carKeepList = (List<CarKeep>) carService.selectList("CarKeepMapper.getCarKeepPageList",sqlParamMap);
+		Long cnt = (Long) carService.selectOne("CarKeepMapper.getCarKeepPageListCnt",sqlParamMap);
 
-		resMap.put("Rows", carList);
+		resMap.put("Rows", carKeepList);
 		resMap.put("Total", cnt);
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -85,84 +87,49 @@ public class CarAction {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public Map<String, Object> carUserList(String type,HttpServletRequest request){
-		
-		HttpSession session = request.getSession();
-		String userId =  session.getAttribute("userId")+"";
-		Map<String, String> sqlParamMap = new HashMap<String, String>();
-		sqlParamMap.put("type", type);
-		sqlParamMap.put("c_yhid", userId);
-		Map<String, Object> resMap = new HashMap<String, Object>();
-		List<Car> carList = (List<Car>) carService.selectList("CarMapper.getCarList",sqlParamMap);
-		resMap.put("Rows", carList);
-		resMap.put("Total", carList.size());
-		return resMap;
-	}
-	
-/*	@SuppressWarnings("unchecked")
-	public List<Combox> getCartypeCombox(HttpServletRequest request){
+	public List<Combox> getCarKeeptypeCombox(HttpServletRequest request){
 		HttpSession session = request.getSession();
 		String yhzId =  session.getAttribute("cYhz")+"";
-		List<Combox> comboxList = (List<Combox>) carService.selectList("CarMapper.getCartypeCombox", yhzId);
+		List<Combox> comboxList = (List<Combox>) carService.selectList("CarKeepMapper.getCarKeeptypeCombox", yhzId);
 		return comboxList;
-	}*/
-	
-	public String carUpdate(){
-		car = (Car) carService.selectOne("CarMapper.getCar", car);
-		return Globals.SUCCESS;
 	}
 	
-	public String carOperator(String value, String n_xh){
+	public String carKeepUpdate(){
+		carKeep = (CarKeep) carService.selectOne("CarKeepMapper.getCarKeep", carKeep);
+		return Globals.SUCCESS;
+	}
+
+	public String carKeepView(){
+		carKeep = (CarKeep) carService.selectOne("CarKeepMapper.getCarKeep", carKeep);
+		return Globals.SUCCESS;
+	}	
+	
+	public String carKeepDelete(String n_xh){
 		
-		HttpServletRequest request = ServletActionContext.getRequest();
-		HttpSession session = request.getSession();
-		String userId =  session.getAttribute("userId")+"";
+		carService.update("CarKeepMapper.deleteCarKeep", n_xh);
+		return Globals.SUCCESS;
+	}
+	
+	public String carKeepQuery(){
 		
-		Map<String, Object> sqlparaMap = new HashMap<String, Object>();
-		sqlparaMap.put("c_shr", userId);
-		sqlparaMap.put("c_shjg", value);
-		sqlparaMap.put("n_xh", n_xh);
-		carService.update("CarMapper.operateCar", sqlparaMap);
+		carKeep = (CarKeep) carService.selectOne("CarKeepMapper.getCarKeep", carKeep);
 		return Globals.SUCCESS;
 	}
 
-	public String carView(){
-		car = (Car) carService.selectOne("CarMapper.getCar", car);
-		return Globals.SUCCESS;
-	}
-	
-	public String carBack(Integer n_xh){
-		carService.update("CarMapper.backCar",n_xh);
-		return Globals.SUCCESS;
-	}
-	
-	
-	public String carDelete(String n_xh){
-		
-		carService.update("CarMapper.deleteCar", n_xh);
-		return Globals.SUCCESS;
-	}
-	
-	public String carQuery(){
-		
-		car = (Car) carService.selectOne("CarMapper.getCar", car);
-		return Globals.SUCCESS;
+	public CarKeep getCarKeep() {
+		return carKeep;
 	}
 
-	public Car getCar() {
-		return car;
+	public void setCarKeep(CarKeep carKeep) {
+		this.carKeep = carKeep;
 	}
 
-	public void setCar(Car car) {
-		this.car = car;
+	public String getN_cllbxh() {
+		return n_cllbxh;
 	}
 
-	public String getC_yhid() {
-		return c_yhid;
-	}
-
-	public void setC_yhid(String cYhid) {
-		c_yhid = cYhid;
+	public void setN_cllbxh(String n_cllbxh) {
+		this.n_cllbxh = n_cllbxh;
 	}
 
 	public AbsServiceAdapter<Integer> getCarService() {
@@ -188,14 +155,5 @@ public class CarAction {
 	public void setPage(Integer page) {
 		this.page = page;
 	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
- 
 	
 }

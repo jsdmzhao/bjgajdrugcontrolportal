@@ -53,7 +53,7 @@ String newsType = request.getParameter("newsType");
      -->
    
         <form id="mainform">
-	        <DIV class=l-panel-search>
+	        <DIV class=l-panel-search style="border: none;">
 				<DIV class=l-panel-search-item>文章栏目</DIV>
 				<DIV class=l-panel-search-item id="selectLm">
 					 
@@ -80,7 +80,7 @@ String newsType = request.getParameter("newsType");
   <script type="text/javascript">
   
   	  var dialog;
- 	  var str = "<select id=\"selectLanmu\" value='<%=newsType%>'><option value=''>全部栏目</option>";
+ 	  var str = "<select id=\"selectLanmu\" onchange=\"search()\" value='<%=newsType%>'><option value=''>全部栏目</option>";
 	  ColumnAction.columnSelectList(function(data){
 		document.getElementById("selectLm").innerHTML = str + data + "</select>"
 	  });

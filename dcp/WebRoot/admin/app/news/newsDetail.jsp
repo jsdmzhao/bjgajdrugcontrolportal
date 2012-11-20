@@ -52,11 +52,13 @@ String newsType = request.getParameter("newsType");
 	         width:700,
 	         space:30,
 	         type:"text",
+	         validate: { required: true},
 	         group:"基本信息",
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },{display:"文章栏目",
         	 type:"text",
              name:"c_lmName",
+             validate: { required: true},
              newline:true,
              labelWidth:100,
              width:408
@@ -118,7 +120,7 @@ String newsType = request.getParameter("newsType");
          	type:"textarea"
          },
          {display:"链接",name:"c_lj",newline:true,labelWidth:100,width:300,space:30,type:"text"},
-         {display:"发布时间",name:"d_fbsj",newline:false,labelWidth:100,width:250,
+         {display:"发布时间",name:"d_fbsj",newline:false,labelWidth:100,width:250,validate: { required: true},
          space:30,type:"text",onclick:"WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"},
          {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea"}
          //,
@@ -195,6 +197,12 @@ String newsType = request.getParameter("newsType");
     	//$("c_tpljdz").setDisabled();
         
         function f_save() {
+        	
+        	//验证
+        	if (!LG.validator.form()) {
+                LG.showInvalid();
+                return false;
+            }
 
         	var formMap = DWRUtil.getValues("mainform2"); 
 

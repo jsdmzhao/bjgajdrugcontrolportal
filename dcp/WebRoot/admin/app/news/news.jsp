@@ -59,7 +59,7 @@ if(newsType == null){
      -->
      
         <form id="mainform">
-				<DIV class=l-panel-search>
+				<DIV class=l-panel-search style="border: none;">
 					<DIV class=l-panel-search-item>文章栏目</DIV>
 					<DIV class=l-panel-search-item id="selectLm">
 					
@@ -86,7 +86,7 @@ if(newsType == null){
 
   <script type="text/javascript">
 
-  	var str = "<select id=\"selectLanmu\" value='<%=newsType%>'><option value=''>全部栏目</option>";
+  	var str = "<select id=\"selectLanmu\" onchange=\"search()\" value='<%=newsType%>'><option value=''>全部栏目</option>";
 	ColumnAction.columnSelectList(function(data){
 		document.getElementById("selectLm").innerHTML = str + data + "</select>"
 			

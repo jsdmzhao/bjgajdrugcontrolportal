@@ -79,6 +79,8 @@
                     //inputOptions.number = true;
                     //jinput.ligerTextBox(inputOptions);
                     break;
+                case "basicText":
+                	break;
                 default:
                     jinput.ligerTextBox(inputOptions);
                     break;
@@ -320,6 +322,13 @@
             	 	out.push('<input type="text" class="l-text-field" value="'+value+'"  onclick="'+field.onclick+'" disabled="disabled" ');
             	} else {
             		out.push('<input type="text" class="l-text-field" value="'+value+'"  onclick="'+field.onclick+'"');
+            	}
+            }
+            else if (field.type == "basicText")
+            {	if(disabled == 'disabled'){
+            	 	out.push('<input type="text" value="'+value+'"  onclick="'+field.onclick+'" disabled="disabled" ');
+            	} else {
+            		out.push('<input type="text" value="'+value+'"  onclick="'+field.onclick+'"');
             	}
             }
             else

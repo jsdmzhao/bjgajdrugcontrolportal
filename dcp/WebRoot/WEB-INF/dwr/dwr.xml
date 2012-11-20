@@ -29,6 +29,22 @@
 			<param name="beanName" value="cartypeAction"></param>
 		</create>
 		
+		<create javascript="CarCostAction" creator="spring">
+			<param name="beanName" value="carCostAction"></param>
+		</create>
+		
+		<create javascript="CarCheckAction" creator="spring">
+			<param name="beanName" value="carCheckAction"></param>
+		</create>
+		
+		<create javascript="CarRepairAction" creator="spring">
+			<param name="beanName" value="carRepairAction"></param>
+		</create>
+		
+		<create javascript="CarKeepAction" creator="spring">
+			<param name="beanName" value="carKeepAction"></param>
+		</create>
+		
 		<create javascript="BlogAction" creator="spring">
 			<param name="beanName" value="blogAction"></param>
 		</create>
