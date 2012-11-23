@@ -10,49 +10,50 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.unis.app.pagination.Pagination;
+import com.unis.core.database.impl.DataSetProviderImpl;
 import com.unis.core.service.AbsServiceAdapter;
 
 @Repository
-public class HolidayDao  extends SqlSessionDaoSupport {
+public class HolidayDao<T> extends AbsServiceAdapter<T> {
 	
 	public Object saveInfo(Map p){
-		return  getSqlSession().insert("HolidayMapper.saveInfo", p);
+		return  super.insert("HolidayMapper.saveInfo", p);
 	}
 
 	public Object saveAllInfo(Map p){
-		return  getSqlSession().insert("HolidayMapper.saveAllInfo", p);
+		return  super.insert("HolidayMapper.saveAllInfo", p);
 	}
 	
 	public Object saveGRInfo(Map p){
-		return  getSqlSession().insert("HolidayMapper.saveGRInfo", p);
+		return  super.insert("HolidayMapper.saveGRInfo", p);
 	}
 	
 	public Object removeGRInfo(Map p){
-		return  getSqlSession().insert("HolidayMapper.removeGRInfo", p);
+		return  super.insert("HolidayMapper.removeGRInfo", p);
 	}
 
 	public Object removeInfo(Map p){
-		return  getSqlSession().delete("HolidayMapper.removeInfo", p);
+		return  super.delete("HolidayMapper.removeInfo", p);
 	}
 
 	public Object updateInfo(Map p){
-		return  getSqlSession().update("HolidayMapper.updateInfo", p);
+		return  super.update("HolidayMapper.updateInfo", p);
 	}
 
 	public Object updateAllInfo(Map p){
-		return  getSqlSession().update("HolidayMapper.updateAllInfo", p);
+		return  super.update("HolidayMapper.updateAllInfo", p);
 	}
 
 	public List queryAllInfo(Map p){
-		return  getSqlSession().selectList("HolidayMapper.queryAllInfo", p);
+		return  super.selectList("HolidayMapper.queryAllInfo", p);
 	}
 	
 	public List queryInfo(Map p){
-		return  getSqlSession().selectList("HolidayMapper.queryInfo", p);
+		return  super.selectList("HolidayMapper.queryInfo", p);
 	}
 
 	public Object queryCountInfo(Map p) {
-		return  getSqlSession().selectOne("HolidayMapper.queryCountInfo", p);
+		return  super.selectOne("HolidayMapper.queryCountInfo", p);
 	}
 	
 	

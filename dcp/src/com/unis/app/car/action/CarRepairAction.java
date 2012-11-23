@@ -116,6 +116,22 @@ public class CarRepairAction {
 		return Globals.SUCCESS;
 	}
 
+	public String CarRepairOperator(String value, String n_xh){
+		
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = request.getSession();
+		String userId =  session.getAttribute("userId")+"";
+		//String yhzId =  session.getAttribute("cYhz")+"";
+		
+		Map<String, Object> sqlparaMap = new HashMap<String, Object>();
+		sqlparaMap.put("c_shr", userId);
+		sqlparaMap.put("c_shjg", value);
+		sqlparaMap.put("n_xh", n_xh);
+		carService.update("CarRepairMapper.operateCarRepair", sqlparaMap);
+		
+		return Globals.SUCCESS;
+	}
+
 	public CarRepair getCarRepair() {
 		return carRepair;
 	}

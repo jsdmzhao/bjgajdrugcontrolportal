@@ -9,49 +9,50 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.unis.app.pagination.Pagination;
+import com.unis.core.database.impl.DataSetProviderImpl;
 import com.unis.core.service.AbsServiceAdapter;
 
 @Repository
-public class SysUserDao  extends SqlSessionDaoSupport {
+public class SysUserDao<T> extends AbsServiceAdapter<T> {
 	
 	public Object saveInfo(Map p){
-		return  getSqlSession().insert("SysUserMapper.saveInfo", p);
+		return  super.insert("SysUserMapper.saveInfo", p);
 	}
 
 	public Object saveAllInfo(Map p){
-		return  getSqlSession().insert("SysUserMapper.saveAllInfo", p);
+		return  super.insert("SysUserMapper.saveAllInfo", p);
 	}
 	
 	public Object saveGRInfo(Map p){
-		return  getSqlSession().insert("SysUserMapper.saveGRInfo", p);
+		return  super.insert("SysUserMapper.saveGRInfo", p);
 	}
 	
 	public Object removeGRInfo(Map p){
-		return  getSqlSession().insert("SysUserMapper.removeGRInfo", p);
+		return  super.insert("SysUserMapper.removeGRInfo", p);
 	}
 
 	public Object removeInfo(Map p){
-		return  getSqlSession().delete("SysUserMapper.removeInfo", p);
+		return  super.delete("SysUserMapper.removeInfo", p);
 	}
 
 	public Object updateInfo(Map p){
-		return  getSqlSession().update("SysUserMapper.updateInfo", p);
+		return  super.update("SysUserMapper.updateInfo", p);
 	}
 
 	public Object updateAllInfo(Map p){
-		return  getSqlSession().update("SysUserMapper.updateAllInfo", p);
+		return  super.update("SysUserMapper.updateAllInfo", p);
 	}
 
 	public List queryAllInfo(Map p){
-		return  getSqlSession().selectList("SysUserMapper.queryAllInfo", p);
+		return  super.selectList("SysUserMapper.queryAllInfo", p);
 	}
 	
 	public List queryInfo(Map p){
-		return  getSqlSession().selectList("SysUserMapper.queryInfo", p);
+		return  super.selectList("SysUserMapper.queryInfo", p);
 	}
 
 	public Object queryCountInfo(Map p) {
-		return  getSqlSession().selectOne("SysUserMapper.queryCountInfo", p);
+		return  super.selectOne("SysUserMapper.queryCountInfo", p);
 	}
 
 	public Map queryByPageInfo(Map p, Map page){

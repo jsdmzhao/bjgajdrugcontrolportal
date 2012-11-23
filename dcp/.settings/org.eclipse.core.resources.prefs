@@ -1,5 +1,6 @@
-#Wed Sep 12 22:30:23 CST 2012
+#Thu Nov 22 23:16:45 CST 2012
 eclipse.preferences.version=1
 encoding//WebRoot/admin/app/car/carView.jsp=UTF-8
 encoding//src/com/unis/core/database/IDataSetProvider.java=UTF-8
+encoding//src/com/unis/core/database/IDataSetProviderMySql.java=UTF-8
 encoding/<project>=UTF-8

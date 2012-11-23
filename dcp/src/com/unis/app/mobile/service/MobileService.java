@@ -2,9 +2,9 @@ package com.unis.app.mobile.service;
 
 import java.util.List;
 
-import com.unis.core.service.AbsServiceAdapter;
+import com.unis.core.service.AbsServiceAdapterMySql;
 
-public class MobileService<T> extends AbsServiceAdapter<T> {
+public class MobileService<T> extends AbsServiceAdapterMySql<T> {
 
 	@Override
 	public Object insert(String statmentId, Object o) {

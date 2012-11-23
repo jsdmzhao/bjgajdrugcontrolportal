@@ -28,14 +28,20 @@
 	</delete>
 	
 	<insert id="insertMobile" parameterType="hashmap">
-	    BEGIN
-		<foreach collection="list" item="item" separator=";">
-			IINSERT INTO SMS_BOXSENDING
-			  (ID, SENDER, RECEIVER, CONTENT, SENDTIME, INSERTTIME)
+		INSERT INTO SMS_BOXSENDING
+			  (SENDER, RECEIVER, CONTENT, SENDTIME, INSERTTIME )
 			VALUES
-			  (SEQ_SMS_SENDING.NEXTVAL,#{c_yhid}, FUN_GET_PHONE_FROM_YHID(#{item.c_yhid}), #{content}, sysdate, sysdate)
+		<foreach collection="list" item="item" separator=",">
+			  (#{c_yhid}, #{item.c_jsr}, #{c_nr}, NOW(), NOW())
 		</foreach>
-		;END;
+	</insert>
+	
+	
+	<insert id="insertOutMobile" parameterType="hashmap">
+		INSERT INTO SMS_BOXSENDING
+		  (SENDER, RECEIVER, CONTENT, SENDTIME, INSERTTIME)
+		VALUES
+		  (#{c_yhid},#{c_jsr}, #{c_nr}, now(), now())
 	</insert>
 	
 </mapper>

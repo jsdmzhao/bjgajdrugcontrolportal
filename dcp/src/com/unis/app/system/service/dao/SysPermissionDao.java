@@ -9,41 +9,42 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.unis.app.pagination.Pagination;
+import com.unis.core.database.impl.DataSetProviderImpl;
 import com.unis.core.service.AbsServiceAdapter;
 
 @Repository
-public class SysPermissionDao extends SqlSessionDaoSupport {
+public class SysPermissionDao<T> extends AbsServiceAdapter<T> {
 
 	public Object saveInfo(Map p){
-		return getSqlSession().insert("SysPermissionMapper.saveInfo", p);
+		return super.insert("SysPermissionMapper.saveInfo", p);
 	}
 
 	public Object saveAllInfo(Map p){
-		return getSqlSession().insert("SysPermissionMapper.saveAllInfo", p);
+		return super.insert("SysPermissionMapper.saveAllInfo", p);
 	}
 
 	public Object removeInfo(Map p){
-		return getSqlSession().delete("SysPermissionMapper.removeInfo", p);
+		return super.delete("SysPermissionMapper.removeInfo", p);
 	}
 
 	public Object updateInfo(Map p){
-		return getSqlSession().update("SysPermissionMapper.updateInfo", p);
+		return super.update("SysPermissionMapper.updateInfo", p);
 	}
 
 	public Object updateAllInfo(Map p){
-		return getSqlSession().update("SysPermissionMapper.updateAllInfo", p);
+		return super.update("SysPermissionMapper.updateAllInfo", p);
 	}
 
 	public List queryAllInfo(Map p){
-		return getSqlSession().selectList("SysPermissionMapper.queryAllInfo", p);
+		return super.selectList("SysPermissionMapper.queryAllInfo", p);
 	}
 
 	public List queryInfo(Map p){
-		return getSqlSession().selectList("SysPermissionMapper.queryInfo", p);
+		return super.selectList("SysPermissionMapper.queryInfo", p);
 	}
 
 	public Object queryCountInfo(Map p) {
-		return getSqlSession().selectOne("SysPermissionMapper.queryCountInfo", p);
+		return super.selectOne("SysPermissionMapper.queryCountInfo", p);
 	}
 
 	public Map queryByPageInfo(Map p, Map page){

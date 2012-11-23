@@ -9,49 +9,50 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.unis.app.pagination.Pagination;
+import com.unis.core.database.impl.DataSetProviderImpl;
 import com.unis.core.service.AbsServiceAdapter;
 
 @Repository
-public class HyjlDao  extends SqlSessionDaoSupport {
+public class HyjlDao<T> extends AbsServiceAdapter<T> {
 	
 	public Object saveInfo(Map p){
-		return  getSqlSession().insert("HyjlMapper.saveInfo", p);
+		return  super.insert("HyjlMapper.saveInfo", p);
 	}
 
 	public Object saveAllInfo(Map p){
-		return  getSqlSession().insert("HyjlMapper.saveAllInfo", p);
+		return  super.insert("HyjlMapper.saveAllInfo", p);
 	}
 	
 	public Object saveGRInfo(Map p){
-		return  getSqlSession().insert("HyjlMapper.saveGRInfo", p);
+		return  super.insert("HyjlMapper.saveGRInfo", p);
 	}
 	
 	public Object removeGRInfo(Map p){
-		return  getSqlSession().insert("HyjlMapper.removeGRInfo", p);
+		return  super.insert("HyjlMapper.removeGRInfo", p);
 	}
 
 	public Object removeInfo(Map p){
-		return  getSqlSession().delete("HyjlMapper.removeInfo", p);
+		return  super.delete("HyjlMapper.removeInfo", p);
 	}
 
 	public Object updateInfo(Map p){
-		return  getSqlSession().update("HyjlMapper.updateInfo", p);
+		return  super.update("HyjlMapper.updateInfo", p);
 	}
 
 	public Object updateAllInfo(Map p){
-		return  getSqlSession().update("HyjlMapper.updateAllInfo", p);
+		return  super.update("HyjlMapper.updateAllInfo", p);
 	}
 
 	public List queryAllInfo(Map p){
-		return  getSqlSession().selectList("HyjlMapper.queryAllInfo", p);
+		return  super.selectList("HyjlMapper.queryAllInfo", p);
 	}
 	
 	public List queryInfo(Map p){
-		return  getSqlSession().selectList("HyjlMapper.queryInfo", p);
+		return  super.selectList("HyjlMapper.queryInfo", p);
 	}
 
 	public Object queryCountInfo(Map p) {
-		return  getSqlSession().selectOne("HyjlMapper.queryCountInfo", p);
+		return  super.selectOne("HyjlMapper.queryCountInfo", p);
 	}
 
 	public Map queryByPageInfo(Map p, Map page){

@@ -270,7 +270,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				<s:iterator value="resMap.lddtList" var="news" begin="1">
 					<div id="lddt_news_list">
-						<div id="lddt_news_list_c" style="width:270px;">
+						<div id="lddt_news_list_c" style="width:265px;">
 							<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 							<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 								<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -282,8 +282,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div id="lddt_news_list_d">
 							<s:property value="#news.d_fbsj.substring(0,10)"/>
 							<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								<!-- <img src="newimages/new.gif" style="margin-top: 6px;"/> -->
-								[新]
+							  <img src="newimages/new.gif"/>
 							</s:if>
 						</div>
 					</div>
@@ -415,7 +414,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 					<s:iterator value="resMap.tztbList" var="news">
 						<div id="lddt_news_list">
-							<div id="lddt_news_list_c" style="width:380px;">
+							<div id="lddt_news_list_c" style="width:375px;">
 								<img src="newimages/dote.gif" style="margin-top:6px;"/>
 								<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -427,7 +426,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div id="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
 								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								[新]
+								  <img src="newimages/new.gif"/>
 								</s:if>
 							</div>
 						</div>
@@ -444,7 +443,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 					<s:iterator value="resMap.dwjsList" var="news">
 						<div id="lddt_news_list">
-							<div id="lddt_news_list_c" style="width:380px;">
+							<div id="lddt_news_list_c" style="width:375px;">
 								<img src="newimages/dote.gif" style="margin-top:6px;"/>
 								<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -456,7 +455,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div id="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
 								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-									[新]
+								  <img src="newimages/new.gif"/>
 								</s:if>
 							</div>
 						</div>
@@ -599,7 +598,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="xxph_title_content">
 							<div class="jrzb_title_img"><img src="newimages/content_title_img.png" /></div>
 							<div class="jrzb_title_font">信息排行</div>
-							<div class="jwgk_content_center_title_more">更多&gt;&gt;</div>
+							<div class="jwgk_content_center_title_more"></div>
 						</div>
 						<div class="main-cons" style="height: 270px;">
 							<div id="tabph">
@@ -717,7 +716,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="ztzl_content_center_content">
 					<s:iterator value="resMap.jddtList" var="news">
 						<div id="lddt_news_list">
-							<div id="lddt_news_list_c" style="width:260px;">
+							<div id="lddt_news_list_c" style="width:230px;">
 								<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 								<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -729,7 +728,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div id="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
 								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-									[新]
+								  <img src="newimages/new.gif"/>
 								</s:if>
 							</div>
 						</div>
@@ -744,7 +743,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="ztzl_content_center_content">
 					<s:iterator value="resMap.jdwjList" var="news">
 						<div id="lddt_news_list">
-							<div id="lddt_news_list_c" style="width:260px;">
+							<div id="lddt_news_list_c" style="width:230px;">
 								<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 								<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -756,7 +755,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div id="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
 								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-									[新]
+								  <img src="newimages/new.gif"/>
 								</s:if>
 							</div>
 						</div>
@@ -774,8 +773,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="ztzl_content_center_content">
 					<s:iterator value="resMap.qxjxList" var="news">
 						<div id="lddt_news_list">
-							<div id="lddt_news_list_c" style="width:210px;">
-								<img src="newimages/dote.gif" style="margin-top:6px;"/> 
+							<div id="lddt_news_list_c" style="width:230px;margin-left: 2px;">
+								<img src="newimages/dote.gif" style="margin-top:6px; margin-left: 0px;"/> 
 								<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
 										<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
@@ -786,7 +785,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div id="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
 								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-									[新]
+									 <img src="newimages/new.gif"/>
 								</s:if>
 							</div>
 						</div>
@@ -801,7 +800,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="ztzl_content_center_content">
 					<s:iterator value="resMap.mtgzList" var="news">
 						<div id="lddt_news_list">
-							<div id="lddt_news_list_c" style="width:210px;">
+							<div id="lddt_news_list_c" style="width:230px;margin-left: 2px;">
 								<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 								<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -813,7 +812,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div id="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
 								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-									[新]
+									 <img src="newimages/new.gif"/>
 								</s:if>
 							</div>
 						</div>

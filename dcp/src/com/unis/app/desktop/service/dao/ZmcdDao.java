@@ -5,46 +5,45 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.mybatis.spring.support.SqlSessionDaoSupport;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.unis.app.pagination.Pagination;
+import com.unis.core.database.impl.DataSetProviderImpl;
 import com.unis.core.service.AbsServiceAdapter;
 
 @Repository
-public class ZmcdDao extends SqlSessionDaoSupport {
+public class ZmcdDao<T> extends AbsServiceAdapter<T>  {
 
 	public Object saveInfo(Map p){
-		return getSqlSession().insert("ZmcdMapper.saveInfo", p);
+		return super.insert("ZmcdMapper.saveInfo", p);
 	}
 
 	public Object saveAllInfo(Map p){
-		return getSqlSession().insert("ZmcdMapper.saveAllInfo", p);
+		return super.insert("ZmcdMapper.saveAllInfo", p);
 	}
 
 	public Object removeInfo(Map p){
-		return getSqlSession().delete("ZmcdMapper.removeInfo", p);
+		return super.delete("ZmcdMapper.removeInfo", p);
 	}
 
 	public Object updateInfo(Map p){
-		return getSqlSession().update("ZmcdMapper.updateInfo", p);
+		return super.update("ZmcdMapper.updateInfo", p);
 	}
 
 	public Object updateAllInfo(Map p){
-		return getSqlSession().update("ZmcdMapper.updateAllInfo", p);
+		return super.update("ZmcdMapper.updateAllInfo", p);
 	}
 
 	public List queryAllInfo(Map p){
-		return getSqlSession().selectList("ZmcdMapper.queryAllInfo", p);
+		return super.selectList("ZmcdMapper.queryAllInfo", p);
 	}
 
 	public List queryInfo(Map p){
-		return getSqlSession().selectList("ZmcdMapper.queryInfo", p);
+		return super.selectList("ZmcdMapper.queryInfo", p);
 	}
 
 	public Object queryCountInfo(Map p) {
-		return getSqlSession().selectOne("ZmcdMapper.queryCountInfo", p);
+		return super.selectOne("ZmcdMapper.queryCountInfo", p);
 	}
 
 

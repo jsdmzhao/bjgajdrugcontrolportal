@@ -5,49 +5,48 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.mybatis.spring.support.SqlSessionDaoSupport;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.unis.app.pagination.Pagination;
+import com.unis.core.database.impl.DataSetProviderImpl;
 import com.unis.core.service.AbsServiceAdapter;
 
 @Repository
-public class WdzmDao extends SqlSessionDaoSupport {
+public class WdzmDao<T> extends AbsServiceAdapter<T> {
 
 	public Object saveInfo(Map p){
-		return getSqlSession().insert("WdzmMapper.saveInfo", p);
+		return super.insert("WdzmMapper.saveInfo", p);
 	}
 
 	public Object saveAllInfo(Map p){
-		return getSqlSession().insert("WdzmMapper.saveAllInfo", p);
+		return super.insert("WdzmMapper.saveAllInfo", p);
 	}
 
 	public Object removeInfo(Map p){
-		return getSqlSession().delete("WdzmMapper.removeInfo", p);
+		return super.delete("WdzmMapper.removeInfo", p);
 	}
 
 	public Object updateInfo(Map p){
-		return getSqlSession().update("WdzmMapper.updateInfo", p);
+		return super.update("WdzmMapper.updateInfo", p);
 	}
 
 	public Object updateAllInfo(Map p){
-		return getSqlSession().update("WdzmMapper.updateAllInfo", p);
+		return super.update("WdzmMapper.updateAllInfo", p);
 	}
 
 	public List queryAllInfo(Map p){
-		return getSqlSession().selectList("WdzmMapper.queryAllInfo", p);
+		return super.selectList("WdzmMapper.queryAllInfo", p);
 	}
 	public List queryCd(Map p){
-		return getSqlSession().selectList("WdzmMapper.queryCd", p);
+		return super.selectList("WdzmMapper.queryCd", p);
 	}
 
 	public List queryInfo(Map p){
-		return getSqlSession().selectList("WdzmMapper.queryInfo", p);
+		return super.selectList("WdzmMapper.queryInfo", p);
 	}
 
 	public Object queryCountInfo(Map p) {
-		return getSqlSession().selectOne("WdzmMapper.queryCountInfo", p);
+		return super.selectOne("WdzmMapper.queryCountInfo", p);
 	}
 	
 

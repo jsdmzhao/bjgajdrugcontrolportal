@@ -6,7 +6,7 @@ import java.util.List;
  *
  * @param <T>
  */
-public interface IDataSetProvider<T> {
+public interface IDataSetProviderMySql<T> {
 
     /**
      * @param statmentId

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 
 import com.unis.app.mobile.model.Mobile;
 import com.unis.core.service.AbsServiceAdapter;
+import com.unis.core.service.AbsServiceAdapterMySql;
 import com.unis.core.util.Globals;
 
 
@@ -25,7 +26,7 @@ public class MobileAction {
 	private Mobile mobile;
 
 	@Autowired
-	private AbsServiceAdapter<Integer> mobileService = null;
+	private AbsServiceAdapterMySql<Integer> mobileService = null;
 	
 	@SuppressWarnings("unchecked")
 	public String mobileSave(Map sqlParamMap, HttpServletRequest request){
@@ -41,12 +42,27 @@ public class MobileAction {
 			List<Mobile> list = new ArrayList<Mobile>();
 			for(String jsr : jsrs){
 				Mobile msg = new Mobile();
-				msg.setC_yhid(jsr);
+				String yhid = jsr.substring(0, jsr.indexOf("=")-1);
+				String dhhm = jsr.substring(jsr.indexOf("=")+1, jsr.length());
+				msg.setC_yhid(yhid);
+				msg.setC_jsr(dhhm);
 				list.add(msg);
 			}
 			sqlParamMap.put("list", list);
 		}
 		mobileService.insert("MobileMapper.insertMobile", sqlParamMap);
+		return Globals.SUCCESS;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public String mobileOutSave(Map sqlParamMap, HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		String c_yhid = session.getAttribute("userId")+"";
+		String c_sjhm = session.getAttribute("cSjhm")+"";
+		sqlParamMap.put("c_yhid", c_yhid);
+		sqlParamMap.put("c_sjhm", c_sjhm);
+		mobileService.insert("MobileMapper.insertOutMobile", sqlParamMap);
 		return Globals.SUCCESS;
 	}
 	
@@ -93,13 +109,12 @@ public class MobileAction {
 		this.mobile = mobile;
 	}
 
-	public AbsServiceAdapter<Integer> getMobileService() {
+	public AbsServiceAdapterMySql<Integer> getMobileService() {
 		return mobileService;
 	}
 
-	public void setMobileService(AbsServiceAdapter<Integer> mobileService) {
+	public void setMobileService(AbsServiceAdapterMySql<Integer> mobileService) {
 		this.mobileService = mobileService;
 	}
 
-	
 }

@@ -9,59 +9,64 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.unis.app.pagination.Pagination;
+import com.unis.core.database.impl.DataSetProviderImpl;
 import com.unis.core.service.AbsServiceAdapter;
 
 @Repository
-public class UserInfoDao  extends SqlSessionDaoSupport {
+public class UserInfoDao<T> extends AbsServiceAdapter<T> {
 	
 	public Object saveInfo(Map p){
-		return  getSqlSession().insert("UserInfoMapper.saveInfo", p);
+		return  super.insert("UserInfoMapper.saveInfo", p);
 	}
 
 	public Object saveAllInfo(Map p){
-		return  getSqlSession().insert("UserInfoMapper.saveAllInfo", p);
+		return  super.insert("UserInfoMapper.saveAllInfo", p);
 	}
 	
 	public Object saveGRInfo(Map p){
-		return  getSqlSession().insert("UserInfoMapper.saveGRInfo", p);
+		return  super.insert("UserInfoMapper.saveGRInfo", p);
 	}
 	
 	public Object removeGRInfo(Map p){
-		return  getSqlSession().insert("UserInfoMapper.removeGRInfo", p);
+		return  super.insert("UserInfoMapper.removeGRInfo", p);
 	}
 
 	public Object removeInfo(Map p){
-		return  getSqlSession().delete("UserInfoMapper.removeInfo", p);
+		return  super.delete("UserInfoMapper.removeInfo", p);
 	}
 
 	public Object updateInfo(Map p){
-		return  getSqlSession().update("UserInfoMapper.updateInfo", p);
+		return  super.update("UserInfoMapper.updateInfo", p);
 	}
 
 	public Object updateAllInfo(Map p){
-		return  getSqlSession().update("UserInfoMapper.updateAllInfo", p);
+		return  super.update("UserInfoMapper.updateAllInfo", p);
 	}
 
 	public List queryAllInfo(Map p){
-		return  getSqlSession().selectList("UserInfoMapper.queryAllInfo", p);
+		return  super.selectList("UserInfoMapper.queryAllInfo", p);
 	}
 	
 	public List choose(Map p){
-		return  getSqlSession().selectList("UserInfoMapper.choose", p);
+		return  super.selectList("UserInfoMapper.choose", p);
+	}
+	
+	public List chooseMobile(Map p){
+		return  super.selectList("UserInfoMapper.chooseMobile", p);
 	}
 	
 	
 	public List queryInfo(Map p){
-		return  getSqlSession().selectList("UserInfoMapper.queryInfo", p);
+		return  super.selectList("UserInfoMapper.queryInfo", p);
 	}
 	
 	public List getSr(){
-		return  getSqlSession().selectList("UserInfoMapper.getSr" );
+		return  super.selectList("UserInfoMapper.getSr","");
 	}
 	
 	
 	public Object queryCountInfo(Map p) {
-		return  getSqlSession().selectOne("UserInfoMapper.queryCountInfo", p);
+		return  super.selectOne("UserInfoMapper.queryCountInfo", p);
 	}
 
 	public Map queryByPageInfo(Map p, Map page){
