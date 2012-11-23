@@ -126,13 +126,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	
 	        //formMap["c_nr"] = editor.document.getBody().getHtml();
 	        formMap["c_jsr"] = box1.getValue();
-			
+	        
         	MobileAction.mobileSave(formMap,function (result){
         		
         		if(result == 'success'){
         			LG.showSuccess('保存成功', function () { 
-                        f_cancel();
-                        parent.loadGrid();
+                        //f_cancel();
+                        //parent.loadGrid();
+                        window.location.href="success.jsp";
                     });
         		} else {
         		    LG.showError('保存失败');
@@ -145,7 +146,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             parent.dialog_hidden();
         }
         
-        UserInfoSvc.choose(function(rdata){
+        UserInfoSvc.chooseMobile(function(rdata){
 	  			if(rdata != null){
 	
 	  	            box1 = $("#c_jsr").ligerComboBox({

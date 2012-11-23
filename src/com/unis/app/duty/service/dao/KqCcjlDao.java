@@ -9,49 +9,50 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.unis.app.pagination.Pagination;
+import com.unis.core.database.impl.DataSetProviderImpl;
 import com.unis.core.service.AbsServiceAdapter;
 
 @Repository
-public class KqCcjlDao  extends SqlSessionDaoSupport {
+public class KqCcjlDao<T> extends AbsServiceAdapter<T>  {
 	
 	public Object saveInfo(Map p){
-		return  getSqlSession().insert("KqCcjlMapper.saveInfo", p);
+		return  super.insert("KqCcjlMapper.saveInfo", p);
 	}
 
 	public Object saveAllInfo(Map p){
-		return  getSqlSession().insert("KqCcjlMapper.saveAllInfo", p);
+		return  super.insert("KqCcjlMapper.saveAllInfo", p);
 	}
 	
 	public Object saveGRInfo(Map p){
-		return  getSqlSession().insert("KqCcjlMapper.saveGRInfo", p);
+		return  super.insert("KqCcjlMapper.saveGRInfo", p);
 	}
 	
 	public Object removeGRInfo(Map p){
-		return  getSqlSession().insert("KqCcjlMapper.removeGRInfo", p);
+		return  super.insert("KqCcjlMapper.removeGRInfo", p);
 	}
 
 	public Object removeInfo(Map p){
-		return  getSqlSession().delete("KqCcjlMapper.removeInfo", p);
+		return  super.delete("KqCcjlMapper.removeInfo", p);
 	}
 
 	public Object updateInfo(Map p){
-		return  getSqlSession().update("KqCcjlMapper.updateInfo", p);
+		return  super.update("KqCcjlMapper.updateInfo", p);
 	}
 
 	public Object updateAllInfo(Map p){
-		return  getSqlSession().update("KqCcjlMapper.updateAllInfo", p);
+		return  super.update("KqCcjlMapper.updateAllInfo", p);
 	}
 
 	public List queryAllInfo(Map p){
-		return  getSqlSession().selectList("KqCcjlMapper.queryAllInfo", p);
+		return  super.selectList("KqCcjlMapper.queryAllInfo", p);
 	}
 	
 	public List queryInfo(Map p){
-		return  getSqlSession().selectList("KqCcjlMapper.queryInfo", p);
+		return  super.selectList("KqCcjlMapper.queryInfo", p);
 	}
 
 	public Object queryCountInfo(Map p) {
-		return  getSqlSession().selectOne("KqCcjlMapper.queryCountInfo", p);
+		return  super.selectOne("KqCcjlMapper.queryCountInfo", p);
 	}
 
 	public Map queryByPageInfo(Map p, Map page){

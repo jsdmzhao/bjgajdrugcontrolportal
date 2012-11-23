@@ -9,55 +9,56 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.unis.app.pagination.Pagination;
+import com.unis.core.database.impl.DataSetProviderImpl;
 import com.unis.core.service.AbsServiceAdapter;
 
 @Repository
-public class KqYbjlDao  extends SqlSessionDaoSupport {
+public class KqYbjlDao<T> extends AbsServiceAdapter<T>  {
 	
 	public Object saveInfo(Map p){
-		return  getSqlSession().insert("KqYbjlMapper.saveInfo", p);
+		return  super.insert("KqYbjlMapper.saveInfo", p);
 	}
 
 	public Object saveAllInfo(Map p){
-		return  getSqlSession().insert("KqYbjlMapper.saveAllInfo", p);
+		return  super.insert("KqYbjlMapper.saveAllInfo", p);
 	}
 	
 	
 	
 	public Object setDkInfo(Map p){
-		return  getSqlSession().insert("KqYbjlMapper.setDkInfo", p);
+		return  super.insert("KqYbjlMapper.setDkInfo", p);
 	}
 	
 	public Object saveGRInfo(Map p){
-		return  getSqlSession().insert("KqYbjlMapper.saveGRInfo", p);
+		return  super.insert("KqYbjlMapper.saveGRInfo", p);
 	}
 	
 	public Object removeGRInfo(Map p){
-		return  getSqlSession().insert("KqYbjlMapper.removeGRInfo", p);
+		return  super.insert("KqYbjlMapper.removeGRInfo", p);
 	}
 
 	public Object removeInfo(Map p){
-		return  getSqlSession().delete("KqYbjlMapper.removeInfo", p);
+		return  super.delete("KqYbjlMapper.removeInfo", p);
 	}
 
 	public Object updateInfo(Map p){
-		return  getSqlSession().update("KqYbjlMapper.updateInfo", p);
+		return  super.update("KqYbjlMapper.updateInfo", p);
 	}
 
 	public Object updateAllInfo(Map p){
-		return  getSqlSession().update("KqYbjlMapper.updateAllInfo", p);
+		return  super.update("KqYbjlMapper.updateAllInfo", p);
 	}
 
 	public List queryAllInfo(Map p){
-		return  getSqlSession().selectList("KqYbjlMapper.queryAllInfo", p);
+		return  super.selectList("KqYbjlMapper.queryAllInfo", p);
 	}
 	
 	public List queryInfo(Map p){
-		return  getSqlSession().selectList("KqYbjlMapper.queryInfo", p);
+		return  super.selectList("KqYbjlMapper.queryInfo", p);
 	}
 
 	public Object queryCountInfo(Map p) {
-		return  getSqlSession().selectOne("KqYbjlMapper.queryCountInfo", p);
+		return  super.selectOne("KqYbjlMapper.queryCountInfo", p);
 	}
 
 	public Map queryByPageInfo(Map p, Map page){

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.unis.core.service.AbsServiceAdapter;
 
+@SuppressWarnings("rawtypes")
 public class SimpleDaoSupport extends AbsServiceAdapter {
 	
 	@Override

@@ -148,6 +148,18 @@ public class BlogAction {
 		blog = (Blog) blogService.selectOne("BlogMapper.getBlog", blog);
 		return Globals.SUCCESS;
 	}
+	
+	public String blogCheckRepeat(HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		String c_yhid = session.getAttribute("userId")+"";
+		int cnt = (Integer) blogService.selectOne("BlogMapper.checkRepeatBlog", c_yhid);
+		if(cnt == 0){
+			return Globals.SUCCESS;
+		} else {
+			return Globals.FAILURE;
+		}
+	}
 
 	public Blog getBlog() {
 		return blog;

@@ -9,10 +9,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date; 
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
  
 
@@ -687,7 +686,8 @@ public final class MyUtils {
     	
 	}  
 	
-     public static void main(String[] args) {
+     @SuppressWarnings("unused")
+	public static void main(String[] args) {
     	  
     	// System.out.println(MyUtils.toStand("company_name_type",1)); 
     	// System.out.println(MyUtils.toStand("CATERING_TYPE",2)); 

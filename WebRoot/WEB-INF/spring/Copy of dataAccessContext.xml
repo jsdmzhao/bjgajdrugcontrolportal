@@ -18,7 +18,6 @@
 		</property>
 	</bean> 
 	
-	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${driverClassName}" />
 		<property name="url" value="${url}" />
@@ -29,18 +28,7 @@
 		<property name="maxWait" value="500" /> 
 		<property name="defaultAutoCommit" value="true"/>
 	</bean>
-	
-	<!-- proxool连接池  
-	<bean id="dataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource">
-	   <property name="alias" value="${alias}" />
-	   <property name="driver" value="${driverClassName}" />
-	   <property name="driverUrl" value="${url}" />
-	   <property name="user" value="${username}" />   
-	   <property name="password" value="${password}" />   
-	   <property name="maximumConnectionCount" value="500" />   
-	   <property name="minimumConnectionCount" value="10" />   
-	</bean>   
-	 -->
+
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="/WEB-INF/mybatis/mybatis-config.xml" />
@@ -87,68 +75,6 @@
     </bean>
     <bean id="absServiceAdapter" class="com.unis.core.service.AbsServiceAdapter" abstract="true">
         <property name="dataSetProvider" ref="dataSetProvider" />
-    </bean>
-    
-    
-    <bean id="dataSourceMySql" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName" value="${driverClassName_mysql}" />
-		<property name="url" value="${url_mysql}" />
-		<property name="username" value="${username_mysql}" />
-		<property name="password" value="${password_mysql}" />
-		<property name="maxActive" value="100" /> 
-		<property name="maxIdle" value="30" /> 
-		<property name="maxWait" value="500" /> 
-		<property name="defaultAutoCommit" value="true"/>
-	</bean>
-
-	<bean id="sqlSessionFactoryMySql" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSourceMySql" />
-		<property name="configLocation" value="/WEB-INF/mybatis/mybatis-config-mysql.xml" />
-		<!-- mapper和resultmap配置路径 -->
-		
-		<property name="mapperLocations">
-			<list>
-				<!-- 表示在com.unis.app/**.mapper包或以下所有目录中，以-mapper.xml结尾所有文件 -->
-				<value>classpath:com/unis/app/mobile/mapper/*-mapper.xml</value>
-			</list>
-		</property>
-	</bean>
-	
-	<!-- 构造 sqlSession -->
-	<bean id="sqlSessionMySql" class="org.mybatis.spring.SqlSessionTemplate" >
-		<constructor-arg index="0" ref="sqlSessionFactoryMySql" />
-	</bean>
-
-	<!-- 配置事务管理器 -->
-	<bean id="txManagerMySql" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSourceMySql" />
-	</bean>
-
-	<!-- 配置事务特性，配置add,delete,update开始的方法，事务传播行为为required -->
-	<tx:advice id="txAdviceMySql" transaction-manager="txManagerMySql">
-		<tx:attributes>
-			<!-- all methods starting with 'get' are read-only -->
-			<tx:method name="get*" read-only="true" />
-			<!-- other methods use the default transaction settings (see below) -->
-			<tx:method name="*" />
-		</tx:attributes>
-	</tx:advice>
-
-	<!-- 配置哪些类的方法进行事务管理，当前为service包下的方法，类中所有方法需要，还需要参考tx:advice的设置 -->
-	<aop:config>
-		<aop:pointcut id="allManagerMethodMySql"
-			expression="execution (* com.unis.app..service.*Service.*(..))" />
-		<aop:advisor advice-ref="txAdviceMySql" pointcut-ref="allManagerMethodMySql" />
-	</aop:config>
-
-
-	<!-- 基础配置 -->
-	<bean id="dataSetProviderMySql" class="com.unis.core.database.impl.DataSetProviderImplMySql">
-        <property name="sqlSessionMySql" ref="sqlSessionMySql" />
-    </bean>
-    
-    <bean id="absServiceAdapterMySql" class="com.unis.core.service.AbsServiceAdapterMySql" abstract="true">
-        <property name="dataSetProviderMySql" ref="dataSetProviderMySql" />
     </bean>
 	
 

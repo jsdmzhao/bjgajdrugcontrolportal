@@ -80,6 +80,14 @@
 		  </if>
 	</select>
 	
+	
+	<select id="checkRepeatBlog" resultType="int" parameterType="string">
+		SELECT COUNT(*) CNT
+		  FROM B_RIZHI
+		WHERE C_YHID = #{c_yhid}
+		  AND D_DJ LIKE TO_DATE(TO_CHAR(SYSDATE,'YYYY-MM-DD'),'YYYY-MM-DD')
+	</select>
+	
 	<update id="updateBlog" parameterType="hashmap">
 		UPDATE B_RIZHI
 		   SET  C_BT   =	#{c_bt,jdbcType=VARCHAR},

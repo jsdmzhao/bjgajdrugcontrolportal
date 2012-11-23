@@ -9,45 +9,46 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.unis.app.pagination.Pagination;
+import com.unis.core.database.impl.DataSetProviderImpl;
 import com.unis.core.service.AbsServiceAdapter;
 
 @Repository
-public class SysButtonDao  extends SqlSessionDaoSupport {
+public class SysButtonDao<T> extends AbsServiceAdapter<T> {
 	
 	public Object saveInfo(Map p){
-		return  getSqlSession().insert("SysButtonMapper.saveInfo", p);
+		return  super.insert("SysButtonMapper.saveInfo", p);
 	}
 
 	public Object saveAllInfo(Map p){
-		return  getSqlSession().insert("SysButtonMapper.saveAllInfo", p);
+		return  super.insert("SysButtonMapper.saveAllInfo", p);
 	}
 
 	public Object removeInfo(Map p){
-		return  getSqlSession().delete("SysButtonMapper.removeInfo", p);
+		return  super.delete("SysButtonMapper.removeInfo", p);
 	}
 	
 	public Object removeInfoByMenuId(Map p){
-		return  getSqlSession().delete("SysButtonMapper.removeInfoByMenuId", p);
+		return  super.delete("SysButtonMapper.removeInfoByMenuId", p);
 	}
 
 	public Object updateInfo(Map p){
-		return  getSqlSession().update("SysButtonMapper.updateInfo", p);
+		return  super.update("SysButtonMapper.updateInfo", p);
 	}
 
 	public Object updateAllInfo(Map p){
-		return  getSqlSession().update("SysButtonMapper.updateAllInfo", p);
+		return  super.update("SysButtonMapper.updateAllInfo", p);
 	}
 
 	public List queryAllInfo(Map p){
-		return  getSqlSession().selectList("SysButtonMapper.queryAllInfo", p);
+		return  super.selectList("SysButtonMapper.queryAllInfo", p);
 	}
 
 	public List queryInfo(Map p){
-		return  getSqlSession().selectList("SysButtonMapper.queryInfo", p);
+		return  super.selectList("SysButtonMapper.queryInfo", p);
 	}
 
 	public Object queryCountInfo(Map p) {
-		return  getSqlSession().selectOne("SysButtonMapper.queryCountInfo", p);
+		return  super.selectOne("SysButtonMapper.queryCountInfo", p);
 	}
 
 	public Map queryByPageInfo(Map p, Map page){

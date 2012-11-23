@@ -140,7 +140,7 @@
 				       NVL(C_SFZD,'0') C_SFZD,
 				       NVL(C_SFGL,'0') C_SFGL,
 				       NVL(C_SFTJ,'0') C_SFTJ,
-				       NVL(C_SHJG,'0') C_SHJG,
+				       C_SHJG,
 				       C_TPLJDZ
 				  FROM B_XINWEN
 				 WHERE 1 = 1

@@ -11,7 +11,6 @@ public class URLDemo {
 	public static void main(String[] args) {
 
 		System.out.println("starting... ");
-		int c;
 
 		HttpURLConnection urlcon = null;
 		try {

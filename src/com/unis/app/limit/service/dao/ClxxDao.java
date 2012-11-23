@@ -9,49 +9,50 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.unis.app.pagination.Pagination;
+import com.unis.core.database.impl.DataSetProviderImpl;
 import com.unis.core.service.AbsServiceAdapter;
 
 @Repository
-public class ClxxDao  extends SqlSessionDaoSupport {
+public class ClxxDao<T> extends AbsServiceAdapter<T> {
 	
 	public Object saveInfo(Map p){
-		return  getSqlSession().insert("ClxxMapper.saveInfo", p);
+		return  super.insert("ClxxMapper.saveInfo", p);
 	}
 
 	public Object saveAllInfo(Map p){
-		return  getSqlSession().insert("ClxxMapper.saveAllInfo", p);
+		return  super.insert("ClxxMapper.saveAllInfo", p);
 	}
 	
 	public Object saveGRInfo(Map p){
-		return  getSqlSession().insert("ClxxMapper.saveGRInfo", p);
+		return  super.insert("ClxxMapper.saveGRInfo", p);
 	}
 	
 	public Object removeGRInfo(Map p){
-		return  getSqlSession().insert("ClxxMapper.removeGRInfo", p);
+		return  super.insert("ClxxMapper.removeGRInfo", p);
 	}
 
 	public Object removeInfo(Map p){
-		return  getSqlSession().delete("ClxxMapper.removeInfo", p);
+		return  super.delete("ClxxMapper.removeInfo", p);
 	}
 
 	public Object updateInfo(Map p){
-		return  getSqlSession().update("ClxxMapper.updateInfo", p);
+		return  super.update("ClxxMapper.updateInfo", p);
 	}
 
 	public Object updateAllInfo(Map p){
-		return  getSqlSession().update("ClxxMapper.updateAllInfo", p);
+		return  super.update("ClxxMapper.updateAllInfo", p);
 	}
 
 	public List queryAllInfo(Map p){
-		return  getSqlSession().selectList("ClxxMapper.queryAllInfo", p);
+		return  super.selectList("ClxxMapper.queryAllInfo", p);
 	}
 	
 	public List queryInfo(Map p){
-		return  getSqlSession().selectList("ClxxMapper.queryInfo", p);
+		return  super.selectList("ClxxMapper.queryInfo", p);
 	}
 
 	public Object queryCountInfo(Map p) {
-		return  getSqlSession().selectOne("ClxxMapper.queryCountInfo", p);
+		return  super.selectOne("ClxxMapper.queryCountInfo", p);
 	}
 
 	public Map queryByPageInfo(Map p, Map page){
@@ -72,7 +73,7 @@ public class ClxxDao  extends SqlSessionDaoSupport {
 		}
 	}
 	public List getWh(Map p) {
-		return  getSqlSession().selectList("ClxxMapper.getWh", p);
+		return  super.selectList("ClxxMapper.getWh", p);
 	}
 
 	

@@ -9,41 +9,42 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.unis.app.pagination.Pagination;
+import com.unis.core.database.impl.DataSetProviderImpl;
 import com.unis.core.service.AbsServiceAdapter;
 
 @Repository
-public class DmDao extends SqlSessionDaoSupport {
+public class DmDao<T> extends AbsServiceAdapter<T> {
 
 	public Object saveInfo(Map p){
-		return getSqlSession().insert("DmMapper.saveInfo", p);
+		return super.insert("DmMapper.saveInfo", p);
 	}
 
 	public Object saveAllInfo(Map p){
-		return getSqlSession().insert("DmMapper.saveAllInfo", p);
+		return super.insert("DmMapper.saveAllInfo", p);
 	}
 
 	public Object removeInfo(Map p){
-		return getSqlSession().delete("DmMapper.removeInfo", p);
+		return super.delete("DmMapper.removeInfo", p);
 	}
 
 	public Object updateInfo(Map p){
-		return getSqlSession().update("DmMapper.updateInfo", p);
+		return super.update("DmMapper.updateInfo", p);
 	}
 
 	public Object updateAllInfo(Map p){
-		return getSqlSession().update("DmMapper.updateAllInfo", p);
+		return super.update("DmMapper.updateAllInfo", p);
 	}
 
 	public List queryAllInfo(Map p){
-		return getSqlSession().selectList("DmMapper.queryAllInfo", p);
+		return super.selectList("DmMapper.queryAllInfo", p);
 	}
 
 	public List queryInfo(Map p){
-		return getSqlSession().selectList("DmMapper.queryInfo", p);
+		return super.selectList("DmMapper.queryInfo", p);
 	}
 
 	public Object queryCountInfo(Map p) {
-		return getSqlSession().selectOne("DmMapper.queryCountInfo", p);
+		return super.selectOne("DmMapper.queryCountInfo", p);
 	}
 
 	public Map queryByPageInfo(Map p, Map page){

@@ -6,14 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.stereotype.Service ;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.unis.app.system.service.dao.DmDao;
-import com.unis.app.system.service.dao.SysUserDao;
 import com.unis.app.userinfo.service.dao.UserInfoDao;
 
 @Service
@@ -25,31 +22,38 @@ public class UserInfoSvc  {
 	@Autowired
 	private DmDao dmDao;
 
+	@SuppressWarnings("rawtypes")
 	public Object save(Map p) throws SQLException {
 		Object userId =userDao.saveInfo(p);
 		return userId;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public Object saveAll(Map p) throws SQLException {
 		return userDao.saveAllInfo(p);
 	}
 
+	@SuppressWarnings("rawtypes")
 	public Object remove(Map p) throws SQLException {
 		return userDao.removeInfo(p);
 	}
 
+	@SuppressWarnings("rawtypes")
 	public Object update(Map p) throws SQLException {
 		return userDao.updateInfo(p);
 	}
 
+	@SuppressWarnings("rawtypes")
 	public Object updateAll(Map p) throws SQLException {
 		return userDao.updateAllInfo(p);
 	}
 
+	@SuppressWarnings("rawtypes")
 	public List queryAll(Map p) throws SQLException {
 		return userDao.queryAllInfo(p);
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public List choose() throws SQLException {
 		Map p=new HashMap();
 		p.put("nBxh", "DEP");
@@ -65,12 +69,37 @@ public class UserInfoSvc  {
 				cp.put("text", cp.get("cXm"));
 				cp.put("value", cp.get("userId"));
 				cp.put("id", cp.get("userId"));
+				cp.put("tel", cp.get("cDhhm"));
 			}
 			tp.put("children", clist);
 		}
 		return list;
 	}
 	
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public List chooseMobile() throws SQLException {
+		Map p=new HashMap();
+		p.put("nBxh", "DEP");
+		List<Map> list=dmDao.queryAllInfo(p);
+		for (int i = 0; i < list.size(); i++) {
+			Map tp=list.get(i);
+			tp.put("text", tp.get("cMc"));
+			Map ctp=new HashMap();
+			ctp.put("cYhz", tp.get("cDm"));
+			List<Map> clist=userDao.queryAllInfo(ctp);
+			for (int j = 0; j < clist.size(); j++) {
+				Map cp=clist.get(j);
+				cp.put("text", cp.get("cXm"));
+				cp.put("value", cp.get("userId")+"="+cp.get("cSjhm"));
+				cp.put("id", cp.get("userId"));
+			}
+			tp.put("children", clist);
+		}
+		return list;
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public List<Map> chooseWithDep() throws SQLException {
 		
 		List<Map> rlist=new ArrayList();
@@ -95,6 +124,7 @@ public class UserInfoSvc  {
 	
 	
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public List chooseOnlyUser() throws SQLException {
 		Map ctp=new HashMap();
 		List<Map> clist=userDao.queryAllInfo(ctp);
@@ -107,6 +137,7 @@ public class UserInfoSvc  {
 		return clist;
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public List getDep() throws SQLException {
 		Map p=new HashMap();
 		p.put("nBxh", "DEP");
@@ -121,6 +152,7 @@ public class UserInfoSvc  {
 		return list;
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public String getSr() throws SQLException {
 		
 	
@@ -138,6 +170,7 @@ public class UserInfoSvc  {
 	}
 	
 	
+	@SuppressWarnings("rawtypes")
 	public Map queryByPage(Map p, Map page) throws SQLException {
 		return userDao.queryByPageInfo(p, page);
 	}

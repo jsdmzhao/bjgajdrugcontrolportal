@@ -28,7 +28,34 @@
 	<bean id="blogService" class="com.unis.app.blog.service.BlogService" parent="absServiceAdapter"/>
 	<bean id="messageService" class="com.unis.app.message.service.MessageService" parent="absServiceAdapter"/>
 	<bean id="emailService" class="com.unis.app.email.service.EmailService" parent="absServiceAdapter"/>
-	<bean id="mobileService" class="com.unis.app.mobile.service.MobileService" parent="absServiceAdapter"/>
+	
+	<bean id="mobileService" class="com.unis.app.mobile.service.MobileService" parent="absServiceAdapterMySql"/>
     
-
+    <!-- zl 模块 -->
+	<bean id="clxxDao" class="com.unis.app.limit.service.dao.ClxxDao" parent="absServiceAdapter"/>
+	
+	<bean id="wdzmDao" class="com.unis.app.desktop.service.dao.WdzmDao" parent="absServiceAdapter"/>
+	<bean id="zmcdDao" class="com.unis.app.desktop.service.dao.ZmcdDao" parent="absServiceAdapter"/>
+	
+	<bean id="kqCcjlDao" class="com.unis.app.duty.service.dao.KqCcjlDao" parent="absServiceAdapter"/>
+	<bean id="kcqQqsbDao" class="com.unis.app.duty.service.dao.KqQqsbDao" parent="absServiceAdapter"/>
+	<bean id="kqSxbDao" class="com.unis.app.duty.service.dao.KqSxbDao" parent="absServiceAdapter"/>
+	<bean id="kqYbjlDao" class="com.unis.app.duty.service.dao.KqYbjlDao" parent="absServiceAdapter"/>
+	<bean id="kqZbDao" class="com.unis.app.duty.service.dao.KqZbDao" parent="absServiceAdapter"/>
+	
+	<bean id="holidayDao" class="com.unis.app.holiday.service.dao.HolidayDao" parent="absServiceAdapter"/>
+	
+	<bean id="kitDao" class="com.unis.app.kit.service.dao.KitDao" parent="absServiceAdapter"/>
+	
+	<bean id="hyjlDao" class="com.unis.app.meeting.service.dao.HyjlDao" parent="absServiceAdapter"/>
+	
+	<bean id="dmDao" class="com.unis.app.system.service.dao.DmDao" parent="absServiceAdapter"/>
+	<bean id="sysButtonDao" class="com.unis.app.system.service.dao.SysButtonDao" parent="absServiceAdapter"/>
+	<bean id="sysMenuDao" class="com.unis.app.system.service.dao.SysMenuDao" parent="absServiceAdapter"/>
+	<bean id="sysPermissionDao" class="com.unis.app.system.service.dao.SysPermissionDao" parent="absServiceAdapter"/>
+	<bean id="sysRoleDao" class="com.unis.app.system.service.dao.SysRoleDao" parent="absServiceAdapter"/>
+	<bean id="sysUserDao" class="com.unis.app.system.service.dao.SysUserDao" parent="absServiceAdapter"/>
+	
+	<bean id="userInfoDao" class="com.unis.app.userinfo.service.dao.UserInfoDao" parent="absServiceAdapter"/>
+	
 </beans>

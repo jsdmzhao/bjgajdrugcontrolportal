@@ -10,53 +10,54 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.unis.app.pagination.Pagination;
+import com.unis.core.database.impl.DataSetProviderImpl;
 import com.unis.core.service.AbsServiceAdapter;
 
 @Repository
-public class KqZbDao  extends SqlSessionDaoSupport {
+public class KqZbDao<T> extends AbsServiceAdapter<T>  {
 	
 	public Object saveInfo(Map p){
-		return  getSqlSession().insert("KqZbMapper.saveInfo", p);
+		return  super.insert("KqZbMapper.saveInfo", p);
 	}
 
 	public Object saveAllInfo(Map p){
-		return  getSqlSession().insert("KqZbMapper.saveAllInfo", p);
+		return  super.insert("KqZbMapper.saveAllInfo", p);
 	}
 	
 	public Object saveGRInfo(Map p){
-		return  getSqlSession().insert("KqZbMapper.saveGRInfo", p);
+		return  super.insert("KqZbMapper.saveGRInfo", p);
 	}
 	
 	public Object removeGRInfo(Map p){
-		return  getSqlSession().insert("KqZbMapper.removeGRInfo", p);
+		return  super.insert("KqZbMapper.removeGRInfo", p);
 	}
 
 	public Object removeInfo(Map p){
-		return  getSqlSession().delete("KqZbMapper.removeInfo", p);
+		return  super.delete("KqZbMapper.removeInfo", p);
 	}
 
 	public Object updateInfo(Map p){
-		return  getSqlSession().update("KqZbMapper.updateInfo", p);
+		return  super.update("KqZbMapper.updateInfo", p);
 	}
 
 	public Object updateAllInfo(Map p){
-		return  getSqlSession().update("KqZbMapper.updateAllInfo", p);
+		return  super.update("KqZbMapper.updateAllInfo", p);
 	}
 
 	public List queryAllInfo(Map p){
-		return  getSqlSession().selectList("KqZbMapper.queryAllInfo", p);
+		return  super.selectList("KqZbMapper.queryAllInfo", p);
 	}
 	
 	public List queryInfo(Map p){
-		return  getSqlSession().selectList("KqZbMapper.queryInfo", p);
+		return  super.selectList("KqZbMapper.queryInfo", p);
 	}
 
 	public Object queryCountInfo(Map p) {
-		return  getSqlSession().selectOne("KqZbMapper.queryCountInfo", p);
+		return  super.selectOne("KqZbMapper.queryCountInfo", p);
 	}
 	
 	public List getZb() throws SQLException {
-		return  getSqlSession().selectList("KqZbMapper.getZb");
+		return  super.selectList("KqZbMapper.getZb","");
 	}
 
 	public Map queryByPageInfo(Map p, Map page){
