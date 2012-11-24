@@ -50,7 +50,7 @@
 
 
 
-
+var resArr=new Array();
 
 $(function ()
 {
@@ -99,11 +99,11 @@ $(function ()
     
   DWREngine.setAsync(false); 
 
-  var resArr=new Array();
+
   ClxxSvc.queryAll(null,function(res){
   	
   	for(var i=0;i<res.length;i++){
-  		var obj={id:res[i].cXxwh,title:res[i].cXxwh,start:res[i].dXxrq};
+  		var obj={id:res[i].cXxwh,title:res[i].cXxwh,start:res[i].dXxrq,bz: res[i].cBz};
   		resArr[i]=obj;
   		 //  alert('#'+res[i].cXxwh+'-');
   		 if(res[i].cXxwh!='\n'){
@@ -147,7 +147,14 @@ function save(){
 
 }
 
-
+function del(){
+	for(var i=0;i<resArr.length;i++){
+	
+ 		   $('#'+resArr[i].bz).css("backgroundColor" ,"#FFFFFF");
+  		   $('#'+resArr[i].bz).text("\n");
+	}
+  		
+}
 
 </script>
 <style type="text/css">
@@ -250,7 +257,7 @@ function save(){
 </head>
 <body style="padding: 10px " onselectstart="return false;">
 <div id='external-events'>
-<input type='button' value='保存限行信息' onclick='save();'>
+<input type='button' value='保存限行信息' onclick='save();'><input type='button' value='清空限行信息' onclick='del();'>
 <h4>限行尾号</h4>
 <div class="box" style="background: #AFCCF1;position: relative;">0
 </div>
