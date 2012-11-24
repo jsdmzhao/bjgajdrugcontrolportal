@@ -89,6 +89,7 @@ if(userId==null){
                                       }
                                                   
                                   },
+                                  <% if("".equals(userId)){%>
                                   { display: '用户', name: 'userId', align: 'left', width: 300, minWidth: 60
                                   , validate: { required: true }, isSort: false,
                                   editor: { type: 'select', data:userList, valueColumnName: 'userId', displayColumnName: 'cXm' }, 
@@ -104,7 +105,9 @@ if(userId==null){
                                       }
                                                   
                                   }
-                                  , { display: '显示序号', name: 'nXsxh', align: 'left', width: 230, minWidth: 50
+                                  , 
+                                  <% }%>
+                                  { display: '显示序号', name: 'nXsxh', align: 'left', width: 230, minWidth: 50
                                   , editor: { type: 'text'}
                                   }
                                   ], dataAction: 'server', pageSize: 20, toolbar: {},
@@ -247,6 +250,7 @@ if(userId==null){
           var data = $.extend(true, {}, e.newdata);
           if (!isAddNew){
         	  data.nXh = e.record.nXh;
+        	
                   WdzmSvc.update(data, function(rdata) {
           			if (rdata) {
           				LG.showSuccess('修改成功', function() {
@@ -257,6 +261,9 @@ if(userId==null){
           			}
                   }); }
               else{
+            	  <% if(!"".equals(userId)){%>
+            	  data.userId='<%=userId%>';
+            	  <% }%>
             	 WdzmSvc.save(data, function(rdata) {
       			if (rdata) {
       				LG.showSuccess('保存成功', function() {
