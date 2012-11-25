@@ -25,7 +25,7 @@ if(c_bt == null){
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>北京禁毒信息系统</title>
+    <title>北京禁毒信息网</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">

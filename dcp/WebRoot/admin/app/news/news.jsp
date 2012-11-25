@@ -208,12 +208,13 @@ if(newsType == null){
           {
               if (!selected.MenuID)
               {
-                  grid.deleteRow(selected);
+                  //grid.deleteRow(selected);
                   //return;
                   NewsAction.newsDelete(selected.n_xh, function (data){
       	   	    	 if(data == 'success'){
       	   	    		LG.showSuccess('删除成功');
       	                //f_reload();
+      	                search();
       	    	     } else {
       	    	    	LG.showSuccess('删除失败');
       	 	    	 }
@@ -364,7 +365,7 @@ if(newsType == null){
                 }], 
                 dataAction: 'server', pageSize: 20, toolbar: toolbarOptions, sortName: 'MenuID',
 		        width: '98%', height: '100%', heightDiff: -5, checkbox: false, usePager: true, enabledEdit: true, 
-		        clickToEdit: false, fixedCellHeight: true, rowHeight: 25,
+		        clickToEdit: false, fixedCellHeight: true, rowHeight: 25,rownumbers:true,
 		        url:'<%=basePath%>newsPageList',parms:[{name:'news.c_lm',value:''},{name:'news.c_bt',value:''}]
 		        
     });

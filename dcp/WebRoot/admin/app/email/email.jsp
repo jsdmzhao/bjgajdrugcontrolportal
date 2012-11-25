@@ -50,7 +50,7 @@ String c_zt = request.getParameter("c_zt");
           { display: "标题", name: "c_bt", width: 400, type: "text", align: "left", editor: { type: 'text'} },
           { display: "添加时间", name: "d_dj", width: 160, type: "textarea", align: "left", editor: { type: 'text'} }
           ], dataAction: 'server', pageSize: 20, toolbar: {},
-           sortName: 'n_xh', 
+           sortName: 'n_xh', rownumbers:true,
           width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false
          // ,data: tempdata
       });

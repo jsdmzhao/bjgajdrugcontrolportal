@@ -51,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           ], dataAction: 'server', pageSize: 20, toolbar: {},
            sortName: 'n_xh', url: '<%=basePath%>blogList',
           width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false,
-          data: tempdata
+          rownumbers:true
       });
 
       //双击事件

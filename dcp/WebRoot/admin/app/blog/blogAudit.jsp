@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           { display: "状态", name: "c_shjg", width: 160, type: "text", align: "left", editor: { type: 'text'} }
           ], dataAction: 'server', pageSize: 20, toolbar: {},  url:'<%=basePath%>blogPageList',
            sortName: 'n_xh', width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false,
-          data: tempdata
+           rownumbers:true
       });
 
       //双击事件

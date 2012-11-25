@@ -45,10 +45,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       var grid = $("#maingrid").ligerGrid({
           columns: [
           { display: "序号", name: "n_xh", width: 70, type: "text", align: "left"},
-          { display: "发布人", name: "c_yhid", width: 120, type: "text", align: "left", editor: { type: 'text'} },
-          { display: "添加时间", name: "d_dj", width: 160, type: "textarea", align: "left", editor: { type: 'text'} }
-          ], dataAction: 'server', pageSize: 20, toolbar: {},
-           sortName: 'n_xh', 
+          { display: "接收号码", name: "c_sjhm", width: 120, type: "text", align: "left", editor: { type: 'text'} },
+          { display: "添加时间", name: "d_dj", width: 160, type: "text", align: "left", editor: { type: 'text'} }
+          ], dataAction: 'server', pageSize: 20, toolbar: {},url:'<%=basePath%>mobilePageList',
+           sortName: 'n_xh', rownumbers:true,
           width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false
          // ,data: tempdata
       });
@@ -64,26 +64,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       //加载toolbar
       LG.loadToolbar(grid, toolbarBtnItemClick);
 
-     	var items=[
-     	           {
-     	        	  click:toolbarBtnItemClick,
-     	        	   text:'保存',
-     	        	   img:'<%=basePath%>liger/lib/icons/silkicons/page_save.png',
-     	        	   id:'save'    	
-     	   },{
+     	var items=[{
             click:toolbarBtnItemClick,
             text:'新增',
             img:'<%=basePath%>liger/lib/icons/silkicons/add.png',
             id:'add'
         }
-     	/**
-     	,{line:true},{
-            click: toolbarBtnItemClick,
-            text: '修改',
-            img:'<%=basePath%>liger/lib/icons/silkicons/application_edit.png',
-            id: 'modify'
-        },{line:true}
-        **/
         ,{
             click: toolbarBtnItemClick,
             text: '删除',
@@ -105,10 +91,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               case "add":
                   if (editingrow == null)
                   {
-                	  //top.f_addTab(null, '保存信息', '<%=basePath%>admin/app/mobile/mobileDetail.jsp');
 			  		   dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/mobile/mobileDetail.jsp', 
                            	height: 500,width: 900,showMax: true, showToggle: true,  showMin: true,
-                           	title:'内部消息'
+                           	title:'手机短信'
 					  });
                   } else {
                       LG.tip('请先提交或取消修改');
@@ -117,29 +102,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               case "view":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  //top.f_addTab(null, '查看信息', '<!%=basePath%>mobileUpdate?mobile.n_xh=' + selected.n_xh);
                   dialog = $.ligerDialog.open({ url: '<%=basePath%>mobileUpdate?mobile.n_xh=' + selected.n_xh, 
                          	height: 500,width: 900,showMax: true, showToggle: true,  showMin: true,
-                         	title:'内部消息'
 				  });
                   break;
               case "modify":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  //top.f_addTab(null, '修改栏目信息', '<!%=basePath%>mobileUpdate?mobile.n_xh=' + selected.n_xh);
 				  dialog = $.ligerDialog.open({ url: '<%=basePath%>mobileUpdate?mobile.n_xh=' + selected.n_xh, 
                          	height: 500,width: 900,showMax: true, showToggle: true,  showMin: true,
-                         	title:'内部消息'
+                         	title:'手机短信'
 				  });
-                  /**
-                  if (editingrow == null)
-                  {
-                      beginEdit();
-                  } else
-                  {
-                      LG.tip('请先提交或取消修改');
-                  }
-                  **/
                   break;
               case "delete":
             	  var selected = grid.getSelected();
@@ -174,21 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           var selected = grid.getSelected();
           
           if (selected) {
-        	  /**
-              LG.ajax({
-                  type: 'AjaxMemberManage',
-                  method: 'RemoveRole',
-                  loading: '正在删除中...',
-                  data: { ID: selected.RoleID },
-                  success: function () {
-                      LG.showSuccess('删除成功');
-                      f_reload();
-                  },
-                  error: function (mobile) {
-                      LG.showError(mobile);
-                  }
-              });
-              **/
+        	  
         	  grid.deleteRow(selected);
         	  MobileAction.mobileDelete(selected.n_xh, function (result){
              	   if(result == 'success'){
@@ -197,8 +156,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	           		  LG.showError('删除失败');
 	           	   }
                });
-          }
-          else {
+          }else {
               LG.tip('请选择行!');
           }
       }
@@ -248,14 +206,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           grid.addEditRow();
       } 
       
-      loadGrid();
-      
-      function loadGrid(){
-          
-	 	  MobileAction.mobileList(function (data){
-	    	 grid.setOptions({data:data});
-	      });
-      }
   </script>
 </body>
 </html>

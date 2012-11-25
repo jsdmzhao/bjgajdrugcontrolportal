@@ -14,13 +14,38 @@
 		SELECT * FROM SMS_BOXSENDED WHERE ID = #{n_xh}
 	</select>
 	 
-	<select id="getMobileList" resultMap="resultMobile">
+	<select id="getMobileReceiveList" resultMap="resultMobile">
 		SELECT ID,
 		       RECEIVER, 
 		       CONTENT, 
-		       TO_CHAR(SENDTIME,'YYYY-MM-DD hh24:MI:SS') SENDTIME
+		       SENDTIME
 		  FROM SMS_BOXSENDED
 		  	WHERE RECEIVER = #{c_sjhm}
+	</select>
+	
+	<select id="getMobileSendList" resultMap="resultMobile" parameterType="hashmap">
+		SELECT ID,
+		       RECEIVER, 
+		       CONTENT, 
+		       SENDTIME
+		  FROM SMS_BOXSENDED
+		  	WHERE RECEIVER = #{c_sjhm}
+	</select>
+	
+	<select id="getMobileSendPageList" resultMap="resultMobile" parameterType="hashmap">
+		SELECT ID,
+		       RECEIVER, 
+		       CONTENT, 
+		       SENDTIME
+		  FROM SMS_BOXSENDED
+		  	WHERE SENDER = #{c_yhid}
+		LIMIT #{start},#{limit}
+	</select>
+	
+	<select id="getMobileSendPageListCnt"  resultType="long" resultMap="resultMobile">
+		SELECT COUNT(*) Total
+		  FROM SMS_BOXSENDED
+		  	WHERE SENDER = #{c_yhid}
 	</select>
 	
 	<delete id="deleteMobile" parameterType="int">

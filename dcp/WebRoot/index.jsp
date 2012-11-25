@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>北京禁毒信息系统</title>
+    <title>北京禁毒信息网</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" rev="text/css" href="<%=basePath%>css/comic.css" type="text/css" media="all" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/szxue.css">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/nav.css">
-<link rel="stylesheet" href="<%=basePath%>css/sexylightbox.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="<%=basePath%>css/sexylightbox.css" type="text/css" media="all" />
 	<script type="text/javascript" src="<%=basePath%>js/jquery.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/szxue.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/menu.js"></script>
@@ -87,22 +87,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body> 
   	<iframe style="display: none;" src="<%=basePath%>login.jsp?temp_r=zl"></iframe>
 
-  <%--<%@include  file="../head.jsp" %>--%>
 	<div id="container">
 		<div id="banner_top">
 			<div style="margin-left: 450px; padding-top:40px;">
-			  <%-- 
-		      <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
-		        id="banner_t" width="278" height="34" >
-		        <param name="movie" value="flash/banner_t.swf">
-		        <param name="bgcolor" value="#FFFFFF">
-		        <param name="quality" value="high">
-		        <param name="wmode" value="transparent">
-		        <param name="allowscriptaccess" value="samedomain">
-		        <embed type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"
-		          name="banner_t" width="278" height="34" src="flash/banner_t.swf" bgcolor="#FFFFFF" quality="high" >  </embed>
-		      </object>
-		      --%>
 		      <object type="application/x-shockwave-flash" data="flash/banner_t.swf" width="278" height="34">
 				<param name="movie" value="flash/banner_t.swf" />
 				<param name="wmode" value="transparent" />
@@ -118,14 +105,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	  		
 	    <div id="banner_bottom"  style="margin-left:2px;">
-	       <%--
-		  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="978" height="152">
-	        <param name="movie" value="flash/Banner.swf" />
-	        <param name="quality" value="high" />
-	        <param value="transparent">
-	        <embed src="flash/Banner.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="978" height="152"></embed>
-	      </object>
-	       --%>
 	     <object type="application/x-shockwave-flash" data="flash/Banner.swf" width="978" height="152">
 			<param name="movie" value="flash/Banner.swf" />
 			<param name="wmode" value="transparent" />
@@ -165,11 +144,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div style="float:left; padding-top:5px;">
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="newimages/12312.jpg"
 					width="14" height="13" />&nbsp;&nbsp;<strong>车辆限行尾号：</strong>
-					<%
-					ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());
-					ClxxSvc clxxSvc= (ClxxSvc) ctx.getBean("clxxSvc");
-					out.print(clxxSvc.getWh());
-					%>
+					<s:property value="resMap.clxxStr"/>
 			</div>
 			<div style="float:right; width:270px;">
 				<div style="float:left;">
@@ -269,21 +244,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				
 				<s:iterator value="resMap.lddtList" var="news" begin="1">
-					<div id="lddt_news_list">
-						<div id="lddt_news_list_c" style="width:265px;">
-							<img src="newimages/dote.gif" style="margin-top:6px;"/> 
-							<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
-								<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
-									<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
-								</s:if>
-								<s:property value="#news.c_bt"/>
-							</a>
+					<div class="lddt_news_list">
+						<div class="lddt_news_list_c" style="width:315px;">
+							<div class="lddt_news_list_c_l" style="width:280px;">
+								<img src="newimages/dote.gif" style="margin-top:6px;"/> 
+								<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+										<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+									</s:if>
+									<s:property value="#news.c_bt"/>
+								</a>
+							</div>
+							<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+							  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+							</s:if>
 						</div>
 						<div id="lddt_news_list_d">
 							<s:property value="#news.d_fbsj.substring(0,10)"/>
-							<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-							  <img src="newimages/new.gif"/>
-							</s:if>
 						</div>
 					</div>
 				</s:iterator>
@@ -356,12 +333,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="jrzb_title_font">今日值班</div>
 						</div>
 					</div>
-					<div style="padding: 2px;">
-					<% 
-					KqZbSvc kqZbSvc= (KqZbSvc) ctx.getBean("kqZbSvc");
-					out.print(kqZbSvc.getZb());
-					
-					%>
+					<div style="padding-left: 10px; padding-top: 10px; text-align: left;">
+						<s:property value="resMap.zbbStr"/>
+						<s:if test="resMap.zbbStr != null and resMap.zbbStr != '' ">
+							<s:property value="resMap.zbbStr"/>，<a href="" target="_blank">点击下载值班表</a>
+						</s:if>
+						<s:else>
+							暂无值班计划
+						</s:else>
 					</div>
 				</div>
 				<div class="jrzb_div" style="height:105px;">
@@ -370,14 +349,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="jrzb_title_img"><img src="newimages/content_title_img.png" /></div>
 							<div class="jrzb_title_font">生日祝福</div>
 						</div>
-						
 					</div>
-						<div style="padding: 2px;">
-					<% 
-					UserInfoSvc userInfoSvc= (UserInfoSvc) ctx.getBean("userInfoSvc");
-					out.print(userInfoSvc.getSr());
-					
-					%>
+					<div style="padding-left: 10px; padding-top: 10px; text-align: left;">
+						<s:if test="resMap.srtsStr != null and resMap.srtsStr != '' ">
+							<s:property value="resMap.srtsStr"/>，<a href="birthday.jsp" target="_blank">点击领取生日祝福！</a>
+						</s:if>
+						<s:else>
+							暂无有生日的同志
+						</s:else>
 					</div>
 				</div>
 				<div class="jrzb_div">
@@ -395,7 +374,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<li><a href="http://10.8.58.21:9080/xdry" target="_blank"><img src="newimages/xdrydtgkxt.png" /></a></li>
 						</ul>
 						<ul>
-							<li><a href=""><img src="newimages/gabjdqbypxt.png" /></a></li>
+							<li><a href="http://10.8.58.21:9080/qbyp"><img src="newimages/gabjdqbypxt.png" /></a></li>
 						</ul>
 					</div>
 				</div>
@@ -413,21 +392,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="jwgk_content_center_content">
 					
 					<s:iterator value="resMap.tztbList" var="news">
-						<div id="lddt_news_list">
-							<div id="lddt_news_list_c" style="width:375px;">
-								<img src="newimages/dote.gif" style="margin-top:6px;"/>
-								<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
-									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
-										<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
-									</s:if>
-									<s:property value="#news.c_bt"/>
-								</a>
+						<div class="lddt_news_list">
+							<div class="lddt_news_list_c" style="width:415px;">
+								<div class="lddt_news_list_c_l" style="width:380px;">
+									<img src="newimages/dote.gif" style="margin-top:6px;"/>
+									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+											<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+										</s:if>
+										<s:property value="#news.c_bt"/>
+									</a>
+								</div>
+								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								</s:if>
 							</div>
 							<div id="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								  <img src="newimages/new.gif"/>
-								</s:if>
 							</div>
 						</div>
 					</s:iterator>
@@ -442,28 +423,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="jwgk_content_center_content">
 					
 					<s:iterator value="resMap.dwjsList" var="news">
-						<div id="lddt_news_list">
-							<div id="lddt_news_list_c" style="width:375px;">
-								<img src="newimages/dote.gif" style="margin-top:6px;"/>
-								<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
-									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
-										<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
-									</s:if>
-									<s:property value="#news.c_bt"/>
-								</a>
+						<div class="lddt_news_list">
+							<div class="lddt_news_list_c" style="width:415px;">
+								<div class="lddt_news_list_c_l" style="width:380px;">
+									<img src="newimages/dote.gif" style="margin-top:6px;"/>
+									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+											<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+										</s:if>
+										<s:property value="#news.c_bt"/>
+									</a>
+								</div>
+								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								</s:if>
 							</div>
 							<div id="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								  <img src="newimages/new.gif"/>
-								</s:if>
 							</div>
 						</div>
 					</s:iterator>
 	
 				</div>
 			</div>
-			<div id="jwgk_content_right">
+			<div class="jwgk_content_right">
 				<div class="ggl_div">
 					<div class="ggl_title">
 						<div class="ggl_title_content">						
@@ -476,7 +459,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div>
 						<marquee direction="up" height="163px;" onmouseover='this.stop()' onmouseout='this.start()'>
 							<s:iterator value="resMap.gglList" var="news">
-								<div id="lddt_news_list_ggl" style="width:200px;">
+								<div class="lddt_news_list_ggl" style="width:200px;">
 									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 									<a title="<s:property value="#news.c_bt"/>"href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -715,21 +698,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="ztzl_content_center_content">
 					<s:iterator value="resMap.jddtList" var="news">
-						<div id="lddt_news_list">
-							<div id="lddt_news_list_c" style="width:230px;">
-								<img src="newimages/dote.gif" style="margin-top:6px;"/> 
-								<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
-									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
-										<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
-									</s:if>
-									<s:property value="#news.c_bt"/>
-								</a>
+						<div class="lddt_news_list">
+							<div class="lddt_news_list_c" style="width:270px;">
+								<div class="lddt_news_list_c_l" style="width:240px;">
+									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
+									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+											<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+										</s:if>
+										<s:property value="#news.c_bt"/>
+									</a>
+								</div>
+								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								</s:if>
 							</div>
 							<div id="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								  <img src="newimages/new.gif"/>
-								</s:if>
 							</div>
 						</div>
 					</s:iterator>
@@ -742,21 +727,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="ztzl_content_center_content">
 					<s:iterator value="resMap.jdwjList" var="news">
-						<div id="lddt_news_list">
-							<div id="lddt_news_list_c" style="width:230px;">
-								<img src="newimages/dote.gif" style="margin-top:6px;"/> 
-								<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
-									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
-										<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
-									</s:if>
-									<s:property value="#news.c_bt"/>
-								</a>
+						<div class="lddt_news_list">
+							<div class="lddt_news_list_c" style="width:270px;">
+								<div class="lddt_news_list_c_l" style="width:240px;">
+									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
+									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+											<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+										</s:if>
+										<s:property value="#news.c_bt"/>
+									</a>
+								</div>
+								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								</s:if>
 							</div>
 							<div id="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								  <img src="newimages/new.gif"/>
-								</s:if>
 							</div>
 						</div>
 					</s:iterator>
@@ -772,21 +759,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="ztzl_content_center_content">
 					<s:iterator value="resMap.qxjxList" var="news">
-						<div id="lddt_news_list">
-							<div id="lddt_news_list_c" style="width:230px;margin-left: 2px;">
-								<img src="newimages/dote.gif" style="margin-top:6px; margin-left: 0px;"/> 
-								<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
-									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
-										<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+						<div class="lddt_news_list">
+							<div class="lddt_news_list_c" style="width:270px; margin-left: 2px;">
+								<div class="lddt_news_list_c_l" style="width:240px;">
+									<img src="newimages/dote.gif" style="margin-top:6px; margin-left: 0px;"/> 
+									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+											<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+										</s:if>
+										<s:property value="#news.c_bt"/>
+									</a>
+								</div>
+								<div>
+									<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+									  <img src="newimages/new.gif" style="margin-top: 3px;" alt="new"/>
 									</s:if>
-									<s:property value="#news.c_bt"/>
-								</a>
+								</div>
 							</div>
 							<div id="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-									 <img src="newimages/new.gif"/>
-								</s:if>
 							</div>
 						</div>
 					</s:iterator>
@@ -799,21 +790,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="ztzl_content_center_content">
 					<s:iterator value="resMap.mtgzList" var="news">
-						<div id="lddt_news_list">
-							<div id="lddt_news_list_c" style="width:230px;margin-left: 2px;">
-								<img src="newimages/dote.gif" style="margin-top:6px;"/> 
-								<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
-									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
-										<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
-									</s:if>
-									<s:property value="#news.c_bt"/>
-								</a>
+						<div class="lddt_news_list">
+							<div class="lddt_news_list_c" style="width:270px;margin-left: 2px;">
+								<div class="lddt_news_list_c_l" style="width:240px;">
+									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
+									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+											<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+										</s:if>
+										<s:property value="#news.c_bt"/>
+									</a>
+								</div>
+								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								</s:if>
 							</div>
 							<div id="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-									 <img src="newimages/new.gif"/>
-								</s:if>
 							</div>
 						</div>
 					</s:iterator>

@@ -82,7 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           { display: "是否内容", name: "c_sfnr", width: 80, type: "text", align: "left"},
           { display: "位置", name: "n_xsxh", width: 80, type: "int", align: "left", editor: { type: 'int'} }
           ], dataAction: 'server', pageSize: 20, toolbar: {},
-           sortName: 'n_xh', 
+           sortName: 'n_xh', rownumbers:true,
           width: '98%', height: '100%',heightDiff:-10, checkbox: false, enabledEdit: true, clickToEdit: true,rownumbers:true
          // ,data: tempdata
       });

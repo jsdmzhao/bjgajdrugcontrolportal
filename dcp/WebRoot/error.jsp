@@ -48,9 +48,9 @@ A:hover {
 }
 </STYLE>
 
-<META content="Microsoft FrontPage 5.0" name=GENERATOR>
 </HEAD>
-<BODY oncontextmenu="return false" onselectstart="return false">
+<!-- oncontextmenu="return false" onselectstart="return false"  -->
+<BODY>
 	<P align=center></P>
 	<P align=center></P>
 	<TABLE cellSpacing=0 cellPadding=0 width=540 align=center border=0>
@@ -75,7 +75,7 @@ A:hover {
 								<TR>
 									<TD>
 										<P>
-											<FONT color=#000000><BR> 您所请求的页面不存在</FONT>!
+											<FONT color=#000000><BR> <!-- 您所请求的页面不存在!  --></FONT>
 										</P>
 									</TD>
 								</TR>
