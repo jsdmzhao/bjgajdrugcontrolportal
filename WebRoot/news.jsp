@@ -256,8 +256,8 @@ if(c_bt == null){
 			<div class="news_content_center_content">
 				<s:if test="pageModel.list != null and pageModel.list.size > 0">
 					<s:iterator value="pageModel.list" var="news">
-						<div id="news_news_list"  style="width:720px; margin: 5px;" >
-							<div id="lddt_news_list_c" style="width:580px;" >
+						<div class="news_news_list"  style="width:720px; margin: 5px;" >
+							<div class="lddt_news_list_c" style="width:580px;" >
 								<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 								<a title="<s:property value='#news.c_bt'/>" href="newsDetail?news.n_xh=<s:property value='#news.n_xh'/>" target="_blank">
 									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -269,7 +269,7 @@ if(c_bt == null){
 									</s:if>
 								</a>
 							</div>
-							<div id="lddt_news_list_d" style="margin-right: 2px; width:70px;">
+							<div class="lddt_news_list_d" style="margin-right: 2px; width:70px;">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
 							</div>
 						</div>
@@ -277,11 +277,8 @@ if(c_bt == null){
 				</s:if>
 				<s:else>
 				 <div id="news_news_list">
-					<div id="lddt_news_list_c" style="width:600px; text-align: center" >
+					<div class="lddt_news_list_c" style="width:720px; text-align: center; margin-top: 20px;" >
 						暂无记录！
-					</div>
-					<div id="lddt_news_list_d">
-						
 					</div>
 				</div>
 				</s:else>
