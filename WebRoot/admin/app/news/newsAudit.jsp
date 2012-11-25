@@ -281,7 +281,7 @@ String newsType = request.getParameter("newsType");
                 dataAction: 'server', pageSize: 20, toolbar: toolbarOptions, sortName: 'MenuID',
                 url:'<%=basePath%>newsPageList',parms:[{name:'news.c_lm',value:''},{name:'news.c_bt',value:''},{name:'news.c_sfsh',value:0}],
 		        width: '98%', height: '100%', heightDiff: -5, checkbox: false, usePager: true, enabledEdit: true, 
-		        clickToEdit: false, fixedCellHeight: true, rowHeight: 25,
+		        clickToEdit: false, fixedCellHeight: true, rowHeight: 25,rownumbers:true,
 		        render: function (item) {
                     return "<div style='width:100%;height:100%;'><img src='../" + item.MenuIcon + "' /></div>";
                 }

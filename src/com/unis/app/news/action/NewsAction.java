@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,8 +20,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.unis.app.duty.service.KqZbSvc;
+import com.unis.app.limit.service.ClxxSvc;
 import com.unis.app.news.model.News;
 import com.unis.app.pagination.Pagination;
+import com.unis.app.userinfo.service.UserInfoSvc;
 import com.unis.core.action.CreateIndexAction;
 import com.unis.core.commons.Combox;
 import com.unis.core.service.AbsServiceAdapter;
@@ -43,27 +47,23 @@ public class NewsAction {
 	private Integer pagesize;
 	
 	private Integer page;
-	
-	public Map<String, Object> getResMap() {
-		return resMap;
-	}
+
 	private List<News> Querys;
-	public List<News> getQuerys() {
-		return Querys;
-	}
-
-	public void setQuerys(List<News> newsQuerys) {
-		this.Querys = newsQuerys;
-	}
-
-	public void setResMap(Map<String, Object> resMap) {
-		this.resMap = resMap;
-	}
-
+	
 	@Autowired
 	private AbsServiceAdapter<Integer> newsService = null;
+	
 	@Autowired
 	private CreateIndexAction createdIndexAction = null;
+	
+	@Autowired
+	private ClxxSvc clxxSvc = null;
+	
+	@Autowired
+	private KqZbSvc kqzbSvc = null;
+	
+	@Autowired
+	private UserInfoSvc userInfoSvc = null;
 	
 	@SuppressWarnings("unchecked")
 	public String getNewsLanmuCombox(HttpServletRequest request){
@@ -231,7 +231,7 @@ public class NewsAction {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public String  newsIndexList(){
+	public String  newsIndexList() throws SQLException{
 		
 		Map<String, Object> sqlParamMap = new HashMap<String, Object>();
 		
@@ -325,6 +325,15 @@ public class NewsAction {
 		//信息排行
 		newsList = (List<News>) newsService.selectList("NewsMapper.sortIndexCnt","");
 		resMap.put("xxphList", newsList);
+		
+		//车辆限行
+		resMap.put("clxxStr", clxxSvc.getWh());
+		
+		//值班表
+		resMap.put("zbbStr", kqzbSvc.getZb());
+		
+		//生日提醒
+		resMap.put("srtsStr", userInfoSvc.getSr());
 		
 		//当前日期
 		resMap.put("sysdate", DateUtil.getSysDate("yyyy-MM-dd"));
@@ -518,8 +527,46 @@ public class NewsAction {
 		return createdIndexAction;
 	}
 
+	public ClxxSvc getClxxSvc() {
+		return clxxSvc;
+	}
+
+	public void setClxxSvc(ClxxSvc clxxSvc) {
+		this.clxxSvc = clxxSvc;
+	}
+
+	public KqZbSvc getKqzbSvc() {
+		return kqzbSvc;
+	}
+
+	public void setKqzbSvc(KqZbSvc kqzbSvc) {
+		this.kqzbSvc = kqzbSvc;
+	}
+
+	public UserInfoSvc getUserInfoSvc() {
+		return userInfoSvc;
+	}
+
+	public void setUserInfoSvc(UserInfoSvc userInfoSvc) {
+		this.userInfoSvc = userInfoSvc;
+	}
+
 	public void setCreatedIndexAction(CreateIndexAction createdIndexAction) {
 		this.createdIndexAction = createdIndexAction;
 	}
-	 
+	public Map<String, Object> getResMap() {
+		return resMap;
+	}
+	
+	public List<News> getQuerys() {
+		return Querys;
+	}
+
+	public void setQuerys(List<News> newsQuerys) {
+		this.Querys = newsQuerys;
+	}
+
+	public void setResMap(Map<String, Object> resMap) {
+		this.resMap = resMap;
+	} 
 }

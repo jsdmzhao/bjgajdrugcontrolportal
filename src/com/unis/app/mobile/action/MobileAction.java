@@ -1,20 +1,24 @@
 package com.unis.app.mobile.action;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.xwork.StringUtils;
+import org.apache.struts2.ServletActionContext;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.unis.app.mobile.model.Mobile;
-import com.unis.core.service.AbsServiceAdapter;
 import com.unis.core.service.AbsServiceAdapterMySql;
 import com.unis.core.util.Globals;
 
@@ -25,10 +29,14 @@ public class MobileAction {
 
 	private Mobile mobile;
 
+	private Integer pagesize;
+	
+	private Integer page;
+
 	@Autowired
 	private AbsServiceAdapterMySql<Integer> mobileService = null;
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public String mobileSave(Map sqlParamMap, HttpServletRequest request){
 		
 		HttpSession session = request.getSession();
@@ -54,15 +62,25 @@ public class MobileAction {
 		return Globals.SUCCESS;
 	}
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public String mobileOutSave(Map sqlParamMap, HttpServletRequest request){
 		
 		HttpSession session = request.getSession();
 		String c_yhid = session.getAttribute("userId")+"";
-		String c_sjhm = session.getAttribute("cSjhm")+"";
+		
+		String jsrStr = sqlParamMap.get("c_jsr").toString();
+		if(StringUtils.isNotEmpty(jsrStr)){
+			String[] jsrs = jsrStr.split(";");
+			List<Mobile> list = new ArrayList<Mobile>();
+			for(String jsr : jsrs){
+				Mobile msg = new Mobile();
+				msg.setC_jsr(jsr);
+				list.add(msg);
+			}
+			sqlParamMap.put("list", list);
+		}
 		sqlParamMap.put("c_yhid", c_yhid);
-		sqlParamMap.put("c_sjhm", c_sjhm);
-		mobileService.insert("MobileMapper.insertOutMobile", sqlParamMap);
+		mobileService.insert("MobileMapper.insertMobile", sqlParamMap);
 		return Globals.SUCCESS;
 	}
 	
@@ -76,6 +94,37 @@ public class MobileAction {
 		resMap.put("Rows", mobileList);
 		resMap.put("Total", mobileList.size());
 		return resMap;
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	public void mobilePageList() throws IOException{
+		
+		HttpServletRequest request = ServletActionContext.getRequest();
+		
+		HttpSession session = request.getSession();
+		String userId =  session.getAttribute("userId")+"";
+		Map<String, String> sqlParamMap = new HashMap<String, String>();
+
+		sqlParamMap.put("c_yhid", userId);
+		sqlParamMap.put("start", String.valueOf(((page.intValue()-1)*pagesize.intValue())));
+		sqlParamMap.put("limit", pagesize.toString());
+		Map<String, Object> resMap = new HashMap<String, Object>();
+
+		List<Mobile> mobileList = (List<Mobile>) mobileService.selectList("MobileMapper.getMobileSendPageList",sqlParamMap);
+		Long cnt = (Long) mobileService.selectOne("MobileMapper.getMobileSendPageListCnt",sqlParamMap);
+
+		resMap.put("Rows", mobileList);
+		resMap.put("Total", cnt);
+
+		ObjectMapper mapper = new ObjectMapper();
+		
+    	HttpServletResponse response = ServletActionContext.getResponse();
+    	response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		mapper.writeValue(out, resMap);
+		out.flush();
+		out.close();
 	}
 	
 	public String mobileUpdate(){
@@ -115,6 +164,22 @@ public class MobileAction {
 
 	public void setMobileService(AbsServiceAdapterMySql<Integer> mobileService) {
 		this.mobileService = mobileService;
+	}
+
+	public Integer getPagesize() {
+		return pagesize;
+	}
+
+	public void setPagesize(Integer pagesize) {
+		this.pagesize = pagesize;
+	}
+
+	public Integer getPage() {
+		return page;
+	}
+
+	public void setPage(Integer page) {
+		this.page = page;
 	}
 
 }

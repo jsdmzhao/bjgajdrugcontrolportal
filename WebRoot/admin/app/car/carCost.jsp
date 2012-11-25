@@ -92,7 +92,7 @@ if(carType == null){
           { display: "加油标号", name: "c_jybh", width: 160, type: "text", align: "left", editor: { type: 'text'}},
           { display: "加油数量", name: "n_jysl", width: 80, type: "text", align: "left", editor: { type: 'text'}}
           ], dataAction: 'server', pageSize: 20, toolbar: {},sortName: 'n_xh', url:'<%=basePath%>carCostPageList',
-          width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false,
+          width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false,rownumbers:true,
           data: tempdata
       });
 

@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           { display: "类别", name: "n_lbxh", width: 80, type: "text", align: "left", editor: { type: 'text'} },
           { display: "添加时间", name: "d_dj", width: 300, type: "text", align: "left", editor: { type: 'text'}}
           ], dataAction: 'server', pageSize: 20, toolbar: {},
-           sortName: 'n_xh', 
+           sortName: 'n_xh', rownumbers:true,
           width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false,
           data: tempdata
       });

@@ -63,14 +63,11 @@ String newsType = request.getParameter("newsType");
              labelWidth:100,
              width:408
          },{
-        	 type:"hidden",
-             name:"c_lm",
-         },{
    	         name:"wzlm",
    	         newline:false,
    	         width:120,//space:30, 
    	         type:"button",
-   	         cssClass:"l-button",
+   	         cssClass:"l-button2",
    	         value:"选择栏目",
    	         onclick : "selectLanmu()"
          },
@@ -123,6 +120,10 @@ String newsType = request.getParameter("newsType");
          {display:"发布时间",name:"d_fbsj",newline:false,labelWidth:100,width:250,validate: { required: true},
          space:30,type:"text",onclick:"WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"},
          {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea"}
+         ,{
+        	 type:"hidden",
+             name:"c_lm",
+         }
          //,
          //{name:"n_ydcs", labelWidth:100,width:30,space:30,type:"hidden",value:"0"}
         ]

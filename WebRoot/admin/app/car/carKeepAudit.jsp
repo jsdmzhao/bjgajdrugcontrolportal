@@ -96,7 +96,7 @@ if(carType == null){
           { display: "送修人员", name: "c_sxry", width: 200, type: "text", align: "left", editor: { type: 'text'}},
           { display: "车辆行驶总里程", name: "n_clxszlc", width: 120, type: "text", align: "left", editor: { type: 'text'}}
           ], dataAction: 'server', pageSize: 20, toolbar: {},sortName: 'n_xh', url:'<%=basePath%>carKeepPageList',
-          width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false,
+          width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false,rownumbers:true,
           data: tempdata
       });
 

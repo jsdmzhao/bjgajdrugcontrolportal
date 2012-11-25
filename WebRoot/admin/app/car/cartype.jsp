@@ -47,7 +47,7 @@ var dialog;
           { display: "所属部门", name: "c_yhzid", width: 200, type: "text", align: "left", editor: { type: 'text'} },
           { display: "车牌号码", name: "c_cphm", width: 400, type: "text", align: "left", editor: { type: 'text'} }
           ], dataAction: 'server', pageSize: 20, toolbar: {},
-           sortName: 'n_xh', 
+           sortName: 'n_xh', rownumbers:true,
           width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false
          // ,data: tempdata
       });
