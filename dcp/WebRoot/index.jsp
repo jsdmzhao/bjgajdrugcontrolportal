@@ -259,7 +259,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							  <img src="newimages/new.gif" style="margin-top: 1px;"/>
 							</s:if>
 						</div>
-						<div id="lddt_news_list_d">
+						<div class="lddt_news_list_d">
 							<s:property value="#news.d_fbsj.substring(0,10)"/>
 						</div>
 					</div>
@@ -407,7 +407,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
 								</s:if>
 							</div>
-							<div id="lddt_news_list_d">
+							<div class="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
 							</div>
 						</div>
@@ -438,7 +438,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
 								</s:if>
 							</div>
-							<div id="lddt_news_list_d">
+							<div class="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
 							</div>
 						</div>
@@ -713,7 +713,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
 								</s:if>
 							</div>
-							<div id="lddt_news_list_d">
+							<div class="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
 							</div>
 						</div>
@@ -742,7 +742,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
 								</s:if>
 							</div>
-							<div id="lddt_news_list_d">
+							<div class="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
 							</div>
 						</div>
@@ -776,7 +776,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</s:if>
 								</div>
 							</div>
-							<div id="lddt_news_list_d">
+							<div class="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
 							</div>
 						</div>
@@ -805,7 +805,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
 								</s:if>
 							</div>
-							<div id="lddt_news_list_d">
+							<div class="lddt_news_list_d">
 								<s:property value="#news.d_fbsj.substring(0,10)"/>
 							</div>
 						</div>

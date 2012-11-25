@@ -203,7 +203,7 @@ body {
 	float: left;
 }
 
-#lddt_news_list_d {
+.lddt_news_list_d {
 	margin-top: 5px;
 	float: right;
 	margin-right: 5px;
@@ -636,7 +636,7 @@ body {
 	height: 160px;
 }
 
-#news_news_list {
+.news_news_list {
 	border-bottom: dashed 1px #ccc;
 	margin-top: 5px;
 	float: left;
