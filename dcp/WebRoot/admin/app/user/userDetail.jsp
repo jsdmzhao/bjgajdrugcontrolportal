@@ -114,7 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	 LG.closeCurrentDialog();
         }
 
-		 
+       
     </script>
 </body>
 </html>

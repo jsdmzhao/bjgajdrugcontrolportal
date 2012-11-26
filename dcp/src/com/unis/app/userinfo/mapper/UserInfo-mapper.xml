@@ -32,6 +32,8 @@
 		   <result property="nZxsc" column="N_ZXSC" jdbcType="VARCHAR"/>
 		   <result property="cLx" column="C_LX" jdbcType="VARCHAR"/>
 		   <result property="cYxip" column="C_YXIP" jdbcType="VARCHAR"/>
+		   
+		      <result property="nXbName" column="N_XB_NAME" jdbcType="VARCHAR"/>
 	</resultMap>
 	 
 	 
@@ -64,6 +66,7 @@
 					base.C_ZC,
 					base.C_XM,
 					base.N_XB,
+					case base.N_XB when 1 then '男'  else '女' end as N_XB_NAME, 
 					to_char(base.D_SR,'YYYY-MM-DD') D_SR ,
 					base.C_GJ,
 					base.C_CSD,
@@ -114,6 +117,7 @@
 					base.C_ZC,
 					base.C_XM,
 					base.N_XB,
+								case base.N_XB when 1 then '男'  else '女' end as N_XB_NAME, 
 					to_char(base.D_SR,'YYYY-MM-DD') D_SR ,
 					base.C_GJ,
 					base.C_CSD,
