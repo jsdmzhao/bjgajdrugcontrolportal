@@ -347,13 +347,25 @@ function save(){
 	arr[0]={dSjBeg:($('#calendar').fullCalendar( 'getView' ).visStart).format('yyyy-MM-dd')+"",
 			dSjEnd:($('#calendar').fullCalendar( 'getView' ).visEnd).format('yyyy-MM-dd')+""};
 	
+	var index=1;
 	for(var i=0;i<t.length;i++){
 		var obj={};
 		if(t[i].start!=null){
-			obj.dSj=(t[i].start).format('yyyy-MM-dd')+"";
+		//	alert(t[i].start);
+		//	alert($('#calendar').fullCalendar( 'getView' ).visStart);
+		//	alert(t[i].start>=$('#calendar').fullCalendar( 'getView' ).visStart);
+		//	alert(t[i].start<=$('#calendar').fullCalendar( 'getView' ).visEnd);
+		//	alert((t[i].start<=$('#calendar').fullCalendar( 'getView' ).visStart)&&(t[i].start<=$('#calendar').fullCalendar( 'getView' ).visEnd));
+			if((t[i].start>=$('#calendar').fullCalendar( 'getView' ).visStart)&&(t[i].start<=$('#calendar').fullCalendar( 'getView' ).visEnd)){
+				obj.dSj=(t[i].start).format('yyyy-MM-dd')+"";
+				obj.userId=t[i].id+"";
+				arr[index]=obj;
+				index=index+1;
+				//alert("OK");
+			}
+		
 		}
-		obj.userId=t[i].id+"";
-		arr[i+1]=obj;
+	
 		
 	}
 	
