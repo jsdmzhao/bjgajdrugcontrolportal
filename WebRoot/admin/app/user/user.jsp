@@ -21,22 +21,25 @@
 <base href="<%=basePath%>">
 <title>用户</title>
 <link
-	href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css"
-	rel="stylesheet" type="text/css" />
-<link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css"
-	rel="stylesheet" type="text/css" />
-<script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js"
-	type="text/javascript"></script>
-<script src="<%=basePath%>liger/lib/ligerUI/js/ligerui.min.js"
-	type="text/javascript"></script>
-<link href="<%=basePath%>liger/lib/css/common.css" rel="stylesheet"
-	type="text/css" />
-<script src="<%=basePath%>liger/lib/js/common.js" type="text/javascript"></script>
-<script src="<%=basePath%>liger/lib/js/LG.js" type="text/javascript"></script>
-<script src="<%=basePath%>liger/lib/js/ligerui.expand.js"
-	type="text/javascript"></script>
-<script src="<%=basePath%>liger/lib/json2.js" type="text/javascript"></script>
-<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
+			href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css"
+			rel="stylesheet" type="text/css" />
+		<link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css"
+			rel="stylesheet" type="text/css" />
+		<script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js"
+			type="text/javascript"></script>
+		<script src="<%=basePath%>liger/lib/ligerUI/js/ligerui.min.js"
+			type="text/javascript"></script>
+		<script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerForm.js"
+			type="text/javascript"></script>
+		<link href="<%=basePath%>liger/lib/css/common.css" rel="stylesheet"
+			type="text/css" />
+		<script src="<%=basePath%>liger/lib/js/common.js"
+			type="text/javascript"></script>
+		<script src="<%=basePath%>liger/lib/js/LG.js" type="text/javascript"></script>
+		<script src="<%=basePath%>liger/lib/js/ligerui.expand.js"
+			type="text/javascript"></script>
+		<script src="<%=basePath%>liger/lib/json2.js" type="text/javascript"></script>
+		  <script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
 <script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
 <script type='text/javascript'
 	src='<%=basePath%>dwr/interface/SysUserSvc.js'></script>
@@ -67,7 +70,7 @@
 	var oPage={
 			pageIndex:1,
 			pageSize:1000
-	}
+	};
 	 var config ={"Grid":{
          columns: [
          { display: "账号", name: "userName", width: 180, type: "text", align: "left" }, 
@@ -80,7 +83,7 @@
          columns: config.Grid.columns, pageSize: 20, toolbar: {},
          sortName: 'UserID', 
          width: '98%', height: '100%',heightDiff:-10, checkbox: false,
-         pageSize : 20,
+         pageSize : 20
      });
     
 
@@ -153,7 +156,7 @@
 				break;
 			case "supp":
 				 var selected = grid.getSelected();
-                 if (!selected) { LG.tip('请选择行!'); return }
+                 if (!selected) { LG.tip('请选择行!'); return; }
                 dialog = $.ligerDialog.open({ title :'补充信息',url: '<%=basePath%>admin/app/userinfo/userinfoDetail.jsp?userId=' + selected.userId, 
                 height: 500,width: 720,showMax: true, showToggle: true,  showMin: true
 			  });
@@ -173,7 +176,7 @@
 			userPassword: $("#userPassword").val(),
 			roleId: $("#roleId").val(),
 			userLock: userLock
-			}
+			};
 
 			if (!obj)
 				return;
@@ -206,7 +209,7 @@
 			userPassword: $("#userPassword").val(),
 			roleId: $("#roleId").val(),
 			userLock: userLock
-			}
+			};
 			if (!obj)
 				return;
 			SysUserSvc.update(obj, function(rdata) {

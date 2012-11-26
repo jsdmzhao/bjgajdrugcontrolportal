@@ -25,24 +25,25 @@
 <base href="<%=basePath%>">
 <title>出差</title>
 <link
-	href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css"
-	rel="stylesheet" type="text/css" />
-<link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css"
-	rel="stylesheet" type="text/css" />
-<script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js"
-	type="text/javascript"></script>
-<script src="<%=basePath%>liger/lib/ligerUI/js/ligerui.min.js"
-	type="text/javascript"></script>
-<link href="<%=basePath%>liger/lib/css/common.css" rel="stylesheet"
-	type="text/css" />
-<script src="<%=basePath%>liger/lib/js/common.js" type="text/javascript"></script>
-<script src="<%=basePath%>liger/lib/js/LG.js" type="text/javascript"></script>
-
-
-<script src="<%=basePath%>liger/lib/js/ligerui.expand.js"
-	type="text/javascript"></script>
-<script src="<%=basePath%>liger/lib/json2.js" type="text/javascript"></script>
-<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
+			href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css"
+			rel="stylesheet" type="text/css" />
+		<link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css"
+			rel="stylesheet" type="text/css" />
+		<script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js"
+			type="text/javascript"></script>
+		<script src="<%=basePath%>liger/lib/ligerUI/js/ligerui.min.js"
+			type="text/javascript"></script>
+		<script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerForm.js"
+			type="text/javascript"></script>
+		<link href="<%=basePath%>liger/lib/css/common.css" rel="stylesheet"
+			type="text/css" />
+		<script src="<%=basePath%>liger/lib/js/common.js"
+			type="text/javascript"></script>
+		<script src="<%=basePath%>liger/lib/js/LG.js" type="text/javascript"></script>
+		<script src="<%=basePath%>liger/lib/js/ligerui.expand.js"
+			type="text/javascript"></script>
+		<script src="<%=basePath%>liger/lib/json2.js" type="text/javascript"></script>
+		  <script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
 <script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
 <script type='text/javascript'
 	src='<%=basePath%>dwr/interface/HyjlSvc.js'></script>
@@ -90,7 +91,7 @@
                    { display: "会议主题", name: "cHyzt", width: 180, type: "text", align: "left" },
                    { display: "会议地点", name: "cHydd", width: 180, type: "text", align: "left" },
                     { display: "日期", name: "dRq", width: 180, type: "text", align: "left" },
-                   { display: "人员", name: "cCjry", width: 180, type: "text", align: "left" },
+                   { display: "人员", name: "cCjry", width: 180, type: "text", align: "left" }
          ]      
 },"Search":null};
 

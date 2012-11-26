@@ -46,6 +46,8 @@ if(userId==null){
 <body style="padding-bottom:31px;">
     <form id="mform"  method="post"></form> 
     <script type="text/javascript"> 
+    
+
     UserInfoSvc.getDep(function(rddata){
         var config = {"Form":{ 
          fields : [
@@ -60,7 +62,11 @@ if(userId==null){
          },
          {display:"职称",name:"cZc",newline:false,labelWidth:100,width:200,space:30,type:"text"},
          {display:"姓名",name:"cXm",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"性别",name:"nXb",newline:false,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"性别",name:"nXb",newline:false,labelWidth:100,width:200,space:30,type:"select",
+             comboboxName:"nXbName",
+             options:{valueFieldID:"nXb",data:[{ text: '男', id: 1 }, { text: '女', id: 0 }] }
+         },
+        
          {display:"生日",name:"dSr",newline:true,labelWidth:100,width:200,space:30,type:"date"},
          {display:"国籍",name:"cGj",newline:false,labelWidth:100,width:200,space:30,type:"text"},
          {display:"出生地",name:"cCsd",newline:true,labelWidth:100,width:200,space:30,type:"text"},
@@ -188,6 +194,7 @@ if(userId==null){
         function f_save() {
 
         	var formMap = DWRUtil.getValues("mform"); 
+   
 			if(isAddNew){
         	UserInfoSvc.save(formMap,function (rdata){
         		if (rdata) {
@@ -232,6 +239,8 @@ if(userId==null){
             parent.dialog_hidden();
         }
         });
+    
+   
     </script>
   
 </body>
