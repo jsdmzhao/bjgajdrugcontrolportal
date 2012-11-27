@@ -4,7 +4,7 @@
 <mapper namespace="DmMapper">
 	<resultMap id="Result"  type="java.util.Map">
 		<result property="nXh" column="N_XH" jdbcType="DECIMAL"/>
-		<result property="cBXH" column="C_BXH" jdbcType="VARCHAR"/>
+		<result property="cBxh" column="C_BXH" jdbcType="VARCHAR"/>
 		<result property="cDm" column="C_DM" jdbcType="VARCHAR"/>
 		<result property="cMc" column="C_MC" jdbcType="VARCHAR"/>
 		<result property="nXsxh" column="N_XSXH" jdbcType="VARCHAR"/>
@@ -27,7 +27,7 @@
 				 from D_DM base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
-			<if test="cBXH != null and cBXH !='' ">  and C_BXH = #{cBXH}</if>
+			<if test="cBxh != null and cBxh !='' ">  and C_BXH = #{cBxh}</if>
 			<if test="cDm != null and cDm !='' ">  and C_DM = #{cDm}</if>
 			<if test="cMc != null and cMc !='' ">  and C_MC = #{cMc}</if>
 			<if test="nXsxh != null and nXsxh !='' ">  and N_XSXH = #{nXsxh}</if>
@@ -52,7 +52,7 @@
 				 from D_DM base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
-			<if test="cBXH != null and cBXH !='' ">  and C_BXH = #{cBXH}</if>
+			<if test="cBxh != null and cBxh !='' ">  and C_BXH = #{cBxh}</if>
 			<if test="cDm != null and cDm !='' ">  and C_DM = #{cDm}</if>
 			<if test="cMc != null and cMc !='' ">  and C_MC = #{cMc}</if>
 			<if test="nXsxh != null and nXsxh !='' ">  and N_XSXH = #{nXsxh}</if>
@@ -68,7 +68,7 @@
 				select count(base.N_XH) from D_DM base
  		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
-			<if test="cBXH != null and cBXH !='' ">  and C_BXH = #{cBXH}</if>
+			<if test="cBxh != null and cBxh !='' ">  and C_BXH = #{cBxh}</if>
 			<if test="cDm != null and cDm !='' ">  and C_DM = #{cDm}</if>
 			<if test="cMc != null and cMc !='' ">  and C_MC = #{cMc}</if>
 			<if test="nXsxh != null and nXsxh !='' ">  and N_XSXH = #{nXsxh}</if>
@@ -82,7 +82,7 @@
 	<insert id="saveInfo" parameterType="java.util.Map" >
 			INSERT INTO D_DM(
 				 N_XH
-			<if test="cBXH != null and cBXH !='' ">  , C_BXH</if>
+			<if test="cBxh != null and cBxh !='' ">  , C_BXH</if>
 			<if test="cDm != null and cDm !='' ">  ,  C_DM</if>
 			<if test="cMc != null and cMc !='' ">  ,  C_MC</if>
 			<if test="nXsxh != null and nXsxh !='' ">  ,  N_XSXH</if>
@@ -92,7 +92,7 @@
 			)VALUES(
 				SEQ_DM.NEXTVAL 
 				<!-- #{n_xh#-->
-			<if test="cBXH != null and cBXH !='' ">  , #{cBXH} </if>
+			<if test="cBxh != null and cBxh !='' ">  , #{cBxh} </if>
 			<if test="cDm != null and cDm !='' ">  ,  #{cDm} </if>
 			<if test="cMc != null and cMc !='' ">  ,  #{cMc} </if>
 			<if test="nXsxh != null and nXsxh !='' ">  ,  #{nXsxh} </if>
@@ -120,7 +120,7 @@
 			)VALUES(
 				 SEQ_DM.NEXTVAL,  
 				<!--#nXh#,-->
-				#{cBXH},
+				#{cBxh},
 				#{cDm},
 				#{cMc},
 				#{nXsxh},
@@ -139,7 +139,7 @@
 	<update id="updateInfo" parameterType="java.util.Map"> 
 			update D_DM 
 			<trim prefix="set" prefixOverrides=","> 
-				<if test="cBXH != null and cBXH !='' "> , C_BXH = #{cBXH}</if>
+				<if test="cBxh != null and cBxh !='' "> , C_BXH = #{cBxh}</if>
 				<if test="cDm != null and cDm !='' "> , C_DM = #{cDm}</if>
 				<if test="cMc != null and cMc !='' "> , C_MC = #{cMc}</if>
 				<if test="nXsxh != null and nXsxh !='' "> , N_XSXH = #{nXsxh}</if>
@@ -155,7 +155,7 @@
 	
 	<update id="updateAllInfo" parameterType="java.util.Map"> 
 			update D_DM set 
-				C_BXH = #{cBXH},
+				C_BXH = #{cBxh},
 				C_DM = #{cDm},
 				C_MC = #{cMc},
 				N_XSXH = #{nXsxh},

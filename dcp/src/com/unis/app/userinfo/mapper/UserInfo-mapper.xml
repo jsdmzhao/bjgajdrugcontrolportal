@@ -8,6 +8,7 @@
 			<result property="userId" column="USER_ID" jdbcType="DECIMAL"/>
 			<result property="cJb" column="C_JB" jdbcType="VARCHAR"/>
 			<result property="cYhz" column="C_YHZ" jdbcType="VARCHAR"/>
+			<result property="cKs" column="C_KS" jdbcType="VARCHAR"/>
 			<result property="cZc" column="C_ZC" jdbcType="VARCHAR"/>
 			<result property="cXm" column="C_XM" jdbcType="VARCHAR"/>
 			<result property="nXb" column="N_XB" jdbcType="VARCHAR"/>
@@ -63,6 +64,7 @@
 					base.USER_ID,
 					base.C_JB,
 					base.C_YHZ,
+					base.C_KS,
 					base.C_ZC,
 					base.C_XM,
 					base.N_XB,
@@ -93,6 +95,7 @@
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
 			<if test="cYhz != null and cYhz !='' ">  and C_YHZ = #{cYhz}</if>
+			<if test="cKs != null and cKs !='' ">  and C_KS = #{cKs}</if>
 			<if test="cXm != null and cXm !='' ">  and C_XM = #{cXm}</if>
 			<if test="dSrBeg != null and dSrBeg !='' ">  and D_SR &gt;= to_date(#{dSrBeg},'YYYY-MM-DD')</if>
 			<if test="dSrEnd != null and dSrEnd !='' "> and D_SR &lt;= to_date(#{dSrEnd},'YYYY-MM-DD')</if>
@@ -114,6 +117,7 @@
 					base.USER_ID,
 					base.C_JB,
 					base.C_YHZ,
+					base.C_KS,
 					base.C_ZC,
 					base.C_XM,
 					base.N_XB,
@@ -144,6 +148,7 @@
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
 			<if test="cYhz != null and cYhz !='' ">  and C_YHZ = #{cYhz}</if>
+			<if test="cKs != null and cKs !='' ">  and C_KS = #{cKs}</if>
 			<if test="cXm != null and cXm !='' ">  and C_XM = #{cXm}</if>
 			<if test="dSrBeg != null and dSrBeg !='' ">  and D_SR &gt;= to_date(#{dSrBeg},'YYYY-MM-DD')</if>
 			<if test="dSrEnd != null and dSrEnd !='' "> and D_SR &lt;= to_date(#{dSrEnd},'YYYY-MM-DD')</if>
@@ -161,6 +166,7 @@
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
 			<if test="cYhz != null and cYhz !='' ">  and C_YHZ = #{cYhz}</if>
+		    <if test="cKs != null and cKs !='' ">  and C_KS = #{cKs}</if>
 			<if test="cXm != null and cXm !='' ">  and C_XM = #{cXm}</if>
 			<if test="dSrBeg != null and dSrBeg !='' ">  and D_SR &gt;= to_date(#{dSrBeg},'YYYY-MM-DD')</if>
 			<if test="dSrEnd != null and dSrEnd !='' "> and D_SR &lt;= to_date(#{dSrEnd},'YYYY-MM-DD')</if>
@@ -178,6 +184,7 @@
 			<if test="userId != null and userId !='' ">  , USER_ID</if>
 			<if test="cJb != null and cJb !='' ">  ,  C_JB</if>
 			<if test="cYhz != null and cYhz !='' ">  ,  C_YHZ</if>
+			<if test="cKs != null and cKs !='' ">  ,  C_KS</if>
 			<if test="cZc != null and cZc !='' ">  ,  C_ZC</if>
 			<if test="cXm != null and cXm !='' ">  ,  C_XM</if>
 			<if test="nXb != null and nXb !='' ">  ,  N_XB</if>
@@ -208,6 +215,7 @@
 			<if test="userId != null and userId !='' ">  ,  #{userId}</if>
 			<if test="cJb != null and cJb !='' ">  ,  #{cJb}</if>
 			<if test="cYhz != null and cYhz !='' ">  ,  #{cYhz}</if>
+			<if test="cKs != null and cKs !='' ">  ,  #{cKs}</if>
 			<if test="cZc != null and cZc !='' ">  ,  #{cZc}</if>
 			<if test="cXm != null and cXm !='' ">  ,  #{cXm}</if>
 			<if test="nXb != null and nXb !='' ">  ,  #{nXb}</if>
@@ -245,6 +253,7 @@
 				USER_ID,
 				C_JB,
 				C_YHZ,
+				C_KS,
 				C_ZC,
 				C_XM,
 				N_XB,
@@ -274,6 +283,7 @@
 				  #{userId},
 			 #{cJb},
 			   #{cYhz},
+			   #{cKs},
 			   #{cZc},
 			   #{cXm},
 			   #{nXb},
@@ -311,6 +321,7 @@
 			<if test="userId != null and userId !='' ">, USER_ID =  #{userId}</if>
 			<if test="cJb != null and cJb !='' ">, C_JB =  #{cJb}</if>
 			<if test="cYhz != null and cYhz !='' ">,C_YHZ =  #{cYhz}</if>
+			<if test="cKs != null and cKs !='' ">,C_KS =  #{cKs}</if>
 			<if test="cZc != null and cZc !='' ">, C_ZC =  #{cZc}</if>
 			<if test="cXm != null and cXm !='' ">, C_XM =  #{cXm}</if>
 			<if test="nXb != null and nXb !='' ">, N_XB =  #{nXb}</if>
@@ -347,6 +358,7 @@
 				 USER_ID =  #{userId}
 			, C_JB =  #{cJb}
 			,C_YHZ =  #{cYhz}
+			,C_KS =  #{cKs}
 			, C_ZC =  #{cZc}
 			, C_XM =  #{cXm}
 			, N_XB =  #{nXb}

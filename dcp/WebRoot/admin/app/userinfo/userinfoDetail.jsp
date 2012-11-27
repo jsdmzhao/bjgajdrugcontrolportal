@@ -46,22 +46,40 @@ if(userId==null){
 <body style="padding-bottom:31px;">
     <form id="mform"  method="post"></form> 
     <script type="text/javascript"> 
-    
+    DWREngine.setAsync(false); 
 
-    UserInfoSvc.getDep(function(rddata){
+    var bmdata=new Array();
+    var ksdata=new Array();
+
+    UserInfoSvc.getDep(function(rdata){
+    	bmdata=rdata;
+    });
+    UserInfoSvc.getOff(function(rdata){
+    	ksdata=rdata;
+    });
+    
+    
+  
+    
         var config = {"Form":{ 
          fields : [
          {name:"nXh",type:"hidden",value:'<%=nXh %>'},
          {name:"userId",type:"hidden",value:'<%=userId %>'},
-         {display:"类型",name:"cLx",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"IP",name:"cYxip",newline:true,labelWidth:100,width:200,space:30,type:"text"}, 
-         {display:"级别",name:"cJb",newline:false,labelWidth:100,width:200,space:30,type:"text"},
+       //  {display:"类型",name:"cLx",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+      
+       //  {display:"级别",name:"cJb",newline:false,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"姓名",name:"cXm",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"IP",name:"cYxip",newline:false,labelWidth:100,width:200,space:30,type:"text"}, 
          {display:"用户组",name:"cYhz",newline:true,labelWidth:100,width:200,space:30,type:"select",
              comboboxName:"cYhzTitle",
-             options:{valueFieldID:"cYhz",data:rddata}
+             options:{valueFieldID:"cYhz",data:bmdata}
          },
-         {display:"职称",name:"cZc",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"姓名",name:"cXm",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"科室",name:"cKs",newline:false,labelWidth:100,width:200,space:30,type:"select",
+             comboboxName:"cKsTitle",
+             options:{valueFieldID:"cKs",data:ksdata}
+         },
+         {display:"职称",name:"cZc",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+        
          {display:"性别",name:"nXb",newline:false,labelWidth:100,width:200,space:30,type:"select",
              comboboxName:"nXbName",
              options:{valueFieldID:"nXb",data:[{ text: '男', id: 1 }, { text: '女', id: 0 }] }
@@ -88,6 +106,9 @@ if(userId==null){
          {display:"备注",name:"cBz",newline:true,labelWidth:100,width:500,space:30,type:"textarea"}
         ]
  }};
+        
+        
+      
 
         var forbidFields = [];
         LG.adujestConfig(config,forbidFields);
@@ -238,7 +259,7 @@ if(userId==null){
         {
             parent.dialog_hidden();
         }
-        });
+       
     
    
     </script>
