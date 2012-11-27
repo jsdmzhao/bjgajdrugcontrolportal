@@ -1,4 +1,3 @@
-<%@page import="com.unis.core.action.CreateIndexAction"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -21,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
  	 <div>
-	  	  <object type="application/x-shockwave-flash" data="flash/birthday.swf" width="700" height="600">
+	  	  <object type="application/x-shockwave-flash" data="flash/birthday.swf" width="760" height="500">
 			<param name="movie" value="flash/birthday.swf" />
 			<param name="wmode" value="transparent" />
 		  </object>

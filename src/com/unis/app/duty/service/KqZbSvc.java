@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.unis.app.duty.service.dao.KqZbDao;
+import com.unis.core.commons.Combox;
 
 @Service
 @Transactional(rollbackFor={Exception.class,SQLException.class})
@@ -72,6 +73,11 @@ public class KqZbSvc  {
 
 	public Map queryByPage(Map p, Map page) throws SQLException {
 		return kqZbDao.queryByPageInfo(p, page);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Combox> getWeekZbb() throws SQLException {
+		return kqZbDao.getWeekZbb();
 	}
 
 }

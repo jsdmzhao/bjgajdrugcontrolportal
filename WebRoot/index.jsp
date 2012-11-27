@@ -334,13 +334,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 					</div>
 					<div style="padding-left: 10px; padding-top: 10px; text-align: left;">
-						<s:property value="resMap.zbbStr"/>
+						<div>
 						<s:if test="resMap.zbbStr != null and resMap.zbbStr != '' ">
-							<s:property value="resMap.zbbStr"/>，<a href="" target="_blank">点击下载值班表</a>
+							<strong>值班人员：</strong> 
+							<s:property value="resMap.zbbStr"/>
 						</s:if>
 						<s:else>
-							暂无值班计划
+							<strong>今日暂无值班人员！</strong></br>
 						</s:else>
+						</div>
+						<div style="margin-top: 5px; vertical-align: bottom;">
+							<img alt="下载值班表" src="newimages/download.png" width="30" height="30">
+							<a href="download.jsp" target="_blank" style=" height: 30px;padding-top: 10px;">点击下载值班表</a>
+						</div>
 					</div>
 				</div>
 				<div class="jrzb_div" style="height:105px;">
@@ -352,11 +358,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div style="padding-left: 10px; padding-top: 10px; text-align: left;">
 						<s:if test="resMap.srtsStr != null and resMap.srtsStr != '' ">
-							<s:property value="resMap.srtsStr"/>，<a href="birthday.jsp" target="_blank">点击领取生日祝福！</a>
+							<strong>生日祝福：</strong> 
+							<s:property value="resMap.srtsStr"/>，
+							<a href="birthday.jsp?TB_iframe=true&height=500&width=800" rel="sexylightbox[12]" title="祝：<s:property value='resMap.srtsStr'/>，生日快乐！">点击领取生日祝福！</a>
 						</s:if>
 						<s:else>
-							暂无有生日的同志
+							<strong>今日暂无生日祝福</strong>
 						</s:else>
+						
 					</div>
 				</div>
 				<div class="jrzb_div">
@@ -575,7 +584,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div id="ztzl_content">
 			<div id="ztzl_content_left">
 				<div class="ztzl_img_div"><a href="newsCenterList?news.c_lm=1145&pageNo=1" target="_blank"><img src="newimages/zdzxx.png" /></a></div>
-				<div class="ztzl_img_div"><a href="<%=basePath%>desktop/index.jsp?TB_iframe=true&height=600&width=900" rel="sexylightbox[22]" title="办公平台"
+				<div class="ztzl_img_div"><a href="<%=basePath%>desktop/index.jsp?TB_iframe=true&height=600&width=900" rel="sexylightbox[22]" title="我的工作区"
 								<%--  onclick='Box("msg1",900,600,parahtml("<%=basePath%>desktop/index.jsp",900,600),fontbutton(1,1))' gzy--%>><img src="newimages/bgpt.png" /></a></div>
 				<div class="xxph_div">
 						<div class="xxph_title_content">
@@ -814,8 +823,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 		<div id="roll_image">
-		
-		
+
 			<div class="ny2010">
 				<div id="demo" style="overflow:hidden; width:976px; color:#333333; height:45px; display:inline; float:right;"
 					onMouseMove="MoveDiv(event);" onMouseOut="MoveOutDiv();">
