@@ -36,13 +36,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <a href="javascript:void(0)" id="usersetup" style="display:none">账号设置</a>
         </div>
         </div>
-
+<!-- 
         <div class="withicon">
             <div class="icon"><img src="<%=basePath%>liger/lib/images/index/time.gif" /></div>
             <span id="labelLastLoginTime"></span>
         </div>
 
-<!-- 
+
         <div class="navline">
         </div>
         
@@ -60,7 +60,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
           
  -->
-
+ <div style="clear:both;">
+       <div style="float: left;margin-left: 20px"><a href="<%=basePath%>temp/sxbdk.jsp?id=1"><img src="<%=basePath%>liger/lib/icons/32X32/book.gif" /><div class="close">上班打卡</div></a></div>
+       <div style="margin-left: 80px"><a href="<%=basePath%>temp/sxbdk.jsp?id=0"><img src="<%=basePath%>liger/lib/icons/32X32/communication.gif" /><div class="close">下班打卡</div></a></div>
+       
+ </div>
         <div class="navbar"><div class="navbar-l"></div><div class="navbar-r"></div>
         <div class="navbar-icon"><img src="<%=basePath%>liger/lib/icons/32X32/collaboration.gif" /></div>
         <div class="navbar-inner"> 

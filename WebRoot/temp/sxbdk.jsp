@@ -57,14 +57,15 @@ String id= request.getParameter("id");
  <script type="text/javascript"> 
 
 
-        	var formMap = {userId:'<%=session.getAttribute("userId") %>',cYy:'<%=("0".equals(id))?"上班":"下班" %>',nLx:1};
+        	var formMap = {userId:'<%=session.getAttribute("userId") %>',cYy:'<%=("1".equals(id))?"上班":"下班" %>',nLx:1};
 		
         	KqYbjlSvc.setDkInfo(formMap,function (rdata){
         		if (rdata) {
-					alert('打卡成功', function() {
-					});
+					alert('打卡成功');
+					history.go(-1);
 				} else {
 					alert('打开失败');
+					history.go(-1);
 				}
 			});
         	
