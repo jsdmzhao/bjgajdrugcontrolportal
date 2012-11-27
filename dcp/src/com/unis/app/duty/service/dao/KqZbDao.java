@@ -77,5 +77,9 @@ public class KqZbDao<T> extends AbsServiceAdapter<T>  {
 			return retMap;
 		}
 	}
+	
+	public List<?> getWeekZbb(){
+		return  super.selectList("KqZbMapper.getWeekZbb","");
+	}
 
 }

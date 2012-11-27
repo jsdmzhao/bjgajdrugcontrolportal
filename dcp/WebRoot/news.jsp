@@ -287,29 +287,29 @@ if(c_bt == null){
 						<img src="newimages/news_list_line.png"/>
 					</div>
 
-						<div style="width: 734px; text-align:center;">
-							<div class="digg">
-								<span class="disabled"> 
-									<a href="javascript:searchSubmit(1)">首页</a>
-								</span> 
-								<span class="disabled"> 
-								<a href="javascript:searchSubmit(<s:property value="pageModel.previousPage"/>)">上一页</a>
-								</span>
-								<span class="disabled">
-								<c:forEach varStatus="i" begin="${pageModel.pageNo}" end="${pageModel.totalPages-pageModel.pageNo>8?pageModel.pageNo+8:pageModel.totalPages}">
-									<a href="javascript:searchSubmit(${i.index})">${i.index}</a>
-								</c:forEach>
-								</span>
-								<span class="disabled">
-								<a href="javascript:searchSubmit(<s:property value="pageModel.nextPage"/>)">下一页</a>
-								</span>
-								<span class="disabled">
-								<a href="javascript:searchSubmit(<s:property value="pageModel.nextPage"/>)">末页</a>
-								</span>
-							</div>
+					<div style="width: 734px; text-align:center;">
+						<div class="digg">
+							<span class="disabled"> 
+								<a href="javascript:searchSubmit(1)">首页</a>
+							</span> 
+							<span class="disabled"> 
+							<a href="javascript:searchSubmit(<s:property value="pageModel.previousPage"/>)">上一页</a>
+							</span>
+							<span class="disabled">
+							<c:forEach varStatus="i" begin="${pageModel.pageNo}" end="${pageModel.totalPages-pageModel.pageNo>8?pageModel.pageNo+8:pageModel.totalPages}">
+								<a href="javascript:searchSubmit(${i.index})">${i.index}</a>
+							</c:forEach>
+							</span>
+							<span class="disabled">
+							<a href="javascript:searchSubmit(<s:property value="pageModel.nextPage"/>)">下一页</a>
+							</span>
+							<span class="disabled">
+							<a href="javascript:searchSubmit(<s:property value="pageModel.nextPage"/>)">末页</a>
+							</span>
 						</div>
-						
 					</div>
+					
+				</div>
 			</div>
 			<div id="bottom_blue_line"></div>
 			<div id="bottom">
