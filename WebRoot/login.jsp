@@ -47,6 +47,7 @@ if(ip!=null){
 		session.setAttribute("nZxsc",rp.get("nZxsc") );
 		session.setAttribute("cLx",rp.get("cLx") );
 		session.setAttribute("cYxip",rp.get("cYxip") );
+		session.setAttribute("cKs",rp.get("cKs") );
 		
 		if(temp_r==null){
 		%>
