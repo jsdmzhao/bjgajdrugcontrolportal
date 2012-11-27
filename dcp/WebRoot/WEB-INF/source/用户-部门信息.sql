@@ -10,6 +10,7 @@ CREATE TABLE B_YH  (
    USER_ID              NUMBER(8),
    C_JB                 VARCHAR2(8)                      ,
    C_YHZ                 VARCHAR2(8)                         ,
+   C_KS					 VARCHAR2(8),
    C_ZC                 VARCHAR2(100),
    C_XM                 VARCHAR2(30),
    N_XB                 NUMBER(1)                      ,
@@ -51,6 +52,9 @@ COMMENT ON COLUMN B_YH.C_JB IS
 
 COMMENT ON COLUMN B_YH.C_YHZ IS
 '用户组';
+
+COMMENT ON COLUMN B_YH.C_KS IS
+'科室';
 
 COMMENT ON COLUMN B_YH.C_ZC IS
 '职称';
