@@ -180,25 +180,96 @@ insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
 values (seq_dm.nextval, 'DEP', '1', '总队领导', 1, null, null, sysdate);
 
 insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
-values (seq_dm.nextval, 'DEP', '3', '办公室', 3, null, null, sysdate);
+values (seq_dm.nextval, 'DEP', '3', '办公室', 8, null, null, sysdate);
 
 insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
-values (seq_dm.nextval, 'DEP', '4', '协调指导大队', 4, null, null, sysdate);
+values (seq_dm.nextval, 'DEP', '4', '协调指导处', 9, null, null, sysdate);
 
 insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
-values (seq_dm.nextval, 'DEP', '5', '缉控大队', 10, null, null, sysdate);
+values (seq_dm.nextval, 'DEP', '5', '缉控大队', 4, null, null, sysdate);
 
 insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
-values (seq_dm.nextval, 'DEP', '7', '侦查大队', 8, null, null, sysdate);
+values (seq_dm.nextval, 'DEP', '7', '侦查大队', 5, null, null, sysdate);
 
 insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
-values (seq_dm.nextval, 'DEP', '8', '查禁大队', 9, null, null, sysdate);
+values (seq_dm.nextval, 'DEP', '8', '查禁大队', 3, null, null, sysdate);
 
 insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
-values (seq_dm.nextval, 'DEP', '9', '情报中心', 7,null, null, sysdate);
+values (seq_dm.nextval, 'DEP', '9', '情报中心', 2,null, null, sysdate);
 
 insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
-values (seq_dm.nextval, 'DEP', '10', '两品办', 11, null, null, sysdate);
+values (seq_dm.nextval, 'DEP', '10', '两品办', 10, null, null, sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'DEP', '11', '易管大队', 6, null, null, sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'DEP', '12', '法制处', 7, null, null, sysdate);
+
+--科室
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'OFF', '1', '情报一队', 1, null, '9', sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'OFF', '2', '情报二队', 2, null, '9', sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'OFF', '3', '情报三队', 3, null, '9', sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'OFF', '4', '查禁一队', 4, null, '8', sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'OFF', '5', '查禁二队', 5, null, '8', sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'OFF', '6', '内勤探组', 6, null, '8', sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'OFF', '7', '缉控一队', 7, null, '5', sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'OFF', '8', '缉控二队', 8, null, '5', sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'OFF', '9', '内勤探组', 9, null, '5', sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'OFF', '10', '侦察一队', 10, null, '7', sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'OFF', '11', '侦察二队', 11, null, '7', sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'OFF', '12', '内勤探组', 12, null, '7', sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'OFF', '13', '易管队', 13, null, '11', sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'OFF', '14', '内勤探组', 14, null, '11', sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'OFF', '15', '法制', 15, null, '12', sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'OFF', '16', '秘书科', 16, null, '3', sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'OFF', '17', '政工科', 17, null, '3', sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'OFF', '18', '警务保障及警务指导', 18, null, '3', sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'OFF', '19', '吸毒人员动态管控组', 19, null, '4', sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'OFF', '20', '预防宣传教育', 20, null, '4', sysdate);
+
+insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+values (seq_dm.nextval, 'OFF', '21', '内勤组', 21, null, '4', sysdate);
 
 									
 --用户
