@@ -102,6 +102,7 @@ public class SysUserSvc  {
 				request.getSession().setAttribute("nZxsc",rp.get("nZxsc") );
 				request.getSession().setAttribute("cLx",rp.get("cLx") );
 				request.getSession().setAttribute("cYxip",rp.get("cYxip") );
+				request.getSession().setAttribute("cKs",rp.get("cKs") );
 				
 				return true;
 		}
