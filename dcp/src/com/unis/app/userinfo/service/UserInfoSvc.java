@@ -40,11 +40,17 @@ public class UserInfoSvc  {
 
 	@SuppressWarnings("rawtypes")
 	public Object update(Map p) throws SQLException {
+		if(p.get("nXh")==null||"".equals(p.get("nXh"))){
+			return userDao.saveInfo(p);
+		}
 		return userDao.updateInfo(p);
 	}
 
 	@SuppressWarnings("rawtypes")
 	public Object updateAll(Map p) throws SQLException {
+		if(p.get("nXh")==null||"".equals(p.get("nXh"))){
+			return userDao.saveInfo(p);
+		}
 		return userDao.updateAllInfo(p);
 	}
 
