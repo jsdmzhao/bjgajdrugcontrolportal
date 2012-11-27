@@ -140,12 +140,28 @@ public class UserInfoSvc  {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public List getDep() throws SQLException {
 		Map p=new HashMap();
-		p.put("nBxh", "DEP");
+		p.put("cBxh", "DEP");
 		List<Map> list=dmDao.queryAllInfo(p);
 		for (int i = 0; i < list.size(); i++) {
 			Map tp=list.get(i);
 			tp.put("id", tp.get("cDm"));
 			tp.put("text", tp.get("cMc"));
+		//	tp.put("value", tp.get("cDm"));
+			
+		}
+		return list;
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public List getOff() throws SQLException {
+		Map p=new HashMap();
+		p.put("cBxh", "OFF");
+		List<Map> list=dmDao.queryAllInfo(p);
+		for (int i = 0; i < list.size(); i++) {
+			Map tp=list.get(i);
+			tp.put("id", tp.get("cDm"));
+			tp.put("text", tp.get("cMc"));
+			tp.put("pid", tp.get("cSjdm"));
 		//	tp.put("value", tp.get("cDm"));
 			
 		}
