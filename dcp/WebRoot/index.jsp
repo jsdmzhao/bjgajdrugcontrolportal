@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=basePath%>js/jquery.easing.1.3.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/sexylightbox.v2.3.jquery.min.js"></script>
 	
-<script type="text/javascript" src="<%=basePath%>js/lightBox.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/lightBox.js"></script>
 
 	<style type="text/css">
 		body { padding:0px; margin:0px; }
@@ -109,7 +109,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<param name="movie" value="flash/Banner.swf" />
 			<param name="wmode" value="transparent" />
 		 </object>
-				     
 	   </div>
 
 	    <div class="menu">
@@ -345,26 +344,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<div style="margin-top: 5px; vertical-align: bottom;">
 							<img alt="下载值班表" src="newimages/download.png" width="30" height="30">
-							<a href="download.jsp" target="_blank" style=" height: 30px;padding-top: 10px;">点击下载值班表</a>
+							<a href="download.jsp" target="_blank" style=" height: 30px;padding-top: 8px;">点击下载值班表</a>
 						</div>
 					</div>
 				</div>
-				<div class="jrzb_div" style="height:105px;">
+				<div class="jrzb_div" style="height:105px; background: url('newimages/birthday.png');">
 					<div class="jrzb_title">
 						<div class="jrzb_title_content">
 							<div class="jrzb_title_img"><img src="newimages/content_title_img.png" /></div>
 							<div class="jrzb_title_font">生日祝福</div>
 						</div>
 					</div>
-					<div style="padding-left: 10px; padding-top: 10px; text-align: left;">
+					<div style="padding-left: 10px; padding-top: 15px; text-align: left;">
+						<div>
 						<s:if test="resMap.srtsStr != null and resMap.srtsStr != '' ">
 							<strong>生日祝福：</strong> 
-							<s:property value="resMap.srtsStr"/>，
-							<a href="birthday.jsp?TB_iframe=true&height=500&width=800" rel="sexylightbox[12]" title="祝：<s:property value='resMap.srtsStr'/>，生日快乐！">点击领取生日祝福！</a>
+							<s:property value="resMap.srtsStr"/>
 						</s:if>
 						<s:else>
 							<strong>今日暂无生日祝福</strong>
 						</s:else>
+						</div>
+						<s:if test="resMap.srtsStr != null and resMap.srtsStr != '' ">
+						<div style="margin-top: 5px; vertical-align: bottom;">
+							<img alt="生日祝福" src="newimages/download.png" width="30" height="30">
+							<a href="birthday.jsp?TB_iframe=true&height=500&width=800" rel="sexylightbox[12]" title="祝：<s:property value='resMap.srtsStr'/>，生日快乐！" style="height: 30px;padding-top: 10px;">点击领取生日祝福</a>
+						</div>
+						</s:if>
 						
 					</div>
 				</div>
@@ -388,7 +394,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 				</div>
 				<div id="wsbg">
-						<img src="newimages/wsbg.png" />
+						<a href="<%=basePath%>admin" target="_blank"><img src="newimages/wsbg.png" /></a>
 				</div>
 			</div>
 			<div id="jwgk_content_center">
@@ -583,9 +589,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div id="ztzl_title"></div>
 		<div id="ztzl_content">
 			<div id="ztzl_content_left">
-				<div class="ztzl_img_div"><a href="newsCenterList?news.c_lm=1145&pageNo=1" target="_blank"><img src="newimages/zdzxx.png" /></a></div>
-				<div class="ztzl_img_div"><a href="<%=basePath%>desktop/index.jsp?TB_iframe=true&height=600&width=900" rel="sexylightbox[22]" title="我的工作区"
-								<%--  onclick='Box("msg1",900,600,parahtml("<%=basePath%>desktop/index.jsp",900,600),fontbutton(1,1))' gzy--%>><img src="newimages/bgpt.png" /></a></div>
+				<div class="ztzl_img_div"><a href="newsCenterList?news.c_lm=1145&pageNo=1"><img src="newimages/zdzxx.png" /></a></div>
+				<div class="ztzl_img_div">
+				<% 
+				if(session.getAttribute("userId") != null && !"0".equals(session.getAttribute("userId"))){
+				%>
+					<a href="<%=basePath%>desktop/index.jsp?TB_iframe=true&height=600&width=1000" rel="sexylightbox[22]" title="我的工作区">
+								<%--  onclick='Box("msg1",900,600,parahtml("<%=basePath%>desktop/index.jsp",900,600),fontbutton(1,1))' gzy--%>
+						<img src="newimages/bgpt.png" />
+					</a>
+				<%
+				} else {
+				%>
+					<img src="newimages/bgpt.png" />
+				<%	
+				}
+				%>
+					
+			    </div>
 				<div class="xxph_div">
 						<div class="xxph_title_content">
 							<div class="jrzb_title_img"><img src="newimages/content_title_img.png" /></div>

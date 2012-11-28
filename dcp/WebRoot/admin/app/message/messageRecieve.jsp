@@ -119,7 +119,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       }
 
       
-      function f_delete() {
+      function f_delete(value) {
     	  var selected = grid.getSelected();
           if (selected) {
         	  MessageAction.messageRecieveOperator(value, selected.n_xh, function (result){

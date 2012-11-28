@@ -35,6 +35,7 @@ public class CarRepairAction {
 	
 	private Integer page;
 	
+	private String operateType;
 	
 	@Autowired
 	private AbsServiceAdapter<Integer> carService = null;
@@ -61,11 +62,14 @@ public class CarRepairAction {
 		HttpSession session = request.getSession();
 		String userId =  session.getAttribute("userId")+"";
 		String yhzId =  session.getAttribute("cYhz")+"";
+		String c_ks =  session.getAttribute("cKs")+"";
 		Map<String, String> sqlParamMap = new HashMap<String, String>();
 		
+		sqlParamMap.put("operateType", operateType);
 		sqlParamMap.put("n_cllbxh", n_cllbxh);
 		sqlParamMap.put("c_yhid", userId);
 		sqlParamMap.put("c_yhzid", yhzId);
+		sqlParamMap.put("c_ks", c_ks);
 		sqlParamMap.put("start", String.valueOf(((page.intValue()-1)*pagesize.intValue())));
 		sqlParamMap.put("limit", String.valueOf((page.intValue()*pagesize.intValue())));
 		Map<String, Object> resMap = new HashMap<String, Object>();
@@ -116,14 +120,15 @@ public class CarRepairAction {
 		return Globals.SUCCESS;
 	}
 
-	public String CarRepairOperator(String value, String n_xh){
+	public String carRepairOperator(String value, String n_xh){
 		
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
 		String userId =  session.getAttribute("userId")+"";
-		//String yhzId =  session.getAttribute("cYhz")+"";
+		String c_ks =  session.getAttribute("cKs")+"";
 		
 		Map<String, Object> sqlparaMap = new HashMap<String, Object>();
+		sqlparaMap.put("c_ks", c_ks);
 		sqlparaMap.put("c_shr", userId);
 		sqlparaMap.put("c_shjg", value);
 		sqlparaMap.put("n_xh", n_xh);
@@ -170,6 +175,14 @@ public class CarRepairAction {
 
 	public void setPage(Integer page) {
 		this.page = page;
+	}
+
+	public String getOperateType() {
+		return operateType;
+	}
+
+	public void setOperateType(String operateType) {
+		this.operateType = operateType;
 	}
 	
 }

@@ -81,30 +81,10 @@ if(c_bt == null){
 <div id="container_news">
 	<div id="banner_top">
 		<div style="margin-left: 450px; padding-top:40px;">
-	      <object
-	        classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
-	        codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
-	        id="banner_t"
-	        width="278" height="34"
-	      >
-	        <param name="movie" value="flash/banner_t.swf">
-	        <param name="bgcolor" value="#FFFFFF">
-	        <param name="quality" value="high">
-	        <param name="seamlesstabbing" value="false">
-	        <param name="allowscriptaccess" value="samedomain">
-	        <embed
-	          type="application/x-shockwave-flash"
-	          pluginspage="http://www.adobe.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"
-	          name="banner_t"
-	          width="278" height="34"
-	          src="flash/banner_t.swf"
-	          bgcolor="#FFFFFF"
-	          quality="high"
-	        >
-	          <noembed>
-	          </noembed>
-	        </embed>
-	      </object>
+	      <object type="application/x-shockwave-flash" data="flash/banner_t.swf" width="278" height="34">
+			<param name="movie" value="flash/banner_t.swf" />
+			<param name="wmode" value="transparent" />
+		  </object>
 	    </div>
 	  <div id="favor">
 		<img src="newimages/4.png" width="15" height="12" />
@@ -115,12 +95,12 @@ if(c_bt == null){
 	</div>
 	  		
     <div id="banner_bottom"  style="margin-left:2px;">
-	  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="978" height="152">
-        <param name="movie" value="flash/Banner.swf" />
-        <param name="quality" value="high" />
-        <embed src="flash/Banner.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="978" height="152"></embed>
-      </object>
+     <object type="application/x-shockwave-flash" data="flash/Banner.swf" width="978" height="152">
+		<param name="movie" value="flash/Banner.swf" />
+		<param name="wmode" value="transparent" />
+	 </object>
    </div>
+   
   <div class="menu">
 	    <a href="<%=basePath%>">首页</a>
 	    <a href="http://www.xxzx.bj" target="_blank">信息查询</a> 
@@ -152,11 +132,11 @@ if(c_bt == null){
 		<div style="float:left; padding-top:5px;">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="newimages/12312.jpg"
 				width="14" height="13" />&nbsp;&nbsp;<strong>车辆限行尾号：</strong>
-					<%
-					ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());
-					ClxxSvc clxxSvc= (ClxxSvc) ctx.getBean("clxxSvc");
-					out.print(clxxSvc.getWh());
-					%>
+				<%
+				ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());
+				ClxxSvc clxxSvc= (ClxxSvc) ctx.getBean("clxxSvc");
+				out.print(clxxSvc.getWh());
+				%>
 		</div>
 		<div style="float:right; width:270px;">
 			<div style="float:left;">
@@ -211,39 +191,6 @@ if(c_bt == null){
 			<div id="gzjdts">
 					<a href='newsCenterList?news.c_lm=1100&pageNo=1'><img src="newimages/menu_gzjdts.png" /></a>
 			</div>
-			<!-- 
-            <div class="tztb_div" style="height:140px;">
-				<div class="tztb_title">
-					<div class="tztb_title_content">
-						<div class="tztb_title_img"><img src="newimages/content_title_img.png" /></div>
-						<div class="tztb_title_font">通知通告</div>
-					</div>
-				</div>
-                 <div class="tztb_content_list">
-                    <ul>
-						<li><img src="newimages/dote.gif" style="margin-top:6px;"/> 全市发展和改革工作</li>
-					</ul>
-					<ul>
-						<li><img src="newimages/dote.gif" style="margin-top:6px;"/> 全市发展和改革工作</li>
-					</ul>
-                    <ul>
-						<li><img src="newimages/dote.gif" style="margin-top:6px;"/> 全市发展和改革工作</li>
-					</ul>
-					<ul>
-						<li><img src="newimages/dote.gif" style="margin-top:6px;"/> 全市发展和改革工作</li>
-					</ul>
-					<ul>
-						<li><img src="newimages/dote.gif" style="margin-top:6px;"/> 全市发展和改革工作</li>
-					</ul>
-					<ul>
-						<li><img src="newimages/dote.gif" style="margin-top:6px;"/> 全市发展和改革工作</li>
-					</ul>
-					<ul>
-						<li><img src="newimages/dote.gif" style="margin-top:6px;"/> 全市发展和改革工作</li>
-					</ul>
-                 </div>
-			</div>
-			 -->
 		</div>
 		
 		<div id="news_center">

@@ -25,6 +25,7 @@
 		   C_BT      ,
 		   C_YHID    ,
 		   C_YHZID   ,
+		   C_JB      ,
 		   C_NR      ,
 		   D_DJ      ,
 		   C_SFTJ    ,
@@ -34,10 +35,11 @@
           #{c_bt,jdbcType=NUMERIC},  
           #{c_yhid,jdbcType=VARCHAR},         
           #{c_yhzid,jdbcType=VARCHAR},         
+          #{c_jb,jdbcType=VARCHAR},         
           #{c_nr,jdbcType=CLOB,handler=ClobTypeHandler},           
           sysdate,           
-          '',           
-          ''      
+          '0',           
+          '0'      
 	    )  
 	</insert>
 	

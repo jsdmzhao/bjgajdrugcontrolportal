@@ -195,7 +195,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
         
 		
-        
+        $("input,select,textarea",mainform).attr("readonly", "readonly");
+      	$("input,select,textarea",mainform).attr("disabled", "disabled");
+    	
     </script>
     
 

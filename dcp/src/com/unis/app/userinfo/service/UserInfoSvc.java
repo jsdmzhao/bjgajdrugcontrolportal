@@ -1,4 +1,4 @@
-package com.unis.app.userinfo.service;
+﻿package com.unis.app.userinfo.service;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -62,7 +62,7 @@ public class UserInfoSvc  {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public List choose() throws SQLException {
 		Map p=new HashMap();
-		p.put("nBxh", "DEP");
+		p.put("cBxh", "DEP");
 		List<Map> list=dmDao.queryAllInfo(p);
 		for (int i = 0; i < list.size(); i++) {
 			Map tp=list.get(i);
@@ -86,7 +86,7 @@ public class UserInfoSvc  {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public List chooseMobile() throws SQLException {
 		Map p=new HashMap();
-		p.put("nBxh", "DEP");
+		p.put("cBxh", "DEP");
 		List<Map> list=dmDao.queryAllInfo(p);
 		for (int i = 0; i < list.size(); i++) {
 			Map tp=list.get(i);
@@ -110,7 +110,7 @@ public class UserInfoSvc  {
 		
 		List<Map> rlist=new ArrayList();
 		Map p=new HashMap();
-		p.put("nBxh", "DEP");
+		p.put("cBxh", "DEP");
 		List<Map> list=dmDao.queryAllInfo(p);
 		for (int i = 0; i < list.size(); i++) {
 			Map tp=list.get(i);

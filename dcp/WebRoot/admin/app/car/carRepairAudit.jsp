@@ -94,10 +94,11 @@ if(carType == null){
           { display: "车牌", name: "n_cllbxh", width:140, type: "text", align: "left" ,  editor: { type: 'text'}},
           { display: "申请日期", name: "d_sqrq", width: 160, type: "text", align: "left", editor: { type: 'text'}},
           { display: "送修人员", name: "c_sxry", width: 200, type: "text", align: "left", editor: { type: 'text'}},
-          { display: "车辆行驶总里程", name: "n_clxszlc", width: 120, type: "text", align: "left", editor: { type: 'text'}}
+          { display: "车辆行驶总里程", name: "n_clxszlc", width: 120, type: "text", align: "left", editor: { type: 'text'}},
+          { display: "状态", name: "c_shjg", width: 120, type: "text", align: "left", editor: { type: 'text'}}
           ], dataAction: 'server', pageSize: 20, toolbar: {},sortName: 'n_xh', url:'<%=basePath%>carRepairPageList',
           width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false,
-          rownumbers:true,data: tempdata
+          rownumbers:true,data: tempdata,parms:[{name:'operateType',value:'sh'}]
       });
 
       //双击事件
@@ -149,7 +150,7 @@ if(carType == null){
                   if (!selected) { 
                 	  LG.tip('请选择行!'); return; 
                   } else {
-					  if(selected.c_shjg == '不同意' || selected.c_shjg == '同意' ){
+					  if(selected.c_shjg == '审核不通过' || selected.c_shjg == '审核通过' ){
 						  LG.showSuccess('该条车辆维修记录已经被审核，不能在进行审核！');
 	            		  returned;
 	            	  }
@@ -165,7 +166,7 @@ if(carType == null){
                   if (!selected) { 
                 	  LG.tip('请选择行!'); return; 
                   } else {
-					  if(selected.c_shjg == '不同意' || selected.c_shjg == '同意' ){
+					  if(selected.c_shjg == '审核不通过' || selected.c_shjg == '审核通过' ){
 						  LG.showSuccess('该条车辆维修记录已经被审核，不能在进行审核！');
 	            		  returned;
 	            	  }
@@ -237,7 +238,7 @@ if(carType == null){
       function f_operator(value) {
           var selected = grid.getSelected();
           if (selected) {
-        	  CarRepairAction.CarRepairOperator(value, selected.n_xh, function (result){
+        	  CarRepairAction.carRepairOperator(value, selected.n_xh, function (result){
              	   if(result == 'success'){
              		  LG.showSuccess('审核成功');
              		 grid.deleteRow(selected);

@@ -79,7 +79,8 @@
 		       		  '7','侦查大队',
 		       		  '8','查禁大队',
 		       		  '5','缉控大队',
-		       		  '10','两品办')  C_YHZID
+		       		  '10','两品办')  C_YHZID,
+		   C_TPLJDZ
 		FROM B_XINWEN WHERE N_XH = #{n_xh}
 	</select>
 	 

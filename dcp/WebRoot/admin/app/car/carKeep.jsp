@@ -94,7 +94,8 @@ if(carType == null){
           { display: "车牌", name: "n_cllbxh", width:140, type: "text", align: "left" ,  editor: { type: 'text'}},
           { display: "申请日期", name: "d_sqrq", width: 160, type: "text", align: "left", editor: { type: 'text'}},
           { display: "送修人员", name: "c_sxry", width: 200, type: "text", align: "left", editor: { type: 'text'}},
-          { display: "车辆行驶总里程", name: "n_clxszlc", width: 120, type: "text", align: "left", editor: { type: 'text'}}
+          { display: "车辆行驶总里程", name: "n_clxszlc", width: 120, type: "text", align: "left", editor: { type: 'text'}},
+          { display: "状态", name: "c_shjg", width: 120, type: "text", align: "left", editor: { type: 'text'}}
           ], dataAction: 'server', pageSize: 20, toolbar: {},sortName: 'n_xh', url:'<%=basePath%>carKeepPageList',
           width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false,rownumbers:true,
           data: tempdata

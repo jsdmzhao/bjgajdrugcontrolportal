@@ -11,7 +11,7 @@
 	 </resultMap>
 	 
 	<select id="getMobile" parameterType="Mobile" resultType="Mobile">
-		SELECT * FROM SMS_BOXSENDED WHERE ID = #{n_xh}
+		SELECT * FROM sms_boxsended WHERE ID = #{n_xh}
 	</select>
 	 
 	<select id="getMobileReceiveList" resultMap="resultMobile">
@@ -19,7 +19,7 @@
 		       RECEIVER, 
 		       CONTENT, 
 		       SENDTIME
-		  FROM SMS_BOXSENDED
+		  FROM sms_boxsended
 		  	WHERE RECEIVER = #{c_sjhm}
 	</select>
 	
@@ -28,7 +28,7 @@
 		       RECEIVER, 
 		       CONTENT, 
 		       SENDTIME
-		  FROM SMS_BOXSENDED
+		  FROM sms_boxsended
 		  	WHERE RECEIVER = #{c_sjhm}
 	</select>
 	
@@ -37,23 +37,23 @@
 		       RECEIVER, 
 		       CONTENT, 
 		       SENDTIME
-		  FROM SMS_BOXSENDED
+		  FROM sms_boxsended
 		  	WHERE SENDER = #{c_yhid}
 		LIMIT #{start},#{limit}
 	</select>
 	
 	<select id="getMobileSendPageListCnt"  resultType="long" resultMap="resultMobile">
 		SELECT COUNT(*) Total
-		  FROM SMS_BOXSENDED
+		  FROM sms_boxsended
 		  	WHERE SENDER = #{c_yhid}
 	</select>
 	
 	<delete id="deleteMobile" parameterType="int">
-		DELETE FROM SMS_BOXSENDED WHERE ID = #{n_xh}
+		DELETE FROM sms_boxsended WHERE ID = #{n_xh}
 	</delete>
 	
 	<insert id="insertMobile" parameterType="hashmap">
-		INSERT INTO SMS_BOXSENDING
+		INSERT INTO sms_boxsended
 			  (SENDER, RECEIVER, CONTENT, SENDTIME, INSERTTIME )
 			VALUES
 		<foreach collection="list" item="item" separator=",">
@@ -63,7 +63,7 @@
 	
 	
 	<insert id="insertOutMobile" parameterType="hashmap">
-		INSERT INTO SMS_BOXSENDING
+		INSERT INTO sms_boxsending
 		  (SENDER, RECEIVER, CONTENT, SENDTIME, INSERTTIME)
 		VALUES
 		  (#{c_yhid},#{c_jsr}, #{c_nr}, now(), now())

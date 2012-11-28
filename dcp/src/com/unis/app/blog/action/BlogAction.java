@@ -43,8 +43,10 @@ public class BlogAction {
 		HttpSession session = request.getSession();
 		String c_yhid = session.getAttribute("userId")+"";
 		String c_yhzid = session.getAttribute("cYhz")+"";
+		String c_jb = session.getAttribute("cJb")+"";
 		sqlParamMap.put("c_yhid", c_yhid);
 		sqlParamMap.put("c_yhzid", c_yhzid);
+		sqlParamMap.put("c_jb", c_jb);
 		
 		if(StringUtils.isNotEmpty(sqlParamMap.get("n_xh"))){
 			blogService.update("BlogMapper.updateBlog", sqlParamMap);
