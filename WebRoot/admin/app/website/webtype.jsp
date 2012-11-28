@@ -56,7 +56,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       });
 
       //双击事件
-      LG.setGridDoubleClick(grownumbers:true,rid, 'modify');
 
       //验证
       var maingform = $("#mainform");

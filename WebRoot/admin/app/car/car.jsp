@@ -46,10 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           { name: "n_xh", editor: {type: 'hidden'},hide : '1' },
           { name: "n_cllbxh", editor: {type: 'hidden'},hide : '1' },
           { display: "车牌", name: "n_cllbxh_", width:140, type: "text", align: "left" , validate: { required: true } , editor: { type: 'text' }
-          },{ display: "申请人", name: "c_yhid", width: 100, type: "text", align: "left"
-              , validate: { required: true }
-	          , editor: { type: 'text' }
-	      },
+          },
           { display: "申请事由", name: "c_sqsy", width: 300, type: "text", align: "left", editor: { type: 'text'} },
           { display: "出车时间", name: "d_ccsj", width: 160, type: "text", align: "left", editor: { type: 'text'}},
           { display: "归队时间", name: "d_gdsj", width: 160, type: "text", align: "left", editor: { type: 'text'}},

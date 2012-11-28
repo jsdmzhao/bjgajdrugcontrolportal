@@ -112,7 +112,7 @@
 
 	<select id="queryInfo" resultMap="Result" parameterType="java.util.Map" >
 		<include refid="pagination.paginationStart"></include>
-						 select 
+				select 
 					base.N_XH,
 					base.USER_ID,
 					base.C_JB,

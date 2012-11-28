@@ -94,7 +94,7 @@ public class MessageAction {
 		return resMap;
 	}
 	
-	public String emailRecieveOperator(String value, String n_xh, HttpServletRequest request){
+	public String messageRecieveOperator(String value, String n_xh, HttpServletRequest request){
 		
 		HttpSession session = request.getSession();
 		String c_yhid = session.getAttribute("userId")+"";

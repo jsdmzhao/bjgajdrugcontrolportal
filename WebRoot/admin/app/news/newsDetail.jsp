@@ -67,7 +67,7 @@ String newsType = request.getParameter("newsType");
    	         newline:false,
    	         width:120,//space:30, 
    	         type:"button",
-   	         cssClass:"l-button2",
+   	         cssClass:"l-button",
    	         value:"选择栏目",
    	         onclick : "selectLanmu()"
          },

@@ -13,7 +13,7 @@ if(carType == null){
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>车辆保养 管理</title> 
+    <title>车辆保养管理</title> 
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
     <script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
@@ -94,10 +94,11 @@ if(carType == null){
           { display: "车牌", name: "n_cllbxh", width:140, type: "text", align: "left" ,  editor: { type: 'text'}},
           { display: "申请日期", name: "d_sqrq", width: 160, type: "text", align: "left", editor: { type: 'text'}},
           { display: "送修人员", name: "c_sxry", width: 200, type: "text", align: "left", editor: { type: 'text'}},
-          { display: "车辆行驶总里程", name: "n_clxszlc", width: 120, type: "text", align: "left", editor: { type: 'text'}}
+          { display: "车辆行驶总里程", name: "n_clxszlc", width: 120, type: "text", align: "left", editor: { type: 'text'}},
+          { display: "状态", name: "c_shjg", width: 120, type: "text", align: "left", editor: { type: 'text'}}
           ], dataAction: 'server', pageSize: 20, toolbar: {},sortName: 'n_xh', url:'<%=basePath%>carKeepPageList',
-          width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false,rownumbers:true,
-          data: tempdata
+          width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false,
+          rownumbers:true,data: tempdata,parms:[{name:'operateType',value:'sh'}]
       });
 
       //双击事件
@@ -112,26 +113,21 @@ if(carType == null){
       LG.loadToolbar(grid, toolbarBtnItemClick);
 
      	var items=[{
-            click:toolbarBtnItemClick,
-            text:'新增',
-            img:'<%=basePath%>liger/lib/icons/silkicons/add.png',
-            id:'add'
-        },{line:true},{
-            click: toolbarBtnItemClick,
-            text: '修改',
-            img:'<%=basePath%>liger/lib/icons/silkicons/application_edit.png',
-            id: 'modify'
-        },{
        	   click:toolbarBtnItemClick,
    	       text:'查看',
    	       img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
    	       id:'view'    	
- 	   },{line:true},{
-            click: toolbarBtnItemClick,
-            text: '删除',
-            img:'<%=basePath%>liger/lib/icons/silkicons/delete.png',
-            id: 'delete'
-        },{line:true}];
+ 	   },{line:true},
+ 	   {   text: '审批通过', 
+		   id:'shtg', 
+		   click: toolbarBtnItemClick, 
+		   img: "<%=basePath%>liger/lib/icons/silkicons/flag_red.png" 
+ 	   }, { line: true },
+       {   text: '审批不通过', 
+ 		   id:'shbtg', 
+ 		   click: toolbarBtnItemClick, 
+ 		   img: "<%=basePath%>liger/lib/icons/silkicons/flag_yellow.png" 
+ 	   },{line:true}];
         
 	  grid.toolbarManager.set('items', items);
 
@@ -140,34 +136,44 @@ if(carType == null){
     	  
           var editingrow = grid.getEditingRow();
           switch (item.id) {
-              case "add":
-                  dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/car/carKeepDetail.jsp', 
-                  		  title: '车辆维修信息',
-                          height: 450,width: 900,showMax: true, showToggle: true,  showMin: true
-				  });
-                  break;
               case "view":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
                   dialog = $.ligerDialog.open({ url: '<%=basePath%>carKeepView?carKeep.n_xh=' + selected.n_xh,
-              		  title: '车辆维修信息',	 
+              		  title: '车辆保养信息',	 
                       height: 450,width: 900,showMax: true, showToggle: true,  showMin: true
-			  });
+			  	  });
                   break;
-              case "modify":
-                  var selected = grid.getSelected();
-                  if (!selected) { LG.tip('请选择行!'); return }
-                  dialog = $.ligerDialog.open({ url: '<%=basePath%>carKeepUpdate?carKeep.n_xh=' + selected.n_xh,
-                  		  title: '车辆维修信息',	 
-                          height: 450,width: 900,showMax: true, showToggle: true,  showMin: true
-				  });
-                  break;
-              case "delete":
-            	  var selected = grid.getSelected();
-                  if (!selected) { LG.tip('请选择行!'); return }
-                  jQuery.ligerDialog.confirm('确定删除吗?', function (confirm) {
+              case "shtg":
+				  var selected = grid.getSelected();
+            	  
+                  if (!selected) { 
+                	  LG.tip('请选择行!'); return; 
+                  } else {
+					  if(selected.c_shjg == '审核不通过' || selected.c_shjg == '审核通过' ){
+						  LG.showSuccess('该条车辆保养记录已经被审核，不能在进行审核！');
+	            		  returned;
+	            	  }
+                  }
+                  jQuery.ligerDialog.confirm('确定通过吗?', function (confirm) {
                       if (confirm)
-                          f_delete();
+                    	  f_operator('1');
+                  });
+                  break;
+              case "shbtg":
+				  var selected = grid.getSelected();
+            	  
+                  if (!selected) { 
+                	  LG.tip('请选择行!'); return; 
+                  } else {
+					  if(selected.c_shjg == '审核不通过' || selected.c_shjg == '审核通过' ){
+						  LG.showSuccess('该条车辆保养记录已经被审核，不能在进行审核！');
+	            		  returned;
+	            	  }
+                  }
+                  jQuery.ligerDialog.confirm('确定不通过吗?', function (confirm) {
+                      if (confirm)
+                          f_operator('0');
                   });
                   break;
           }
@@ -228,6 +234,24 @@ if(carType == null){
       function loadGrid(){
     	grid.loadData();
   	  }
+      
+      function f_operator(value) {
+          var selected = grid.getSelected();
+          if (selected) {
+        	  CarKeepAction.carKeepOperator(value, selected.n_xh, function (result){
+             	   if(result == 'success'){
+             		  LG.showSuccess('审核成功');
+             		 grid.deleteRow(selected);
+             		  grid.loadData();
+	           	   } else {
+	           		  LG.showSuccess('审核失败');
+	           	   }
+               });
+          }
+          else {
+              LG.tip('请选择行!');
+          }
+      }
   </script>
 </body>
 </html>

@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
-    <title>栏目 明细</title>
+    <title>车辆  明细</title>
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
     <script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
@@ -40,22 +40,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <form id="mainform"  method="post"></form> 
     <script type="text/javascript"> 
     
-        var tempdata=[{ text:2323,value:1000},{text:2323,value:1000},{text:2323,value:1000}];
+        var tempdata;
+        var cmb2;
 
-        CarAction.getCartypeCombox(function(data){
 			//$("#n_lbxh").tempdata = data;
-	        tempdata = data;
 	        var config = {"Form":{ 
 		         fields : [
 		         {display:"车牌号",name:"n_cllbxh",newline:true,labelWidth:100,
-		          width:220,space:30,type:"select",comboboxName:"n_cllbxhName",
-		          options:{
-		             valueField:"value",
-		             textFiled:"text",
-		         	 //url:"../handler/select.ashx?view=Categories&idfield=CategoryID&textfield=CategoryName",
-		         	 data : tempdata
-		          },
+		          width:220,space:30,type:"basicText",
 		          group:"基本信息",
+		          validate: { required: true},
 		          groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
 		         },
 		         {
@@ -67,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			         space:30,
 			         type:"textarea"
 		         },
-		         {display:"通过短信申请",name:"c_tgdxsq",newline:true,labelWidth:100,width:540,space:30,type:"checkbox"},
+		         //{display:"通过短信申请",name:"c_tgdxsq",newline:true,labelWidth:100,width:540,space:30,type:"checkbox"},
 		         {display:"出车时间",name:"d_ccsj",newline:true,labelWidth:100,width:540,space:30,type:"text",
 			      onclick:"WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"},
 		         {display:"归队时间",name:"d_gdsj",newline:true,labelWidth:100,width:540,space:30,type:"text",
@@ -131,8 +125,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            LG.validate(mainform);
 	        } 
 	
-			function f_loaded()
-	        {
+	        cmb2 = $("#n_cllbxh").ligerComboBox({
+		       	 isMultiSelect: false,
+		            valueField:"value",
+		            textFiled:"text",
+		            url:"<%=basePath%>cartypeCombox"
+		   	});
+	        
+			function f_loaded() {
 	            if(!isView) return; 
 	            //查看状态，控制不能编辑
 	            $("input,select,textarea",mainform).attr("readonly", "readonly");
@@ -148,7 +148,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        	var formMap = DWRUtil.getValues("mainform"); 
 
 	            
-	            formMap['n_cllbxh'] = formMap['n_cllbxhName_val'];
+	            formMap['n_cllbxh'] = formMap['n_cllbxh_val'];
 	 
 	        	CarAction.carSave(formMap,function (result){
 	        		if(result == 'success'){
@@ -167,8 +167,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	           parent.dialog_hidden();
 	        }
 	
-	
-        });
     </script>
  	<div id="uploadImageDiv" style="display: none;">
 		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_tpljdz"></iframe> <!---->

@@ -148,7 +148,7 @@
 	END;
 	</update>
 	
-	<update id="operateRecieveEmail" parameterType="hashmap">
+	<update id="operateRecieveMessage" parameterType="hashmap">
 		UPDATE B_NBXX_RECIEVE
 			SET C_ZT = #{c_zt}
 		WHERE N_NBXXXH = #{n_xh}

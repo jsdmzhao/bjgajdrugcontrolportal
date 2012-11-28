@@ -29,7 +29,7 @@ public class CarCost {
 	private String c_yhid;
 
 	private String c_yhzid_;
-
+	
 	public String getN_xh() {
 		return n_xh;
 	}
@@ -136,10 +136,6 @@ public class CarCost {
 
 	public String getC_yhzid_() {
 		return c_yhzid_;
-	}
-
-	public void setC_yhzid_(String c_yhzid_) {
-		this.c_yhzid_ = c_yhzid_;
 	}
 	
 }

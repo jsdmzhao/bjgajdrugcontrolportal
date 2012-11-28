@@ -32,8 +32,7 @@
 		       DECODE(C_SFNR, '1', '是', '否') C_SFNR,
 		       NVL(N_XSXH, '') N_XSXH
 		  FROM B_LANMU
-		  WHERE C_YHZID = '0'
-		  	AND N_YXX = 1
+		  WHERE N_YXX = 1
 		 START WITH C_SJLMDM = '0000'
 		CONNECT BY PRIOR C_LMDM = C_SJLMDM
 	</select>
@@ -47,8 +46,7 @@
 	          '|--' || C_LMMC
 	       END) TEXT
 	  FROM B_LANMU
-	 WHERE C_YHZID = '0'
-	  	AND N_YXX = 1
+	 WHERE  N_YXX = 1
 	 START WITH C_SJLMDM = '0000'
 	CONNECT BY PRIOR C_LMDM = C_SJLMDM
 	</select>
