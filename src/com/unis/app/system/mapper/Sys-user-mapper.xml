@@ -25,7 +25,7 @@
 				 from SYS_USER base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
-			<if test="userName != null and userName !='' ">  and USER_NAME = #{userName}</if>
+			<if test="userName != null and userName !='' ">  and USER_NAME like '%${userName}%'</if>
 			<if test="userPassword != null and userPassword !='' ">  and USER_PASSWORD = #{userPassword}</if>
 			<if test="userLock != null and userLock !='' ">  and USER_LOCK = #{userLock}</if>
 		</trim>
@@ -49,7 +49,7 @@
 				 )
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="userId != null and userId !='' ">  and 	USER_ID = #{userId}</if>
-			<if test="userName != null and userName !='' ">  and 	USER_NAME = #{userName}</if>
+					<if test="userName != null and userName !='' ">  and USER_NAME like '%${userName}%'</if>
 			<if test="userPassword != null and userPassword !='' ">  and 	USER_PASSWORD = #{userName}</if>
 			<if test="userLock != null and userLock !='' ">  and 	USER_LOCK = #{userLock}</if>
 		</trim>
@@ -62,8 +62,8 @@
 				select count(base.USER_ID) from SYS_USER base
  		<trim prefix="where" prefixOverrides="and |or"> 
 			<if test="userId != null and userId !='' ">  and 	USER_ID = #{userId}</if>
-			<if test="userName != null and userName !='' ">  and 	USER_NAME = #{userName}</if>
-			<if test="userName != null and userName !='' ">  and 	USER_PASSWORD = #{userName}</if>
+				<if test="userName != null and userName !='' ">  and USER_NAME like '%${userName}%'</if>
+			<if test="userPassword != null and userPassword !='' ">  and 	USER_PASSWORD = #{userPassword}</if>
 			<if test="userLock != null and userLock !='' ">  and 	USER_LOCK = #{userLock}</if>
 		</trim>
 	</select> 
