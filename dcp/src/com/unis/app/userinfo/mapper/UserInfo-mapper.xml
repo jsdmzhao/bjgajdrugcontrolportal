@@ -96,7 +96,7 @@
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
 			<if test="cYhz != null and cYhz !='' ">  and C_YHZ = #{cYhz}</if>
 			<if test="cKs != null and cKs !='' ">  and C_KS = #{cKs}</if>
-			<if test="cXm != null and cXm !='' ">  and C_XM = #{cXm}</if>
+			<if test="cXm != null and cXm !='' ">  and C_XM like '%${cXm}%'</if>
 			<if test="dSrBeg != null and dSrBeg !='' ">  and D_SR &gt;= to_date(#{dSrBeg},'YYYY-MM-DD')</if>
 			<if test="dSrEnd != null and dSrEnd !='' "> and D_SR &lt;= to_date(#{dSrEnd},'YYYY-MM-DD')</if>
 			<if test="cLx != null and cLx !='' ">  and C_LX = #{cLx}</if>
@@ -149,7 +149,7 @@
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
 			<if test="cYhz != null and cYhz !='' ">  and C_YHZ = #{cYhz}</if>
 			<if test="cKs != null and cKs !='' ">  and C_KS = #{cKs}</if>
-			<if test="cXm != null and cXm !='' ">  and C_XM = #{cXm}</if>
+			<if test="cXm != null and cXm !='' ">  and C_XM like '%${cXm}%'</if>
 			<if test="dSrBeg != null and dSrBeg !='' ">  and D_SR &gt;= to_date(#{dSrBeg},'YYYY-MM-DD')</if>
 			<if test="dSrEnd != null and dSrEnd !='' "> and D_SR &lt;= to_date(#{dSrEnd},'YYYY-MM-DD')</if>
 			<if test="cLx != null and cLx !='' ">  and C_LX = #{cLx}</if>
@@ -167,7 +167,7 @@
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
 			<if test="cYhz != null and cYhz !='' ">  and C_YHZ = #{cYhz}</if>
 		    <if test="cKs != null and cKs !='' ">  and C_KS = #{cKs}</if>
-			<if test="cXm != null and cXm !='' ">  and C_XM = #{cXm}</if>
+			<if test="cXm != null and cXm !='' ">  and C_XM like '%${cXm}%'</if>
 			<if test="dSrBeg != null and dSrBeg !='' ">  and D_SR &gt;= to_date(#{dSrBeg},'YYYY-MM-DD')</if>
 			<if test="dSrEnd != null and dSrEnd !='' "> and D_SR &lt;= to_date(#{dSrEnd},'YYYY-MM-DD')</if>
 			<if test="cLx != null and cLx !='' ">  and C_LX = #{cLx}</if>

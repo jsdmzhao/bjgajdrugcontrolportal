@@ -43,19 +43,18 @@
 
 </head>
 <body style="padding:10px;height:100%; text-align:center;">
-	<input type="hidden" id="MenuNo" value="MemberManageUser" />
-	<div id="mainsearch" style=" width:98%">
-		<div class="searchtitle">
-			<span>搜索</span><img
-				src="<%=basePath%>liger/lib/icons/32X32/searchtool.gif" />
-			<div class="togglebtn"></div>
+<div id="mainsearch" style="width: 98%">
+			<div class="searchtitle">
+				<span>搜索</span>
+				<img src="<%=basePath%>liger/lib/icons/32X32/searchtool.gif" />
+				<div class="togglebtn"></div>
+			</div>
+			<div class="navline" style="margin-bottom: 4px; margin-top: 4px;"></div>
+			<div class="searchbox">
+				<form id="formsearch" class="l-form"></form>
+			</div>
 		</div>
-		<div class="navline" style="margin-bottom:4px; margin-top:4px;"></div>
-		<div class="searchbox">
-			<form id="formsearch" class="l-form"></form>
-		</div>
-	</div>
-	<div id="maingrid"></div>
+		<div id="maingrid"></div>
 
 	<script type="text/javascript">
   var dlgedit=null;
@@ -68,7 +67,7 @@
 	var oPage={
 			pageIndex:1,
 			pageSize:1000
-	}
+	};
 	 var config ={"Grid":{
          columns: [
          { display: "职称", name: "cZc", width: 180, type: "text", align: "left" },
@@ -87,7 +86,29 @@
          sortName: 'UserID', 
          width: '98%', height: '100%',heightDiff:-10, checkbox: false
      });
+     
+     //双击事件
+  	LG.setGridDoubleClick(grid, 'modify');
     
+  	//搜索表单应用ligerui样式
+  	$("#formsearch").ligerForm( {
+  		fields : [{
+  			display : "姓名",
+  			name : "cXm",
+  			newline : false,
+  			labelWidth : 60,
+  			width : 100,
+  			space : 30,
+  			type : "text",
+  			cssClass : "field"
+  		}  
+  		],
+  		toJSON : JSON2.stringify
+  	});
+  	
+  	
+	//增加搜索按钮,并创建事件
+ 	LG.appendSearchButtons("#formsearch", grid);
 
       //加载toolbar
       LG.loadToolbar(grid, toolbarBtnItemClick);

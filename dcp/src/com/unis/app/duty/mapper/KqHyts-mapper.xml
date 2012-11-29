@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="KqHytsMapper">
+	
+	
+	
+		<resultMap id="Result"  type="java.util.Map">
+	     	<result property="nXh" column="N_XH" jdbcType="DECIMAL"/>
+			<result property="cHymc" column="C_HYMC" jdbcType="VARCHAR"/>
+			<result property="dKssj" column="D_KSSJ" jdbcType="VARCHAR"/>
+			<result property="cHysc" column="C_HYSC" jdbcType="VARCHAR"/>
+			<result property="cHydd" column="C_HYDD" jdbcType="VARCHAR"/>
+			<result property="cChfw" column="C_CHFW" jdbcType="VARCHAR"/>
+			<result property="cFc" column="C_FC" jdbcType="VARCHAR"/>
+		
+	</resultMap>
+	 
+
+	<select id="queryAllInfo" resultMap="Result"  parameterType="java.util.Map" >
+				 select 
+					base.N_XH,
+					base.C_HYMC,
+					to_char(base.D_KSSJ,'YYYY-MM-DD HH24:mi:ss')  D_KSSJ,
+					base.C_HYSC,
+					base."C_HYDD",
+					base.C_CHFW,
+					base.C_FC
+				 from B_KQ_HYTS  base 
+		 <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+			<if test="cHymc != null and cHymc !='' ">  and C_HYMC = #{cHymc}</if>
+			
+			<if test="dKssjBeg != null and dKssjBeg !='' ">  and D_KSSJ &gt;= to_date(#{dKssjBeg},'YYYY-MM-DD')</if>
+			<if test="dKssjEnd != null and dKssjEnd !='' "> and D_KSSJ &lt;= to_date(#{dKssjEnd},'YYYY-MM-DD')</if>
+			
+			<if test="cHysc != null and cHysc !='' ">  and C_HYSC = #{cHysc}</if>
+			<if test="cHydd != null and cHydd !='' ">  and C_HYDD = #{cHydd}</if>
+			
+			
+			<if test="cChfw != null and cChfw !='' ">  and C_CHFW = #{cChfw}</if>
+			<if test="cFc != null and cFc !='' ">  and C_FC = #{cFc}</if>
+		</trim>
+		ORDER BY base.N_XH  DESC
+	</select>
+
+
+
+
+
+	<select id="queryInfo" resultMap="Result" parameterType="java.util.Map" >
+		<include refid="pagination.paginationStart"></include>
+				 select 
+					base.N_XH,
+					base.C_HYMC,
+					to_char(base.D_KSSJ,'YYYY-MM-DD HH24:mi:ss')  D_KSSJ,
+					base.C_HYSC,
+					base."C_HYDD",
+					base.C_CHFW,
+					base.C_FC
+				 from B_KQ_HYTS  base 
+		 <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+			<if test="cHymc != null and cHymc !='' ">  and C_HYMC = #{cHymc}</if>
+			
+			<if test="dKssjBeg != null and dKssjBeg !='' ">  and D_KSSJ &gt;= to_date(#{dKssjBeg},'YYYY-MM-DD')</if>
+			<if test="dKssjEnd != null and dKssjEnd !='' "> and D_KSSJ &lt;= to_date(#{dKssjEnd},'YYYY-MM-DD')</if>
+			
+			<if test="cHysc != null and cHysc !='' ">  and C_HYSC = #{cHysc}</if>
+			<if test="cHydd != null and cHydd !='' ">  and C_HYDD = #{cHydd}</if>
+			
+			
+			<if test="cChfw != null and cChfw !='' ">  and C_CHFW = #{cChfw}</if>
+			<if test="cFc != null and cFc !='' ">  and C_FC = #{cFc}</if>
+		</trim>
+		ORDER BY base.N_XH  DESC
+		<include refid="pagination.paginationLast"></include>
+	</select>
+
+
+			
+	<select id="queryCountInfo" resultType="integer" parameterType="java.util.Map" >
+				select count(base.N_XH) from B_KQ_HYTS  base
+		  <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+			<if test="cHymc != null and cHymc !='' ">  and C_HYMC = #{cHymc}</if>
+			
+			<if test="dKssjBeg != null and dKssjBeg !='' ">  and D_KSSJ &gt;= to_date(#{dKssjBeg},'YYYY-MM-DD')</if>
+			<if test="dKssjEnd != null and dKssjEnd !='' "> and D_KSSJ &lt;= to_date(#{dKssjEnd},'YYYY-MM-DD')</if>
+			
+			<if test="cHysc != null and cHysc !='' ">  and C_HYSC = #{cHysc}</if>
+			<if test="cHydd != null and cHydd !='' ">  and C_HYDD = #{cHydd}</if>
+			
+			
+			<if test="cChfw != null and cChfw !='' ">  and C_CHFW = #{cChfw}</if>
+			<if test="cFc != null and cFc !='' ">  and C_FC = #{cFc}</if>
+		</trim>
+		ORDER BY base.N_XH  DESC
+	</select> 
+	
+	
+			
+			
+	<insert id="saveInfo" parameterType="java.util.Map" >
+			INSERT INTO B_KQ_HYTS (
+				 N_XH
+			<if test="cHymc != null and cHymc !='' ">  , C_HYMC</if>
+			<if test="dKssj != null and dKssj !='' ">  , D_KSSJ</if>
+			<if test="cHysc != null and cHysc !='' ">  ,  C_HYSC</if>
+			<if test="cHydd != null and cHydd !='' ">  ,  C_HYDD</if>
+			<if test="cChfw != null and cChfw !='' ">  ,  C_CHFW</if>
+			<if test="cFc != null and cFc !='' ">  ,  C_FC</if>
+			)VALUES(
+				SEQ_KQ_YBJL.NEXTVAL 
+				<!-- #{n_xh#-->
+			<if test="cHymc != null and cHymc !='' ">  ,  #{cHymc}</if>
+			<if test="dKssj != null and dKssj !='' ">  ,  to_date(#{dKssj},'YYYY-MM-DD HH24:mi:ss')</if>
+			<if test="cHysc != null and cHysc !='' ">  , #{cHysc}</if>
+			<if test="cHydd != null and cHydd !='' ">  ,  #{cHydd}</if>
+			<if test="cChfw != null and cChfw !='' ">  ,  #{cChfw}</if>
+			<if test="cFc != null and cFc !='' ">  ,   #{cFc}</if>
+			)
+		<selectKey resultType="string" keyProperty="id" >
+			 <!--SELECT #{nXh# AS ID FROM dual  -->
+			 SELECT  SEQ_KQ_HYTS.CURRVAL  AS ID FROM dual 
+		</selectKey>
+	</insert>
+
+			
+	<update id="updateInfo" parameterType="java.util.Map"> 
+			update B_KQ_HYTS  
+			<trim prefix="set" prefixOverrides=","> 
+			<if test="cHymc != null and cHymc !='' ">, C_HYMC =  #{cHymc}</if>
+			<if test="dKssj != null and dKssj !='' ">, D_KSSJ =   to_date(#{dKssj},'YYYY-MM-DD HH24:mi:ss')</if>
+			<if test="cHysc != null and cHysc !='' ">,  C_HYSC=#{cHysc}</if>
+			<if test="cHydd != null and cHydd !='' ">, C_HYDD =  #{cHydd}</if>
+			<if test="cChfw != null and cChfw !='' ">, C_CHFW =   #{cChfw}</if>
+			<if test="cFc != null and cFc !='' ">, C_FC =   #{cFc}</if>
+			
+			</trim>
+			<trim prefix="where" prefixOverrides="and |or">  
+				<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+				<if test="nXhs ">,= null and nXhs !='' ">  and  N_XH in (${nXhs})</if>
+			</trim>
+	</update> 
+
+
+
+	<delete id="removeInfo" parameterType="java.util.Map"> 
+			 DELETE FROM B_KQ_HYTS 
+			 WHERE
+			<!--N_XH = #{nXh#
+			<![CDATA[ BTN_ID IN (${userIds}) ]]>--> 
+			 N_XH =#{nXh} 
+	</delete> 
+</mapper>

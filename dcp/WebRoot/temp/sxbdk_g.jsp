@@ -62,10 +62,10 @@ String id= request.getParameter("id");
         	KqYbjlSvc.setDkInfo(formMap,function (rdata){
         		if (rdata) {
 					alert('打卡成功');
-				//	history.go(-1);
+					history.go(-1);
 				} else {
-					alert('打开失败');
-				//	history.go(-1);
+					alert('打卡失败');
+					history.go(-1);
 				}
 			});
         	
