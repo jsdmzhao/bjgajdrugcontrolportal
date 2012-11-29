@@ -40,23 +40,39 @@ MENU_ICON, ISVISIBLE)values (303, '303', '3', '日志推荐', 'admin/app/blog/bl
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
 MENU_ICON, ISVISIBLE)values (4, '4', '0', '警务管理', '', '', '1' );
 
-insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
-MENU_ICON, ISVISIBLE)values (401, '401', '4', '出勤', 'admin/app/duty/kqybjl.jsp?lx=CQ', 'liger/lib/icons/32X32/sitemap.gif', '1' );
-insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
-MENU_ICON, ISVISIBLE)values (402, '402', '4', '会议培训', 'admin/app/duty/kqybjl.jsp?lx=HYPX', 'liger/lib/icons/32X32/sitemap.gif', '1' );
-insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
-MENU_ICON, ISVISIBLE)values (403, '403', '4', '出差', 'admin/app/duty/kqybjl.jsp?lx=CC', 'liger/lib/icons/32X32/sitemap.gif', '1' );
-insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
-MENU_ICON, ISVISIBLE)values (404, '404', '4', '市内外出', 'admin/app/duty/kqybjl.jsp?lx=SNWC', 'liger/lib/icons/32X32/sitemap.gif', '1' );
-insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
-MENU_ICON, ISVISIBLE)values (405, '405', '4', '请销假', 'admin/app/duty/kqccjl.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+--insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+--MENU_ICON, ISVISIBLE)values (401, '401', '4', '出勤', 'admin/app/duty/kqybjl.jsp?lx=CQ', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+--insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+--MENU_ICON, ISVISIBLE)values (402, '402', '4', '会议培训', 'admin/app/duty/kqybjl.jsp?lx=HYPX', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+--insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+--MENU_ICON, ISVISIBLE)values (403, '403', '4', '出差', 'admin/app/duty/kqybjl.jsp?lx=CC', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+--insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+--MENU_ICON, ISVISIBLE)values (404, '404', '4', '市内外出', 'admin/app/duty/kqybjl.jsp?lx=SNWC', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+--insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+--MENU_ICON, ISVISIBLE)values (405, '405', '4', '请销假', 'admin/app/duty/kqccjl.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
 --insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
 --MENU_ICON, ISVISIBLE)values (406, '406', '4', '值班组', 'admin/app/duty/kqzbz.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
 
+--insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+--MENU_ICON, ISVISIBLE)values (407, '407', '4', '值班管理', 'admin/app/duty/kqzb.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
-MENU_ICON, ISVISIBLE)values (407, '407', '4', '值班管理', 'admin/app/duty/kqzb.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+MENU_ICON, ISVISIBLE)values (401, '401', '4', '因公请销假', 'admin/app/duty/kqybjl.jsp?lx=YG', 'liger/lib/icons/32X32/sitemap.gif', '1' );
 
+insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+MENU_ICON, ISVISIBLE)values (402, '402', '4', '因私请销假', 'admin/app/duty/kqybjl.jsp?lx=YS', 'liger/lib/icons/32X32/sitemap.gif', '1' );
 
+insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+MENU_ICON, ISVISIBLE)values (403, '403', '4', '勤务安排', 'admin/app/duty/kqqwap.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+
+insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+MENU_ICON, ISVISIBLE)values (404, '404', '4', '会议提示', 'admin/app/duty/kqhyts.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+
+insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+MENU_ICON, ISVISIBLE)values (405, '405', '4', '会议室管理', 'admin/app/duty/kqhyssq.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+
+insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+MENU_ICON, ISVISIBLE)values (406, '406', '4', '值班管理', 'admin/app/duty/kqzb.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
 
 
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
@@ -102,8 +118,8 @@ MENU_ICON, ISVISIBLE)values (511, '511', '5', '桌面菜单', 'admin/app/desktop
  insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
 MENU_ICON, ISVISIBLE)values (512, '512', '5', '我的桌面', 'admin/app/desktop/wdzm.jsp', 'liger/lib/icons/32X32/world.gif', '1' );
 
- insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
-MENU_ICON, ISVISIBLE)values (513, '513', '5', '会议管理', 'admin/app/meeting/meeting.jsp', 'liger/lib/icons/32X32/world.gif', '1' );
+-- insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+--MENU_ICON, ISVISIBLE)values (513, '513', '5', '会议管理', 'admin/app/meeting/meeting.jsp', 'liger/lib/icons/32X32/world.gif', '1' );
 
  insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
 MENU_ICON, ISVISIBLE)values (514, '514', '5', '车辆限行', 'admin/app/limit/limit.jsp', 'liger/lib/icons/32X32/world.gif', '1' );

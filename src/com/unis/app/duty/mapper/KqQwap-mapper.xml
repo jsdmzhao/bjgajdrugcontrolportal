@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="KqQwapMapper">
+   
+		<resultMap id="Result"  type="java.util.Map">
+	     	<result property="nXh" column="N_XH" jdbcType="DECIMAL"/>
+			<result property="dKsrq" column="D_KSRQ" jdbcType="DECIMAL"/>
+			<result property="dJsrq" column="D_JSRQ" jdbcType="VARCHAR"/>
+			<result property="cQwlb" column="C_QWLB" jdbcType="VARCHAR"/>
+			<result property="cQwlx" column="C_QWLX" jdbcType="VARCHAR"/>
+			<result property="cCjry" column="C_CJRY" jdbcType="VARCHAR"/>
+			<result property="cQwdd" column="C_QWDD" jdbcType="VARCHAR"/>
+			<result property="cDdld" column="C_DDLD" jdbcType="VARCHAR"/>
+			<result property="cLlry" column="C_LLRY" jdbcType="VARCHAR"/>
+			<result property="dCfsj" column="D_CFSJ" jdbcType="VARCHAR"/>
+			<result property="cCfdd" column="C_CFDD" jdbcType="VARCHAR"/>
+			<result property="cQucl" column="C_QUCL" jdbcType="VARCHAR"/>
+		
+	</resultMap>
+	 
+
+	<select id="queryAllInfo" resultMap="Result"  parameterType="java.util.Map" >
+				 select 
+					base.N_XH,
+					to_char(base.D_KSRQ,'YYYY-MM-DD')  D_KSRQ,
+					to_char(base.D_JSRQ,'YYYY-MM-DD')  D_JSRQ,
+					base.C_QWLB,
+					base.C_QWLX,
+					base.C_CJRY,
+					base.C_QWDD,
+					base.C_DDLD,
+					base.C_LLRY,
+					to_char(base.D_CFSJ,'YYYY-MM-DD HH24:mi:ss')  D_CFSJ,
+					C_CFDD,
+					C_QUCL
+				 from B_KQ_QWAP base 
+		 <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+			
+			<if test="dKsrqBeg != null and dKsrqBeg !='' ">  and D_KSRQ &gt;= to_date(#{dKsrqBeg},'YYYY-MM-DD')</if>
+			<if test="dKsrqEnd != null and dKsrqEnd !='' "> and D_KSRQ &lt;= to_date(#{dKsrqEnd},'YYYY-MM-DD')</if>
+			
+			<if test="dJsrqBeg != null and dJsrqBeg !='' ">  and D_JSRQ &gt;= to_date(#{dJsrqBeg},'YYYY-MM-DD')</if>
+			<if test="dJsrqEnd != null and dJsrqEnd !='' "> and D_JSRQ &lt;= to_date(#{dJsrqEnd},'YYYY-MM-DD')</if>
+			
+			<if test="cQwlb != null and cQwlb !='' ">  and C_QWLB = #{cQwlb}</if>
+			<if test="cQwlx != null and cQwlx !='' ">  and C_QWLX = #{cQwlx}</if>
+			<if test="cCjry != null and cCjry !='' ">  and C_CJRY = #{cCjry}</if>
+			
+			<if test="cQwdd != null and cQwdd !='' ">  and C_QWDD = #{cQwdd}</if>
+			<if test="cDdld != null and cDdld !='' ">  and C_DDLD = #{cDdld}</if>
+			<if test="cLlry != null and cLlry !='' ">  and C_LLRY = #{cLlry}</if>
+			
+				<if test="dCfsjBeg != null and dCfsjBeg !='' ">  and D_CFSJ &gt;= to_date(#{dCfsjBeg},'YYYY-MM-DD')</if>
+			<if test="dCfsjEnd != null and dCfsjEnd !='' "> and D_CFSJ &lt;= to_date(#{dCfsjEnd},'YYYY-MM-DD')</if>
+			
+			<if test="cCfdd != null and cCfdd !='' ">  and C_CFDD = #{cCfdd}</if>
+			
+			<if test="cQucl != null and cQucl !='' ">  and C_QUCL = #{cQucl}</if>
+		</trim>
+		ORDER BY base.N_XH  DESC
+	</select>
+
+
+	<select id="queryInfo" resultMap="Result" parameterType="java.util.Map" >
+		<include refid="pagination.paginationStart"></include>
+					 select 
+					base.N_XH,
+					to_char(base.D_KSRQ,'YYYY-MM-DD')  D_KSRQ,
+					to_char(base.D_JSRQ,'YYYY-MM-DD')  D_JSRQ,
+					base.C_QWLB,
+					base.C_QWLX,
+					base.C_CJRY,
+					base.C_QWDD,
+					base.C_DDLD,
+					base.C_LLRY,
+					to_char(base.D_CFSJ,'YYYY-MM-DD HH24:mi:ss')  D_CFSJ,
+					C_CFDD,
+					C_QUCL
+				 from B_KQ_QWAP base 
+		 <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+			
+			<if test="dKsrqBeg != null and dKsrqBeg !='' ">  and D_KSRQ &gt;= to_date(#{dKsrqBeg},'YYYY-MM-DD')</if>
+			<if test="dKsrqEnd != null and dKsrqEnd !='' "> and D_KSRQ &lt;= to_date(#{dKsrqEnd},'YYYY-MM-DD')</if>
+			
+			<if test="dJsrqBeg != null and dJsrqBeg !='' ">  and D_JSRQ &gt;= to_date(#{dJsrqBeg},'YYYY-MM-DD')</if>
+			<if test="dJsrqEnd != null and dJsrqEnd !='' "> and D_JSRQ &lt;= to_date(#{dJsrqEnd},'YYYY-MM-DD')</if>
+			
+			<if test="cQwlb != null and cQwlb !='' ">  and C_QWLB = #{cQwlb}</if>
+			<if test="cQwlx != null and cQwlx !='' ">  and C_QWLX = #{cQwlx}</if>
+			<if test="cCjry != null and cCjry !='' ">  and C_CJRY = #{cCjry}</if>
+			
+			<if test="cQwdd != null and cQwdd !='' ">  and C_QWDD = #{cQwdd}</if>
+			<if test="cDdld != null and cDdld !='' ">  and C_DDLD = #{cDdld}</if>
+			<if test="cLlry != null and cLlry !='' ">  and C_LLRY = #{cLlry}</if>
+			
+				<if test="dCfsjBeg != null and dCfsjBeg !='' ">  and D_CFSJ &gt;= to_date(#{dCfsjBeg},'YYYY-MM-DD')</if>
+			<if test="dCfsjEnd != null and dCfsjEnd !='' "> and D_CFSJ &lt;= to_date(#{dCfsjEnd},'YYYY-MM-DD')</if>
+			
+			<if test="cCfdd != null and cCfdd !='' ">  and C_CFDD = #{cCfdd}</if>
+			
+			<if test="cQucl != null and cQucl !='' ">  and C_QUCL = #{cQucl}</if>
+		</trim>
+		ORDER BY base.N_XH  DESC
+		<include refid="pagination.paginationLast"></include>
+	</select>
+
+
+			
+	<select id="queryCountInfo" resultType="integer" parameterType="java.util.Map" >
+				select count(base.N_XH) from B_KQ_QWAP base
+		  <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+			
+			<if test="dKsrqBeg != null and dKsrqBeg !='' ">  and D_KSRQ &gt;= to_date(#{dKsrqBeg},'YYYY-MM-DD')</if>
+			<if test="dKsrqEnd != null and dKsrqEnd !='' "> and D_KSRQ &lt;= to_date(#{dKsrqEnd},'YYYY-MM-DD')</if>
+			
+			<if test="dJsrqBeg != null and dJsrqBeg !='' ">  and D_JSRQ &gt;= to_date(#{dJsrqBeg},'YYYY-MM-DD')</if>
+			<if test="dJsrqEnd != null and dJsrqEnd !='' "> and D_JSRQ &lt;= to_date(#{dJsrqEnd},'YYYY-MM-DD')</if>
+			
+			<if test="cQwlb != null and cQwlb !='' ">  and C_QWLB = #{cQwlb}</if>
+			<if test="cQwlx != null and cQwlx !='' ">  and C_QWLX = #{cQwlx}</if>
+			<if test="cCjry != null and cCjry !='' ">  and C_CJRY = #{cCjry}</if>
+			
+			<if test="cQwdd != null and cQwdd !='' ">  and C_QWDD = #{cQwdd}</if>
+			<if test="cDdld != null and cDdld !='' ">  and C_DDLD = #{cDdld}</if>
+			<if test="cLlry != null and cLlry !='' ">  and C_LLRY = #{cLlry}</if>
+			
+				<if test="dCfsjBeg != null and dCfsjBeg !='' ">  and D_CFSJ &gt;= to_date(#{dCfsjBeg},'YYYY-MM-DD')</if>
+			<if test="dCfsjEnd != null and dCfsjEnd !='' "> and D_CFSJ &lt;= to_date(#{dCfsjEnd},'YYYY-MM-DD')</if>
+			
+			<if test="cCfdd != null and cCfdd !='' ">  and C_CFDD = #{cCfdd}</if>
+			
+			<if test="cQucl != null and cQucl !='' ">  and C_QUCL = #{cQucl}</if>
+		</trim>
+		ORDER BY base.N_XH  DESC
+	</select> 
+	
+	
+	    
+			
+			
+	<insert id="saveInfo" parameterType="java.util.Map" >
+			INSERT INTO B_KQ_QWAP(
+				 N_XH
+			<if test="dKsrq != null and dKsrq !='' ">  , D_KSRQ</if>
+			<if test="dJsrq != null and dJsrq !='' ">  , D_JSRQ</if>
+			<if test="cQwlb != null and cQwlb !='' ">  ,  C_QWLB</if>
+			<if test="cQwlx != null and cQwlx !='' ">  ,  C_QWLX</if>
+			<if test="cCjry != null and cCjry !='' ">  ,  C_CJRY</if>
+			<if test="cQwdd != null and cQwdd !='' ">  ,  C_QWDD</if>
+			<if test="cDdld != null and cDdld !='' ">  ,  C_DDLD</if>
+			<if test="cLlry != null and cLlry !='' ">  ,  C_LLRY</if>
+			
+			<if test="dCfsj != null and dCfsj !='' ">  ,  D_CFSJ</if>
+			<if test="cCfdd != null and cCfdd !='' ">  ,  C_CFDD</if>
+			<if test="cQucl != null and cQucl !='' ">  ,  C_QUCL</if>
+			
+			)VALUES(
+				SEQ_KQ_QWAP.NEXTVAL 
+				<!-- #{n_xh#-->
+			<if test="dKsrq != null and dKsrq !='' ">  ,  to_date(#{dKsrq},'YYYY-MM-DD')</if>
+			<if test="dJsrq != null and dJsrq !='' ">  , to_date(#{dJsrq},'YYYY-MM-DD')</if>
+			<if test="cQwlb != null and cQwlb !='' ">  ,  #{cQwlb}</if>
+			<if test="cQwlx != null and cQwlx !='' ">  ,  #{cQwlx}</if>
+			<if test="cCjry != null and cCjry !='' ">  ,  #{cCjry}</if>
+			
+			<if test="cQwdd != null and cQwdd !='' ">  ,  #{cQwdd}</if>
+			<if test="cDdld != null and cDdld !='' ">  ,  #{cDdld}</if>
+			<if test="cLlry != null and cLlry !='' ">  ,  #{cLlry}</if>
+			<if test="dCfsj != null and dCfsj !='' ">  ,   to_date(#{dCfsj},'YYYY-MM-DD HH24:mi:ss')</if>
+			<if test="cCfdd != null and cCfdd !='' ">  ,  #{cCfdd}</if>
+					
+			<if test="cQucl != null and cQucl !='' ">  ,  #{cQucl}</if>
+			)
+		<selectKey resultType="string" keyProperty="id" >
+			 <!--SELECT #{nXh# AS ID FROM dual  -->
+			 SELECT  SEQ_KQ_QWAP.CURRVAL  AS ID FROM dual 
+		</selectKey>
+	</insert>
+
+	
+
+			
+	<update id="updateInfo" parameterType="java.util.Map"> 
+			update B_KQ_QWAP 
+			<trim prefix="set" prefixOverrides=","> 
+			<if test="dKsrq != null and dKsrq !='' ">, D_KSRQ =  to_date(#{dKsrq},'YYYY-MM-DD')</if>
+			<if test="dJsrq != null and dJsrq !='' ">,  D_JSRQ=to_date(#{dJsrq},'YYYY-MM-DD')</if>
+			<if test="cQwlb != null and cQwlb !='' ">, C_QWLB =  #{cQwlb}</if>
+			<if test="cQwlx != null and cQwlx !='' ">,C_QWLX =  #{cQwlx}</if>
+			<if test="cCjry != null and cCjry !='' ">, C_CJRY =   #{cCjry}</if>
+			
+			<if test="cQwdd != null and cQwdd !='' ">, C_QWDD =   #{cQwdd}</if>
+			<if test="cDdld != null and cDdld !='' ">, C_DDLD =   #{cDdld}</if>
+			<if test="cLlry != null and cLlry !='' ">, C_LLRY =   #{cLlry}</if>
+			<if test="dCfsj != null and dCfsj !='' ">, D_CFSJ =   to_date(#{dCfsj},'YYYY-MM-DD HH24:mi:ss')</if>
+			<if test="cCfdd != null and cCfdd !='' ">, C_CFDD =   #{cCfdd}</if>
+			
+			
+			<if test="cQucl != null and cQucl !='' ">, C_QUCL =   #{cQucl}</if>
+			
+			</trim>
+			<trim prefix="where" prefixOverrides="and |or">  
+				<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+				<if test="nXhs ">,= null and nXhs !='' ">  and  N_XH in (${nXhs})</if>
+			</trim>
+	</update> 
+
+
+
+	<delete id="removeInfo" parameterType="java.util.Map"> 
+			 DELETE FROM B_KQ_QWAP
+			 WHERE
+			<!--N_XH = #{nXh#
+			<![CDATA[ BTN_ID IN (${userIds}) ]]>--> 
+			 N_XH =#{nXh} 
+	</delete> 
+</mapper>

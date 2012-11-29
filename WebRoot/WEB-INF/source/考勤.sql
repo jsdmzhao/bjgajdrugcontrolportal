@@ -92,11 +92,26 @@ CREATE TABLE B_KQ_YBJL  (
    USER_ID              NUMBER(8),
    C_DD                 VARCHAR2(200),
    N_LX                 NUMBER(4),
+   N_QJLX               NUMBER(4),
+   N_QXJ                NUMBER(4),
+   
    C_YY                 VARCHAR2(4000),
    D_KSSJ               DATE,
    D_JSSJ               DATE,
    D_DJ                 DATE,
    C_ZT                 CHAR(1),
+   
+   C_SHZT                VARCHAR2(8),
+   C_SHNR                VARCHAR2(8),
+   C_SHBM                VARCHAR2(8),
+   C_SHJB                VARCHAR2(8),
+   C_SFLJ                 CHAR(1),
+   
+   C_SHR                  VARCHAR2(1000),
+   D_SHRQ                  DATE,
+   D_XJRQ                  DATE,
+   
+   
    CONSTRAINT PK_B_KQ_YBJL PRIMARY KEY (N_XH)
 );
 
@@ -258,8 +273,101 @@ CREATE TABLE B_CLXX  (
    D_XXRQ                 DATE,
    C_BZ              VARCHAR2(4000),
    C_ZT                 CHAR(1),
-   CONSTRAINT PK_B_CLXX PRIMARY KEY (N_XH)
+   CONSTRAINT PK_B_CLXX PRIMARY KEY (N_XH),
 );
+
+
+
+
+/*==============================================================*/
+/* Table: B_KQ_QWAP                                            */
+/*==============================================================*/
+CREATE TABLE B_KQ_QWAP  (
+   N_XH                 NUMBER(8)                      NOT NULL,
+   D_KSRQ              DATE,
+   D_JSRQ                DATE,
+   C_QWLB                 VARCHAR2(8),
+   C_QWLX               VARCHAR2(8),
+   C_CJRY                VARCHAR2(1000),
+   
+   C_QWDD                 VARCHAR2(1000),
+   C_DDLD                 VARCHAR2(1000),
+   C_LLRY                VARCHAR2(1000),
+   D_CFSJ                 DATE,
+   C_CFDD                VARCHAR2(1000),
+   
+   C_QUCL                 VARCHAR2(1000),
+     
+   CONSTRAINT PK_B_KQ_QWAP PRIMARY KEY (N_XH)
+);
+
+
+/*==============================================================*/
+/* Table: B_KQ_HYTS                                            */
+/*==============================================================*/
+CREATE TABLE B_KQ_HYTS  (
+   N_XH                 NUMBER(8)                      NOT NULL,
+   
+   C_HYMC                 VARCHAR2(8),
+   D_KSSJ                 DATE,
+   C_HYSC                  VARCHAR2(4) ,
+   C_HYDD                VARCHAR2(1000),
+   C_CHFW                 VARCHAR2(1000),
+   C_FC                VARCHAR2(1000),
+
+   CONSTRAINT PK_B_KQ_HYTS PRIMARY KEY (N_XH)
+);
+
+
+/*==============================================================*/
+/* Table: B_KQ_HYSSQ                                            */
+/*==============================================================*/
+CREATE TABLE B_KQ_HYSSQ   (
+   N_XH                 NUMBER(8)                      NOT NULL,
+   C_SQDW                 VARCHAR2(1000),
+   C_NSYHYS               VARCHAR2(1000) ,
+   D_HYRQ                 DATE,
+   D_KSSJ                 DATE,
+   D_JSSJ                DATE,
+   C_HYNR                  VARCHAR2(4000) ,
+   C_ZCR                 VARCHAR2(1000),
+   C_LXR                 VARCHAR2(1000),
+   C_LXDH                VARCHAR2(1000),
+  
+  C_SHR                  VARCHAR2(1000),
+   D_SHRQ                  DATE,
+   C_SHZT              CHAR(1),  
+   CONSTRAINT PK_B_KQ_HYSSQ  PRIMARY KEY (N_XH)
+);
+
+
+
+
+
+create sequence SEQ_KQ_HYSSQ 
+minvalue 10000000
+maxvalue 99999999
+start with 10000000
+increment by 1
+cache 20;
+
+
+create sequence SEQ_KQ_HYTS
+minvalue 10000000
+maxvalue 99999999
+start with 10000000
+increment by 1
+cache 20;
+
+
+
+create sequence SEQ_KQ_QWAP
+minvalue 10000000
+maxvalue 99999999
+start with 10000000
+increment by 1
+cache 20;
+
 
 create sequence SEQ_KQ_ZBZ
 minvalue 10000000

@@ -86,7 +86,28 @@
          pageSize : 20
      });
     
-
+     //双击事件
+   	LG.setGridDoubleClick(grid, 'modify');
+     
+   	//搜索表单应用ligerui样式
+   	$("#formsearch").ligerForm( {
+   		fields : [{
+   			display : "帐号",
+   			name : "userName",
+   			newline : false,
+   			labelWidth : 60,
+   			width : 100,
+   			space : 30,
+   			type : "text",
+   			cssClass : "field"
+   		}  
+   		],
+   		toJSON : JSON2.stringify
+   	});
+   	
+   	
+ 	//增加搜索按钮,并创建事件
+  	LG.appendSearchButtons("#formsearch", grid);
       //加载toolbar
       LG.loadToolbar(grid, toolbarBtnItemClick);
       	
@@ -122,6 +143,7 @@
 
     	function loadGrid(obj){
     		if(!obj)obj={};
+    		alert(obj.userPassword);
     		SysUserSvc.queryByPage(obj,oPage,function(rdata){
     			if(rdata == null){
     				  grid.setOptions({ data:  { Total:0, Rows:""  } });
