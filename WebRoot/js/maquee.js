@@ -1,5 +1,5 @@
-var dir=1;// 每步移动像素，大＝快
-var speed=10;// 循环周期（毫秒）大＝慢
+var dir=2;// 每步移动像素，大＝快
+var speed=100;// 循环周期（毫秒）大＝慢
 var MyMar=null;
 function Marquee(){// 正常移动
 var demo = document.getElementById("demo");

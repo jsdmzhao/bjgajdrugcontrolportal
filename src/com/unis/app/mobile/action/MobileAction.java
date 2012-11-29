@@ -41,9 +41,11 @@ public class MobileAction {
 		
 		HttpSession session = request.getSession();
 		String c_yhid = session.getAttribute("userId")+"";
+		String c_xm = session.getAttribute("cXm")+"";
 		String c_sjhm = session.getAttribute("cSjhm")+"";
 		sqlParamMap.put("c_yhid", c_yhid);
 		sqlParamMap.put("c_sjhm", c_sjhm);
+		sqlParamMap.put("c_nr", "[禁毒警务短信平台]"+sqlParamMap.get("c_nr")+"["+c_xm+"]");
 		String jsrStr = (String) sqlParamMap.get("c_jsr");
 		if(StringUtils.isNotEmpty(jsrStr)){
 			String[] jsrs = jsrStr.split(";");
@@ -67,7 +69,9 @@ public class MobileAction {
 		
 		HttpSession session = request.getSession();
 		String c_yhid = session.getAttribute("userId")+"";
+		String c_xm = session.getAttribute("cXm")+"";
 		
+		sqlParamMap.put("c_nr", "[禁毒警务短信平台]"+sqlParamMap.get("c_nr")+"["+c_xm+"]");
 		String jsrStr = sqlParamMap.get("c_jsr").toString();
 		if(StringUtils.isNotEmpty(jsrStr)){
 			String[] jsrs = jsrStr.split(";");

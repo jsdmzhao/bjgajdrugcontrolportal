@@ -24,10 +24,10 @@
 	</resultMap>
 	 
 	<select id="getZb" resultMap="Result2"  parameterType="java.util.Map" >
-	  select 
-		FUN_GET_YHMC(USER_ID) USER_NAME
-	  from B_KQ_ZB base where d_sj like sysdate
-       ORDER BY base.N_XH  DESC
+	 SELECT FUN_GET_ZZB_ZBLD(D_SJ)  USER_NAME
+      FROM B_KQ_ZB
+     WHERE D_SJ = TRUNC(SYSDATE)
+     AND ROWNUM &lt; 2
 	</select>
 	
 	<select id="getWeekZbb" resultMap="Result3" >
@@ -35,7 +35,7 @@
 		TO_CHAR(D_SJ,'YYYY-MM-DD') D_SJ,
 		FUN_GET_ZZB(D_SJ) USER_NAME
 	   FROM B_KQ_ZB 
-	  WHERE D_SJ BETWEEN TRUNC(SYSDATE) AND NEXT_DAY(TRUNC(SYSDATE) ,7)
+	  WHERE D_SJ BETWEEN TRUNC(SYSDATE) AND TRUNC(SYSDATE) + 8
 	   GROUP BY D_SJ
        ORDER BY D_SJ
 	</select>
