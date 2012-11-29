@@ -202,9 +202,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<br/>
 				<div id="thetd" style="line-height: 22px; width: 710px; text-align: left; margin-top: 50px;">
+					<!-- 
 					<s:if test="news.c_tpljdz != null and news.c_tpljdz != '' ">
 						<p align="center"><img src="<s:property value='news.c_tpljdz'/>" style="margin-top: 3px; height: 300px; width: 400px" alt="<s:property value="news.c_bt"/>"/></p>
 					</s:if>
+					 -->
 					<s:property value="news.c_nr" escape="false"/>
 				</div>
 			</div>

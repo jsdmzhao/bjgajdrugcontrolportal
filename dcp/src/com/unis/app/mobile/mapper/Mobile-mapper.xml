@@ -53,11 +53,11 @@
 	</delete>
 	
 	<insert id="insertMobile" parameterType="hashmap">
-		INSERT INTO sms_boxsended
-			  (SENDER, RECEIVER, CONTENT, SENDTIME, INSERTTIME )
+		INSERT INTO sms_boxsending
+			  (SENDER, RECEIVER, CONTENT, SENDTIME, INSERTTIME, INPOOL )
 			VALUES
 		<foreach collection="list" item="item" separator=",">
-			  (#{c_yhid}, #{item.c_jsr}, #{c_nr}, NOW(), NOW())
+			  (#{c_yhid}, #{item.c_jsr}, #{c_nr}, NOW(), NOW(), '0')
 		</foreach>
 	</insert>
 	
