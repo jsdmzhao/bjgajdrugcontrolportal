@@ -8,36 +8,6 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	
-	
-	String lx=request.getParameter("lx");
-	String lxms="";
-	String nLx="";
-	
-	//if("CQ".equals(lx)){
-	//	lxms="出勤";
-	//	nLx="1";
-	//}else if("HYPX".equals(lx)){
-	//	lxms="会议培训";
-	//	nLx="2";
-	//}else if("CC".equals(lx)){
-	//	lxms="出差";
-	//	nLx="3";
-	//}
-	//else{
-	//	lxms="市内外出";
-	//	nLx="4";
-	// }
-	
-	
-	 if("YG".equals(lx)){
-		lxms="因公请销假";
-		nLx="1";
-	}
-	else{
-		lxms="因私请销假";
-		nLx="0";
-	 }
-	
 	Object userId=request.getParameter("userId");
 	String str="";
 	if(userId!=null){
@@ -54,7 +24,7 @@
 
 <head>
 <base href="<%=basePath%>">
-<title><%=lxms %></title>
+<title>会议提示</title>
 <link
 	href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css"
 	rel="stylesheet" type="text/css" />
@@ -74,7 +44,7 @@
 <script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
 <script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
 <script type='text/javascript'
-	src='<%=basePath%>dwr/interface/KqYbjlSvc.js'></script>
+	src='<%=basePath%>dwr/interface/KqHytsSvc.js'></script>
 <script type='text/javascript'
 	src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>	
 </head>
@@ -106,18 +76,14 @@
 			pageSize:1000
 	};
 	
-	var userList;
-    UserInfoSvc.chooseOnlyUser(function(userData){
-  	   userList=userData;
-    });
 	 var config ={"Grid":{
          columns: [
-		 { display: "人员", name: "userName", width: 180, type: "text", align: "left" },
-		 { display: "事由", name: "cYy", width: 180, type: "text", align: "left" },
-         { display: "开始时间", name: "dKssj", width: 180, type: "text", align: "left" },
-         { display: "结束时间", name: "dJssj", width: 180, type: "text", align: "left" },
-         { display: "登记时间", name: "dDj", width: 180, type: "text", align: "left" },
-         { display: "是否用车", name: "cZtName", width: 180, type: "text", align: "left" }
+		 { display: "会议名称", name: "cHymc", width: 180, type: "text", align: "left" },
+		 { display: "会议开始时间", name: "dKssj", width: 180, type: "text", align: "left" },
+         { display: "会议时长", name: "cHysc", width: 180, type: "text", align: "left" },
+         { display: "会议地点", name: "cHydd", width: 180, type: "text", align: "left" },
+         { display: "参会范围", name: "cChfw", width: 180, type: "text", align: "left" },
+         { display: "分会场", name: "cFc", width: 180, type: "text", align: "left" }
          ]      
 },"Search":null};
 
@@ -132,8 +98,8 @@
  	//搜索表单应用ligerui样式
  	$("#formsearch").ligerForm( {
  		fields : [ {
- 			display : "日期范围",
- 			name : "dDjBeg",
+ 			display : "会议时间",
+ 			name : "dKssjBeg",
  			newline : false,
  			labelWidth : 80,
  			width : 100,
@@ -142,38 +108,13 @@
  			cssClass : "field"
  		}, {
  			display : "至",
- 			name : "dDjEnd",
+ 			name : "dKssjEnd",
  			newline : false,
  			labelWidth : 30,
  			width : 100,
  			space : 30,
  			type : "date",
  			cssClass : "field"
- 		}<%if("".equals(userId)){%>
- 		, 
- 		{
- 			display : "人员",
- 			name : "userName",
- 			newline : false,
- 			labelWidth : 60,
- 			width : 100,
- 			space : 30,
- 			type : "select",
- 			options: {
- 			valueFieldID: "userId",
- 			data : userList},
- 			cssClass : "field"
- 		}  
- 		<%}%>,
- 		{
- 			display : "类型",
- 			name : "",
- 			newline : false,
- 			labelWidth : 30,
- 			width : 100,
- 			space : 30,
- 			type : 'select',
- 			options:{valueFieldID:"cSflj",data:[{ text: '我的申请', id: 1 },{ text: '我的审核', id: 0 }] }
  		}
  		
  		],
@@ -213,11 +154,10 @@
 
     	function loadGrid(obj){
     		if(!obj)obj={};
-    		obj.nLx='<%=nLx%>';
     		<%if(!"".equals(userId)){%>
 			obj.userId='<%=userId%>';
 		<%}%>
-    		KqYbjlSvc.queryByPage(obj,oPage,function(rdata){
+    		KqHytsSvc.queryByPage(obj,oPage,function(rdata){
     			if(rdata == null){
     				  grid.setOptions({ data:  { Total:0, Rows:""  } });
     			}else{
@@ -233,7 +173,7 @@
           switch (item.id) {
               case "add":
             	//  f_dialog("add","新增上下班信息");
-            	   dialog = $.ligerDialog.open({ title :'新增信息',url: '<%=basePath%>admin/app/duty/kqybjlDetail.jsp?nLx=<%=nLx%>'+'<%=str%>&userId=<%=userId%>', 
+            	   dialog = $.ligerDialog.open({ title :'新增信息',url: '<%=basePath%>admin/app/duty/kqhytsDetail.jsp?<%=str%>&userId=<%=userId%>', 
                        height: 350,width: 720,showMax: true, showToggle: true,  showMin: true
 				  });
             	//  top.f_openDialog(null,'新增上下班信息','<%=basePath%>admin/app/user/userDetail.jsp' );
@@ -241,13 +181,13 @@
             //  case "view":
             //      var selected = grid.getSelected();
             //      if (!selected) { LG.tip('请选择行!'); return }
-            //      top.f_addTab(null, '查看上下班信息', '<%=basePath%>admin/app/duty/kqybjlDetail.jsp?IsView=1&nLx=<%=nLx%>&ID=' + selected.UserID+'<%=str%>&userId=<%=userId%>');
+            //      top.f_addTab(null, '查看上下班信息', '<%=basePath%>admin/app/duty/kqhytsDetail.jsp?IsView=1&ID=' + selected.UserID+'<%=str%>&userId=<%=userId%>');
             //      break;
               case "modify":
             	  
             	  var selected = grid.getSelected();
                         if (!selected) { LG.tip('请选择行!'); return }
-                       dialog = $.ligerDialog.open({ title :'修改信息',url: '<%=basePath%>admin/app/duty/kqybjlDetail.jsp?nLx=<%=nLx%>&nXh=' + selected.nXh+'<%=str%>&userId=<%=userId%>', 
+                       dialog = $.ligerDialog.open({ title :'修改信息',url: '<%=basePath%>admin/app/duty/kqhytsDetail.jsp?nXh=' + selected.nXh+'<%=str%>&userId=<%=userId%>', 
                        height: 350,width: 720,showMax: true, showToggle: true,  showMin: true
 				  });
                        break;
@@ -266,7 +206,7 @@
 		function f_remove() {
 			var selected = grid.getSelected();
 			if (selected) {
-				KqYbjlSvc.remove(selected, function(rdata) {
+				KqHytsSvc.remove(selected, function(rdata) {
 					if (rdata) {
 						LG.showSuccess('删除成功');
 						loadGrid();

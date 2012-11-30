@@ -111,7 +111,7 @@
 			<if test="cChfw != null and cChfw !='' ">  ,  C_CHFW</if>
 			<if test="cFc != null and cFc !='' ">  ,  C_FC</if>
 			)VALUES(
-				SEQ_KQ_YBJL.NEXTVAL 
+				SEQ_KQ_HYTS.NEXTVAL 
 				<!-- #{n_xh#-->
 			<if test="cHymc != null and cHymc !='' ">  ,  #{cHymc}</if>
 			<if test="dKssj != null and dKssj !='' ">  ,  to_date(#{dKssj},'YYYY-MM-DD HH24:mi:ss')</if>
