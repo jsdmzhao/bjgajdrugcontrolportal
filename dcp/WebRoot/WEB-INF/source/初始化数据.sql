@@ -69,10 +69,15 @@ insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL,
 MENU_ICON, ISVISIBLE)values (404, '404', '4', '会议提示', 'admin/app/duty/kqhyts.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
 
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
-MENU_ICON, ISVISIBLE)values (405, '405', '4', '会议室管理', 'admin/app/duty/kqhyssq.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+MENU_ICON, ISVISIBLE)values (405, '405', '4', '会议室申请', 'admin/app/duty/kqhyssq.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
 
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
 MENU_ICON, ISVISIBLE)values (406, '406', '4', '值班管理', 'admin/app/duty/kqzb.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+
+insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+MENU_ICON, ISVISIBLE)values (407, '407', '4', '请销假审核', 'admin/app/duty/kqqxjsh.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+
+
 
 
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 

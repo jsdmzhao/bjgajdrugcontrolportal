@@ -7,29 +7,6 @@ Object nXh = request.getParameter("nXh");
 if(nXh==null){
 	nXh="";
 }
-Object userId = request.getParameter("userId");
-if(userId==null){
-	userId="";
-}
-Object nLx = request.getParameter("nLx");
-
-if(nLx==null){
-	nLx="";
-}else if("1".equals(nLx)){
-%>	
-<script>
-	var qjlxdata=[{ text: '会议培训', id: 1 } ,{ text: '市内工作', id: 2 },{ text: '专项勤务', id: 3 },{ text: '外地出差', id: 4 },{ text: '其他工作', id: 5 } ,];
-	</script>	
-<% 	
-}else{
-	%>	
-	<script>
-	var qjlxdata=[{ text: '病假', id: 6 },{ text: '事假', id: 7 },{ text: '年假', id: 8 },{ text: '婚丧假', id: 9 },{ text: '探亲假', id: 10 },{ text: '节假日离京', id: 11 },{ text: '其他', id: 12 }];
-	</script>	
-	
-	<%
-}
-
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -57,7 +34,7 @@ if(nLx==null){
     
 	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
-  	<script type='text/javascript' src='<%=basePath%>dwr/interface/KqYbjlSvc.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/interface/KqQwapSvc.js'></script>
   		<script type='text/javascript' src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>
 
 </head> 
@@ -71,33 +48,31 @@ if(nLx==null){
     	userdata=rdata;
 	});
     
+    
+    
         var config = {"Form":{ 
          fields : [
          {name:"nXh",type:"hidden",value:'<%=nXh %>'},
-         {name:"nLx",type:"hidden",value:'<%=nLx %>'},
-         {name:"nXh",type:"hidden",value:'<%=nXh %>'},
-         <%if("".equals(userId)){%>
-         {display:"人员",name:"userId",newline:false,labelWidth:100,width:200,space:30,type:"select",
-             comboboxName:"userIdName",
-             options:{valueFieldID:"userId",data: userdata }},
-         <%}else{%>
-         {name:"userId",value:"<%=userId%>",type:"hidden"},  
-         <%}%>
-         {display:"请假类别",name:"nQjlx",newline:false,labelWidth:100,width:200,space:30,type:"select",
-             comboboxName:"nQjlxName",
-             options:{valueFieldID:"nQjlx",data:qjlxdata }},
+         
+         {display:"开始时间",name:"dKsrq",newline:true,labelWidth:100,width:200,space:30,type:"date"},
+         {display:"结束时间",name:"dJsrq",newline:false,labelWidth:100,width:200,space:30,type:"date"},
+         
+         {display:"勤务类别",name:"cQwlb",newline:true,labelWidth:100,width:200,space:30,type:"select",
+             comboboxName:"cQwlbName",
+             options:{valueFieldID:"cQwlb",data:[{ text: '便衣勤务', id: '0' },{ text: '制服勤务', id: '1' }] }},
+
+             {display:"勤务类型",name:"cQwlx",newline:false,labelWidth:100,width:200,space:30,type:"select",
+                 comboboxName:"cQwlxName",
+                 options:{valueFieldID:"cQwlx",data:[{ text: '足球勤务', id: '0' },{ text: '两会勤务', id: '1' },{ text: '涉日维稳勤务', id: '2' },{ text: '节假日广场勤务', id: '3' },{ text: '其他勤务', id: '4' }] }},
              
-         {display:"事由",name:"cYy",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
-         {display:"开始时间",name:"dKssj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
-         {display:"结束时间",name:"dJssj",newline:false,labelWidth:100,width:200,space:30,type:"date"},
-       //  {display:"登记时间",name:"dDj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
-         {display:"是否离京",name:"cSflj",newline:true,labelWidth:100,width:200,space:30,type:"select",
-             comboboxName:"cSfljName",
-             options:{valueFieldID:"cSflj",data:[{ text: '是', id: 1 },{ text: '否', id: 0 }] }},
-         {display:"地点",name:"cDd",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"是否使用公车",name:"cZt",newline:true,labelWidth:100,width:200,space:30,type:"select",
-             comboboxName:"cZtName",
-             options:{valueFieldID:"cZt",data: [{ text: '是', id: '1' },{ text: '否', id: '0' }] }},
+         {display:"参加人员",name:"cCjry",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
+      
+         {display:"勤务地段",name:"cQwdd",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"带队领导",name:"cDdld",newline:false,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"联络人员",name:"cLlry",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"出发时间",name:"dCfsj",newline:false,labelWidth:100,width:200,space:30,type:"date"},
+         {display:"出发地点",name:"cCfdd",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"勤务车辆",name:"cQucl",newline:false,labelWidth:100,width:200,space:30,type:"text"},
          
         ]
  }};
@@ -147,7 +122,7 @@ if(nLx==null){
         }
         else { 
              var obj={nXh:'<%=nXh%>'};
-        	KqYbjlSvc.queryAll(obj, function (rdata)
+        	KqQwapSvc.queryAll(obj, function (rdata)
                     {
         		    if(rdata != null){
         		    	var data=rdata[0];
@@ -204,7 +179,7 @@ if(nLx==null){
 
         	var formMap = DWRUtil.getValues("mform"); 
 			if(isAddNew){
-        	KqYbjlSvc.save(formMap,function (rdata){
+        	KqQwapSvc.save(formMap,function (rdata){
         		if (rdata) {
 					LG.showSuccess('保存成功', function() {
 						  
@@ -222,7 +197,7 @@ if(nLx==null){
 				}
 			});
         	}else{
-        	   	KqYbjlSvc.update(formMap,function (rdata){
+        	   	KqQwapSvc.update(formMap,function (rdata){
         	   		if (rdata) {
     					LG.showSuccess('修改成功', function() {
     						  f_cancel();

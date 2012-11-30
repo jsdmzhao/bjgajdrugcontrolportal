@@ -1,6 +1,7 @@
 package com.unis.app.duty.service;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.unis.app.duty.service.dao.KqYbjlDao;
 import com.unis.app.system.service.dao.SysUserDao;
+import com.unis.app.userinfo.service.dao.UserInfoDao;
 
 @Service
 @Transactional(rollbackFor={Exception.class,SQLException.class})
@@ -19,9 +21,41 @@ public class KqYbjlSvc  {
  
 	@Autowired
 	private KqYbjlDao kqYbjlDao;
+	@Autowired
+	private UserInfoDao userInfoDao;
 
 	public Object save(Map p) throws SQLException {
-		return kqYbjlDao.saveInfo(p);
+		if(p.get("userId")!=null){
+			Map tp=new HashMap();
+			tp.put("userId", p.get("userId"));
+			List<Map> tlist=userInfoDao.queryAllInfo(tp);
+			if(tlist.size()>0){
+				Map<String,String> userMap=tlist.get(0);
+				
+				String jb=userMap.get("cJb");
+				String bm=userMap.get("cYhz");
+				String ks=userMap.get("cKs");
+				
+				if("3".equals(jb)){
+					 p.put("cShjb", "2");
+					
+				}else if("2".equals(jb)){
+					 p.put("cShjb", "1");
+					
+				}else if("1".equals(jb)){
+					 p.put("cShjb", "0");
+				}
+				
+				return kqYbjlDao.saveInfo(p);
+			}
+		
+			
+		}
+		
+		
+		return null;
+		
+	
 	}
 	
 	//
@@ -42,6 +76,15 @@ public class KqYbjlSvc  {
 	public Object update(Map p) throws SQLException {
 		return kqYbjlDao.updateInfo(p);
 	}
+	
+	
+	
+	public Object xiaojia(Map p) throws SQLException {
+		Map tp=new HashMap();
+		tp.put("nXh", p.get("nXh"));
+		tp.put("cShzt", "4");
+		return kqYbjlDao.updateInfo(p);
+	}
 
 	public Object updateAll(Map p) throws SQLException {
 		return kqYbjlDao.updateAllInfo(p);
@@ -51,7 +94,46 @@ public class KqYbjlSvc  {
 		return kqYbjlDao.queryAllInfo(p);
 	}
 	
+	
+	public List queryShenhe(Map p) throws SQLException {
+		if(p.get("userId")!=null){
+			Map tp=new HashMap();
+			tp.put("userId", p.get("userId"));
+			List<Map> tlist=userInfoDao.queryAllInfo(tp);
+			if(tlist.size()>0){
+				Map<String,String> userMap=tlist.get(0);
+				
+				
+				String jb=userMap.get("cJb");
+				String bm=userMap.get("cYhz");
+				String ks=userMap.get("cKs");
+				
+				if("2".equals(jb)){
+					 p.put("cShjb", "2");
+					 p.put("cKs", ks);
+					
+				}else if("1".equals(jb)){
+					 p.put("cShjb", "1");
+					 p.put("cYhz", bm);
+					
+				}else if("1".equals(jb)){
+					 p.put("cShjb", "0");
+				}else{
+					return null; 
+				}
+				
+				kqYbjlDao.queryShenhe(p);
+			}
+		
+			
+		}
+		
+		
+		return kqYbjlDao.queryShenhe(null);
+	}
 
+	
+	
 	public Map queryByPage(Map p, Map page) throws SQLException {
 		return kqYbjlDao.queryByPageInfo(p, page);
 	}

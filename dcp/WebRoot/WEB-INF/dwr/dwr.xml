@@ -113,6 +113,21 @@
 			<param name="beanName" value="kqZbSvc"></param>
 		</create>
 		
+		
+		<create javascript="KqQwapSvc" creator="spring">
+			<param name="beanName" value="kqQwapSvc"></param>
+		</create>
+		
+		<create javascript="KqHytsSvc" creator="spring">
+			<param name="beanName" value="kqHytsSvc"></param>
+		</create>
+		
+		<create javascript="KqHyssqSvc" creator="spring">
+			<param name="beanName" value="KqHyssqSvc"></param>
+		</create>
+		
+		
+		
 		<create javascript="DmSvc" creator="spring">
 			<param name="beanName" value="dmSvc"></param>
 		</create>

@@ -49,6 +49,10 @@ public class KqYbjlDao<T> extends AbsServiceAdapter<T>  {
 		return  super.update("KqYbjlMapper.updateAllInfo", p);
 	}
 
+	
+	public List queryShenhe(Map p){
+		return  super.selectList("KqYbjlMapper.queryShenhe", p);
+	}
 	public List queryAllInfo(Map p){
 		return  super.selectList("KqYbjlMapper.queryAllInfo", p);
 	}

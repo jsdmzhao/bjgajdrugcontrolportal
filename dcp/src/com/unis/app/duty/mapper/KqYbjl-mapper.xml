@@ -28,14 +28,70 @@
 			<result property="dShrq" column="D_SHRQ" jdbcType="VARCHAR"/>
 			<result property="dXjrq" column="D_XJRQ" jdbcType="VARCHAR"/>
 			
+			<result property="nQjlxName" column="N_QJLX_NAME" jdbcType="VARCHAR"/>
+			
+			<result property="cShztName" column="C_SHZT_NAME" jdbcType="VARCHAR"/>
+			
 			
 		<result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
 		
 	</resultMap>
-	 
+	
+<select id="queryShenhe" resultMap="Result"  parameterType="java.util.Map" >
+					 select 
+					base.N_XH,
+					base.USER_ID,
+					base.C_DD,
+					base.N_LX,
+					base.C_YY,
+					to_char(base.D_KSSJ,'YYYY-MM-DD')  D_KSSJ,
+					to_char(base.D_JSSJ,'YYYY-MM-DD')  D_JSSJ,
+					to_char(base.D_DJ,'YYYY-MM-DD')  D_DJ,
+					base.C_ZT,
+					case base.C_ZT when '1' then '是'  else '否' end as C_ZT_NAME, 
+					a.C_XM USER_NAME,
+					C_SHZT,
+					case base.C_SHZT 
+			    	when '0' then '未提交' 
+			    	when '1' then '未审核' 
+			    	when '2' then '已批准'  
+			    	when '3' then '未批准' 
+			    	else '已销假' end as C_SHZT_NAME, 
+					
+					C_SHNR,
+					C_SHBM,
+					C_SHJB,
+					C_SFLJ,
+					N_QJLX,
+			    	case base.N_QJLX 
+			    	when 1 then '会议培训' 
+			    	when 2 then '市内工作' 
+			    	when 3 then '专项勤务'  
+			    	when 4 then '外地出差' 
+			    	when 5 then '其他工作' 
+			    	when 6 then '病假' 
+			    	when 7 then '事假' 
+			    	when 8 then '年假' 
+			    	when 9 then '婚丧假' 
+			    	when 10 then '探亲假' 
+			    	when 11 then '节假日离京' 
+			    	else '其他' end as N_QJLX_NAME, 
+					N_QXJ,
+					C_SHR,
+					to_char(base.D_SHRQ,'YYYY-MM-DD')  D_SHRQ,
+					to_char(base.D_XJRQ,'YYYY-MM-DD')  D_XJRQ
+				 from B_KQ_YBJL base ,b_yh a 
+		 <trim prefix="where" prefixOverrides="and |or"> 
+		    base.user_id =a.user_id
+			<if test="cShjb != null and cShjb !='' ">  and C_SHJB = #{cShjb}</if>
+			<if test="cKs != null and cKs !='' ">  and C_KS = #{cKs}</if>
+			<if test="cYhz != null and cYhz !='' ">  and C_YHZ = #{cYhz}</if>
+		</trim>
+		ORDER BY base.N_XH  DESC
+	</select>
 
 	<select id="queryAllInfo" resultMap="Result"  parameterType="java.util.Map" >
-				 select 
+					 select 
 					base.N_XH,
 					base.USER_ID,
 					base.C_DD,
@@ -48,11 +104,31 @@
 					case base.C_ZT when '1' then '是'  else '否' end as C_ZT_NAME, 
 					FUN_GET_YHMC(USER_ID) USER_NAME,
 					C_SHZT,
+					case base.C_SHZT 
+			    	when '0' then '未提交' 
+			    	when '1' then '未审核' 
+			    	when '2' then '已批准'  
+			    	when '3' then '未批准' 
+			    	else '已销假' end as C_SHZT_NAME, 
+					
 					C_SHNR,
 					C_SHBM,
 					C_SHJB,
 					C_SFLJ,
 					N_QJLX,
+			    	case base.N_QJLX 
+			    	when 1 then '会议培训' 
+			    	when 2 then '市内工作' 
+			    	when 3 then '专项勤务'  
+			    	when 4 then '外地出差' 
+			    	when 5 then '其他工作' 
+			    	when 6 then '病假' 
+			    	when 7 then '事假' 
+			    	when 8 then '年假' 
+			    	when 9 then '婚丧假' 
+			    	when 10 then '探亲假' 
+			    	when 11 then '节假日离京' 
+			    	else '其他' end as N_QJLX_NAME, 
 					N_QXJ,
 					C_SHR,
 					to_char(base.D_SHRQ,'YYYY-MM-DD')  D_SHRQ,
@@ -101,7 +177,7 @@
 
 	<select id="queryInfo" resultMap="Result" parameterType="java.util.Map" >
 		<include refid="pagination.paginationStart"></include>
-					 select 
+				 select 
 					base.N_XH,
 					base.USER_ID,
 					base.C_DD,
@@ -114,11 +190,31 @@
 					case base.C_ZT when '1' then '是'  else '否' end as C_ZT_NAME, 
 					FUN_GET_YHMC(USER_ID) USER_NAME,
 					C_SHZT,
+					case base.C_SHZT 
+			    	when '0' then '未提交' 
+			    	when '1' then '未审核' 
+			    	when '2' then '已批准'  
+			    	when '3' then '未批准' 
+			    	else '已销假' end as C_SHZT_NAME, 
+					
 					C_SHNR,
 					C_SHBM,
 					C_SHJB,
 					C_SFLJ,
 					N_QJLX,
+			    	case base.N_QJLX 
+			    	when 1 then '会议培训' 
+			    	when 2 then '市内工作' 
+			    	when 3 then '专项勤务'  
+			    	when 4 then '外地出差' 
+			    	when 5 then '其他工作' 
+			    	when 6 then '病假' 
+			    	when 7 then '事假' 
+			    	when 8 then '年假' 
+			    	when 9 then '婚丧假' 
+			    	when 10 then '探亲假' 
+			    	when 11 then '节假日离京' 
+			    	else '其他' end as N_QJLX_NAME, 
 					N_QXJ,
 					C_SHR,
 					to_char(base.D_SHRQ,'YYYY-MM-DD')  D_SHRQ,
