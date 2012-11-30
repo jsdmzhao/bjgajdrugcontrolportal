@@ -355,6 +355,29 @@ function $d(obj,preBlank){
         LG.addFormButtons(buttons);
     };
     
+    
+    
+    //快速设置表单底部默认的按钮:保存、取消
+    LG.setFormDefaultBtn = function (cancleCallback, savedCallback,submitCallback)
+    {
+        //表单底部按钮
+        var buttons = [];
+        if (cancleCallback)
+        {
+            buttons.push({ text: '取消', onclick: cancleCallback });
+        }
+        if (savedCallback)
+        {
+            buttons.push({ text: '保存', onclick: savedCallback });
+        }
+        if (submitCallback)
+        {
+            buttons.push({ text: '提交', onclick: submitCallback });
+        }
+        LG.addFormButtons(buttons);
+    };
+    
+    
   //快速设置表单底部默认的按钮:发送、取消、保存草稿箱
     LG.setEmailFormDefaultBtn = function (cancleCallback, savedCallback, sendCallback)
     {

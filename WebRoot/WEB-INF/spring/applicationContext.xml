@@ -58,4 +58,10 @@
 	
 	<bean id="userInfoDao" class="com.unis.app.userinfo.service.dao.UserInfoDao" parent="absServiceAdapter"/>
 	
+	<bean id="kqQwapDao" class="com.unis.app.duty.service.dao.KqQwapDao" parent="absServiceAdapter"/>
+	<bean id="kqHyssqDao" class="com.unis.app.duty.service.dao.KqHyssqDao" parent="absServiceAdapter"/>
+	<bean id="kqHytsDao" class="com.unis.app.duty.service.dao.KqHytsDao" parent="absServiceAdapter"/>
+	
+	
+	
 </beans>

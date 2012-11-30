@@ -16,6 +16,9 @@
 			<result property="dCfsj" column="D_CFSJ" jdbcType="VARCHAR"/>
 			<result property="cCfdd" column="C_CFDD" jdbcType="VARCHAR"/>
 			<result property="cQucl" column="C_QUCL" jdbcType="VARCHAR"/>
+			
+				<result property="cQwlbName" column="C_QWLB_NAME" jdbcType="VARCHAR"/>
+			<result property="cQwlxName" column="C_QWLX_NAME" jdbcType="VARCHAR"/>
 		
 	</resultMap>
 	 
@@ -26,7 +29,16 @@
 					to_char(base.D_KSRQ,'YYYY-MM-DD')  D_KSRQ,
 					to_char(base.D_JSRQ,'YYYY-MM-DD')  D_JSRQ,
 					base.C_QWLB,
+					case base.C_QWLB 
+			    	when '0' then '便衣勤务' 
+			    	else '制服勤务' end as C_QWLB_NAME, 
 					base.C_QWLX,
+					case base.C_QWLX 
+			    	when '0' then '足球勤务' 
+			    	when '1' then '两会勤务' 
+			    	when '2' then '涉日维稳勤务' 
+			    	when '3' then '节假日广场勤务' 
+			    	else '其他勤务' end as C_QWLX_NAME, 
 					base.C_CJRY,
 					base.C_QWDD,
 					base.C_DDLD,
@@ -70,7 +82,16 @@
 					to_char(base.D_KSRQ,'YYYY-MM-DD')  D_KSRQ,
 					to_char(base.D_JSRQ,'YYYY-MM-DD')  D_JSRQ,
 					base.C_QWLB,
+					case base.C_QWLB 
+			    	when '0' then '便衣勤务' 
+			    	else '制服勤务' end as C_QWLB_NAME, 
 					base.C_QWLX,
+					case base.C_QWLX 
+			    	when '0' then '足球勤务' 
+			    	when '1' then '两会勤务' 
+			    	when '2' then '涉日维稳勤务' 
+			    	when '3' then '节假日广场勤务' 
+			    	else '其他勤务' end as C_QWLX_NAME, 
 					base.C_CJRY,
 					base.C_QWDD,
 					base.C_DDLD,
