@@ -11,24 +11,6 @@ Object userId = request.getParameter("userId");
 if(userId==null){
 	userId="";
 }
-Object nLx = request.getParameter("nLx");
-
-if(nLx==null){
-	nLx="";
-}else if("1".equals(nLx)){
-%>	
-<script>
-	var qjlxdata=[{ text: '会议培训', id: 1 } ,{ text: '市内工作', id: 2 },{ text: '专项勤务', id: 3 },{ text: '外地出差', id: 4 },{ text: '其他工作', id: 5 } ,];
-	</script>	
-<% 	
-}else{
-	%>	
-	<script>
-	var qjlxdata=[{ text: '病假', id: 6 },{ text: '事假', id: 7 },{ text: '年假', id: 8 },{ text: '婚丧假', id: 9 },{ text: '探亲假', id: 10 },{ text: '节假日离京', id: 11 },{ text: '其他', id: 12 }];
-	</script>	
-	
-	<%
-}
 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -57,7 +39,7 @@ if(nLx==null){
     
 	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
-  	<script type='text/javascript' src='<%=basePath%>dwr/interface/KqYbjlSvc.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/interface/KqHytsSvc.js'></script>
   		<script type='text/javascript' src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>
 
 </head> 
@@ -66,39 +48,15 @@ if(nLx==null){
     <script type="text/javascript"> 
     DWREngine.setAsync(false); 
     
-    var userdata=new Array();
-    UserInfoSvc.chooseOnlyUser(function(rdata){
-    	userdata=rdata;
-	});
-    
         var config = {"Form":{ 
          fields : [
          {name:"nXh",type:"hidden",value:'<%=nXh %>'},
-         {name:"nLx",type:"hidden",value:'<%=nLx %>'},
-         {name:"nXh",type:"hidden",value:'<%=nXh %>'},
-         <%if("".equals(userId)){%>
-         {display:"人员",name:"userId",newline:false,labelWidth:100,width:200,space:30,type:"select",
-             comboboxName:"userIdName",
-             options:{valueFieldID:"userId",data: userdata }},
-         <%}else{%>
-         {name:"userId",value:"<%=userId%>",type:"hidden"},  
-         <%}%>
-         {display:"请假类别",name:"nQjlx",newline:false,labelWidth:100,width:200,space:30,type:"select",
-             comboboxName:"nQjlxName",
-             options:{valueFieldID:"nQjlx",data:qjlxdata }},
-             
-         {display:"事由",name:"cYy",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
-         {display:"开始时间",name:"dKssj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
-         {display:"结束时间",name:"dJssj",newline:false,labelWidth:100,width:200,space:30,type:"date"},
-       //  {display:"登记时间",name:"dDj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
-         {display:"是否离京",name:"cSflj",newline:true,labelWidth:100,width:200,space:30,type:"select",
-             comboboxName:"cSfljName",
-             options:{valueFieldID:"cSflj",data:[{ text: '是', id: 1 },{ text: '否', id: 0 }] }},
-         {display:"地点",name:"cDd",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"是否使用公车",name:"cZt",newline:true,labelWidth:100,width:200,space:30,type:"select",
-             comboboxName:"cZtName",
-             options:{valueFieldID:"cZt",data: [{ text: '是', id: '1' },{ text: '否', id: '0' }] }},
-         
+         {display:"会议名称",name:"cHymc",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"会议开始时间",name:"dKssj",newline:false,labelWidth:100,width:200,space:30,type:"date"},
+         {display:"会议时长",name:"cHysc",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"会议地点",name:"cHydd",newline:false,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"参会范围",name:"cChfw",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
+         {display:"分会场",name:"cFc",newline:true,labelWidth:100,width:200,space:30,type:"text"}
         ]
  }};
 
@@ -147,7 +105,7 @@ if(nLx==null){
         }
         else { 
              var obj={nXh:'<%=nXh%>'};
-        	KqYbjlSvc.queryAll(obj, function (rdata)
+        	KqHytsSvc.queryAll(obj, function (rdata)
                     {
         		    if(rdata != null){
         		    	var data=rdata[0];
@@ -204,7 +162,7 @@ if(nLx==null){
 
         	var formMap = DWRUtil.getValues("mform"); 
 			if(isAddNew){
-        	KqYbjlSvc.save(formMap,function (rdata){
+        	KqHytsSvc.save(formMap,function (rdata){
         		if (rdata) {
 					LG.showSuccess('保存成功', function() {
 						  
@@ -222,7 +180,7 @@ if(nLx==null){
 				}
 			});
         	}else{
-        	   	KqYbjlSvc.update(formMap,function (rdata){
+        	   	KqHytsSvc.update(formMap,function (rdata){
         	   		if (rdata) {
     					LG.showSuccess('修改成功', function() {
     						  f_cancel();
