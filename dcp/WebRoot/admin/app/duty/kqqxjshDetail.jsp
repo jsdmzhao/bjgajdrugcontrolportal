@@ -11,24 +11,8 @@ Object userId = request.getParameter("userId");
 if(userId==null){
 	userId="";
 }
-Object nLx = request.getParameter("nLx");
 
-if(nLx==null){
-	nLx="";
-}else if("1".equals(nLx)){
-%>	
-<script>
-	var qjlxdata=[{ text: '会议培训', id: 1 } ,{ text: '市内工作', id: 2 },{ text: '专项勤务', id: 3 },{ text: '外地出差', id: 4 },{ text: '其他工作', id: 5 } ,];
-	</script>	
-<% 	
-}else{
-	%>	
-	<script>
-	var qjlxdata=[{ text: '病假', id: 6 },{ text: '事假', id: 7 },{ text: '年假', id: 8 },{ text: '婚丧假', id: 9 },{ text: '探亲假', id: 10 },{ text: '节假日离京', id: 11 },{ text: '其他', id: 12 }];
-	</script>	
-	
-	<%
-}
+
 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -66,6 +50,10 @@ if(nLx==null){
     <script type="text/javascript"> 
     DWREngine.setAsync(false); 
     
+    var qjlxdata=[{ text: '会议培训', id: 1 } ,{ text: '市内工作', id: 2 },{ text: '专项勤务', id: 3 },
+                  { text: '外地出差', id: 4 },{ text: '其他工作', id: 5 } ,{ text: '病假', id: 6 },
+                  { text: '事假', id: 7 },{ text: '年假', id: 8 },{ text: '婚丧假', id: 9 },
+                  { text: '探亲假', id: 10 },{ text: '节假日离京', id: 11 },{ text: '其他', id: 12 }];
     var userdata=new Array();
     UserInfoSvc.chooseOnlyUser(function(rdata){
     	userdata=rdata;
@@ -74,15 +62,9 @@ if(nLx==null){
         var config = {"Form":{ 
          fields : [
          {name:"nXh",type:"hidden",value:'<%=nXh %>'},
-         {name:"nLx",type:"hidden",value:'<%=nLx %>'},
-         {name:"nXh",type:"hidden",value:'<%=nXh %>'},
-         <%if("".equals(userId)){%>
-         {display:"人员",name:"userId",newline:false,labelWidth:100,width:200,space:30,type:"select",
-             comboboxName:"userIdName",
-             options:{valueFieldID:"userId",data: userdata }},
-         <%}else{%>
-         {name:"userId",value:"<%=userId%>",type:"hidden"},  
-         <%}%>
+         {name:"userId",type:"hidden"},
+         {name:"c_shr",value:"<%=userId%>",type:"hidden"},  
+         {display:"申请人",name:"userName",newline:true,labelWidth:100,width:200,space:30,type:"text"},
          {display:"请假类别",name:"nQjlx",newline:false,labelWidth:100,width:200,space:30,type:"select",
              comboboxName:"nQjlxName",
              options:{valueFieldID:"nQjlx",data:qjlxdata }},
@@ -98,8 +80,13 @@ if(nLx==null){
          {display:"是否使用公车",name:"cZt",newline:true,labelWidth:100,width:200,space:30,type:"select",
              comboboxName:"cZtName",
              options:{valueFieldID:"cZt",data: [{ text: '是', id: '1' },{ text: '否', id: '0' }] }},
-         
-        ]
+             {display:"审核结果",name:"cShzt",newline:true,labelWidth:100,width:200,space:30,type:"select",
+                 comboboxName:"cShztName",
+                 options:{valueFieldID:"cShzt",data: [{ text: '批准', id: '2' },{ text: '不批准', id: '3' }] }},
+    {display:"审核内容",name:"cShnr",newline:true,labelWidth:100,width:500,space:20,type:"textarea"},
+    
+    ]
+    
  }};
 
         var forbidFields = [];
@@ -119,7 +106,7 @@ if(nLx==null){
         LG.overrideGridLoading(); 
 
         //表单底部按钮 
-        LG.setFormDefaultBtn(f_cancel,isView ? null : f_save,isView ? null : f_submit);
+        LG.setFormDefaultBtn(f_cancel,isView ? null : f_save);
 
         var deptTree = {
             url :'',
@@ -202,8 +189,9 @@ if(nLx==null){
 
         function f_save() {
 
-        	var formMap = DWRUtil.getValues("mform"); 
-        	formMap["cShzt"]="0";
+        	var formMapTemp = DWRUtil.getValues("mform"); 
+        	
+        	var formMap={cShzt:formMapTemp["cShzt"],cShnr:formMapTemp["cShnr"],nXh:formMapTemp["nXh"]};
 			if(isAddNew){
         	KqYbjlSvc.save(formMap,function (rdata){
         		if (rdata) {
@@ -239,7 +227,6 @@ if(nLx==null){
 			 function f_submit() {
 
 		        	var formMap = DWRUtil.getValues("mform"); 
-		        	formMap["cShzt"]="1";
 					if(isAddNew){
 		        	KqYbjlSvc.save(formMap,function (rdata){
 		        		if (rdata) {
