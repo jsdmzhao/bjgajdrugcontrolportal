@@ -143,7 +143,7 @@
 
     	function loadGrid(obj){
     		if(!obj)obj={};
-    		alert(obj.userPassword);
+    		//alert(obj.userPassword);
     		SysUserSvc.queryByPage(obj,oPage,function(rdata){
     			if(rdata == null){
     				  grid.setOptions({ data:  { Total:0, Rows:""  } });

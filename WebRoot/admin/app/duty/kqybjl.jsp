@@ -113,10 +113,12 @@
 	 var config ={"Grid":{
          columns: [
 		 { display: "人员", name: "userName", width: 180, type: "text", align: "left" },
-		 { display: "事由", name: "cYy", width: 180, type: "text", align: "left" },
+		 { display: "请假类别", name: "nQjlxName", width: 180, type: "text", align: "left" },
+		
          { display: "开始时间", name: "dKssj", width: 180, type: "text", align: "left" },
          { display: "结束时间", name: "dJssj", width: 180, type: "text", align: "left" },
          { display: "登记时间", name: "dDj", width: 180, type: "text", align: "left" },
+         { display: "状态", name: "cShztName", width: 180, type: "text", align: "left" },
          { display: "是否用车", name: "cZtName", width: 180, type: "text", align: "left" }
          ]      
 },"Search":null};
@@ -164,18 +166,7 @@
  			data : userList},
  			cssClass : "field"
  		}  
- 		<%}%>,
- 		{
- 			display : "类型",
- 			name : "",
- 			newline : false,
- 			labelWidth : 30,
- 			width : 100,
- 			space : 30,
- 			type : 'select',
- 			options:{valueFieldID:"cSflj",data:[{ text: '我的申请', id: 1 },{ text: '我的审核', id: 0 }] }
- 		}
- 		
+ 		<%}%>
  		],
  		toJSON : JSON2.stringify
  	});
@@ -207,13 +198,18 @@
 	                  // text: '查看',
 	                  //  img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
 	                   // id: 'view'
+                   },{line:true},{
+                       click: toolbarBtnItemClick,
+                       text: '销假',
+                       img:'<%=basePath%>liger/lib/icons/silkicons/application_edit.png',
+                       id: 'xiaojia'
                    },
                    {line:true}];
     	grid.toolbarManager.set('items', items);
 
     	function loadGrid(obj){
     		if(!obj)obj={};
-    		obj.nLx='<%=nLx%>';
+    		obj.nLx=<%=nLx%>;
     		<%if(!"".equals(userId)){%>
 			obj.userId='<%=userId%>';
 		<%}%>
@@ -247,9 +243,13 @@
             	  
             	  var selected = grid.getSelected();
                         if (!selected) { LG.tip('请选择行!'); return }
+                        if(selected.cShzt==0){
                        dialog = $.ligerDialog.open({ title :'修改信息',url: '<%=basePath%>admin/app/duty/kqybjlDetail.jsp?nLx=<%=nLx%>&nXh=' + selected.nXh+'<%=str%>&userId=<%=userId%>', 
                        height: 350,width: 720,showMax: true, showToggle: true,  showMin: true
-				  });
+				  }); }else{
+						LG.tip('当前状态不可修改!');
+						
+					}
                        break;
             	 
 				break;
@@ -259,12 +259,44 @@
 						f_remove();
 				});
 				break;
+			case "xiaojia":
+				jQuery.ligerDialog.confirm('确定销假吗?', function(confirm) {
+					if (confirm)
+						xiaojia();
+				});
+				break;
 			}
 		}
 
 
+      function xiaojia() {
+    	  
+    	  var selected = grid.getSelected();
+    	  if(selected.cShzt==2){
+			if (selected) {
+				KqYbjlSvc.xiaojia(selected, function(rdata) {
+					if (rdata) {
+						LG.showSuccess('销假成功');
+						loadGrid();
+					} else {
+						LG.showError('销假失败');
+					}
+				});
+			} else {
+				LG.tip('请选择行!');
+			}
+    	  }else{
+				LG.tip('当前状态不可销假!');
+				
+			}
+    	  
+      }
+      
+      
 		function f_remove() {
 			var selected = grid.getSelected();
+			if(selected.cShzt==0){
+			
 			if (selected) {
 				KqYbjlSvc.remove(selected, function(rdata) {
 					if (rdata) {
@@ -276,6 +308,10 @@
 				});
 			} else {
 				LG.tip('请选择行!');
+			}
+			}else{
+				LG.tip('当前状态不可删除!');
+				
 			}
 		}
 
