@@ -123,7 +123,7 @@
 		</create>
 		
 		<create javascript="KqHyssqSvc" creator="spring">
-			<param name="beanName" value="KqHyssqSvc"></param>
+			<param name="beanName" value="kqHyssqSvc"></param>
 		</create>
 		
 		

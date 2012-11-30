@@ -18,16 +18,27 @@
 			<result property="cShr" column="C_SHR" jdbcType="VARCHAR"/>
 			<result property="dShrq" column="D_SHRQ" jdbcType="VARCHAR"/>
 			<result property="cShzt" column="C_SHZT" jdbcType="VARCHAR"/>
+			
+			
+				<result property="cSqdwName" column="C_SQDW_NAME" jdbcType="VARCHAR"/>
+			<result property="cNsyhysName" column="C_NSYHYS_NAME" jdbcType="VARCHAR"/>
 		
 	</resultMap>
 	 
 
 	<select id="queryAllInfo" resultMap="Result"  parameterType="java.util.Map" >
-				 select 
+			select 
 					base.N_XH,
 					base.C_SQDW,
+
+          
+         ( select c_mc from D_DM a WHERE C_BXH='DEP' and a.c_dm=C_SQDW) C_SQDW_NAME,
+					
 					base.C_NSYHYS,
-					to_char(base.D_HYRQ,'YYYY-MM-DD')  D_KSSJ,
+					case base.C_NSYHYS when '0' then '主会议室'  else '专案会议室' end as C_NSYHYS_NAME, 
+					
+					
+					to_char(base.D_HYRQ,'YYYY-MM-DD')  D_HYRQ,
 					to_char(base.D_KSSJ,'YYYY-MM-DD HH24:mi:ss')  D_KSSJ,
 					to_char(base.D_JSSJ,'YYYY-MM-DD HH24:mi:ss')  D_JSSJ,
 					base.C_HYNR,
@@ -40,7 +51,7 @@
 				 from B_KQ_HYSSQ base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 		 
-		 
+		   
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
 			<if test="cSqdw != null and cSqdw !='' ">  and C_SQDW = #{cSqdw}</if>
 			<if test="cNsyhys != null and cNsyhys !='' ">  and C_NSYHYS = #{cNsyhys}</if>
@@ -76,11 +87,18 @@
 
 	<select id="queryInfo" resultMap="Result" parameterType="java.util.Map" >
 		<include refid="pagination.paginationStart"></include>
-					 select 
+					select 
 					base.N_XH,
 					base.C_SQDW,
+
+          
+         ( select c_mc from D_DM a WHERE C_BXH='DEP' and a.c_dm=C_SQDW) C_SQDW_NAME,
+					
 					base.C_NSYHYS,
-					to_char(base.D_HYRQ,'YYYY-MM-DD')  D_KSSJ,
+					case base.C_NSYHYS when '0' then '主会议室'  else '专案会议室' end as C_NSYHYS_NAME, 
+					
+					
+					to_char(base.D_HYRQ,'YYYY-MM-DD')  D_HYRQ,
 					to_char(base.D_KSSJ,'YYYY-MM-DD HH24:mi:ss')  D_KSSJ,
 					to_char(base.D_JSSJ,'YYYY-MM-DD HH24:mi:ss')  D_JSSJ,
 					base.C_HYNR,
@@ -202,7 +220,7 @@
 			)
 		<selectKey resultType="string" keyProperty="id" >
 			 <!--SELECT #{nXh# AS ID FROM dual  -->
-			 SELECT  SEQ_KQ_YBJL.CURRVAL  AS ID FROM dual 
+			 SELECT  SEQ_KQ_HYSSQ.CURRVAL  AS ID FROM dual 
 		</selectKey>
 	</insert>
 
