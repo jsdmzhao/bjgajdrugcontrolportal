@@ -3,8 +3,15 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="KqZbzMapper">
 	
-
-
+	
+	<resultMap id="Result"  type="java.util.Map">
+	     	<result property="nXh" column="N_XH" jdbcType="DECIMAL"/>
+			<result property="userId" column="USER_ID" jdbcType="DECIMAL"/>
+			<result property="cZm" column="cZm" jdbcType="VARCHAR"/>
+			<result property="cJb" column="cJb" jdbcType="VARCHAR"/>
+			<result property="cZt" column="cZt" jdbcType="VARCHAR"/>
+		<result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
+</resultMap>
 	<select id="queryAllInfo" resultMap="Result"  parameterType="java.util.Map" >
 				 select 
 					base.N_XH,
