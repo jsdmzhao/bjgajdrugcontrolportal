@@ -13,6 +13,8 @@
 			<result property="cHydd" column="C_HYDD" jdbcType="VARCHAR"/>
 			<result property="cChfw" column="C_CHFW" jdbcType="VARCHAR"/>
 			<result property="cFc" column="C_FC" jdbcType="VARCHAR"/>
+			
+				<result property="cChfwName" column="C_CHFW_NAME" jdbcType="VARCHAR"/>
 		
 	</resultMap>
 	 
@@ -25,7 +27,9 @@
 					base.C_HYSC,
 					base."C_HYDD",
 					base.C_CHFW,
-					base.C_FC
+					base.C_FC,
+					FUN_GET_MULTI_YHMC(C_CHFW) C_CHFW_NAME
+					
 				 from B_KQ_HYTS  base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
@@ -57,7 +61,8 @@
 					base.C_HYSC,
 					base."C_HYDD",
 					base.C_CHFW,
-					base.C_FC
+					base.C_FC,
+					FUN_GET_MULTI_YHMC(C_CHFW) C_CHFW_NAME
 				 from B_KQ_HYTS  base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>

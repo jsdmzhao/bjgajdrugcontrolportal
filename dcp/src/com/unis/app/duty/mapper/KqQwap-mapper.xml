@@ -19,6 +19,8 @@
 			
 				<result property="cQwlbName" column="C_QWLB_NAME" jdbcType="VARCHAR"/>
 			<result property="cQwlxName" column="C_QWLX_NAME" jdbcType="VARCHAR"/>
+			<result property="cCjryName" column="C_CJRY_NAME" jdbcType="VARCHAR"/>
+			
 		
 	</resultMap>
 	 
@@ -26,8 +28,8 @@
 	<select id="queryAllInfo" resultMap="Result"  parameterType="java.util.Map" >
 				 select 
 					base.N_XH,
-					to_char(base.D_KSRQ,'YYYY-MM-DD')  D_KSRQ,
-					to_char(base.D_JSRQ,'YYYY-MM-DD')  D_JSRQ,
+					to_char(base.D_KSRQ,'YYYY-MM-DD HH24:mi:ss')  D_KSRQ,
+					to_char(base.D_JSRQ,'YYYY-MM-DD HH24:mi:ss')  D_JSRQ,
 					base.C_QWLB,
 					case base.C_QWLB 
 			    	when '0' then '便衣勤务' 
@@ -45,7 +47,8 @@
 					base.C_LLRY,
 					to_char(base.D_CFSJ,'YYYY-MM-DD HH24:mi:ss')  D_CFSJ,
 					C_CFDD,
-					C_QUCL
+					C_QUCL,
+						FUN_GET_MULTI_YHMC(C_CJRY) C_CJRY_NAME
 				 from B_KQ_QWAP base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
@@ -79,8 +82,8 @@
 		<include refid="pagination.paginationStart"></include>
 					 select 
 					base.N_XH,
-					to_char(base.D_KSRQ,'YYYY-MM-DD')  D_KSRQ,
-					to_char(base.D_JSRQ,'YYYY-MM-DD')  D_JSRQ,
+					to_char(base.D_KSRQ,'YYYY-MM-DD HH24:mi:ss')  D_KSRQ,
+					to_char(base.D_JSRQ,'YYYY-MM-DD HH24:mi:ss')  D_JSRQ,
 					base.C_QWLB,
 					case base.C_QWLB 
 			    	when '0' then '便衣勤务' 
@@ -98,7 +101,8 @@
 					base.C_LLRY,
 					to_char(base.D_CFSJ,'YYYY-MM-DD HH24:mi:ss')  D_CFSJ,
 					C_CFDD,
-					C_QUCL
+					C_QUCL,
+					FUN_GET_MULTI_YHMC(C_CJRY) C_CJRY_NAME
 				 from B_KQ_QWAP base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
@@ -182,8 +186,8 @@
 			)VALUES(
 				SEQ_KQ_QWAP.NEXTVAL 
 				<!-- #{n_xh#-->
-			<if test="dKsrq != null and dKsrq !='' ">  ,  to_date(#{dKsrq},'YYYY-MM-DD')</if>
-			<if test="dJsrq != null and dJsrq !='' ">  , to_date(#{dJsrq},'YYYY-MM-DD')</if>
+			<if test="dKsrq != null and dKsrq !='' ">  ,  to_date(#{dKsrq},'YYYY-MM-DD HH24:mi:ss')</if>
+			<if test="dJsrq != null and dJsrq !='' ">  , to_date(#{dJsrq},'YYYY-MM-DD HH24:mi:ss')</if>
 			<if test="cQwlb != null and cQwlb !='' ">  ,  #{cQwlb}</if>
 			<if test="cQwlx != null and cQwlx !='' ">  ,  #{cQwlx}</if>
 			<if test="cCjry != null and cCjry !='' ">  ,  #{cCjry}</if>
@@ -208,8 +212,8 @@
 	<update id="updateInfo" parameterType="java.util.Map"> 
 			update B_KQ_QWAP 
 			<trim prefix="set" prefixOverrides=","> 
-			<if test="dKsrq != null and dKsrq !='' ">, D_KSRQ =  to_date(#{dKsrq},'YYYY-MM-DD')</if>
-			<if test="dJsrq != null and dJsrq !='' ">,  D_JSRQ=to_date(#{dJsrq},'YYYY-MM-DD')</if>
+			<if test="dKsrq != null and dKsrq !='' ">, D_KSRQ =  to_date(#{dKsrq},'YYYY-MM-DD HH24:mi:ss')</if>
+			<if test="dJsrq != null and dJsrq !='' ">,  D_JSRQ=to_date(#{dJsrq},'YYYY-MM-DD HH24:mi:ss')</if>
 			<if test="cQwlb != null and cQwlb !='' ">, C_QWLB =  #{cQwlb}</if>
 			<if test="cQwlx != null and cQwlx !='' ">,C_QWLX =  #{cQwlx}</if>
 			<if test="cCjry != null and cCjry !='' ">, C_CJRY =   #{cCjry}</if>

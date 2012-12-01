@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="KqZbzMapper">
+	
+
+
+	<select id="queryAllInfo" resultMap="Result"  parameterType="java.util.Map" >
+				 select 
+					base.N_XH,
+					base.USER_ID,
+					base.C_ZM,
+					base.C_JB,
+					base.C_ZT,
+					FUN_GET_YHMC(USER_ID) USER_NAME
+				 from B_KQ_ZBZ base 
+		 <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
+			
+			<if test="cZm != null and cZm !='' ">  and C_ZM = #{cZm}</if>
+			<if test="cJb != null and cJb !='' ">  and C_JB = #{cJb}</if>
+			<if test="cZt != null and cZt !='' ">  and C_ZT = #{cZt}</if>
+		</trim>
+		ORDER BY base.N_XH  DESC
+	</select>
+
+	<select id="queryInfo" resultMap="Result" parameterType="java.util.Map" >
+		<include refid="pagination.paginationStart"></include>
+				   select 
+					base.N_XH,
+					base.USER_ID,
+					base.C_ZM,
+					base.C_JB,
+					base.C_ZT,
+					FUN_GET_YHMC(USER_ID) USER_NAME
+				 from B_KQ_ZBZ base 
+		 <trim prefix="where" prefixOverrides="and |or"> 
+		<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
+			
+			<if test="cZm != null and cZm !='' ">  and C_ZM = #{cZm}</if>
+			<if test="cJb != null and cJb !='' ">  and C_JB = #{cJb}</if>
+			<if test="cZt != null and cZt !='' ">  and C_ZT = #{cZt}</if>
+		</trim>
+		ORDER BY base.N_XH  DESC
+		<include refid="pagination.paginationLast"></include>
+	</select>
+
+
+	<select id="queryCountInfo" resultType="integer" parameterType="java.util.Map" >
+				select count(base.N_XH) from B_KQ_ZBZ base
+		  <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
+			
+			<if test="cZm != null and cZm !='' ">  and C_ZM = #{cZm}</if>
+			<if test="cJb != null and cJb !='' ">  and C_JB = #{cJb}</if>
+			<if test="cZt != null and cZt !='' ">  and C_ZT = #{cZt}</if>
+		</trim>
+		ORDER BY base.N_XH  DESC
+	</select> 
+	
+	
+
+	
+	<insert id="saveInfo" parameterType="java.util.Map" >
+			INSERT INTO B_KQ_ZBZ(
+				 N_XH
+			<if test="userId != null and userId !='' ">  , USER_ID</if>
+			<if test="cZm != null and cZm !='' ">  , C_ZM</if>
+			<if test="cJb != null and cJb !='' ">  , C_JB</if>
+			<if test="cZt != null and cZt !='' ">  ,  C_ZT</if>
+			)VALUES(
+				SEQ_KQ_ZBZ.NEXTVAL 
+				<!-- #{n_xh#-->
+			<if test="userId != null and userId !='' ">  ,  #{userId}</if>
+			<if test="cZm != null and cZm !='' ">  , #{cZm}</if>
+			<if test="cJb != null and cJb !='' ">  , #{cJb}</if>
+			<if test="cZt != null and cZt !='' ">  ,  #{cZt}</if>
+			)
+		<selectKey resultType="string" keyProperty="id" >
+			 <!--SELECT #{nXh# AS ID FROM dual  -->
+			 SELECT  SEQ_KQ_ZBZ.CURRVAL  AS ID FROM dual 
+		</selectKey>
+	</insert>
+
+
+	<update id="updateInfo" parameterType="java.util.Map"> 
+			update B_KQ_ZBZ 
+			<trim prefix="set" prefixOverrides=","> 
+			<if test="userId != null and userId !='' ">, USER_ID =  #{userId}</if>
+			<if test="cZm != null and cZm !='' ">  C_ZM=#{cZm}</if>
+			<if test="cJb != null and cJb !='' ">  C_JB=#{cJb}</if>
+			<if test="cZt != null and cZt !='' ">, C_ZT =   #{cZt}</if>
+			</trim>
+			<trim prefix="where" prefixOverrides="and |or">  
+				<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
+				<if test="nXhs ">,= null and nXhs !='' ">  and  N_XH in (${nXhs})</if>
+			</trim>
+	</update> 
+
+
+	<delete id="removeInfo" parameterType="java.util.Map"> 
+			 DELETE FROM B_KQ_ZBZ
+			 WHERE
+			<!--N_XH = #{nXh#
+			<![CDATA[ BTN_ID IN (${userIds}) ]]>--> 
+			 N_XH =#{nXh} 
+	</delete> 
+</mapper>

@@ -70,8 +70,8 @@ if(nYhz==null){
              options:{valueFieldID:"cNsyhys",data:[{ text: '主会议室', id: 0 },{ text: '专案会议室', id: 1 }] }},
              
          {display:"会议日期",name:"dHyrq",newline:false,labelWidth:100,width:200,space:30,type:"date"},
-         {display:"开始时间",name:"dKssj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
-         {display:"结束时间",name:"dJssj",newline:false,labelWidth:100,width:200,space:30,type:"date"},
+         {display:"开始时间",name:"dKssj",newline:true,labelWidth:100,width:200,space:30,type:"datetime"},
+         {display:"结束时间",name:"dJssj",newline:false,labelWidth:100,width:200,space:30,type:"datetime"},
          {display:"会议内容",name:"cHynr",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
          {display:"主持人",name:"cZcr",newline:true,labelWidth:100,width:200,space:30,type:"text"},
          {display:"联系人",name:"cLxr",newline:false,labelWidth:100,width:200,space:30,type:"text"},
@@ -196,7 +196,7 @@ if(nYhz==null){
 	                      parent.loadGrid();
 					});
 				} else {
-					LG.showError('保存失败');
+					LG.showError('保存失败,请确认会议信息是否重复');
 				}
 			});
         	}else{
@@ -207,7 +207,7 @@ if(nYhz==null){
     	                      parent.loadGrid();
     					});
     				} else {
-    					LG.showError('修改失败');
+    					LG.showError('修改失败,请确认会议信息是否重复');
     				}
     			});
         		

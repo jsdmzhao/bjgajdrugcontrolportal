@@ -59,12 +59,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
 
           
- -->
+
  <div style="clear:both;">
        <div style="float: left;margin-left: 20px"><a href="<%=basePath%>temp/sxbdk_g.jsp?id=1"><img src="<%=basePath%>liger/lib/icons/32X32/book.gif" /><div class="close">上班打卡</div></a></div>
        <div style="margin-left: 80px"><a href="<%=basePath%>temp/sxbdk_g.jsp?id=0"><img src="<%=basePath%>liger/lib/icons/32X32/communication.gif" /><div class="close">下班打卡</div></a></div>
        
- </div>
+ </div> -->
         <div class="navbar"><div class="navbar-l"></div><div class="navbar-r"></div>
         <div class="navbar-icon"><img src="<%=basePath%>liger/lib/icons/32X32/collaboration.gif" /></div>
         <div class="navbar-inner"> 

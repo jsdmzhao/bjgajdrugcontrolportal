@@ -46,16 +46,22 @@ if(userId==null){
 <body style="padding-bottom:31px;">
     <form id="mform"  method="post"></form> 
     <script type="text/javascript"> 
+    
+    
+    
     DWREngine.setAsync(false); 
+    
+    var box1;
     
         var config = {"Form":{ 
          fields : [
          {name:"nXh",type:"hidden",value:'<%=nXh %>'},
+         {name:"cChfw",type:"hidden"},
          {display:"会议名称",name:"cHymc",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"会议开始时间",name:"dKssj",newline:false,labelWidth:100,width:200,space:30,type:"date"},
+         {display:"会议开始时间",name:"dKssj",newline:false,labelWidth:100,width:200,space:30,type:"datetime"},
          {display:"会议时长",name:"cHysc",newline:true,labelWidth:100,width:200,space:30,type:"text"},
          {display:"会议地点",name:"cHydd",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"参会范围",name:"cChfw",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
+         {display:"参会范围",name:"cChfwName",newline:true,labelWidth:100,width:500,space:30,type:"smarttext"},
          {display:"分会场",name:"cFc",newline:true,labelWidth:100,width:200,space:30,type:"text"}
         ]
  }};
@@ -123,7 +129,10 @@ if(userId==null){
                             {
                                 ele.val(data[p]);
                             }
+                            
+                           
                         }
+                        
                         //下面是更新表单的样式
                         var managers = $.ligerui.find($.ligerui.controls.Input);
                         for (var i = 0, l = managers.length; i < l; i++)
@@ -161,6 +170,17 @@ if(userId==null){
         function f_save() {
 
         	var formMap = DWRUtil.getValues("mform"); 
+        	
+        	
+        	 if( box1.getValue() != ''){
+ 	        	
+ 	        	formMap["cChfw"] = box1.getValue();
+ 	         }else{
+ 	        	formMap["cChfw"]=formMap["cChfwName"];
+ 	         }
+ 	        	 
+ 	        	 
+        	 
 			if(isAddNew){
         	KqHytsSvc.save(formMap,function (rdata){
         		if (rdata) {
@@ -212,7 +232,17 @@ if(userId==null){
             parent.dialog_hidden();
         }
         
-     
+        UserInfoSvc.choose(function(rdata){
+   			if(rdata != null){
+
+   	          box1= $("#cChfwName").ligerComboBox({
+   	            width : 698, 
+   	            selectBoxWidth: 698,
+   	            selectBoxHeight: 240, valueField: 'value', treeLeafOnly: true,
+   	            tree: { data:rdata}
+   	          }); 
+   			}
+   		});
     </script>
   
 </body>
