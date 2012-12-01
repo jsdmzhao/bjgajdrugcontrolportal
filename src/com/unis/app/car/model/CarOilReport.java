@@ -8,6 +8,8 @@ public class CarOilReport {
 	
 	private String c_cphm;
 	
+	private String c_ppxh;
+	
 	private String c_zrsj;
 	
 	private String n_sygls;
@@ -42,6 +44,14 @@ public class CarOilReport {
 
 	public void setN_cllbxh(String n_cllbxh) {
 		this.n_cllbxh = n_cllbxh;
+	}
+
+	public String getC_ppxh() {
+		return c_ppxh;
+	}
+
+	public void setC_ppxh(String c_ppxh) {
+		this.c_ppxh = c_ppxh;
 	}
 
 	public String getC_zrsj() {
