@@ -27,6 +27,8 @@
 	
 	<typeAlias alias="CarKeep"  type="com.unis.app.car.model.CarKeep" />
 	
+	<typeAlias alias="CarOilReport"  type="com.unis.app.car.model.CarOilReport" />
+	
 	<typeAlias alias="Blog"  type="com.unis.app.blog.model.Blog" />
 
 	<typeAlias alias="Message"  type="com.unis.app.message.model.Message" />

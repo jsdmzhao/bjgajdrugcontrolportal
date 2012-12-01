@@ -145,7 +145,7 @@
                     if (!name) return;
                     if (field.type == "hidden")
                     {
-                        out.push('<input type="hidden" id="' + name + '" name="' + name + '" value = "' + value + '" />');
+                        out.push('<li id="' + name + '_"><input type="hidden" id="' + name + '" name="' + name + '" value = "' + value + '" /></li>');
                         return;
                     }
                     var newLine = field.renderToNewLine || field.newline;

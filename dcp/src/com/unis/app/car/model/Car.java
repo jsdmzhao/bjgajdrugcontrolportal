@@ -8,6 +8,8 @@ public class Car {
 	
 	private String c_yhzid;
 	
+	private String c_yhzid_;
+	
 	private String d_dj;
 	
 	private String c_yhid;
@@ -36,11 +38,17 @@ public class Car {
 	
 	private String d_gmsj;
 	
+	private String c_ppxh;
+	
+	private String d_zcsj;
+	
 	private String n_hyzl;
 	
 	private String n_pjyh;
 	
 	private String c_sfxz;
+	
+	private String c_zrsj;
 	
 	public String getN_xh() {
 		return n_xh;
@@ -64,6 +72,14 @@ public class Car {
 
 	public void setC_yhzid(String cYhzid) {
 		c_yhzid = cYhzid;
+	}
+
+	public String getC_yhzid_() {
+		return c_yhzid_;
+	}
+
+	public void setC_yhzid_(String c_yhzid_) {
+		this.c_yhzid_ = c_yhzid_;
 	}
 
 	public String getD_dj() {
@@ -170,6 +186,14 @@ public class Car {
 		this.d_gmsj = d_gmsj;
 	}
 
+	public String getD_zcsj() {
+		return d_zcsj;
+	}
+
+	public void setD_zcsj(String d_zcsj) {
+		this.d_zcsj = d_zcsj;
+	}
+
 	public String getN_xslc() {
 		return n_xslc;
 	}
@@ -200,6 +224,22 @@ public class Car {
 
 	public void setC_sfxz(String c_sfxz) {
 		this.c_sfxz = c_sfxz;
+	}
+
+	public String getC_ppxh() {
+		return c_ppxh;
+	}
+
+	public void setC_ppxh(String c_ppxh) {
+		this.c_ppxh = c_ppxh;
+	}
+
+	public String getC_zrsj() {
+		return c_zrsj;
+	}
+
+	public void setC_zrsj(String c_zrsj) {
+		this.c_zrsj = c_zrsj;
 	}
 
 }

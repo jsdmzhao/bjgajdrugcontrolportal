@@ -47,23 +47,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     	{text:'缉控大队',value:5},{text:'两品办',value:10}];
         var config = {"Form":{ 
          fields : [
-         {display:"所在部门",name:"c_yhzid",newline:true,labelWidth:100,
-          width:220,space:30,type:"select",comboboxName:"c_yhzidName",
+         {display:"所在部门",name:"c_yhzid",newline:true,labelWidth:80,
+          width:480,space:30,type:"select",comboboxName:"c_yhzidName",
           options:{
              valueField:"value",
              textFiled:"text",
          	 data : tempdata,
-             value:"<s:property value='car.c_yhzid_'/>"
+             selectBoxHeight :200,
+             selectBoxWidth :480,
+             value:"<s:property value='car.c_yhzid'/>"
           },
 	      group:"基本信息",
 	      groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },
-         {display:"车牌号码",name:"c_cphm",newline:true,labelWidth:100,width:400,space:30,type:"text",value:"<s:property value='car.c_cphm'/>"},
-         {display:"购买时间",name:"d_gmsj",newline:true,labelWidth:100,width:400,space:30,type:"text",value:"<s:property value='car.d_gmsj.substring(0,10)'/>",
+         {display:"车牌号码",name:"c_cphm",newline:true,labelWidth:80,width:480,type:"text",value:"<s:property value='car.c_cphm'/>"},
+         {display:"品牌型号",name:"c_ppxh",newline:true,labelWidth:80,width:480,type:"text",value:"<s:property value='car.c_ppxh'/>"},
+         {display:"购买时间",name:"d_gmsj",newline:true,labelWidth:80,width:480,type:"text",value:"<s:property value='car.d_gmsj.substring(0,10)'/>",
          onclick:"WdatePicker({dateFmt:'yyyy-MM-dd'})"},
          {name:"n_xh", type:"hidden",value:"<s:property value='car.n_xh'/>"},
-         {display:"行驶里程",name:"n_xslc",newline:true,labelWidth:100,width:400,space:30,type:"number",value:"<s:property value='car.n_xslc'/>"},
-         {display:"耗油总量",name:"n_hyzl",newline:true,labelWidth:100,width:400,space:30,type:"number",value:"<s:property value='car.n_hyzl'/>"}
+         {display:"注册时间",name:"d_zcsj",newline:true,labelWidth:80,width:480,type:"text",value:"<s:property value='car.d_zcsj.substring(0,10)'/>",onclick:"WdatePicker({dateFmt:'yyyy-MM-dd'})"},
+         {display:"责任司机",name:"c_zrsj",newline:true,labelWidth:80,width:480,type:"text",value:"<s:property value='car.c_zrsj'/>"}
         ]
  }};
 

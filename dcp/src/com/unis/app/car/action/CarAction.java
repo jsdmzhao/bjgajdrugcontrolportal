@@ -112,6 +112,11 @@ public class CarAction {
 		return Globals.SUCCESS;
 	}
 	
+	public String carPrint(){
+		car = (Car) carService.selectOne("CarMapper.printCar", car);
+		return Globals.SUCCESS;
+	}
+	
 	public String carOperator(String value, String n_xh){
 		
 		HttpServletRequest request = ServletActionContext.getRequest();

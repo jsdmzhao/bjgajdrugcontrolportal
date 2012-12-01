@@ -11,7 +11,21 @@
 	 </resultMap>
 
 	<select id="getBlog" parameterType="Blog" resultType="Blog">
-		SELECT * FROM B_RIZHI WHERE N_XH = #{n_xh}
+		SELECT N_XH  ,
+		   C_BT      ,
+		   C_YHID    ,
+		   C_YHZID   ,
+		   C_JB      ,
+		   C_NR      ,
+		   D_DJ      ,
+		   C_SFTJ    ,
+		   C_SFSH    ,
+		   C_RZLX    ,
+		   C_AJDH    ,
+		   C_JBLD    ,
+		   FUN_GET_YHMC(C_JBLD) C_JBLD_
+		FROM B_RIZHI 
+		  WHERE N_XH = #{n_xh}
 	</select>
 	
 	
@@ -29,7 +43,10 @@
 		   C_NR      ,
 		   D_DJ      ,
 		   C_SFTJ    ,
-		   C_SFSH    ) 
+		   C_SFSH    ,
+		   C_RZLX    ,
+		   C_AJDH    ,
+		   C_JBLD    ) 
 		VALUES (	            	
 	      seq_b_rizhi.nextval,        
           #{c_bt,jdbcType=NUMERIC},  
@@ -39,7 +56,10 @@
           #{c_nr,jdbcType=CLOB,handler=ClobTypeHandler},           
           sysdate,           
           '0',           
-          '0'      
+          '0',
+          #{c_rzlx,jdbcType=VARCHAR},  
+          #{c_ajdh,jdbcType=VARCHAR}, 
+          #{c_jbld,jdbcType=VARCHAR}    
 	    )  
 	</insert>
 	
@@ -58,28 +78,30 @@
 	</select>
 	
 	<select id="getBlogPageList" resultMap="resultBlog" parameterType="hashmap">
-	SELECT N_XH, C_BT, D_DJ, C_SHJG, C_SHJG
+	SELECT N_XH, C_BT, D_DJ, C_RZLX
 	  FROM (SELECT S.*, ROWNUM RN
 	          FROM (SELECT N_XH,
 				       C_BT,
 				       TO_CHAR(D_DJ,'YYYY-MM-DD HH24:MI:SS') D_DJ,
-				       DECODE(C_SHJG,'0','不通过','1','通过','未审核') C_SHJG,
-				       DECODE(C_SFTJ,'0','不推荐','1','推荐','不推荐') C_SFTJ
+				       DECODE(C_RZLX,'1','工作日志','2','侦查日志','特殊案件日志') C_RZLX
 				  FROM B_RIZHI
-				  <if test="c_jb != null and c_jb != '' ">
-				  	WHERE C_JB &gt;= #{c_jb}
-				  </if>
+				  WHERE C_RZLX = '1' 
+				  	OR (C_RZLX = '2' AND C_JB = #{c_jb} ) 
+				  	OR (C_RZLX = '3' AND C_JBLD = #{c_yhid})
+				  	OR  C_YHID = #{c_yhid}
 				  ORDER BY N_XH DESC) S
 	         WHERE ROWNUM &lt;= #{limit}) T
 	 WHERE T.RN &gt; #{start}
 	</select>
+	<!-- DECODE(C_SHJG,'0','不通过','1','通过','未审核') C_SHJG,  DECODE(C_SFTJ,'0','不推荐','1','推荐','不推荐') C_SFTJ -->
 	
 	<select id="getBlogPageListCnt" resultType="long" parameterType="hashmap">
 		SELECT COUNT(*) Total
 		  FROM B_RIZHI
-		  <if test="c_jb != null and c_jb != '' ">
-		  	WHERE C_JB &gt;= #{c_jb}
-		  </if>
+		   WHERE C_RZLX = '1' 
+		  	OR (C_RZLX = '2' AND C_JB = #{c_jb} ) 
+		  	OR (C_RZLX = '3' AND C_JBLD = #{c_yhid})
+		  	OR  C_YHID = #{c_yhid}
 	</select>
 	
 	
@@ -93,7 +115,10 @@
 	<update id="updateBlog" parameterType="hashmap">
 		UPDATE B_RIZHI
 		   SET  C_BT   =	#{c_bt,jdbcType=VARCHAR},
-		        C_NR   =	#{c_nr,jdbcType=CLOB,handler=ClobTypeHandler}
+		        C_NR   =	#{c_nr,jdbcType=CLOB,handler=ClobTypeHandler},
+		        C_RZLX =	#{c_rzlx,jdbcType=VARCHAR},
+		        C_AJDH =	#{c_ajdh,jdbcType=VARCHAR},
+		        C_JBLD =	#{c_jbld,jdbcType=VARCHAR}
 		WHERE N_XH = #{n_xh}
 	</update>
 	
@@ -111,5 +136,14 @@
 		   </if>
 		WHERE N_XH = #{n_xh}
 	</update>
+	
+	
+	<select id="getDeptCombox" resultType="Combox">
+		SELECT C_MC TEXT, C_DM VALUE FROM D_DM WHERE C_BXH = 'DEP' ORDER BY VALUE
+	</select>
+	
+	<select id="getRyxx" resultType="Combox" parameterType="string">
+		SELECT C_XM TEXT, USER_ID VALUE FROM B_YH WHERE C_YHZ = #{c_yhzid}
+	</select>
 	
 </mapper>

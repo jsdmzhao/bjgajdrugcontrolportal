@@ -132,6 +132,11 @@ if(carType == null){
             text: '删除',
             img:'<%=basePath%>liger/lib/icons/silkicons/delete.png',
             id: 'delete'
+        },{line:true},{
+            click: toolbarBtnItemClick,
+            text: '打印',
+            img:'<%=basePath%>liger/lib/icons/silkicons/printer.png',
+            id: 'print'
         },{line:true}];
         
 	  grid.toolbarManager.set('items', items);
@@ -170,6 +175,13 @@ if(carType == null){
                       if (confirm)
                           f_delete();
                   });
+                  break;
+              case "print":
+            	  var selected = grid.getSelected();
+                  if (!selected) { LG.tip('请选择行!'); return }
+                  dialog = $.ligerDialog.open({ url: '<%=basePath%>carRepairPrint?carRepair.n_xh=' + selected.n_xh, 
+	                      height: 500,width: 800,showMax: true, showToggle: true,  showMin: true
+				  });
                   break;
           }
       }

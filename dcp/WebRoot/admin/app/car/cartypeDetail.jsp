@@ -28,6 +28,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerTree.js" type="text/javascript"></script>
     <script src="<%=basePath%>js/formUtil.js" type="text/javascript"></script>
     
+    
+    <script type="text/javascript" src="<%=basePath%>js/My97DatePicker/WdatePicker.js"></script>
+    
     <script type="text/javascript" src="<%=basePath%>ckeditor/ckeditor.js"></script>
 	<script type="text/javascript" src="<%=basePath%>ckfinder/ckfinder.js"></script>
 	
@@ -44,24 +47,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     	{text:'缉控大队',value:5},{text:'两品办',value:10}];
         var config = {"Form":{ 
          fields : [
-         {display:"所在部门",name:"c_yhzid",newline:true,labelWidth:100,
-          width:220,space:30,type:"select",comboboxName:"c_yhzidName",
+         {display:"使用单位",name:"c_yhzid",newline:true,labelWidth:80,
+          width:480,type:"select",comboboxName:"c_yhzidName",
           options:{
              valueField:"value",
              textFiled:"text",
          	 data : tempdata,
              selectBoxHeight :200,
+             selectBoxWidth :480
           },
 	         group:"基本信息",
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },
-         {display:"车牌号码",name:"c_cphm",newline:true,labelWidth:100,width:400,space:30,type:"text"},
-         {display:"购买时间",name:"d_gmsj",newline:true,labelWidth:100,width:400,space:30,type:"date"},
-         {display:"行驶里程",name:"n_xslc",newline:true,labelWidth:100,width:400,space:30,type:"number"},
-         {display:"耗油总量",name:"n_hyzl",newline:true,labelWidth:100,width:400,space:30,type:"number"}
+         {display:"车牌号码",name:"c_cphm",newline:true,labelWidth:80,width:480,type:"text"},
+         {display:"品牌型号",name:"c_ppxh",newline:true,labelWidth:80,width:480,type:"text"},
+         {display:"购买时间",name:"d_gmsj",newline:true,labelWidth:80,width:480,type:"text",onclick:"WdatePicker({dateFmt:'yyyy-MM-dd'})"},
+         {display:"注册时间",name:"d_zcsj",newline:true,labelWidth:80,width:480,type:"text",onclick:"WdatePicker({dateFmt:'yyyy-MM-dd'})"},
+         {display:"责任司机",name:"c_zrsj",newline:true,labelWidth:80,width:480,type:"text"}
         ]
  }};
-
+	 	<%--
+         {display:"行驶里程",name:"n_xslc",newline:true,labelWidth:80,width:180,type:"number"},
+         {display:"耗油总量",name:"n_hyzl",newline:false,labelWidth:80,width:180,type:"number"}
+	 	--%>
         var forbidFields = [];
         LG.adujestConfig(config,forbidFields);
 

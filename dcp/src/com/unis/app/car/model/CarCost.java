@@ -6,6 +6,10 @@ public class CarCost {
 	
 	private String n_cllbxh;
 	
+	private String c_zrsj;
+	
+	private String c_ppxh;
+	
 	private String d_jyrq;
 	
 	private String c_jydd;
@@ -44,6 +48,26 @@ public class CarCost {
 
 	public void setN_cllbxh(String n_cllbxh) {
 		this.n_cllbxh = n_cllbxh;
+	}
+
+	public String getC_zrsj() {
+		return c_zrsj;
+	}
+
+	public void setC_zrsj(String c_zrsj) {
+		this.c_zrsj = c_zrsj;
+	}
+
+	public String getC_ppxh() {
+		return c_ppxh;
+	}
+
+	public void setC_ppxh(String c_ppxh) {
+		this.c_ppxh = c_ppxh;
+	}
+
+	public void setC_yhzid_(String c_yhzid_) {
+		this.c_yhzid_ = c_yhzid_;
 	}
 
 	public String getD_jyrq() {

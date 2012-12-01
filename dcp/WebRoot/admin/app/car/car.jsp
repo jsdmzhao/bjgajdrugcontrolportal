@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           { display: "申请事由", name: "c_sqsy", width: 300, type: "text", align: "left", editor: { type: 'text'} },
           { display: "出车时间", name: "d_ccsj", width: 160, type: "text", align: "left", editor: { type: 'text'}},
           { display: "归队时间", name: "d_gdsj", width: 160, type: "text", align: "left", editor: { type: 'text'}},
-          { display: "审核状态", name: "c_shjg", width: 80, type: "text", align: "left", editor: { type: 'text'}},
+          { display: "审核状态", name: "c_shjg", width: 80, type: "text", align: "left", editor: { type: 'text'},type:'statueType'},
           { display: "添加时间", name: "d_dj", width: 160, type: "text", align: "left", editor: { type: 'text'}}
           ], dataAction: 'server', pageSize: 20, toolbar: {},
            sortName: 'n_xh', rownumbers:true,
@@ -89,6 +89,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             text: '车辆归队',
             img:'<%=basePath%>liger/lib/icons/silkicons/car.png',
             id: 'back'
+        },{line:true},{
+            click: toolbarBtnItemClick,
+            text: '打印',
+            img:'<%=basePath%>liger/lib/icons/silkicons/printer.png',
+            id: 'print'
         },{line:true}];
         
 	grid.toolbarManager.set('items', items);
@@ -122,7 +127,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   break;
               case "modify":
                   var selected = grid.getSelected();
-                  if (!selected) { LG.tip('请选择行!'); return }
+                  if (!selected) { LG.tip('请选择行!'); return; }else{
+                	  
+                	  if(selected.c_shjg == '同意' || selected.c_shjg == '不同意'){
+                		  //alert('该条车辆申请已经被审核，无法修改！');
+                		  LG.showError('该条车辆申请已经被审核，无法修改！');
+                		  return;
+                	  }
+                  }
                   //top.f_addTab(null, '修改车辆申请信息', '<%=basePath%>carUpdate?car.n_xh=' + selected.n_xh);
                   dialog = $.ligerDialog.open({ url: '<%=basePath%>carUpdate?car.n_xh=' + selected.n_xh, 
                           height: 500,width: 800,showMax: true, showToggle: true,  showMin: true
@@ -147,8 +159,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	           	   }
                   });
                   break;
+              case "print":
+            	  var selected = grid.getSelected();
+                  if (!selected) { LG.tip('请选择行!'); return }
+                  dialog = $.ligerDialog.open({ url: '<%=basePath%>carPrint?car.n_xh=' + selected.n_xh, 
+	                      height: 500,width: 800,showMax: true, showToggle: true,  showMin: true
+				  });
+                  break;
           }
       }
+      
+      $.ligerDefaults.Grid.formatters['statueType'] = function (num, column) {
+  	    //num 当前的值
+  		//column 列信息
+      	if(num == '同意'){
+  			return "<div style='width:100%;height:100%;'><font color='red'>同意</font></div>";
+      	} else {
+      		return num;
+      	}
+  	};
+  	
       function f_reload() {
           grid.loadData();
       }
@@ -168,6 +198,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           else {
               LG.tip('请选择行!');
           }
+      }
+      
+      function printSq(value){
+    	  
+    	  var selected = grid.getSelected();
+    	  
+    	  alert(selected.n_xh);
       }
 
 

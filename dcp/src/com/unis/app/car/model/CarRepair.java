@@ -6,6 +6,12 @@ public class CarRepair {
 	
 	private String n_cllbxh;
 	
+	private String c_cphm;
+	
+	private String c_ppxh;
+	
+	private String c_zrsj;
+	
 	private String d_sqrq;
 	
 	private String c_clzk;
@@ -32,9 +38,13 @@ public class CarRepair {
 	
 	private String c_shr_f;
 	
+	private String c_shjg_f;
+	
 	private String d_shsj_t;
 	
 	private String c_shr_t;
+	
+	private String c_shjg_t;
 
 
 	public String getN_xh() {
@@ -51,6 +61,14 @@ public class CarRepair {
 
 	public void setN_cllbxh(String n_cllbxh) {
 		this.n_cllbxh = n_cllbxh;
+	}
+
+	public String getC_cphm() {
+		return c_cphm;
+	}
+
+	public void setC_cphm(String c_cphm) {
+		this.c_cphm = c_cphm;
 	}
 
 	public String getD_sqrq() {
@@ -171,6 +189,38 @@ public class CarRepair {
 
 	public void setC_shr_t(String c_shr_t) {
 		this.c_shr_t = c_shr_t;
+	}
+
+	public String getC_ppxh() {
+		return c_ppxh;
+	}
+
+	public void setC_ppxh(String c_ppxh) {
+		this.c_ppxh = c_ppxh;
+	}
+
+	public String getC_zrsj() {
+		return c_zrsj;
+	}
+
+	public void setC_zrsj(String c_zrsj) {
+		this.c_zrsj = c_zrsj;
+	}
+
+	public String getC_shjg_f() {
+		return c_shjg_f;
+	}
+
+	public void setC_shjg_f(String c_shjg_f) {
+		this.c_shjg_f = c_shjg_f;
+	}
+
+	public String getC_shjg_t() {
+		return c_shjg_t;
+	}
+
+	public void setC_shjg_t(String c_shjg_t) {
+		this.c_shjg_t = c_shjg_t;
 	}
 
 }

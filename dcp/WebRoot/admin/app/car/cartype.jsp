@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div id="maingrid"  style="margin:2px;"></div> 
     </form> 
   <script type="text/javascript">
-var dialog;
+	  var dialog;
       //相对路径
       var rootPath = "../";
       //列表结构
@@ -44,8 +44,9 @@ var dialog;
       var grid = $("#maingrid").ligerGrid({
           columns: [
           { display: "序号", name: "n_xh", width: 70, type: "text", align: "left"},
-          { display: "所属部门", name: "c_yhzid", width: 200, type: "text", align: "left", editor: { type: 'text'} },
-          { display: "车牌号码", name: "c_cphm", width: 400, type: "text", align: "left", editor: { type: 'text'} }
+          { display: "使用单位", name: "c_yhzid", width: 200, type: "text", align: "left", editor: { type: 'text'} },
+          { display: "车牌号码", name: "c_cphm", width: 300, type: "text", align: "left", editor: { type: 'text'} },
+          { display: "购买时间", name: "d_gmsj", width: 100, type: "text", align: "left", editor: { type: 'text'} }
           ], dataAction: 'server', pageSize: 20, toolbar: {},
            sortName: 'n_xh', rownumbers:true,
           width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false
@@ -106,7 +107,7 @@ var dialog;
                   if (!selected) { LG.tip('请选择行!'); return }
                  // top.f_addTab(null, '查看信息', '<%=basePath%>cartypeView?cart.n_xh=' + selected.n_xh);
  					dialog = $.ligerDialog.open({ url: '<%=basePath%>cartypeView?car.n_xh=' + selected.n_xh, 
-                          height: 300,width: 600,showMax: true, showToggle: true,  showMin: true
+                          height: 400,width: 600,showMax: true, showToggle: true,  showMin: true
 				    });
                   break;
               case "modify":

@@ -41,6 +41,10 @@
 			<result name="success">/admin/app/car/carCost{1}.jsp</result>
 		</action>
 		
+		<action name="carOilReport*" class="carOilReportAction" method="carOilReport{1}">
+			<result name="success">/admin/app/car/carOilReport{1}.jsp</result>
+		</action>
+		
 		<action name="carCheck*" class="carCheckAction" method="carCheck{1}">
 			<result name="success">/admin/app/car/carCheck{1}.jsp</result>
 		</action>
@@ -81,6 +85,10 @@
 		
 		<action name="*View" class="{1}Action" method="{1}View">
 			<result name="success">/admin/app/{1}/{1}View.jsp</result>
+		</action>
+		
+		<action name="*Print" class="{1}Action" method="{1}Print">
+			<result name="success">/admin/app/{1}/{1}Print.jsp</result>
 		</action>
 		
 		<action name="*Delete" class="{1}Action" method="{1}Delete">
