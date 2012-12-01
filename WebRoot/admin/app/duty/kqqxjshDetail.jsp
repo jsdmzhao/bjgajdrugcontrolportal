@@ -62,6 +62,7 @@ if(userId==null){
         var config = {"Form":{ 
          fields : [
          {name:"nXh",type:"hidden",value:'<%=nXh %>'},
+         {name:"cShjb",type:"hidden"},
          {name:"userId",type:"hidden"},
          {name:"c_shr",value:"<%=userId%>",type:"hidden"},  
          {display:"申请人",name:"userName",newline:true,labelWidth:100,width:200,space:30,type:"text"},
@@ -82,8 +83,8 @@ if(userId==null){
              options:{valueFieldID:"cZt",data: [{ text: '是', id: '1' },{ text: '否', id: '0' }] }},
              {display:"审核结果",name:"cShzt",newline:true,labelWidth:100,width:200,space:30,type:"select",
                  comboboxName:"cShztName",
-                 options:{valueFieldID:"cShzt",data: [{ text: '批准', id: '2' },{ text: '不批准', id: '3' }] }},
-    {display:"审核内容",name:"cShnr",newline:true,labelWidth:100,width:500,space:20,type:"textarea"},
+                 options:{valueFieldID:"cShzt",data: [{ text: '批准', id: '2' },{ text: '不批准', id: '3' },{ text: '转上一级', id: '100' }] }},
+    {display:"审核内容",name:"cShnr",newline:true,labelWidth:100,width:500,space:20,type:"textarea"}
     
     ]
     
@@ -107,6 +108,7 @@ if(userId==null){
 
         //表单底部按钮 
         LG.setFormDefaultBtn(f_cancel,isView ? null : f_save);
+        
 
         var deptTree = {
             url :'',
@@ -190,8 +192,27 @@ if(userId==null){
         function f_save() {
 
         	var formMapTemp = DWRUtil.getValues("mform"); 
+        	var shjb="";
+        	var shzt="";
         	
-        	var formMap={cShzt:formMapTemp["cShzt"],cShnr:formMapTemp["cShnr"],nXh:formMapTemp["nXh"]};
+        	if(formMapTemp["cShzt"]=='100'){
+        		shzt='1';
+        		if(formMapTemp["cShjb"]=='2'){
+        			shjb='1';
+        			
+        		}else if(formMapTemp["cShjb"]=='1'){
+        			shjb='0';
+        		}else{
+        			LG.showError('当前级别无法转上一级');
+        			return;
+        		}
+        		
+        	}else{
+        		shzt=formMapTemp["cShzt"];
+        		
+        	}
+        	
+        	var formMap={cShzt:shzt,cShnr:formMapTemp["cShnr"],nXh:formMapTemp["nXh"],cShjb:shjb};
 			if(isAddNew){
         	KqYbjlSvc.save(formMap,function (rdata){
         		if (rdata) {

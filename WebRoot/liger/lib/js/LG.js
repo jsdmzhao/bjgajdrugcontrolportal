@@ -378,6 +378,7 @@ function $d(obj,preBlank){
     };
     
     
+    
   //快速设置表单底部默认的按钮:发送、取消、保存草稿箱
     LG.setEmailFormDefaultBtn = function (cancleCallback, savedCallback, sendCallback)
     {

@@ -1,5 +1,6 @@
 package  com.unis.app.duty.service.dao;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,35 +14,33 @@ import com.unis.core.database.impl.DataSetProviderImpl;
 import com.unis.core.service.AbsServiceAdapter;
 
 @Repository
-public class KqHyssqDao<T> extends AbsServiceAdapter<T>  {
+public class KqZbzDao<T> extends AbsServiceAdapter<T>  {
 	
 	public Object saveInfo(Map p){
-		return  super.insert("KqHyssqMapper.saveInfo", p);
+		return  super.insert("KqZbzMapper.saveInfo", p);
 	}
 
+	
+
 	public Object removeInfo(Map p){
-		return  super.delete("KqHyssqMapper.removeInfo", p);
+		return  super.delete("KqZbzMapper.removeInfo", p);
 	}
 
 	public Object updateInfo(Map p){
-		return  super.update("KqHyssqMapper.updateInfo", p);
+		return  super.update("KqZbzMapper.updateInfo", p);
 	}
 
 
 	public List queryAllInfo(Map p){
-		return  super.selectList("KqHyssqMapper.queryAllInfo", p);
+		return  super.selectList("KqZbzMapper.queryAllInfo", p);
 	}
 	
 	public List queryInfo(Map p){
-		return  super.selectList("KqHyssqMapper.queryInfo", p);
+		return  super.selectList("KqZbzMapper.queryInfo", p);
 	}
 
 	public Object queryCountInfo(Map p) {
-		return  super.selectOne("KqHyssqMapper.queryCountInfo", p);
-	}
-	
-	public Object queryChongfu(Map p) {
-		return  super.selectOne("KqHyssqMapper.queryChongfu", p);
+		return  super.selectOne("KqZbzMapper.queryCountInfo", p);
 	}
 	
 

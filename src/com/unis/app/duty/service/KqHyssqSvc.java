@@ -21,6 +21,10 @@ public class KqHyssqSvc  {
 	private KqHyssqDao kqHyssqDao;
 
 	public Object save(Map p) throws SQLException {
+	int	count= (Integer)queryChongfu(p);
+		if(count>0){
+			return null;
+		}
 		return kqHyssqDao.saveInfo(p);
 	}
 	
@@ -32,6 +36,12 @@ public class KqHyssqSvc  {
 	}
 
 	public Object update(Map p) throws SQLException {
+		int	count= (Integer)queryChongfu(p);
+		if(count>0){
+			return null;
+		}
+		
+		
 		return kqHyssqDao.updateInfo(p);
 	}
 
@@ -44,5 +54,9 @@ public class KqHyssqSvc  {
 	public Map queryByPage(Map p, Map page) throws SQLException {
 		return kqHyssqDao.queryByPageInfo(p, page);
 	}
+	public Object queryChongfu(Map p) throws SQLException {
+		return kqHyssqDao.queryChongfu(p);
+	}
+	
 
 }

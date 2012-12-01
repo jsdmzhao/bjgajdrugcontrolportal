@@ -25,6 +25,9 @@
 		
 	</resultMap>
 	 
+	 
+	 
+	 
 
 	<select id="queryAllInfo" resultMap="Result"  parameterType="java.util.Map" >
 			select 
@@ -178,6 +181,23 @@
 		ORDER BY base.N_XH  DESC
 	</select> 
 	
+	<select id="queryChongfu" resultType="integer" parameterType="java.util.Map" >
+		select count(*) from B_KQ_HYSSQ where C_NSYHYS = #{cNsyhys} and 
+		(
+		( to_date(#{dKssj},'YYYY-MM-DD HH24:mi:ss') between D_KSSJ and D_JSSJ)
+		 or
+		( to_date(#{dJssj},'YYYY-MM-DD HH24:mi:ss') between D_KSSJ and D_JSSJ)
+		 or
+		 (
+		( D_KSSJ between to_date(#{dKssj},'YYYY-MM-DD HH24:mi:ss') and to_date(#{dJssj},'YYYY-MM-DD HH24:mi:ss') )
+		 and
+		 (D_JSSJ between to_date(#{dKssj},'YYYY-MM-DD HH24:mi:ss') and to_date(#{dJssj},'YYYY-MM-DD HH24:mi:ss') )
+		
+		 )
+		)
+		
+		
+	</select> 
 	
 	
 	
@@ -214,7 +234,7 @@
 					<if test="cLxr != null and cLxr !='' ">  ,  #{cLxr}</if>
 					<if test="cLxdh != null and cLxdh !='' ">  ,  #{cLxdh}</if>
 					<if test="cShr != null and cShr !='' ">  ,  #{cShr}</if>
-					<if test="dShrq != null and dShrq !='' ">  ,  #{dShrq}</if>
+					<if test="dShrq != null and dShrq !='' ">  ,  to_date(#{dShrq},'YYYY-MM-DD')</if>
 					
 					<if test="cShzt != null and cShzt !='' ">  ,  #{cShzt}</if>
 			)
@@ -242,7 +262,7 @@
 			<if test="cShr != null and cShr !='' ">, C_SHR =   #{cShr}</if>
 			
 			
-			<if test="dShrq != null and dShrq !='' ">, D_SHRQ =   #{dShrq}</if>
+			<if test="dShrq != null and dShrq !='' ">, D_SHRQ =    to_date(#{dShrq},'YYYY-MM-DD')</if>
 			<if test="cShzt != null and cShzt !='' ">, C_SHZT =   #{cShzt}</if>
 			
 			</trim>

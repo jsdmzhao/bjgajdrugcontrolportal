@@ -1,13 +1,16 @@
-DROP TABLE B_KQ_SXB ;
-
-DROP TABLE B_KQ_YBJL;
-
-DROP TABLE B_KQ_CCJL;
-
-DROP TABLE B_KQ_QQSB;
 
 
 DROP TABLE B_KQ_ZB;
+DROP TABLE B_KQ_SXB;
+DROP TABLE B_KQ_YBJL;
+DROP TABLE B_KQ_CCJL;
+DROP TABLE B_KQ_QQSB;
+DROP TABLE B_KQ_ZBZ;
+DROP TABLE B_HYJL;
+DROP TABLE B_CLXX;
+DROP TABLE B_KQ_QWAP;
+DROP TABLE B_KQ_HYTS;
+DROP TABLE B_KQ_HYSSQ;
 
 /*==============================================================*/
 /* Table: B_KQ_ZB                                              */
@@ -339,8 +342,6 @@ CREATE TABLE B_KQ_HYSSQ   (
    C_SHZT              CHAR(1),  
    CONSTRAINT PK_B_KQ_HYSSQ  PRIMARY KEY (N_XH)
 );
-
-
 
 
 
