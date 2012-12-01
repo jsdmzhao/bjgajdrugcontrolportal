@@ -15,21 +15,7 @@ Object nLx = request.getParameter("nLx");
 
 if(nLx==null){
 	nLx="";
-}else if("1".equals(nLx)){
-%>	
-<script>
-	var qjlxdata=[{ text: '会议培训', id: 1 } ,{ text: '市内工作', id: 2 },{ text: '专项勤务', id: 3 },{ text: '外地出差', id: 4 },{ text: '其他工作', id: 5 } ,];
-	</script>	
-<% 	
-}else{
-	%>	
-	<script>
-	var qjlxdata=[{ text: '病假', id: 6 },{ text: '事假', id: 7 },{ text: '年假', id: 8 },{ text: '婚丧假', id: 9 },{ text: '探亲假', id: 10 },{ text: '节假日离京', id: 11 },{ text: '其他', id: 12 }];
-	</script>	
-	
-	<%
 }
-
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -70,12 +56,18 @@ if(nLx==null){
     UserInfoSvc.chooseOnlyUser(function(rdata){
     	userdata=rdata;
 	});
+    var qjlxdata
+    var nLx='<%=nLx%>';
+    if(nLx=='1'){
+     qjlxdata=[{ text: '会议培训', id: 1 } ,{ text: '市内工作', id: 2 },{ text: '专项勤务', id: 3 },{ text: '外地出差', id: 4 },{ text: '其他工作', id: 5 } ];
+    }else{
+    qjlxdata=[{ text: '病假', id: 6 },{ text: '事假', id: 7 },{ text: '年假', id: 8 },{ text: '婚丧假', id: 9 },{ text: '探亲假', id: 10 },{ text: '节假日离京', id: 11 },{ text: '其他', id: 12 }];    
+    }
     
-        var config = {"Form":{ 
+    var config = {"Form":{ 
          fields : [
          {name:"nXh",type:"hidden",value:'<%=nXh %>'},
          {name:"nLx",type:"hidden",value:'<%=nLx %>'},
-         {name:"nXh",type:"hidden",value:'<%=nXh %>'},
          <%if("".equals(userId)){%>
          {display:"人员",name:"userId",newline:false,labelWidth:100,width:200,space:30,type:"select",
              comboboxName:"userIdName",
@@ -97,7 +89,7 @@ if(nLx==null){
          {display:"地点",name:"cDd",newline:false,labelWidth:100,width:200,space:30,type:"text"},
          {display:"是否使用公车",name:"cZt",newline:true,labelWidth:100,width:200,space:30,type:"select",
              comboboxName:"cZtName",
-             options:{valueFieldID:"cZt",data: [{ text: '是', id: '1' },{ text: '否', id: '0' }] }},
+             options:{valueFieldID:"cZt",data: [{ text: '是', id: '1' },{ text: '否', id: '0' }] }}
          
         ]
  }};
@@ -120,7 +112,6 @@ if(nLx==null){
 
         //表单底部按钮 
         LG.setFormDefaultBtn(f_cancel,isView ? null : f_save,isView ? null : f_submit);
-
         var deptTree = {
             url :'',
             checkbox:false,
