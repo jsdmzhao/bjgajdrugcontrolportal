@@ -7,7 +7,7 @@
 	 	<result column="N_XH"      property="n_xh"/>
 	 	<result column="N_CLLBXH"  property="n_cllbxh"/>
 	 	<result column="C_SXRY"    property="c_sxry"/>
-	 	<result column="N_CLXSZLC"    property="n_clxszlc"/>
+	 	<result column="N_CLXSZLC" property="n_clxszlc"/>
 	 	<result column="D_SQRQ"    property="d_sqrq"/>
 	 	<result column="C_SHJG"    property="c_shjg"/>
 	 </resultMap>
@@ -31,6 +31,21 @@
 	<delete id="deleteCarRepair" parameterType="int">
 		DELETE FROM B_CLWX WHERE N_XH = #{n_xh}
 	</delete>
+	
+	<select id="printCarRepair" parameterType="string" resultType="carRepair">
+		 SELECT  B_CLLB.C_CPHM C_CPHM,
+		         B_CLLB.C_PPXH C_PPXH,
+		         B_CLLB.C_ZRSJ C_ZRSJ,
+		         FUN_GET_DMMC('DEP',B_CLWX.C_YHZID) C_YHZID,
+		         TO_CHAR(B_CLWX.D_DJ,'YYYY-MM-DD') D_DJ,
+		         B_CLWX.C_CLZK C_CLZK,
+		         B_CLWX.C_SXRY C_SXRY,
+		         DECODE(B_CLWX.C_SHJG_F,'1','同意','0','不同意','等待审核') C_SHJG_F,
+		         DECODE(B_CLWX.C_SHJG_T,'1','同意','0','不同意','等待审核') C_SHJG_T
+	    FROM B_CLLB, B_CLWX
+	   WHERE B_CLWX.N_CLLBXH = B_CLLB.N_XH
+	     AND B_CLWX.N_XH = #{n_xh}
+	</select>
 	
 	<insert id="insertCarRepair" parameterType="hashmap">
 		 INSERT INTO B_CLWX(
@@ -121,15 +136,17 @@
 	
 	<update id="operateCarRepair" parameterType="hashmap">
 		UPDATE B_CLWX
-	      SET C_SFSH     =  '1',
+	      SET C_SFSH  =  '1',
 	      <if test="c_ks != '18' ">
 	      	  D_SHSJ_F = SYSDATE,
 	      	  C_SHR_F = #{c_shr},
+	      	  C_SHJG_F = #{c_shjg},
 	      	  C_SHJG = DECODE(#{c_shjg},'0','00','1','01')
 	      </if>
 	      <if test="c_ks == '18' ">
 	      	  D_SHSJ_T = SYSDATE,
 	      	  C_SHR_T = #{c_shr},
+	      	  C_SHJG_T = #{c_shjg},
 	      	  C_SHJG = DECODE(#{c_shjg},'0','00','1','11')
 	      </if>
 		WHERE N_XH = #{n_xh}

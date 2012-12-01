@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CarOilReportMapper">
+
+	 <resultMap type="CarOilReport"     id="resultCarOilReport">
+	 	<result column="N_XH"      property="n_xh"/>
+	 	<result column="N_CLLBXH"  property="n_cllbxh"/>
+	 </resultMap>
+
+	<select id="getCarOilReport" parameterType="CarOilReport" resultType="CarOilReport">
+		 SELECT  N_XH ,   
+			 N_CLLBXH ,
+			 N_SYGLS  ,
+			 N_DYXSGLS,
+			 N_DYGLS  ,
+			 N_DYYH   ,
+			 N_BGLYH  ,
+			 D_DJ     ,
+			 C_YHZID  ,
+			 C_YHID   ,
+			 FUN_GET_CPHMYHZ(N_CLLBXH)  C_YHZID_ 
+ 		FROM B_YLBB WHERE N_XH = #{n_xh}
+	</select>
+	
+	
+	<delete id="deleteCarOilReport" parameterType="int">
+		DELETE FROM B_YLBB WHERE N_XH = #{n_xh}
+	</delete>
+	
+	<insert id="insertCarOilReport" parameterType="hashmap">
+		 INSERT INTO B_YLBB(
+		     N_XH     ,    
+			 N_CLLBXH ,
+			 N_SYGLS  ,
+			 N_DYXSGLS,
+			 N_DYGLS  ,
+			 N_DYYH   ,
+			 N_BGLYH  ,
+			 D_DJ     ,
+			 C_YHZID  ,
+			 C_YHID ) 
+		VALUES (	            	
+	         seq_b_ylbb.nextval,        
+			 #{n_cllbxh,jdbcType=NUMERIC},
+			 #{n_sygls,jdbcType=NUMERIC},
+			 #{n_dyxsgls,jdbcType=NUMERIC},
+			 #{n_dygls,jdbcType=NUMERIC}, 
+			 #{n_dyyh,jdbcType=NUMERIC},  
+			 #{n_bglyh,jdbcType=NUMERIC},  
+			 SYSDATE,    
+			 #{c_yhzid,jdbcType=VARCHAR}, 
+			 #{c_yhid,jdbcType=VARCHAR}
+	    )  
+	</insert>
+	
+	<select id="getCarOilReportPageList" resultMap="resultCarOilReport" parameterType="hashmap">
+	SELECT N_XH, C_YHZID, C_CPHM, C_PPXH, C_ZRSJ ,N_SYGLS, N_DYXSGLS, N_DYGLS ,N_DYYH, N_BGLYH
+	  FROM (SELECT S.*, ROWNUM RN
+	          FROM (SELECT B_CLLB.C_CPHM C_CPHM,
+				       B_CLLB.C_PPXH C_PPXH,
+				       B_CLLB.C_ZRSJ C_ZRSJ,
+				       FUN_GET_DMMC('DEP', B_YLBB.C_YHZID) C_YHZID,
+				       TO_CHAR(B_YLBB.D_DJ, 'YYYY-MM-DD') D_DJ,
+				       B_YLBB.N_DYXSGLS N_DYXSGLS,
+				       B_YLBB.N_DYGLS N_DYGLS,
+				       B_YLBB.N_SYGLS N_SYGLS,
+				       B_YLBB.N_DYYH N_DYYH,
+				       B_YLBB.N_BGLYH N_BGLYH,
+				       B_YLBB.N_XH
+				  FROM B_CLLB, B_YLBB
+				 WHERE B_YLBB.N_CLLBXH = B_CLLB.N_XH
+				  <if test="n_cllbxh != null and n_cllbxh != '' ">
+					AND B_YLBB.N_CLLBXH = #{n_cllbxh}
+				  </if>
+				  ORDER BY B_YLBB.N_XH DESC) S
+	         WHERE ROWNUM &lt;= #{limit}) T
+	 WHERE T.RN &gt; #{start}
+	</select>
+	
+	<select id="getCarOilReportPageListCnt" resultType="long" parameterType="hashmap">
+		SELECT COUNT(*) Total
+		  FROM B_CLLB, B_YLBB
+		 WHERE B_YLBB.N_CLLBXH = B_CLLB.N_XH
+		  <if test="n_cllbxh != null and n_cllbxh != '' ">
+			AND B_YLBB.N_CLLBXH = #{n_cllbxh}
+		  </if>
+	</select>
+	
+	<update id="updateCarOilReport" parameterType="hashmap">
+		UPDATE B_YLBB
+	     SET N_CLLBXH    =   #{n_cllbxh,jdbcType=NUMERIC},          
+			 N_SYGLS     =   #{n_sygls,jdbcType=NUMERIC},           
+			 N_DYXSGLS   =   #{n_dyxsgls,jdbcType=NUMERIC},         
+			 N_DYGLS     =   #{n_dygls,jdbcType=NUMERIC},           
+			 N_DYYH      =   #{n_dyyh,jdbcType=NUMERIC},            
+			 N_BGLYH     =   #{n_bglyh,jdbcType=NUMERIC}            
+		WHERE N_XH = #{n_xh}
+	</update>
+	
+	
+</mapper>

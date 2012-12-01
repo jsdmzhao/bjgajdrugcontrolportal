@@ -30,6 +30,7 @@
         onSelected: null, //选择值事件 
         initValue: null,
         initText: null,
+        comBoxName:null;
         valueField: 'id',
         textField: 'text',
         valueFieldID: null,
@@ -63,7 +64,7 @@
         {
             return 'ComboBox';
         },
-        _extendMethods: function ()t
+        _extendMethods: function ()
         {
             return $.ligerMethos.ComboBox;
         },
@@ -128,7 +129,7 @@
             //开关
             g.link = $('<div class="l-trigger"><div class="l-trigger-icon"></div></div>');
             //下拉框
-            g.selectBox = $('<div class="l-box-select"><div class="l-box-select-inner"><table cellpadding="0" cellspacing="0" border="0" class="l-box-select-table"></table></div></div>');
+            g.selectBox = $('<div class="l-box-select" id='+ p.comBoxName +'><div class="l-box-select-inner"><table cellpadding="0" cellspacing="0" border="0" class="l-box-select-table"></table></div></div>');
             g.selectBox.table = $("table:first", g.selectBox);
             //外层
             g.wrapper = g.inputText.wrap('<div class="l-text l-text-combobox"></div>').parent();

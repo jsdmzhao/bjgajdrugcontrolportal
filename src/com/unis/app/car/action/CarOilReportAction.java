@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 import org.apache.commons.lang.xwork.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -18,16 +17,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.unis.app.car.model.CarRepair;
-import com.unis.core.commons.Combox;
+import com.unis.app.car.model.CarOilReport;
 import com.unis.core.service.AbsServiceAdapter;
 import com.unis.core.util.Globals;
 
 @Controller
 @Scope(value="prototype")
-public class CarRepairAction {
+public class CarOilReportAction {
 
-	private CarRepair carRepair;
+	private CarOilReport carOilReport;
 	
 	private String n_cllbxh;
 	
@@ -35,49 +33,44 @@ public class CarRepairAction {
 	
 	private Integer page;
 	
-	private String operateType;
-	
 	@Autowired
 	private AbsServiceAdapter<Integer> carService = null;
 	
-	public String carRepairSave(Map<String, String> sqlParamMap,HttpServletRequest request){
+	public String carOilReportSave(Map<String, String> sqlParamMap,HttpServletRequest request){
 		HttpSession session = request.getSession();
 		String userId = session.getAttribute("userId")+"";
 		String yhzId = session.getAttribute("cYhz")+"";
 		sqlParamMap.put("c_yhid", userId);
 		sqlParamMap.put("c_yhzid", yhzId);
 		if(StringUtils.isNotEmpty(sqlParamMap.get("n_xh"))){
-			carService.update("CarRepairMapper.updateCarRepair", sqlParamMap);
+			carService.update("CarOilReportMapper.updateCarOilReport", sqlParamMap);
 		} else {
-			carService.insert("CarRepairMapper.insertCarRepair", sqlParamMap);
+			carService.insert("CarOilReportMapper.insertCarOilReport", sqlParamMap);
 		}
 		return Globals.SUCCESS;
 	}
 
 	@SuppressWarnings("unchecked")
-	public void carRepairPageList() throws IOException{
+	public void carOilReportPageList() throws IOException{
 		
 		HttpServletRequest request = ServletActionContext.getRequest();
 		
 		HttpSession session = request.getSession();
 		String userId =  session.getAttribute("userId")+"";
 		String yhzId =  session.getAttribute("cYhz")+"";
-		String c_ks =  session.getAttribute("cKs")+"";
 		Map<String, String> sqlParamMap = new HashMap<String, String>();
 		
-		sqlParamMap.put("operateType", operateType);
 		sqlParamMap.put("n_cllbxh", n_cllbxh);
 		sqlParamMap.put("c_yhid", userId);
 		sqlParamMap.put("c_yhzid", yhzId);
-		sqlParamMap.put("c_ks", c_ks);
 		sqlParamMap.put("start", String.valueOf(((page.intValue()-1)*pagesize.intValue())));
 		sqlParamMap.put("limit", String.valueOf((page.intValue()*pagesize.intValue())));
 		Map<String, Object> resMap = new HashMap<String, Object>();
 
-		List<CarRepair> carRepairList = (List<CarRepair>) carService.selectList("CarRepairMapper.getCarRepairPageList",sqlParamMap);
-		Long cnt = (Long) carService.selectOne("CarRepairMapper.getCarRepairPageListCnt",sqlParamMap);
+		List<CarOilReport> carOilReportList = (List<CarOilReport>) carService.selectList("CarOilReportMapper.getCarOilReportPageList",sqlParamMap);
+		Long cnt = (Long) carService.selectOne("CarOilReportMapper.getCarOilReportPageListCnt",sqlParamMap);
 
-		resMap.put("Rows", carRepairList);
+		resMap.put("Rows", carOilReportList);
 		resMap.put("Total", cnt);
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -88,68 +81,37 @@ public class CarRepairAction {
 		mapper.writeValue(out, resMap);
 		out.flush();
 		out.close();
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<Combox> getCarRepairtypeCombox(HttpServletRequest request){
-		HttpSession session = request.getSession();
-		String yhzId =  session.getAttribute("cYhz")+"";
-		List<Combox> comboxList = (List<Combox>) carService.selectList("CarRepairMapper.getCarRepairtypeCombox", yhzId);
-		return comboxList;
-	}
-	
-	public String carRepairUpdate(){
-		carRepair = (CarRepair) carService.selectOne("CarRepairMapper.getCarRepair", carRepair);
-		return Globals.SUCCESS;
-	}
-
-	public String carRepairView(){
-		carRepair = (CarRepair) carService.selectOne("CarRepairMapper.getCarRepair", carRepair);
-		return Globals.SUCCESS;
 	}	
 	
-	public String carRepairDelete(String n_xh){
-		
-		carService.update("CarRepairMapper.deleteCarRepair", n_xh);
+	public String carOilReportUpdate(){
+		carOilReport = (CarOilReport) carService.selectOne("CarOilReportMapper.getCarOilReport", carOilReport);
+		return Globals.SUCCESS;
+	}	
+
+	public String carOilReportView(){
+		carOilReport = (CarOilReport) carService.selectOne("CarOilReportMapper.getCarOilReport", carOilReport);
 		return Globals.SUCCESS;
 	}
 	
-	public String carRepairQuery(){
+	
+	public String carOilReportDelete(String n_xh){
 		
-		carRepair = (CarRepair) carService.selectOne("CarRepairMapper.getCarRepair", carRepair);
+		carService.update("CarOilReportMapper.deleteCarOilReport", n_xh);
 		return Globals.SUCCESS;
 	}
 	
-	public String carRepairPrint(){
+	public String carOilReportQuery(){
 		
-		carRepair = (CarRepair) carService.selectOne("CarRepairMapper.printCarRepair", carRepair);
+		carOilReport = (CarOilReport) carService.selectOne("CarOilReportMapper.getCarOilReport", carOilReport);
 		return Globals.SUCCESS;
 	}
 
-
-	public String carRepairOperator(String value, String n_xh){
-		
-		HttpServletRequest request = ServletActionContext.getRequest();
-		HttpSession session = request.getSession();
-		String userId =  session.getAttribute("userId")+"";
-		String c_ks =  session.getAttribute("cKs")+"";
-		
-		Map<String, Object> sqlparaMap = new HashMap<String, Object>();
-		sqlparaMap.put("c_ks", c_ks);
-		sqlparaMap.put("c_shr", userId);
-		sqlparaMap.put("c_shjg", value);
-		sqlparaMap.put("n_xh", n_xh);
-		carService.update("CarRepairMapper.operateCarRepair", sqlparaMap);
-		
-		return Globals.SUCCESS;
+	public CarOilReport getCarOilReport() {
+		return carOilReport;
 	}
 
-	public CarRepair getCarRepair() {
-		return carRepair;
-	}
-
-	public void setCarRepair(CarRepair carRepair) {
-		this.carRepair = carRepair;
+	public void setCarOilReport(CarOilReport carOilReport) {
+		this.carOilReport = carOilReport;
 	}
 
 	public String getN_cllbxh() {
@@ -182,14 +144,6 @@ public class CarRepairAction {
 
 	public void setPage(Integer page) {
 		this.page = page;
-	}
-
-	public String getOperateType() {
-		return operateType;
-	}
-
-	public void setOperateType(String operateType) {
-		this.operateType = operateType;
 	}
 	
 }

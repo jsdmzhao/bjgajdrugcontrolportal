@@ -1,14 +1,19 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
+String carType = (String)request.getParameter("carType");
+if(carType == null){
+	carType = "";
+}
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>日志 管理</title> 
+    <title>油料报表 管理</title> 
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
     <script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
@@ -24,35 +29,76 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>liger/lib/jquery-validation/messages_cn.js" type="text/javascript"></script> 
     <script src='<%=basePath%>dwr/engine.js' type='text/javascript' ></script>
   	<script src='<%=basePath%>dwr/util.js' type='text/javascript' ></script>
-  	<script src='<%=basePath%>dwr/interface/BlogAction.js' type='text/javascript' ></script>
+  	<script src='<%=basePath%>dwr/interface/CarOilReportAction.js' type='text/javascript' ></script>
+  	<script src='<%=basePath%>dwr/interface/CartypeAction.js' type='text/javascript' ></script>
   	
     <style type="text/css">
     .l-panel td.l-grid-row-cell-editing { padding-bottom: 2px;padding-top: 2px;}
     </style>
 </head>
 <body style="padding:10px;height:100%; text-align:center;">
-   <input type="hidden" id="MenuNo" value="MemberManageRole" /> 
   <form id="mainform">
+    <DIV class=l-panel-search style="border: none;">
+    <DIV class=l-panel-search-item>部门：</DIV>
+		<DIV class=l-panel-search-item>
+			<select id="selectBM" onchange="getCL(this.value)">
+				<option value="">所有部门</option>
+				<option value="1">总队领导</option>
+				<option value="3">办公室</option>
+				<option value="4">协调指导大队</option>
+				<option value="9">情报中心</option>
+				<option value="7">侦查大队</option>
+				<option value="8">查禁大队</option>
+				<option value="5">缉控大队</option>
+				<option value="10">两品办 </option>
+			</select>
+		</DIV>
+		<DIV class=l-panel-search-item>车辆</DIV>
+		<DIV class=l-panel-search-item id="selectCL">
+			<select id="selectCPHM" onchange="search()">
+			</select>
+		</DIV>
+	</DIV>
     <div id="maingrid"  style="margin:2px;"></div> 
     </form> 
   <script type="text/javascript">
   	  var dialog;
       //相对路径
       var rootPath = "../";
+      
+	  function getCL(value){
+    	  var carType = document.getElementById("selectBM").value;
+    	  var str = "<select id=\"selectCPHM\"  onchange=\"search()\" value='<%=carType%>'><option value='"+carType+"'>全部车辆</option>";
+    	  CartypeAction.cartypeSelectList(value,function(data){
+    			document.getElementById("selectCL").innerHTML = str + data + "</select>"
+    	  });
+    	  search();
+      }
+	  
+	  function search(){
+    	  var carType = document.getElementById("selectCPHM").value;
+          grid.changePage("first"); 
+          grid.setOptions({parms:[{name:'n_cllbxh',value:carType}]});
+          grid.loadData();
+  	  }
+      
       //列表结构
       var tempdata = ""; 
       var grid = $("#maingrid").ligerGrid({
           columns: [
-          { display: "序号", name: "n_xh", width: 100,name: "n_xh", editor: {type: 'text'} },
-          { display: "日志类型", name: "c_rzlx", width: 160, type: "text", align: "left", editor: { type: 'text'}},
-          { display: "标题", name: "c_bt", width:300, type: "text", align: "left"
-              , validate: { required: true }
-              , editor: { type: 'text' }
-          },
-          { display: "添加时间", name: "d_dj", width: 160, type: "text", align: "left", editor: { type: 'text'}}
-          ], dataAction: 'server', pageSize: 20, toolbar: {},sortName: 'n_xh', url:'<%=basePath%>blogPageList',
-          width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false,
-          rownumbers:true
+          { name: "n_xh", editor: {type: 'hidden'},hide : '1' },
+          { display: "使用单位", name: "c_yhzid", width:140, type: "text", align: "left" },
+          { display: "车牌", name: "c_cphm", width:140, type: "text", align: "left" },
+          { display: "品牌型号", name: "c_ppxh", width:140, type: "text", align: "left" },
+          { display: "责任司机", name: "c_zrsj", width:140, type: "text", align: "left" },
+          { display: "上月公里数", name: "n_sygls", width: 160, type: "text", align: "left"},
+          { display: "当月行驶公里数", name: "n_dyxsgls", width: 160, type: "text", align: "left"},
+          { display: "当月公里数", name: "n_dygls", width: 80, type: "text", align: "left"},
+          { display: "当月油耗", name: "n_dyyh", width: 80, type: "text", align: "left"},
+          { display: "百公里油耗", name: "n_bglyh", width: 80, type: "text", align: "left"}
+          ], dataAction: 'server', pageSize: 20, toolbar: {},sortName: 'n_xh', url:'<%=basePath%>carOilReportPageList',
+          width: '98%', height: '100%',heightDiff:-10, checkbox: false,enabledEdit: true, clickToEdit: false,rownumbers:true,
+          data: tempdata
       });
 
       //双击事件
@@ -66,13 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       //加载toolbar
       LG.loadToolbar(grid, toolbarBtnItemClick);
 
-     	var items=[
-     	/**{
-  	        	  click:toolbarBtnItemClick,
-        	      text:'保存',
-        	      img:'<!%=basePath%>liger/lib/icons/silkicons/page_save.png',
-        	      id:'save'    	
-     	   },**/{
+     	var items=[{
             click:toolbarBtnItemClick,
             text:'新增',
             img:'<%=basePath%>liger/lib/icons/silkicons/add.png',
@@ -83,10 +123,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             img:'<%=basePath%>liger/lib/icons/silkicons/application_edit.png',
             id: 'modify'
         },{
-        	  click:toolbarBtnItemClick,
-    	      text:'查看',
-    	      img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
-    	      id:'view'    	
+       	   click:toolbarBtnItemClick,
+   	       text:'查看',
+   	       img:'<%=basePath%>liger/lib/icons/silkicons/application_view_detail.png',
+   	       id:'view'    	
  	   },{line:true},{
             click: toolbarBtnItemClick,
             text: '删除',
@@ -94,39 +134,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             id: 'delete'
         },{line:true}];
         
-	grid.toolbarManager.set('items', items);
+	  grid.toolbarManager.set('items', items);
 
       //工具条事件
-      function toolbarBtnItemClick(item)
-      {
+      function toolbarBtnItemClick(item) {
+    	  
           var editingrow = grid.getEditingRow();
           switch (item.id) {
               case "add":
-            	  BlogAction.blogCheckRepeat(function(result){
-            		  	if(result == 'success'){
-            		  		dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/blog/blogDetail.jsp', 
-                        		  title: '日志信息',
-                                height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
-      				 		});
-            		  	} else {
-            		  		LG.showSuccess('您今天已经记载日志了！');
-            		  	}
-            	  });
+                  dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/car/carOilReportDetail.jsp', 
+                  		  title: '油料报表信息',
+                          height: 450,width: 900,showMax: true, showToggle: true,  showMin: true
+				  });
                   break;
               case "view":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  dialog = $.ligerDialog.open({ url: '<%=basePath%>blogView?blog.n_xh=' + selected.n_xh,
-              		  title: '日志信息',	 
-                      height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+                  dialog = $.ligerDialog.open({ url: '<%=basePath%>carOilReportView?carOilReport.n_xh=' + selected.n_xh,
+              		  title: '油料报表信息',	 
+                      height: 450,width: 900,showMax: true, showToggle: true,  showMin: true
 			  });
                   break;
               case "modify":
                   var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
-                  dialog = $.ligerDialog.open({ url: '<%=basePath%>blogUpdate?blog.n_xh=' + selected.n_xh,
-                  		  title: '日志信息',	 
-                          height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+                  dialog = $.ligerDialog.open({ url: '<%=basePath%>carOilReportUpdate?carOilReport.n_xh=' + selected.n_xh,
+                  		  title: '油料报表信息',	 
+                          height: 450,width: 900,showMax: true, showToggle: true,  showMin: true
 				  });
                   break;
               case "delete":
@@ -137,15 +171,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           f_delete();
                   });
                   break;
-              case "save":
-                  if (editingrow != null)
-                  {
-                      grid.endEdit(editingrow);
-                  } else
-                  {
-                      LG.tip('现在不在编辑状态!');
-                  }
-                  break;
           }
       }
       function f_reload() {
@@ -154,11 +179,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       function f_delete() {
           var selected = grid.getSelected();
           if (selected) {
-
-        	  grid.deleteRow(selected);
-        	  BlogAction.blogDelete(selected.n_xh, function (result){
+        	  CarOilReportAction.carOilReportDelete(selected.n_xh, function (result){
              	   if(result == 'success'){
              		  LG.showSuccess('删除成功');
+             		  grid.deleteRow(selected);
 	           	   } else {
 	           		  LG.showSuccess('删除失败');
 	           	   }
@@ -180,14 +204,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           }
           return true;
       });
-      grid.bind('afterSubmitEdit', function (e)
-      {
+      grid.bind('afterSubmitEdit', function (e) {
           var isAddNew = e.record['__status'] == "add";
           var data = $.extend(true, {}, e.newdata);
           if (!isAddNew){
               data.n_xh = e.record.n_xh;
           }
-          BlogAction.blogSave(data, function (result){
+          CarOilReportAction.carOilReportSave(data, function (result){
         	if(result == 'success'){
         		LG.showSuccess('保存成功');
       		} else {
@@ -199,31 +222,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           return false;
       }); 
       
-      function dialog_hidden()
-      {
+      function dialog_hidden() {
     	  dialog.hidden();
       }
 
-      function beginEdit()
-      {
-          var row = grid.getSelectedRow();
-          if (!row) { LG.tip('请选择行'); return; }
-          grid.beginEdit(row);
-      }
-      function addNewRow()
-      {
-          grid.addEditRow();
-      } 
-
-	  //loadGrid();
-      
       function loadGrid(){
     	grid.loadData();
-    	/**
-    	BlogAction.blogList(function (data){
-  	    	grid.setOptions({data:data});
-  	    });
-    	**/
   	  }
   </script>
 </body>

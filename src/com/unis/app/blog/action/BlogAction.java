@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.unis.core.commons.Combox;
 import com.unis.core.service.AbsServiceAdapter;
 import com.unis.core.util.Globals;
 import com.unis.app.blog.model.Blog;
@@ -92,11 +93,18 @@ public class BlogAction {
 	@SuppressWarnings("unchecked")
 	public void blogPageList() throws IOException{
 		
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = request.getSession();
+		
+		String c_yhid = session.getAttribute("userId")+"";
+		String c_jb = session.getAttribute("cJb")+"";
+		
 		Map<String, String> sqlParamMap = new HashMap<String, String>();
 		
 		sqlParamMap.put("start", String.valueOf(((page.intValue()-1)*pagesize.intValue())));
 		sqlParamMap.put("limit", String.valueOf((page.intValue()*pagesize.intValue())));
-		sqlParamMap.put("c_jb", "");
+		sqlParamMap.put("c_yhid", c_yhid);
+		sqlParamMap.put("c_jb", String.valueOf((Integer.parseInt(c_jb)-1)));
 		
 		Map<String, Object> resMap = new HashMap<String, Object>();
 		List<Blog> blogList = (List<Blog>) blogService.selectList("BlogMapper.getBlogPageList",sqlParamMap);
@@ -161,6 +169,39 @@ public class BlogAction {
 		} else {
 			return Globals.FAILURE;
 		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public String getBmYhCombox(HttpServletRequest request){
+
+		StringBuffer sbf = new StringBuffer("[");
+		
+		List<Combox> comboxList = (List<Combox>) blogService.selectList("BlogMapper.getDeptCombox", "");
+		
+		for(Combox combox : comboxList){
+			sbf.append("{text:'"+combox.getText()+"', value:'"+combox.getValue()+"'");
+			List<Combox> childList = getDeptChilden(combox.getValue(),combox.getValue());
+			if(!childList.isEmpty()){
+				sbf.append(",children: [");
+				for(Combox combChild : childList){
+					sbf.append("{text:'"+combChild.getText()+"', value:'"+combChild.getValue()+"'},");
+				}
+				sbf.replace(sbf.lastIndexOf(","), sbf.length(), "");
+				sbf.append("]},");
+			} else {
+				sbf.append("},");
+			}
+		}
+		sbf.replace(sbf.lastIndexOf(","), sbf.length(), "");
+		sbf.append("]");
+		
+		return sbf.toString();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Combox> getDeptChilden(String c_sjdm,String c_yhzid){
+		List<Combox> comboxList = (List<Combox>) blogService.selectList("BlogMapper.getRyxx", c_yhzid);
+		return comboxList;
 	}
 
 	public Blog getBlog() {

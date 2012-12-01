@@ -45,6 +45,10 @@
 			<param name="beanName" value="carKeepAction"></param>
 		</create>
 		
+		<create javascript="CarOilReportAction" creator="spring">
+			<param name="beanName" value="carOilReportAction"></param>
+		</create>
+		
 		<create javascript="BlogAction" creator="spring">
 			<param name="beanName" value="blogAction"></param>
 		</create>

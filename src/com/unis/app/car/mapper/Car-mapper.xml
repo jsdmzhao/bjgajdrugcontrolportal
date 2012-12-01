@@ -30,12 +30,28 @@
     <select id="getCar" parameterType="Car" resultType="Car">
 		SELECT N_XH,
 			   N_CLLBXH,
-			   FUN_GET_CPHM(N_CLLBXH) N_CLLBXH_,
+			   FUN_GET_CPHMYHZ(N_CLLBXH)  C_YHZID_ ,
 			   FUN_GET_YHMC(C_YHID) C_YHID,
 			   C_SQSY,
 			   TO_CHAR(D_CCSJ,'YYYY-MM-DD HH24:MI:SS') D_CCSJ,
 			   TO_CHAR(D_GDSJ,'YYYY-MM-DD HH24:MI:SS') D_GDSJ
 	    FROM B_CLSQ WHERE N_XH = #{n_xh}
+	</select>
+	
+	<select id="printCar" parameterType="string" resultType="Car">
+		SELECT B_CLLB.C_CPHM C_CPHM,
+	       B_CLLB.C_PPXH C_PPXH,
+	       B_CLLB.C_ZRSJ C_ZRSJ,
+	       FUN_GET_DMMC('DEP',B_CLSQ.C_YHZID) C_YHZID,
+	       TO_CHAR(B_CLSQ.D_DJ,'YYYY-MM-DD') D_DJ,
+	       FUN_GET_YHMC(B_CLSQ.C_YHID) C_YHID,
+	       TO_CHAR(B_CLSQ.D_CCSJ,'YYYY-MM-DD HH24:MI:SS') D_CCSJ,
+	       TO_CHAR(B_CLSQ.D_GDSJ,'YYYY-MM-DD HH24:MI:SS') D_GDSJ,
+	       B_CLSQ.C_SQSY C_SQSY,
+	       DECODE(C_SHJG,'1','同意','0','不同意','等待审核') C_SHJG
+	  FROM B_CLSQ, B_CLLB
+	 WHERE B_CLSQ.N_CLLBXH = B_CLLB.N_XH
+	   AND B_CLSQ.N_XH = #{n_xh}
 	</select>
 	
 	<select id="getCarList" resultMap="resultCar" parameterType="hashmap">
@@ -142,6 +158,7 @@
 		   N_XH      ,
 		   N_CLLBXH  ,
 		   C_YHID    ,
+		   C_YHZID   ,
 		   C_SQSY    ,
 		   D_CCSJ    ,
 		   D_GDSJ    ,
@@ -150,7 +167,8 @@
 		VALUES (	            	
 	      seq_b_clsq.nextval,        
           #{n_cllbxh,jdbcType=NUMERIC},  
-          #{c_yhid,jdbcType=VARCHAR},         
+          #{c_yhid,jdbcType=VARCHAR},   
+          #{c_yhzid,jdbcType=VARCHAR},       
           #{c_sqsy,jdbcType=VARCHAR},           
           TO_DATE(#{d_ccsj,jdbcType=DATE},'YYYY-MM-DD HH24:MI:SS'),           
           TO_DATE(#{d_gdsj,jdbcType=DATE},'YYYY-MM-DD HH24:MI:SS'),
@@ -163,24 +181,19 @@
 		INSERT INTO B_CLLB(
 		   N_XH    ,
 		   C_CPHM  ,
+		   C_PPXH  ,
 		   D_GMSJ  ,
-		   N_XSLC  ,
-		   N_HYZL  ,
-		   N_PJYH  ,
+		   D_ZCSJ ,
+		   C_ZRSJ ,
 		   C_YHZID ,
 		   D_DJ    ) 
 		VALUES (	            	
 	      seq_b_cllb.nextval,        
           #{c_cphm,jdbcType=VARCHAR}, 
+          #{c_ppxh,jdbcType=VARCHAR}, 
           TO_DATE(#{d_gmsj,jdbcType=VARCHAR},'YYYY-MM-DD'), 
-          #{n_xslc,jdbcType=NUMERIC}, 
-          #{n_hyzl,jdbcType=NUMERIC}, 
-          <if test="n_hyzl == 0">
-   			 0,
-   		  </if>
-   		  <if test="n_hyzl != 0">
-   		 	 #{n_xslc,jdbcType=NUMERIC}/#{n_hyzl,jdbcType=NUMERIC},
-   		  </if>
+          TO_DATE(#{d_zcsj,jdbcType=VARCHAR},'YYYY-MM-DD'), 
+          TO_DATE(#{c_zrsj,jdbcType=VARCHAR},'YYYY-MM-DD'), 
           #{c_yhzid,jdbcType=VARCHAR}, 
        	  sysdate      
 	    )  
@@ -213,16 +226,11 @@
 	<update id="updateCartype" parameterType="hashmap">
 		UPDATE B_CLLB
 		   SET  C_CPHM   =	#{c_cphm,jdbcType=VARCHAR},
+		        C_PPXH   =	#{c_ppxh,jdbcType=VARCHAR},
 		   		D_GMSJ   =  TO_DATE(#{d_gmsj,jdbcType=VARCHAR},'YYYY-MM-DD'),
+		   		D_ZCSJ   =  TO_DATE(#{d_zcsj,jdbcType=VARCHAR},'YYYY-MM-DD'),
 		   		C_YHZID  =  #{c_yhzid,jdbcType=VARCHAR},
-		   		N_XSLC   =  NVL(#{n_xslc,jdbcType=VARCHAR},0), 
-          		<if test="n_hyzl == 0">
-          			0,
-          		</if>
-          		<if test="n_hyzl != 0">
-          			N_PJYH   =  NVL(#{n_xslc,jdbcType=NUMERIC}/#{n_hyzl,jdbcType=NUMERIC},0),
-          		</if>
-          		N_HYZL   =  NVL(#{n_hyzl,jdbcType=VARCHAR},0)
+		   		C_ZRSJ  =   #{c_zrsj,jdbcType=VARCHAR}
 		WHERE N_XH = #{n_xh}
 	</update>
 	

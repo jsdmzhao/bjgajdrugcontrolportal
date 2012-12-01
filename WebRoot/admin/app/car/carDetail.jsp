@@ -46,25 +46,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			//$("#n_lbxh").tempdata = data;
 	        var config = {"Form":{ 
 		         fields : [
-		         {display:"车牌号",name:"n_cllbxh",newline:true,labelWidth:100,
-		          width:220,space:30,type:"basicText",
+		         {display:"所属部门",
+		          name:"c_bm",
+		          labelWidth:100,
+		          width:240,
+		          type:"basicText",
+		          validate: { required: true}, 
 		          group:"基本信息",
-		          validate: { required: true},
 		          groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
+		         },
+		         {
+		         	 display:"车牌号码",
+		             labelWidth:100,
+		             width:240,
+		             newline:false,
+		             type:"basicText",
+		             name:"n_cllbxh",
+		             validate: { required: true}
 		         },
 		         {
 			         display:"申请事由",
 			         name:"c_sqsy",
 			         newline:true,
 			         labelWidth:100,
-			         width:540,
+			         width:623,
 			         space:30,
 			         type:"textarea"
 		         },
 		         //{display:"通过短信申请",name:"c_tgdxsq",newline:true,labelWidth:100,width:540,space:30,type:"checkbox"},
-		         {display:"出车时间",name:"d_ccsj",newline:true,labelWidth:100,width:540,space:30,type:"text",
+		         {display:"出车时间",name:"d_ccsj",newline:true,labelWidth:100,width:620,space:30,type:"text",
 			      onclick:"WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"},
-		         {display:"归队时间",name:"d_gdsj",newline:true,labelWidth:100,width:540,space:30,type:"text",
+		         {display:"归队时间",name:"d_gdsj",newline:true,labelWidth:100,width:620,space:30,type:"text",
 				  onclick:"WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"}
 		        ]
 			 }};
@@ -88,11 +100,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        //表单底部按钮 
 	        LG.setFormDefaultBtn(f_cancel,isView ? null : f_save);
 	
-	        var deptTree = {
-	            url :'../handler/tree.ashx?view=CF_Department&idfield=DeptID&textfield=DeptName&pidfield=DeptParentID',
-	            checkbox:false,
-	            nodeWidth :220
-	        };
 	
 	        //创建表单结构
 	        var mainform = $("#mainform");  
@@ -144,6 +151,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	//$("c_tpljdz").setDisabled();
 	        
 	        function f_save() {
+	        	
+	        	//验证
+	        	if (!LG.validator.form()) {
+	                LG.showInvalid();
+	                return false;
+	            }
 	
 	        	var formMap = DWRUtil.getValues("mainform"); 
 
@@ -167,10 +180,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	           parent.dialog_hidden();
 	        }
 	
+	        var cmb1,cmb2; 
+	        var tempdata = [{text:'所有部门',value:''},{text:'总队领导',value:'1'},{text:'办公室',value:'3'},
+	                        {text:'协调指导大队',value:'4'}, {text:'情报中心',value:'9'}, {text:'侦查大队',value:'7'},
+	                        {text:'查禁大队',value:'8'}, {text:'缉控大队',value:'5'}, {text:'两品办',value:'10'}];;
+
+	       cmb1 = $("#c_bm").ligerComboBox({ data: tempdata, isMultiSelect: false,
+	            textFiled:"text",valueField:"value",
+	            onSelected: function (newvalue){
+	           	  $("#n_cllbxh").ligerComboBox("reload","<%=basePath%>cartypeCombox?c_yhzid="+newvalue); 
+
+	           	  setData(cmb2,"<%=basePath%>cartypeCombox?c_yhzid="+newvalue);
+	            }
+	   	});
+	        
+	       cmb2 = $("#n_cllbxh").ligerComboBox({
+	       	 isMultiSelect: false,
+	            valueField:"value",
+	            textFiled:"text",
+	            url:"<%=basePath%>cartypeCombox"
+	   	});
+	   	    
+	       function setData(obj,url) {  
+	            $.getJSON(url+"&r="+Math.round(Math.random()*1000000).toString(), 
+	               function(json) {  
+	                 obj.setData(json); //把json塞到下拉框里面去  
+	               }  
+	            );                                                  
+	       }    
     </script>
- 	<div id="uploadImageDiv" style="display: none;">
-		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_tpljdz"></iframe> <!---->
-	</div>
 </body>
 
 </html>

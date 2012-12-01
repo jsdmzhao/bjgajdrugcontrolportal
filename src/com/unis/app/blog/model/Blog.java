@@ -24,6 +24,14 @@ public class Blog {
 	private String c_shjg;
 	
 	private String d_shsj;
+	
+	private String c_rzlx;
+	
+	private String c_ajdh;
+	
+	private String c_jbld;
+	
+	private String c_jbld_;
 
 	public String getN_xh() {
 		return n_xh;
@@ -111,6 +119,38 @@ public class Blog {
 
 	public void setD_shsj(String d_shsj) {
 		this.d_shsj = d_shsj;
+	}
+
+	public String getC_rzlx() {
+		return c_rzlx;
+	}
+
+	public void setC_rzlx(String c_rzlx) {
+		this.c_rzlx = c_rzlx;
+	}
+
+	public String getC_ajdh() {
+		return c_ajdh;
+	}
+
+	public void setC_ajdh(String c_ajdh) {
+		this.c_ajdh = c_ajdh;
+	}
+
+	public String getC_jbld() {
+		return c_jbld;
+	}
+
+	public void setC_jbld(String c_jbld) {
+		this.c_jbld = c_jbld;
+	}
+
+	public String getC_jbld_() {
+		return c_jbld_;
+	}
+
+	public void setC_jbld_(String c_jbld_) {
+		this.c_jbld_ = c_jbld_;
 	}
 	
 }

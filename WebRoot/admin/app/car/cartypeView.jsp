@@ -29,6 +29,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerTree.js" type="text/javascript"></script>
     <script src="<%=basePath%>js/formUtil.js" type="text/javascript"></script>
     
+    <script type="text/javascript" src="<%=basePath%>js/My97DatePicker/WdatePicker.js"></script>
+    
     <script type="text/javascript" src="<%=basePath%>ckeditor/ckeditor.js"></script>
 	<script type="text/javascript" src="<%=basePath%>ckfinder/ckfinder.js"></script>
 	
@@ -45,20 +47,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     	{text:'缉控大队',value:5},{text:'两品办',value:10}];
         var config = {"Form":{ 
          fields : [
-         {display:"所在部门",name:"c_yhzid",newline:true,labelWidth:100,
-          width:220,space:30,type:"select",comboboxName:"c_yhzidName",
+         {display:"所在部门",name:"c_yhzid",newline:true,labelWidth:80,
+          width:480,space:30,type:"select",comboboxName:"c_yhzidName",
           options:{
              valueField:"value",
              textFiled:"text",
          	 data : tempdata,
-             value:"<s:property value='car.c_yhzid_'/>"
+             selectBoxHeight :200,
+             selectBoxWidth :480,
+             value:"<s:property value='car.c_yhzid'/>"
           },
 	      group:"基本信息",
 	      groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },
-         {display:"车牌号码",name:"c_cphm",newline:true,labelWidth:100,width:400,space:30,type:"text",value:"<s:property value='car.c_cphm'/>"},
-         {display:"购买时间",name:"d_gmsj",newline:true,labelWidth:100,width:400,space:30,type:"text",value:"<s:property value='car.d_gmsj.substring(0,10)'/>"},
-         {name:"n_xh", type:"hidden",value:"<s:property value='car.n_xh'/>"}
+         {display:"车牌号码",name:"c_cphm",newline:true,labelWidth:80,width:480,type:"text",value:"<s:property value='car.c_cphm'/>"},
+         {display:"品牌型号",name:"c_ppxh",newline:true,labelWidth:80,width:480,type:"text",value:"<s:property value='car.c_ppxh'/>"},
+         {display:"购买时间",name:"d_gmsj",newline:true,labelWidth:80,width:480,type:"text",value:"<s:property value='car.d_gmsj.substring(0,10)'/>",
+         onclick:"WdatePicker({dateFmt:'yyyy-MM-dd'})"},
+         {name:"n_xh", type:"hidden",value:"<s:property value='car.n_xh'/>"},
+         {display:"注册时间",name:"d_zcsj",newline:true,labelWidth:80,width:480,type:"text",value:"<s:property value='car.d_zcsj.substring(0,10)'/>",onclick:"WdatePicker({dateFmt:'yyyy-MM-dd'})"},
+         {display:"责任司机",name:"c_zrsj",newline:true,labelWidth:80,width:480,type:"text",value:"<s:property value='car.c_zrsj'/>"}
         ]
  }};
 
@@ -125,12 +133,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
         //<!-- 设置一些默认参数 -->
 
-       
+        
+        function f_save() {
+
+        	var formMap = DWRUtil.getValues("mainform"); 
+        	
+        	formMap['c_yhzid'] = formMap['c_yhzidName_val'];
+        	
+        	CartypeAction.cartypeSave(formMap,function (result){
+        		if(result == 'success'){
+        			LG.showSuccess('保存成功', function () { 
+                        f_cancel();
+                        parent.loadGrid();
+                    });
+        		} else {
+        		 	LG.showError('保存失败');
+        		}
+        	});
+        	
+        }
         function f_cancel()
         {
            parent.dialog_hidden();
         }
         
+	       $("input,select,textarea",mainform).attr("readonly", "readonly");
+	     	$("input,select,textarea",mainform).attr("disabled", "disabled");
     </script>
  	
 </body>
