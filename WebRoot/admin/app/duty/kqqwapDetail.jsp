@@ -72,7 +72,7 @@ if(nXh==null){
          {display:"联络人员",name:"cLlry",newline:true,labelWidth:100,width:200,space:30,type:"text"},
          {display:"出发时间",name:"dCfsj",newline:false,labelWidth:100,width:200,space:30,type:"date"},
          {display:"出发地点",name:"cCfdd",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"勤务车辆",name:"cQucl",newline:false,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"勤务车辆",name:"cQucl",newline:false,labelWidth:100,width:200,space:30,type:"text"}
          
         ]
  }};
