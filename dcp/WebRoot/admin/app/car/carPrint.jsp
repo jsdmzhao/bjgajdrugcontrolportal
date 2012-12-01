@@ -97,7 +97,7 @@
 					</tr>
 					<tr>
 						<th>出车时间</th>
-						<td colspan="2"><s:property value="car.d_cfsj"/></td>
+						<td colspan="2"><s:property value="car.d_ccsj"/></td>
 						<th>归队时间</th>
 						<td colspan="2"><s:property value="car.d_gdsj"/></td>
 					</tr>
