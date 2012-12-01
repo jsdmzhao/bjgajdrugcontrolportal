@@ -96,9 +96,10 @@ KqZbSvc.queryAll(null,function(res){
 				
 			},
 			height:'500',
-			 eventClick: function(event) {//alert(event.id); 
+			 eventClick: function(event) {
 			 
 				 if(confirm("是否删除 "+event.title+" 的值班信息")) { 
+					  // $("#calendar").fullCalendar('removeEvents');  
 		           
 		            	$('#calendar').fullCalendar('removeEvents', event.id);
 		                    } 
