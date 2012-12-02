@@ -349,11 +349,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div style="padding-left: 10px; padding-top: 15px; text-align: left;">
 						<div>
 						<s:if test="resMap.zbbStr != null and resMap.zbbStr != '' ">
-							<strong>值班领导：</strong> 
-							<s:property value="resMap.zbbStr"/>
+							<strong>值班信息：</strong> 
+							<s:property escape="false" value="resMap.zbbStr"/>
 						</s:if>
 						<s:else>
-							<strong>暂无值班领导</strong></br>
+							<strong>暂无值班信息</strong></br>
 						</s:else>
 						</div>
 						<div style="margin-top: 5px; vertical-align: bottom;">
