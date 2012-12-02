@@ -59,19 +59,18 @@ public class KqZbSvc  {
 	
 	
 	public String getZb() throws SQLException {
-		String returnValue="<br>";
+		String returnValue="";
 		// List<Map> list=kqZbDao.getZb();
 		List<Map> list=kqZbDao.getDayZbb();
 		if(list.size()>0){
 			
-			 returnValue=returnValue+"<br><b>"+list.get(0).get("cMc")+"</b>  "+list.get(0).get("cXm")+"";
-		 for (int i = 1; i < list.size(); i++) {
+			 returnValue=returnValue+"<b>"+list.get(0).get("cMc")+"</b>："+list.get(0).get("cXm")+"";
+			 for (int i = 1; i < list.size(); i++) {
 		//	 returnValue=returnValue+list.get(i).get("userName")+"，";
 			 if(list.get(i).get("cMc").equals(list.get(i-1).get("cMc"))){
-			 returnValue=returnValue+" "+list.get(i).get("cXm")+"";
+				 returnValue=returnValue+"："+list.get(i).get("cXm")+"";
 			 }else{
-				 
-				 returnValue=returnValue+"<br><b>"+list.get(i).get("cMc")+"</b>  "+list.get(i).get("cXm")+"";
+				 returnValue=returnValue+"<br><b>"+list.get(i).get("cMc")+"</b>："+list.get(i).get("cXm")+"";
 				 
 			 }
 		}

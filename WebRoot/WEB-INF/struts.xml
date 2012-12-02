@@ -33,6 +33,10 @@
 			<result>/index.jsp</result>
 		</action>
 		
+				<action name="newsSort" class="newsAction" method="newsSort">
+			<result>/news_sort.jsp</result>
+		</action>
+		
 		<action name="cartype*" class="cartypeAction" method="cartype{1}">
 			<result name="success">/admin/app/car/cartype{1}.jsp</result>
 		</action>

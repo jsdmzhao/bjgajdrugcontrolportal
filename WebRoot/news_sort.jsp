@@ -28,13 +28,60 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<style type="text/css">
 		body { padding:0px; margin:0px; }
-		.demo { width:549px; height:auto; display:block; overflow:hidden; zoom:=1;
+		.demo { width:649px; height:auto; display:block; overflow:hidden; zoom:=1;
 		}
 		.STYLE1 {
 			font-size: 24px;
 			font-weight: bold;
 		}
 		.STYLE2 {color: #999999}
+		
+		#news {
+			width: 600px;
+			font-size: 13px;
+			line-height: 180%;
+			font-family: Verdana;
+		}
+		
+		#news #main table {
+			border-collapse: collapse;
+			line-height: 1.6em;
+			margin: 5px 10px;
+			width: 610px;
+		}
+		
+		#news #main th {
+			background: none repeat scroll 0 0 #EEEEEE;
+			border: 1px solid #DDDDDD;
+			font-size: 13px;
+			font-weight: bold;
+			padding: 5px;
+		}
+		
+		#news #main table {
+			border-collapse: collapse;
+			line-height: 1.6em;
+		}
+		
+		#news #main tbody th {
+			background: none repeat scroll 0 0 #F9F9F9;
+			font-weight: normal;
+			text-align: left;
+		}
+		
+		#news #main th {
+			background: none repeat scroll 0 0 #EEEEEE;
+			border: 1px solid #DDDDDD;
+			font-size: 13px;
+			font-weight: bold;
+			padding: 5px;
+		}
+		
+		#news #main td {
+			border: 1px solid #DDDDDD;
+			padding: 5px;
+			font-size: 13px;
+		}
 	</style>
 
   </head>
@@ -179,14 +226,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</s:else>
 				</div>
 				<div class="news_center_title_more">
-					<font color="#DF7024" size="2">您现在所在的位置：<a href="<%=basePath%>"><font color="#DF7024" size="2">首页</font></a>&nbsp;&gt;&gt;&nbsp;<s:property value="news.c_lm_"/></font>
+					<font color="#DF7024" size="2">您现在所在的位置：<a href="<%=basePath%>"><font color="#DF7024" size="2">首页</font></a>&nbsp;&gt;&gt;&nbsp;信息录入排行</font>
 				</div>
 			</div>
 			<div class="news_content_center_content" style="padding:10px 0px 10px 20px;">
-				<div style="font-size: 24px; font-weight:800; color:#F00; margin-top: 20px;line-height: 50px;"><s:property value="news.c_bt"/></div>
+				<div style="font-size: 24px; font-weight:800; color:#F00; margin-top: 20px;line-height: 50px;">信息录入排行</div>
 				<hr/>
 				<div style="margin-top: 10px;">
-					<div style="float: left;"><s:property value="news.c_yhzid"/>&nbsp;&nbsp;<s:property value="news.d_fbsj"/> </div>
+					<div style="float: left;">&nbsp;&nbsp;</div>
 					<div style="float: right;">
 					      【<A onClick="thetd.style.fontSize='20px';" href="#"><font color="#0000CC">大</font></A> 
 					        <A onClick="thetd.style.fontSize='14px';" href="#"><font color="#0000CC">中</font></A> 
@@ -200,13 +247,162 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 				</div>
 				<br/>
-				<div id="thetd" style="line-height: 22px; width: 710px; text-align: left; margin-top: 50px;">
-					<!-- 
-					<s:if test="news.c_tpljdz != null and news.c_tpljdz != '' ">
-						<p align="center"><img src="<s:property value='news.c_tpljdz'/>" style="margin-top: 3px; height: 300px; width: 400px" alt="<s:property value="news.c_bt"/>"/></p>
-					</s:if>
-					 -->
-					<s:property value="news.c_nr" escape="false"/>
+				<div id="thetd" style="line-height: 22px; width: 610px; text-align: left; margin-top: 50px;">
+					<div id="news">
+						<div id="main">
+							<table>
+								<thead>
+									<tr>
+										<th>排名</th>
+										<th>总队各单位</th>
+										<th>信息条数</th>
+										<th>排名</th>
+										<th>各区县分局</th>
+										<th>信息条数</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>办公室</td>
+										<td>3698</td>
+										<td>1</td>
+										<td>东城</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>缉控大队 </td>
+										<td>614 </td>
+										<td>2</td>
+										<td>西城</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>情报中心 </td>
+										<td>258</td>
+										<td>3</td>
+										<td>朝阳</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>协调指导大队</td>
+										<td>180  </td>
+										<td>4</td>
+										<td>丰台 </td>
+										<td>0 </td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td>查禁大队 </td>
+										<td>126 </td>
+										<td>5</td>
+										<td>石景山</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>6</td>
+										<td>侦查大队 </td>
+										<td>94 </td>
+										<td>6</td>
+										<td>海淀</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>7</td>
+										<td>两品办 </td>
+										<td>93 </td>
+										<td>7</td>
+										<td>门头沟</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>8</td>
+										<td>总队领导 </td>
+										<td>1</td>
+										<td>8</td>
+										<td>燕山</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>9</td>
+										<td></td>
+										<td></td>
+										<td>9</td>
+										<td>房山</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>10</td>
+										<td></td>
+										<td></td>
+										<td>10</td>
+										<td>通州</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>11</td>
+										<td></td>
+										<td></td>
+										<td>11</td>
+										<td>顺义</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>12</td>
+										<td></td>
+										<td></td>
+										<td>12</td>
+										<td>昌平</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>13</td>
+										<td></td>
+										<td></td>
+										<td>13</td>
+										<td>大兴</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>14</td>
+										<td></td>
+										<td></td>
+										<td>14</td>
+										<td>怀柔</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>15</td>
+										<td></td>
+										<td></td>
+										<td>15</td>
+										<td>平谷</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>16</td>
+										<td></td>
+										<td></td>
+										<td>16</td>
+										<td>密云</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>17</td>
+										<td></td>
+										<td></td>
+										<td>17</td>
+										<td>延庆</td>
+										<td>0</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
 				</div>
 			</div>
 	</div>

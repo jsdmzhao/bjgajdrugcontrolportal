@@ -6,6 +6,7 @@
 <%@page import="java.net.URLEncoder"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -79,7 +80,7 @@ if(c_bt == null){
   <body>
 <div id="container_news">
 	<div id="banner_top">
-		<div style="margin-left: 450px; padding-top:40px;">
+		<div style="margin-left: 375px; padding-top:40px;">
 	      <object type="application/x-shockwave-flash" data="flash/banner_t.swf" width="278" height="34">
 			<param name="movie" value="flash/banner_t.swf" />
 			<param name="wmode" value="transparent" />

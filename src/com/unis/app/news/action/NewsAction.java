@@ -438,6 +438,11 @@ public class NewsAction {
 		return Globals.SUCCESS;
 	}
 	
+	public String newsSort(){
+
+		return Globals.SUCCESS;
+	}
+	
 	public String newsDetail(){
 		news = (News) newsService.selectOne("NewsMapper.getIndexNews", news);
 		return Globals.SUCCESS;
