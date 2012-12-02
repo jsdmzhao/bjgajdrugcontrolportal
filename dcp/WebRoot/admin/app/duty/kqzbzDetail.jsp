@@ -40,7 +40,7 @@ if(userId==null){
     
 	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
-  	<script type='text/javascript' src='<%=basePath%>dwr/interface/KqCcjlSvc.js'></script>
+  	<script type='text/javascript' src='<%=basePath%>dwr/interface/ClxxSvc.js'></script>
   	
   		<script type='text/javascript' src='<%=basePath%>dwr/interface/UserInfoSvc.js'></script>
 

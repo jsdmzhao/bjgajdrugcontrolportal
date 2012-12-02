@@ -18,9 +18,10 @@
 		<result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
 	</resultMap>
 	
-	<resultMap id="Result3"  type="Combox">
-		<result property="text" column="D_SJ" jdbcType="VARCHAR"/>
-		<result property="value" column="USER_NAME" jdbcType="VARCHAR"/>
+	<resultMap id="Result3"  type="java.util.Map">
+			<result property="cXm" column="C_XM" jdbcType="VARCHAR"/>
+			<result property="cMc" column="C_MC" jdbcType="VARCHAR"/>
+			<result property="dSj" column="D_SJ" jdbcType="VARCHAR"/>
 	</resultMap>
 	 
 	<select id="getZb" resultMap="Result2"  parameterType="java.util.Map" >
@@ -31,13 +32,10 @@
 	</select>
 	
 	<select id="getWeekZbb" resultMap="Result3" >
-	  SELECT 
-		TO_CHAR(D_SJ,'YYYY-MM-DD') D_SJ,
-		FUN_GET_ZZB(D_SJ) USER_NAME
-	   FROM B_KQ_ZB 
-	  WHERE D_SJ BETWEEN TRUNC(SYSDATE) AND TRUNC(SYSDATE) + 8
-	   GROUP BY D_SJ
-       ORDER BY D_SJ
+	 SELECT C_XM, C.C_MC, to_char(D_SJ,'YYYY-MM-DD') D_SJ
+  FROM B_YH A, B_KQ_ZB B,D_DM C
+ WHERE A.USER_ID = B.USER_ID AND C.C_DM=A.C_YHZ AND C.C_BXH='DEP'
+   AND TO_CHAR(D_SJ, 'YYYY-MM' )= TO_CHAR(SYSDATE, 'YYYY-MM') ORDER BY D_SJ,C_YHZ
 	</select>
 
 

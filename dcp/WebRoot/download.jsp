@@ -9,8 +9,8 @@
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	
-	response.setContentType("application/x-download;charset=GBK");  
-	response.setHeader("Content-Disposition", "attachment;filename=download.doc");
+//	response.setContentType("application/x-download;charset=GBK");  
+//	response.setHeader("Content-Disposition", "attachment;filename=download.doc");
 
 	ApplicationContext ctx = WebApplicationContextUtils .getWebApplicationContext(request.getSession() .getServletContext());
 	KqZbSvc kqZbSvc = (KqZbSvc) ctx.getBean("kqZbSvc");
@@ -82,20 +82,110 @@
 			<table>
 				<thead>
 					<tr>
-						<th>值班日期</th>
-						<th>值班人员</th>
+						<th colspan="10">
+						<%
+						Calendar cal=Calendar.getInstance();    
+						int y=cal.get(Calendar.YEAR);    
+						int m=cal.get(Calendar.MONTH);    
+						%>
+						禁毒总队<%=y %>年<%=m+1 %>月份值班表
+						
+						</th>
+					</tr>
+					<tr>
+					<%
+					List titleList=new ArrayList();
+					titleList.add("总队领导");
+					titleList.add("带班领导");
+					titleList.add("办公室");
+					titleList.add("协调指导处");
+					titleList.add("缉控大队");
+					titleList.add("侦查大队");
+					titleList.add("查禁大队");
+					titleList.add("情报中心");
+					titleList.add("易管大队");
+					titleList.add("值班日期");
+					
+					
+					%>
+					
+						<%for(int i=0;i<titleList.size();i++){ %>
+						<th><%=titleList.get(i) %></th>
+						<%} %>
 					</tr>
 				</thead>
 				<tbody>
 				<%
-					List<Combox> list = kqZbSvc.getWeekZbb();
-					for (Combox combox : list) {
-						out.println("<tr>");
-						out.println("<th>"+ combox.getText() +"</th>");
-						out.println("<th>"+ combox.getValue() +"</th>");
-						out.println("</tr>");
-					}
+					List<Map<String,String>> list = kqZbSvc.getWeekZbb();
+				
+				   int index=0;
+				
+				   if(list.size()>1){
+					out.println("<tr>");
+					out.println("<th>");
+					
+					 
+				    for(int i=0;i<list.size();i++){
+				    //	Map<String,String> pBef=list.get(i-1);
+				    	Map<String,String> p=list.get(i);
+				    	Map<String,String> pNext=new HashMap();
+				    	if((i+1)>list.size()){
+				    	 pNext=list.get(i+1);
+				    	}else{
+				    		 pNext=list.get(i);
+				    	}
+				    	
+				    	
+				    	%>
+				    	<script>
+				    //	alert("<%=p.get("cXm")+"----"+p.get("cMc")+"----"+ titleList.get(index)    %>");
+				    	</script>
+				    	
+				    	<%
+				    		
+				    		if(titleList.get(index).equals(p.get("cMc"))&&titleList.get(index).equals(pNext.get("cMc"))){
+				    			out.println(p.get("cXm"));
+				    			
+				    		}else if(titleList.get(index).equals(p.get("cMc"))&&!titleList.get(index).equals(pNext.get("cMc"))){
+				    			out.println(p.get("cXm")+"</th><th>");
+				    			index=index+1;
+				    		}else{
+				    			out.println("</th><th>");
+				    			i=i-1;
+				    			index=index+1;
+				    			
+				    		}
+				    	
+				    	
+				    	if(index==8){
+				    		out.println("<th>"+list.get(i-1).get("dSj")+"</th>");
+				    		out.println("</tr><tr>");
+							out.println("<th>");
+							
+							index=0;
+				    	}
+				    	
+				    }
+				    
+				    for(int i=index+1;i<titleList.size()-1;i++){
+				    	
+				    	out.println("</th><th>");
+				    }
+				    out.println("<th>"+	list.get(list.size()-1).get("dSj")+"</th>");
+				    out.println("</th></tr>");
+				    
+						
+				}
 				%>
+				<tr>
+						<th colspan="10">
+1.第二天值班人员作为前一天值班的备班人员，保持24小时通讯畅通。值班人员要坚守岗位,不得擅自脱岗、空岗，上午9时至下午6时外出时需向本单位主要领导请假；下午6时至第二天上午9时外出需向本单位主要领导和当日值班大队长分别请假，获批后由值班大队长向总队领导报告，并向值班室报备。						
+						</th>
+						</tr>
+						<tr>
+						<th colspan="10">
+						2.不能参加当日值班的人员必须提前找人替换，由所在单位领导报总队值班室。唐屴、杨国章、郭荫茂、席志勇毒品库值班。</th>
+					</tr>
 				</tbody>
 			</table>
 		</div>

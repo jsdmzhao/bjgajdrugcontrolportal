@@ -75,8 +75,7 @@ public class KqZbSvc  {
 		return kqZbDao.queryByPageInfo(p, page);
 	}
 	
-	@SuppressWarnings("unchecked")
-	public List<Combox> getWeekZbb() throws SQLException {
+	public List<Map<String,String>> getWeekZbb() throws SQLException {
 		return kqZbDao.getWeekZbb();
 	}
 
