@@ -304,7 +304,7 @@ Date.prototype.format = function(format)
 <ul id="faq">
 
 <%
-List<Map<String,Object>> list=userInfoSvc.choose();
+List<Map<String,Object>> list=userInfoSvc.chooseZb();
 for(int i=0;i<list.size();i++){
 	
 	%>

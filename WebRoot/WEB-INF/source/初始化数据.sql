@@ -11,6 +11,9 @@ delete from SYS_MENU;
 delete from SYS_BUTTON;
 delete from D_DM;
 
+delete from B_ZMCD;
+delete from B_WDZM;
+
 
 
 --菜单
@@ -86,8 +89,8 @@ MENU_ICON, ISVISIBLE)values (404, '404', '4', '会议提示', 'admin/app/duty/kq
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
 MENU_ICON, ISVISIBLE)values (405, '405', '4', '会议室申请', 'admin/app/duty/kqhyssq.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
 
-insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
-MENU_ICON, ISVISIBLE)values (406, '406', '4', '值班组管理', 'admin/app/duty/kqzbz.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
+--insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
+--MENU_ICON, ISVISIBLE)values (406, '406', '4', '值班组管理', 'admin/app/duty/kqzbz.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
 
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
 MENU_ICON, ISVISIBLE)values (407, '407', '4', '值班管理', 'admin/app/duty/kqzb.jsp', 'liger/lib/icons/32X32/sitemap.gif', '1' );
@@ -1042,20 +1045,26 @@ SELECT SEQ_SYS_PERMISSION_ID.NEXTVAL, 1, BTN_ID FROM SYS_BUTTON;
 
 
 
-insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
-values (SEQ_ZMCD.Nextval, '公告通知', 'temp/notice.jsp?allow=true', 'images/3DSMAX.png', null, null);
+--insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
+--values (SEQ_ZMCD.Nextval, '公告通知', 'temp/notice.jsp?allow=true', 'images/3DSMAX.png', null, null);
 
-insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
-values (SEQ_ZMCD.Nextval, '值班表', 'admin/app/duty/kqzb.jsp?allow=true', 'images/3DSMAX.png', null, null);
+--insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
+--values (SEQ_ZMCD.Nextval, '值班表', 'admin/app/duty/kqzb.jsp?allow=true', 'images/3DSMAX.png', null, null);
 
 insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
 values (SEQ_ZMCD.Nextval, '警务管理', 'temp/duty.jsp?allow=true', 'images/3DSMAX.png', null, null);
 
 insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
-values (SEQ_ZMCD.Nextval, '我的资料', 'admin/app/userinfo/userinfoDetail.jsp?allow=true', 'images/Program Files Folder.png', null, null);
+values (SEQ_ZMCD.Nextval, '警务保障', 'temp/jwbz.jsp?allow=true', 'images/Program Files Folder.png', null, null);
 
 insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
-values (SEQ_ZMCD.Nextval, '常用网址', 'temp/website.jsp?allow=true', '	 images/Program Files Folder.png', null, null);
+values (SEQ_ZMCD.Nextval, '日志列表', 'temp/rzlb.jsp?allow=true', 'images/Program Files Folder.png', null, null);
+
+--insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
+--values (SEQ_ZMCD.Nextval, '我的资料', 'admin/app/userinfo/userinfoDetail.jsp?allow=true', 'images/Program Files Folder.png', null, null);
+
+--insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
+--values (SEQ_ZMCD.Nextval, '常用网址', 'temp/website.jsp?allow=true', '	 images/Program Files Folder.png', null, null);
 
 --insert into B_ZMCD (N_XH, C_MC, C_LJ, C_TB, N_XSXH, C_YXX)
 --values (SEQ_ZMCD.Nextval, '上班打卡', 'temp/sxbdk.jsp?id=1', 'images/Alien Folder.png', null, null);

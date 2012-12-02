@@ -130,46 +130,59 @@
 				    	Map<String,String> p=list.get(i);
 				    	Map<String,String> pNext=new HashMap();
 				    	if((i+1)>=list.size()){
-				    	 pNext=list.get(0);
+				    	     pNext=list.get(0);
 				    	}else{
 				    		 pNext=list.get(i+1);
 				    	}
 				    	
+				   	 
+				    	boolean flag=false;
+					    for(int j=0;j<titleList.size();j++){
+					    	if(titleList.get(j).equals(p.get("cMc"))){
+					    		flag=true;
+					    		
+					    	}
+					    	
+					    }
 				    	
-				    	%>
-				    	<script>
-				    	alert("<%=p.get("cXm")+"----"+p.get("cMc")+"----"+ titleList.get(index)+"----"+pNext.get("cMc")  +"----"+i     %>");
-				    	</script>
-				    	
-				    	<%
+				    		if(flag==false){
+				    			continue;}
 				    		
 				    		if(titleList.get(index).equals(p.get("cMc"))&&titleList.get(index).equals(pNext.get("cMc"))){
+				    			
 				    			out.println(p.get("cXm"));
 				    			
 				    		}else if(titleList.get(index).equals(p.get("cMc"))&&!titleList.get(index).equals(pNext.get("cMc"))){
+				    			
+				    			
+				    			
 				    			index=index+1;
 				    			if(index>8){
 				    				out.println(p.get("cXm")+"");
 				    			}else{
-				    				
 				    				out.println(p.get("cXm")+"</th><th>");
 				    			}
 				    			
 				    		}else{
-				    			out.println("</th><th>");
+				    			if(index>7){
+				    			}else{
+				    				out.println("</th><th>");
+				    			}
+				    			
 				    			i=i-1;
 				    			index=index+1;
 				    			
 				    		}
 				    	
 				    	
-				    	if(index>8){
-				    		i=i+1;
+				    	 if(index>8){
+				    		// i=i-1;
 				    		out.println("<th>"+list.get(i-1).get("dSj")+"</th>");
 				    		out.println("</tr><tr>");
 							out.println("<th>");
 							
 							index=0;
+				    		
 				    	}
 				    	
 				    }

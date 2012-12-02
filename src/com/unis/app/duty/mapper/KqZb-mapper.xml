@@ -56,15 +56,16 @@
 
 	<select id="queryAllInfo" resultMap="Result"  parameterType="java.util.Map" >
 				 select 
-					base.N_XH,
-					base.USER_ID,
-					base.C_DD,
-					base.C_YY,
-					to_char(base.D_SJ,'YYYY-MM-DD')  D_SJ,
-					base.C_BZ,
-					FUN_GET_YHMC(USER_ID) USER_NAME
-				 from B_KQ_ZB base 
+          base.N_XH,
+          base.USER_ID,
+          base.C_DD,
+          base.C_YY,
+          to_char(base.D_SJ,'YYYY-MM-DD')  D_SJ,
+          base.C_BZ,
+          case a.c_jb when '2' then c_xm||'(带班)'  else c_xm end as USER_NAME
+         from B_KQ_ZB base,b_yh a
 		 <trim prefix="where" prefixOverrides="and |or"> 
+		     base.user_id=a.user_id
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
 			<if test="userId != null and userId !='' ">  and USER_ID = #{userId}</if>
 			
