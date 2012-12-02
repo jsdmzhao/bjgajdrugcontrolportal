@@ -11,7 +11,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<title>车辆报修审批表</title>
+<title>警务保障统计表</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -20,7 +20,7 @@
 <meta http-equiv="description" content="This is my page">
 <style type="text/css">
 #news {
-	width: 700px;
+	width: 800px;
 	font-size: 13px;
 	line-height: 180%;
 	font-family: Verdana;
@@ -30,7 +30,7 @@
 	border-collapse: collapse;
 	line-height: 1.6em;
 	margin: 5px 10px;
-	width: 710px;
+	width: 820px;
 }
 
 #news #main th {
@@ -38,6 +38,7 @@
 	border: 1px solid #DDDDDD;
 	font-size: 13px;
 	font-weight: bold;
+	white-space:nowrap;
 	padding: 5px;
 }
 
@@ -49,8 +50,9 @@
 #news #main tbody th {
 	background: none repeat scroll 0 0 #F9F9F9;
 	font-weight: normal;
+	white-space:nowrap;
 	text-align: left;
-	width: 60px;
+	width: 80px;
 }
 
 #news #main th {
@@ -69,51 +71,36 @@
 </style>
 </head>
 
-<body style="text-align: center; width: 600px;">
+<body style="text-align: center;">
 	<div id="news">
 		<div id="main">
-			<table>
+		<table>
 				<thead>
 					<tr>
-						<th colspan="6">禁毒总队车辆报修审批表</th>
+						<th colspan="6">禁毒总队警务保障统计表</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<th>使用单位</th>
-						<td colspan="5"><s:property value="carRepair.c_yhzid"/></td>
-					</tr>
-					<tr>
-						<th>车牌号</th>
-						<td width="140"><s:property value="carRepair.c_cphm"/></td>
-						<th>品牌型号</th>
-						<td width="140"><s:property value="carRepair.c_ppxh"/></td>
-						<th>责任司机</th>
-						<td width="140"><s:property value="carRepair.c_zrsj"/></td>
-					</tr>
-					<tr>
-						<th>维修理由</th>
-						<td colspan="5"><s:property value="carRepair.c_clzk"/></td>
-					</tr>
-					<tr>
-						<th>报修单位意见</th>
-						<td colspan="5"><s:property value="carRepair.c_shjg_f"/></td>
-					</tr>
-					<tr>
-						<th>警务保障科意见</th>
-						<td colspan="5"><s:property value="carRepair.c_shjg_t"/></td>
-					</tr>
-					<!-- 
-					<tr>
-						<th>总队主管领导意见</th>
-						<td colspan="5"><s:property value="carRepair.c_yhzid"/></td>
-					</tr>
-					 -->
-					<tr>
-						<td colspan="6" align="right">时间：<s:property value="carRepair.d_dj"/></td>
-					</tr>
+					<table>
+						<tbody>
+							<tr>
+								<th><strong>行驶里程</strong></th>
+								<th>15万公里以上</th>
+								<th>10-15万公里</th>
+								<th>5-10万公里</th>
+								<th>0-5万公里</th>
+							</tr>
+							<tr>
+								<td><strong>数量</strong></td>
+								<td>1</td>
+								<td>10</td>
+								<td>5</td>
+								<td>0</td>
+							</tr>
+						</tbody>
+					</table>
 				</tbody>
-			</table>
+	   </table>
 			<p align="right" style="color: red; cursor: pointer;" onclick="window.print();">打印此表</p>
 		</div>
 	</div>

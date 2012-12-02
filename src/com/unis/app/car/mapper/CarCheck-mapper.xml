@@ -19,7 +19,7 @@
 				  N_CLXSZLC    ,
 				  N_JCFY   ,
 				  TO_CHAR(D_DJ,'YYYY-MM-DD') D_DJ ,
-				  FUN_GET_CPHMYHZ(N_CLLBXH)  C_YHZID_ ,
+				  C_CLBM ,
 				  C_YHZID   ,
 				  C_YHID     
 		FROM B_CLJC WHERE N_XH = #{n_xh}
@@ -34,16 +34,18 @@
 		 INSERT INTO B_CLJC(
 		      N_XH      ,
 			  N_CLLBXH  ,
+			  C_CLBM    ,
 			  D_JCRQ    ,
-			  C_JCCMC    ,
-			  N_CLXSZLC    ,
-			  N_JCFY   ,
+			  C_JCCMC   ,
+			  N_CLXSZLC ,
+			  N_JCFY    ,
 			  D_DJ      ,
 			  C_YHZID   ,
 			  C_YHID    ) 
 		VALUES (	            	
 	          seq_b_cljc.nextval,        
               #{n_cllbxh,jdbcType=NUMERIC},  
+              #{c_clbm,jdbcType=VARCHAR},
 			  TO_DATE(#{d_jcrq,jdbcType=DATE},'YYYY-MM-DD'),
 			  #{c_jccmc,jdbcType=VARCHAR}, 
 			  #{n_clxszlc,jdbcType=NUMERIC},
@@ -63,9 +65,14 @@
 				       N_CLXSZLC,
 				       TO_CHAR(D_JCRQ,'YYYY-MM-DD') D_JCRQ
 				  FROM B_CLJC
-				  <if test="n_cllbxh != null and n_cllbxh != '' ">
-				  	WHERE N_CLLBXH = #{n_cllbxh}
-				  </if>
+				  <where>
+				  	  <if test="c_clbm != null and c_clbm != '' ">
+					  	 C_CLBM = #{c_clbm}
+					  </if> 
+					  <if test="n_cllbxh != null and n_cllbxh != '' ">
+					  	 AND N_CLLBXH = #{n_cllbxh}
+					  </if>
+				  </where>
 				  ORDER BY N_XH DESC) S
 	         WHERE ROWNUM &lt;= #{limit}) T
 	 WHERE T.RN &gt; #{start}
@@ -74,14 +81,20 @@
 	<select id="getCarCheckPageListCnt" resultType="long" parameterType="hashmap">
 		SELECT COUNT(*) Total
 		  FROM B_CLJC
-		  <if test="n_cllbxh != null and n_cllbxh != '' ">
-			WHERE N_CLLBXH = #{n_cllbxh}
-		  </if>
+		  <where>
+		  	  <if test="c_clbm != null and c_clbm != '' ">
+			  	 C_CLBM = #{c_clbm}
+			  </if> 
+			  <if test="n_cllbxh != null and n_cllbxh != '' ">
+			  	 AND N_CLLBXH = #{n_cllbxh}
+			  </if>
+		  </where>
 	</select>
 	
 	<update id="updateCarCheck" parameterType="hashmap">
 		UPDATE B_CLJC
 	      SET N_CLLBXH   =  #{n_cllbxh,jdbcType=NUMERIC},
+	     	  C_CLBM     =  #{c_clbm,jdbcType=VARCHAR},
 			  D_JCRQ     =  TO_DATE(#{d_jcrq,jdbcType=DATE},'YYYY-MM-DD'),
 			  C_JCCMC    =  #{c_jccmc,jdbcType=VARCHAR},
 			  N_CLXSZLC  =  #{n_clxszlc,jdbcType=NUMERIC},

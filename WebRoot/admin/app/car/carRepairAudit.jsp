@@ -73,7 +73,7 @@ if(carType == null){
       
       function getCL(value){
     	  var carType = document.getElementById("selectBM").value;
-    	  var str = "<select id=\"selectCPHM\"  onchange=\"search()\" value='<%=carType%>'><option value='"+carType+"'>全部车辆</option>";
+    	  var str = "<select id=\"selectCPHM\"  onchange=\"search()\"><option value=''>全部车辆</option>";
     	  CartypeAction.cartypeSelectList(value,function(data){
     			document.getElementById("selectCL").innerHTML = str + data + "</select>"
     	  });
@@ -81,9 +81,10 @@ if(carType == null){
       }
 	  
 	  function search(){
+		  var carBm = document.getElementById("selectBM").value;
     	  var carType = document.getElementById("selectCPHM").value;
           grid.changePage("first"); 
-          grid.setOptions({parms:[{name:'n_cllbxh',value:carType}]});
+          grid.setOptions({parms:[{name:'c_clbm',value:carBm},{name:'n_cllbxh',value:carType}]});
           grid.loadData();
   	  }
 	  

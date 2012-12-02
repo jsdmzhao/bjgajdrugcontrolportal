@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        var config = {"Form":{ 
          fields : [{
         	 display:"所属部门",
-             name:"c_bm",
+             name:"c_clbm",
              labelWidth:130,
              width:280,
              type:"basicText",
@@ -177,6 +177,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            }
        	var formMap = DWRUtil.getValues("mainform"); 
        	
+       	formMap['c_clbm'] = formMap['c_clbm_val'];
        	formMap['n_cllbxh'] = formMap['n_cllbxh_val'];
        	
        	CarCheckAction.carCheckSave(formMap,function (result){
@@ -201,11 +202,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                        {text:'协调指导大队',value:'4'}, {text:'情报中心',value:'9'}, {text:'侦查大队',value:'7'},
                        {text:'查禁大队',value:'8'}, {text:'缉控大队',value:'5'}, {text:'两品办',value:'10'}];;
 
-      cmb1 = $("#c_bm").ligerComboBox({ data: tempdata, isMultiSelect: false,
+      cmb1 = $("#c_clbm").ligerComboBox({ data: tempdata, isMultiSelect: false,
            textFiled:"text",valueField:"value",
-           value:"<s:property value='carCheck.c_yhzid_'/>",
+           value:"<s:property value='carCheck.c_clbm'/>",
            onSelected: function (newvalue){
-          	  $("#n_cllbxh").ligerComboBox("reload","<%=basePath%>cartypeCombox?c_yhzid="+newvalue); 
+          	  //$("#n_cllbxh").ligerComboBox("reload","<%=basePath%>cartypeCombox?c_yhzid="+newvalue); 
           	  setData(cmb2,"<%=basePath%>cartypeCombox?c_yhzid="+newvalue);
            }
   	  });

@@ -31,6 +31,8 @@ public class CarCheckAction {
 	
 	private String n_cllbxh;
 	
+	private String c_clbm;
+	
 	private Integer pagesize;
 	
 	private Integer page;
@@ -63,6 +65,7 @@ public class CarCheckAction {
 		String yhzId =  session.getAttribute("cYhz")+"";
 		Map<String, String> sqlParamMap = new HashMap<String, String>();
 		
+		sqlParamMap.put("c_clbm", c_clbm);
 		sqlParamMap.put("n_cllbxh", n_cllbxh);
 		sqlParamMap.put("c_yhid", userId);
 		sqlParamMap.put("c_yhzid", yhzId);
@@ -130,6 +133,14 @@ public class CarCheckAction {
 
 	public void setN_cllbxh(String n_cllbxh) {
 		this.n_cllbxh = n_cllbxh;
+	}
+
+	public String getC_clbm() {
+		return c_clbm;
+	}
+
+	public void setC_clbm(String c_clbm) {
+		this.c_clbm = c_clbm;
 	}
 
 	public AbsServiceAdapter<Integer> getCarService() {

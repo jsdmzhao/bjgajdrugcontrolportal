@@ -6,6 +6,8 @@ public class CarRepair {
 	
 	private String n_cllbxh;
 	
+	private String c_clbm;
+	
 	private String c_cphm;
 	
 	private String c_ppxh;
@@ -57,6 +59,14 @@ public class CarRepair {
 
 	public String getN_cllbxh() {
 		return n_cllbxh;
+	}
+
+	public String getC_clbm() {
+		return c_clbm;
+	}
+
+	public void setC_clbm(String c_clbm) {
+		this.c_clbm = c_clbm;
 	}
 
 	public void setN_cllbxh(String n_cllbxh) {

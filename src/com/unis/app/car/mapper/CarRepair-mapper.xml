@@ -21,7 +21,7 @@
 				  C_SXRY    ,
 				  C_LXFS    ,
 				  TO_CHAR(D_DJ,'YYYY-MM-DD') D_DJ ,
-				  FUN_GET_CPHMYHZ(N_CLLBXH)  C_YHZID_ ,
+				  C_CLBM    ,
 				  C_YHZID   ,
 				  C_YHID     
 		FROM B_CLWX WHERE N_XH = #{n_xh}
@@ -36,7 +36,7 @@
 		 SELECT  B_CLLB.C_CPHM C_CPHM,
 		         B_CLLB.C_PPXH C_PPXH,
 		         B_CLLB.C_ZRSJ C_ZRSJ,
-		         FUN_GET_DMMC('DEP',B_CLWX.C_YHZID) C_YHZID,
+		         FUN_GET_DMMC('DEP',B_CLLB.C_YHZID) C_YHZID,
 		         TO_CHAR(B_CLWX.D_DJ,'YYYY-MM-DD') D_DJ,
 		         B_CLWX.C_CLZK C_CLZK,
 		         B_CLWX.C_SXRY C_SXRY,
@@ -51,6 +51,7 @@
 		 INSERT INTO B_CLWX(
 		      N_XH      ,
 			  N_CLLBXH  ,
+			  C_CLBM    ,
 			  D_SQRQ    ,
 			  C_SXRY    ,
 			  N_CLXSZLC ,
@@ -61,7 +62,8 @@
 			  C_YHID    ) 
 		VALUES (	            	
 	          seq_b_clwx.nextval,        
-              #{n_cllbxh,jdbcType=NUMERIC},  
+              #{n_cllbxh,jdbcType=NUMERIC}, 
+              #{c_clbm,jdbcType=VARCHAR}, 
 			  TO_DATE(#{d_sqrq,jdbcType=DATE},'YYYY-MM-DD'),
 			  #{c_sxry,jdbcType=VARCHAR}, 
 			  #{n_clxszlc,jdbcType=NUMERIC},
@@ -92,8 +94,11 @@
 				        END) C_SHJG
 				  FROM B_CLWX
 				  WHERE 1 = 1
+				  <if test="c_clbm != null and c_clbm != '' ">
+				  	 AND C_CLBM = #{c_clbm}
+				  </if> 
 				  <if test="n_cllbxh != null and n_cllbxh != '' ">
-				  	AND N_CLLBXH = #{n_cllbxh}
+				  	 AND N_CLLBXH = #{n_cllbxh}
 				  </if>
 				  <if test="operateType == 'sh' and c_ks != '18' ">
 				  	AND C_SFSH  = '0' 
@@ -111,8 +116,11 @@
 	   SELECT COUNT(*) Total
 		 FROM B_CLWX
 	   WHERE 1 = 1
+	  <if test="c_clbm != null and c_clbm != '' ">
+	  	 AND C_CLBM = #{c_clbm}
+	  </if> 
 	  <if test="n_cllbxh != null and n_cllbxh != '' ">
-	  	AND N_CLLBXH = #{n_cllbxh}
+	  	 AND N_CLLBXH = #{n_cllbxh}
 	  </if>
 	  <if test="operateType == 'sh' and c_ks != '18' ">
 	  	AND C_SFSH  = '0' 
@@ -126,6 +134,7 @@
 	<update id="updateCarRepair" parameterType="hashmap">
 		UPDATE B_CLWX
 	      SET N_CLLBXH   =  #{n_cllbxh,jdbcType=NUMERIC},
+	          C_CLBM     =  #{c_clbm,jdbcType=VARCHAR},
 			  D_SQRQ     =  TO_DATE(#{d_sqrq,jdbcType=DATE},'YYYY-MM-DD'),
 			  C_SXRY     =  #{c_sxry,jdbcType=VARCHAR},
 			  N_CLXSZLC  =  #{n_clxszlc,jdbcType=NUMERIC},

@@ -3,7 +3,6 @@
 <%@page import="org.springframework.context.ApplicationContext"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -71,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    <a href="newsCenterList?news.c_lm=1239&pageNo=1">视频在线</a> 
 		    <a href="ftp://ftp.jdc.bj" target="_blank">工作交流</a> 
 		    <a href="newsCenterList?news.c_lm=1291&pageNo=1">光荣榜</a> 
-		    <a href="newsCenterList?news.c_lm=1297&pageNo=1">学习专栏</a>
+		    <a href="newsCenterList?news.c_lm=1297&pageNo=1">媒体关注</a>
 		    <a href="newsCenterList?news.c_lm=1214&pageNo=1" onMouseOver="mouseover(this, 1)" onmouseout="mouseout()">法律法规</a> 
 		    <a href="newsCenterList?news.c_lm=1286&pageNo=1">纪检监察</a> 
 		</div>
@@ -169,7 +168,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 	
-		<div id="news_center" style="background: url(newimages/bg2.png) repeat">
+		<div id="news_center">
 			<div class="news_center_title">
 				<div class="news_center_title_font">
 					<s:if test="news.c_lm_.indexOf(';') > -1">
