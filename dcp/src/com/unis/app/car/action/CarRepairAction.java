@@ -31,6 +31,8 @@ public class CarRepairAction {
 	
 	private String n_cllbxh;
 	
+	private String c_clbm;
+	
 	private Integer pagesize;
 	
 	private Integer page;
@@ -67,6 +69,7 @@ public class CarRepairAction {
 		
 		sqlParamMap.put("operateType", operateType);
 		sqlParamMap.put("n_cllbxh", n_cllbxh);
+		sqlParamMap.put("c_clbm", c_clbm);
 		sqlParamMap.put("c_yhid", userId);
 		sqlParamMap.put("c_yhzid", yhzId);
 		sqlParamMap.put("c_ks", c_ks);
@@ -158,6 +161,14 @@ public class CarRepairAction {
 
 	public void setN_cllbxh(String n_cllbxh) {
 		this.n_cllbxh = n_cllbxh;
+	}
+
+	public String getC_clbm() {
+		return c_clbm;
+	}
+
+	public void setC_clbm(String c_clbm) {
+		this.c_clbm = c_clbm;
 	}
 
 	public AbsServiceAdapter<Integer> getCarService() {

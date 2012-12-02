@@ -6,6 +6,8 @@ public class CarCheck {
 	
 	private String n_cllbxh;
 	
+	private String c_clbm;
+	
 	private String d_jcrq;
 	
 	private String c_jccmc;
@@ -36,6 +38,14 @@ public class CarCheck {
 
 	public void setN_cllbxh(String n_cllbxh) {
 		this.n_cllbxh = n_cllbxh;
+	}
+
+	public String getC_clbm() {
+		return c_clbm;
+	}
+
+	public void setC_clbm(String c_clbm) {
+		this.c_clbm = c_clbm;
 	}
 
 	public String getD_jcrq() {
