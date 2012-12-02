@@ -59,7 +59,7 @@
 			<if test="cTj != null and cTj !='' ">  and C_TJ = #{cTj}</if>
 			<if test="cSjdm != null and cSjdm !='' ">  and C_SJDM = #{cSjdm}</if>
 		</trim>
-		ORDER BY N_XH  DESC 
+		ORDER BY C_BXH,N_XSXH   DESC 
 		<include refid="pagination.paginationLast"></include>
 	</select>
 

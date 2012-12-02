@@ -98,11 +98,11 @@
 					titleList.add("总队领导");
 					titleList.add("带班领导");
 					titleList.add("办公室");
-					titleList.add("协调指导处");
+					titleList.add("协调指导大队");
 					titleList.add("缉控大队");
+					titleList.add("情报中心");
 					titleList.add("侦查大队");
 					titleList.add("查禁大队");
-					titleList.add("情报中心");
 					titleList.add("易管大队");
 					titleList.add("值班日期");
 					
@@ -129,16 +129,16 @@
 				    //	Map<String,String> pBef=list.get(i-1);
 				    	Map<String,String> p=list.get(i);
 				    	Map<String,String> pNext=new HashMap();
-				    	if((i+1)>list.size()){
-				    	 pNext=list.get(i+1);
+				    	if((i+1)>=list.size()){
+				    	 pNext=list.get(0);
 				    	}else{
-				    		 pNext=list.get(i);
+				    		 pNext=list.get(i+1);
 				    	}
 				    	
 				    	
 				    	%>
 				    	<script>
-				    //	alert("<%=p.get("cXm")+"----"+p.get("cMc")+"----"+ titleList.get(index)    %>");
+				    	alert("<%=p.get("cXm")+"----"+p.get("cMc")+"----"+ titleList.get(index)+"----"+pNext.get("cMc")  +"----"+i     %>");
 				    	</script>
 				    	
 				    	<%
@@ -147,8 +147,14 @@
 				    			out.println(p.get("cXm"));
 				    			
 				    		}else if(titleList.get(index).equals(p.get("cMc"))&&!titleList.get(index).equals(pNext.get("cMc"))){
-				    			out.println(p.get("cXm")+"</th><th>");
 				    			index=index+1;
+				    			if(index>8){
+				    				out.println(p.get("cXm")+"");
+				    			}else{
+				    				
+				    				out.println(p.get("cXm")+"</th><th>");
+				    			}
+				    			
 				    		}else{
 				    			out.println("</th><th>");
 				    			i=i-1;
@@ -157,7 +163,8 @@
 				    		}
 				    	
 				    	
-				    	if(index==8){
+				    	if(index>8){
+				    		i=i+1;
 				    		out.println("<th>"+list.get(i-1).get("dSj")+"</th>");
 				    		out.println("</tr><tr>");
 							out.println("<th>");

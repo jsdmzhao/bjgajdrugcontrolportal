@@ -69,7 +69,7 @@ if(userId==null){
       
          {display:"级别",name:"cJb",newline:false,labelWidth:100,width:200,space:30,type:"select",
             comboboxName:"cJbName",
-            options:{valueFieldID:"cJb",data:[{ text: '总队领导', id: 0 } ,{ text: '部门领导', id: 1 },{ text: '科室领导', id: 2 },{ text: '科员', id: 3 }] }},
+            options:{valueFieldID:"cJb",data:[{ text: '总队正职', id: 0 } ,{ text: '总队副职', id: 1 },{ text: '大队正职', id: 2 },{ text: '大队副职', id: 3 },{ text: '探长', id: 4 },{ text: '民警', id: 5 }] }},
          {display:"姓名",name:"cXm",newline:true,labelWidth:100,width:200,space:30,type:"text"},
          {display:"IP",name:"cYxip",newline:false,labelWidth:100,width:200,space:30,type:"text"}, 
          {display:"用户组",name:"cYhz",newline:true,labelWidth:100,width:200,space:30,type:"select",

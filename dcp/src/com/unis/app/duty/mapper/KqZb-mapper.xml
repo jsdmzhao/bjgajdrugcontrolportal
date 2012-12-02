@@ -32,19 +32,25 @@
 	</select>
 	
 	<select id="getMouthZbb" resultMap="Result3" >
-	 SELECT C_XM, C.C_MC, to_char(D_SJ,'YYYY-MM-DD') D_SJ
+    SELECT C_XM, to_char(D_SJ,'YYYY-MM-DD') D_SJ,
+ case C_JB when '2' then '带班领导'  else C_MC end as C_MC
+   
+ ,case C_JB when '2' then 1.5  else N_XSXH end as N_XSXH
   FROM B_YH A, B_KQ_ZB B,D_DM C
  WHERE A.USER_ID = B.USER_ID AND C.C_DM=A.C_YHZ AND C.C_BXH='DEP'
-   AND TO_CHAR(D_SJ, 'YYYY-MM' )= TO_CHAR(SYSDATE, 'YYYY-MM') ORDER BY D_SJ,C_YHZ
+   AND TO_CHAR(D_SJ, 'YYYY-MM' )= TO_CHAR(SYSDATE, 'YYYY-MM') ORDER BY D_SJ,N_XSXH
 	</select>
-	
+	 
 	
 	
 		<select id="getDayZbb" resultMap="Result3" >
-	 SELECT C_XM, C.C_MC, to_char(D_SJ,'YYYY-MM-DD') D_SJ
+    SELECT C_XM, to_char(D_SJ,'YYYY-MM-DD') D_SJ,
+ case C_JB when '2' then '带班领导'  else C_MC end as C_MC
+   
+ ,case C_JB when '2' then 1.5  else N_XSXH end as N_XSXH
   FROM B_YH A, B_KQ_ZB B,D_DM C
  WHERE A.USER_ID = B.USER_ID AND C.C_DM=A.C_YHZ AND C.C_BXH='DEP'
-   AND TO_CHAR(D_SJ, 'YYYY-MM-DD' )= TO_CHAR(SYSDATE, 'YYYY-MM-DD') ORDER BY D_SJ,C_YHZ
+   AND TO_CHAR(D_SJ, 'YYYY-MM-DD' )= TO_CHAR(SYSDATE, 'YYYY-MM-DD')  ORDER BY D_SJ,N_XSXH
 	</select>
 
 
