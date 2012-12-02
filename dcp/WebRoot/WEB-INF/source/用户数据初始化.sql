@@ -36,7 +36,7 @@ null);
 insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
 C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (316, 316, '0', '1', '纪委书记', '张远合', null, null, null, null, null, null, null, null, null, null, '83994900', 
+values (317, 317, '0', '1', '纪委书记', '张远合', null, null, null, null, null, null, null, null, null, null, '83994900', 
 
 '13901204283', null, '北京市宣武区半步桥44号', null, null, null, null, null, 1571187, '1', '10.8.58.51', null);
 
