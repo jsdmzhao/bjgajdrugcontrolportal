@@ -78,8 +78,12 @@ public class KqZbDao<T> extends AbsServiceAdapter<T>  {
 		}
 	}
 	
-	public List getWeekZbb(){
-		return  super.selectList("KqZbMapper.getWeekZbb","");
+	public List getMouthZbb(){
+		return  super.selectList("KqZbMapper.getMouthZbb","");
+	}
+	
+	public List getDayZbb(){
+		return  super.selectList("KqZbMapper.getDayZbb","");
 	}
 
 }
