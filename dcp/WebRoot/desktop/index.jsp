@@ -132,19 +132,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     var LINKWIDTH = 90, LINKHEIGHT = 90, TASKBARHEIGHT = 43;
     var winlinksul =  $("#winlinks ul");
     function f_open(url, title, icon) {
-        var win = $.ligerDialog.open(
-        { height: 500, url: url, width: 700, showMax: true, showToggle: true, showMin: true, isResize: true, modal: false, title: title, slide: false, buttons: [
-            { text: '确定', onclick: function (item, Dialog, index) {
-                win.hide();
-            }
-            }
-        ]
-        });
-        var task = jQuery.ligerui.win.tasks[win.id];
-        if (task) {
-            $(".l-taskbar-task-icon:first", task).html('<img src="' + icon + '" />');
-        }
-        return win;
+    	
+    	window.parent.f_open(url, title, icon);
+    	
+    	
     }
   
              
