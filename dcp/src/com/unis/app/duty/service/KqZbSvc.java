@@ -75,8 +75,12 @@ public class KqZbSvc  {
 		return kqZbDao.queryByPageInfo(p, page);
 	}
 	
-	public List<Map<String,String>> getWeekZbb() throws SQLException {
-		return kqZbDao.getWeekZbb();
+	public List<Map<String,String>> getMouthZbb() throws SQLException {
+		return kqZbDao.getMouthZbb();
+	}
+	
+	public List<Map<String,String>> getDayZbb() throws SQLException {
+		return kqZbDao.getDayZbb();
 	}
 
 }

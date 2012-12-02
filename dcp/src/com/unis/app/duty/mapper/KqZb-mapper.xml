@@ -31,11 +31,20 @@
      AND ROWNUM &lt; 2
 	</select>
 	
-	<select id="getWeekZbb" resultMap="Result3" >
+	<select id="getMouthZbb" resultMap="Result3" >
 	 SELECT C_XM, C.C_MC, to_char(D_SJ,'YYYY-MM-DD') D_SJ
   FROM B_YH A, B_KQ_ZB B,D_DM C
  WHERE A.USER_ID = B.USER_ID AND C.C_DM=A.C_YHZ AND C.C_BXH='DEP'
    AND TO_CHAR(D_SJ, 'YYYY-MM' )= TO_CHAR(SYSDATE, 'YYYY-MM') ORDER BY D_SJ,C_YHZ
+	</select>
+	
+	
+	
+		<select id="getDayZbb" resultMap="Result3" >
+	 SELECT C_XM, C.C_MC, to_char(D_SJ,'YYYY-MM-DD') D_SJ
+  FROM B_YH A, B_KQ_ZB B,D_DM C
+ WHERE A.USER_ID = B.USER_ID AND C.C_DM=A.C_YHZ AND C.C_BXH='DEP'
+   AND TO_CHAR(D_SJ, 'YYYY-MM-DD' )= TO_CHAR(SYSDATE, 'YYYY-MM-DD') ORDER BY D_SJ,C_YHZ
 	</select>
 
 
