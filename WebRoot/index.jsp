@@ -27,6 +27,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=basePath%>js/date.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/tab.js"></script>
 	<%--<script type="text/javascript" src="<%=basePath%>js/maquee.js"></script>--%>
+	
+   <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" /> 
+    <script src="<%=basePath%>liger/lib/jquery/jquery-1.3.2.min.js" type="text/javascript"></script>
+    <script src="<%=basePath%>liger/lib/ligerUI/js/core/base.js" type="text/javascript"></script>
+    <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerDrag.js" type="text/javascript"></script>
+    <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerDialog.js" type="text/javascript"></script>
+    <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerResizable.js" type="text/javascript"></script>
 
 	<script type="text/javascript" src="<%=basePath%>js/swfobject.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/jquery.easing.1.3.js"></script>
@@ -52,7 +59,91 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		#link_logo li{height:30px;width:190px; padding-left:5px;line-height:30px; border-bottom:1px dotted #ddd;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 		
 	</style>
-
+  <style type="text/css">
+        .l-case-title
+        {
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        body, html
+        {
+            width: 100%;
+            height: 100%;
+        }
+        *
+        {
+            margin: 0;
+            padding: 0;
+        }
+        #winlinks
+        {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            width: 100%;
+        }
+        #winlinks ul
+        {
+            position: relative;
+        }
+        #winlinks li
+        {
+            width: 70px;
+            cursor: pointer;
+            height: 80px;
+            position: absolute;
+            z-index: 101;
+            list-style: none;
+            text-align: center;
+        }
+        #winlinks li img
+        {
+            width: 36px;
+            height: 36px;
+        }
+        #winlinks li span
+        {
+            background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3);
+            border-radius: 10px 10px 10px 10px;
+            display: block;
+            font-size: 12px;
+            margin-top: 1px;
+            color: White;
+            line-height: 18px;
+            text-align: center;
+        }
+        #winlinks li.l-over div.bg
+        {
+            display: block;
+        }
+        #winlinks li div.bg
+        {
+            display: none;
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            z-index: 0;
+            width: 75px;
+            height: 64px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            background: #000;
+            opacity: 0.1;
+            filter: alpha(opacity=10);
+        }
+        .l-taskbar-task-icon
+        {
+            top: 3px; left: 6px; background-image:none;
+        } 
+        .l-taskbar-task-content{ margin-left:30px;}
+        .l-taskbar-task-icon img
+        {
+            width: 22px;
+            height: 22px;
+        }
+    </style>
 	<script type="text/javascript">
 	
 		/*gzy*/
@@ -96,6 +187,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				return eval('document.all.'+objName);		
 			}
 		}
+		
+		
+		  function f_open(url, title, icon) {
+		    	
+		  /*、      var win = $.ligerDialog.open(
+		        { height: 500, url: url, width: 700, showMax: true, showToggle: true, showMin: true, isResize: true, modal: false, title: title, slide: false, buttons: [
+		            { text: '确定', onclick: function (item, Dialog, index) {
+		                win.hide();
+		            }
+		            }
+		        ]
+		        });
+		        var task = jQuery.ligerui.win.tasks[win.id];
+		        if (task) {
+		            $(".l-taskbar-task-icon:first", task).html('<img src="' + icon + '" />');
+		        }
+		        return win;*/
+		        window.open (url, title, 'height=600, width=1000, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
+		    }
+		  
+		
+		
 	</script>
   </head>
   
