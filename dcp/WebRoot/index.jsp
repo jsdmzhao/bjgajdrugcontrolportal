@@ -27,13 +27,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=basePath%>js/date.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/tab.js"></script>
 	<%--<script type="text/javascript" src="<%=basePath%>js/maquee.js"></script>--%>
-	
-   <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" /> 
-    <script src="<%=basePath%>liger/lib/jquery/jquery-1.3.2.min.js" type="text/javascript"></script>
-    <script src="<%=basePath%>liger/lib/ligerUI/js/core/base.js" type="text/javascript"></script>
-    <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerDrag.js" type="text/javascript"></script>
-    <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerDialog.js" type="text/javascript"></script>
-    <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerResizable.js" type="text/javascript"></script>
 
 	<script type="text/javascript" src="<%=basePath%>js/swfobject.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/jquery.easing.1.3.js"></script>
@@ -59,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		#link_logo li{height:30px;width:190px; padding-left:5px;line-height:30px; border-bottom:1px dotted #ddd;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 		
 	</style>
- 
+
 	<script type="text/javascript">
 	
 		/*gzy*/
@@ -104,27 +97,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 		}
 		
-		
-		  function f_open(url, title, icon) {
-		    	
-		  /*、      var win = $.ligerDialog.open(
-		        { height: 500, url: url, width: 700, showMax: true, showToggle: true, showMin: true, isResize: true, modal: false, title: title, slide: false, buttons: [
-		            { text: '确定', onclick: function (item, Dialog, index) {
-		                win.hide();
-		            }
-		            }
-		        ]
-		        });
-		        var task = jQuery.ligerui.win.tasks[win.id];
-		        if (task) {
-		            $(".l-taskbar-task-icon:first", task).html('<img src="' + icon + '" />');
-		        }
-		        return win;*/
-		        window.open (url, title, 'height=600, width=1000, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
-		    }
-		  
-		
-		
+	  function f_open(url, title, icon) {
+	    	
+	  /*、      var win = $.ligerDialog.open(
+	        { height: 500, url: url, width: 700, showMax: true, showToggle: true, showMin: true, isResize: true, modal: false, title: title, slide: false, buttons: [
+	            { text: '确定', onclick: function (item, Dialog, index) {
+	                win.hide();
+	            }
+	            }
+	        ]
+	        });
+	        var task = jQuery.ligerui.win.tasks[win.id];
+	        if (task) {
+	            $(".l-taskbar-task-icon:first", task).html('<img src="' + icon + '" />');
+	        }
+	        return win;*/
+	        window.open (url, title, 'height=600, width=1000, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
+	    }
 	</script>
   </head>
   
@@ -133,7 +122,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<div id="container">
 		<div id="banner_top">
-			<div style="margin-left: 450px; padding-top:40px;">
+			<div style="margin-left: 3750px; padding-top:40px;">
 		      <object type="application/x-shockwave-flash" data="flash/banner_t.swf" width="278" height="34">
 				<param name="movie" value="flash/banner_t.swf" />
 				<param name="wmode" value="transparent" />
@@ -386,8 +375,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="jrzb_title_font">今日值班</div>
 						</div>
 					</div>
-					<div style="padding-left: 10px; padding-top: 15px; text-align: left;">
-						<div>
+					<div style="padding-left: 10px; text-align: left;">
+						<div style="line-height:20px; padding-top: 5px; vertical-align: top; ">
 							<s:if test="resMap.zbbStr != null and resMap.zbbStr != '' ">
 								<!-- <strong>值班信息：</strong>  -->
 								<s:property escape="false" value="resMap.zbbStr"/>
@@ -692,7 +681,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<% 
 				if(session.getAttribute("userId") != null && !"0".equals(session.getAttribute("userId"))){
 				%>
-					<a href="<%=basePath%>desktop/index.jsp?TB_iframe=true&height=600&width=1000" rel="sexylightbox[22]" title="我的工作区">
+					<a href="<%=basePath%>desktop/index.jsp?TB_iframe=true&height=400&width=600" rel="sexylightbox[22]" title="我的工作区（点击我的工作区以外的区域关闭窗口）">
 						<%--  onclick='Box("msg1",900,600,parahtml("<%=basePath%>desktop/index.jsp",900,600),fontbutton(1,1))' gzy--%>
 						<img src="newimages/bgpt.png" />
 					</a>
@@ -719,7 +708,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<div class="item">
 											<div class="tab">
 												<h5>
-													<a href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>">排行</a>
+													<a href="<%=basePath%>newsSort" target="_blank">排行</a>
 												</h5>
 												<ul>
 													<li class="tabcurrent">总队各单位</li>
