@@ -1,3 +1,18 @@
+delete from SYS_AUTHORITY ;
+delete from SYS_GROUP ;
+delete from SYS_GROUP_ROLE ;
+delete from SYS_OPERATION ;
+delete from SYS_PERMISSION ;
+delete from SYS_RESOURCE ;
+delete from SYS_ROLE ;
+delete from SYS_USER ;
+delete from SYS_USER_GROUP ;
+delete from SYS_MENU;
+delete from SYS_BUTTON;
+delete from D_DM;
+
+
+
 --菜单
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
 MENU_ICON, ISVISIBLE)values (1, '1', '0', '新闻管理', '', 'liger/lib/icons/silkicons/application.png', '1' );
@@ -181,20 +196,17 @@ SELECT SEQ_SYS_BTN_ID.NEXTVAL, '删除', 'delete', null, 'liger/lib/icons/silkic
 
 --用户
 
-insert into SYS_USER (USER_ID, USER_NAME, USER_PASSWORD, USER_LOCK)
-values (10000, 'zl', '1', '0');
-
 
 insert into SYS_GROUP_ROLE (GROUP_ROLE_ID, GROUP_ID, ROLE_ID)
-values (10000, 10000, 10000);
+values (1, 1, 1);
 
 
 insert into SYS_ROLE (ROLE_ID, ROLE_NAME, ROLE_DESCRIPTION)
-values (10000, '管理员', '最高权限');
+values (1, '管理员', '最高权限');
 
 
 insert into SYS_PERMISSION (PERMISSION_ID, ROLE_ID, AUTHORITY_ID)
-SELECT SEQ_SYS_PERMISSION_ID.NEXTVAL, 10000, BTN_ID FROM SYS_BUTTON;
+SELECT SEQ_SYS_PERMISSION_ID.NEXTVAL, 1, BTN_ID FROM SYS_BUTTON;
 
 
 
