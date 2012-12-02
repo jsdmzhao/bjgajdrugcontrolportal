@@ -82,6 +82,34 @@ public class UserInfoSvc  {
 		return list;
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public List chooseZb() throws SQLException {
+		Map p=new HashMap();
+		p.put("cBxh", "DEP");
+		List<Map> list=dmDao.queryAllInfo(p);
+		for (int i = 0; i < list.size(); i++) {
+			Map tp=list.get(i);
+			tp.put("text", tp.get("cMc"));
+			Map ctp=new HashMap();
+			ctp.put("cYhz", tp.get("cDm"));
+			List<Map> clist=userDao.queryAllInfo(ctp);
+			for (int j = 0; j < clist.size(); j++) {
+				Map cp=clist.get(j);
+				
+				if("2".equals(cp.get("cJb"))){
+					cp.put("text", cp.get("cXm")+"(带班)");
+				}else{
+					cp.put("text", cp.get("cXm"));
+				}
+				cp.put("value", cp.get("userId"));
+				cp.put("id", cp.get("userId"));
+				cp.put("tel", cp.get("cDhhm"));
+			}
+			tp.put("children", clist);
+		}
+		return list;
+	}
+	
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public List chooseMobile() throws SQLException {
