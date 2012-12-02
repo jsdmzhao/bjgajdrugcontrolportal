@@ -1,331 +1,867 @@
 prompt Importing table b_yh...
 set feedback off
 set define off
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (67, 74, '3', '5', '√ÒæØ', '÷£∫Ï', null, to_date('08-08-1962', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13801002020', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 2815208, '1', '10.8.58.190', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (2, 1, '3', '0', 'π‹¿Ì‘±', 'π‹¿Ì‘±', null, to_date('10-02-2009', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994968', '13910666539', null, '∞Î≤Ω«≈Ω÷44∫≈', null, null, null, null, null, 2482341, '1', '-1', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (67, 74, '3', '5', 'Ê∞ëË≠¶', 'ÈÉëÁ∫¢', null, to_date('08-08-1962', 'dd-mm-yyyy'), null, null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (4, 4, '0', '1', '◊‹∂”≥§', '¡¯“„', null, to_date('23-01-1961', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13701095101', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 16796622, '1', '-1', null);
+null, '83994900', '13801002020', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 2815208, '1', '10.8.58.190', 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (5, 5, '0', '1', '∏±◊‹∂”≥§', '“◊  —Ù', null, to_date('03-11-1966', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13801316889', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 38876, '1', '10.8.58.53', null);
+null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (112, 112, '0', '1', 'ºÕŒØ Èº«', '’≈‘∂∫œ', null, null, null, null, null, null, null, null, null, null, '83994900', '13901204283', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 1571187, '1', '10.8.58.51', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (7, 8, '3', '11', 'µ˜—–‘±', '≥µøÀºÛ', null, to_date('24-06-1961', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13701217110', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 2656, '1', null, null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (2, 1, '3', '0', 'ÁÆ°ÁêÜÂëò', 'ÁÆ°ÁêÜÂëò', null, to_date('10-02-2009', 'dd-mm-yyyy'), null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (8, 9, '1', '9', '’˛ŒØ', '¬ﬁœ˛”Ó', null, to_date('18-05-1967', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994913', '13801381840', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 24264290, '1', '-1', null);
+null, null, '83994968', '13910666539', null, 'ÂçäÊ≠•Ê°•Ë°ó44Âè∑', null, null, null, null, null, 2482341, '1', '-1', null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (9, 10, '2', '4', '∏±¥Û∂”≥§', '∂≠À…', null, to_date('03-12-1962', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994922', '13911931677', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 213630, '1', '-1', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (10, 11, '2', '3', '∏±÷˜»Œ', '’≈Œƒ≈Ù', null, to_date('12-11-1977', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994938', '13701354870', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 7815263, '1', '-1', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (4, 4, '0', '1', 'ÊÄªÈòüÈïø', 'Êü≥ÊØÖ', null, to_date('23-01-1961', 'dd-mm-yyyy'), null, null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (11, 12, '3', '3', '√ÒæØ', '—Ó¡’', null, to_date('26-03-1957', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994928', '13901115169', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 2016225, '2', '-1', null);
+null, '83994900', '13701095101', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 16796622, '1', '-1', null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (12, 13, '3', '3', '√ÒæØ', '’≈Ω®»∫', null, to_date('12-08-1962', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13611255282', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 58721229, '1', '10.8.58.99', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (13, 16, '2', '8', 'ÃΩ≥§', 'πÀ√Õ', null, to_date('29-09-1983', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13911171665', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 1032361, '2', '10.8.58.62', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (5, 5, '0', '1', 'ÂâØÊÄªÈòüÈïø', 'Êòì  Èò≥', null, to_date('03-11-1966', 'dd-mm-yyyy'), null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (14, 17, '3', '5', '√ÒæØ', 'œØ÷æ”¬', null, to_date('06-08-1955', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994926', '15811036116', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 6002912, '2', '10.8.58.69', null);
+null, null, '83994900', '13801316889', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 38876, '1', '10.8.58.53', 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (15, 18, '3', '3', 'æØŒÒ±£’œø∆ø∆≥§', '±©¡¢π˙', null, to_date('04-03-1964', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83996637', '13901247323', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 26336052, '1', '10.8.45.169', null);
+null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (16, 19, '3', '7', '√ÒæØ', '¿Ó’˘', null, to_date('21-11-1974', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994961', '13911818505', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 267484, '1', '-1', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (17, 20, '3', '3', '√ÒæØ', 'Òº…‹¡÷', null, to_date('30-11-1960', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13501007453', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 2147286, '2', '-1', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (316, 316, '0', '1', 'Á∫™Âßî‰π¶ËÆ∞', 'Âº†ËøúÂêà', null, null, null, null, null, null, null, null, null, null, '83994900', 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (18, 21, '3', '3', 'π§ª·∏±÷˜œØ', 'Õı”ﬁ∏£', null, to_date('23-09-1972', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994917', '13910109032', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 1610708, '2', '-1', null);
+'13901204283', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 1571187, '1', '10.8.58.51', null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (19, 22, '3', '3', '√ÒæØ', '»Œ¡¢æÍ', null, to_date('13-04-1970', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994918', '13901254895', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 22628126, '2', '-1', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (20, 23, '3', '3', '√ÒæØ', '—Ó  æ¸', null, to_date('11-09-1967', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13621216433', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 5633353, '2', '-1', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (7, 8, '3', '11', 'Ë∞ÉÁ†îÂëò', 'ËΩ¶ÂÖã‰ø≠', null, to_date('24-06-1961', 'dd-mm-yyyy'), null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (21, 24, '3', '11', '√ÒæØ', '≥¬÷æŒƒ', null, to_date('26-12-1958', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13699282961', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 9570718, '2', '-1', null);
+null, null, '83994900', '13701217110', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 2656, '1', null, null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (22, 25, '1', '3', '¥¶≥§', '’‘∑º', null, to_date('13-07-1962', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13901372307', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 4752142, '1', '-1', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (23, 26, '3', '8', 'ÃΩ≥§', 'Õı  Ï≠', null, to_date('22-12-1982', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13381202135', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 1168272, '2', '10.8.58.194', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (8, 9, '1', '9', 'ÊîøÂßî', 'ÁΩóÊôìÂÆá', null, to_date('18-05-1967', 'dd-mm-yyyy'), null, null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (24, 27, '3', '3', '√ÒæØ', '’≈  œ‹', null, to_date('13-07-1954', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13601319994', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 13784691, '2', '-1', null);
+null, '83994913', '13801381840', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 24264290, '1', '-1', null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (25, 28, '1', '9', '÷˜»Œ', '¡ı◊˜æ¸', null, to_date('14-10-1957', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83552026', '13901213512', null, '±±æ© –Œ˜≥««¯∞Î≤Ω«≈Ω÷44∫≈', null, null, null, null, null, 6903781, '1', '-1', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (26, 29, '2', '9', '∏±¥Û∂”≥§', 'ÕıÁ˜', null, to_date('04-01-1977', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994955', '13910220617', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 6305439, '1', '10.8.58.118', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (9, 10, '2', '4', 'ÂâØÂ§ßÈòüÈïø', 'Ëë£Êùæ', null, to_date('03-12-1962', 'dd-mm-yyyy'), null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (27, 30, '1', '11', '¥Û∂”≥§', 'ΩØ §Ω‹', null, to_date('19-09-1971', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13901210153', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 6443, '1', '10.8.58.192', null);
+null, null, '83994922', '13911931677', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 213630, '1', '-1', null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (28, 31, '1', '4', '’˛ŒØ', 'æ£æ¸', null, to_date('10-05-1968', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83552003', '13501234033', null, '±±æ© –≥Ø—Ù«¯∂π∏˜◊Øª∆≥ß¥Â', null, null, null, null, null, 22957463, '1', '-1', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (29, 32, '3', '9', '√ÒæØ', '¿ºΩ˙∑…', null, to_date('01-04-1981', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13911931957', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 674940, '1', '-1', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (10, 11, '2', '3', 'ÂâØ‰∏ª‰ªª', 'Âº†ÊñáÈπè', null, to_date('12-11-1977', 'dd-mm-yyyy'), null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (30, 33, '3', '9', '√ÒæØ', '¿Ó  õI', null, to_date('23-12-1980', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994933', '13801169862', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 14242185, '2', '10.8.58.201', null);
+null, null, '83994938', '13701354870', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 7815263, '1', '-1', null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (31, 34, '2', '9', '∏±÷˜»Œ', '—œΩ®', null, to_date('18-12-1979', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994951', '13910666539', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 7006059, '2', '-1', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (32, 35, '2', '9', '∞Ïπ´ “∏±÷˜»Œ', 'ÀŒÕ˛', null, to_date('20-07-1977', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994957', '13911090053', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 3817590, '1', '-1', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (11, 12, '3', '3', 'Ê∞ëË≠¶', 'Êù®Áê≥', null, to_date('26-03-1957', 'dd-mm-yyyy'), null, null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (33, 36, '3', '9', '√ÒæØ', 'ÕıŒƒ±Û', null, to_date('08-10-1959', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13901395253', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 2058073, '1', '-1', null);
+null, '83994928', '13901115169', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 2016225, '2', '-1', null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (34, 37, '2', '7', '√ÒæØ', 'Õı≈Ù', null, to_date('07-12-1980', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994965', '13911932634', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 402582, '1', '10.8.58.163', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (35, 38, '3', '9', '√ÒæØ', '≥¬  «˙', null, to_date('28-03-1975', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13581908951', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 0, '1', null, null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (12, 13, '3', '3', 'Ê∞ëË≠¶', 'Âº†Âª∫Áæ§', null, to_date('12-08-1962', 'dd-mm-yyyy'), null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (36, 39, '3', '9', '√ÒæØ', '¿Óœ˛¬∂', null, to_date('18-10-1978', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13501106528', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 814983, '1', '10.8.58.163', null);
+null, null, '83994900', '13611255282', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 58721229, '1', 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (37, 40, '3', '3', '√ÒæØ', '’≈ˆŒ', null, to_date('04-03-1982', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994920', '13699228826', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 7133811, '2', '10.8.58.61', null);
+'10.8.58.99', null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (38, 41, '1', '4', '¥¶≥§', '÷”  ∆Ω', null, to_date('18-10-1961', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13911931681', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 1649, '3', '10.9.54.5', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (39, 42, '2', '3', '∏±÷˜»Œ', '’≈ ¿«ø', null, to_date('11-03-1970', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13701279817', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 2140690, '3', '-1', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (13, 16, '2', '8', 'Êé¢Èïø', 'È°æÁåõ', null, to_date('29-09-1983', 'dd-mm-yyyy'), null, null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (40, 43, '3', '4', '√ÒæØ', '’≈  Ω°', null, to_date('28-12-1961', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13801151367', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 8327222, '3', '10.9.54.17', null);
+null, '83994900', '13911171665', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 1032361, '2', '10.8.58.62', 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (41, 44, '3', '3', '√ÒæØ', '–§—‡Õ˛', null, to_date('03-12-1955', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83552017', '13910139552', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 6833990, '3', '-1', null);
+null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (42, 45, '3', '11', '√ÒæØ', '’≈  ‹ø', null, to_date('08-04-1971', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13901295919', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 4074355, '3', '10.9.54.20', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (43, 316, '3', '3', '√ÒæØ', '—Ó—‚', null, to_date('02-06-1979', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13911285512', null, '∞Î≤Ω«≈44∫≈', null, null, null, null, null, 0, '1', '-1', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (14, 17, '3', '5', 'Ê∞ëË≠¶', 'Â∏≠ÂøóÂãá', null, to_date('06-08-1955', 'dd-mm-yyyy'), null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (44, 47, '3', '4', '√ÒæØ', '≥¬   ˆ', null, to_date('05-02-1964', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13911931680', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 192097, '3', null, null);
+null, null, '83994926', '15811036116', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 6002912, '2', 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (45, 48, '2', '4', '√ÒæØ', 'π¨±£≥…', null, to_date('04-04-1957', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13910172155', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 2660488, '3', '10.9.54.18', null);
+'10.8.58.69', null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (46, 315, '3', '9', '÷æ‘∏’ﬂ', '—Ó◊œ«Â', null, to_date('01-03-1997', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994963', '15911034081', null, 'A707', null, null, null, null, null, 3148, '1', '-1', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (47, 50, '3', '4', '√ÒæØ', '¡ı”¢»„', null, to_date('13-03-1975', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13910336556', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 3616237, '3', '10.9.54.15', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (15, 18, '3', '3', 'Ë≠¶Âä°‰øùÈöúÁßëÁßëÈïø', 'Êö¥Á´ãÂõΩ', null, to_date('04-03-1964', 'dd-mm-yyyy'), null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (48, 51, '2', '11', '√ÒæØ', 'Î¯∫£ª‘', null, to_date('17-05-1984', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13501132009', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 10063406, '1', '10.8.58.59', null);
+null, null, null, '83996637', '13901247323', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 26336052, '1', 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (49, 52, '3', '11', '√ÒæØ', 'ÀŒ¿ˆæ˝', null, to_date('29-06-1972', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13911931963', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 5075, '1', '10.8.58.161', null);
+'10.8.45.169', null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (50, 53, '2', '4', '∏±¥Û∂”≥§', '¿ÓÈÛ∑≤', null, to_date('11-03-1977', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83551103', '13801217066', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈£¨100054°¢±±æ©” ’˛2341–≈œ‰£¨100121', null, null, null, null, null, 11476185, '3', '10.9.54.11', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (51, 55, '1', '7', '’˛ŒØ', '“¶«Ï…˙', null, to_date('01-10-1962', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13901039329', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 3495679, '1', '10.8.58.113', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (16, 19, '3', '7', 'Ê∞ëË≠¶', 'Êùé‰∫â', null, to_date('21-11-1974', 'dd-mm-yyyy'), null, null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (52, 56, '2', '11', '∏±¥Û∂”≥§', '—Óπ˙’¬', null, to_date('02-05-1959', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13801155932', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 1579749, '1', '10.8.58.180', null);
+null, '83994961', '13911818505', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 267484, '1', '-1', null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (53, 57, '2', '7', '√ÒæØ', 'ºΩ–§¿◊', null, to_date('28-09-1967', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13901286762', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 745689, '1', '10.8.58.188', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (54, 58, '3', '11', '÷˙¿Ìµ˜—–‘±', 'π˘“Ò√Ø', null, to_date('22-01-1958', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994980', '18910088769', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 12396280, '2', '-1', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (17, 20, '3', '3', 'Ê∞ëË≠¶', 'Á™¶ÁªçÊûó', null, to_date('30-11-1960', 'dd-mm-yyyy'), null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (55, 59, '3', '7', '√ÒæØ', '¿Ó  æ©', null, to_date('29-01-1962', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13701172462', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 835, '1', null, null);
+null, null, '83994900', '13501007453', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 2147286, '2', '-1', null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (56, 60, '1', '7', '¥Û∂”≥§', '±œ  ≤®', null, to_date('02-01-1970', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13801073120', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 158331, '1', '-1', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (57, 61, '3', '7', '√ÒæØ', '’≈–„Á˘', null, to_date('19-01-1970', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994950', '13911833009', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 13895937, '2', '10.8.58.186', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (18, 21, '3', '3', 'Â∑•‰ºöÂâØ‰∏ªÂ∏≠', 'ÁéãÊÑöÁ¶è', null, to_date('23-09-1972', 'dd-mm-yyyy'), null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (58, 62, '3', '7', '√ÒæØ', 'ÕıÀÿ“˙', null, to_date('20-07-1974', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994975', '13911931692', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 58981, '2', '10.8.58.189', null);
+null, null, null, '83994917', '13910109032', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 1610708, '2', '-1', 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (59, 63, '3', '7', '√ÒæØ', 'ÀÔ‘™‘™', null, to_date('01-02-1979', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994979', '13801191066', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈A0715', null, null, null, null, null, 91363, '2', '10.8.58.187', null);
+null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (60, 64, '2', '3', '∏±÷˜»Œ', ' Ø  ¿⁄', null, to_date('29-10-1980', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13910101411', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 5706938, '2', '-1', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (61, 65, '3', '7', '√ÒæØ', '¡ıΩ‹', null, to_date('13-03-1974', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994932', '13701025508', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 6318974, '1', '-1', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (19, 22, '3', '3', 'Ê∞ëË≠¶', '‰ªªÁ´ãÂ®ü', null, to_date('13-04-1970', 'dd-mm-yyyy'), null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (62, 67, '3', '7', '√ÒæØ', 'ÕıΩ˙º—', null, to_date('03-10-1981', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13910992759', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 53539, '1', '10.8.58.70', null);
+null, null, '83994918', '13901254895', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 22628126, '2', '-1', 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (63, 68, '3', '7', '√ÒæØ', '’‘‘æ¥∫', null, to_date('22-01-1960', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994921', '13801264144', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 491416, '2', '-1', null);
+null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (64, 69, '2', '7', '√ÒæØ', '–Ï—‡≤≥', null, to_date('12-02-1973', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13601011175', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 465632, '1', '10.8.58.185', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (65, 71, '0', '1', '∏±◊‹∂”≥§', '’≈ºÃ∫Í', null, to_date('01-02-1968', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13901361509', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 1877978, '1', '-1', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (20, 23, '3', '3', 'Ê∞ëË≠¶', 'Êù®  ÂÜõ', null, to_date('11-09-1967', 'dd-mm-yyyy'), null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (66, 73, '1', '8', '¥Û∂”≥§', 'ÃÔ”¿∑Â', null, to_date('23-01-1975', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13911931687', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 143270, '1', '-1', null);
+null, null, '83994900', '13621216433', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 5633353, '2', '-1', null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (68, 75, '3', '8', '√ÒæØ', '“Û∏ª«ø', null, to_date('21-03-1962', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13901154386', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 229827, '1', '10.8.58.190', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (69, 76, '3', '8', '√ÒæØ', 'ΩØ∫£ÃŒ', null, to_date('07-02-1974', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13911836916', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 6952, '1', '10.8.58.193', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (21, 24, '3', '11', 'Ê∞ëË≠¶', 'ÈôàÂøóÊñá', null, to_date('26-12-1958', 'dd-mm-yyyy'), null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (70, 77, '3', '8', '√ÒæØ', '÷£±Û', null, to_date('27-09-1963', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994989', '13901166209', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 57594213, '1', '10.8.58.121', null);
+null, null, '83994900', '13699282961', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 9570718, '2', '-1', null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (71, 78, '2', '8', '∏±¥Û∂”≥§', '¡∫  ≥Â', null, to_date('17-12-1978', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13911605588', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 11464, '1', '10.8.58.190', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (72, 79, '3', '8', '√ÒæØ', 'ÕıœÚ¿˚', null, to_date('11-06-1963', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13810312157', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 337184, '2', '-1', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (22, 25, '1', '3', 'Â§ÑÈïø', 'ËµµËä≥', null, to_date('13-07-1962', 'dd-mm-yyyy'), null, null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (73, 80, '3', '3', 'Œƒ√ÿø∆ø∆≥§', '¡ı”°À…', null, to_date('27-04-1981', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994947', '13911785033', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 2612777, '1', '-1', null);
+null, '83994900', '13901372307', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 4752142, '1', '-1', null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (74, 81, '3', '3', '√ÒæØ', ' Ø  Œ∞', null, to_date('16-07-1977', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13910166936', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 4771220, '2', '10.8.58.84', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (75, 82, '3', '9', '√ÒæØ', 'Õı—Ù', null, to_date('05-03-1976', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13020012223', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 203364, '1', '10.8.58.191', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (23, 26, '3', '8', 'Êé¢Èïø', 'Áéã  È£ô', null, to_date('22-12-1982', 'dd-mm-yyyy'), null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (76, 84, '3', '8', '√ÒæØ', 'ª›  √Ù', null, to_date('11-02-1960', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13651204284', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 0, '1', null, null);
+null, null, '83994900', '13381202135', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 1168272, '2', 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (77, 85, '3', '8', '√ÒæØ', '’≈Ã´¡÷', null, to_date('03-04-1961', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13911181166', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 116590, '2', '10.8.58.190', null);
+'10.8.58.194', null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (78, 86, '2', '5', '∏±¥Û∂”≥§', '¿Óœ˛∂´', null, to_date('22-11-1971', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13911831173', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 556066, '1', '10.8.58.63', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (79, 88, '1', '5', '¥Û∂”≥§', '∏ﬂ¡¢π˙', null, to_date('24-04-1972', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83552011', '13911931688', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈A0304', null, null, null, null, null, 2422006, '1', '10.8.58.155', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (24, 27, '3', '3', 'Ê∞ëË≠¶', 'Âº†  ÂÆ™', null, to_date('13-07-1954', 'dd-mm-yyyy'), null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (80, 89, '3', '11', '√ÒæØ', 'ÕıπŸ¡˙', null, to_date('07-09-1957', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13901317330', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 2, '2', null, null);
+null, null, '83994900', '13601319994', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 13784691, '2', '-1', 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (81, 90, '3', '5', '√ÒæØ', '¡ıÊ˜', null, to_date('31-05-1981', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994946', '13911862665', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 2879374, '2', '10.8.58.160', null);
+null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (82, 91, '3', '5', '√ÒæØ', '∆”≥…π˙', null, to_date('24-09-1971', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13901356617', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 22696535, '2', '-1', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (83, 92, '2', '5', '∏±¥Û∂”≥§', 'ÃÔ  ¡¡', null, to_date('11-12-1973', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13901365849', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 9734921, '2', '-1', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (25, 28, '1', '9', '‰∏ª‰ªª', 'Âàò‰ΩúÂÜõ', null, to_date('14-10-1957', 'dd-mm-yyyy'), null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (84, 93, '3', '3', '√ÒæØ', '¬Ω¥∫ª™', null, to_date('27-01-1960', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994939', '13801254952', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 62286782, '2', '-1', null);
+null, null, '83552026', '13901213512', null, 'Âåó‰∫¨Â∏ÇË•øÂüéÂå∫ÂçäÊ≠•Ê°•Ë°ó44Âè∑', null, null, null, null, null, 6903781, '1', '-1', 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (85, 94, '3', '5', '√ÒæØ', '’‘∫£∑Â', null, to_date('18-12-1977', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994930', '13601023869', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 3464323, '2', '10.8.58.160', null);
+null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (86, 95, '2', '8', '∏±¥Û∂”≥§', 'Ω≈Ù', null, to_date('24-01-1976', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994942', '13901358855', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 1465046, '1', '-1', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (87, 96, '3', '5', '√ÒæØ', ' Øµ§µ§', null, to_date('23-01-1982', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13439015358', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 3716379, '2', '-1', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (26, 29, '2', '9', 'ÂâØÂ§ßÈòüÈïø', 'ÁéãÁê™', null, to_date('04-01-1977', 'dd-mm-yyyy'), null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (88, 97, '3', '3', '√ÒæØ', '¥ﬁ  »∫', null, to_date('01-03-1972', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13801104233', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 1550995, '2', '-1', null);
+null, null, '83994955', '13910220617', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 6305439, '1', 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (89, 101, '3', '7', '√ÒæØ', '’≈è|', null, to_date('02-09-1985', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13501355462', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 324796, '1', '10.8.58.186', null);
+'10.8.58.118', null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (90, 102, '3', '8', '√ÒæØ', 'Ω™–¬¥∫', null, to_date('19-03-1978', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '4900', '13146079768', null, '∞Î≤Ω«≈Ω÷44∫≈', null, null, null, null, null, 391976, '2', '-1', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (91, 104, '3', '5', '√ÒæØ', '≥µº—“Ù', null, to_date('09-11-1983', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13810007763', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 0, '1', null, null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (27, 30, '1', '11', 'Â§ßÈòüÈïø', 'ËíãËÉúÊù∞', null, to_date('19-09-1971', 'dd-mm-yyyy'), null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (92, 105, '3', '9', '√ÒæØ', '¡ıË¥Õﬁ', null, to_date('05-11-1978', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13701372826', null, '±±æ© ––˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 8700236, '1', '-1', null);
+null, null, '83994900', '13901210153', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 6443, '1', '10.8.58.192', 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (93, 106, '3', '3', '√ÒæØ', '—¶◊≥', null, to_date('22-05-1974', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13901296154', null, '–˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 1897211, '1', '10.8.58.68', null);
+null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (94, 107, '3', '3', '∏±ø∆≥§', 'ΩØ»Ò', null, to_date('13-02-1982', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13911837374', null, '–˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 483431, '1', '-1', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (95, 108, '3', '5', '√ÒæØ', '«˙÷–¿÷', null, to_date('09-09-1984', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13911916097', null, '–˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 7422341, '1', '-1', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (28, 31, '1', '4', 'ÊîøÂßî', 'ËçÜÂÜõ', null, to_date('10-05-1968', 'dd-mm-yyyy'), null, null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (96, 109, '3', '7', '√ÒæØ', '’≈æ≤', null, to_date('11-08-1986', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '15101199781', null, '–˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 251, '1', '10.8.58.187', null);
+null, '83552003', '13501234033', null, 'Âåó‰∫¨Â∏ÇÊúùÈò≥Âå∫Ë±ÜÂêÑÂ∫ÑÈªÑÂéÇÊùë', null, null, null, null, null, 22957463, '1', '-1', null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (97, 313, '3', '9', '√ÒæØ', '∫¬ÈÛ±Ú', null, to_date('19-01-2012', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13911915719', null, '∞Î≤Ω«≈44∫≈', null, null, null, null, null, 0, '1', '-1', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (98, 311, '3', '4', '√ÒæØ', '¥ﬁ‹∞', null, to_date('17-11-2011', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '1391000000', null, '∞Î≤Ω«≈44∫≈', null, null, null, null, null, 173, '1', '-1', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (29, 32, '3', '9', 'Ê∞ëË≠¶', 'ÂÖ∞ÊôãÈ£û', null, to_date('01-04-1981', 'dd-mm-yyyy'), null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (99, 111, '3', '7', '√ÒæØ', 'Õıœ˛∑…', null, to_date('25-10-1984', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13811009600', null, '–˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 756, '1', '-1', null);
+null, null, '83994900', '13911931957', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 674940, '1', '-1', null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (100, 312, '3', '9', '√ÒæØ', '¬Ì◊‘Œ≠', null, to_date('29-12-2011', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '1391000000', null, '∞Î≤Ω«≈44∫≈', null, null, null, null, null, 14055, '1', '-1', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (101, 119, '0', '1', '’˛ŒØ', 'Ω÷æ∫£', null, to_date('27-10-1956', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13801212625', null, '∞Î≤Ω«≈44∫≈', null, null, null, null, null, 959, '1', '-1', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (30, 33, '3', '9', 'Ê∞ëË≠¶', 'Êùé  Ê±≠', null, to_date('23-12-1980', 'dd-mm-yyyy'), null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (102, 113, '3', '3', '√ÒæØ', '÷µ∞‡ “', null, to_date('01-02-2010', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13611255282', null, '∞Î≤Ω«≈44∫≈', null, null, null, null, null, 1920, '1', '-1', null);
+null, null, '83994933', '13801169862', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 14242185, '2', 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (103, 112, '2', '5', '√ÒæØ', '–‹¡º', null, to_date('15-11-1982', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994947', '13699201262', null, '–˚Œ‰«¯∞Î≤Ω«≈44∫≈', null, null, null, null, null, 639746, '1', '-1', null);
+'10.8.58.201', null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (104, 114, '3', '8', '√ÒæØ', 'Õı∑…', null, to_date('01-06-2010', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13810359888', null, '∞Î≤Ω«≈44∫≈', null, null, null, null, null, 0, '1', '-1', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (105, 115, '2', '3', '∏±ø∆≥§', '∂≠”¿ﬁ•', null, to_date('28-06-2010', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13701264881', null, '∞Î≤Ω«≈44∫≈', null, null, null, null, null, 3350, '1', '-1', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (31, 34, '2', '9', 'ÂâØ‰∏ª‰ªª', '‰∏•Âª∫', null, to_date('18-12-1979', 'dd-mm-yyyy'), null, null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (106, 314, '3', '9', '÷æ‘∏’ﬂ', '’‘¡ÓŒƒ', null, to_date('08-07-1978', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994963', '13910423057', null, 'A707', null, null, null, null, null, 159150, '1', '-1', null);
+null, null, '83994951', '13910666539', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 7006059, '2', '-1', null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (107, 116, '3', '7', '√ÒæØ', '¿Ó÷æ–¬', null, to_date('30-08-2010', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '1391000000', null, '∞Î≤Ω«≈44∫≈', null, null, null, null, null, 0, '1', '-1', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (108, 310, '3', '3', 'ø∆≥§', '…Ú ÁæÍ', null, to_date('06-07-2011', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13611184963', null, '∞Î≤Ω«≈44∫≈', null, null, null, null, null, 52199, '1', '-1', null);
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (32, 35, '2', '9', 'ÂäûÂÖ¨ÂÆ§ÂâØ‰∏ª‰ªª', 'ÂÆãÂ®Å', null, to_date('20-07-1977', 'dd-mm-yyyy'), null, null, null, null, null, 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (109, 117, '3', '7', '√ÒæØ', '¿Ó÷æ–¬', null, to_date('02-10-1970', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994978', '13801125334', null, '∞Î≤Ω«≈44∫≈', null, null, null, null, null, 1221, '1', '-1', null);
+null, null, null, '83994957', '13911090053', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 3817590, '1', '-1', 
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (110, 118, '3', '8', '√ÒæØ', '»Œ≥¨', null, to_date('24-04-1981', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994990', '13911836842', null, '∞Î≤Ω«≈44∫≈', null, null, null, null, null, 4734, '1', '-1', null);
+null);
 
-insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
-values (111, 309, '0', '1', '∞Ïπ´ “÷˜»Œ', 'Õı—‡√˘', null, to_date('01-06-2011', 'dd-mm-yyyy'), null, null, null, null, null, null, null, null, '83994900', '13901222470', null, '∞Î≤Ω«≈44∫≈', null, null, null, null, null, 239351, '1', '-1', null);
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (33, 36, '3', '9', 'Ê∞ëË≠¶', 'ÁéãÊñáÊñå', null, to_date('08-10-1959', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13901395253', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 2058073, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (34, 37, '2', '7', 'Ê∞ëË≠¶', 'ÁéãÈπè', null, to_date('07-12-1980', 'dd-mm-yyyy'), null, null, null, null, null, null, null, 
+
+null, '83994965', '13911932634', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 402582, '1', '10.8.58.163', 
+
+null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (35, 38, '3', '9', 'Ê∞ëË≠¶', 'Èôà  Êõ≤', null, to_date('28-03-1975', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13581908951', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 0, '1', null, null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (36, 39, '3', '9', 'Ê∞ëË≠¶', 'ÊùéÊôìÈú≤', null, to_date('18-10-1978', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13501106528', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 814983, '1', 
+
+'10.8.58.163', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (37, 40, '3', '3', 'Ê∞ëË≠¶', 'Âº†Èë´', null, to_date('04-03-1982', 'dd-mm-yyyy'), null, null, null, null, null, null, null, 
+
+null, '83994920', '13699228826', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 7133811, '2', '10.8.58.61', 
+
+null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (38, 41, '1', '4', 'Â§ÑÈïø', 'Èíü  Âπ≥', null, to_date('18-10-1961', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13911931681', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 1649, '3', '10.9.54.5', 
+
+null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (39, 42, '2', '3', 'ÂâØ‰∏ª‰ªª', 'Âº†‰∏ñÂº∫', null, to_date('11-03-1970', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13701279817', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 2140690, '3', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (40, 43, '3', '4', 'Ê∞ëË≠¶', 'Âº†  ÂÅ•', null, to_date('28-12-1961', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13801151367', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 8327222, '3', 
+
+'10.9.54.17', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (41, 44, '3', '3', 'Ê∞ëË≠¶', 'ËÇñÁáïÂ®Å', null, to_date('03-12-1955', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83552017', '13910139552', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 6833990, '3', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (42, 45, '3', '11', 'Ê∞ëË≠¶', 'Âº†  Ëä∏', null, to_date('08-04-1971', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13901295919', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 4074355, '3', 
+
+'10.9.54.20', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (43, 316, '3', '3', 'Ê∞ëË≠¶', 'Êù®Á†ö', null, to_date('02-06-1979', 'dd-mm-yyyy'), null, null, null, null, null, null, null, 
+
+null, '83994900', '13911285512', null, 'ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 0, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (44, 47, '3', '4', 'Ê∞ëË≠¶', 'Èôà  Ëø∞', null, to_date('05-02-1964', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13911931680', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 192097, '3', null, null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (45, 48, '2', '4', 'Ê∞ëË≠¶', 'ÂÆ´‰øùÊàê', null, to_date('04-04-1957', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13910172155', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 2660488, '3', 
+
+'10.9.54.18', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (46, 315, '3', '9', 'ÂøóÊÑøËÄÖ', 'Êù®Á¥´Ê∏Ö', null, to_date('01-03-1997', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994963', '15911034081', null, 'A707', null, null, null, null, null, 3148, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (47, 50, '3', '4', 'Ê∞ëË≠¶', 'ÂàòËã±Ëåπ', null, to_date('13-03-1975', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13910336556', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 3616237, '3', 
+
+'10.9.54.15', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (48, 51, '2', '11', 'Ê∞ëË≠¶', 'ÊªïÊµ∑Ëæâ', null, to_date('17-05-1984', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13501132009', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 10063406, '1', 
+
+'10.8.58.59', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (49, 52, '3', '11', 'Ê∞ëË≠¶', 'ÂÆã‰∏ΩÂêõ', null, to_date('29-06-1972', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13911931963', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 5075, '1', '10.8.58.161', 
+
+null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (50, 53, '2', '4', 'ÂâØÂ§ßÈòüÈïø', 'ÊùéËΩ∂Âá°', null, to_date('11-03-1977', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83551103', '13801217066', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑Ôºå100054„ÄÅÂåó‰∫¨ÈÇÆÊîø2341‰ø°ÁÆ±Ôºå100121', null, null, null, 
+
+null, null, 11476185, '3', '10.9.54.11', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (51, 55, '1', '7', 'ÊîøÂßî', 'ÂßöÂ∫ÜÁîü', null, to_date('01-10-1962', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13901039329', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 3495679, '1', 
+
+'10.8.58.113', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (52, 56, '2', '11', 'ÂâØÂ§ßÈòüÈïø', 'Êù®ÂõΩÁ´†', null, to_date('02-05-1959', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13801155932', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 1579749, '1', 
+
+'10.8.58.180', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (53, 57, '2', '7', 'Ê∞ëË≠¶', 'ÂÜÄËÇñÈõ∑', null, to_date('28-09-1967', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13901286762', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 745689, '1', 
+
+'10.8.58.188', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (54, 58, '3', '11', 'Âä©ÁêÜË∞ÉÁ†îÂëò', 'ÈÉ≠Ëç´ËåÇ', null, to_date('22-01-1958', 'dd-mm-yyyy'), null, null, null, null, null, 
+
+null, null, null, '83994980', '18910088769', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 12396280, '2', '-1', 
+
+null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (55, 59, '3', '7', 'Ê∞ëË≠¶', 'Êùé  ‰∫¨', null, to_date('29-01-1962', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13701172462', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 835, '1', null, null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (56, 60, '1', '7', 'Â§ßÈòüÈïø', 'ÊØï  Ê≥¢', null, to_date('02-01-1970', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13801073120', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 158331, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (57, 61, '3', '7', 'Ê∞ëË≠¶', 'Âº†ÁßÄÁê¶', null, to_date('19-01-1970', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994950', '13911833009', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 13895937, '2', 
+
+'10.8.58.186', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (58, 62, '3', '7', 'Ê∞ëË≠¶', 'ÁéãÁ¥†ÂØÖ', null, to_date('20-07-1974', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994975', '13911931692', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 58981, '2', '10.8.58.189', 
+
+null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (59, 63, '3', '7', 'Ê∞ëË≠¶', 'Â≠ôÂÖÉÂÖÉ', null, to_date('01-02-1979', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994979', '13801191066', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑A0715', null, null, null, null, null, 91363, '2', 
+
+'10.8.58.187', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (60, 64, '2', '3', 'ÂâØ‰∏ª‰ªª', 'Áü≥  Á£ä', null, to_date('29-10-1980', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13910101411', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 5706938, '2', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (61, 65, '3', '7', 'Ê∞ëË≠¶', 'ÂàòÊù∞', null, to_date('13-03-1974', 'dd-mm-yyyy'), null, null, null, null, null, null, null, 
+
+null, '83994932', '13701025508', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 6318974, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (62, 67, '3', '7', 'Ê∞ëË≠¶', 'ÁéãÊôã‰Ω≥', null, to_date('03-10-1981', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13910992759', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 53539, '1', '10.8.58.70', 
+
+null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (63, 68, '3', '7', 'Ê∞ëË≠¶', 'ËµµË∑ÉÊò•', null, to_date('22-01-1960', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994921', '13801264144', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 491416, '2', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (64, 69, '2', '7', 'Ê∞ëË≠¶', 'ÂæêÁáïÊ∏§', null, to_date('12-02-1973', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13601011175', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 465632, '1', 
+
+'10.8.58.185', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (65, 71, '0', '1', 'ÂâØÊÄªÈòüÈïø', 'Âº†ÁªßÂÆè', null, to_date('01-02-1968', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13901361509', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 1877978, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (66, 73, '1', '8', 'Â§ßÈòüÈïø', 'Áî∞Ê∞∏Â≥∞', null, to_date('23-01-1975', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13911931687', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 143270, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (68, 75, '3', '8', 'Ê∞ëË≠¶', 'ÊÆ∑ÂØåÂº∫', null, to_date('21-03-1962', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13901154386', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 229827, '1', 
+
+'10.8.58.190', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (69, 76, '3', '8', 'Ê∞ëË≠¶', 'ËíãÊµ∑Ê∂õ', null, to_date('07-02-1974', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13911836916', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 6952, '1', '10.8.58.193', 
+
+null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (70, 77, '3', '8', 'Ê∞ëË≠¶', 'ÈÉëÊñå', null, to_date('27-09-1963', 'dd-mm-yyyy'), null, null, null, null, null, null, null, 
+
+null, '83994989', '13901166209', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 57594213, '1', '10.8.58.121', 
+
+null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (71, 78, '2', '8', 'ÂâØÂ§ßÈòüÈïø', 'Ê¢Å  ÂÜ≤', null, to_date('17-12-1978', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13911605588', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 11464, '1', '10.8.58.190', 
+
+null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (72, 79, '3', '8', 'Ê∞ëË≠¶', 'ÁéãÂêëÂà©', null, to_date('11-06-1963', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13810312157', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 337184, '2', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (73, 80, '3', '3', 'ÊñáÁßòÁßëÁßëÈïø', 'ÂàòÂç∞Êùæ', null, to_date('27-04-1981', 'dd-mm-yyyy'), null, null, null, null, null, 
+
+null, null, null, '83994947', '13911785033', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 2612777, '1', '-1', 
+
+null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (74, 81, '3', '3', 'Ê∞ëË≠¶', 'Áü≥  ‰ºü', null, to_date('16-07-1977', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13910166936', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 4771220, '2', 
+
+'10.8.58.84', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (75, 82, '3', '9', 'Ê∞ëË≠¶', 'ÁéãÈò≥', null, to_date('05-03-1976', 'dd-mm-yyyy'), null, null, null, null, null, null, null, 
+
+null, '83994900', '13020012223', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 203364, '1', '10.8.58.191', 
+
+null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (76, 84, '3', '8', 'Ê∞ëË≠¶', 'ÊÉ†  Êïè', null, to_date('11-02-1960', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13651204284', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 0, '1', null, null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (77, 85, '3', '8', 'Ê∞ëË≠¶', 'Âº†Â§™Êûó', null, to_date('03-04-1961', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13911181166', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 116590, '2', 
+
+'10.8.58.190', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (78, 86, '2', '5', 'ÂâØÂ§ßÈòüÈïø', 'ÊùéÊôì‰∏ú', null, to_date('22-11-1971', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13911831173', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 556066, '1', '10.8.58.63', 
+
+null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (79, 88, '1', '5', 'Â§ßÈòüÈïø', 'È´òÁ´ãÂõΩ', null, to_date('24-04-1972', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83552011', '13911931688', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑A0304', null, null, null, null, null, 2422006, '1', 
+
+'10.8.58.155', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (80, 89, '3', '11', 'Ê∞ëË≠¶', 'ÁéãÂÆòÈæô', null, to_date('07-09-1957', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13901317330', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 2, '2', null, null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (81, 90, '3', '5', 'Ê∞ëË≠¶', 'ÂàòÈ™•', null, to_date('31-05-1981', 'dd-mm-yyyy'), null, null, null, null, null, null, null, 
+
+null, '83994946', '13911862665', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 2879374, '2', '10.8.58.160', 
+
+null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (82, 91, '3', '5', 'Ê∞ëË≠¶', 'Êú¥ÊàêÂõΩ', null, to_date('24-09-1971', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13901356617', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 22696535, '2', '-1', 
+
+null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (83, 92, '2', '5', 'ÂâØÂ§ßÈòüÈïø', 'Áî∞  ‰∫Æ', null, to_date('11-12-1973', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13901365849', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 9734921, '2', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (84, 93, '3', '3', 'Ê∞ëË≠¶', 'ÈôÜÊò•Âçé', null, to_date('27-01-1960', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994939', '13801254952', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 62286782, '2', '-1', 
+
+null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (85, 94, '3', '5', 'Ê∞ëË≠¶', 'ËµµÊµ∑Â≥∞', null, to_date('18-12-1977', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994930', '13601023869', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 3464323, '2', 
+
+'10.8.58.160', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (86, 95, '2', '8', 'ÂâØÂ§ßÈòüÈïø', 'ÈáëÈπè', null, to_date('24-01-1976', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994942', '13901358855', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 1465046, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (87, 96, '3', '5', 'Ê∞ëË≠¶', 'Áü≥‰∏π‰∏π', null, to_date('23-01-1982', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13439015358', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 3716379, '2', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (88, 97, '3', '3', 'Ê∞ëË≠¶', 'Â¥î  Áæ§', null, to_date('01-03-1972', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13801104233', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 1550995, '2', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (89, 101, '3', '7', 'Ê∞ëË≠¶', 'Âº†Âº¢', null, to_date('02-09-1985', 'dd-mm-yyyy'), null, null, null, null, null, null, null, 
+
+null, '83994900', '13501355462', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 324796, '1', '10.8.58.186', 
+
+null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (90, 102, '3', '8', 'Ê∞ëË≠¶', 'ÂßúÊñ∞Êò•', null, to_date('19-03-1978', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '4900', '13146079768', null, 'ÂçäÊ≠•Ê°•Ë°ó44Âè∑', null, null, null, null, null, 391976, '2', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (91, 104, '3', '5', 'Ê∞ëË≠¶', 'ËΩ¶‰Ω≥Èü≥', null, to_date('09-11-1983', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13810007763', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 0, '1', null, null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (92, 105, '3', '9', 'Ê∞ëË≠¶', 'ÂàòÁíêÂ®É', null, to_date('05-11-1978', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13701372826', null, 'Âåó‰∫¨Â∏ÇÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 8700236, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (93, 106, '3', '3', 'Ê∞ëË≠¶', 'ËñõÂ£Æ', null, to_date('22-05-1974', 'dd-mm-yyyy'), null, null, null, null, null, null, null, 
+
+null, '83994900', '13901296154', null, 'ÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 1897211, '1', '10.8.58.68', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (94, 107, '3', '3', 'ÂâØÁßëÈïø', 'ËíãÈîê', null, to_date('13-02-1982', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13911837374', null, 'ÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 483431, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (95, 108, '3', '5', 'Ê∞ëË≠¶', 'Êõ≤‰∏≠‰πê', null, to_date('09-09-1984', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13911916097', null, 'ÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 7422341, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (96, 109, '3', '7', 'Ê∞ëË≠¶', 'Âº†Èùô', null, to_date('11-08-1986', 'dd-mm-yyyy'), null, null, null, null, null, null, null, 
+
+null, '83994900', '15101199781', null, 'ÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 251, '1', '10.8.58.187', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (97, 313, '3', '9', 'Ê∞ëË≠¶', 'ÈÉùËΩ∂ÂΩ¨', null, to_date('19-01-2012', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13911915719', null, 'ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 0, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (98, 311, '3', '4', 'Ê∞ëË≠¶', 'Â¥îÈ¶®', null, to_date('17-11-2011', 'dd-mm-yyyy'), null, null, null, null, null, null, null, 
+
+null, '83994900', '1391000000', null, 'ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 173, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (99, 111, '3', '7', 'Ê∞ëË≠¶', 'ÁéãÊôìÈ£û', null, to_date('25-10-1984', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13811009600', null, 'ÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 756, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (100, 312, '3', '9', 'Ê∞ëË≠¶', 'È©¨Ëá™Ëãá', null, to_date('29-12-2011', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '1391000000', null, 'ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 14055, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (101, 119, '0', '1', 'ÊîøÂßî', 'ÈáëÂøóÊµ∑', null, to_date('27-10-1956', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13801212625', null, 'ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 959, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (102, 113, '3', '3', 'Ê∞ëË≠¶', 'ÂÄºÁè≠ÂÆ§', null, to_date('01-02-2010', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13611255282', null, 'ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 1920, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (103, 112, '2', '5', 'Ê∞ëË≠¶', 'ÁÜäËâØ', null, to_date('15-11-1982', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994947', '13699201262', null, 'ÂÆ£Ê≠¶Âå∫ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 639746, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (104, 114, '3', '8', 'Ê∞ëË≠¶', 'ÁéãÈ£û', null, to_date('01-06-2010', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13810359888', null, 'ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 0, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (105, 115, '2', '3', 'ÂâØÁßëÈïø', 'Ëë£Ê∞∏Ëïô', null, to_date('28-06-2010', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13701264881', null, 'ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 3350, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (106, 314, '3', '9', 'ÂøóÊÑøËÄÖ', 'Ëµµ‰ª§Êñá', null, to_date('08-07-1978', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994963', '13910423057', null, 'A707', null, null, null, null, null, 159150, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (107, 116, '3', '7', 'Ê∞ëË≠¶', 'ÊùéÂøóÊñ∞', null, to_date('30-08-2010', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '1391000000', null, 'ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 0, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (108, 310, '3', '3', 'ÁßëÈïø', 'Ê≤àÊ∑ëÂ®ü', null, to_date('06-07-2011', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994900', '13611184963', null, 'ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 52199, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (109, 117, '3', '7', 'Ê∞ëË≠¶', 'ÊùéÂøóÊñ∞', null, to_date('02-10-1970', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994978', '13801125334', null, 'ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 1221, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (110, 118, '3', '8', 'Ê∞ëË≠¶', '‰ªªË∂Ö', null, to_date('24-04-1981', 'dd-mm-yyyy'), null, null, null, null, null, null, 
+
+null, null, '83994990', '13911836842', null, 'ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 4734, '1', '-1', null);
+
+insert into b_yh (N_XH, USER_ID, C_JB, C_YHZ, C_ZC, C_XM, N_XB, D_SR, C_GJ, C_CSD, C_HYZK, C_XL, C_BYYX, C_ZY, C_KH, C_HKSZD, 
+
+C_DHHM, C_SJHM, C_YX, C_DZ, D_GZSJ, D_RZSJ, C_JCJL, C_BZ, N_DLCS, N_ZXSC, C_LX, C_YXIP, C_KS)
+values (111, 309, '0', '1', 'ÂäûÂÖ¨ÂÆ§‰∏ª‰ªª', 'ÁéãÁáïÈ∏£', null, to_date('01-06-2011', 'dd-mm-yyyy'), null, null, null, null, null, 
+
+null, null, null, '83994900', '13901222470', null, 'ÂçäÊ≠•Ê°•44Âè∑', null, null, null, null, null, 239351, '1', '-1', null);
 
 prompt Done.
