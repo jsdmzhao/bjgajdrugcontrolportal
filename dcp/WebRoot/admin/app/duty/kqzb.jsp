@@ -98,9 +98,9 @@ KqZbSvc.queryAll(null,function(res){
 			height:'500',
 			 eventClick: function(event) {
 			 
-				 if(confirm("是否删除 "+event.title+" 的值班信息")) { 
+				 if(confirm("是否删除 "+event.title+" 的值班信息")) {//alert(event.start);
 					  // $("#calendar").fullCalendar('removeEvents');  
-		           
+		                                                   
 		            	$('#calendar').fullCalendar('removeEvents', event.id);
 		                    } 
 				 else{
@@ -322,7 +322,7 @@ for(int i=0;i<list.size();i++){
 	
 	%>
 	
-	<div class='external-event' id='<%=clist.get(j).get("id") %>'><%=clist.get(j).get("text") %></div>
+	<div class='external-event' id='<%=clist.get(j).get("id") %>' ><%=clist.get(j).get("text") %></div>
 	<%}%>
 	
 	</dd>
