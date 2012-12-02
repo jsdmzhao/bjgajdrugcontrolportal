@@ -36,10 +36,24 @@ public class KqYbjlSvc  {
 				String bm=userMap.get("cYhz");
 				String ks=userMap.get("cKs");
 				
-				if("3".equals(jb)){
+				
+				if("5".equals(jb)){
+					
+					 p.put("cShjb", "3");
+					
+			//		 p.put("cShjb", "4");
+					
+			//	}else if("4".equals(jb)){
+			//		 p.put("cShjb", "3");
+					
+				}else if("3".equals(jb)){
+						if("3".equals(bm)){
+					   p.put("cShjb", "1");
+					 }
 					 p.put("cShjb", "2");
 					
 				}else if("2".equals(jb)){
+					
 					 p.put("cShjb", "1");
 					
 				}else if("1".equals(jb)){
@@ -108,15 +122,22 @@ public class KqYbjlSvc  {
 				String bm=userMap.get("cYhz");
 				String ks=userMap.get("cKs");
 				
-				if("2".equals(jb)){
-					 p.put("cShjb", "2");
+				if("4".equals(jb)){
+					 p.put("cShjb", "4");
 					 p.put("cKs", ks);
 					
-				}else if("1".equals(jb)){
-					 p.put("cShjb", "1");
+				}else if("3".equals(jb)){
+					 p.put("cShjb", "3");
+					 p.put("cKs", ks);
+					
+				}else if("2".equals(jb)){
+					 p.put("cShjb", "2");
 					 p.put("cYhz", bm);
 					
 				}else if("1".equals(jb)){
+					 p.put("cShjb", "1");
+					
+				}else if("0".equals(jb)){
 					 p.put("cShjb", "0");
 				}else{
 					return null; 

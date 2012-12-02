@@ -102,7 +102,7 @@
 			<if test="cLx != null and cLx !='' ">  and C_LX = #{cLx}</if>
 			<if test="cYxip != null and cYxip !='' ">  and C_YXIP = #{cYxip}</if>
 		</trim>
-		ORDER BY base.N_XH  DESC
+		ORDER BY base.C_JB  
 	</select>
 	
 	
@@ -155,7 +155,7 @@
 			<if test="cLx != null and cLx !='' ">  and C_LX = #{cLx}</if>
 			<if test="cYxip != null and cYxip !='' ">  and C_YXIP = #{cYxip}</if>
 		</trim>
-		ORDER BY base.N_XH  DESC
+		ORDER BY base.C_JB  
 		<include refid="pagination.paginationLast"></include>
 	</select>
 
