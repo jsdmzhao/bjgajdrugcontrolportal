@@ -214,9 +214,9 @@ body {
 
 #pic_link_1 {
 	border: solid 1px #a9cfe5;
-	height: 72px;
+	height: 65px;
 	float: left;
-	margin-top: 5px;
+	margin-top: 2px;
 	margin-left: 2px;
 	padding-left: 3px;
 	line-height: 143px;
@@ -231,7 +231,7 @@ body {
 
 #pic_link_1_list li {
 	float: left;
-	margin-left: 10px;
+	margin-left: 5px;
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
@@ -327,6 +327,18 @@ body {
 	background: url(../newimages/jwgk_center_content_title_bg.png);
 }
 
+.jwgk_content_center_title .more{
+	text-align: right;
+	padding-top: 11px;
+	float: right;
+	height: 32px;
+	margin-right: 5px;
+	width: 87px;
+	color: #0a62a0;
+	font-weight: normal;
+	font-size: 14px;
+}
+
 .jwgk_content_center_title div{
 	padding-top: 11px;
 	height: 32px;
@@ -339,6 +351,7 @@ body {
 }
 
 .jwgk_content_center_title .select {
+	padding-left: 10px;
 	background: url(../newimages/select.png) ;
 }
 
@@ -507,16 +520,28 @@ body {
 .ztzl_content_center_title div{
 	padding-top: 11px;
 	height: 32px;
-	width: 94px;
+	width: 87px;
 	float: left;
-	margin-left: 10px;
 	color: #0a62a0;
 	font-weight: bold;
 	font-size: 14px;
 }
 
+.ztzl_content_center_title .more{
+	text-align: right;
+	padding-top: 11px;
+	float: right;
+	height: 32px;
+	margin-right: 5px;
+	width: 87px;
+	color: #0a62a0;
+	font-weight: normal;
+	font-size: 14px;
+}
+
 .ztzl_content_center_title .select {
-	background: url(../newimages/select.png) ;
+	color: #fff;
+	background: url(../newimages/select2.png);
 }
 
 .ztzl_content_center_title_font {
@@ -527,10 +552,6 @@ body {
 	font-weight: bold;
 	font-size: 14px;
 }
-
-
-
-
 
 .ztzl_content_center_title_more {
 	margin-top: 10px;
@@ -564,15 +585,30 @@ body {
 	height: 32px;
 	width: 87px;
 	float: left;
-	margin-left: 10px;
 	color: #0a62a0;
 	font-weight: bold;
+	font-size: 14px;
+}
+.ztzl_content_right_title .more{
+	text-align: right;
+	padding-top: 11px;
+	float: right;
+	height: 32px;
+	margin-right: 5px;
+	width: 87px;
+	color: #0a62a0;
+	font-weight: normal;
 	font-size: 14px;
 }
 
 .ztzl_content_right_title  .select{
 	color: #fff;
-	background: url(../newimages/select2.png) ;
+	background: url(../newimages/select2.png);
+}
+
+.ztzl_content_right_title  .select2{
+	color: #fff;
+	background: url(../newimages/select3.png) no-repeat;
 }
 
 .ztzl_content_rigth_title_font {

@@ -261,6 +261,12 @@ public class NewsAction {
 		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
 		resMap.put("dwjsList", newsList);
 		
+		//学习专栏
+		sqlParamMap.put("c_lm", "1297");
+		sqlParamMap.put("rownum", "7");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("xxzlList", newsList);
+		
 		//公告栏
 		sqlParamMap.put("c_lm", "1200");
 		sqlParamMap.put("rownum", "11");
@@ -279,11 +285,37 @@ public class NewsAction {
 		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
 		resMap.put("jdwjList", newsList);
 		
-		//区县警讯
+		//动态管控
+		sqlParamMap.put("c_lm", "1267");
+		sqlParamMap.put("rownum", "8");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("dtgkList", newsList);
+		
+		//区县禁毒
 		sqlParamMap.put("c_lm", "1199");
 		sqlParamMap.put("rownum", "8");
 		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
-		resMap.put("qxjxList", newsList);
+		resMap.put("qxjdList", newsList);
+		
+		//禁毒考核
+		sqlParamMap.put("c_lm", "1108");
+		sqlParamMap.put("rownum", "8");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("jdkhList", newsList);
+		
+		//工作进度提示
+		sqlParamMap.put("c_lm", "1100");
+		sqlParamMap.put("rownum", "8");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("gzjdList", newsList);
+		
+
+		//场所管理
+		sqlParamMap.put("c_lm", "1146");
+		sqlParamMap.put("rownum", "8");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("csglList", newsList);
+		
 		
 		//媒体关注
 		sqlParamMap.put("c_lm", "1198");
