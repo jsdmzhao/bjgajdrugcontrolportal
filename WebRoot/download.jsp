@@ -177,7 +177,11 @@
 				    	
 				    	 if(index>8){
 				    		// i=i-1;
-				    		out.println("<th>"+list.get(i-1).get("dSj")+"</th>");
+				    		if(list.get(i-1) != null ){
+					    		out.println("<th>"+list.get(i-1).get("dSj")+"</th>");
+				    		} else {
+				    			out.println("</tr><tr>");
+				    		}
 				    		out.println("</tr><tr>");
 							out.println("<th>");
 							
@@ -191,7 +195,11 @@
 				    	
 				    	out.println("</th><th>");
 				    }
-				    out.println("<th>"+	list.get(list.size()-1).get("dSj")+"</th>");
+				    if(list.get(list.size()-1) != null ){
+				    	out.println("<th>"+	list.get(list.size()-1).get("dSj")+"</th>");
+		    		} else {
+		    			out.println("</tr><tr>");
+		    		}
 				    out.println("</th></tr>");
 				    
 						
