@@ -184,7 +184,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           "MenuID":21,
                           "text":"车辆申请",
                           "MenuUrl":"<%=basePath%>admin/app/car/car.jsp",
-                          "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/world.gif",
+                          "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/sitemap.gif",
                           "MenuNo":"sysright",
                           "MenuParentNo":"system"
                          },{
@@ -194,7 +194,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           "MenuID":22,
                           "text":"车辆使用审批",
                           "MenuUrl":"<%=basePath%>admin/app/car/carAudit.jsp",
-                          "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/world.gif",
+                          "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/zoom.gif",
                           "MenuNo":"sysright",
                           "MenuParentNo":"system"
                          },{
@@ -204,17 +204,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           "MenuID":25,
                           "text":"车辆维修",
                           "MenuUrl":"<%=basePath%>admin/app/car/carRepair.jsp",
-                          "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/world.gif",
+                          "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/setup.gif",
                           "MenuNo":"sysright",
                           "MenuParentNo":"system"
                          },{
-                          "icon":"<%=basePath%>liger/lib/icons/32X32/link.gif",
+                          "icon":"<%=basePath%>liger/lib/icons/32X32/setup.gif",
                           "id":21,
                           "MenuName":"车辆维修审批",
                           "MenuID":27,
                           "text":"车辆维修审批",
                           "MenuUrl":"<%=basePath%>admin/app/car/car.jsp",
-                          "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/zoom.gif",
+                          "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/setup.gif",
                           "MenuNo":"sysright",
                           "MenuParentNo":"system"
                          },{

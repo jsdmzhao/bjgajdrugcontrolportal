@@ -68,7 +68,7 @@ public class KqZbSvc  {
 			 for (int i = 1; i < list.size(); i++) {
 		//	 returnValue=returnValue+list.get(i).get("userName")+"，";
 			 if(list.get(i).get("cMc").equals(list.get(i-1).get("cMc"))){
-				 returnValue=returnValue+"："+list.get(i).get("cXm")+"";
+				 returnValue=returnValue+" "+list.get(i).get("cXm")+"";
 			 }else{
 				 returnValue=returnValue+"<br><b>"+list.get(i).get("cMc")+"</b>："+list.get(i).get("cXm")+"";
 				 

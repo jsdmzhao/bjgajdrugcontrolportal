@@ -257,7 +257,7 @@ public class NewsAction {
 		
 		//队伍建设
 		sqlParamMap.put("c_lm", "1196");
-		sqlParamMap.put("rownum", "7");
+		sqlParamMap.put("rownum", "8");
 		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
 		resMap.put("dwjsList", newsList);
 		
