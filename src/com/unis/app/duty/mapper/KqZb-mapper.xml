@@ -22,6 +22,7 @@
 			<result property="cXm" column="C_XM" jdbcType="VARCHAR"/>
 			<result property="cMc" column="C_MC" jdbcType="VARCHAR"/>
 			<result property="dSj" column="D_SJ" jdbcType="VARCHAR"/>
+			<result property="cZbcw" column="C_ZBCW" jdbcType="VARCHAR"/>
 	</resultMap>
 	 
 	<select id="getZb" resultMap="Result2"  parameterType="java.util.Map" >
@@ -34,8 +35,9 @@
 	<select id="getMouthZbb" resultMap="Result3" >
     SELECT C_XM, to_char(D_SJ,'YYYY-MM-DD') D_SJ,
  case C_JB when '2' then '带班领导'  else C_MC end as C_MC
-   
- ,case C_JB when '2' then 1.5  else N_XSXH end as N_XSXH
+ ,case C_JB when '2' then 1.5  else N_XSXH end as N_XSXH,
+ case C_GJ when '0' then '主班' when '1' then '副班'  else '' end as C_ZBCW
+ 
   FROM B_YH A, B_KQ_ZB B,D_DM C
  WHERE A.USER_ID = B.USER_ID AND C.C_DM=A.C_YHZ AND C.C_BXH='DEP'
    AND TO_CHAR(D_SJ, 'YYYY-MM' )= TO_CHAR(SYSDATE, 'YYYY-MM') ORDER BY D_SJ,N_XSXH
@@ -44,10 +46,11 @@
 	
 	
 		<select id="getDayZbb" resultMap="Result3" >
-    SELECT C_XM, to_char(D_SJ,'YYYY-MM-DD') D_SJ,
+   SELECT C_XM, to_char(D_SJ,'YYYY-MM-DD') D_SJ,
  case C_JB when '2' then '带班领导'  else C_MC end as C_MC
-   
- ,case C_JB when '2' then 1.5  else N_XSXH end as N_XSXH
+ ,case C_JB when '2' then 1.5  else N_XSXH end as N_XSXH,
+ case C_GJ when '0' then '主班' when '1' then '副班'  else '' end as C_ZBCW
+ 
   FROM B_YH A, B_KQ_ZB B,D_DM C
  WHERE A.USER_ID = B.USER_ID AND C.C_DM=A.C_YHZ AND C.C_BXH='DEP'
    AND TO_CHAR(D_SJ, 'YYYY-MM-DD' )= TO_CHAR(SYSDATE, 'YYYY-MM-DD')  ORDER BY D_SJ,N_XSXH

@@ -88,7 +88,12 @@ if(userId==null){
          },
         
          {display:"生日",name:"dSr",newline:true,labelWidth:100,width:200,space:30,type:"date"},
-         {display:"国籍",name:"cGj",newline:false,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"值班称谓",name:"cGj",newline:false,labelWidth:100,width:200,space:30,type:"select",
+             comboboxName:"cGjName",
+             options:{valueFieldID:"cGj",data:[{ text: '主班', id: 0 } ,{ text: '副班', id: 1 } ,{ text: '其他', id: 2 } ] }},
+          
+         
+         
          {display:"出生地",name:"cCsd",newline:true,labelWidth:100,width:200,space:30,type:"text"},
          {display:"婚姻状况",name:"cHyzk",newline:false,labelWidth:100,width:200,space:30,type:"text"},
          {display:"学历",name:"cXl",newline:true,labelWidth:100,width:200,space:30,type:"text"},
