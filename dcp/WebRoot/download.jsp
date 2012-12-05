@@ -150,17 +150,32 @@
 				    		
 				    		if(titleList.get(index).equals(p.get("cMc"))&&titleList.get(index).equals(pNext.get("cMc"))){
 				    			
-				    			out.println(p.get("cXm"));
+				    			 if(list.get(i).get("cZbcw")!=null){
+				    				 out.println(list.get(i).get("cZbcw") +":"+p.get("cXm"));
+								 }else{
+				    				 out.println(p.get("cXm"));
+								 }
 				    			
-				    		}else if(titleList.get(index).equals(p.get("cMc"))&&!titleList.get(index).equals(pNext.get("cMc"))){
+				    		}
+		      		    else if(titleList.get(index).equals(p.get("cMc"))&&!titleList.get(index).equals(pNext.get("cMc"))){
 				    			
 				    			
 				    			
 				    			index=index+1;
 				    			if(index>8){
-				    				out.println(p.get("cXm")+"");
+				    				 if(list.get(i).get("cZbcw")!=null){
+					    				 out.println(list.get(i).get("cZbcw") +":"+p.get("cXm")+"");
+									 }else{
+										 out.println(p.get("cXm")+"");
+									 }
+				    				
 				    			}else{
-				    				out.println(p.get("cXm")+"</th><th>");
+				    				 if(list.get(i).get("cZbcw")!=null){
+					    				 out.println(list.get(i).get("cZbcw") +":"+p.get("cXm")+"</th><th>");
+									 }else{
+											out.println(p.get("cXm")+"</th><th>");
+									 }
+				    			
 				    			}
 				    			
 				    		}else{
@@ -177,11 +192,7 @@
 				    	
 				    	 if(index>8){
 				    		// i=i-1;
-				    		if(list.get(i-1) != null ){
-					    		out.println("<th>"+list.get(i-1).get("dSj")+"</th>");
-				    		} else {
-				    			out.println("</tr><tr>");
-				    		}
+				    		out.println("<th>"+list.get(i-1).get("dSj")+"</th>");
 				    		out.println("</tr><tr>");
 							out.println("<th>");
 							
@@ -195,11 +206,7 @@
 				    	
 				    	out.println("</th><th>");
 				    }
-				    if(list.get(list.size()-1) != null ){
-				    	out.println("<th>"+	list.get(list.size()-1).get("dSj")+"</th>");
-		    		} else {
-		    			out.println("</tr><tr>");
-		    		}
+				    out.println("<th>"+	list.get(list.size()-1).get("dSj")+"</th>");
 				    out.println("</th></tr>");
 				    
 						
