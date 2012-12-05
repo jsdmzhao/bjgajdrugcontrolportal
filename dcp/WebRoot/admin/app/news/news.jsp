@@ -113,7 +113,7 @@ if(newsType == null){
                       
                       //top.f_addTab(null, '增加新闻信息', '<!%=basePath%>admin/app/news/newsDetail.jsp?newsType='+newsType);
                      dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/news/newsDetail.jsp?newsType='+newsType, 
-                           height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+                           height: 600,width: 900,showMax: true, showToggle: true,  showMin: true, title:'增加新闻信息'
 					  });
                   } else
                   {
@@ -125,7 +125,7 @@ if(newsType == null){
                   if (!selected) { LG.tip('请选择行!'); return }
                   
                	  dialog = $.ligerDialog.open({ url: '<%=basePath%>newsUpdate?news.n_xh=' + selected.n_xh, 
-                         height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+                         height: 600,width: 900,showMax: true, showToggle: true,showMin:true,title:'修改新闻信息'
 				  });
 
                   break;
@@ -133,7 +133,7 @@ if(newsType == null){
             	  var selected = grid.getSelected();
                   if (!selected) { LG.tip('请选择行!'); return }
                   dialog = $.ligerDialog.open({ url: '<%=basePath%>newsView?news.n_xh=' + selected.n_xh, 
-                      height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+                      height: 600,width: 900,showMax: true, showToggle: true,  showMin: true
 				  });
                   break;
               case "删除": 

@@ -78,6 +78,11 @@ public class ColumnAction {
 		return Globals.SUCCESS;
 	}
 	
+	public String columnIndexView(){
+		column = (Column) columnService.selectOne("ColumnMapper.getColumnView", column);
+		return Globals.SUCCESS;
+	}
+	
 	public String columnUpdateXsxh(String n_xh,String n_xsxh){
 		Map<String, Object> sqlParamMap = new HashMap<String, Object>();
 		sqlParamMap.put("n_xh", n_xh);

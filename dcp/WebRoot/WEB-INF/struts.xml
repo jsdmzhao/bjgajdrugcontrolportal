@@ -29,11 +29,15 @@
 		
 		
 		<!-- 首页 -->
+		<action name="columnIndexView" class="columnAction" method="columnIndexView">
+			<result>/column_view.jsp</result>
+		</action>
+		
 		<action name="newsIndexList" class="newsAction" method="newsIndexList">
 			<result>/index.jsp</result>
 		</action>
 		
-				<action name="newsSort" class="newsAction" method="newsSort">
+		<action name="newsSort" class="newsAction" method="newsSort">
 			<result>/news_sort.jsp</result>
 		</action>
 		
@@ -66,6 +70,10 @@
 			<result name="input">/video/video.jsp</result>
 		</action>
 	
+		<action name="newsCombox" class="newsAction" method="newsCombox">
+			<result name="success"></result>
+		</action>
+		
 		<action name="newsDetail" class="newsAction" method="newsDetail">
 			<result name="success">/news_detail.jsp</result>
 		</action>

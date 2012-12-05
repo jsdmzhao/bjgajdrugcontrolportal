@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<style type="text/css">
 		body { padding:0px; margin:0px; }
-		.demo { width:549px; height:auto; display:block; overflow:hidden; zoom:=1;
+		.demo { width:519px; height:auto; display:block; overflow:hidden; zoom:=1;
 		}
 		.STYLE1 {
 			font-size: 24px;
@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		.ny2010 a{ text-decoration:none; color:#333333; font-size:12px;}
 		.ny2010 td img{ width:220px; height:36px; display:block; margin:0 5px 2px 0; padding:1px; border:1px solid #CCCCCC;}
 		
-		#link_logo{ 	border-left: solid 1px #a9cfe5; border-right: solid 1px #a9cfe5;border-bottom: solid 1px #a9cfe5;height:160px; width:208px; overflow:hidden;list-style:none;}
+		#link_logo{ border-left: solid 1px #a9cfe5; border-right: solid 1px #a9cfe5;border-bottom: solid 1px #a9cfe5;height:160px; width:208px; overflow:hidden;list-style:none;}
 		#link_logo li{height:30px;width:190px; padding-left:5px;line-height:30px; border-bottom:1px dotted #ddd;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 		
 	</style>
@@ -73,12 +73,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 			}
 			if(GetObj("showDivTitle_"+id_num+num)){
+				/**
 				if(""+id_num+num == '52'){
 					GetObj("showDivTitle_"+id_num+num).className='select2';
 				} else {
 					GetObj("showDivTitle_"+id_num+num).className='select';
 				}
-				
+				**/
+				GetObj("showDivTitle_"+id_num+num).className='select';
 				
 			}
 			if(GetObj("showDivContent_"+id_num+num)){
@@ -99,19 +101,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	  function f_open(url, title, icon) {
 	    	
-	  /*、      var win = $.ligerDialog.open(
-	        { height: 500, url: url, width: 700, showMax: true, showToggle: true, showMin: true, isResize: true, modal: false, title: title, slide: false, buttons: [
-	            { text: '确定', onclick: function (item, Dialog, index) {
-	                win.hide();
-	            }
-	            }
-	        ]
-	        });
-	        var task = jQuery.ligerui.win.tasks[win.id];
-	        if (task) {
-	            $(".l-taskbar-task-icon:first", task).html('<img src="' + icon + '" />');
-	        }
-	        return win;*/
 	        window.open (url, title, 'height=600, width=1000, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
 	    }
 	</script>
@@ -146,7 +135,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	    <div class="menu">
 		    <a href="<%=basePath%>">首页</a>
-		    <a href="">总队简介</a>
+		    <a href="<%=basePath%>columnIndexView?column.c_lmdm=1355">总队简介</a>
 		    <a href="http://www.xxzx.bj" target="_blank">信息查询</a> 
 		    <a href="http://anquan.zx.bj" target="_blank">信息安全</a> 
 		    <a href="newsCenterList?news.c_lm=1239&pageNo=1">视频在线</a> 
@@ -154,7 +143,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    <a href="newsCenterList?news.c_lm=1291&pageNo=1">光荣榜</a> 
 		    <a href="newsCenterList?news.c_lm=1214&pageNo=1" onMouseOver="mouseover(this, 1)" onmouseout="mouseout()">法律法规</a> 
 		    <a href="newsCenterList?news.c_lm=1286&pageNo=1">纪检监察</a> 
-		    <a href="http://www.jdc.bj:9001" target="_blank">旧站入口</a> 
+		    <a href="http://www.jdc.bj" target="_blank">旧站入口</a> 
 		</div>
 		
 		<div class="menu-list" id="menu1" onmouseover="_mouseover()" onmouseout="_mouseout()">
@@ -225,7 +214,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div>
 					<div class="demo">
 						<SCRIPT type=text/javascript>
-							var focus_width = 549;
+							var focus_width = 519;
 							//图片宽
 							var focus_height = 375;
 							//图片高
@@ -273,13 +262,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</a>
 						</s:iterator>
 					</div>
-					
 				</div>
 				
 				<s:iterator value="resMap.lddtList" var="news" begin="1">
 					<div class="lddt_news_list">
-						<div class="lddt_news_list_c" style="width:325px;">
-							<div class="lddt_news_list_c_l" style="width:290px;">
+						<div class="lddt_news_list_c" style="width:345px;">
+							<div class="lddt_news_list_c_l" style="width:315px;">
 								<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 								<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -300,7 +288,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 			</div>
 		</div>
-		<!-- -->
+		<%-- 
 		<div id="pic_link_1">
 			<div id="pic_link_1_list">
 			
@@ -352,20 +340,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<ul>
 					<li><a href='newsCenterList?news.c_lm=1191&pageNo=1'><img src="newimages/list_14.png" /></a></li>
 				</ul>
-				 -->
+
 			</div>
 		</div>
+		--%>
 		 
-		<div id="pic_link_2">
-			<div id="swfContent"></div>
-			<script type="text/javascript"> 
-				var xmlData="<list><item><img>newimages/01.png</img><url></url></item><item><img>newimages/02.png</img><url></url></item><item><img>newimages/03.png</img><url></url></item></list>";
-				var flashvars = {xmlData:xmlData};
-				var params = {menu:false,wmode:"opaque"};
-				var attributes = {};
-				swfobject.embedSWF("flash/lanren.swf", "swfContent", "978", "70", "9","expressInstall.swf", flashvars, params, attributes);
-			</script>
-		</div>
 		<div id="jwgk_title"></div>
 		<div id="jwgk_content">
 			<div id="jwgk_content_left">
@@ -392,7 +371,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 					</div>
 				</div>
-				<!-- 
+				<%-- 
 				<div class="jrzb_div" style="height:105px; background: url('newimages/birthday.png');">
 					<div class="jrzb_title">
 						<div class="jrzb_title_content">
@@ -419,43 +398,105 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						
 					</div>
 				</div>
-				 -->
-				<div class="jrzb_div">
-					<div class="jrzb_title">
-						<div class="jrzb_title_content">
-							<div class="jrzb_title_img"><img src="newimages/content_title_img.png" /></div>
-							<div class="jrzb_title_font">应用导航</div>
-						</div>
-					</div>				
-					<div class="yydh_content_list">
-						<ul>
-							<li><a href="http://10.8.58.21:9080/jindu" target="_blank"><img src="newimages/jdajglxt.png" /></a></li>
-						</ul>
-						<ul>
-							<li><a href="http://10.8.58.21:9080/xdry" target="_blank"><img src="newimages/xdrydtgkxt.png" /></a></li>
-						</ul>
-						<ul>
-							<li><a href="http://10.8.58.21:9080/qbyp"><img src="newimages/gabjdqbypxt.png" /></a></li>
-						</ul>
-					</div>
-				</div>
+				 --%>
+				
+				<div class="ztzl_img_div"><a href="newsCenterList?news.c_lm=1145&pageNo=1"><img src="newimages/zdzxx.png" /></a></div>
+				<div class="ztzl_img_div">
+				<% 
+				if(session.getAttribute("userId") != null && !"0".equals(session.getAttribute("userId"))){
+				%>
+					<a href="<%=basePath%>desktop/index.jsp?TB_iframe=true&height=400&width=600" rel="sexylightbox[22]" title="我的工作区（点击我的工作区以外的区域关闭窗口）">
+						<img src="newimages/bgpt.png" />
+					</a>
+				<%
+				} else {
+				%>
+					<img src="newimages/bgpt.png" />
+				<%	
+				}
+				%>
+					
+			    </div>
+			    <div class="ztzl_img_div"><a href="ftp://ftp.jdc.bj/" target="_blank"><img src="newimages/jywh.png" /></a></div>
+				
 				
 			</div>
 			<div id="jwgk_content_center">
+			
 				<div class="jwgk_content_center_title">
-					<div class="select" id="showDivTitle_11">队伍建设</div>
-					<div class="more">
-						<a href="newsCenterList?news.c_lm=1196&pageNo=1">更多&gt;&gt;</a>
-					</div>
-					<!-- 
-					<div  id="showDivTitle_12" onmouseover="javascript:showDiv(1,2)">情报信息</div>
-					<div  id="showDivTitle_13" onmouseover="javascript:showDiv(1,3)">进度提示</div>
-					-->
-					<!-- 
-					<div class="jwgk_content_center_title_more">
+					<div  class="select" id="showDivTitle_21" onmouseover="javascript:showDiv(2,1)">通知通报</div>
+					<div id="showDivTitle_22" onmouseover="javascript:showDiv(2,2)">禁毒文件</div>
+
+					<div class="more" id="showDivMore_21">
 						<a href="newsCenterList?news.c_lm=1194&pageNo=1">更多&gt;&gt;</a>
 					</div>
-					 -->
+					
+					<div class="more" id="showDivMore_22" style="display: none;">
+						<a href="newsCenterList?news.c_lm=1197&pageNo=1">更多&gt;&gt;</a>
+					</div>
+				</div>
+				<div class="jwgk_content_center_content" id="showDivContent_21">
+					
+					<s:iterator value="resMap.tztbList" var="news">
+						<div class="lddt_news_list">
+							<div class="lddt_news_list_c" style="width:415px;">
+								<div class="lddt_news_list_c_l" style="width:380px;">
+									<img src="newimages/dote.gif" style="margin-top:6px;"/>
+									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+											<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+										</s:if>
+										<s:property value="#news.c_bt"/>
+									</a>
+								</div>
+								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								</s:if>
+							</div>
+							<div class="lddt_news_list_d">
+								<s:property value="#news.d_fbsj.substring(0,10)"/>
+							</div>
+						</div>
+					</s:iterator>
+	
+				</div>
+				
+				<div class="jwgk_content_center_content" id="showDivContent_22" style="display: none;">
+					
+					<s:iterator value="resMap.jdwjList" var="news">
+						<div class="lddt_news_list">
+							<div class="lddt_news_list_c" style="width:415px;">
+								<div class="lddt_news_list_c_l" style="width:380px;">
+									<img src="newimages/dote.gif" style="margin-top:6px;"/>
+									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+											<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+										</s:if>
+										<s:property value="#news.c_bt"/>
+									</a>
+								</div>
+								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								</s:if>
+							</div>
+							<div class="lddt_news_list_d">
+								<s:property value="#news.d_fbsj.substring(0,10)"/>
+							</div>
+						</div>
+					</s:iterator>
+	
+				</div>
+			
+				<div class="jwgk_content_center_title">
+					<div class="select" id="showDivTitle_11"  onmouseover="javascript:showDiv(1,1)">队伍建设</div>
+					<div id="showDivTitle_12" onmouseover="javascript:showDiv(1,2)">学习十八大</div>
+					<div class="more" id="showDivMore_11">
+						<a href="newsCenterList?news.c_lm=1196&pageNo=1">更多&gt;&gt;</a>
+					</div>
+					
+					<div class="more" id="showDivMore_12" style="display: none;">
+						<a href="newsCenterList?news.c_lm=1140&pageNo=1">更多&gt;&gt;</a>
+					</div>
 				</div>
 				<div class="jwgk_content_center_content" id="showDivContent_11">
 					
@@ -483,25 +524,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 				</div>
 				
-				
-				<div class="jwgk_content_center_title">
-					<div class="select" id="showDivTitle_21">学习专栏</div>
-					<div class="more">
-						<a href="newsCenterList?news.c_lm=1297&pageNo=1">更多&gt;&gt;</a>
-					</div>
-					<!-- 
-					<div id="showDivTitle_22" onmouseover="javascript:showDiv(2,2)">堵源截流</div>
-					<div id="showDivTitle_23" onmouseover="javascript:showDiv(2,3)">打零收戒</div>
-					 -->
-					<!-- 
-					<div class="jwgk_content_center_title_more">
-						<a href="newsCenterList?news.c_lm=1196&pageNo=1">更多&gt;&gt;</a>
-					</div>
-					 -->
-				</div>
-				<div class="jwgk_content_center_content" id="showDivContent_21">
+				<div class="jwgk_content_center_content" id="showDivContent_12" style="display: none;">
 					
-					<s:iterator value="resMap.xxzlList" var="news">
+					<s:iterator value="resMap.xxsbdList" var="news">
 						<div class="lddt_news_list">
 							<div class="lddt_news_list_c" style="width:415px;">
 								<div class="lddt_news_list_c_l" style="width:380px;">
@@ -536,7 +561,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 						</div>					
 					</div>
-					<div id="link_logo" style="OVERFLOW: hidden; height:178px; width:208px; ">
+					<div id="link_logo" style="OVERFLOW: hidden; height:218px; width:208px; ">
 					  <div id="link_logo1" style="OVERFLOW: hidden">
 						
 						 <s:iterator value="resMap.gglList" var="news">
@@ -655,48 +680,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 			</div>
-			<div style="width: 962px;height: 82px; margin-buttom: 5px;">
-
-				<div id="wsbg">
-					<a href="<%=basePath%>admin" target="_blank"><img src="newimages/wsbg.png" /></a>
-				</div>
-	
-				<div style="margin-left: -10px; width: 740px;">
-				<img src="newimages/wjfb_hy_qw_jh.png" usemap="#planetmap"/>
-					<map name="planetmap" id="planetmap"> 
-						<area shape="rect" coords="0,0,106,78" href="newsCenterList?news.c_lm=1140&pageNo=1" alt="文件发布"/>
-						<area shape="rect" coords="106,0,216,78" href="newsCenterList?news.c_lm=1141&pageNo=1" alt="会议提示"/>
-						<area shape="rect" coords="216,0,331,78" href="newsCenterList?news.c_lm=1142&pageNo=1" alt="勤务安排"/>
-						<area shape="rect" coords="331,0,464,78" href="newsCenterList?news.c_lm=1186&pageNo=1" alt="文件交换"/>
-						<area shape="rect" coords="464,0,588,78" href="newsCenterList?news.c_lm=1143&pageNo=1" alt="电视电话会议"/>
-						<area shape="rect" coords="588,0,731,78" href="newsCenterList?news.c_lm=1144&pageNo=1" alt="会议室管理"/>
-					</map> 
-				</div>
-		 	</div>
 		</div>
+		
+		<div id="pic_link_2">
+			<div id="swfContent"></div>
+			<script type="text/javascript"> 
+				var xmlData="<list><item><img>newimages/01.png</img><url></url></item><item><img>newimages/02.png</img><url></url></item><item><img>newimages/03.png</img><url></url></item></list>";
+				var flashvars = {xmlData:xmlData};
+				var params = {menu:false,wmode:"opaque"};
+				var attributes = {};
+				swfobject.embedSWF("flash/lanren.swf", "swfContent", "978", "70", "9","expressInstall.swf", flashvars, params, attributes);
+			</script>
+		</div>
+		
 		<div id="ztzl_title"></div>
 		<div id="ztzl_content">
+			
 			<div id="ztzl_content_left">
-				<div class="ztzl_img_div"><a href="newsCenterList?news.c_lm=1145&pageNo=1"><img src="newimages/zdzxx.png" /></a></div>
-				<div class="ztzl_img_div">
-				<% 
-				if(session.getAttribute("userId") != null && !"0".equals(session.getAttribute("userId"))){
-				%>
-					<a href="<%=basePath%>desktop/index.jsp?TB_iframe=true&height=400&width=600" rel="sexylightbox[22]" title="我的工作区（点击我的工作区以外的区域关闭窗口）">
-						<%--  onclick='Box("msg1",900,600,parahtml("<%=basePath%>desktop/index.jsp",900,600),fontbutton(1,1))' gzy--%>
-						<img src="newimages/bgpt.png" />
-					</a>
-				<%
-				} else {
-				%>
-					<img src="newimages/bgpt.png" />
-				<%	
-				}
-				%>
-					
-			    </div>
-
-				<div class="xxph_div">
+			<div class="jrzb_div">
+				<div class="jrzb_title">
+					<div class="jrzb_title_content">
+						<div class="jrzb_title_img"><img src="newimages/content_title_img.png" /></div>
+						<div class="jrzb_title_font">应用导航</div>
+					</div>
+				</div>				
+				<div class="yydh_content_list">
+					<ul>
+						<li><a href="http://jdxt.jd.ga" target="_blank"><img src="newimages/dpaj.png" /></a></li>
+					</ul>
+					<ul>
+						<li><a href="http://10.160.5.202" target="_blank"><img src="newimages/dyjl.png" /></a></li>
+					</ul>
+					<ul>
+						<li><a href="http://10.5.72.20:8088/poppy"><img src="newimages/mbaj.png" /></a></li>
+					</ul>
+					<ul>
+						<li><a href="http://10.8.58.39:9080/yzd" target="_blank"><img src="newimages/yzd.png" /></a></li>
+					</ul>
+					<ul>
+						<li><a href="http://qbyp.jd.ga"><img src="newimages/qbyp.png" /></a></li>
+					</ul>
+				</div>
+			</div>
+				<div class="xxph_div" style="margin-top: 25px;">
 						<div class="xxph_title_content">
 							<div class="jrzb_title_img"><img src="newimages/content_title_img.png" /></div>
 							<div class="jrzb_title_font">信息排行</div>
@@ -712,8 +738,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<a href="<%=basePath%>newsSort" target="_blank">排行</a>
 												</h5>
 												<ul>
-													<li class="tabcurrent">总队各单位</li>
-													<li>各区县分局</li>
+													<li class="tabcurrent">各区县分局</li>
+													<li>总队各单位</li>
 												</ul>
 												<div style="display:none;">
 													<span class="switchBtn"><a href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" class="prevNot">左</a><a
@@ -721,25 +747,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													</span>
 												</div>
 											</div>
+											
 											<ul class="items" style="display:block;">
 											
-												<s:iterator value="resMap.xxphList" id="news" var="news">
-													<li style="margin-top: -3px;">
-														<div style="float:left; width:90px;">
-															<a href="#">
-															<s:property value="#news.c_yhzid"/>
+											
+												<s:iterator value="resMap.qxphList" id="news" var="news" status="status" begin="0" end="6">
+													<li>
+														<div style="float:left; margin-top: 3px; margin-left: 0px;">
+															<img alt="" src="newimages/num<s:property value='#status.index+1'/>.png">
+														</div>
+														<div style="float:left; width:60px;">
+															<a href="#"><s:property value="#news.c_fbdw"/>
 															</a>
 														</div>
-														<div style="float:left; width:40px; margin-left:20px;">
+														<div style="float:left; width:60px; margin-left:30px;">
 															<a href="#"/>
 															<s:property value="#news.n_xxxh"/>条
 															</a>
 														</div>
 													</li>
 												</s:iterator>
-											</ul>
-											<ul class="items">
+											<!-- 
 												<li style="margin-top: -3px;">
+													<div style="float:left; width:16px; margin-left: 0px;">
+														<img alt="" src="newimages/num1.png">
+													</div>
 													<div style="float:left; width:60px;">
 														<a href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>">东城分局</a>
 													</div>
@@ -750,24 +782,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													</div>
 												</li>
 												<li style="margin-top: -3px;">
+													<div style="float:left; width:16px; margin-left: 0px;">
+														<img alt="" src="newimages/num2.png">
+													</div>
 													<div style="float:left; width:60px;">
 														<a href="#">西城分局</a>
-													</div>
-													<div style="float:left; width:60px; margin-left:30px;">
-														<a href="#">0条</a>
-													</div>
-												</li>
-												<li style="margin-top: -3px;">
-													<div style="float:left; width:60px;">
-														<a href="#">崇文分局</a>
-													</div>
-													<div style="float:left; width:60px; margin-left:30px;">
-														<a href="#">0条</a>
-													</div>
-												</li>
-												<li style="margin-top: -3px;">
-													<div style="float:left; width:60px;">
-														<a href="#">宣武分局</a>
 													</div>
 													<div style="float:left; width:60px; margin-left:30px;">
 														<a href="#">0条</a>
@@ -788,7 +807,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<div style="float:left; width:60px; margin-left:30px;">
 														<a href="#">0条</a>
 													</div>
-												</li>	
+												</li>
 												<li style="margin-top: -3px;">
 													<div style="float:left; width:60px;">
 														<a href="#">石景山分局</a>
@@ -804,8 +823,119 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<div style="float:left; width:60px; margin-left:30px;">
 														<a href="#">0条</a>
 													</div>
+												</li>	
+												<li style="margin-top: -3px;">
+													<div style="float:left; width:60px;">
+														<a href="#">门头沟分局</a>
+													</div>
+													<div style="float:left; width:60px; margin-left:30px;">
+														<a href="#">0条</a>
+													</div>
 												</li>
+												<li style="margin-top: -3px;">
+													<div style="float:left; width:60px;">
+														<a href="#">燕山分局</a>
+													</div>
+													<div style="float:left; width:60px; margin-left:30px;">
+														<a href="#">0条</a>
+													</div>
+												</li>
+												 -->
+												<!-- 
+												<li style="margin-top: -3px;">
+													<div style="float:left; width:60px;">
+														<a href="#">房山分局</a>
+													</div>
+													<div style="float:left; width:60px; margin-left:30px;">
+														<a href="#">0条</a>
+													</div>
+												</li>
+												<li style="margin-top: -3px;">
+													<div style="float:left; width:60px;">
+														<a href="#">通州分局</a>
+													</div>
+													<div style="float:left; width:60px; margin-left:30px;">
+														<a href="#">0条</a>
+													</div>
+												</li>
+												<li style="margin-top: -3px;">
+													<div style="float:left; width:60px;">
+														<a href="#">顺义分局</a>
+													</div>
+													<div style="float:left; width:60px; margin-left:30px;">
+														<a href="#">0条</a>
+													</div>
+												</li>
+												<li style="margin-top: -3px;">
+													<div style="float:left; width:60px;">
+														<a href="#">昌平分局</a>
+													</div>
+													<div style="float:left; width:60px; margin-left:30px;">
+														<a href="#">0条</a>
+													</div>
+												</li>
+												<li style="margin-top: -3px;">
+													<div style="float:left; width:60px;">
+														<a href="#">大兴分局</a>
+													</div>
+													<div style="float:left; width:60px; margin-left:30px;">
+														<a href="#">0条</a>
+													</div>
+												</li>
+												<li style="margin-top: -3px;">
+													<div style="float:left; width:60px;">
+														<a href="#">怀柔分局</a>
+													</div>
+													<div style="float:left; width:60px; margin-left:30px;">
+														<a href="#">0条</a>
+													</div>
+												</li>
+												<li style="margin-top: -3px;">
+													<div style="float:left; width:60px;">
+														<a href="#">平谷分局</a>
+													</div>
+													<div style="float:left; width:60px; margin-left:30px;">
+														<a href="#">0条</a>
+													</div>
+												</li>
+												<li style="margin-top: -3px;">
+													<div style="float:left; width:60px;">
+														<a href="#">密云分局</a>
+													</div>
+													<div style="float:left; width:60px; margin-left:30px;">
+														<a href="#">0条</a>
+													</div>
+												</li>
+												<li style="margin-top: -3px;">
+													<div style="float:left; width:60px;">
+														<a href="#">延庆分局</a>
+													</div>
+													<div style="float:left; width:60px; margin-left:30px;">
+														<a href="#">0条</a>
+													</div>
+												</li>
+												 -->
 											</ul>
+											
+											<ul class="items">
+												<s:iterator value="resMap.sjphList" id="news" var="news" status="status">
+													<li>
+														<div style="float:left; margin-top: 3px; margin-left: 0px;">
+															<img alt="" src="newimages/num<s:property value='#status.index+1'/>.png">
+														</div>
+														<div style="float:left; width:80px;">
+															<a href="#"><s:property value="#news.c_fbdw"/>
+															</a>
+														</div>
+														<div style="float:left; width:40px; margin-left:30px;">
+															<a href="#"/>
+															<s:property value="#news.n_xxxh"/>条
+															</a>
+														</div>
+													</li>
+												</s:iterator>
+											</ul>
+											<ul><li style="text-align: right; margin-right: 5px;"><a  href="<%=basePath%>newsSort" >更多&gt;&gt;</a></li></ul>
 										</div>
 									</div>
 									<!--/list-->
@@ -816,15 +946,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div id="ztzl_content_center">
 				<div class="ztzl_content_center_title">
-					<div  class="select" id="showDivTitle_31" onmouseover="javascript:showDiv(3,1)">通知通报</div>
-					<div id="showDivTitle_32" style="margin-left: 0px;" onmouseover="javascript:showDiv(3,2)">禁毒文件</div>
+					<div  class="select" id="showDivTitle_31" onmouseover="javascript:showDiv(3,1)">每日警情</div>
+					<div id="showDivTitle_32" style="margin-left: 0px;" onmouseover="javascript:showDiv(3,2)">区县动态</div>
 
 					<div class="more" id="showDivMore_31">
-						<a href="newsCenterList?news.c_lm=1194&pageNo=1">更多&gt;&gt;</a>
+						<a href="newsCenterList?news.c_lm=1350&pageNo=1">更多&gt;&gt;</a>
 					</div>
 					
 					<div class="more" id="showDivMore_32" style="display: none;">
-						<a href="newsCenterList?news.c_lm=1197&pageNo=1">更多&gt;&gt;</a>
+						<a href="newsCenterList?news.c_lm=1351&pageNo=1">更多&gt;&gt;</a>
 					</div>
 					<!-- 
 					<div class="ztzl_content_center_title_more">
@@ -833,7 +963,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					-->
 				</div>
 				<div class="ztzl_content_center_content" id="showDivContent_31" >
-					<s:iterator value="resMap.tztbList" var="news">
+					<s:iterator value="resMap.mrjqList" var="news">
 						<div class="lddt_news_list">
 							<div class="lddt_news_list_c" style="width:270px;">
 								<div class="lddt_news_list_c_l" style="width:240px;">
@@ -857,7 +987,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				
 				<div class="ztzl_content_center_content" id="showDivContent_32" style="display: none;" >
-					<s:iterator value="resMap.jdwjList" var="news">
+					<s:iterator value="resMap.qxdtList" var="news">
 						<div class="lddt_news_list">
 							<div class="lddt_news_list_c" style="width:270px;">
 								<div class="lddt_news_list_c_l" style="width:240px;">
@@ -880,15 +1010,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</s:iterator>
 				</div>
 				
-				<div class="ztzl_content_center_title" style="margin-top:20px;">
+				<div class="ztzl_content_center_title" style="margin-top:2px;">
 					<div class="select" id="showDivTitle_41" onmouseover="javascript:showDiv(4,1)">动态管控</div>
-					<div id="showDivTitle_42" style="margin-left: 0px;" onmouseover="javascript:showDiv(4,2)">区县禁毒</div>
+					<div id="showDivTitle_42" style="margin-left: 0px;" onmouseover="javascript:showDiv(4,2)">预防教育</div>
 					<div class="more" id="showDivMore_41">
 						<a href="newsCenterList?news.c_lm=1267&pageNo=1">更多&gt;&gt;</a>
 					</div>
-
 					<div class="more" id="showDivMore_42" style="display: none;">
-						<a href="newsCenterList?news.c_lm=1199&pageNo=1">更多&gt;&gt;</a>
+						<a href="newsCenterList?news.c_lm=1188&pageNo=1">更多&gt;&gt;</a>
 					</div>
 				</div>
 				<div class="ztzl_content_center_content" id="showDivContent_41">
@@ -916,7 +1045,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				
 				<div class="ztzl_content_center_content" id="showDivContent_42" style="display: none;">
-					<s:iterator value="resMap.qxjdList" var="news">
+					<s:iterator value="resMap.yfjyList" var="news">
 						<div class="lddt_news_list">
 							<div class="lddt_news_list_c" style="width:270px;">
 								<div class="lddt_news_list_c_l" style="width:240px;">
@@ -938,20 +1067,134 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 					</s:iterator>
 				</div>
+				
+				<div class="ztzl_content_center_title" style="margin-top:0px;">
+					<div class="select" id="showDivTitle_71" onmouseover="javascript:showDiv(7,1)">场所管理</div>
+					<div id="showDivTitle_72" style="margin-left: 0px;" onmouseover="javascript:showDiv(7,2)">两品管理</div>
+					<div class="more" id="showDivMore_71">
+						<a href="newsCenterList?news.c_lm=1146&pageNo=1">更多&gt;&gt;</a>
+					</div>
+
+					<div class="more" id="showDivMore_72" style="display: none;">
+						<a href="newsCenterList?news.c_lm=1105&pageNo=1">更多&gt;&gt;</a>
+					</div>
+				</div>
+				<div class="ztzl_content_center_content" id="showDivContent_71">
+					<s:iterator value="resMap.csglList" var="news">
+						<div class="lddt_news_list">
+							<div class="lddt_news_list_c" style="width:270px;">
+								<div class="lddt_news_list_c_l" style="width:240px;">
+									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
+									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+											<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+										</s:if>
+										<s:property value="#news.c_bt"/>
+									</a>
+								</div>
+								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								</s:if>
+							</div>
+							<div class="lddt_news_list_d">
+								<s:property value="#news.d_fbsj.substring(0,10)"/>
+							</div>
+						</div>
+					</s:iterator>
+				</div>
+				
+				<div class="ztzl_content_center_content" id="showDivContent_72" style="display: none;">
+					<s:iterator value="resMap.lpglList" var="news">
+						<div class="lddt_news_list">
+							<div class="lddt_news_list_c" style="width:270px;">
+								<div class="lddt_news_list_c_l" style="width:240px;">
+									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
+									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+											<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+										</s:if>
+										<s:property value="#news.c_bt"/>
+									</a>
+								</div>
+								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								</s:if>
+							</div>
+							<div class="lddt_news_list_d">
+								<s:property value="#news.d_fbsj.substring(0,10)"/>
+							</div>
+						</div>
+					</s:iterator>
+				</div>
+				
 			</div>
 			
 			<div id="ztzl_content_right">
 				<div class="ztzl_content_right_title">
-					<div class="select" id="showDivTitle_51" onmouseover="javascript:showDiv(5,1)">禁毒考核</div>
-					<div id="showDivTitle_52" style="width: 100px;" onmouseover="javascript:showDiv(5,2)">工作进度提示</div>
+					<div class="select" id="showDivTitle_51" onmouseover="javascript:showDiv(5,1)">情报信息</div>
+					<div id="showDivTitle_52" onmouseover="javascript:showDiv(5,2)">执法规范</div>
+					<div id="showDivTitle_53" onmouseover="javascript:showDiv(5,3)">禁毒考核</div>
 					<div class="more"  id="showDivMore_51">
-						<a href="newsCenterList?news.c_lm=1108&pageNo=1">更多&gt;&gt;</a>
+						<a href="newsCenterList?news.c_lm=1101&pageNo=1">更多&gt;&gt;</a>
 					</div>
 					<div class="more" id="showDivMore_52" style="display: none;">
-						<a href="newsCenterList?news.c_lm=1100&pageNo=1">更多&gt;&gt;</a>
+						<a href="newsCenterList?news.c_lm=1107&pageNo=1">更多&gt;&gt;</a>
+					</div>
+					<div class="more" id="showDivMore_53" style="display: none;">
+						<a href="newsCenterList?news.c_lm=1108&pageNo=1">更多&gt;&gt;</a>
 					</div>
 				</div>
 				<div class="ztzl_content_center_content" id="divShowContent_51">
+					<s:iterator value="resMap.qbxxList" var="news">
+						<div class="lddt_news_list">
+							<div class="lddt_news_list_c" style="width:270px; margin-left: 0px;">
+								<div class="lddt_news_list_c_l" style="width:240px;">
+									<img src="newimages/dote.gif" style="margin-top:6px; margin-left: 0px;"/> 
+									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+											<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+										</s:if>
+										<s:property value="#news.c_bt"/>
+									</a>
+								</div>
+								<div>
+									<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+									  <img src="newimages/new.gif" style="margin-top: 3px;" alt="new"/>
+									</s:if>
+								</div>
+							</div>
+							<div class="lddt_news_list_d">
+								<s:property value="#news.d_fbsj.substring(0,10)"/>
+							</div>
+						</div>
+					</s:iterator>
+				</div>
+				<div class="ztzl_content_center_content" id="divShowContent_52" style="display: none;">
+					<s:iterator value="resMap.zfgfList" var="news">
+						<div class="lddt_news_list">
+							<div class="lddt_news_list_c" style="width:270px; margin-left: 2px;">
+								<div class="lddt_news_list_c_l" style="width:240px;">
+									<img src="newimages/dote.gif" style="margin-top:6px; margin-left: 0px;"/> 
+									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+											<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+										</s:if>
+										<s:property value="#news.c_bt"/>
+									</a>
+								</div>
+								<div>
+									<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+									  <img src="newimages/new.gif" style="margin-top: 3px;" alt="new"/>
+									</s:if>
+								</div>
+							</div>
+							<div class="lddt_news_list_d">
+								<s:property value="#news.d_fbsj.substring(0,10)"/>
+							</div>
+						</div>
+					</s:iterator>
+				</div>
+				<div class="ztzl_content_center_content" id="divShowContent_53" style="display: none;">
 					<s:iterator value="resMap.jdkhList" var="news">
 						<div class="lddt_news_list">
 							<div class="lddt_news_list_c" style="width:270px; margin-left: 2px;">
@@ -976,43 +1219,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 					</s:iterator>
 				</div>
-				<div class="ztzl_content_center_content" id="divShowContent_52" style="display: none;">
-					<s:iterator value="resMap.gzjdList" var="news">
-						<div class="lddt_news_list">
-							<div class="lddt_news_list_c" style="width:270px; margin-left: 2px;">
-								<div class="lddt_news_list_c_l" style="width:240px;">
-									<img src="newimages/dote.gif" style="margin-top:6px; margin-left: 0px;"/> 
-									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
-										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
-											<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
-										</s:if>
-										<s:property value="#news.c_bt"/>
-									</a>
-								</div>
-								<div>
-									<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-									  <img src="newimages/new.gif" style="margin-top: 3px;" alt="new"/>
-									</s:if>
-								</div>
-							</div>
-							<div class="lddt_news_list_d">
-								<s:property value="#news.d_fbsj.substring(0,10)"/>
-							</div>
-						</div>
-					</s:iterator>
-				</div>
-				<div class="ztzl_content_right_title" style="margin-top:20px;">
-					<div class="select" id="showDivTitle_61" onmouseover="javascript:showDiv(6,1)">场所管理</div>
-					<div id="showDivTitle_62" onmouseover="javascript:showDiv(6,2)">媒体关注</div>
+				<div class="ztzl_content_right_title" style="margin-top:0px;">
+					<div class="select" id="showDivTitle_61" onmouseover="javascript:showDiv(6,1)">目标案件</div>
+					<div id="showDivTitle_62" onmouseover="javascript:showDiv(6,2)">打零收戒</div>
+					<div id="showDivTitle_63" onmouseover="javascript:showDiv(6,3)">堵源截流</div>
 					<div class="more"  id="showDivMore_61">
-						<a href="newsCenterList?news.c_lm=1146&pageNo=1">更多&gt;&gt;</a>
+						<a href="newsCenterList?news.c_lm=1102&pageNo=1">更多&gt;&gt;</a>
 					</div>
 					<div class="more" id="showDivMore_62" style="display: none;">
-						<a href="newsCenterList?news.c_lm=1198&pageNo=1">更多&gt;&gt;</a>
+						<a href="newsCenterList?news.c_lm=1103&pageNo=1">更多&gt;&gt;</a>
+					</div>
+					<div class="more" id="showDivMore_63" style="display: none;">
+						<a href="newsCenterList?news.c_lm=1104&pageNo=1">更多&gt;&gt;</a>
 					</div>
 				</div>
 				<div class="ztzl_content_center_content" id="showDivContent_61">
-					<s:iterator value="resMap.csglList" var="news">
+					<s:iterator value="resMap.mbajList" var="news">
 						<div class="lddt_news_list">
 							<div class="lddt_news_list_c" style="width:270px;margin-left: 2px;">
 								<div class="lddt_news_list_c_l" style="width:240px;">
@@ -1035,7 +1257,116 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</s:iterator>
 				</div>
 				<div class="ztzl_content_center_content" id="showDivContent_62" style="display: none;">
-					<s:iterator value="resMap.mtgzList" var="news">
+					<s:iterator value="resMap.dyjlList" var="news">
+						<div class="lddt_news_list">
+							<div class="lddt_news_list_c" style="width:270px;margin-left: 2px;">
+								<div class="lddt_news_list_c_l" style="width:240px;">
+									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
+									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+											<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+										</s:if>
+										<s:property value="#news.c_bt"/>
+									</a>
+								</div>
+								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								</s:if>
+							</div>
+							<div class="lddt_news_list_d">
+								<s:property value="#news.d_fbsj.substring(0,10)"/>
+							</div>
+						</div>
+					</s:iterator>
+				</div>
+				
+				<div class="ztzl_content_center_content" id="showDivContent_63" style="display: none;">
+					<s:iterator value="resMap.dyjlList" var="news">
+						<div class="lddt_news_list">
+							<div class="lddt_news_list_c" style="width:270px;margin-left: 2px;">
+								<div class="lddt_news_list_c_l" style="width:240px;">
+									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
+									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+											<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+										</s:if>
+										<s:property value="#news.c_bt"/>
+									</a>
+								</div>
+								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								</s:if>
+							</div>
+							<div class="lddt_news_list_d">
+								<s:property value="#news.d_fbsj.substring(0,10)"/>
+							</div>
+						</div>
+					</s:iterator>
+				</div>
+				
+				<div class="ztzl_content_right_title" style="margin-top:0px;">
+					<div class="select" id="showDivTitle_81" onmouseover="javascript:showDiv(8,1)">调研交流</div>
+					<div id="showDivTitle_82" onmouseover="javascript:showDiv(8,2)">领导讲话</div>
+					<div id="showDivTitle_83" onmouseover="javascript:showDiv(8,3)">禁毒视角</div>
+					<div class="more"  id="showDivMore_81">
+						<a href="newsCenterList?news.c_lm=1352 &pageNo=1">更多&gt;&gt;</a>
+					</div>
+					<div class="more" id="showDivMore_82" style="display: none;">
+						<a href="newsCenterList?news.c_lm=1353&pageNo=1">更多&gt;&gt;</a>
+					</div>
+					<div class="more" id="showDivMore_83" style="display: none;">
+						<a href="newsCenterList?news.c_lm=1354&pageNo=1">更多&gt;&gt;</a>
+					</div>
+				</div>
+				<div class="ztzl_content_center_content" id="showDivContent_81">
+					<s:iterator value="resMap.dyjlList" var="news">
+						<div class="lddt_news_list">
+							<div class="lddt_news_list_c" style="width:270px;margin-left: 2px;">
+								<div class="lddt_news_list_c_l" style="width:240px;">
+									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
+									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+											<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+										</s:if>
+										<s:property value="#news.c_bt"/>
+									</a>
+								</div>
+								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								</s:if>
+							</div>
+							<div class="lddt_news_list_d">
+								<s:property value="#news.d_fbsj.substring(0,10)"/>
+							</div>
+						</div>
+					</s:iterator>
+				</div>
+				<div class="ztzl_content_center_content" id="showDivContent_82" style="display: none;">
+					<s:iterator value="resMap.ldjhList" var="news">
+						<div class="lddt_news_list">
+							<div class="lddt_news_list_c" style="width:270px;margin-left: 2px;">
+								<div class="lddt_news_list_c_l" style="width:240px;">
+									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
+									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
+										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
+											<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
+										</s:if>
+										<s:property value="#news.c_bt"/>
+									</a>
+								</div>
+								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								</s:if>
+							</div>
+							<div class="lddt_news_list_d">
+								<s:property value="#news.d_fbsj.substring(0,10)"/>
+							</div>
+						</div>
+					</s:iterator>
+				</div>
+				
+				<div class="ztzl_content_center_content" id="showDivContent_83" style="display: none;">
+					<s:iterator value="resMap.jdsjList" var="news">
 						<div class="lddt_news_list">
 							<div class="lddt_news_list_c" style="width:270px;margin-left: 2px;">
 								<div class="lddt_news_list_c_l" style="width:240px;">
@@ -1058,6 +1389,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</s:iterator>
 				</div>
 			</div>
+			
+			
+			<div style="width: 962px;height: 82px; margin-buttom: 5px; margin-top: 0px;">
+
+				<div id="wsbg">
+					<a href="<%=basePath%>admin" target="_blank"><img src="newimages/wsbg.png" /></a>
+				</div>
+	
+				<div style="margin-left: -10px; width: 740px;">
+				<img src="newimages/wjfb_hy_qw_jh.png" usemap="#planetmap"/>
+					<map name="planetmap" id="planetmap"> 
+						<area shape="rect" coords="0,0,106,78" href="newsCenterList?news.c_lm=1140&pageNo=1" alt="文件发布"/>
+						<area shape="rect" coords="106,0,216,78" href="newsCenterList?news.c_lm=1141&pageNo=1" alt="会议提示"/>
+						<area shape="rect" coords="216,0,331,78" href="newsCenterList?news.c_lm=1142&pageNo=1" alt="勤务安排"/>
+						<area shape="rect" coords="331,0,464,78" href="newsCenterList?news.c_lm=1186&pageNo=1" alt="文件交换"/>
+						<area shape="rect" coords="464,0,588,78" href="newsCenterList?news.c_lm=1143&pageNo=1" alt="电视电话会议"/>
+						<area shape="rect" coords="588,0,731,78" href="newsCenterList?news.c_lm=1144&pageNo=1" alt="会议室管理"/>
+					</map> 
+				</div>
+		 	</div>
+			
 		</div>
 		<div id="roll_image">
 

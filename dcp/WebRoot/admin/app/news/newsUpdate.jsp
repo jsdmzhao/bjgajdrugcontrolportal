@@ -4,6 +4,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
+String newsType = request.getParameter("newsType");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -35,54 +36,68 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/interface/NewsAction.js'></script>
+  	 <style type="text/css">
+  	    .l-button-2{
+			BORDER-BOTTOM: #bfcfe1 1px solid; 
+			POSITION: relative; 
+			BORDER-LEFT: #bfcfe1 1px solid; 
+			LINE-HEIGHT: 25px; 
+			HEIGHT: 25px; 
+			COLOR: #2c69a2; 
+			BORDER-TOP: medium none; CURSOR: pointer; 
+			BORDER-RIGHT: #bfcfe1 1px solid;
+			WIDTH: 80px;  
+			BACKGROUND: url(<%=basePath%>liger/lib/images/ui/button1.gif) repeat-x; 
+
+		}
+  	</style>
+
 </head>
 <body style="padding-bottom:31px;">
-    <form id="mainform"  method="post"></form> 
-    <div id="nr" style="display: none;"><s:property value="news.c_nr"/></div>
+    <form id="mainform2"  method="post">
+    	<div id="nr" style="display: none;"><s:property value="news.c_nr"/></div>
+    </form> 
     <script type="text/javascript"> 
+	    var com;
         var config = {"Form":{ 
          fields : [
+         {name:"c_lm",type:"hidden",value:'<%=newsType %>'},
          {
 	         display:"标题",
 	         name:"c_bt",
 	         newline:true,
 	         labelWidth:100,
 	         width:700,
-	         space:30,
 	         type:"text",
+	         value: "<s:property value='news.c_bt'/>",
 	         validate: { required: true},
 	         group:"基本信息",
-	         value: "<s:property value='news.c_bt'/>", 
 	         groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
          },{display:"文章栏目",
         	 type:"text",
              name:"c_lmName",
              value: "<s:property value='news.c_lm_'/>",
-             newline:true,
              validate: { required: true},
+             newline:true,
              labelWidth:100,
-             width:408
-         },{
-        	 type:"hidden",
-             name:"c_lm",
-             value: "<s:property value='news.c_lm'/>",
+             width:308
          },{
    	         name:"wzlm",
    	         newline:false,
-   	         width:120,//space:30, 
+   	         width:110,//space:30,
+   	         height: 30,
    	         type:"button",
-   	         cssClass:"l-button",
+   	         cssClass:"l-button-2",
    	         value:"选择栏目",
    	         onclick : "selectLanmu()"
-         },
-         {display:"是否图文文章",
+         },{display:"发布单位",name:"c_fbdw",validate: { required: true},newline:false,labelWidth:90,width:172,type:"basicText"},
+         {display:"是否图片文章",
              name:"c_sftwwz",
              newline:true,
              value:"<s:property value='news.c_sftwwz'/>",
-             labelWidth:100,width:30,space:30,type:"checkbox"
+             labelWidth:100,width:30,type:"checkbox"
          },
-         {display:"图片名称",name:"c_tpljdz",newline:false,labelWidth:100,width:250,
-          space:30,type:"text",value: "<s:property value='news.c_tpljdz'/>" ,readonly:"readonly"},
+         {display:"图片名称",name:"c_tpljdz",value: "<s:property value='news.c_tpljdz'/>" ,newline:false,labelWidth:100,width:420,space:30,type:"text",readonly:"readonly"},
          {
         	 //display:"上传图片",
    	         name:"sctp",
@@ -90,30 +105,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	         //labelWidth:100,
    	         width:120,//space:30, 
    	         type:"button",
-   	         cssClass:"l-button",
+   	         cssClass:"l-button-2",
    	         value:"选择图片",
-   	         onclick:"test()",
-   	     	 disabled:"disabled",
-   	         onclick : "openDialog('#uploadImageDiv')"
+   	      	 disabled:"disabled",
+   	      	 onclick : "openDialog('#uploadImageDiv')"
          },
-         { display:"是否上传视频",
+         {  display:"是否上传视频",
             name:"c_sfscsp",
-            newline:true,labelWidth:100,width:30,space:30,
-            type:"checkbox",
             value:"<s:property value='news.c_sfscsp'/>",
+            newline:true,labelWidth:100,width:30,
+            type:"checkbox",
             nodeWidth :30
         },
-        {display:"视频名称",name:"c_spljdz",newline:false,labelWidth:100,width:250,space:30,type:"text",
-         value: "<s:property value='news.c_spljdz'/>"  ,readonly:'readonly'},
+        {display:"视频名称",name:"c_spljdz", value: "<s:property value='news.c_spljdz'/>",newline:false,labelWidth:100,width:420,space:30,type:"text",readonly:"readonly"},
         {
         	 //display:"上传视频",
         	 value:"选择视频",
 	         name:"scsp",
 	         newline:false,
-	         //labelWidth:100,
-	         width:220,//space:30, 
+	         labelWidth: 0,
+	         width:120,//space:10, 
 	         type:"button",
-	         cssClass:"l-button",
+	         cssClass:"l-button-2",
 	         disabled:"disabled",
 	         onclick : "openDialog('#uploadFlashDiv')"
          },
@@ -126,18 +139,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          	type:"textarea",
          	value: "<s:property value='news.c_jj'/>"
          },
-         {display:"链接",name:"c_lj",newline:true,labelWidth:100,
-          width:300,space:30,type:"text",
-          value: "<s:property value='news.c_lj'/>" },
+         {display:"链接",name:"c_lj",newline:true,labelWidth:100,width:300,space:30,type:"text", value: "<s:property value='news.c_lj'/>"},
          {display:"发布时间",name:"d_fbsj",newline:false,labelWidth:100,validate: { required: true},
-         width:250,space:30,type:"text",value: "<s:property value='news.d_fbsj'/>",
-         onclick:"WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" },
+             width:250,space:30,type:"text",value: "<s:property value='news.d_fbsj'/>",
+             onclick:"WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" },
          {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea",value:$('#nr').html() },
          {name:"n_xh", type:"hidden",value:"<s:property value='news.n_xh'/>"},
          {name:"c_sfzd", type:"hidden",value:"<s:property value='news.c_sfzd'/>"},
          {name:"c_sfgl", type:"hidden",value:"<s:property value='news.c_sfgl'/>"},
          {name:"c_sftj", type:"hidden",value:"<s:property value='news.c_sftj'/>"},
-         {name:"n_xxxh", type:"hidden",value:"<s:property value='news.n_xxxh'/>"}
+         {name:"n_xxxh", type:"hidden",value:"<s:property value='news.n_xxxh'/>"},
+         {
+        	 type:"hidden",
+             name:"c_lm",
+             value: "<s:property value='news.c_lm'/>"
+         }
+         //,
+         //{name:"n_ydcs", labelWidth:100,width:30,space:30,type:"hidden",value:"0"}
         ]
  }};
 
@@ -145,7 +163,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         LG.adujestConfig(config,forbidFields);
 
         var roleids = '';
-        
         var dig;
         //当前ID
         var currentID = '';
@@ -162,16 +179,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         //表单底部按钮 
         LG.setFormDefaultBtn(f_cancel,isView ? null : f_save);
 
-        var deptTree = {
-            url :'',
-            checkbox:false,
-            nodeWidth :220
-        };
-
         //创建表单结构
-        var mainform = $("#mainform");  
-        mainform.ligerForm({ 
-         inputWidth: 280,
+        var mainform2 = $("#mainform2");  
+        mainform2.ligerForm({ 
+         labelWidth: 0,
+         space: 10,
          fields : config.Form.fields//,
 		 //toJSON:JSON2.stringify
         });
@@ -181,48 +193,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         var actionRoot = "";
         if(isEdit){ 
             $("#LoginName").attr("readonly", "readonly").removeAttr("validate");
-            mainform.attr("action", actionRoot + "newsUpdate"); 
+            mainform2.attr("action", actionRoot + "newsUpdate"); 
         }
         if (isAddNew) {
-            mainform.attr("action", actionRoot + "newsSave");
+            mainform2.attr("action", actionRoot + "newsSave");
         }
         else { 
-            LG.loadForm(mainform, { type: 'AjaxMemberManage', method: 'newsQuery', data: { ID: currentID} },f_loaded);
+            LG.loadForm(mainform2, { type: 'AjaxMemberManage', method: 'newsQuery', data: { ID: currentID} },f_loaded);
         }  
 
-        
-          
         if(!isView) 
         {
             //验证
             jQuery.metadata.setType("attr", "validate"); 
-            LG.validate(mainform);
+            LG.validate(mainform2);
         } 
 
 		function f_loaded()
         {
             if(!isView) return; 
             //查看状态，控制不能编辑
-            $("input,select,textarea",mainform).attr("readonly", "readonly");
+            $("input,select,textarea",mainform2).attr("readonly", "readonly");
         }
-        
-		//$('#c_nr').html($('nr').val());
-        var editor = CKEDITOR.replace( 'c_nr');
-    	CKFinder.setupCKEditor( editor, '/ckfinder/' );
-    	//editor.setData("<font></font>");
-    	//$('c_nr')
-    	
+		
+		com = $("#c_fbdw").ligerComboBox({
+	    	 isMultiSelect: false,
+	    	 width: 170, 
+             selectBoxWidth: 170,
+             selectBoxHeight: 100, 
+	         valueField:"value",
+	         textFiled:"text",
+	         url:"<%=basePath%>newsCombox",
+	         value:"<s:property value='news.c_fbdw'/>"
+		});
 
-     
+        //<!-- 设置一些默认参数 -->
+        var editor = CKEDITOR.replace( 'c_nr' );
+    	CKFinder.setupCKEditor( editor, '/ckfinder/' );
+
+    	//$("c_tpljdz").setDisabled();
+        
         function f_save() {
-    		
+        	
         	//验证
         	if (!LG.validator.form()) {
                 LG.showInvalid();
                 return false;
             }
 
-        	var formMap = DWRUtil.getValues("mainform"); 
+        	var formMap = DWRUtil.getValues("mainform2"); 
 
         	if(formMap["c_sftwwz"] == true){
         		formMap["c_sftwwz"] = '1';
@@ -237,22 +256,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	}
         	
         	formMap["c_nr"] = editor.document.getBody().getHtml();
-
-        	NewsAction.newsSave(formMap, function (result){
+        	formMap["c_fbdw"] = com.getValue();
+			
+        	NewsAction.newsSave(formMap,function (result){
         		//var win = parent || window;
         		if(result == 'success'){
         			LG.showSuccess('保存成功', function () { 
-                        //win.LG.closeAndReloadParent(null, "maingrid")
-        				 f_cancel();
-        				 parent.search();
+                        f_cancel();
+                        parent.loadGrid('<%=newsType%>');
                     });
         		} else {
-        		 	LG.showError('保存失败');
+        		    LG.showError('保存失败');
         		}
         	});
         	
         	/**
-            LG.submitForm(mainform, function (data) {
+            LG.submitForm(mainform2, function (data) {
                 var win = parent || window;
                 //if (data.IsError) {  
                 //    win.LG.showError('错误:' + data.Message);
@@ -264,8 +283,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             });
             **/
         }
-    	
-    	function submit_lanmu(text,value){
+        
+		function selectLanmu(){
+			
+			dig = $.ligerDialog.open({
+        		url: '<%=basePath%>admin/app/news/selectLanmu.jsp', height: 400,width: 700,title:'栏目选择'
+        	});
+		}
+		
+		
+        function f_cancel() {
+            parent.dialog_hidden();
+        }
+
+        function submit_lanmu(text,value){
     		$("#c_lm").val(value);
     		$("#c_lmName").val(text);
     		dig.hidden();
@@ -275,14 +306,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		dig.hidden();
     	}
     	
-        function f_cancel()
-        {
-        	parent.dialog_hidden();
-        }
-        
-		//DWRUtil.setValues("mainform",'<s:property value="news"/>'); 
-		///DWRUtils.
-        
         function openDialog(divNode){
 
         	var dlgedit = $.ligerDialog.open({
@@ -295,13 +318,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           ]
 			});
         }
-		
-		function selectLanmu(){
-			
-			dig = $.ligerDialog.open({
-        		url: '<%=basePath%>admin/app/news/selectLanmu.jsp', height: 400,width: 700
-        	});
-		}
 
         $(function(){
        	 if ($.browser.msie) {
@@ -341,21 +357,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        		//  upload('c_spljdz','fileDownload','cSmjhzm');
        		});
        	}); 
-		
-
-       	function f_file_save(){
-			//$("#flashForm").submit();
-        }
+        
     </script>
-    
-    
-    <div id="uploadImageDiv" style="display: none;">
+ 	<div id="uploadImageDiv" style="display: none;">
 		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_tpljdz"></iframe> <!---->
 	</div>
 	<div id="uploadFlashDiv" style="display: none;">
 		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_spljdz"></iframe> <!---->
-	</div>
-
+	</div>   
 </body>
+
 </html>
 
