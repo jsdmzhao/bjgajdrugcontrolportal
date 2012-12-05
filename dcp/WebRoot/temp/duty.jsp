@@ -181,7 +181,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 }
                         
                         <%    String jb=session.getAttribute("cJb")+"";
-                             if("0".equals(jb)||"1".equals(jb)||"2".equals(jb)){
+                             if("0".equals(jb)||"1".equals(jb)||"2".equals(jb)||"3".equals(jb)||"4".equals(jb)){
                         
                         %>
                         ,{
