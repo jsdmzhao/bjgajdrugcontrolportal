@@ -13,8 +13,8 @@
 	Calendar cal=Calendar.getInstance();    
 	int y=cal.get(Calendar.YEAR);    
 	int m=cal.get(Calendar.MONTH);    
-	response.setContentType("application/x-download;charset=GBK");  
-	response.setHeader("Content-Disposition", "attachment;filename="+y+(m+1)+".doc");
+	//response.setContentType("application/x-download;charset=GBK");  
+	//response.setHeader("Content-Disposition", "attachment;filename="+y+(m+1)+".doc");
 
 	ApplicationContext ctx = WebApplicationContextUtils .getWebApplicationContext(request.getSession() .getServletContext());
 	KqZbSvc kqZbSvc = (KqZbSvc) ctx.getBean("kqZbSvc");
@@ -126,6 +126,7 @@
 					
 					 
 				    for(int i=0;i<list.size();i++){
+				    	
 				    //	Map<String,String> pBef=list.get(i-1);
 				    	Map<String,String> p=list.get(i);
 				    	Map<String,String> pNext=new HashMap();
@@ -135,7 +136,12 @@
 				    		 pNext=list.get(i+1);
 				    	}
 				    	
-				   	 
+						%>
+			    		
+			    		<script>
+			    	   	//alert('<%=titleList.get(index)+"----"+(p.get("cMc"))%>');
+			    		</script>
+			    		<%
 				    	boolean flag=false;
 					    for(int j=0;j<titleList.size();j++){
 					    	if(titleList.get(j).equals(p.get("cMc"))){
@@ -148,6 +154,9 @@
 				    		if(flag==false){
 				    			continue;}
 				    		
+				    		
+				    		
+				    		
 				    		if(titleList.get(index).equals(p.get("cMc"))&&titleList.get(index).equals(pNext.get("cMc"))){
 				    			
 				    			 if(list.get(i).get("cZbcw")!=null){
@@ -159,7 +168,11 @@
 				    		}
 		      		    else if(titleList.get(index).equals(p.get("cMc"))&&!titleList.get(index).equals(pNext.get("cMc"))){
 				    			
-				    			
+		      		    	%>
+				    		<script>
+				    	 //  	alert('<%=index+1+"--1--"%>');
+				    		</script>
+				    		<%
 				    			
 				    			index=index+1;
 				    			if(index>8){
@@ -188,28 +201,47 @@
 				    			index=index+1;
 				    			
 				    		}
-				    	
-				    	
+				    		%>
+				    		<script>
+				    	 //  	alert('<%=index+1+"--2--"%>');
+				    		</script>
+				    		<%
 				    	 if(index>8){
 				    		// i=i-1;
-				    		out.println("<th>"+list.get(i-1).get("dSj")+"</th>");
-				    		out.println("</tr><tr>");
-							out.println("<th>");
+				    		if(i-1>0){
+				    		      out.println("<th>"+list.get(i-1).get("dSj")+"</th>");
+				    		}else{
+						    		out.println("<th>"+list.get(i).get("dSj")+"</th>");
+				    		}
+				    		if(i==list.size()-1){
+				    		out.println("</tr>");
+							out.println("");
+				    		}else{
+				    			out.println("</tr><tr>");
+								out.println("<th>");
+				    			
+				    		}
 							
 							index=0;
 				    		
 				    	}
 				    	
 				    }
-				    
+
+					%>
+		    		
+		    		<script>
+		    	   	//alert('<%=index+1+"----"+(titleList.size())%>');
+		    		</script>
+		    		<%
+		    		if(index!=0){
 				    for(int i=index+1;i<titleList.size()-1;i++){
 				    	
 				    	out.println("</th><th>");
 				    }
 				    out.println("<th>"+	list.get(list.size()-1).get("dSj")+"</th>");
 				    out.println("</th></tr>");
-				    
-						
+		    		}
 				}
 				%>
 				<tr>
