@@ -197,7 +197,13 @@ if(userId==null){
         	
         	if(formMapTemp["cShzt"]=='100'){
         		shzt='1';
-        		if(formMapTemp["cShjb"]=='2'){
+        		var obj_t={c_jb:'<%=session.getAttribute("cJb")%>', c_yhz:'<%=session.getAttribute("cYhz")%>'};
+        		if(formMapTemp["cShjb"]=='3'||formMapTemp["cShjb"]=='4'){
+        			UserInfoSvc.getSupJb(obj_t, function (rdata){
+            			shjb=rdata;
+            		});
+        		}
+        		else if(formMapTemp["cShjb"]=='2'){
         			shjb='1';
         			
         		}else if(formMapTemp["cShjb"]=='1'){

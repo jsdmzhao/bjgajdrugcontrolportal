@@ -59,6 +59,12 @@ public class UserInfoSvc  {
 		return userDao.queryAllInfo(p);
 	}
 	
+	
+	@SuppressWarnings("rawtypes")
+	public Object getSupJb(Map p) throws SQLException {
+		return userDao.getSupJb(p);
+	}
+	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public List choose() throws SQLException {
 		Map p=new HashMap();
@@ -218,6 +224,7 @@ public class UserInfoSvc  {
 		 }
 		 return returnValue;
 	}
+	
 	
 	
 	@SuppressWarnings("rawtypes")

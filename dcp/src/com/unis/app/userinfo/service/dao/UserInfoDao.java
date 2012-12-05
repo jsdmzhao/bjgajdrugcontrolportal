@@ -42,9 +42,13 @@ public class UserInfoDao<T> extends AbsServiceAdapter<T> {
 	public Object updateAllInfo(Map p){
 		return  super.update("UserInfoMapper.updateAllInfo", p);
 	}
-
+	
 	public List queryAllInfo(Map p){
 		return  super.selectList("UserInfoMapper.queryAllInfo", p);
+	}
+	
+	public List getSupJb(Map p){
+		return  super.selectList("UserInfoMapper.getSupJb", p);
 	}
 	
 	public List choose(Map p){
