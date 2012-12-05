@@ -33,6 +33,8 @@ public class News {
 	private String c_yhid;
 	
 	private String c_yhzid;
+
+	private String c_fbdw;
 	
 	private String c_sfsh;
 	
@@ -207,6 +209,14 @@ public class News {
 
 	public void setC_yhzid(String c_yhzid) {
 		this.c_yhzid = c_yhzid;
+	}
+
+	public String getC_fbdw() {
+		return c_fbdw;
+	}
+
+	public void setC_fbdw(String c_fbdw) {
+		this.c_fbdw = c_fbdw;
 	}
 
 	public String getC_sfsh() {

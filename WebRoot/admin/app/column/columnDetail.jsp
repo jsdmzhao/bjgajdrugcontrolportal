@@ -35,6 +35,21 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
 	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/interface/ColumnAction.js'></script>
+  	
+  	<style type="text/css">
+ 	    .l-button-2{
+			BORDER-BOTTOM: #bfcfe1 1px solid; 
+			POSITION: relative; 
+			BORDER-LEFT: #bfcfe1 1px solid; 
+			LINE-HEIGHT: 25px; 
+			HEIGHT: 25px; 
+			COLOR: #2c69a2; 
+			BORDER-TOP: medium none; CURSOR: pointer; 
+			BORDER-RIGHT: #bfcfe1 1px solid;
+			WIDTH: 80px;  
+			BACKGROUND: url(<%=basePath%>liger/lib/images/ui/button1.gif) repeat-x; 
+		}
+ 	</style>
 
 </head>
 <body style="padding-bottom:31px;">
@@ -73,14 +88,13 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
         	 value:"选择图片",
 	         name:"sctp",
 	         newline:false,
-	         labelWidth:100,
-	         width:220,space:30, 
+	         labelWidth:0,
 	         type:"button",
-	         cssClass:"l-button",
+	         cssClass:"l-button-2",
 	         disabled:"disabled",
 	         onclick : "openDialog('#uploadImageDiv')"
          },
-         {display:"是否内容",name:"c_sfnr",newline:true,labelWidth:100,width:250, space:30,type:"checkbox"},
+         /**{display:"是否内容",name:"c_sfnr",newline:true,labelWidth:100,width:250, space:30,type:"checkbox"},**/
          {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea", readonly:"readonly"},
          {name:"c_sjlmdm", labelWidth:100,width:30,space:30,type:"hidden",value:"<%=c_sjlmdm %>"}
         ]
@@ -114,7 +128,8 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
         //创建表单结构
         var mainform = $("#mainform");  
         mainform.ligerForm({ 
-         inputWidth: 280,
+       	 inputWidth: 0,
+         labelWidth: 0,
          fields : config.Form.fields//,
 		 //toJSON:JSON2.stringify
         });
@@ -174,9 +189,9 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
         		formMap["c_sfdh"] = '0';
         	}
 
-        	if(editor != null){
-	        	formMap["c_nr"] = editor.document.getBody().getHtml();
-           	}
+        	//if(editor != null){
+	        formMap["c_nr"] = editor.document.getBody().getHtml();
+           	//}
 			
         	ColumnAction.columnSave(formMap,function (result){
         		
@@ -235,6 +250,10 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
        	   		this.focus(); 
        		});   
        	 };
+       	 
+       	 
+       	editor = CKEDITOR.replace( 'c_nr' );
+        CKFinder.setupCKEditor( editor, '/ckfinder/' );
        	 
        	 $("#c_sfnr").change(function() {
 	       		 var value = $("#c_sfnr").attr("checked");

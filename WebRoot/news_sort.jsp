@@ -43,14 +43,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			font-family: Verdana;
 		}
 		
-		#news #main table {
+		#news .main table {
 			border-collapse: collapse;
 			line-height: 1.6em;
 			margin: 5px 10px;
 			width: 610px;
 		}
 		
-		#news #main th {
+		#news .main th {
 			background: none repeat scroll 0 0 #EEEEEE;
 			border: 1px solid #DDDDDD;
 			font-size: 13px;
@@ -58,18 +58,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			padding: 5px;
 		}
 		
-		#news #main table {
+		#news .main table {
 			border-collapse: collapse;
 			line-height: 1.6em;
 		}
 		
-		#news #main tbody th {
+		#news .main tbody th {
 			background: none repeat scroll 0 0 #F9F9F9;
 			font-weight: normal;
 			text-align: left;
 		}
 		
-		#news #main th {
+		#news .main th {
 			background: none repeat scroll 0 0 #EEEEEE;
 			border: 1px solid #DDDDDD;
 			font-size: 13px;
@@ -77,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			padding: 5px;
 		}
 		
-		#news #main td {
+		#news .main td {
 			border: 1px solid #DDDDDD;
 			padding: 5px;
 			font-size: 13px;
@@ -112,7 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   
 	  <div class="menu">
 		    <a href="<%=basePath%>">首页</a>
-		    <a href="">总队简介</a>
+		    <a href="<%=basePath%>columnIndexView?column.c_lmdm=1355">总队简介</a>
 		    <a href="http://www.xxzx.bj" target="_blank">信息查询</a> 
 		    <a href="http://anquan.zx.bj" target="_blank">信息安全</a> 
 		    <a href="newsCenterList?news.c_lm=1239&pageNo=1">视频在线</a> 
@@ -120,7 +120,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    <a href="newsCenterList?news.c_lm=1291&pageNo=1">光荣榜</a> 
 		    <a href="newsCenterList?news.c_lm=1214&pageNo=1" onMouseOver="mouseover(this, 1)" onmouseout="mouseout()">法律法规</a> 
 		    <a href="newsCenterList?news.c_lm=1286&pageNo=1">纪检监察</a> 
-		    <a href="http://www.jdc.bj:9001" target="_blank">旧站入口</a> 
+		    <a href="http://www.jdc.bj" target="_blank">旧站入口</a> 
 		</div>
 		
 		<div class="menu-list" id="menu1" onmouseover="_mouseover()" onmouseout="_mouseout()">
@@ -250,155 +250,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<br/>
 				<div id="thetd" style="line-height: 22px; width: 610px; text-align: left; margin-top: 50px;">
 					<div id="news">
-						<div id="main">
+						<div class="main">
 							<table>
 								<thead>
 									<tr>
 										<th>排名</th>
 										<th>总队各单位</th>
 										<th>信息条数</th>
+									</tr>
+								</thead>
+								<tbody>
+									<s:iterator value="resMap.sjphList" id="news" var="news" status="status">
+										<tr>
+											<td><s:property value='#status.index+1'/></td>
+											<td><s:property value="#news.c_fbdw"/></td>
+											<td><s:property value="#news.n_xxxh"/></td>
+										</tr>
+									</s:iterator>
+								</tbody>
+							</table>
+						</div>
+						<div class="main">
+							<table>
+								<thead>
+									<tr>
 										<th>排名</th>
 										<th>各区县分局</th>
 										<th>信息条数</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>1</td>
-										<td>办公室</td>
-										<td>3698</td>
-										<td>1</td>
-										<td>东城</td>
-										<td>0</td>
-									</tr>
-									<tr>
-										<td>2</td>
-										<td>缉控大队 </td>
-										<td>614 </td>
-										<td>2</td>
-										<td>西城</td>
-										<td>0</td>
-									</tr>
-									<tr>
-										<td>3</td>
-										<td>情报中心 </td>
-										<td>258</td>
-										<td>3</td>
-										<td>朝阳</td>
-										<td>0</td>
-									</tr>
-									<tr>
-										<td>4</td>
-										<td>协调指导大队</td>
-										<td>180  </td>
-										<td>4</td>
-										<td>丰台 </td>
-										<td>0 </td>
-									</tr>
-									<tr>
-										<td>5</td>
-										<td>查禁大队 </td>
-										<td>126 </td>
-										<td>5</td>
-										<td>石景山</td>
-										<td>0</td>
-									</tr>
-									<tr>
-										<td>6</td>
-										<td>侦查大队 </td>
-										<td>94 </td>
-										<td>6</td>
-										<td>海淀</td>
-										<td>0</td>
-									</tr>
-									<tr>
-										<td>7</td>
-										<td>两品办 </td>
-										<td>93 </td>
-										<td>7</td>
-										<td>门头沟</td>
-										<td>0</td>
-									</tr>
-									<tr>
-										<td>8</td>
-										<td>总队领导 </td>
-										<td>1</td>
-										<td>8</td>
-										<td>燕山</td>
-										<td>0</td>
-									</tr>
-									<tr>
-										<td>9</td>
-										<td></td>
-										<td></td>
-										<td>9</td>
-										<td>房山</td>
-										<td>0</td>
-									</tr>
-									<tr>
-										<td>10</td>
-										<td></td>
-										<td></td>
-										<td>10</td>
-										<td>通州</td>
-										<td>0</td>
-									</tr>
-									<tr>
-										<td>11</td>
-										<td></td>
-										<td></td>
-										<td>11</td>
-										<td>顺义</td>
-										<td>0</td>
-									</tr>
-									<tr>
-										<td>12</td>
-										<td></td>
-										<td></td>
-										<td>12</td>
-										<td>昌平</td>
-										<td>0</td>
-									</tr>
-									<tr>
-										<td>13</td>
-										<td></td>
-										<td></td>
-										<td>13</td>
-										<td>大兴</td>
-										<td>0</td>
-									</tr>
-									<tr>
-										<td>14</td>
-										<td></td>
-										<td></td>
-										<td>14</td>
-										<td>怀柔</td>
-										<td>0</td>
-									</tr>
-									<tr>
-										<td>15</td>
-										<td></td>
-										<td></td>
-										<td>15</td>
-										<td>平谷</td>
-										<td>0</td>
-									</tr>
-									<tr>
-										<td>16</td>
-										<td></td>
-										<td></td>
-										<td>16</td>
-										<td>密云</td>
-										<td>0</td>
-									</tr>
-									<tr>
-										<td>17</td>
-										<td></td>
-										<td></td>
-										<td>17</td>
-										<td>延庆</td>
-										<td>0</td>
-									</tr>
+									<s:iterator value="resMap.qxphList" id="news" var="news" status="status">
+										<tr>
+											<td><s:property value='#status.index+1'/></td>
+											<td><s:property value="#news.c_fbdw"/></td>
+											<td><s:property value="#news.n_xxxh"/></td>
+										</tr>
+									</s:iterator>
 								</tbody>
 							</table>
 						</div>

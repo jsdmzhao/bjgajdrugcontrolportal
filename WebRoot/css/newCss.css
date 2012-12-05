@@ -103,7 +103,7 @@ body {
 	padding: 2px;
 	margin-left: 3px;
 	border: solid 1px #a9cfe5;
-	width: 553px;
+	width: 523px;
 	height: 405px;
 	float: left;
 }
@@ -123,7 +123,7 @@ body {
 #lddt_news {
 	padding: 2px;
 	border: solid 1px #a9cfe5;
-	width: 418px;
+	width: 448px;
 	height: 405px;
 	float: right;
 }
@@ -262,7 +262,7 @@ body {
 	border-bottom: solid 1px #a9cfe5;
 	border-left: solid 1px #a9cfe5;
 	border-right: solid 1px #a9cfe5;
-	height: 530px;
+	height: 435px;
 	float: left;
 	margin-left: 2px;
 	width: 978px;
@@ -333,7 +333,7 @@ body {
 	float: right;
 	height: 32px;
 	margin-right: 5px;
-	width: 87px;
+	width: 80px;
 	color: #0a62a0;
 	font-weight: normal;
 	font-size: 14px;
@@ -342,17 +342,16 @@ body {
 .jwgk_content_center_title div{
 	padding-top: 11px;
 	height: 32px;
-	width: 94px;
+	width: 87px;
 	float: left;
-	margin-left: 10px;
 	color: #0a62a0;
 	font-weight: bold;
 	font-size: 14px;
 }
 
 .jwgk_content_center_title .select {
-	padding-left: 10px;
-	background: url(../newimages/select.png) ;
+	color: #fff;
+	background: url(../newimages/select2.png) ;
 }
 
 .jwgk_content_center_title_font {
@@ -385,7 +384,7 @@ body {
 
 .ggl_div {
 	margin-top: 10px;
-	height: 210px;
+	height: 250px;
 	width: 210px;
 }
 
@@ -439,7 +438,7 @@ body {
 }
 
 .ztzl_img_div {
-	margin: 10px;
+	margin: 6px;
 }
 
 .xxph_div {
@@ -533,7 +532,7 @@ body {
 	float: right;
 	height: 32px;
 	margin-right: 5px;
-	width: 87px;
+	width: 80px;
 	color: #0a62a0;
 	font-weight: normal;
 	font-size: 14px;
@@ -561,7 +560,7 @@ body {
 }
 
 .ztzl_content_center_content {
-	height: 187px;
+	height: 170px;
 }
 
 #ztzl_content_right {
@@ -595,7 +594,7 @@ body {
 	float: right;
 	height: 32px;
 	margin-right: 5px;
-	width: 87px;
+	width: 80px;
 	color: #0a62a0;
 	font-weight: normal;
 	font-size: 14px;
@@ -921,8 +920,6 @@ body {
 
 #wrap .item .items {
 	display: none;
-	background: url(../images/icon_num.gif) 15px 4px no-repeat;
-	padding: 0 15px;
 }
 
 #wrap .item .items a {
@@ -948,8 +945,7 @@ body {
 	overflow: hidden;
 	margin-right: 15px;
 	text-indent: -9999px;
-	background: url(http://js.fgm.cc/learn/lesson10/img/icon_btn.gif)
-		no-repeat;
+	background: url(../newimages/icon_btn.gif) no-repeat;
 }
 
 #wrap .item .btn a:hover {

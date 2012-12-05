@@ -16,6 +16,10 @@
 	<select id="getColumn" parameterType="Column" resultType="Column">
 		SELECT * FROM B_LANMU WHERE N_XH = #{n_xh}
 	</select>
+	
+	<select id="getColumnView" parameterType="Column" resultType="Column">
+		SELECT * FROM B_LANMU WHERE C_LMDM = #{c_lmdm}
+	</select>
 	 
 	<select id="getColumnList" resultMap="resultColumn">
 		SELECT N_XH,

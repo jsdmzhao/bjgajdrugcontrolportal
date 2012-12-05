@@ -35,10 +35,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/interface/ColumnAction.js'></script>
+  	
+  	<style type="text/css">
+ 	    .l-button-2{
+			BORDER-BOTTOM: #bfcfe1 1px solid; 
+			POSITION: relative; 
+			BORDER-LEFT: #bfcfe1 1px solid; 
+			LINE-HEIGHT: 25px; 
+			HEIGHT: 25px; 
+			COLOR: #2c69a2; 
+			BORDER-TOP: medium none; CURSOR: pointer; 
+			BORDER-RIGHT: #bfcfe1 1px solid;
+			WIDTH: 80px;  
+			BACKGROUND: url(<%=basePath%>liger/lib/images/ui/button1.gif) repeat-x; 
+		}
+ 	</style>
 
 </head>
 <body style="padding-bottom:31px;">
-    <form id="mainform"  method="post"></form> 
+    <form id="mainform"  method="post">
+    	<div id="nr" style="display: none;"><s:property value="column.c_nr"/></div>
+    </form> 
     <script type="text/javascript"> 
     
     
@@ -76,15 +93,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	 value:"选择图片",
 	         name:"sctp",
 	         newline:false,
-	         labelWidth:100,
-	         width:220,space:30, 
+	         labelWidth:0,
 	         type:"button",
-	         cssClass:"l-button",
-	         disabled:"disabled",
+	         cssClass:"l-button-2",
 	         onclick : "openDialog('#uploadImageDiv')"
          },
-         {display:"是否内容",name:"c_sfnr",newline:true,labelWidth:100,width:250, space:30,type:"checkbox",value:"<s:property value='column.c_sfnr'/>"},
-         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea", readonly:"readonly",value:"<s:property value='column.c_nr' escape='false'/>"},
+         /**{display:"是否内容",name:"c_sfnr",newline:true,labelWidth:100,width:250, space:30,type:"checkbox",value:"<s:property value='column.c_sfnr'/>"},**/
+         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea",value:$('#nr').html()},
          {name:"n_xh", type:"hidden",value:"<s:property value='column.n_xh'/>"},
          {name:"c_lmdm", type:"hidden",value:"<s:property value='column.c_lmdm'/>"},
          {name:"c_sjlmdm", type:"hidden",value:"<s:property value='column.c_sjlmdm'/>"},
@@ -111,16 +126,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         //表单底部按钮 
         LG.setFormDefaultBtn(f_cancel,isView ? null : f_save);
 
-        var deptTree = {
-            url :'../handler/tree.ashx?view=CF_Department&idfield=DeptID&textfield=DeptName&pidfield=DeptParentID',
-            checkbox:false,
-            nodeWidth :220
-        };
-
         //创建表单结构
         var mainform = $("#mainform");  
-        mainform.ligerForm({ 
-         inputWidth: 280,
+         mainform.ligerForm({ 
+       	 inputWidth: 0,
+         labelWidth: 0,
          fields : config.Form.fields//,
 		 //toJSON:JSON2.stringify
         });
@@ -182,9 +192,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		formMap["c_sfdh"] = '0';
         	}
         	
-        	if(editor != null){
-	        	formMap["c_nr"] = editor.document.getBody().getHtml();
-           	}
+        	//if(editor != null){
+	        formMap["c_nr"] = editor.document.getBody().getHtml();
+           	//}
 			
         	ColumnAction.columnSave(formMap,function (result){
         		if(result == 'success'){
@@ -229,7 +239,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
 
 
-
         $(function(){
        	 if ($.browser.msie) {
        	  	$('input:checkbox').click(function () { 
@@ -258,13 +267,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        		});   
        	 };
        	 
+       	editor = CKEDITOR.replace( 'c_nr' );
+        CKFinder.setupCKEditor( editor, '/ckfinder/' );
+       	 
        	 $("#c_sfnr").change(function() {
 	       		 var value = $("#c_sfnr").attr("checked");
 	       		 if(value == true && editor == null){
 	       			 editor = CKEDITOR.replace( 'c_nr' );
 	    	         CKFinder.setupCKEditor( editor, '/ckfinder/' );
 	             }else{
-	            	 $("#c_nr").attr("disabled","disabled");	
+	            	 //$("#c_nr").attr("readonly","readonly");
+	            	 $("#c_nr").attr("readOnly","readOnly");
 	             }
        		});
        	}); 

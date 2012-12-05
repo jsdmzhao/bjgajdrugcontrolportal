@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   
 	  <div class="menu">
 		    <a href="<%=basePath%>">首页</a>
-		    <a href="<%=basePath%>columnIndexView?column.c_lmdm=1355">总队简介</a>
+		    <a href="<%=basePath%>columnIndexView?c_lmdm=1355">总队简介</a>
 		    <a href="http://www.xxzx.bj" target="_blank">信息查询</a> 
 		    <a href="http://anquan.zx.bj" target="_blank">信息安全</a> 
 		    <a href="newsCenterList?news.c_lm=1239&pageNo=1">视频在线</a> 
@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    <a href="newsCenterList?news.c_lm=1291&pageNo=1">光荣榜</a> 
 		    <a href="newsCenterList?news.c_lm=1214&pageNo=1" onMouseOver="mouseover(this, 1)" onmouseout="mouseout()">法律法规</a> 
 		    <a href="newsCenterList?news.c_lm=1286&pageNo=1">纪检监察</a> 
-		    <a href="http://www.jdc.bj" target="_blank">旧站入口</a> 
+		    <a href="http://www.jdc.bj:9001" target="_blank">旧站入口</a> 
 		</div>
 		
 		<div class="menu-list" id="menu1" onmouseover="_mouseover()" onmouseout="_mouseout()">
@@ -172,22 +172,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div id="news_center">
 			<div class="news_center_title">
 				<div class="news_center_title_font">
-					<s:if test="news.c_lm_.indexOf(';') > -1">
-						<s:property value="news.c_lm_.substring(0,news.c_lm_.indexOf(';'))"/>
-					</s:if>
-					<s:else>
-						<s:property value="news.c_lm_"/>
-					</s:else>
+					<s:property value="column.c_lmmc"/>
 				</div>
 				<div class="news_center_title_more">
-					<font color="#DF7024" size="2">您现在所在的位置：<a href="<%=basePath%>"><font color="#DF7024" size="2">首页</font></a>&nbsp;&gt;&gt;&nbsp;<s:property value="news.c_lm_"/></font>
+					<font color="#DF7024" size="2">您现在所在的位置：<a href="<%=basePath%>"><font color="#DF7024" size="2">首页</font></a>&nbsp;&gt;&gt;&nbsp;<s:property value="column.c_lmmc"/></font>
 				</div>
 			</div>
 			<div class="news_content_center_content" style="padding:10px 0px 10px 20px;">
-				<div style="font-size: 24px; font-weight:800; color:#F00; margin-top: 20px;line-height: 50px;"><s:property value="news.c_bt"/></div>
+				<div style="font-size: 24px; font-weight:800; color:#F00; margin-top: 20px;line-height: 50px;"><s:property value="column.c_lmmc"/></div>
 				<hr/>
 				<div style="margin-top: 10px;">
-					<div style="float: left;"><s:property value="news.c_yhzid"/>&nbsp;&nbsp;<s:property value="news.d_fbsj"/> </div>
+					<div style="float: left;">&nbsp;&nbsp;<s:property value="column.d_fbsj"/> </div>
 					<div style="float: right;">
 					      【<A onClick="thetd.style.fontSize='20px';" href="#"><font color="#0000CC">大</font></A> 
 					        <A onClick="thetd.style.fontSize='14px';" href="#"><font color="#0000CC">中</font></A> 
@@ -207,7 +202,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<p align="center"><img src="<s:property value='news.c_tpljdz'/>" style="margin-top: 3px; height: 300px; width: 400px" alt="<s:property value="news.c_bt"/>"/></p>
 					</s:if>
 					 -->
-					<s:property value="news.c_nr" escape="false"/>
+					<s:property value="column.c_nr" escape="false"/>
 				</div>
 			</div>
 	</div>

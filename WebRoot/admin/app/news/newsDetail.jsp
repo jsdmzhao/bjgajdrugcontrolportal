@@ -35,12 +35,27 @@ String newsType = request.getParameter("newsType");
 	<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
   	<script type='text/javascript' src='<%=basePath%>dwr/interface/NewsAction.js'></script>
+ 	<style type="text/css">
+ 	    .l-button-2{
+		BORDER-BOTTOM: #bfcfe1 1px solid; 
+		POSITION: relative; 
+		BORDER-LEFT: #bfcfe1 1px solid; 
+		LINE-HEIGHT: 25px; 
+		HEIGHT: 25px; 
+		COLOR: #2c69a2; 
+		BORDER-TOP: medium none; CURSOR: pointer; 
+		BORDER-RIGHT: #bfcfe1 1px solid;
+		WIDTH: 80px;  
+		BACKGROUND: url(<%=basePath%>liger/lib/images/ui/button1.gif) repeat-x; 
+
+	}
+ 	</style>
 
 </head>
 <body style="padding-bottom:31px;">
     <form id="mainform2"  method="post"></form> 
     <script type="text/javascript"> 
-	    
+	    var com;
         var config = {"Form":{ 
          fields : [
          {name:"c_lm",type:"hidden",value:'<%=newsType %>'},
@@ -50,7 +65,6 @@ String newsType = request.getParameter("newsType");
 	         newline:true,
 	         labelWidth:100,
 	         width:700,
-	         space:30,
 	         type:"text",
 	         validate: { required: true},
 	         group:"基本信息",
@@ -61,22 +75,23 @@ String newsType = request.getParameter("newsType");
              validate: { required: true},
              newline:true,
              labelWidth:100,
-             width:408
+             width:308
          },{
    	         name:"wzlm",
    	         newline:false,
-   	         width:120,//space:30, 
+   	         width:110,//space:30,
+   	         height: 30,
    	         type:"button",
-   	         cssClass:"l-button",
+   	         cssClass:"l-button-2",
    	         value:"选择栏目",
    	         onclick : "selectLanmu()"
-         },
+         },{display:"发布单位",name:"c_fbdw",validate: { required: true},newline:false,labelWidth:90,width:172,type:"basicText"},
          {display:"是否图片文章",
              name:"c_sftwwz",
              newline:true,
-             labelWidth:100,width:30,space:30,type:"checkbox"
+             labelWidth:100,width:30,type:"checkbox"
          },
-         {display:"图片名称",name:"c_tpljdz",newline:false,labelWidth:100,width:250,space:30,type:"text",readonly:"readonly"},
+         {display:"图片名称",name:"c_tpljdz",newline:false,labelWidth:100,width:420,space:30,type:"text",readonly:"readonly"},
          {
         	 //display:"上传图片",
    	         name:"sctp",
@@ -84,27 +99,27 @@ String newsType = request.getParameter("newsType");
    	         //labelWidth:100,
    	         width:120,//space:30, 
    	         type:"button",
-   	         cssClass:"l-button",
+   	         cssClass:"l-button-2",
    	         value:"选择图片",
    	      	 disabled:"disabled",
    	      	 onclick : "openDialog('#uploadImageDiv')"
          },
          {  display:"是否上传视频",
             name:"c_sfscsp",
-            newline:true,labelWidth:100,width:30,space:30,
+            newline:true,labelWidth:100,width:30,
             type:"checkbox",
             nodeWidth :30
         },
-        {display:"视频名称",name:"c_spljdz",newline:false,labelWidth:100,width:250,space:30,type:"text",readonly:"readonly"},
+        {display:"视频名称",name:"c_spljdz",newline:false,labelWidth:100,width:420,space:30,type:"text",readonly:"readonly"},
         {
         	 //display:"上传视频",
         	 value:"选择视频",
 	         name:"scsp",
 	         newline:false,
-	         //labelWidth:100,
+	         labelWidth: 0,
 	         width:120,//space:10, 
 	         type:"button",
-	         cssClass:"l-button",
+	         cssClass:"l-button-2",
 	         disabled:"disabled",
 	         onclick : "openDialog('#uploadFlashDiv')"
          },
@@ -149,16 +164,11 @@ String newsType = request.getParameter("newsType");
         //表单底部按钮 
         LG.setFormDefaultBtn(f_cancel,isView ? null : f_save);
 
-        var deptTree = {
-            url :'',
-            checkbox:false,
-            nodeWidth :220
-        };
-
         //创建表单结构
         var mainform2 = $("#mainform2");  
         mainform2.ligerForm({ 
-         inputWidth: 280,
+         labelWidth: 0,
+         space: 10,
          fields : config.Form.fields//,
 		 //toJSON:JSON2.stringify
         });
@@ -190,6 +200,16 @@ String newsType = request.getParameter("newsType");
             //查看状态，控制不能编辑
             $("input,select,textarea",mainform2).attr("readonly", "readonly");
         }
+		
+		com = $("#c_fbdw").ligerComboBox({
+	    	 isMultiSelect: false,
+	    	 width: 170, 
+             selectBoxWidth: 170,
+             selectBoxHeight: 100, 
+	         valueField:"value",
+	         textFiled:"text",
+	         url:"<%=basePath%>newsCombox"
+		});
 
         //<!-- 设置一些默认参数 -->
         var editor = CKEDITOR.replace( 'c_nr' );
@@ -220,6 +240,7 @@ String newsType = request.getParameter("newsType");
         	}
         	
         	formMap["c_nr"] = editor.document.getBody().getHtml();
+        	formMap["c_fbdw"] = com.getValue();
 			
         	NewsAction.newsSave(formMap,function (result){
         		//var win = parent || window;
@@ -250,13 +271,12 @@ String newsType = request.getParameter("newsType");
 		function selectLanmu(){
 			
 			dig = $.ligerDialog.open({
-        		url: '<%=basePath%>admin/app/news/selectLanmu.jsp', height: 400,width: 700
+        		url: '<%=basePath%>admin/app/news/selectLanmu.jsp', height: 400,width: 700,title:'栏目选择'
         	});
 		}
 		
 		
-        function f_cancel()
-        {
+        function f_cancel() {
             parent.dialog_hidden();
         }
 

@@ -24,7 +24,7 @@
 	 
 	 
 	 <resultMap type="News" id="sortNews">
-	 	<result column="C_YHZID" property="c_yhzid"/>
+	 	<result column="C_FBDW" property="c_fbdw"/>
 	 	<result column="N_XXXH" property="n_xxxh"/>
 	 </resultMap>
 	 
@@ -51,6 +51,7 @@
 		       FUN_GET_MULTI_LMMC(C_LM) C_LM_,
 		       C_YHID,
 		       C_YHZID,
+		       C_FBDW,
 		       C_SFSH,
 		       C_SHR,
 		       TO_CHAR(D_SHSJ, 'YYYY-MM-DD HH24:MI:SS') D_SHSJ,
@@ -72,7 +73,7 @@
 	       C_NR,
 	       FUN_GET_MULTI_LMMC(C_LM) C_LM_,
 	       FUN_GET_YHMC(C_YHID) C_YHID,
-	       DECODE(C_YHZID,'1','总队领导',
+	       DECODE(C_FBDW,'1','总队领导',
 		       		  '3','办公室',
 		       		  '4','协调指导大队',
 		       		  '9','情报中心',
@@ -123,9 +124,9 @@
 	  <if test="c_bt != null and c_bt != ''">
 	 	 AND C_BT LIKE '%'||#{c_bt}||'%'
 	  </if>
-		   <if test="c_sfscsp != null and c_sfscsp != ''">
-				 	 AND C_SFSCSP = #{c_sfscsp}
-		</if>
+	  <if test="c_sfscsp != null and c_sfscsp != ''">
+		AND C_SFSCSP = #{c_sfscsp}
+	  </if>
 		
 				  
 	  ORDER BY C_SFZD DESC,D_FBSJ DESC
@@ -227,7 +228,7 @@
 	  	FROM B_XINWEN
 	 	 WHERE C_LM LIKE '%;'||#{c_lm}||';%'
 	 	 	<if test="c_lm != null and c_lm == '1081' and rownum == 4 ">
-			 	 AND C_TPLJDZ IS NOT NULL
+			 	AND C_TPLJDZ IS NOT NULL
 		  	</if>
 	 	 	AND C_SHJG = '1'
 	  	ORDER BY C_SFZD DESC,D_FBSJ DESC
@@ -266,28 +267,31 @@
 		delete from B_XINWEN WHERE N_XH = #{n_xh}
 	</delete>
 	
-	<select id="sortIndexCnt" resultMap="sortNews">
-		SELECT DECODE(C_YHZID,
-              '1',
-              '总队领导',
-              '3',
-              '办公室',
-              '4',
-              '协调指导大队',
-              '9',
-              '情报中心',
-              '7',
-              '侦查大队',
-              '8',
-              '查禁大队',
-              '5',
-              '缉控大队',
-              '10',
-              '两品办') C_YHZID,
-           TO_CHAR(COUNT(*)) N_XXXH
-      FROM B_XINWEN
-     WHERE C_YHZID IN ('1', '3', '4', '5', '9', '7', '8', '10')
-     GROUP BY C_YHZID ORDER BY COUNT(*) DESC
+	<select id="sortIndexSJCnt" resultMap="sortNews">
+	    SELECT FUN_GET_DMMC('NDEP', C_FBDW) C_FBDW, SUM(CNT) N_XXXH
+		  FROM (SELECT C_DM C_FBDW, 0 CNT
+		          FROM D_DM
+		         WHERE C_BXH = 'NDEP'
+		           AND C_DM IN ('3', '4', '5', '9', '7', '8', '10')
+		        UNION ALL
+		        SELECT C_FBDW, COUNT(*) CNT
+		          FROM B_XINWEN
+		         WHERE C_FBDW IN ('3', '4', '5', '9', '7', '8', '10')
+		         GROUP BY C_FBDW)
+		 GROUP BY C_FBDW
+		 ORDER BY SUM(CNT) DESC
+	</select>
+	
+	<select id="sortIndexQXCnt" resultMap="sortNews">
+		SELECT FUN_GET_DMMC('NDEP',C_FBDW) C_FBDW,SUM(CNT) N_XXXH FROM (
+		    SELECT C_DM C_FBDW , 0 CNT FROM D_DM WHERE C_BXH = 'NDEP' AND C_DM LIKE '49%'
+		    UNION ALL
+		    SELECT C_FBDW,
+		           COUNT(*) CNT
+		      FROM B_XINWEN
+		     WHERE C_FBDW LIKE '49%'
+		     GROUP BY C_FBDW 
+		)  GROUP BY C_FBDW ORDER BY SUM(CNT) DESC
 	</select>
 	
 	<insert id="insertNews" parameterType="hashmap">
@@ -305,6 +309,7 @@
 			C_NR,
 			D_FBSJ,
 			C_LM,
+			C_FBDW,
 			C_YHID,
 			C_YHZID,
 			C_SFSH,
@@ -326,6 +331,7 @@
 	         #{c_nr,javaType=String,jdbcType=CLOB,handler=ClobTypeHandler},            
 	         to_date(#{d_fbsj,jdbcType=VARCHAR},'yyyy-mm-dd hh24:mi:ss'),          
 	         #{c_lm,jdbcType=VARCHAR},            
+	         #{c_fbdw,jdbcType=VARCHAR},            
 	         #{c_yhid,jdbcType=VARCHAR},            
 	         #{c_yhzid,jdbcType=VARCHAR},         
 	         '0',           
@@ -349,7 +355,8 @@
 				C_JJ     =	#{c_jj,jdbcType=VARCHAR},     							
 				C_NR     =	#{c_nr,jdbcType=CLOB,handler=ClobTypeHandler},     							
 				D_FBSJ   =	to_date(#{d_fbsj,jdbcType=VARCHAR},'yyyy-mm-dd hh24:mi:ss'),      							
-				C_LM     =	#{c_lm,jdbcType=VARCHAR}    							
+				C_LM     =	#{c_lm,jdbcType=VARCHAR},
+				C_FBDW   =	#{c_fbdw,jdbcType=VARCHAR}							
 		WHERE N_XH = #{n_xh}
 	</update>
 	
@@ -385,6 +392,13 @@
 	 WHERE C_SJLMDM = #{c_sjlmdm}
 		AND N_YXX = 1
 		AND C_YHZID = '0'
+	</select>
+	
+	<select id="getNewsDmCombox" parameterType="string" resultType="Combox">  
+	  SELECT C_DM VALUE,
+	         C_MC TEXT
+	  FROM D_DM
+	 WHERE C_BXH = #{c_bxh}
 	</select>
 	
 	<select id="getLanmuName" parameterType="string" resultType="string">  

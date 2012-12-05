@@ -30,6 +30,7 @@ import com.unis.core.commons.Combox;
 import com.unis.core.service.AbsServiceAdapter;
 import com.unis.core.util.DateUtil;
 import com.unis.core.util.Globals;
+import com.unis.core.util.IPUtil;
 import com.unis.core.util.PageModel;
 
 @Controller
@@ -156,6 +157,21 @@ public class NewsAction {
 	}
 	
 	@SuppressWarnings("unchecked")
+	public void newsCombox() throws IOException{
+		
+
+		List<Combox> newsList = (List<Combox>) newsService.selectList("NewsMapper.getNewsDmCombox", "NDEP");
+
+		ObjectMapper mapper = new ObjectMapper();
+    	HttpServletResponse response = ServletActionContext.getResponse();
+    	response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		mapper.writeValue(out, newsList);
+		out.flush();
+		out.close();
+	}
+	
+	@SuppressWarnings("unchecked")
 	public void newsPageList() throws IOException{
 		
 		//HttpServletRequest request = ServletActionContext.getRequest();
@@ -169,23 +185,22 @@ public class NewsAction {
 		
 		news.setStart(String.valueOf(((page.intValue()-1)*pagesize.intValue())));
 		news.setLimit(String.valueOf((page.intValue()*pagesize.intValue())));
-
+		
 		List<News> newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexPageList", news);
 		Long totalRecords = (Long) newsService.selectOne("NewsMapper.getNewsIndexPageCnt", news);
 		Map<String, Object> resMap = new HashMap<String, Object>();
-
+		
 		resMap.put("Rows", newsList);
 		resMap.put("Total", totalRecords);
 		
 		ObjectMapper mapper = new ObjectMapper();
-    	HttpServletResponse response = ServletActionContext.getResponse();
-    	response.setCharacterEncoding("UTF-8");
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		mapper.writeValue(out, resMap);
 		out.flush();
 		out.close();
 	}
-	
 	@SuppressWarnings("unchecked")
 	public String newsCenterList() throws UnsupportedEncodingException{
 		
@@ -230,8 +245,13 @@ public class NewsAction {
 		return Globals.SUCCESS;
 	}
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public String  newsIndexList() throws SQLException{
+		
+		
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = request.getSession();
+		
 		
 		Map<String, Object> sqlParamMap = new HashMap<String, Object>();
 		
@@ -255,17 +275,119 @@ public class NewsAction {
 		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
 		resMap.put("tztbList", newsList);
 		
+		//禁毒文件
+		sqlParamMap.put("c_lm", "1197");
+		sqlParamMap.put("rownum", "8");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("jdwjList", newsList);
+		
 		//队伍建设
 		sqlParamMap.put("c_lm", "1196");
 		sqlParamMap.put("rownum", "8");
 		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
 		resMap.put("dwjsList", newsList);
 		
-		//学习专栏
-		sqlParamMap.put("c_lm", "1297");
+		//学习十八大
+		sqlParamMap.put("c_lm", "1140");
+		sqlParamMap.put("rownum", "8");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("xxsbdList", newsList);
+		
+		
+		//每日警情
+		sqlParamMap.put("c_lm", "1350");
 		sqlParamMap.put("rownum", "7");
 		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
-		resMap.put("xxzlList", newsList);
+		resMap.put("mrjqList", newsList);
+		
+		
+		//区县动态
+		sqlParamMap.put("c_lm", "1351");
+		sqlParamMap.put("rownum", "7");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("qxdtList", newsList);
+		
+		
+		//动态管控
+		sqlParamMap.put("c_lm", "1267");
+		sqlParamMap.put("rownum", "7");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("dtgkList", newsList);
+		
+		
+		//预防教育
+		sqlParamMap.put("c_lm", "1188");
+		sqlParamMap.put("rownum", "7");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("yfjyList", newsList);
+		
+		//场所管理
+		sqlParamMap.put("c_lm", "1146");
+		sqlParamMap.put("rownum", "7");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("csglList", newsList);
+		
+		//两品管理 
+		sqlParamMap.put("c_lm", "1105");
+		sqlParamMap.put("rownum", "7");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("lpglList", newsList);
+		
+		
+		//情报信息
+		sqlParamMap.put("c_lm", "1101");
+		sqlParamMap.put("rownum", "7");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("qbxxList", newsList);
+		
+		//执法规范
+		sqlParamMap.put("c_lm", "1107");
+		sqlParamMap.put("rownum", "7");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("zfgfList", newsList);
+		
+		//禁毒考核
+		sqlParamMap.put("c_lm", "1108");
+		sqlParamMap.put("rownum", "7");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("jdkhList", newsList);
+		
+		//目标案件
+		sqlParamMap.put("c_lm", "1102");
+		sqlParamMap.put("rownum", "7");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("mbajList", newsList);
+		
+		//打零收戒
+		sqlParamMap.put("c_lm", "1103");
+		sqlParamMap.put("rownum", "7");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("dlsjList", newsList);
+		
+		//堵源截流
+		sqlParamMap.put("c_lm", "1104");
+		sqlParamMap.put("rownum", "7");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("dyjlList", newsList);
+		
+		
+		//调研交流 1352 领导讲话 1353 禁毒视角 1354
+		sqlParamMap.put("c_lm", "1352");
+		sqlParamMap.put("rownum", "7");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("dyjlList", newsList);
+		
+		//领导讲话
+		sqlParamMap.put("c_lm", "1353");
+		sqlParamMap.put("rownum", "7");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("ldjhList", newsList);
+		
+		//禁毒视角
+		sqlParamMap.put("c_lm", "1354");
+		sqlParamMap.put("rownum", "7");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("jdsjList", newsList);
 		
 		//公告栏
 		sqlParamMap.put("c_lm", "1200");
@@ -273,55 +395,6 @@ public class NewsAction {
 		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
 		resMap.put("gglList", newsList);
 		
-		//禁毒动态
-		sqlParamMap.put("c_lm", "1193");
-		sqlParamMap.put("rownum", "8");
-		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
-		resMap.put("jddtList", newsList);
-		
-		//禁毒文件
-		sqlParamMap.put("c_lm", "1197");
-		sqlParamMap.put("rownum", "8");
-		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
-		resMap.put("jdwjList", newsList);
-		
-		//动态管控
-		sqlParamMap.put("c_lm", "1267");
-		sqlParamMap.put("rownum", "8");
-		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
-		resMap.put("dtgkList", newsList);
-		
-		//区县禁毒
-		sqlParamMap.put("c_lm", "1199");
-		sqlParamMap.put("rownum", "8");
-		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
-		resMap.put("qxjdList", newsList);
-		
-		//禁毒考核
-		sqlParamMap.put("c_lm", "1108");
-		sqlParamMap.put("rownum", "8");
-		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
-		resMap.put("jdkhList", newsList);
-		
-		//工作进度提示
-		sqlParamMap.put("c_lm", "1100");
-		sqlParamMap.put("rownum", "8");
-		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
-		resMap.put("gzjdList", newsList);
-		
-
-		//场所管理
-		sqlParamMap.put("c_lm", "1146");
-		sqlParamMap.put("rownum", "8");
-		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
-		resMap.put("csglList", newsList);
-		
-		
-		//媒体关注
-		sqlParamMap.put("c_lm", "1198");
-		sqlParamMap.put("rownum", "8");
-		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
-		resMap.put("mtgzList", newsList);
 		
 		//滚动专题专栏
 		sqlParamMap.put("c_lm", "1283");
@@ -355,8 +428,11 @@ public class NewsAction {
 		resMap.put("jddhList", newsList);
 		
 		//信息排行
-		newsList = (List<News>) newsService.selectList("NewsMapper.sortIndexCnt","");
-		resMap.put("xxphList", newsList);
+		newsList = (List<News>) newsService.selectList("NewsMapper.sortIndexSJCnt","");
+		resMap.put("sjphList", newsList);
+		
+		newsList = (List<News>) newsService.selectList("NewsMapper.sortIndexQXCnt","");
+		resMap.put("qxphList", newsList);
 		
 		//车辆限行
 		resMap.put("clxxStr", clxxSvc.getWh());
@@ -367,6 +443,50 @@ public class NewsAction {
 		//生日提醒
 		resMap.put("srtsStr", userInfoSvc.getSr());
 		
+		
+		String ip=IPUtil.getUserIP(request);
+		if(ip!=null){
+			Map p=new HashMap();
+			p.put("cYxip", ip);
+			List list=userInfoSvc.queryAll(p);
+			if(list.size()!=0){
+				Map rp=(Map)list.get(0);
+				session.setAttribute("userId",rp.get("userId") );
+				session.setAttribute("cJb",rp.get("cJb") );
+				session.setAttribute("cYhz",rp.get("cYhz") );
+				session.setAttribute("cZc",rp.get("cZc") );
+				session.setAttribute("cXm",rp.get("cXm") );
+				session.setAttribute("nXb",rp.get("nXb") );
+				session.setAttribute("dSr",rp.get("dSr") );
+				session.setAttribute("cGj",rp.get("cGj") );
+				session.setAttribute("cCsd",rp.get("cCsd") );
+				session.setAttribute("cHyzk",rp.get("cHyzk") );
+				session.setAttribute("cXl",rp.get("cXl") );
+				session.setAttribute("cByyx",rp.get("cByyx") );
+				session.setAttribute("cZy",rp.get("cZy") );
+				session.setAttribute("cKh",rp.get("cKh") );
+				session.setAttribute("cHkszd",rp.get("cHkszd") );
+				session.setAttribute("cDhhm",rp.get("cDhhm") );
+				session.setAttribute("cSjhm",rp.get("cSjhm") );
+				session.setAttribute("cYx",rp.get("cYx") );
+				session.setAttribute("cDz",rp.get("cDz") );
+				session.setAttribute("dGzsj",rp.get("dGzsj") );
+				session.setAttribute("dRzsj",rp.get("dRzsj") );
+				session.setAttribute("cJcjl",rp.get("cJcjl") );
+				session.setAttribute("cBz",rp.get("cBz") );
+				session.setAttribute("nDlcs",rp.get("nDlcs") );
+				session.setAttribute("nZxsc",rp.get("nZxsc") );
+				session.setAttribute("cLx",rp.get("cLx") );
+				session.setAttribute("cYxip",rp.get("cYxip") );
+				session.setAttribute("cKs",rp.get("cKs") );
+				
+			}else{
+				session.setAttribute("cXm", "游客");
+				session.setAttribute("userId", "0");
+				session.setAttribute("cYhz", "0");
+				session.setAttribute("cLx", "0");
+			}
+		}
 		//当前日期
 		resMap.put("sysdate", DateUtil.getSysDate("yyyy-MM-dd"));
 		
@@ -438,8 +558,17 @@ public class NewsAction {
 		return Globals.SUCCESS;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public String newsSort(){
+		
+		resMap = new HashMap<String, Object>();
 
+		List<News> newsList = (List<News>) newsService.selectList("NewsMapper.sortIndexSJCnt","");
+		resMap.put("sjphList", newsList);
+		
+		newsList = (List<News>) newsService.selectList("NewsMapper.sortIndexQXCnt","");
+		resMap.put("qxphList", newsList);
+		
 		return Globals.SUCCESS;
 	}
 	
