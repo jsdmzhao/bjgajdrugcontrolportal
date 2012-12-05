@@ -14,6 +14,8 @@ delete from D_DM;
 delete from B_ZMCD;
 delete from B_WDZM;
 
+delete from B_YH
+
 
 
 --菜单
