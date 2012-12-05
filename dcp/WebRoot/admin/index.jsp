@@ -207,8 +207,20 @@ if(session.getAttribute("userId")==null||session.getAttribute("userId")=="0"){
 					                    $(menu.children).each(function (j, submenu)
 					                    {
 					                        var subitem = $('<li><img/><span></span><div class="menuitem-l"></div><div class="menuitem-r"></div></li>');
+					                      
+					                        var menuUrl=submenu.MenuUrl;
+					                        if(menuUrl){
+					                        if(menuUrl){
+												if(menuUrl.indexOf("?") > 0){
+													menuUrl=menuUrl+"&userId=<%=session.getAttribute("userId")%>";
+					        	                    } else{
+					        	                    	menuUrl=menuUrl+"?userId=<%=session.getAttribute("userId")%>";
+					        	                    }
+												}
+					                        }
+					                        
 					                        subitem.attr({
-					                            url: submenu.MenuUrl,
+					                            url: menuUrl,
 					                            menuno: submenu.MenuNo
 					                        });
 					                        $("img", subitem).attr("src", submenu.MenuIcon || submenu.icon);
