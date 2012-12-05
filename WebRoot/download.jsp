@@ -136,12 +136,6 @@
 				    		 pNext=list.get(i+1);
 				    	}
 				    	
-						%>
-			    		
-			    		<script>
-			    	   	//alert('<%=titleList.get(index)+"----"+(p.get("cMc"))%>');
-			    		</script>
-			    		<%
 				    	boolean flag=false;
 					    for(int j=0;j<titleList.size();j++){
 					    	if(titleList.get(j).equals(p.get("cMc"))){
@@ -168,11 +162,6 @@
 				    		}
 		      		    else if(titleList.get(index).equals(p.get("cMc"))&&!titleList.get(index).equals(pNext.get("cMc"))){
 				    			
-		      		    	%>
-				    		<script>
-				    	 //  	alert('<%=index+1+"--1--"%>');
-				    		</script>
-				    		<%
 				    			
 				    			index=index+1;
 				    			if(index>8){
@@ -201,11 +190,6 @@
 				    			index=index+1;
 				    			
 				    		}
-				    		%>
-				    		<script>
-				    	 //  	alert('<%=index+1+"--2--"%>');
-				    		</script>
-				    		<%
 				    	 if(index>8){
 				    		// i=i-1;
 				    		if(i-1>0){
@@ -228,12 +212,6 @@
 				    	
 				    }
 
-					%>
-		    		
-		    		<script>
-		    	   	//alert('<%=index+1+"----"+(titleList.size())%>');
-		    		</script>
-		    		<%
 		    		if(index!=0){
 				    for(int i=index+1;i<titleList.size()-1;i++){
 				    	

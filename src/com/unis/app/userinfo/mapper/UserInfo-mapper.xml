@@ -58,6 +58,13 @@
 	</select>
 	
 	
+	<select id="getSupJb" resultType="integer" parameterType="java.util.Map" >
+    SELECT C_JB
+         FROM B_YH BASE 
+  WHERE  C_YHZ = #{cYhz} AND C_JB BETWEEN 0 AND  #{cJb}-1 AND ROWNUM=1 ORDER BY C_JB DESC 
+	</select>
+	
+	
 	<select id="queryAllInfo" resultMap="Result"  parameterType="java.util.Map" >
 				 select 
 					base.N_XH,

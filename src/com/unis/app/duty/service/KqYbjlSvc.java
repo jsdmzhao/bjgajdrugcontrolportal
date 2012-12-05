@@ -37,20 +37,9 @@ public class KqYbjlSvc  {
 				String ks=userMap.get("cKs");
 				
 				
-				if("5".equals(jb)){
+				if("5".equals(jb)||"4".equals(jb)||"3".equals(jb)){
 					
-					 p.put("cShjb", "3");
-					
-			//		 p.put("cShjb", "4");
-					
-			//	}else if("4".equals(jb)){
-			//		 p.put("cShjb", "3");
-					
-				}else if("3".equals(jb)){
-						if("3".equals(bm)){
-					   p.put("cShjb", "1");
-					 }
-					 p.put("cShjb", "2");
+					 p.put("cShjb", userInfoDao.getSupJb(userMap));
 					
 				}else if("2".equals(jb)){
 					
