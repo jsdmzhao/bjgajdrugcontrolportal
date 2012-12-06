@@ -33,7 +33,7 @@ if(c_bt == null){
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>北京禁毒信息系统</title>
+    <title>北京禁毒信息网</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -83,31 +83,11 @@ if(c_bt == null){
   <body>
 <div id="container_news">
 	<div id="banner_top">
-		<div style="margin-left: 450px; padding-top:40px;">
-	      <object
-	        classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
-	        codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
-	        id="banner_t"
-	        width="278" height="34"
-	      >
-	        <param name="movie" value="flash/banner_t.swf">
-	        <param name="bgcolor" value="#FFFFFF">
-	        <param name="quality" value="high">
-	        <param name="seamlesstabbing" value="false">
-	        <param name="allowscriptaccess" value="samedomain">
-	        <embed
-	          type="application/x-shockwave-flash"
-	          pluginspage="http://www.adobe.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"
-	          name="banner_t"
-	          width="278" height="34"
-	          src="flash/banner_t.swf"
-	          bgcolor="#FFFFFF"
-	          quality="high"
-	        >
-	          <noembed>
-	          </noembed>
-	        </embed>
-	      </object>
+		<div style="margin-left: 375px; padding-top:40px;">
+	      <object type="application/x-shockwave-flash" data="flash/banner_t.swf" width="278" height="34">
+			<param name="movie" value="flash/banner_t.swf" />
+			<param name="wmode" value="transparent" />
+		  </object>
 	    </div>
 	  <div id="favor">
 		<img src="newimages/4.png" width="15" height="12" />
@@ -126,14 +106,15 @@ if(c_bt == null){
    </div>
   <div class="menu">
 	    <a href="<%=basePath%>">首页</a>
+	    <a href="<%=basePath%>columnIndexView?column.c_lmdm=1355">总队简介</a>
 	    <a href="http://www.xxzx.bj">信息查询</a> 
 	    <a href="http://www.anquan.zx.bj">信息安全</a> 
 	    <a href="newsCenterList?news.c_lm=1239&pageNo=1">视频在线</a> 
 	    <a href="ftp://ftp.jdc.bj">工作交流</a> 
 	    <a href="newsCenterList?news.c_lm=1291&pageNo=1">光荣榜</a> 
-	    <a href="newsCenterList?news.c_lm=1297&pageNo=1">学习专栏</a>
 	    <a href="newsCenterList?news.c_lm=1214&pageNo=1" onMouseOver="mouseover(this, 1)" onmouseout="mouseout()">法律法规</a> 
 	    <a href="newsCenterList?news.c_lm=1286&pageNo=1">纪检监察</a> 
+	    <a href="http://www.jdc.bj" target="_blank">旧站入口</a> 
 	</div>
 		
 	<div class="menu-list" id="menu1" onmouseover="_mouseover()" onmouseout="_mouseout()">
@@ -195,6 +176,9 @@ if(c_bt == null){
 					<ul>
 						<li><a href='newsCenterList?news.c_lm=1104&pageNo=1'><img src="newimages/menu_5.png" /></a></li>
 					</ul>
+					<ul>
+						<li><a href='newsCenterList?news.c_lm=1146&pageNo=1'><img src="newimages/menu_10.png" /></a></li>
+					</ul>
                     <ul>
 						<li><a href='newsCenterList?news.c_lm=1105&pageNo=1'><img src="newimages/menu_6.png" /></a></li>
 					</ul>
@@ -203,9 +187,6 @@ if(c_bt == null){
 					</ul>
 					<ul>
 						<li><a href='newsCenterList?news.c_lm=1107&pageNo=1'><img src="newimages/menu_8.png" /></a></li>
-					</ul>
-					<ul>
-						<li><a href='newsCenterList?news.c_lm=1106&pageNo=1'><img src="newimages/menu_9.png" /></a></li>
 					</ul>
 				</div>
 			</div>
@@ -258,23 +239,19 @@ if(c_bt == null){
 				</div>
 			</div>
 			<div class="">
-<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" 
-codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
- width="700" height="440" align="middle">
-<param name="allowScriptAccess" value="sameDomain" />
-<param name="movie" value="<%=basePath %>video/dynamic_flash_video_gallery.swf?flashvars=list.jsp" />
-<param name="quality" value="high" /><param name="bgcolor" value="#F4FBFF" />
-
-<embed src="<%=basePath %>video/dynamic_flash_video_gallery.swf?flashvars=list.jsp" quality="high" bgcolor="#F4FBFF"
- width="700" height="440" align="middle" allowScriptAccess="sameDomain" 
-  type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
-</object>
+				<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" 
+				codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
+				 width="700" height="440" align="middle">
+				<param name="allowScriptAccess" value="sameDomain" />
+				<param name="movie" value="<%=basePath %>video/dynamic_flash_video_gallery.swf?flashvars=list.jsp" />
+				<param name="quality" value="high" /><param name="bgcolor" value="#F4FBFF" />
+				
+				<embed src="<%=basePath %>video/dynamic_flash_video_gallery.swf?flashvars=list.jsp" quality="high" bgcolor="#F4FBFF"
+				 width="700" height="440" align="middle" allowScriptAccess="sameDomain" 
+				  type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+				</object>
 
 			<!-- 
-			
-			
-			
-			
 				<s:if test="pageModel.list != null and pageModel.list.size > 0">
 					<s:iterator value="pageModel.list" var="news">
 						<div id="news_news_list">

@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		.ny2010 a{ text-decoration:none; color:#333333; font-size:12px;}
 		.ny2010 td img{ width:220px; height:36px; display:block; margin:0 5px 2px 0; padding:1px; border:1px solid #CCCCCC;}
 		
-		#link_logo{ border-left: solid 1px #a9cfe5; border-right: solid 1px #a9cfe5;border-bottom: solid 1px #a9cfe5;height:160px; width:208px; overflow:hidden;list-style:none;}
+		#link_logo{ border-left: solid 1px #a9cfe5; border-right: solid 1px #a9cfe5;border-bottom: solid 1px #a9cfe5;height:190px; width:208px; overflow:hidden;list-style:none;}
 		#link_logo li{height:30px;width:190px; padding-left:5px;line-height:30px; border-bottom:1px dotted #ddd;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 		
 	</style>
@@ -101,12 +101,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	  function f_open(url, title, icon) {
 	    	
-	        window.open (url, title, 'height=600, width=1000, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
+	        window.open (url, title, 'height=600, width=1000, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=no, status=no');
 	    }
 	</script>
   </head>
   
   <body> 
+  	<s:if test="resMap.srtsStr != null and resMap.srtsStr != '' ">
+	  	<script type="text/javascript">
+	  	 window.open("birthday.jsp?TB_iframe=true&height=500&width=800");
+	  	</script>
+	</s:if>
   	<iframe style="display: none;" src="<%=basePath%>login.jsp?temp_r=zl"></iframe>
 
 	<div id="container">
@@ -348,7 +353,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div id="jwgk_title"></div>
 		<div id="jwgk_content">
 			<div id="jwgk_content_left">
-				<div class="jrzb_div" style="height:225px;">
+				<div class="jrzb_div" style="height:190px;">
 					<div class="jrzb_title">
 						<div class="jrzb_title_content">
 							<div class="jrzb_title_img"><img src="newimages/content_title_img.png" /></div>
@@ -399,25 +404,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 				</div>
 				 --%>
-				
-				<div class="ztzl_img_div"><a href="newsCenterList?news.c_lm=1145&pageNo=1"><img src="newimages/zdzxx.png" /></a></div>
-				<div class="ztzl_img_div">
-				<% 
-				if(session.getAttribute("userId") != null && !"0".equals(session.getAttribute("userId"))){
-				%>
-					<a href="<%=basePath%>desktop/index.jsp?TB_iframe=true&height=400&width=600" rel="sexylightbox[22]" title="我的工作区（点击我的工作区以外的区域关闭窗口）">
+				<div style="margin-top: 10px;">
+					<div class="ztzl_img_div">
+						<a href="newsCenterList?news.c_lm=1145&pageNo=1">
+							<img src="newimages/zdzxx.png" />
+						</a>
+					</div>
+					<div class="ztzl_img_div">
+					<% 
+					if(session.getAttribute("userId") != null && !"0".equals(session.getAttribute("userId"))){
+					%>
+						<a href="<%=basePath%>desktop/index.jsp?TB_iframe=true&height=400&width=600" rel="sexylightbox[22]" title="我的工作区（点击我的工作区以外的区域关闭窗口）">
+							<img src="newimages/bgpt.png" />
+						</a>
+					<%
+					} else {
+					%>
 						<img src="newimages/bgpt.png" />
-					</a>
-				<%
-				} else {
-				%>
-					<img src="newimages/bgpt.png" />
-				<%	
-				}
-				%>
+					<%	
+					}
+					%>
+						
+				    </div>
+				    <div class="ztzl_img_div"><a href="ftp://ftp.jdc.bj/" target="_blank"><img src="newimages/jywh.png" /></a></div>
 					
-			    </div>
-			    <div class="ztzl_img_div"><a href="ftp://ftp.jdc.bj/" target="_blank"><img src="newimages/jywh.png" /></a></div>
+				</div>
 				
 				
 			</div>
@@ -561,7 +572,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 						</div>					
 					</div>
-					<div id="link_logo" style="OVERFLOW: hidden; height:218px; width:208px; ">
+					<div id="link_logo" style="OVERFLOW: hidden; height:190px; width:208px; ">
 					  <div id="link_logo1" style="OVERFLOW: hidden">
 						
 						 <s:iterator value="resMap.gglList" var="news">
@@ -577,7 +588,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</s:iterator>
 						
 					</div>
-					<div id=link_logo2></div>
+					<div id="link_logo2" style="height: 100%;"></div>
 					  <script type="text/javascript">
 						document.getElementById("link_logo2").innerHTML=document.getElementById("link_logo1").innerHTML;
 					    function Marquee2(){
@@ -1144,7 +1155,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<a href="newsCenterList?news.c_lm=1108&pageNo=1">更多&gt;&gt;</a>
 					</div>
 				</div>
-				<div class="ztzl_content_center_content" id="divShowContent_51">
+				<div class="ztzl_content_center_content" id="showDivContent_51">
 					<s:iterator value="resMap.qbxxList" var="news">
 						<div class="lddt_news_list">
 							<div class="lddt_news_list_c" style="width:270px; margin-left: 0px;">
@@ -1169,7 +1180,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 					</s:iterator>
 				</div>
-				<div class="ztzl_content_center_content" id="divShowContent_52" style="display: none;">
+				<div class="ztzl_content_center_content" id="showDivContent_52" style="display: none;">
 					<s:iterator value="resMap.zfgfList" var="news">
 						<div class="lddt_news_list">
 							<div class="lddt_news_list_c" style="width:270px; margin-left: 2px;">
@@ -1194,7 +1205,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 					</s:iterator>
 				</div>
-				<div class="ztzl_content_center_content" id="divShowContent_53" style="display: none;">
+				<div class="ztzl_content_center_content" id="showDivContent_53" style="display: none;">
 					<s:iterator value="resMap.jdkhList" var="news">
 						<div class="lddt_news_list">
 							<div class="lddt_news_list_c" style="width:270px; margin-left: 2px;">
@@ -1257,7 +1268,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</s:iterator>
 				</div>
 				<div class="ztzl_content_center_content" id="showDivContent_62" style="display: none;">
-					<s:iterator value="resMap.dyjlList" var="news">
+					<s:iterator value="resMap.dlsjList" var="news">
 						<div class="lddt_news_list">
 							<div class="lddt_news_list_c" style="width:270px;margin-left: 2px;">
 								<div class="lddt_news_list_c_l" style="width:240px;">

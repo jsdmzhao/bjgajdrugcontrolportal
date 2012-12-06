@@ -79,7 +79,7 @@ String newsType = request.getParameter("newsType");
          },{
    	         name:"wzlm",
    	         newline:false,
-   	         width:110,//space:30,
+   	         width:110,
    	         height: 30,
    	         type:"button",
    	         cssClass:"l-button-2",
@@ -139,8 +139,6 @@ String newsType = request.getParameter("newsType");
         	 type:"hidden",
              name:"c_lm",
          }
-         //,
-         //{name:"n_ydcs", labelWidth:100,width:30,space:30,type:"hidden",value:"0"}
         ]
  }};
 

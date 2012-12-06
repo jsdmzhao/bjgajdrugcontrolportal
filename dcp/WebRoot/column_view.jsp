@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  	<img src="newimages/2.png" width="18" height="14" />&nbsp;
 	  	<a href="#" onclick="javascript:window.external.AddFavorite('<%=basePath%>', '北京禁毒信息网');" ><font color="white">加入收藏</font></a>
 	  </div>
-	  </div>
+	</div>
 	  		
 	    <div id="banner_bottom"  style="margin-left:2px;">
 	     <object type="application/x-shockwave-flash" data="flash/Banner.swf" width="978" height="152">
@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   
 	  <div class="menu">
 		    <a href="<%=basePath%>">首页</a>
-		    <a href="<%=basePath%>columnIndexView?c_lmdm=1355">总队简介</a>
+		    <a href="<%=basePath%>columnIndexView?column.c_lmdm=1355">总队简介</a>
 		    <a href="http://www.xxzx.bj" target="_blank">信息查询</a> 
 		    <a href="http://anquan.zx.bj" target="_blank">信息安全</a> 
 		    <a href="newsCenterList?news.c_lm=1239&pageNo=1">视频在线</a> 
@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    <a href="newsCenterList?news.c_lm=1291&pageNo=1">光荣榜</a> 
 		    <a href="newsCenterList?news.c_lm=1214&pageNo=1" onMouseOver="mouseover(this, 1)" onmouseout="mouseout()">法律法规</a> 
 		    <a href="newsCenterList?news.c_lm=1286&pageNo=1">纪检监察</a> 
-		    <a href="http://www.jdc.bj:9001" target="_blank">旧站入口</a> 
+		    <a href="http://www.jdc.bj" target="_blank">旧站入口</a> 
 		</div>
 		
 		<div class="menu-list" id="menu1" onmouseover="_mouseover()" onmouseout="_mouseout()">
@@ -147,6 +147,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<ul>
 						<li><a href='newsCenterList?news.c_lm=1104&pageNo=1'><img src="newimages/menu_5.png" /></a></li>
 					</ul>
+					<ul>
+						<li><a href='newsCenterList?news.c_lm=1146&pageNo=1'><img src="newimages/menu_10.png" /></a></li>
+					</ul>
                     <ul>
 						<li><a href='newsCenterList?news.c_lm=1105&pageNo=1'><img src="newimages/menu_6.png" /></a></li>
 					</ul>
@@ -155,9 +158,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</ul>
 					<ul>
 						<li><a href='newsCenterList?news.c_lm=1107&pageNo=1'><img src="newimages/menu_8.png" /></a></li>
-					</ul>
-					<ul>
-						<li><a href='newsCenterList?news.c_lm=1106&pageNo=1'><img src="newimages/menu_9.png" /></a></li>
 					</ul>
 				</div>
 			</div>

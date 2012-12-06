@@ -122,10 +122,13 @@ body {
 
 #lddt_news {
 	padding: 2px;
+	padding-left: 10px;
 	border: solid 1px #a9cfe5;
 	width: 448px;
 	height: 405px;
 	float: right;
+	background:url(../newimages/bttp.png);
+	background-repeat: no-repeat;;
 }
 
 #lddt_news_title {
@@ -159,6 +162,7 @@ body {
 	padding: 7px 4px 7px 25px;
 	float: left;
 	width: 380px;
+	heigth: 46px;
 }
 
 #red_lddt_title {
@@ -262,7 +266,7 @@ body {
 	border-bottom: solid 1px #a9cfe5;
 	border-left: solid 1px #a9cfe5;
 	border-right: solid 1px #a9cfe5;
-	height: 435px;
+	height: 450px;
 	float: left;
 	margin-left: 2px;
 	width: 978px;
@@ -384,7 +388,7 @@ body {
 
 .ggl_div {
 	margin-top: 10px;
-	height: 250px;
+	height: 220px;
 	width: 210px;
 }
 
@@ -506,7 +510,7 @@ body {
 	width: 358px;
 	height: 430px;
 	/**border-right: dashed 1px #a9cfe5;**/
-	margin: 10px 10px 10px 0px;
+	margin: 10px 10px 0px 0px;
 	padding-left: 5px;
 }
 
