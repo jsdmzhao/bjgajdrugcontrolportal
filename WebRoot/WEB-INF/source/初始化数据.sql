@@ -187,6 +187,21 @@ MENU_ICON, ISVISIBLE)values (704, '704', '7', '草稿箱', 'admin/app/email/emai
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
 MENU_ICON, ISVISIBLE)values (705, '705', '7', '垃圾箱', 'admin/app/email/emailDelete.jsp', 'liger/lib/icons/32X32/zoom.gif', '1' );
 
+--短信
+insert into sys_menu (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, MENU_ICON, ISVISIBLE)
+values (8, '8', '0', '手机短信', '', '', '1');
+
+insert into sys_menu (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, MENU_ICON, ISVISIBLE)
+values (801, '801', '8', '发内部短信', 'admin/app/mobile/mobileSend.jsp', 'liger/lib/icons/32X32/book.gif', '1');
+
+insert into sys_menu (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, MENU_ICON, ISVISIBLE)
+values (802, '802', '8', '发外部短信', 'admin/app/mobile/mobileSendOut.jsp', 'liger/lib/icons/32X32/book.gif', '1');
+
+insert into sys_menu (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, MENU_ICON, ISVISIBLE)
+values (803, '803', '8', '发件箱', 'admin/app/mobile/mobile.jsp', 'liger/lib/icons/32X32/invoice.gif', '1');
+
+
+
 --按钮
 
 insert into SYS_BUTTON (BTN_ID, BTN_NAME, BTN_NO, BTN_CLASS, BTN_ICON, BTN_SCRIPT, MENU_ID, INITSTATUS)

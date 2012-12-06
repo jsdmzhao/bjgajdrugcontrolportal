@@ -1,4 +1,4 @@
-<%@page import="com.unis.app.limit.service.ClxxSvc"%>
+﻿<%@page import="com.unis.app.limit.service.ClxxSvc"%>
 <%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
 <%@page import="org.springframework.context.ApplicationContext"%>
 <%@page import="java.net.URLDecoder"%>
@@ -172,7 +172,10 @@ if(c_bt == null){
 					<ul>
 						<li><a href='newsCenterList?news.c_lm=1104&pageNo=1'><img src="newimages/menu_5.png" /></a></li>
 					</ul>
-                    <ul>
+					<ul>
+						<li><a href='newsCenterList?news.c_lm=1146&pageNo=1'><img src="newimages/menu_10.png" /></a></li>
+					</ul>
+                    			<ul>
 						<li><a href='newsCenterList?news.c_lm=1105&pageNo=1'><img src="newimages/menu_6.png" /></a></li>
 					</ul>
 					<ul>
@@ -181,9 +184,7 @@ if(c_bt == null){
 					<ul>
 						<li><a href='newsCenterList?news.c_lm=1107&pageNo=1'><img src="newimages/menu_8.png" /></a></li>
 					</ul>
-					<ul>
-						<li><a href='newsCenterList?news.c_lm=1106&pageNo=1'><img src="newimages/menu_9.png" /></a></li>
-					</ul>
+					
 				</div>
 			</div>
 			<div id="ljcsc">

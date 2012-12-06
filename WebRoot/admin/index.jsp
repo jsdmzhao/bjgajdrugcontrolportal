@@ -23,42 +23,24 @@ if(session.getAttribute("userId")==null||session.getAttribute("userId")=="0"){
 	<head>
 		<base href="<%=basePath%>">
 		<title>北京禁毒网站后台管理</title>
-		<link
-			href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css"
-			rel="stylesheet" type="text/css" />
-		<link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css"
-			rel="stylesheet" type="text/css" />
-		<script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js"
-			type="text/javascript"></script>
-		<script src="<%=basePath%>liger/lib/ligerUI/js/ligerui.min.js"
-			type="text/javascript"></script>
-		<script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerTab.js"
-			type="text/javascript"></script>
-		<script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerLayout.js"
-			type="text/javascript"></script>
-		<link href="<%=basePath%>liger/lib/css/common.css" rel="stylesheet"
-			type="text/css" />
-		<link href="<%=basePath%>liger/lib/css/index.css" rel="stylesheet"
-			type="text/css" />
-		<script src="<%=basePath%>liger/lib/js/common.js"
-			type="text/javascript"></script>
+		<link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
+		<link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
+		<script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
+		<script src="<%=basePath%>liger/lib/ligerUI/js/ligerui.min.js" type="text/javascript"></script>
+		<script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerTab.js" type="text/javascript"></script>
+		<script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerLayout.js" type="text/javascript"></script>
+		<link href="<%=basePath%>liger/lib/css/common.css" rel="stylesheet" type="text/css" />
+		<link href="<%=basePath%>liger/lib/css/index.css" rel="stylesheet" type="text/css" />
+		<script src="<%=basePath%>liger/lib/js/common.js" type="text/javascript"></script>
 		<script src="<%=basePath%>liger/lib/js/LG.js" type="text/javascript"></script>
-		<script src="<%=basePath%>liger/lib/js/login.js"
-			type="text/javascript"></script>
+		<script src="<%=basePath%>liger/lib/js/login.js" type="text/javascript"></script>
 
-		<script
-			src="<%=basePath%>liger/lib/jquery-validation/jquery.validate.min.js"
-			type="text/javascript"></script>
-		<script
-			src="<%=basePath%>liger/lib/jquery-validation/jquery.metadata.js"
-			type="text/javascript"></script>
-		<script src="<%=basePath%>liger/lib/jquery-validation/messages_cn.js"
-			type="text/javascript"></script>
-		<script src="<%=basePath%>liger/lib/js/changepassword.js"
-			type="text/javascript"></script>
-		<script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerForm.js"
-			type="text/javascript"></script>
-			    <script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
+		<script src="<%=basePath%>liger/lib/jquery-validation/jquery.validate.min.js" type="text/javascript"></script>
+		<script src="<%=basePath%>liger/lib/jquery-validation/jquery.metadata.js" type="text/javascript"></script>
+		<script src="<%=basePath%>liger/lib/jquery-validation/messages_cn.js" type="text/javascript"></script>
+		<script src="<%=basePath%>liger/lib/js/changepassword.js" type="text/javascript"></script>
+		<script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerForm.js" type="text/javascript"></script>
+		<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
 <script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
 <script type='text/javascript'
 	src='<%=basePath%>dwr/interface/SysUserSvc.js'></script>
@@ -178,7 +160,7 @@ if(session.getAttribute("userId")==null||session.getAttribute("userId")=="0"){
                 jitem.addClass("over");
             }).live('mouseout', function ()
             {
-                var jitem = $(this);
+                var jitem = $(this);`
                 jitem.removeClass("over");
             });
 
@@ -191,8 +173,8 @@ if(session.getAttribute("userId")==null||session.getAttribute("userId")=="0"){
 
 
             //预加载dialog的背景图片
-            LG.prevDialogImage();
-            var mainmenu = $("#mainmenu");
+           LG.prevDialogImage();
+           var mainmenu = $("#mainmenu");
            var menus;
            function f_menu()
 	        {

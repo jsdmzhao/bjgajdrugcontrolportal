@@ -61,7 +61,6 @@ String newsType = request.getParameter("newsType");
 	    var com;
         var config = {"Form":{ 
          fields : [
-         {name:"c_lm",type:"hidden",value:'<%=newsType %>'},
          {
 	         display:"标题",
 	         name:"c_bt",
@@ -143,16 +142,18 @@ String newsType = request.getParameter("newsType");
          {display:"发布时间",name:"d_fbsj",newline:false,labelWidth:100,validate: { required: true},
              width:250,space:30,type:"text",value: "<s:property value='news.d_fbsj'/>",
              onclick:"WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" },
-         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea",value:$('#nr').html() },
+         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,
+          type:"textarea",value:$('#nr').html() 
+         },
          {name:"n_xh", type:"hidden",value:"<s:property value='news.n_xh'/>"},
          {name:"c_sfzd", type:"hidden",value:"<s:property value='news.c_sfzd'/>"},
          {name:"c_sfgl", type:"hidden",value:"<s:property value='news.c_sfgl'/>"},
          {name:"c_sftj", type:"hidden",value:"<s:property value='news.c_sftj'/>"},
          {name:"n_xxxh", type:"hidden",value:"<s:property value='news.n_xxxh'/>"},
          {
-        	 type:"hidden",
-             name:"c_lm",
-             value: "<s:property value='news.c_lm'/>"
+      	   type:"hidden",
+           name:"c_lm",
+           value: "<s:property value='news.c_lm'/>"
          }
          //,
          //{name:"n_ydcs", labelWidth:100,width:30,space:30,type:"hidden",value:"0"}
@@ -259,6 +260,7 @@ String newsType = request.getParameter("newsType");
         	formMap["c_fbdw"] = com.getValue();
 			
         	NewsAction.newsSave(formMap,function (result){
+        		
         		//var win = parent || window;
         		if(result == 'success'){
         			LG.showSuccess('保存成功', function () { 

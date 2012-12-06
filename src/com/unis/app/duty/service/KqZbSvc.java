@@ -59,10 +59,10 @@ public class KqZbSvc  {
 	
 	
 	public String getZb() throws SQLException {
-		String returnValue="<br>";
+		String returnValue="";
 		List<Map> list=kqZbDao.getDayZbb();
 		if(list.size()>0){
-			 returnValue=returnValue+"<br><b>"+list.get(0).get("cMc")+"</b>  "+list.get(0).get("cXm")+"";
+			 returnValue=returnValue+"<b>"+list.get(0).get("cMc")+"</b>  "+list.get(0).get("cXm")+"";
 		 for (int i = 1; i < list.size(); i++) {
 			 if(list.get(i).get("cMc").equals(list.get(i-1).get("cMc"))){
 				 if(list.get(i).get("cZbcw")!=null){
