@@ -13,8 +13,8 @@
 	Calendar cal=Calendar.getInstance();    
 	int y=cal.get(Calendar.YEAR);    
 	int m=cal.get(Calendar.MONTH);    
-	//response.setContentType("application/x-download;charset=GBK");  
-	//response.setHeader("Content-Disposition", "attachment;filename="+y+(m+1)+".doc");
+	response.setContentType("application/x-download;charset=GBK");  
+	response.setHeader("Content-Disposition", "attachment;filename="+y+(m+1)+".doc");
 
 	ApplicationContext ctx = WebApplicationContextUtils .getWebApplicationContext(request.getSession() .getServletContext());
 	KqZbSvc kqZbSvc = (KqZbSvc) ctx.getBean("kqZbSvc");

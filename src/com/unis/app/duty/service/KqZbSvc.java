@@ -56,29 +56,74 @@ public class KqZbSvc  {
 	public List queryAll(Map p) throws SQLException {
 		return kqZbDao.queryAllInfo(p);
 	}
-	
-	
-	public String getZb() throws SQLException {
+	public String getJrZb() throws SQLException {
 		String returnValue="";
 		List<Map> list=kqZbDao.getDayZbb();
 		if(list.size()>0){
-			 returnValue=returnValue+"<b>"+list.get(0).get("cMc")+"</b>  "+list.get(0).get("cXm")+"";
+			 returnValue=returnValue+"<b>"+list.get(0).get("cMc")+"</b> ";//+list.get(0).get("cXm")+"";
+					 if(list.get(0).get("cZbcw")!=null){
+						 returnValue=returnValue+" <b>"+list.get(0).get("cZbcw")+"</b> "+list.get(0).get("cXm")+"";
+					 }else{
+						 
+						 returnValue=returnValue+" "+list.get(0).get("cXm")+"";
+					 }
 		 for (int i = 1; i < list.size(); i++) {
 			 if(list.get(i).get("cMc").equals(list.get(i-1).get("cMc"))){
 				 if(list.get(i).get("cZbcw")!=null){
-					 returnValue=returnValue+" "+list.get(i).get("cZbcw")+":"+list.get(i).get("cXm")+"";
+					 returnValue=returnValue+" <b>"+list.get(i).get("cZbcw")+"</b> "+list.get(i).get("cXm")+"";
 				 }else{
 					 
 					 returnValue=returnValue+" "+list.get(i).get("cXm")+"";
 				 }
 			 }else{
 				 if(list.get(i).get("cZbcw")!=null){
-					 returnValue=returnValue+"<br><b>"+list.get(i).get("cZbcw")+":"+list.get(i).get("cMc")+"</b>  "+list.get(i).get("cXm")+"";
+					 returnValue=returnValue+"<br><b>"+list.get(i).get("cMc")+"</b> <b>"+list.get(i).get("cZbcw")+"</b> "+list.get(i).get("cXm")+"";
 				 }else{
 					 
-				 returnValue=returnValue+"<br><b>"+list.get(i).get("cMc")+"</b>  "+list.get(i).get("cXm")+"";
+				 returnValue=returnValue+"<br><b>"+list.get(i).get("cMc")+"</b> "+list.get(i).get("cXm")+"";
 				 }
 			 }
+			
+		}
+	//	 if(returnValue.length()>0){
+	//		 returnValue=returnValue.substring(0, returnValue.length()-1);
+	//	 }
+		}
+		 return returnValue;
+	}
+	
+	
+	public String getZb() throws SQLException {
+		String returnValue="";
+		List<Map> list=kqZbDao.getDayZbb();
+		if(list.size()>0){
+			 returnValue=returnValue+"<b>"+list.get(0).get("cMc")+"</b> ";//+list.get(0).get("cXm")+"";
+					 if(list.get(0).get("cZbcw")!=null){
+						 returnValue=returnValue+" <b>"+list.get(0).get("cZbcw")+"</b> "+list.get(0).get("cXm")+"";
+					 }else{
+						 
+						 returnValue=returnValue+" "+list.get(0).get("cXm")+"";
+					 }
+		 for (int i = 1; i < list.size(); i++) {
+			 if(!"总队领导".equals(list.get(i).get("cMc"))&&!"带班领导".equals(list.get(i).get("cMc"))&&!"办公室".equals(list.get(i).get("cMc"))){
+				 break;
+			 }
+			 if(list.get(i).get("cMc").equals(list.get(i-1).get("cMc"))){
+				 if(list.get(i).get("cZbcw")!=null){
+					 returnValue=returnValue+" <b>"+list.get(i).get("cZbcw")+"</b> "+list.get(i).get("cXm")+"";
+				 }else{
+					 
+					 returnValue=returnValue+" "+list.get(i).get("cXm")+"";
+				 }
+			 }else{
+				 if(list.get(i).get("cZbcw")!=null){
+					 returnValue=returnValue+"<br><b>"+list.get(i).get("cMc")+"</b> <b>"+list.get(i).get("cZbcw")+"</b> "+list.get(i).get("cXm")+"";
+				 }else{
+					 
+				 returnValue=returnValue+"<br><b>"+list.get(i).get("cMc")+"</b> "+list.get(i).get("cXm")+"";
+				 }
+			 }
+			
 		}
 	//	 if(returnValue.length()>0){
 	//		 returnValue=returnValue.substring(0, returnValue.length()-1);

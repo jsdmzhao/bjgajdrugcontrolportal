@@ -1,8 +1,18 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+﻿<%@page import="com.unis.app.duty.service.KqZbSvc"%>
+<%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
+<%@page import="org.springframework.context.ApplicationContext"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
+
+ApplicationContext ctx = WebApplicationContextUtils .getWebApplicationContext(request.getSession() .getServletContext());
+KqZbSvc kqZbSvc = (KqZbSvc) ctx.getBean("kqZbSvc");
+
+
+
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -104,6 +114,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        window.open (url, title, 'height=600, width=1000, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=no, status=no');
 	    }
 	</script>
+	
+	<script>
+function MM_over(mmObj) {
+	var mSubObj = mmObj.getElementsByTagName("div")[0];
+	mSubObj.style.display = "block";
+	mSubObj.style.backgroundColor = "#FFFFFF";
+}
+function MM_out(mmObj) {
+	var mSubObj = mmObj.getElementsByTagName("div")[0];
+	mSubObj.style.display = "none";
+	
+}
+</script>
   </head>
   
   <body> 
@@ -362,6 +385,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div style="padding-left: 10px; text-align: left;">
 						<div style="line-height:20px; padding-top: 5px; vertical-align: top; ">
+					
+					<div onmouseover="MM_over(this)" onmouseout="MM_out(this)" style="position:relative;">
+					
 							<s:if test="resMap.zbbStr != null and resMap.zbbStr != '' ">
 								<!-- <strong>值班信息：</strong>  -->
 								<s:property escape="false" value="resMap.zbbStr"/>
@@ -369,6 +395,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<s:else>
 								<strong>暂无值班信息</strong></br>
 							</s:else>
+							<div style="width:190px;height:200px;display:none;position:absolute;left:203;top:0px;z-inde:0;border-color: #A9CFE5;border-style: solid;border-width: 1px;">
+							
+							<% out.print(kqZbSvc.getJrZb());%>
+							</div>
+							</div>
 						</div>
 						<div style="margin-top: 5px; vertical-align: bottom;">
 							<img alt="下载值班表" src="newimages/download.png" width="30" height="30">
