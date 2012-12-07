@@ -25,6 +25,7 @@ import com.unis.app.limit.service.ClxxSvc;
 import com.unis.app.news.model.News;
 import com.unis.app.pagination.Pagination;
 import com.unis.app.userinfo.service.UserInfoSvc;
+import com.unis.app.website.model.Website;
 import com.unis.core.action.CreateIndexAction;
 import com.unis.core.commons.Combox;
 import com.unis.core.service.AbsServiceAdapter;
@@ -375,7 +376,7 @@ public class NewsAction {
 		sqlParamMap.put("c_lm", "1352");
 		sqlParamMap.put("rownum", "7");
 		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
-		resMap.put("dyjlList", newsList);
+		resMap.put("dyjl2List", newsList);
 		
 		//领导讲话
 		sqlParamMap.put("c_lm", "1353");
@@ -403,29 +404,29 @@ public class NewsAction {
 		resMap.put("ztzlList", newsList);
 		
 		//全国导航
-		sqlParamMap.put("c_lm", "1202");
+		sqlParamMap.put("n_lbxh", "1003");
 		sqlParamMap.put("rownum", "");
-		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexNoLimitList", sqlParamMap);
+		List<Website> webList = (List<Website>) newsService.selectList("WebsiteMapper.getWebsiteLists", sqlParamMap);
 		//List<Website> websites = (List<Website>) newsService.selectList("WebsiteMapper.getWebsiteLists", "1202");
-		resMap.put("qgdhList", newsList);
+		resMap.put("qgdhList", webList);
 		
 		//市局导航
-		sqlParamMap.put("c_lm", "1203");
+		sqlParamMap.put("n_lbxh", "1001");
 		sqlParamMap.put("rownum", "");
-		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexNoLimitList", sqlParamMap);
-		resMap.put("sjdhList", newsList);
+		webList = (List<Website>) newsService.selectList("WebsiteMapper.getWebsiteLists", sqlParamMap);
+		resMap.put("sjdhList", webList);
 		
 		//分县局导航
-		sqlParamMap.put("c_lm", "1205");
+		sqlParamMap.put("n_lbxh", "1002");
 		sqlParamMap.put("rownum", "");
-		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexNoLimitList", sqlParamMap);
-		resMap.put("fxjdhList", newsList);
+		webList = (List<Website>) newsService.selectList("WebsiteMapper.getWebsiteLists", sqlParamMap);
+		resMap.put("fxjdhList", webList);
 		
 		//禁毒导航
-		sqlParamMap.put("c_lm", "1204");
+		sqlParamMap.put("n_lbxh", "1005");
 		sqlParamMap.put("rownum", "");
-		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexNoLimitList", sqlParamMap);
-		resMap.put("jddhList", newsList);
+		webList = (List<Website>) newsService.selectList("WebsiteMapper.getWebsiteLists", sqlParamMap);
+		resMap.put("jddhList", webList);
 		
 		//信息排行
 		newsList = (List<News>) newsService.selectList("NewsMapper.sortIndexSJCnt","");

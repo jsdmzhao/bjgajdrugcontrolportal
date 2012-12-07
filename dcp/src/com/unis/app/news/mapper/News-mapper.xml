@@ -255,7 +255,7 @@
 			  C_TPLJDZ
 	  FROM B_XINWEN
 	 	 WHERE C_LM LIKE '%;'||#{c_lm}||';%'
-	 	 	<if test="c_lm != null and c_lm == '1201'">
+	 	 	<if test="c_lm != null and c_lm == '1081'">
 			 	 AND C_TPLJDZ IS NOT NULL
 		  	</if>
 	 	 	AND C_SHJG = '1'

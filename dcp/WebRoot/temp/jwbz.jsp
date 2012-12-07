@@ -173,7 +173,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           "MenuName":"车辆基本信息",
                           "MenuID":20,
                           "text":"车辆基本信息",
-                          "MenuUrl":"<%=basePath%>admin/app/website/webtype.jsp",
+                          "MenuUrl":"<%=basePath%>admin/app/car/cartype.jsp",
                           "MenuIcon":"<%=basePath%>liger/lib/icons/32X32/link.gif",
                           "MenuNo":"sysright",
                           "MenuParentNo":"system"

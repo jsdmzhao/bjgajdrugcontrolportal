@@ -113,8 +113,9 @@ if(c_bt == null){
 	    <a href="ftp://ftp.jdc.bj">工作交流</a> 
 	    <a href="newsCenterList?news.c_lm=1291&pageNo=1">光荣榜</a> 
 	    <a href="newsCenterList?news.c_lm=1214&pageNo=1" onMouseOver="mouseover(this, 1)" onmouseout="mouseout()">法律法规</a> 
+	    <a href="newsCenterList?news.c_lm=1282&pageNo=1">毒品知识</a> 
 	    <a href="newsCenterList?news.c_lm=1286&pageNo=1">纪检监察</a> 
-	    <a href="http://www.jdc.bj" target="_blank">旧站入口</a> 
+	    <a href="http://www.jdc.bj:9001" target="_blank">旧站入口</a> 
 	</div>
 		
 	<div class="menu-list" id="menu1" onmouseover="_mouseover()" onmouseout="_mouseout()">
@@ -122,6 +123,7 @@ if(c_bt == null){
 	      <li><a href="newsCenterList?news.c_lm=1305&pageNo=1"><span>法律汇编</span></a> </li>
 	      <li><a href="newsCenterList?news.c_lm=1209&pageNo=1"><span>法规汇编</span></a> </li>
 	      <li><a href="newsCenterList?news.c_lm=1307&pageNo=1"><span>规章汇编</span></a></li> 
+	      <li><a href="newsCenterList?news.c_lm=1200&pageNo=1"><span>办案流程</span></a></li>
 	      <li><a href="newsCenterList?news.c_lm=1312&pageNo=1"><span>规范性文件</span></a></li>
 	  </ul>
 	</div>
