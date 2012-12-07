@@ -160,7 +160,7 @@ if(session.getAttribute("userId")==null||session.getAttribute("userId")=="0"){
                 jitem.addClass("over");
             }).live('mouseout', function ()
             {
-                var jitem = $(this);`
+                var jitem = $(this);
                 jitem.removeClass("over");
             });
 

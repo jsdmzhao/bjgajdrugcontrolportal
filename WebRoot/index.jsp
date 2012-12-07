@@ -170,8 +170,9 @@ function MM_out(mmObj) {
 		    <a href="ftp://ftp.jdc.bj" target="_blank">工作交流</a> 
 		    <a href="newsCenterList?news.c_lm=1291&pageNo=1">光荣榜</a> 
 		    <a href="newsCenterList?news.c_lm=1214&pageNo=1" onMouseOver="mouseover(this, 1)" onmouseout="mouseout()">法律法规</a> 
+		    <a href="newsCenterList?news.c_lm=1282&pageNo=1">毒品知识</a> 
 		    <a href="newsCenterList?news.c_lm=1286&pageNo=1">纪检监察</a> 
-		    <a href="http://www.jdc.bj" target="_blank">旧站入口</a> 
+		    <a href="http://www.jdc.bj:9001" target="_blank">旧站入口</a> 
 		</div>
 		
 		<div class="menu-list" id="menu1" onmouseover="_mouseover()" onmouseout="_mouseout()">
@@ -179,6 +180,7 @@ function MM_out(mmObj) {
 		      <li><a href="newsCenterList?news.c_lm=1305&pageNo=1"><span>法律汇编</span></a> </li>
 		      <li><a href="newsCenterList?news.c_lm=1209&pageNo=1"><span>法规汇编</span></a> </li>
 		      <li><a href="newsCenterList?news.c_lm=1307&pageNo=1"><span>规章汇编</span></a></li> 
+		      <li><a href="newsCenterList?news.c_lm=1200&pageNo=1"><span>办案流程</span></a></li> 
 		      <li><a href="newsCenterList?news.c_lm=1312&pageNo=1"><span>规范性文件</span></a></li>
 		  </ul>
 		</div>
@@ -455,9 +457,8 @@ function MM_out(mmObj) {
 					<%	
 					}
 					%>
-						
 				    </div>
-				    <div class="ztzl_img_div"><a href="ftp://ftp.jdc.bj/" target="_blank"><img src="newimages/jywh.png" /></a></div>
+				    <div class="ztzl_img_div"><a href="newsCenterList?news.c_lm=1272&pageNo=1" target="_blank"><img src="newimages/jywh.png" /></a></div>
 					
 				</div>
 				
@@ -654,9 +655,9 @@ function MM_out(mmObj) {
 					              <H3>全国导航</H3>
 					              <LI class="noline">
 					                <DIV>
-					                	<s:iterator value="resMap.qgdhList" var="news">
-					                		<A style="width: 75px;" title="<s:property value="#news.c_bt"/>" href="<s:property value="#news.c_lj"/>" target="_blank">
-					                			<s:property value="#news.c_bt"/>
+					                	<s:iterator value="resMap.qgdhList" var="website">
+					                		<A style="width: 75px;" title="<s:property value="#website.c_bt"/>" href="<s:property value="#website.c_lj"/>" target="_blank">
+					                			<s:property value="#website.c_bt"/>
 					                		</A> 
 					                	</s:iterator>
 					    			</DIV>
@@ -673,9 +674,9 @@ function MM_out(mmObj) {
 					            <H3>市局导航</H3>
 					            <LI class="noline">
 					              <DIV>
-				              		<s:iterator value="resMap.sjdhList" var="news">
-				                		<A style="width: 120px;" title="<s:property value="#news.c_bt"/>" href="<s:property value="#news.c_lj"/>" target="_blank">
-				                			<s:property value="#news.c_bt"/>
+				              		<s:iterator value="resMap.sjdhList" var="website">
+				                		<A style="width: 120px;" title="<s:property value="#website.c_bt"/>" href="<s:property value="#website.c_lj"/>" target="_blank">
+				                			<s:property value="#website.c_bt"/>
 				                		</A> 
 				                	</s:iterator>
 					              </DIV>
@@ -689,9 +690,9 @@ function MM_out(mmObj) {
 					            <H3>分县局导航</H3>
 					            <LI class="noline">
 					              <DIV>
-				              		<s:iterator value="resMap.fxjdhList" var="news">
-				                		<A style="width: 75px;" title="<s:property value="#news.c_bt"/>" href="<s:property value="#news.c_lj"/>" target="_blank">
-				                			<s:property value="#news.c_bt"/>
+				              		<s:iterator value="resMap.fxjdhList" var="website">
+				                		<A style="width: 75px;" title="<s:property value="#website.c_bt"/>" href="<s:property value="#website.c_lj"/>" target="_blank">
+				                			<s:property value="#website.c_bt"/>
 				                		</A> 
 				                	</s:iterator>
 					              </DIV>
@@ -706,9 +707,9 @@ function MM_out(mmObj) {
 					              <H3>禁毒导航</H3>
 					              <LI class="noline">
 					                  <DIV>
-					              		<s:iterator value="resMap.jddhList" var="news">
-					                		<A style="width: 80px;" title="<s:property value="#news.c_bt"/>" href="<s:property value="#news.c_lj"/>" target="_blank">
-					                			<s:property value="#news.c_bt"/>
+					              		<s:iterator value="resMap.jddhList" var="website">
+					                		<A style="width: 80px;" title="<s:property value="#website.c_bt"/>" href="<s:property value="#website.c_lj"/>" target="_blank">
+					                			<s:property value="#website.c_bt"/>
 					                		</A> 
 					                	</s:iterator>
 						              </DIV>
@@ -1261,7 +1262,7 @@ function MM_out(mmObj) {
 						</div>
 					</s:iterator>
 				</div>
-				<div class="ztzl_content_right_title" style="margin-top:0px;">
+				<div class="ztzl_content_right_title" style="margin-top:2px;">
 					<div class="select" id="showDivTitle_61" onmouseover="javascript:showDiv(6,1)">目标案件</div>
 					<div id="showDivTitle_62" onmouseover="javascript:showDiv(6,2)">打零收戒</div>
 					<div id="showDivTitle_63" onmouseover="javascript:showDiv(6,3)">堵源截流</div>
@@ -1361,7 +1362,7 @@ function MM_out(mmObj) {
 					</div>
 				</div>
 				<div class="ztzl_content_center_content" id="showDivContent_81">
-					<s:iterator value="resMap.dyjlList" var="news">
+					<s:iterator value="resMap.dyjl2List" var="news">
 						<div class="lddt_news_list">
 							<div class="lddt_news_list_c" style="width:270px;margin-left: 2px;">
 								<div class="lddt_news_list_c_l" style="width:240px;">

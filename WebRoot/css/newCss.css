@@ -104,7 +104,7 @@ body {
 	margin-left: 3px;
 	border: solid 1px #a9cfe5;
 	width: 523px;
-	height: 405px;
+	height: 420px;
 	float: left;
 }
 
@@ -125,7 +125,7 @@ body {
 	padding-left: 10px;
 	border: solid 1px #a9cfe5;
 	width: 448px;
-	height: 405px;
+	height: 421px;
 	float: right;
 	background:url(../newimages/bttp.png);
 	background-repeat: no-repeat;;
@@ -162,7 +162,6 @@ body {
 	padding: 7px 4px 7px 25px;
 	float: left;
 	width: 380px;
-	heigth: 46px;
 }
 
 #red_lddt_title {
@@ -257,7 +256,7 @@ body {
 	height: 30px;
 	float: left;
 	width: 978px;
-	margin-top: 2px;
+	margin-top: 0px;
 	margin-left: 2px;
 	background: url(../newimages/jwgk.png)
 }
