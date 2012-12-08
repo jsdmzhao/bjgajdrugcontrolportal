@@ -194,7 +194,7 @@
 				userLock='0';
 			}
 			var obj = {
-			userName: $("#userName").val(),
+			userName: $("#userNameInput").val(),
 			userPassword: $("#userPassword").val(),
 			roleId: $("#roleId").val(),
 			userLock: userLock
@@ -227,7 +227,7 @@
 				
 			var obj = {
 			userId: $("#userId").val(),
-			userName: $("#userName").val(),
+			userName: $("#userNameInput").val(),
 			userPassword: $("#userPassword").val(),
 			roleId: $("#roleId").val(),
 			userLock: userLock
@@ -266,7 +266,7 @@
 		function f_dialog(type,title) {
 			if (type == "add") {
 				$("#userId").val("");
-				$("#userName").val("");
+				$("#userNameInput").val("");
 				$("#userPassword").val("");
 				$("#userPassword2").val("");
 				$('#userLock').attr("checked", false);   
@@ -285,7 +285,7 @@
 				var selected = grid.getSelected();
 				if (selected) {
 				$("#userId").val(grid.getSelected().userId);
-				$("#userName").val(grid.getSelected().userName);
+				$("#userNameInput").val(grid.getSelected().userName);
 				$("#userPassword").val(grid.getSelected().userPassword);
 				$("#roleId").val(grid.getSelected().roleId);
 				if(grid.getSelected().userLock=='1'){
@@ -344,8 +344,8 @@
 			<li style="width: 100px; text-align: left;">帐号：</li>
 			<li style="width: 180px; text-align: left;"><div
 					style="width: 160px;" class="l-text">
-					<input style="width: 160px;" id="userName" class="l-text-field"
-						name="userName" type="text" ligeruiid="userName"
+					<input style="width: 160px;" id="userNameInput" class="l-text-field"
+						name="userNameInput" type="text" ligeruiid="userNameInput"
 						ltype="text" ligerui='{"width":160}'><div class="l-text-l"></div>
 						<div class="l-text-r"></div>
 				</div>
