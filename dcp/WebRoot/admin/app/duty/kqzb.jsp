@@ -177,7 +177,7 @@ KqZbSvc.queryAll(null,function(res){
 		}
 		
 	.external-event { /* try to mimick the look of a real event */
-		margin: 10px 0;
+		margin: 2px 0;
 		padding: 2px 4px;
 		background: #3366CC;
 		color: #fff;
@@ -227,7 +227,7 @@ ul {
 #faq dd {
  display:none;
  margin:0;
- line-height: 180%;
+/* line-height: 180%;*/
 }
 </style>
 <script type="text/javascript">

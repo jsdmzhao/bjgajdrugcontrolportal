@@ -94,22 +94,22 @@ if(userId==null){
           
          
          
-         {display:"出生地",name:"cCsd",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"婚姻状况",name:"cHyzk",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"学历",name:"cXl",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"毕业院校",name:"cByyx",newline:false,labelWidth:100,width:200,space:30,type:"text"},
+      //   {display:"出生地",name:"cCsd",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+      //   {display:"婚姻状况",name:"cHyzk",newline:false,labelWidth:100,width:200,space:30,type:"text"},
+     //    {display:"学历",name:"cXl",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+      //   {display:"毕业院校",name:"cByyx",newline:false,labelWidth:100,width:200,space:30,type:"text"},
          {display:"专业",name:"cZy",newline:true,labelWidth:100,width:200,space:30,type:"text"},
          {display:"卡号",name:"cKh",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"户口所在地",name:"cHkszd",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"电话号码",name:"cDhhm",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"手机号码",name:"cSjhm",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"邮箱",name:"cYx",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"地址",name:"cDz",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"工作时间",name:"dGzsj",newline:false,labelWidth:100,width:200,space:30,type:"date"},
-         {display:"入职时间",name:"dRzsj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
-         {display:"检查记录",name:"cJcjl",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"登录次数",name:"nDlcs",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"在线时长",name:"nZxsc",newline:false,labelWidth:100,width:200,space:30,type:"text"},
+      //   {display:"户口所在地",name:"cHkszd",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"电话号码",name:"cDhhm",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"手机号码",name:"cSjhm",newline:false,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"邮箱",name:"cYx",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"地址",name:"cDz",newline:false,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"工作时间",name:"dGzsj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
+         {display:"入职时间",name:"dRzsj",newline:false,labelWidth:100,width:200,space:30,type:"date"},
+         {display:"检查记录",name:"cJcjl",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+     //    {display:"登录次数",name:"nDlcs",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+     //    {display:"在线时长",name:"nZxsc",newline:false,labelWidth:100,width:200,space:30,type:"text"},
          {display:"备注",name:"cBz",newline:true,labelWidth:100,width:500,space:30,type:"textarea"}
         ]
  }};
