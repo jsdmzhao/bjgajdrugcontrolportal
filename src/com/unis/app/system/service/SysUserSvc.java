@@ -25,6 +25,8 @@ public class SysUserSvc  {
 	private SysUserDao sysUserDao;
 
 	public Object save(Map p) throws SQLException {
+		
+		System.out.println("&&&&----"+p);
 		Object userId =sysUserDao.saveInfo(p);
 	//	sysUserDao.removeGRInfo(p);
 		sysUserDao.saveGRInfo(p);
