@@ -90,9 +90,13 @@ if(ip!=null){
 }
 
 if(session.getAttribute("temp")==null){
+	String info=session.getAttribute("cXm")+"";
+	if("0".equals(session.getAttribute("cJb"))||"1".equals(session.getAttribute("cJb"))){
+		info=session.getAttribute("cXm")+""+session.getAttribute("cZc")+"";
+	}
 %>
 <Script>
-alert('<%=session.getAttribute("cXm")%>,欢迎光临！');
+alert('<%=info%>,欢迎光临！');
 </Script>
 	
 <%
