@@ -45,7 +45,7 @@ newsList.addAll(list);
 	%>
 	
 	<list name="<%=news_r.getC_bt() %>" videotitle="<%=news_r.getC_bt() %>" link="<%=basePath %><%=news_r.getC_spljdz() %>" >
-       <thumb><%=basePath %>video/images/1.jpg</thumb>      
+       <thumb><%=basePath %><%=news_r.getC_spfmljdz() %></thumb>      
    </list>  
 	<%
 }
