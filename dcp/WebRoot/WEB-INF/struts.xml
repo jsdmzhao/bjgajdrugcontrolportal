@@ -67,7 +67,8 @@
 			
 		<action name="newsCenterList" class="newsAction" method="newsCenterList">
 			<result name="success">/news.jsp</result>
-			<result name="input">/video/video.jsp</result>
+			<result name="input">/video/videomain.jsp</result>
+			<result name="error">/video/video.jsp</result>
 		</action>
 	
 		<action name="newsCombox" class="newsAction" method="newsCombox">

@@ -237,6 +237,10 @@ public class NewsAction {
 		if("1239".equals(news.getC_lm())){
 			return Globals.INPUT;
 		}
+		if("12390".equals(news.getC_lm())){
+			return Globals.ERROR;
+		}
+		
 		return Globals.SUCCESS;
 	}
 	

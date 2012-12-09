@@ -106,7 +106,7 @@ if(c_bt == null){
 	    <a href="<%=basePath%>columnIndexView?column.c_lmdm=1355">总队简介</a>
 	    <a href="http://www.xxzx.bj" target="_blank">信息查询</a> 
 	    <a href="http://anquan.zx.bj" target="_blank">信息安全</a> 
-	    <a href="newsCenterList?news.c_lm=1239&pageNo=1">视频在线</a> 
+	 	    <a href="newsCenterList?news.c_lm=12390&pageNo=1">视频在线</a> 
 	    <a href="ftp://ftp.jdc.bj" target="_blank">工作交流</a> 
 	    <a href="newsCenterList?news.c_lm=1291&pageNo=1">光荣榜</a> 
 	    <a href="newsCenterList?news.c_lm=1214&pageNo=1" onMouseOver="mouseover(this, 1)" onmouseout="mouseout()">法律法规</a> 
