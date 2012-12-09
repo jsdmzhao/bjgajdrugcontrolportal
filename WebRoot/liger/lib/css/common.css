@@ -1,6 +1,6 @@
-/* Í¨ÓÃ */
+ï»¿/* é€šç”¨ */
 #pageloading{position:absolute; left:0px; top:0px; background:#FFFFFF url('../images/loading.gif') no-repeat center center; width:100%; height:100%; _height:800px; z-index:99999; }
-body{font-family: "Î¢ÈíÑÅºÚ", "ËÎÌå", Arial, sans-serif; font-size: 12px; }
+body{font-family: "å¾®è½¯é›…é»‘", "å®‹ä½“", Arial, sans-serif; font-size: 12px; }
 *{ margin:0; padding:0;}
 a{  color:#333; cursor:pointer;} 
 span.star{ color:Red; line-height:25px;}
@@ -18,7 +18,7 @@ ul,li{ list-style:none;}
      
      
 .selhistory{ margin-right:2px;}
-/* °´Å¥ */
+/* æŒ‰é’® */
 .button{line-height:25px;height:25px;background:url('../images/ui/button1.gif') repeat-x; position:relative;margin-bottom:8px;color:#2C69A2; width:120px; cursor:pointer;margin-top: 0px;}
 .button-l,.button-r{ width:2px;height:25px;background:url('../images/ui/button1.gif') no-repeat; position:absolute; }
 .button-l{ left:0px; background-position:0px -25px;}
@@ -56,11 +56,11 @@ ul,li{ list-style:none;}
 .iconlist li.over{border:1px solid #516B9F;}
 .iconlist li img{ height:16px; height:16px;} 
 
-/* Ò»ÌõÏß µ¼º½Ïß */
+/* ä¸€æ¡çº¿ å¯¼èˆªçº¿ */
 .navline{ height:1px; line-height:1px; width:100%;border-bottom:1px solid #f5f5f5; background-color:#D9D9D9;width:99%; }
 
 
-/* ËÑË÷¿ò */
+/* æœç´¢æ¡† */
 .searchtitle{ padding-left:28px; position:relative;}
 .searchtitle img{ width:22px; height:22px; position:absolute; left:0; top:0;}
 .searchtitle span{ font-size:14px; font-weight:bold;}

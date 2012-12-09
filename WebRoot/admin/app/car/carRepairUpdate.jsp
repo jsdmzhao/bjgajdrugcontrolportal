@@ -76,12 +76,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          validate: { required: true},
          onclick:"WdatePicker({dateFmt:'yyyy-MM-dd'})"
         }
+         ,
+         {
+          display:"申请原因", 
+          name:"c_sqyy",
+          labelWidth:130,
+          newline:false,
+          type:"basicText",
+          width:280,
+          validate: { required: true}
+         }
         ,
         {
          display:"车辆行驶总里程（公里）", 
          name:"n_clxszlc",
          labelWidth:130,
-         newline:false,
+         newline:true,
          value:"<s:property value='carRepair.n_clxszlc'/>",
          width:280,
          validate: { required: true},
@@ -89,16 +99,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
         ,
         {
-         display:"车辆状况", 
-         name:"c_clzk",
-         value:"<s:property value='carRepair.c_clzk'/>",
-         newline:true,
-         labelWidth:130,
-         validate: { required: true},
-         width:732,
-         type:"textarea"
-        }
-        ,
+        	 display:"车辆状况", 
+	         name:"clzk",
+	         newline:true,
+	         labelWidth:130,
+	         validate: { required: true},
+	         width:732,
+	         type:"hidden"
+        },
         {
          display:"送修人员", 
          name:"c_sxry",
@@ -196,6 +204,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      	
      	formMap['c_clbm'] = formMap['c_clbm_val'];
      	formMap['n_cllbxh'] = formMap['n_cllbxh_val'];
+     	formMap['c_sqyy'] = formMap['c_sqyy_val'];
      	
      	CarRepairAction.carRepairSave(formMap,function (result){
      		if(result == 'success'){
@@ -213,11 +222,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         parent.dialog_hidden();
      }
 
-     var cmb1,cmb2; 
+     var cmb1,cmb2,cmb3; 
      var tempdata = [{text:'所有部门',value:''},{text:'总队领导',value:'1'},{text:'办公室',value:'3'},
                      {text:'协调指导大队',value:'4'}, {text:'情报中心',value:'9'}, {text:'侦查大队',value:'7'},
                      {text:'查禁大队',value:'8'}, {text:'缉控大队',value:'5'}, {text:'两品办',value:'10'}];;
-
+     var tempdata3 = [{text:'维修',value:'01'}, {text:'保养',value:'02'}];
     cmb1 = $("#c_clbm").ligerComboBox({ data: tempdata, isMultiSelect: false,
          textFiled:"text",valueField:"value",
          value:"<s:property value='carRepair.c_clbm'/>",
@@ -235,14 +244,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          value:"<s:property value='carRepair.n_cllbxh'/>",
          url:"<%=basePath%>cartypeCombox"
 	});
+    
+    cmb3 = $("#c_sqyy").ligerComboBox({ data: tempdata3, isMultiSelect: false,
+        textFiled:"text",valueField:"value",
+        value:"<s:property value='carRepair.c_sqyy'/>",
+        onSelected: function (newvalue){
+        	if(newvalue == ''){
+        		$("#clzk_").html("");
+        	} else if(newvalue == '01'){
+        		$("#clzk_").html("<LI style=\"TEXT-ALIGN: left; WIDTH: 130px\">故障原因：</LI>"+
+        				"<LI style=\"TEXT-ALIGN: left; WIDTH: 280px\"><TEXTAREA id=c_clzk class=l-textarea name=c_clzk validate='{\"required\":true}'  ligerui='{\"width\":730}' ltype=\"textarea\"><s:property value='carRepair.c_clzk'/></TEXTAREA></LI>"+
+        				"");
+        		
+        	} else {
+        		$("#clzk_").html("<LI style=\"TEXT-ALIGN: left; WIDTH: 130px\">车辆状况：</LI>"+
+        				"<LI style=\"TEXT-ALIGN: left; WIDTH: 280px\"><TEXTAREA id=c_clzk class=l-textarea name=c_clzk validate='{\"required\":true}' ligerui='{\"width\":730}' ltype=\"textarea\"><s:property value='carRepair.c_clzk'/></TEXTAREA></LI>"+
+        				"");
+        	}
+        }
+	});
 	    
     function setData(obj,url) {  
          $.getJSON(url+"&r="+Math.round(Math.random()*1000000).toString(), 
             function(json) {  
-              obj.setData(json); //把json塞到下拉框里面去  
+        	  if( typeof(obj) != undefined && obj != null){
+        		  obj.setData(json); //把json塞到下拉框里面去  
+        	  }
             }  
          );                                                  
     }    
+    
+    if('<s:property value="carRepair.c_sqyy"/>' == ''){
+		$("#clzk_").html("");
+	} else if('<s:property value="carRepair.c_sqyy"/>' == '01'){
+		$("#clzk_").html("<LI style=\"TEXT-ALIGN: left; WIDTH: 130px\">故障原因：</LI>"+
+				"<LI style=\"TEXT-ALIGN: left; WIDTH: 280px\"><TEXTAREA id=c_clzk class=l-textarea name=c_clzk validate='{\"required\":true}'  ligerui='{\"width\":730}' ltype=\"textarea\"><s:property value='carRepair.c_clzk'/></TEXTAREA></LI>"+
+				"");
+	} else {
+		$("#clzk_").html("<LI style=\"TEXT-ALIGN: left; WIDTH: 130px\">车辆状况：</LI>"+
+				"<LI style=\"TEXT-ALIGN: left; WIDTH: 280px\"><TEXTAREA id=c_clzk class=l-textarea name=c_clzk validate='{\"required\":true}' ligerui='{\"width\":730}' ltype=\"textarea\"><s:property value='carRepair.c_clzk'/></TEXTAREA></LI>"+
+				"");
+	}
 	    
     </script>
     

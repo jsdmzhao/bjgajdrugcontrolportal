@@ -4,6 +4,8 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
+String cphm = (String)request.getParameter("cphm");
+String yhzid = (String)request.getParameter("yhzid");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -195,10 +197,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      var cmb1,cmb2; 
      var tempdata = [{text:'所有部门',value:''},{text:'总队领导',value:'1'},{text:'办公室',value:'3'},
                      {text:'协调指导大队',value:'4'}, {text:'情报中心',value:'9'}, {text:'侦查大队',value:'7'},
-                     {text:'查禁大队',value:'8'}, {text:'缉控大队',value:'5'}, {text:'两品办',value:'10'}];;
+                     {text:'查禁大队',value:'8'}, {text:'缉控大队',value:'5'}, {text:'易管大队',value:'11'}];;
 
     cmb1 = $("#c_clbm").ligerComboBox({ data: tempdata, isMultiSelect: false,
          textFiled:"text",valueField:"value",
+         value:'<%=yhzid%>',
          onSelected: function (newvalue){
         	  //$("#n_cllbxh").ligerComboBox("reload","<%=basePath%>cartypeCombox?c_yhzid="+newvalue); 
 
@@ -210,6 +213,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	 isMultiSelect: false,
          valueField:"value",
          textFiled:"text",
+         value:'<%=cphm%>',
          url:"<%=basePath%>cartypeCombox"
 	});
 	    

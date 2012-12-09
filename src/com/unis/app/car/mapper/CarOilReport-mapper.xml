@@ -16,13 +16,23 @@
 			 N_DYGLS  ,
 			 N_DYYH   ,
 			 N_BGLYH  ,
-			 D_DJ     ,
+			 TO_CHAR(D_TJRQ, 'YYYY-MM-DD') D_TJRQ,
+			 TO_CHAR(D_DJ, 'YYYY-MM-DD') D_DJ,
 			 C_YHZID  ,
 			 C_YHID   ,
 			 FUN_GET_CPHMYHZ(N_CLLBXH)  C_YHZID_ 
  		FROM B_YLBB WHERE N_XH = #{n_xh}
+ 			ORDER BY D_TJRQ DESC
 	</select>
 	
+	<select id="getCarOilReportOldCnt" resultType="long" parameterType="int">
+		SELECT N_DYGLS
+		  FROM B_YLBB
+		 WHERE D_TJRQ BETWEEN TRUNC(ADD_MONTHS(SYSDATE, -1), 'MM') AND
+		       		TRUNC(SYSDATE, 'MM')
+		       AND N_CLLBXH = #{n_cllbxh}
+		       AND ROWNUM &lt; 2
+	</select>
 	
 	<delete id="deleteCarOilReport" parameterType="int">
 		DELETE FROM B_YLBB WHERE N_XH = #{n_xh}
@@ -37,6 +47,7 @@
 			 N_DYGLS  ,
 			 N_DYYH   ,
 			 N_BGLYH  ,
+			 D_TJRQ   ,
 			 D_DJ     ,
 			 C_YHZID  ,
 			 C_YHID ) 
@@ -47,7 +58,8 @@
 			 #{n_dyxsgls,jdbcType=NUMERIC},
 			 #{n_dygls,jdbcType=NUMERIC}, 
 			 #{n_dyyh,jdbcType=NUMERIC},  
-			 #{n_bglyh,jdbcType=NUMERIC},  
+			 #{n_bglyh,jdbcType=NUMERIC}, 
+			 TO_DATE(#{d_tjrq,jdbcType=VARCHAR},'YYYY-MM-DD'), 
 			 SYSDATE,    
 			 #{c_yhzid,jdbcType=VARCHAR}, 
 			 #{c_yhid,jdbcType=VARCHAR}
@@ -55,19 +67,20 @@
 	</insert>
 	
 	<select id="getCarOilReportPageList" resultMap="resultCarOilReport" parameterType="hashmap">
-	SELECT N_XH, C_YHZID, C_CPHM, C_PPXH, C_ZRSJ ,N_SYGLS, N_DYXSGLS, N_DYGLS ,N_DYYH, N_BGLYH
+	SELECT N_XH, C_YHZID, C_CPHM, C_PPXH, C_ZRSJ ,N_SYGLS, N_DYXSGLS, N_DYGLS ,N_DYYH, N_BGLYH, D_TJRQ
 	  FROM (SELECT S.*, ROWNUM RN
 	          FROM (SELECT B_CLLB.C_CPHM C_CPHM,
 				       B_CLLB.C_PPXH C_PPXH,
 				       B_CLLB.C_ZRSJ C_ZRSJ,
-				       FUN_GET_DMMC('DEP', B_YLBB.C_YHZID) C_YHZID,
+				       FUN_GET_DMMC('DEP', B_CLLB.C_YHZID) C_YHZID,
 				       TO_CHAR(B_YLBB.D_DJ, 'YYYY-MM-DD') D_DJ,
 				       B_YLBB.N_DYXSGLS N_DYXSGLS,
 				       B_YLBB.N_DYGLS N_DYGLS,
 				       B_YLBB.N_SYGLS N_SYGLS,
 				       B_YLBB.N_DYYH N_DYYH,
 				       B_YLBB.N_BGLYH N_BGLYH,
-				       B_YLBB.N_XH
+				       B_YLBB.N_XH,
+				       TO_CHAR(B_YLBB.D_TJRQ, 'YYYY-MM-DD') D_TJRQ
 				  FROM B_CLLB, B_YLBB
 				 WHERE B_YLBB.N_CLLBXH = B_CLLB.N_XH
 				  <if test="n_cllbxh != null and n_cllbxh != '' ">
@@ -94,6 +107,7 @@
 			 N_DYXSGLS   =   #{n_dyxsgls,jdbcType=NUMERIC},         
 			 N_DYGLS     =   #{n_dygls,jdbcType=NUMERIC},           
 			 N_DYYH      =   #{n_dyyh,jdbcType=NUMERIC},            
+			 D_TJRQ      =   TO_DATE(#{d_tjrq,jdbcType=VARCHAR},'YYYY-MM-DD'),           
 			 N_BGLYH     =   #{n_bglyh,jdbcType=NUMERIC}            
 		WHERE N_XH = #{n_xh}
 	</update>

@@ -146,7 +146,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		            valueField:"value",
 		            textFiled:"text",
 		            value : '<s:property value="car.n_cllbxh"/>',
-		            url:"<%=basePath%>cartypeCombox"
+		            url:"<%=basePath%>cartypeCombox?type=clsq"
 		   	});
 	        
 			function f_loaded() {
@@ -200,17 +200,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            value:"<s:property value='car.c_yhzid_'/>",
 	            onSelected: function (newvalue){
 	           	  $("#n_cllbxh").ligerComboBox("reload","<%=basePath%>cartypeCombox?c_yhzid="+newvalue); 
-	           	  setData(cmb2,"<%=basePath%>cartypeCombox?c_yhzid="+newvalue);
+	           	  setData(cmb2,"<%=basePath%>cartypeCombox?type=clsq&c_yhzid="+newvalue);
 	            }
-	   	});
-	        
-	       cmb2 = $("#n_cllbxh").ligerComboBox({
-	       	 isMultiSelect: false,
-	         valueField:"value",
-	         textFiled:"text",
-	         value:"<s:property value='car.n_cllbxh'/>",
-	         url:"<%=basePath%>cartypeCombox"
-	   	});
+	   	   });
 	   	    
 	       function setData(obj,url) {  
 	            $.getJSON(url+"&r="+Math.round(Math.random()*1000000).toString(), 

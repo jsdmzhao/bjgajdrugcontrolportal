@@ -30,6 +30,8 @@ public class CartypeAction {
 	
 	private String c_yhzid;
 	
+	private String type;
+	
 	@Autowired
 	private AbsServiceAdapter<Integer> carService = null;
 	
@@ -62,12 +64,22 @@ public class CartypeAction {
 	}
 	
 	@SuppressWarnings("unchecked")
+	public Map<String, Object> cartypWarnList(){
+		Map<String, Object> resMap = new HashMap<String, Object>();
+		List<Car> cartypeList = (List<Car>) carService.selectList("CarMapper.getCartypeWarnList","");
+		resMap.put("Rows", cartypeList);
+		resMap.put("Total", cartypeList.size());
+		return resMap;
+	}
+	
+	@SuppressWarnings("unchecked")
 	public String cartypeSelectList(String c_yhzid){
 		
 		//HttpSession session = request.getSession();
 		//String c_yhzid = session.getAttribute("cYhz")+"";
 		Map<String, String> sqlParamMap = new HashMap<String, String>();
 		sqlParamMap.put("c_yhzid", c_yhzid);
+		sqlParamMap.put("type", type);
 		
 		StringBuffer sbf = new StringBuffer();
 		List<Combox> comboxList = (List<Combox>) carService.selectList("CarMapper.getCartypeSelectList",sqlParamMap);
@@ -144,6 +156,16 @@ public class CartypeAction {
 
 	public void setCarService(AbsServiceAdapter<Integer> carService) {
 		this.carService = carService;
+	}
+
+
+	public String getType() {
+		return type;
+	}
+
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	

@@ -22,6 +22,8 @@ public class CarOilReport {
 	
 	private String n_bglyh;
 	
+	private String d_tjrq;
+	
 	private String d_dj;
 	
 	private String c_yhzid;
@@ -140,6 +142,14 @@ public class CarOilReport {
 
 	public void setC_cphm(String c_cphm) {
 		this.c_cphm = c_cphm;
+	}
+
+	public String getD_tjrq() {
+		return d_tjrq;
+	}
+
+	public void setD_tjrq(String d_tjrq) {
+		this.d_tjrq = d_tjrq;
 	}
 
 }

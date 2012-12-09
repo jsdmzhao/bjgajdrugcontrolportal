@@ -18,6 +18,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.unis.app.car.model.CarOilReport;
+import com.unis.core.commons.Combox;
 import com.unis.core.service.AbsServiceAdapter;
 import com.unis.core.util.Globals;
 
@@ -82,6 +83,22 @@ public class CarOilReportAction {
 		out.flush();
 		out.close();
 	}	
+	
+	@SuppressWarnings("unchecked")
+	public List<Combox> carOilReportOldCnt() throws IOException{
+		
+		List<Combox> comboxList = (List<Combox>) carService.selectList("CarOilReportMapper.getCarOilReportOldCnt", n_cllbxh);
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		mapper.writeValue(out, comboxList);
+		out.flush();
+		out.close();
+		return comboxList;
+	}
 	
 	public String carOilReportUpdate(){
 		carOilReport = (CarOilReport) carService.selectOne("CarOilReportMapper.getCarOilReport", carOilReport);

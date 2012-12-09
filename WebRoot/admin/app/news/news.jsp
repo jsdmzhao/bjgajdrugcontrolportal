@@ -86,13 +86,12 @@ if(newsType == null){
 
   <script type="text/javascript">
 
-  	var str = "<select id=\"selectLanmu\" onchange=\"search()\" value='<%=newsType%>'><option value=''>全部栏目</option>";
+  	var str = "<select id=\"selectLanmu\" onchange=\"search()\" value=''><option value=''>全部栏目</option>";
 	ColumnAction.columnSelectList(function(data){
 		document.getElementById("selectLm").innerHTML = str + data + "</select>"
 			
 	});
 
-      var newsType = '<%=newsType %>';
       var dialog ;
       
   
@@ -339,7 +338,7 @@ if(newsType == null){
 	var grid = $("#maingrid") .ligerGrid( {
 		//headerImg:" <%=basePath%>liger/lib/icons/silkicons/table.png",title:'表格表头',
         columns: [
-                { display: '序号', name: 'n_xh', align: 'left', width: 50, minWidth: 60, 
+                { display: '序号', name: 'n_xh', align: 'left', width: 70, minWidth: 70, 
                 validate: { required: true }  ,
                 editor: { type: 'hidden' }
                 },
