@@ -79,7 +79,7 @@ if(nLx==null){
              comboboxName:"nQjlxName",
              options:{valueFieldID:"nQjlx",data:qjlxdata }},
              
-         {display:"事由",name:"cYy",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
+      
          {display:"开始时间",name:"dKssj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
          {display:"结束时间",name:"dJssj",newline:false,labelWidth:100,width:200,space:30,type:"date"},
        //  {display:"登记时间",name:"dDj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
@@ -87,9 +87,19 @@ if(nLx==null){
              comboboxName:"cSfljName",
              options:{valueFieldID:"cSflj",data:[{ text: '是', id: 1 },{ text: '否', id: 0 }] }},
          {display:"地点",name:"cDd",newline:false,labelWidth:100,width:200,space:30,type:"text"},
+         
+         <%if("1".equals(nLx)){  %>
+         
          {display:"是否使用公车",name:"cZt",newline:true,labelWidth:100,width:200,space:30,type:"select",
              comboboxName:"cZtName",
-             options:{valueFieldID:"cZt",data: [{ text: '是', id: '1' },{ text: '否', id: '0' }] }}
+             options:{valueFieldID:"cZt",data: [{ text: '是', id: '1' },{ text: '否', id: '0' }] }},
+             
+         <%}else{%>
+         
+         {display:"联系方式",name:"cLxfs",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+         <%}%>
+        
+         {display:"备注",name:"cYy",newline:true,labelWidth:100,width:500,space:30,type:"textarea"}
          
         ]
  }};

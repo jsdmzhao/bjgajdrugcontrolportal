@@ -31,6 +31,8 @@
 			<result property="nQjlxName" column="N_QJLX_NAME" jdbcType="VARCHAR"/>
 			
 			<result property="cShztName" column="C_SHZT_NAME" jdbcType="VARCHAR"/>
+			<result property="cLxfs" column="C_LXFS" jdbcType="VARCHAR"/>
+			
 			
 			
 		<result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
@@ -79,7 +81,8 @@
 					N_QXJ,
 					C_SHR,
 					to_char(base.D_SHRQ,'YYYY-MM-DD')  D_SHRQ,
-					to_char(base.D_XJRQ,'YYYY-MM-DD')  D_XJRQ
+					to_char(base.D_XJRQ,'YYYY-MM-DD')  D_XJRQ,
+					C_LXFS
 				 from B_KQ_YBJL base ,b_yh a 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 		    base.user_id =a.user_id
@@ -132,7 +135,8 @@
 					N_QXJ,
 					C_SHR,
 					to_char(base.D_SHRQ,'YYYY-MM-DD')  D_SHRQ,
-					to_char(base.D_XJRQ,'YYYY-MM-DD')  D_XJRQ
+					to_char(base.D_XJRQ,'YYYY-MM-DD')  D_XJRQ,
+					C_LXFS
 				 from B_KQ_YBJL base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 			<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
@@ -218,7 +222,8 @@
 					N_QXJ,
 					C_SHR,
 					to_char(base.D_SHRQ,'YYYY-MM-DD')  D_SHRQ,
-					to_char(base.D_XJRQ,'YYYY-MM-DD')  D_XJRQ
+					to_char(base.D_XJRQ,'YYYY-MM-DD')  D_XJRQ,
+					C_LXFS
 				 from B_KQ_YBJL base 
 		 <trim prefix="where" prefixOverrides="and |or"> 
 		<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
@@ -323,6 +328,8 @@
 			<if test="cShr != null and cShr !='' ">  ,  C_SHR</if>
 			<if test="dShrq != null and dShrq !='' ">  ,  D_SHRQ</if>
 			<if test="dXjrq != null and dXjrq !='' ">  ,  D_XJRQ</if>
+				<if test="cLxfs != null and cLxfs !='' ">  ,  C_LXFS</if>
+			
 			)VALUES(
 				SEQ_KQ_YBJL.NEXTVAL 
 				<!-- #{n_xh#-->
@@ -346,7 +353,8 @@
 					
 					<if test="cShr != null and cShr !='' ">   ,  to_date(#{cShr},'YYYY-MM-DD')</if>
 			<if test="dShrq != null and dShrq !='' ">   ,  to_date(#{dShrq},'YYYY-MM-DD')</if>
-			<if test="dXjrq != null and dXjrq !='' ">   ,  to_date(#{dXjrq},'YYYY-MM-DD')Q</if>
+			<if test="dXjrq != null and dXjrq !='' ">   ,  to_date(#{dXjrq},'YYYY-MM-DD')</if>
+			<if test="cLxfs != null and cLxfs !='' ">  ,  #{cLxfs}</if>
 			)
 		<selectKey resultType="string" keyProperty="id" >
 			 <!--SELECT #{nXh# AS ID FROM dual  -->
@@ -374,7 +382,8 @@
 				N_QXJ,
 				C_SHR,
 				D_SHRQ,
-				D_XJRQ
+				D_XJRQ,
+				C_LXFS
 			)VALUES(
 				 SEQ_KQ_YBJL.NEXTVAL,  
 				  #{userId},
@@ -395,6 +404,7 @@
 			        #{cShr},
 			         to_date(#{dShrq},'YYYY-MM-DD'),
 			          to_date(#{dXjrq},'YYYY-MM-DD'),
+			           #{cLxfs}
 			        
 			)
 		<selectKey resultType="string" keyProperty="id" >
@@ -459,6 +469,10 @@
 			<if test="cShr != null and cShr !='' ">,C_SHR =  #{cShr}</if>
 			<if test="dShrq != null and dShrq !='' ">, D_SHRQ =   to_date(#{dShrq},'YYYY-MM-DD')</if>
 			<if test="dXjrq != null and dXjrq !='' ">, D_XJRQ =   to_date(#{dXjrq},'YYYY-MM-DD')</if>
+			<if test="cLxfs != null and cLxfs !='' ">,C_LXFS =  #{cLxfs}</if>
+			
+			
+		
 			</trim>
 			<trim prefix="where" prefixOverrides="and |or">  
 				<if test="nXh != null and nXh !='' ">  and N_XH = #{nXh}</if>
@@ -486,7 +500,9 @@
 			, N_QXJ =   #{nQxj}
 			,C_SHR =  #{cShr}
 			, D_SHRQ =  to_date(#{dShrq},'YYYY-MM-DD')
-			, D_XJRQ = to_date(#{dXjrq},'YYYY-MM-DD')
+			, D_XJRQ = to_date(#{dXjrq},'YYYY-MM-DD'),
+			,C_LXFS =  #{cLxfs}
+			
 			WHERE 
 				N_XH = #{nXh}
 	</update> 

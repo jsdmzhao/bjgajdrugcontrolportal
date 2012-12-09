@@ -25,6 +25,8 @@ public class KqYbjlSvc  {
 	private UserInfoDao userInfoDao;
 
 	public Object save(Map p) throws SQLException {
+		
+		System.out.println("aaaaaaaaaaaa  " +p );
 		if(p.get("userId")!=null){
 			Map tp=new HashMap();
 			tp.put("userId", p.get("userId"));
