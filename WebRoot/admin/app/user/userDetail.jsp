@@ -36,7 +36,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript"> 
         var config = {"Form":{ 
          fields : [
-         {name:"userId",type:"hidden"},{display:"帐号",name:"userName",newline:true,labelWidth:100,width:220,space:30,type:"text",group:"基本信息",groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif",validate : {required:true,username:true,minlength:4,maxlength:25,messages:{required:'请输入用户名'}}  
+         {name:"userId",type:"hidden"},
+         {display:"帐号",name:"userName",newline:true,labelWidth:100,width:220,space:30,type:"text",group:"基本信息",groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif",
+        	 validate : {required:true,username:true,minlength:4,maxlength:25,messages:{required:'请输入用户名'}}  
          },
          {display:"密码",name:"userPassword",newline:true,labelWidth:100,width:220,space:30,type:"password",validate:{maxlength:50,required:true,messages:{required:'请输入密码'}}},
          {display:"确认密码",name:"userPassword2",newline:true,labelWidth:100,width:220,space:30,type:"password",validate:{maxlength:50,required:true,equalTo:'#userPassword',messages:{required:'请输入密码',equalTo:'两次密码输入不一致'}}},

@@ -60,8 +60,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
         #winlinks li img
         {
-            width: 36px;
-            height: 36px;
+            width: 48px;
+            height: 48px;
         }
         #winlinks li span
         {
