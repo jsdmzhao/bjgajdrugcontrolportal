@@ -70,7 +70,7 @@ if(userId==null){
              comboboxName:"nQjlxName",
              options:{valueFieldID:"nQjlx",data:qjlxdata }},
              
-         {display:"事由",name:"cYy",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
+       
          {display:"开始时间",name:"dKssj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
          {display:"结束时间",name:"dJssj",newline:false,labelWidth:100,width:200,space:30,type:"date"},
        //  {display:"登记时间",name:"dDj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
@@ -81,6 +81,7 @@ if(userId==null){
          {display:"是否使用公车",name:"cZt",newline:true,labelWidth:100,width:200,space:30,type:"select",
              comboboxName:"cZtName",
              options:{valueFieldID:"cZt",data: [{ text: '是', id: '1' },{ text: '否', id: '0' }] }},
+             {display:"备注",name:"cYy",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
              {display:"审核结果",name:"cShzt",newline:true,labelWidth:100,width:200,space:30,type:"select",
                  comboboxName:"cShztName",
                  options:{valueFieldID:"cShzt",data: [{ text: '批准', id: '2' },{ text: '不批准', id: '3' },{ text: '转上一级', id: '100' }] }},

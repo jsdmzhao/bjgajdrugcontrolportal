@@ -113,6 +113,7 @@ CREATE TABLE B_KQ_YBJL  (
    C_SHR                  VARCHAR2(1000),
    D_SHRQ                  DATE,
    D_XJRQ                  DATE,
+   C_LXFS                 VARCHAR2(200),
    
    
    CONSTRAINT PK_B_KQ_YBJL PRIMARY KEY (N_XH)

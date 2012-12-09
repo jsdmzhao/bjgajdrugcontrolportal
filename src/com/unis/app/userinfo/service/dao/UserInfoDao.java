@@ -48,6 +48,10 @@ public class UserInfoDao<T> extends AbsServiceAdapter<T> {
 	}
 	
 	public List getSupJb(Map p){
+	  String count = String.valueOf((Integer)getSupCount(p));
+		if("0".equals(count)){
+			return null;
+		}
 		return  super.selectList("UserInfoMapper.getSupJb", p);
 	}
 	
@@ -71,6 +75,10 @@ public class UserInfoDao<T> extends AbsServiceAdapter<T> {
 	
 	public Object queryCountInfo(Map p) {
 		return  super.selectOne("UserInfoMapper.queryCountInfo", p);
+	}
+	
+	public Object getSupCount(Map p) {
+		return  super.selectOne("UserInfoMapper.getSupCount", p);
 	}
 
 	public Map queryByPageInfo(Map p, Map page){
