@@ -114,6 +114,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             type:"number"
         },
         {
+            display:"统计日期",
+            name:"d_tjrq",
+            value:"<s:property value='carOilReport.d_tjrq'/>",
+            newline:false,
+            validate: { required: true},
+            labelWidth:130,
+            width:280,
+            type:"text",
+            onclick:"WdatePicker({dateFmt:'yyyy-MM-dd'})"
+         },
+        {
             name:"n_xh",
             value:"<s:property value='carOilReport.n_xh'/>",
             type:"hidden"

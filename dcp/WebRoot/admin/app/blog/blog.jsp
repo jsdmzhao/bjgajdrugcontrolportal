@@ -78,6 +78,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             img:'<%=basePath%>liger/lib/icons/silkicons/add.png',
             id:'add'
         },{line:true},{
+            click:toolbarBtnItemClick,
+            text:'补录日志',
+            img:'<%=basePath%>liger/lib/icons/silkicons/add.png',
+            id:'readd'
+        },{line:true},{
             click: toolbarBtnItemClick,
             text: '修改',
             img:'<%=basePath%>liger/lib/icons/silkicons/application_edit.png',
@@ -112,6 +117,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             		  		LG.showSuccess('您今天已经记载日志了！');
             		  	}
             	  });
+                  break;
+              case "readd":
+      		  		dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/blog/blogReDetail.jsp', 
+                 		  title: '日志信息',
+                         height: 500,width: 900,showMax: true, showToggle: true,  showMin: true
+			 		});
                   break;
               case "view":
                   var selected = grid.getSelected();

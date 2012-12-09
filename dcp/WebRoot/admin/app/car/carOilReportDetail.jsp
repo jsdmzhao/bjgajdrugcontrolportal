@@ -87,7 +87,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          validate: { required: true},
          labelWidth:130,
          width:280,
-         type:"number"
+         type:"number",
+         onChangeValue:"test"
         }
         ,
         {
@@ -107,7 +108,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             labelWidth:130,
             width:280,
             type:"number"
-           }
+        }
+        ,
+        {
+            display:"统计日期",
+            name:"d_tjrq",
+            newline:false,
+            validate: { required: true},
+            labelWidth:130,
+            width:280,
+            type:"text",
+            onclick:"WdatePicker({dateFmt:'yyyy-MM-dd'})"
+         }
        ]
  	 }};
      
@@ -151,6 +163,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           LG.loadForm(mainform, { type: 'AjaxMemberManage', method: 'newsQuery', data: { ID: currentID} },f_loaded);
       }  
 
+      $("#n_dygls").bind('blur',function(){
+			//$("#txt1").ligerGetTextBoxManager().setValue('设置值');
+			$("#n_dyxsgls").val($("#n_dygls").val() - $("#n_sygls").val());
+			$("#n_bglyh").val($("#n_dyyh").val()* 100 / $("#n_dyxsgls").val() );
+	  });
+      $("#n_dyyh").bind('blur',function(){
+			//$("#txt1").ligerGetTextBoxManager().setValue('设置值');
+			$("#n_dyxsgls").val($("#n_dygls").val() - $("#n_sygls").val());
+			$("#n_bglyh").val($("#n_dyyh").val()* 100 / $("#n_dyxsgls").val() );
+	  });
       
         
       if(!isView) 
@@ -196,7 +218,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       var cmb1,cmb2; 
       var tempdata = [{text:'所有部门',value:''},{text:'总队领导',value:'1'},{text:'办公室',value:'3'},
                       {text:'协调指导大队',value:'4'}, {text:'情报中心',value:'9'}, {text:'侦查大队',value:'7'},
-                      {text:'查禁大队',value:'8'}, {text:'缉控大队',value:'5'}, {text:'两品办',value:'10'}];;
+                      {text:'查禁大队',value:'8'}, {text:'缉控大队',value:'5'}, {text:'易管大队',value:'11'}];;
 
      cmb1 = $("#c_bm").ligerComboBox({ data: tempdata, isMultiSelect: false,
           textFiled:"text",valueField:"value",
@@ -211,7 +233,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      	 isMultiSelect: false,
           valueField:"value",
           textFiled:"text",
-          url:"<%=basePath%>cartypeCombox"
+          url:"<%=basePath%>cartypeCombox",
+          onSelected: function (newvalue){
+          	 $.getJSON('<%=basePath%>carOilReportOldCnt?n_cllbxh='+newvalue+'&r='+Math.round(Math.random()*1000000).toString(), 
+ 	             function(json) {  
+          		   if(json != null || json != ''){
+          			 $("#n_sygls").val(json);
+          		   }
+ 	             }  
+              );   
+           }
 	});
  	    
      function setData(obj,url) {  

@@ -113,12 +113,27 @@
 		  ORDER BY N_XH DESC
 	</select>
 	
+	<select id="getCartypeWarnList" resultMap="resultCartype">
+		SELECT N_XH,
+			   C_YHZID,
+			   FUN_GET_DMMC('DEP',C_YHZID) C_YHZID_ ,
+		       C_CPHM||':'||TO_CHAR(ADD_MONTHS(D_YCSJ,12),'YYYY-MM-DD') C_CPHM
+		  FROM B_CLLB
+	    WHERE D_YCSJ =  TRUNC(ADD_MONTHS(SYSDATE,-11) ,'DD')
+	       OR D_YCSJ =  TRUNC(ADD_MONTHS(SYSDATE,-12) + 15,'DD')
+	       OR D_YCSJ =  TRUNC(ADD_MONTHS(SYSDATE,-11) + 5,'DD')
+	      ORDER BY N_XH DESC
+	</select>
+	
 	
 	<select id="getCartypeCombox" resultType="Combox" parameterType="hashmap">
 		SELECT N_XH VALUE,
 	       C_CPHM TEXT
 	    FROM B_CLLB
-       WHERE C_SFXZ = '1' 
+       WHERE 1 = 1
+       <if test="type != null and type != ''  and type == 'clsq' ">
+ 		 AND C_SFXZ = '1' 
+  	   </if>
        <if test="c_yhzid != null and c_yhzid != '' ">
  		 AND C_YHZID = #{c_yhzid}
   	   </if>

@@ -80,12 +80,12 @@ String newsType = request.getParameter("newsType");
   <script type="text/javascript">
   
   	  var dialog;
- 	  var str = "<select id=\"selectLanmu\" onchange=\"search()\" value='<%=newsType%>'><option value=''>全部栏目</option>";
+ 	  var str = "<select id=\"selectLanmu\" onchange=\"search()\" value=''><option value=''>全部栏目</option>";
 	  ColumnAction.columnSelectList(function(data){
 		document.getElementById("selectLm").innerHTML = str + data + "</select>"
 	  });
 
-      var newsType = '<%=newsType %>';
+      //var newsType = '<!%=newsType %>';
   
       //验证
       var maingform = $("#mainform");
@@ -262,7 +262,7 @@ String newsType = request.getParameter("newsType");
     var grid = $("#maingrid").ligerGrid({
         //headerImg:"<%=basePath%>liger/lib/icons/silkicons/table.png",title:'表格表头',
         columns: [
-                { display: '序号', name: 'n_xh', align: 'left', width: 50, minWidth: 60, 
+                { display: '序号', name: 'n_xh', align: 'left', width: 70, minWidth: 70, 
                 validate: { required: true }  ,
                 editor: { type: 'hidden' }
                 },
@@ -275,8 +275,6 @@ String newsType = request.getParameter("newsType");
                 editor: { type: 'text' }
                 }, 
                 { display: '状态', name: 'c_shjg', type:'statueType' ,align: 'left', width: 120, minWidth: 50
-                },{
-					name: 'c_shjg',editor: {type: 'hidden'},hide : '1'
                 }], 
                 dataAction: 'server', pageSize: 20, toolbar: toolbarOptions, sortName: 'MenuID',
                 url:'<%=basePath%>newsPageList',parms:[{name:'news.c_lm',value:''},{name:'news.c_bt',value:''},{name:'news.c_sfsh',value:0}],

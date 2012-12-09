@@ -47,7 +47,8 @@ public class CarRepair {
 	private String c_shr_t;
 	
 	private String c_shjg_t;
-
+	
+	private String c_sqyy;
 
 	public String getN_xh() {
 		return n_xh;
@@ -231,6 +232,14 @@ public class CarRepair {
 
 	public void setC_shjg_t(String c_shjg_t) {
 		this.c_shjg_t = c_shjg_t;
+	}
+
+	public String getC_sqyy() {
+		return c_sqyy;
+	}
+
+	public void setC_sqyy(String c_sqyy) {
+		this.c_sqyy = c_sqyy;
 	}
 
 }

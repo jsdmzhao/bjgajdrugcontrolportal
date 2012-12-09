@@ -31,6 +31,7 @@
 	</delete>
 	
 	<insert id="insertCarCheck" parameterType="hashmap">
+	 BEGIN
 		 INSERT INTO B_CLJC(
 		      N_XH      ,
 			  N_CLLBXH  ,
@@ -53,7 +54,9 @@
 			  SYSDATE,
 			  #{c_yhzid,jdbcType=VARCHAR}, 
 			  #{c_yhid,jdbcType=VARCHAR}
-	    )  
+	    );
+	    UPDATE B_CLLB SET D_YCSJ =  TO_DATE(#{d_jcrq,jdbcType=DATE},'YYYY-MM-DD') WHERE N_XH = #{n_cllbxh,jdbcType=NUMERIC};
+	 END;
 	</insert>
 	
 	<select id="getCarCheckPageList" resultMap="resultCarCheck" parameterType="hashmap">
