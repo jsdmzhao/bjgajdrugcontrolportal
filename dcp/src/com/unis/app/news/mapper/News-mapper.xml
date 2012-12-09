@@ -31,7 +31,8 @@
 	 <resultMap type="News" id="resultVideoNews">
 	 	<result column="C_BT" property="c_bt"/>
 	 	<result column="D_FBSJ" property="d_fbsj"/>
-	 		<result column="C_SPLJDZ" property="c_spljdz"/>
+	 	<result column="C_SPLJDZ" property="c_spljdz"/>
+	 	<result column="C_SPFMLJDZ" property="c_spfmljdz"/>
 	 </resultMap>
 	 
 	<select id="getNews" parameterType="News" resultType="News">
@@ -43,6 +44,7 @@
 		       C_TPGD,
 		       C_SFSCSP,
 		       C_SPLJDZ,
+		       C_SPFMLJDZ,
 		       C_LJ,
 		       C_JJ,
 		       C_NR,
@@ -115,7 +117,8 @@
 	  SELECT N_XH,
 		   C_BT,
 	       TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
-	       C_SPLJDZ
+	       C_SPLJDZ,
+	       C_SPFMLJDZ
 	  FROM B_XINWEN
 	 WHERE C_LM LIKE '%;'||#{c_lm}||';%'
 	  <if test="c_sfsh != null and c_sfsh != ''">
@@ -304,6 +307,7 @@
 			C_TPGD,
 			C_SFSCSP,
 			C_SPLJDZ,
+			C_SPFMLJDZ,
 			C_LJ,
 			C_JJ,
 			C_NR,
@@ -325,7 +329,8 @@
 	         #{c_tpkd,jdbcType=NUMERIC},          
 	         #{c_tpgd,jdbcType=NUMERIC},          
 	         #{c_sfscsp,jdbcType=CHAR},        
-	         #{c_spljdz,jdbcType=VARCHAR},        
+	         #{c_spljdz,jdbcType=VARCHAR},  
+	         #{c_spfmljdz,jdbcType=VARCHAR},      
 	         #{c_lj,jdbcType=VARCHAR},            
 	         #{c_jj,jdbcType=VARCHAR},            
 	         #{c_nr,javaType=String,jdbcType=CLOB,handler=ClobTypeHandler},            
@@ -350,7 +355,8 @@
 				C_TPKD   =	#{c_tpkd,jdbcType=NUMERIC},   							
 				C_TPGD   =	#{c_tpgd,jdbcType=NUMERIC},   							
 				C_SFSCSP =	#{c_sfscsp,jdbcType=VARCHAR},  							
-				C_SPLJDZ =	#{c_spljdz,jdbcType=VARCHAR}, 							
+				C_SPLJDZ =	#{c_spljdz,jdbcType=VARCHAR}, 
+				C_SPFMLJDZ =#{c_spfmljdz,jdbcType=VARCHAR},							
 				C_LJ     =	#{c_lj,jdbcType=VARCHAR},     							
 				C_JJ     =	#{c_jj,jdbcType=VARCHAR},     							
 				C_NR     =	#{c_nr,jdbcType=CLOB,handler=ClobTypeHandler},     							
