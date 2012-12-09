@@ -227,8 +227,8 @@ values (10000096, 'DEP', '8', '查禁大队', 7, null, null, to_date('02-12-2012
 insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
 values (10000097, 'DEP', '9', '情报中心', 5, null, null, to_date('02-12-2012 19:44:22', 'dd-mm-yyyy hh24:mi:ss'));
 
-insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
-values (10000098, 'DEP', '10', '两品办', 10, null, null, to_date('02-12-2012 19:44:22', 'dd-mm-yyyy hh24:mi:ss'));
+--insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
+--values (10000098, 'DEP', '10', '两品办', 10, null, null, to_date('02-12-2012 19:44:22', 'dd-mm-yyyy hh24:mi:ss'));
 
 insert into D_DM (N_XH, C_BXH, C_DM, C_MC, N_XSXH, C_TJ, C_SJDM, D_DJ)
 values (10000099, 'DEP', '11', '易管大队', 8, null, null, to_date('02-12-2012 19:44:22', 'dd-mm-yyyy hh24:mi:ss'));
