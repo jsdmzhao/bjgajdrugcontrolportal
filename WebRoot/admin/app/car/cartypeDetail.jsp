@@ -44,7 +44,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript"> 
         var tempdata = [{text:'总队领导',value:1},{text:'办公室',value:3},{text:'协调指导大队',value:4},
                     	{text:'情报中心',value:9},{text:'侦查大队',value:7},{text:'查禁大队',value:8},
-                    	{text:'缉控大队',value:5},{text:'两品办',value:10}];
+                    	{text:'缉控大队',value:5},{text:'易管大队',value:11}];
+        var ybdata   = [{text:'92#',value:'01'},{text:'95#',value:'02'},{text:'柴油',value:'03'}];
         var config = {"Form":{ 
          fields : [
          {display:"使用单位",name:"c_yhzid",newline:true,labelWidth:80,
@@ -61,8 +62,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          },
          {display:"车牌号码",name:"c_cphm",newline:true,labelWidth:80,width:480,type:"text"},
          {display:"品牌型号",name:"c_ppxh",newline:true,labelWidth:80,width:480,type:"text"},
-         {display:"购买时间",name:"d_gmsj",newline:true,labelWidth:80,width:480,type:"text",onclick:"WdatePicker({dateFmt:'yyyy-MM-dd'})"},
-         {display:"注册时间",name:"d_zcsj",newline:true,labelWidth:80,width:480,type:"text",onclick:"WdatePicker({dateFmt:'yyyy-MM-dd'})"},
+         {display:"购买时间",name:"d_gmsj",newline:true,labelWidth:80,width:180,type:"text",onclick:"WdatePicker({dateFmt:'yyyy-MM-dd'})"},
+         {display:"注册时间",name:"d_zcsj",newline:false,labelWidth:80,width:180,type:"text",onclick:"WdatePicker({dateFmt:'yyyy-MM-dd'})"},
+         {display:"验车时间",name:"d_ycsj",newline:true,labelWidth:80,width:180,type:"text",onclick:"WdatePicker({dateFmt:'yyyy-MM-dd'})"},
+         {display:"油标",name:"c_yb",newline:false,labelWidth:80,width:180,type:"select",
+	      	 options:{
+               valueField:"value",
+               textFiled:"text",
+           	   data : ybdata,
+               selectBoxHeight :100,
+               selectBoxWidth :180
+            }
+         },
          {display:"责任司机",name:"c_zrsj",newline:true,labelWidth:80,width:480,type:"text"}
         ]
  }};
@@ -139,6 +150,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	var formMap = DWRUtil.getValues("mainform"); 
         	
         	formMap['c_yhzid'] = formMap['c_yhzidName_val'];
+        	
+        	formMap['c_yb'] = formMap['c_yb_val'];
         	
         	CartypeAction.cartypeSave(formMap,function (result){
         		if(result == 'success'){

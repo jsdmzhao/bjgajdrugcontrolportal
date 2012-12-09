@@ -50,6 +50,10 @@ public class Car {
 	
 	private String c_zrsj;
 	
+	private String d_ycsj;
+	
+	private String c_yb;
+	
 	public String getN_xh() {
 		return n_xh;
 	}
@@ -240,6 +244,22 @@ public class Car {
 
 	public void setC_zrsj(String c_zrsj) {
 		this.c_zrsj = c_zrsj;
+	}
+
+	public String getD_ycsj() {
+		return d_ycsj;
+	}
+
+	public void setD_ycsj(String d_ycsj) {
+		this.d_ycsj = d_ycsj;
+	}
+
+	public String getC_yb() {
+		return c_yb;
+	}
+
+	public void setC_yb(String c_yb) {
+		this.c_yb = c_yb;
 	}
 
 }

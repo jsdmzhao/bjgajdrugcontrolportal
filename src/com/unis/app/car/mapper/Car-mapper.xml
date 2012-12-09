@@ -8,7 +8,10 @@
 	 	<result column="C_CPHM"   property="c_cphm"/>
 	 	<result column="C_YHZID"  property="c_yhzid"/>
 	 	<result column="D_GMSJ"  property="d_gmsj"/>
+	 	<result column="D_ZCSJ"  property="d_zcsj"/>
 	 	<result column="D_DJ"   property="d_dj"/>
+	 	<result column="D_YCSJ"   property="d_ycsj"/>
+	 	<result column="C_YB"   property="c_yb"/>
 	 </resultMap>
 	 
 	 <resultMap type="Car"    id="resultCar">
@@ -23,7 +26,7 @@
 	 	<result column="D_DJ"   property="d_dj"/>
 	 </resultMap>
 	 
-	<select id="getCartype" parameterType="Car" resultType="Car">
+	<select id="getCartype" parameterType="Car" resultMap="resultCartype">
 		SELECT * FROM B_CLLB WHERE N_XH = #{n_xh}
 	</select>
 	 
@@ -39,7 +42,7 @@
 	</select>
 	
 	<select id="printCar" parameterType="string" resultType="Car">
-		SELECT B_CLLB.C_CPHM C_CPHM,
+	 SELECT B_CLLB.C_CPHM C_CPHM,
 	       B_CLLB.C_PPXH C_PPXH,
 	       B_CLLB.C_ZRSJ C_ZRSJ,
 	       FUN_GET_DMMC('DEP',B_CLSQ.C_YHZID) C_YHZID,
@@ -102,14 +105,7 @@
 	
 	<select id="getCartypeList" resultMap="resultCartype">
 		SELECT N_XH,
-		       DECODE(C_YHZID,'1','总队领导',
-		       		  '3','办公室',
-		       		  '4','协调指导大队',
-		       		  '9','情报中心',
-		       		  '7','侦查大队',
-		       		  '8','查禁大队',
-		       		  '5','缉控大队',
-		       		  '10','两品办')  C_YHZID ,
+			   FUN_GET_DMMC('DEP',C_YHZID) C_YHZID ,
 		       C_CPHM,
 		       TO_CHAR(D_GMSJ,'YYYY-MM-DD') D_GMSJ,
 		       TO_CHAR(D_DJ,'YYYY-MM-DD HH24:MI:SS') D_DJ
@@ -163,7 +159,7 @@
 		   D_CCSJ    ,
 		   D_GDSJ    ,
 		   C_SFSH    ,
-		   D_DJ    ) 
+		   D_DJ      ) 
 		VALUES (	            	
 	      seq_b_clsq.nextval,        
           #{n_cllbxh,jdbcType=NUMERIC},  
@@ -173,7 +169,7 @@
           TO_DATE(#{d_ccsj,jdbcType=DATE},'YYYY-MM-DD HH24:MI:SS'),           
           TO_DATE(#{d_gdsj,jdbcType=DATE},'YYYY-MM-DD HH24:MI:SS'),
           '0',           
-       	  sysdate      
+       	  sysdate
 	    )  
 	</insert>
 	
@@ -183,10 +179,12 @@
 		   C_CPHM  ,
 		   C_PPXH  ,
 		   D_GMSJ  ,
-		   D_ZCSJ ,
-		   C_ZRSJ ,
+		   D_ZCSJ  ,
+		   C_ZRSJ  ,
 		   C_YHZID ,
-		   D_DJ    ) 
+		   D_DJ    ,
+		   D_YCSJ  ,
+		   C_YB    ) 
 		VALUES (	            	
 	      seq_b_cllb.nextval,        
           #{c_cphm,jdbcType=VARCHAR}, 
@@ -195,7 +193,9 @@
           TO_DATE(#{d_zcsj,jdbcType=VARCHAR},'YYYY-MM-DD'), 
           TO_DATE(#{c_zrsj,jdbcType=VARCHAR},'YYYY-MM-DD'), 
           #{c_yhzid,jdbcType=VARCHAR}, 
-       	  sysdate      
+       	  sysdate,
+       	  TO_DATE(#{d_ycsj,jdbcType=DATE},'YYYY-MM-DD HH24:MI:SS'),  
+       	  #{c_yb,jdbcType=VARCHAR}    
 	    )  
 	</insert>
 	
@@ -230,7 +230,9 @@
 		   		D_GMSJ   =  TO_DATE(#{d_gmsj,jdbcType=VARCHAR},'YYYY-MM-DD'),
 		   		D_ZCSJ   =  TO_DATE(#{d_zcsj,jdbcType=VARCHAR},'YYYY-MM-DD'),
 		   		C_YHZID  =  #{c_yhzid,jdbcType=VARCHAR},
-		   		C_ZRSJ  =   #{c_zrsj,jdbcType=VARCHAR}
+		   		C_ZRSJ   =  #{c_zrsj,jdbcType=VARCHAR},
+		   		D_YCSJ   =  TO_DATE(#{d_ycsj,jdbcType=VARCHAR},'YYYY-MM-DD'),
+		   		C_YB     =  #{c_yb,jdbcType=VARCHAR}
 		WHERE N_XH = #{n_xh}
 	</update>
 	

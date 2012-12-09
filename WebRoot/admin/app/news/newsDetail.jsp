@@ -46,7 +46,7 @@ String newsType = request.getParameter("newsType");
 		BORDER-TOP: medium none; CURSOR: pointer; 
 		BORDER-RIGHT: #bfcfe1 1px solid;
 		WIDTH: 80px;  
-		BACKGROUND: url(<%=basePath%>liger/lib/images/ui/button1.gif) repeat-x; 
+		BACKGROUND: url('<%=basePath%>liger/lib/images/ui/button1.gif') repeat-x; 
 
 	}
  	</style>
@@ -91,13 +91,11 @@ String newsType = request.getParameter("newsType");
              newline:true,
              labelWidth:100,width:30,type:"checkbox"
          },
-         {display:"图片名称",name:"c_tpljdz",newline:false,labelWidth:100,width:420,space:30,type:"text",readonly:"readonly"},
+         {display:"图片名称",name:"c_tpljdz",newline:false,labelWidth:100,width:445,space:30,type:"text",readonly:"readonly"},
          {
-        	 //display:"上传图片",
    	         name:"sctp",
    	         newline:false,
-   	         //labelWidth:100,
-   	         width:120,//space:30, 
+   	         width:120,
    	         type:"button",
    	         cssClass:"l-button-2",
    	         value:"选择图片",
@@ -110,19 +108,30 @@ String newsType = request.getParameter("newsType");
             type:"checkbox",
             nodeWidth :30
         },
-        {display:"视频名称",name:"c_spljdz",newline:false,labelWidth:100,width:420,space:30,type:"text",readonly:"readonly"},
+        {display:"视频名称",name:"c_spljdz",newline:false,labelWidth:100,width:445,space:30,type:"text",readonly:"readonly"},
         {
-        	 //display:"上传视频",
         	 value:"选择视频",
 	         name:"scsp",
 	         newline:false,
 	         labelWidth: 0,
-	         width:120,//space:10, 
+	         width:120,
 	         type:"button",
 	         cssClass:"l-button-2",
 	         disabled:"disabled",
 	         onclick : "openDialog('#uploadFlashDiv')"
          },
+         {display:"视频封面图片",name:"c_spfmljdz",newline:true,labelWidth:100,width:585,space:30,type:"text",readonly:"readonly"},
+         {
+         	 value:"选择封面图片",
+ 	         name:"scspfm",
+ 	         newline:false,
+ 	         labelWidth: 0,
+ 	         width:120,
+ 	         type:"button",
+ 	         cssClass:"l-button-2",
+ 	         disabled:"disabled",
+ 	         onclick : "openDialog('#uploadFlashFmDiv')"
+          },
          {
          	display:"简介",
          	name:"c_jj",
@@ -332,8 +341,10 @@ String newsType = request.getParameter("newsType");
        		 var value = $("#c_sfscsp").attr("checked");
        		 if(value == true){
     			$("#scsp").attr("disabled",false);	
+    			$("#scspfm").attr("disabled",false);
              }else{
-            	 $("#scsp").attr("disabled","disabled");
+	           	$("#scsp").attr("disabled","disabled");
+	           	$("#scspfm").attr("disabled","disabled");
              }
        	 
        		//  upload('c_spljdz','fileDownload','cSmjhzm');
@@ -346,7 +357,10 @@ String newsType = request.getParameter("newsType");
 	</div>
 	<div id="uploadFlashDiv" style="display: none;">
 		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_spljdz"></iframe> <!---->
-	</div>   
+	</div> 
+	<div id="uploadFlashFmDiv" style="display: none;">
+		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_spfmljdz"></iframe> <!---->
+	</div>  
 </body>
 
 </html>

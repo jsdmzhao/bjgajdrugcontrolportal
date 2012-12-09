@@ -18,6 +18,8 @@ public class News {
 	
 	private String c_spljdz;
 	
+	private String c_spfmljdz;
+	
 	private String c_lj;
 	
 	private String c_jj;
@@ -145,6 +147,14 @@ public class News {
 
 	public void setC_spljdz(String c_spljdz) {
 		this.c_spljdz = c_spljdz;
+	}
+
+	public String getC_spfmljdz() {
+		return c_spfmljdz;
+	}
+
+	public void setC_spfmljdz(String c_spfmljdz) {
+		this.c_spfmljdz = c_spfmljdz;
 	}
 
 	public String getC_lj() {
