@@ -1,6 +1,4 @@
-﻿<%@page import="com.unis.app.news.model.News"%>
-<%@page import="com.unis.app.news.service.NewsService"%>
-<%@page import="com.unis.app.limit.service.ClxxSvc"%>
+﻿<%@page import="com.unis.app.limit.service.ClxxSvc"%>
 <%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
 <%@page import="org.springframework.context.ApplicationContext"%>
 <%@page import="java.net.URLDecoder"%>
@@ -28,26 +26,14 @@ if(c_bt == null){
 	 n_xh = "0";
  }
  
- String c_yhid = session.getAttribute("userId")+"";
- String c_yhzid = session.getAttribute("cYhz")+"";
 
-ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());
-NewsService newsService= (NewsService) ctx.getBean("newsService");
-
-News news=new News();
-news.setC_yhzid(c_yhzid);
-news.setC_yhid(c_yhid);
-news.setC_lm("1239");
-news.setC_sfscsp("1");
-
-List<News> list= (List<News>) newsService.selectList("NewsMapper.getVideoNewsList", news);
 
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>北京禁毒信息网</title>
+    <title>北京禁毒信息系统</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -97,11 +83,31 @@ List<News> list= (List<News>) newsService.selectList("NewsMapper.getVideoNewsLis
   <body>
 <div id="container_news">
 	<div id="banner_top">
-		<div style="margin-left: 375px; padding-top:40px;">
-	      <object type="application/x-shockwave-flash" data="flash/banner_t.swf" width="278" height="34">
-			<param name="movie" value="flash/banner_t.swf" />
-			<param name="wmode" value="transparent" />
-		  </object>
+		<div style="margin-left: 450px; padding-top:40px;">
+	      <object
+	        classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+	        codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
+	        id="banner_t"
+	        width="278" height="34"
+	      >
+	        <param name="movie" value="flash/banner_t.swf">
+	        <param name="bgcolor" value="#FFFFFF">
+	        <param name="quality" value="high">
+	        <param name="seamlesstabbing" value="false">
+	        <param name="allowscriptaccess" value="samedomain">
+	        <embed
+	          type="application/x-shockwave-flash"
+	          pluginspage="http://www.adobe.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"
+	          name="banner_t"
+	          width="278" height="34"
+	          src="flash/banner_t.swf"
+	          bgcolor="#FFFFFF"
+	          quality="high"
+	        >
+	          <noembed>
+	          </noembed>
+	        </embed>
+	      </object>
 	    </div>
 	  <div id="favor">
 		<img src="newimages/4.png" width="15" height="12" />
@@ -120,16 +126,14 @@ List<News> list= (List<News>) newsService.selectList("NewsMapper.getVideoNewsLis
    </div>
   <div class="menu">
 	    <a href="<%=basePath%>">首页</a>
-	    <a href="<%=basePath%>columnIndexView?column.c_lmdm=1355">总队简介</a>
 	    <a href="http://www.xxzx.bj">信息查询</a> 
 	    <a href="http://www.anquan.zx.bj">信息安全</a> 
-	    <a href="newsCenterList?news.c_lm=12390&pageNo=1">视频在线</a> 
+	    	    <a href="newsCenterList?news.c_lm=12390&pageNo=1">视频在线</a> 
 	    <a href="ftp://ftp.jdc.bj">工作交流</a> 
 	    <a href="newsCenterList?news.c_lm=1291&pageNo=1">光荣榜</a> 
+	    <a href="newsCenterList?news.c_lm=1297&pageNo=1">学习专栏</a>
 	    <a href="newsCenterList?news.c_lm=1214&pageNo=1" onMouseOver="mouseover(this, 1)" onmouseout="mouseout()">法律法规</a> 
-	    <a href="newsCenterList?news.c_lm=1282&pageNo=1">毒品知识</a> 
 	    <a href="newsCenterList?news.c_lm=1286&pageNo=1">纪检监察</a> 
-	    <a href="http://www.jdc.bj:9001" target="_blank">旧站入口</a> 
 	</div>
 		
 	<div class="menu-list" id="menu1" onmouseover="_mouseover()" onmouseout="_mouseout()">
@@ -137,7 +141,6 @@ List<News> list= (List<News>) newsService.selectList("NewsMapper.getVideoNewsLis
 	      <li><a href="newsCenterList?news.c_lm=1305&pageNo=1"><span>法律汇编</span></a> </li>
 	      <li><a href="newsCenterList?news.c_lm=1209&pageNo=1"><span>法规汇编</span></a> </li>
 	      <li><a href="newsCenterList?news.c_lm=1307&pageNo=1"><span>规章汇编</span></a></li> 
-	      <li><a href="newsCenterList?news.c_lm=1200&pageNo=1"><span>办案流程</span></a></li>
 	      <li><a href="newsCenterList?news.c_lm=1312&pageNo=1"><span>规范性文件</span></a></li>
 	  </ul>
 	</div>
@@ -192,9 +195,6 @@ List<News> list= (List<News>) newsService.selectList("NewsMapper.getVideoNewsLis
 					<ul>
 						<li><a href='newsCenterList?news.c_lm=1104&pageNo=1'><img src="newimages/menu_5.png" /></a></li>
 					</ul>
-					<ul>
-						<li><a href='newsCenterList?news.c_lm=1146&pageNo=1'><img src="newimages/menu_10.png" /></a></li>
-					</ul>
                     <ul>
 						<li><a href='newsCenterList?news.c_lm=1105&pageNo=1'><img src="newimages/menu_6.png" /></a></li>
 					</ul>
@@ -203,6 +203,9 @@ List<News> list= (List<News>) newsService.selectList("NewsMapper.getVideoNewsLis
 					</ul>
 					<ul>
 						<li><a href='newsCenterList?news.c_lm=1107&pageNo=1'><img src="newimages/menu_8.png" /></a></li>
+					</ul>
+					<ul>
+						<li><a href='newsCenterList?news.c_lm=1106&pageNo=1'><img src="newimages/menu_9.png" /></a></li>
 					</ul>
 				</div>
 			</div>
@@ -247,7 +250,6 @@ List<News> list= (List<News>) newsService.selectList("NewsMapper.getVideoNewsLis
 			 -->
 		</div>
 		
-		
 		<div id="news_center">
 			<div class="news_center_title">
 				<div class="news_center_title_font"><s:property value="pageModel.keyWords"/></div>
@@ -256,70 +258,76 @@ List<News> list= (List<News>) newsService.selectList("NewsMapper.getVideoNewsLis
 				</div>
 			</div>
 			<div class="">
-      
-      
-      </div>
-	  <div  style="height:200px; width:700px; margin-left:20px; margin-top:10px; float:left;">
-	   
-        <div style="height:400px; width:420px; float:left; margin:0px 10px 10px 10px;">
-        <%  if(list.size()>0){%>
-        <a href="newsCenterList?news.c_lm=1239&pageNo=1">
-	    <img  style="height:360px; width:400px;" src="<%=basePath %><%=list.get(0).getC_spfmljdz() %>"/>
-		<div  style="text-align:center; "><%=list.get(0).getC_bt() %></div>
-		</a>
-		 <%  }%>
-	   </div>
-	  
-	    <div style="height:200px; width:200px; float:left; margin:0px 10px 10px 10px;">
-	    <%  if(list.size()>1){%>
-	         <a href="newsCenterList?news.c_lm=1239&pageNo=1">
-	    <img  style="height:180px; width:200px;" src="<%=basePath %><%=list.get(1).getC_spfmljdz() %>"/>
-		<div style="text-align:center; "><%=list.get(1).getC_bt() %></div>
-			</a>
-			<%  }%>
-	  </div>
-	  
-	    <div style="height:200px; width:200px; float:left; margin:0px 10px 10px 10px;">
-	    <%  if(list.size()>2){%>
-	         <a href="newsCenterList?news.c_lm=1239&pageNo=1">
-	    <img  style="height:180px; width:200px;" src="<%=basePath %><%=list.get(2).getC_spfmljdz() %>"/>
-		<div style="text-align:center; "><%=list.get(2).getC_bt() %></div>
-			</a>
-			<%  }%>
-	  </div>
-	  
-	  <div style="height:200px; width:200px; float:left; margin:0px 10px 10px 10px;">
-	  <%  if(list.size()>3){%>
-	       <a href="newsCenterList?news.c_lm=1239&pageNo=1">
-	    <img  style="height:180px; width:200px;" src="<%=basePath %><%=list.get(3).getC_spfmljdz() %>"/>
-		<div style="text-align:center; "><%=list.get(3).getC_bt() %></div>
-			</a>
-			<%  }%>
-	  </div>
-	  
-	     <div style="height:200px; width:200px; float:left; margin:0px 10px 10px 10px;">
-	     <%  if(list.size()>4){%>
-	          <a href="newsCenterList?news.c_lm=1239&pageNo=1">
-	    <img  style="height:180px; width:200px;" src="<%=basePath %><%=list.get(4).getC_spfmljdz() %>"/>
-		<div style="text-align:center; "><%=list.get(4).getC_bt() %></div>
-			</a>
-			<%  }%>
-	  </div>
-	  
-	  <div style="height:200px; width:200px; float:left; margin:0px 10px 10px 10px;">
-	  <%  if(list.size()>5){%>
-	       <a href="newsCenterList?news.c_lm=1239&pageNo=1">
-	    <img  style="height:180px; width:200px;" src="<%=basePath %><%=list.get(5).getC_spfmljdz() %>"/>
-		<div style="text-align:center; "><%=list.get(5).getC_bt() %></div>
-			</a>
-			<%  }%>
-	  </div>
-	  
-	  
-	  
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" 
+codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
+ width="700" height="440" align="middle">
+<param name="allowScriptAccess" value="sameDomain" />
+<param name="movie" value="<%=basePath %>video/dynamic_flash_video_gallery.swf?flashvars=list.jsp" />
+<param name="quality" value="high" /><param name="bgcolor" value="#F4FBFF" />
 
+<embed src="<%=basePath %>video/dynamic_flash_video_gallery.swf?flashvars=list.jsp" quality="high" bgcolor="#F4FBFF"
+ width="700" height="440" align="middle" allowScriptAccess="sameDomain" 
+  type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+</object>
 
-  	</div>
+			<!-- 
+			
+			
+			
+			
+				<s:if test="pageModel.list != null and pageModel.list.size > 0">
+					<s:iterator value="pageModel.list" var="news">
+						<div id="news_news_list">
+							<div id="lddt_news_list_c" style="width:600px;" >
+								<img src="newimages/dote.gif" style="margin-top:6px;"/> 
+								<a title="<s:property value='#news.c_bt'/>" href="newsDetail?news.n_xh=<s:property value='#news.n_xh'/>" target="_blank">
+									<s:property value="#news.c_bt"/>
+								</a>
+							</div>
+							<div id="lddt_news_list_d">
+								<s:property value="#news.d_fbsj.substring(0,10)"/>
+							</div>
+						</div>
+					</s:iterator>
+				</s:if>
+				<s:else>
+				 <div id="news_news_list">
+					<div id="lddt_news_list_c" style="width:600px; text-align: center" >
+						暂无记录！
+					</div>
+					<div id="lddt_news_list_d">
+						
+					</div>
+				</div>
+				</s:else> 
+                    <br />
+                    <div style="display:block;  overflow:hidden; width: 734px; padding-top:20px;">
+						<img src="newimages/news_list_line.png"/>
+					</div>
+
+						<div style="width: 734px; text-align:center;">
+							<div class="digg">
+								<span class="disabled"> 
+									<a href="javascript:searchSubmit(1)">首页</a>
+								</span> 
+								<span class="disabled"> 
+								<a href="javascript:searchSubmit(<s:property value="pageModel.previousPage"/>)">上一页</a>
+								</span>
+								<span class="disabled">
+								<c:forEach varStatus="i" begin="${pageModel.pageNo}" end="${pageModel.totalPages-pageModel.pageNo>8?pageModel.pageNo+8:pageModel.totalPages}">
+									<a href="javascript:searchSubmit(${i.index})">${i.index}</a>
+								</c:forEach>
+								</span>
+								<span class="disabled">
+								<a href="javascript:searchSubmit(<s:property value="pageModel.nextPage"/>)">下一页</a>
+								</span>
+								<span class="disabled">
+								<a href="javascript:searchSubmit(<s:property value="pageModel.nextPage"/>)">末页</a>
+								</span>
+							</div>
+						</div>
+						-->
+					</div>
 			</div>
 			<div id="bottom_blue_line"></div>
 			<div id="bottom">
