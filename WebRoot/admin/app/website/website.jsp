@@ -104,7 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               case "add":
                   //top.f_addTab(null, '增加常用网址信息', '<%=basePath%>admin/app/website/websiteDetail.jsp');
 		  dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/website/websiteDetail.jsp', 
-                           height: 600,width: 900,showMax: true, showToggle: true,  showMin: true
+                           height: 400,width: 700,showMax: true, showToggle: true,  showMin: true
 					  });
                   /**
                   if (editingrow == null)
@@ -126,7 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   if (!selected) { LG.tip('请选择行!'); return }
                   //top.f_addTab(null, '修改常用网址信息', '<%=basePath%>websiteUpdate?website.n_xh=' + selected.n_xh);
 		  dialog = $.ligerDialog.open({ url: '<%=basePath%>websiteUpdate?website.n_xh=' + selected.n_xh, 
-                           height: 600,width: 900,showMax: true, showToggle: true,  showMin: true
+                           height: 400,width: 700,showMax: true, showToggle: true,  showMin: true
 					  });
                   /**
                   if (editingrow == null)

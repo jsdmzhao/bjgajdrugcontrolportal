@@ -43,7 +43,6 @@
 		       TO_CHAR(D_DJ,'YYYY-MM-DD HH24:MI:SS') D_DJ,
 		       NVL(N_XSXH,'') N_XSXH
 		  FROM B_WZLB
-		ORDER BY N_LBXH
 	</select>
 	
 	<select id="getWebsiteLists"  parameterType="string"  resultMap="resultWebsite">

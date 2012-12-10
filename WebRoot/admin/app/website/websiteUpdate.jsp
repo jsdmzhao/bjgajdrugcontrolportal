@@ -11,7 +11,7 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
-    <title>栏目 明细</title>
+    <title>网址 明细</title>
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
     <script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
@@ -54,9 +54,8 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
 		          options:{
 		             valueField:"value",
 		             textFiled:"text",
-		         	 //url:"../handler/select.ashx?view=Categories&idfield=CategoryID&textfield=CategoryName",
 		         	 data : tempdata,
-		         	 value : '<s:property value='website.c_lbxh'/>'
+		         	 value : '<s:property value='website.n_lbxh'/>'
 		          },
 		          group:"基本信息",
 		          groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
