@@ -172,7 +172,7 @@ A.visited {
 }
 
 .navlist DL DD {
-	Z-INDEX: 1; BORDER-BOTTOM: #A9cfe5 1px solid; POSITION: absolute; BORDER-LEFT: #A9cfe5 1px solid; WIDTH: 100px; DISPLAY: none; BACKGROUND: #fffdf3; BORDER-TOP: #A9cfe5 1px solid; BORDER-RIGHT: #A9cfe5 1px solid; LEFT: -271px
+	Z-INDEX: 1; BORDER-BOTTOM: #A9cfe5 1px solid; POSITION: absolute; BORDER-LEFT: #A9cfe5 1px solid; WIDTH:400px; DISPLAY: none; BACKGROUND: #fffdf3; BORDER-TOP: #A9cfe5 1px solid; BORDER-RIGHT: #A9cfe5 1px solid; LEFT: -407px
 }
 .navlist DL DD .sideleft {
 	WIDTH: 0px; FLOAT: left
@@ -196,7 +196,7 @@ A.visited {
 	WIDTH: 75px; FLOAT: left
 }
 .sideleft LI DIV {
-	WIDTH: 265px; MARGIN-BOTTOM: 10px; FLOAT: left
+	WIDTH: 400px; MARGIN-BOTTOM: 10px; FLOAT: left
 }
 .sideleft LI DIV A {
 	BORDER-LEFT: #d1d1d1 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 14px; MARGIN: 11px 10px 0px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; WHITE-SPACE: nowrap; FLOAT: left; HEIGHT: 14px; COLOR: #000; PADDING-TOP: 0px
