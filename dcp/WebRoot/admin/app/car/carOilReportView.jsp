@@ -217,7 +217,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       var cmb1,cmb2; 
       var tempdata = [{text:'所有部门',value:''},{text:'总队领导',value:'1'},{text:'办公室',value:'3'},
                       {text:'协调指导大队',value:'4'}, {text:'情报中心',value:'9'}, {text:'侦查大队',value:'7'},
-                      {text:'查禁大队',value:'8'}, {text:'缉控大队',value:'5'}, {text:'两品办',value:'10'}];;
+                      {text:'查禁大队',value:'8'}, {text:'缉控大队',value:'5'}, {text:'易管大队',value:'11'}, {text:'法制办',value:'12'}];;
 
      cmb1 = $("#c_bm").ligerComboBox({ data: tempdata, isMultiSelect: false,
           textFiled:"text",valueField:"value",

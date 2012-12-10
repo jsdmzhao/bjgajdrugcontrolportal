@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -51,7 +51,9 @@ if(carType == null){
 				<option value="7">侦查大队</option>
 				<option value="8">查禁大队</option>
 				<option value="5">缉控大队</option>
-				<option value="10">两品办 </option>
+				<option value="11">易管大队</option>
+				<option value="11">易管大队</option>
+				<option value="12">法制办 </option>
 			</select>
 		</DIV>
 		<DIV class=l-panel-search-item>车辆：</DIV>

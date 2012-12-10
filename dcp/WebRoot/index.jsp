@@ -794,7 +794,7 @@ function MM_out(mmObj) {
 											<ul class="items" style="display:block;">
 											
 											
-												<s:iterator value="resMap.qxphList" id="news" var="news" status="status" begin="0" end="6">
+												<s:iterator value="resMap.qxphList" id="news" var="news" status="status" begin="0" end="7">
 													<li>
 														<div style="float:left; margin-top: 3px; margin-left: 0px;">
 															<img alt="" src="newimages/num<s:property value='#status.index+1'/>.png">
