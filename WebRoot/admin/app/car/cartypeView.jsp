@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript"> 
         var tempdata = [{text:'总队领导',value:1},{text:'办公室',value:3},{text:'协调指导大队',value:4},
                     	{text:'情报中心',value:9},{text:'侦查大队',value:7},{text:'查禁大队',value:8},
-                    	{text:'缉控大队',value:5},{text:'易管大队',value:11}];
+                    	{text:'缉控大队',value:5}, {text:'易管大队',value:'11'}, {text:'法制办',value:'12'}];
         var ybdata   = [{text:'92#',value:'01'},{text:'95#',value:'02'},{text:'柴油',value:'03'}];
         var config = {"Form":{ 
          fields : [

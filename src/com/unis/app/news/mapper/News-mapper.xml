@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="NewsMapper">
@@ -275,11 +275,11 @@
 		  FROM (SELECT C_DM C_FBDW, 0 CNT
 		          FROM D_DM
 		         WHERE C_BXH = 'NDEP'
-		           AND C_DM IN ('3', '4', '5', '9', '7', '8', '10')
+		           AND C_DM IN ('3', '4', '5', '9', '7', '8', '11' , '12')
 		        UNION ALL
 		        SELECT C_FBDW, COUNT(*) CNT
 		          FROM B_XINWEN
-		         WHERE C_FBDW IN ('3', '4', '5', '9', '7', '8', '10')
+		         WHERE C_FBDW IN ('3', '4', '5', '9', '7', '8', '11' , '12')
 		         GROUP BY C_FBDW)
 		 GROUP BY C_FBDW
 		 ORDER BY SUM(CNT) DESC
