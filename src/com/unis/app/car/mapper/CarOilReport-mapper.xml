@@ -25,6 +25,17 @@
  			ORDER BY D_TJRQ DESC
 	</select>
 	
+	<select id="getCarOilReportRepeatCnt" resultType="int" parameterType="hashmap">
+		SELECT COUNT(*) CNT
+		  FROM B_YLBB
+		 WHERE D_TJRQ BETWEEN TRUNC(TO_DATE(#{d_tjrq,jdbcType=VARCHAR},'YYYY-MM-DD'), 'MM') AND
+		       	ADD_MONTHS(TO_DATE(#{d_tjrq,jdbcType=VARCHAR},'YYYY-MM-DD'),1)
+		       AND N_CLLBXH = #{n_cllbxh}
+		       <if test="n_xh != null and n_xh != '' ">
+				AND B_YLBB.N_XH &lt;&gt; #{n_xh}
+			  </if>
+	</select>
+	
 	<select id="getCarOilReportOldCnt" resultType="long" parameterType="int">
 		SELECT N_DYGLS
 		  FROM B_YLBB

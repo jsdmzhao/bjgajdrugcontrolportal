@@ -206,10 +206,10 @@
           #{c_ppxh,jdbcType=VARCHAR}, 
           TO_DATE(#{d_gmsj,jdbcType=VARCHAR},'YYYY-MM-DD'), 
           TO_DATE(#{d_zcsj,jdbcType=VARCHAR},'YYYY-MM-DD'), 
-          TO_DATE(#{c_zrsj,jdbcType=VARCHAR},'YYYY-MM-DD'), 
+          #{c_zrsj,jdbcType=VARCHAR}, 
           #{c_yhzid,jdbcType=VARCHAR}, 
        	  sysdate,
-       	  TO_DATE(#{d_ycsj,jdbcType=DATE},'YYYY-MM-DD HH24:MI:SS'),  
+       	  TO_DATE(#{d_ycsj,jdbcType=DATE},'YYYY-MM-DD'),  
        	  #{c_yb,jdbcType=VARCHAR}    
 	    )  
 	</insert>

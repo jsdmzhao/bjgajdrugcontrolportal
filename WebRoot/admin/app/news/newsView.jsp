@@ -13,7 +13,7 @@ String newsType = request.getParameter("newsType");
 	<head>
     <title>新闻 明细</title>
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
-    <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
+    <%-- <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" /> --%>
     <script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/ligerUI/js/ligerui.min.js" type="text/javascript"></script>  
     <link href="<%=basePath%>liger/lib/css/common.css" rel="stylesheet" type="text/css" />  
@@ -61,7 +61,6 @@ String newsType = request.getParameter("newsType");
 	    var com;
         var config = {"Form":{ 
          fields : [
-         {name:"c_lm",type:"hidden",value:'<%=newsType %>'},
          {
 	         display:"标题",
 	         name:"c_bt",
@@ -97,7 +96,7 @@ String newsType = request.getParameter("newsType");
              value:"<s:property value='news.c_sftwwz'/>",
              labelWidth:100,width:30,type:"checkbox"
          },
-         {display:"图片名称",name:"c_tpljdz",value: "<s:property value='news.c_tpljdz'/>" ,newline:false,labelWidth:100,width:420,space:30,type:"text",readonly:"readonly"},
+         {display:"图片名称",name:"c_tpljdz",value: "<s:property value='news.c_tpljdz'/>" ,newline:false,labelWidth:100,width:445,space:30,type:"text",readonly:"readonly"},
          {
         	 //display:"上传图片",
    	         name:"sctp",
@@ -112,12 +111,12 @@ String newsType = request.getParameter("newsType");
          },
          {  display:"是否上传视频",
             name:"c_sfscsp",
-            value:"<s:property value='news.c_sfscsp'/>",
+            //value:"<s:property value='news.c_sfscsp'/>",
             newline:true,labelWidth:100,width:30,
             type:"checkbox",
             nodeWidth :30
         },
-        {display:"视频名称",name:"c_spljdz", value: "<s:property value='news.c_spljdz'/>",newline:false,labelWidth:100,width:420,space:30,type:"text",readonly:"readonly"},
+        {display:"视频名称",name:"c_spljdz", value: "<s:property value='news.c_spljdz'/>",newline:false,labelWidth:100,width:445,space:30,type:"text",readonly:"readonly"},
         {
         	 //display:"上传视频",
         	 value:"选择视频",
@@ -130,6 +129,18 @@ String newsType = request.getParameter("newsType");
 	         disabled:"disabled",
 	         onclick : "openDialog('#uploadFlashDiv')"
          },
+         {display:"视频封面图片",name:"c_spfmljdz",newline:true,value:"<s:property value='news.c_spfmljdz'/>",labelWidth:100,width:585,space:30,type:"text",readonly:"readonly"},
+         {
+         	 value:"选择封面图片",
+ 	         name:"scspfm",
+ 	         newline:false,
+ 	         labelWidth: 0,
+ 	         width:120,
+ 	         type:"button",
+ 	         cssClass:"l-button-2",
+ 	         disabled:"disabled",
+ 	         onclick : "openDialog('#uploadFlashFmDiv')"
+          },
          {
          	display:"简介",
          	name:"c_jj",
@@ -143,16 +154,18 @@ String newsType = request.getParameter("newsType");
          {display:"发布时间",name:"d_fbsj",newline:false,labelWidth:100,validate: { required: true},
              width:250,space:30,type:"text",value: "<s:property value='news.d_fbsj'/>",
              onclick:"WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" },
-         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea",value:$('#nr').html() },
+         {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,
+          type:"textarea",value:$('#nr').html() 
+         },
          {name:"n_xh", type:"hidden",value:"<s:property value='news.n_xh'/>"},
          {name:"c_sfzd", type:"hidden",value:"<s:property value='news.c_sfzd'/>"},
          {name:"c_sfgl", type:"hidden",value:"<s:property value='news.c_sfgl'/>"},
          {name:"c_sftj", type:"hidden",value:"<s:property value='news.c_sftj'/>"},
          {name:"n_xxxh", type:"hidden",value:"<s:property value='news.n_xxxh'/>"},
          {
-        	 type:"hidden",
-             name:"c_lm",
-             value: "<s:property value='news.c_lm'/>"
+      	   type:"hidden",
+           name:"c_lm",
+           value: "<s:property value='news.c_lm'/>"
          }
          //,
          //{name:"n_ydcs", labelWidth:100,width:30,space:30,type:"hidden",value:"0"}
@@ -177,7 +190,7 @@ String newsType = request.getParameter("newsType");
         LG.overrideGridLoading(); 
 
         //表单底部按钮 
-        LG.setFormDefaultBtn(f_cancel,isView );
+        LG.setFormDefaultBtn(f_cancel);
 
         //创建表单结构
         var mainform2 = $("#mainform2");  
@@ -259,6 +272,7 @@ String newsType = request.getParameter("newsType");
         	formMap["c_fbdw"] = com.getValue();
 			
         	NewsAction.newsSave(formMap,function (result){
+        		
         		//var win = parent || window;
         		if(result == 'success'){
         			LG.showSuccess('保存成功', function () { 
@@ -350,16 +364,20 @@ String newsType = request.getParameter("newsType");
        		 var value = $("#c_sfscsp").attr("checked");
        		 if(value == true){
     			$("#scsp").attr("disabled",false);	
+    			$("#scspfm").attr("disabled",false);
              }else{
-            	 $("#scsp").attr("disabled","disabled");
+            	$("#scsp").attr("disabled","disabled");
+            	$("#scspfm").attr("disabled","disabled");
              }
        	 
        		//  upload('c_spljdz','fileDownload','cSmjhzm');
        		});
        	}); 
         
-	       $("input,select,textarea",mainform).attr("readonly", "readonly");
-	       $("input,select,textarea",mainform).attr("disabled", "disabled");
+
+       $("input,select,textarea",mainform).attr("readonly", "readonly");
+       $("input,select,textarea",mainform).attr("disabled", "disabled");
+        
     </script>
  	<div id="uploadImageDiv" style="display: none;">
 		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_tpljdz"></iframe> <!---->
@@ -367,6 +385,9 @@ String newsType = request.getParameter("newsType");
 	<div id="uploadFlashDiv" style="display: none;">
 		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_spljdz"></iframe> <!---->
 	</div>   
+	<div id="uploadFlashFmDiv" style="display: none;">
+		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_spfmljdz"></iframe> <!---->
+	</div>  
 </body>
 
 </html>

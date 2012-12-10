@@ -85,6 +85,21 @@ public class CarOilReportAction {
 		out.close();
 	}	
 	
+	public String carOilReportCheckRepeat(String n_xh, String n_cllbxh, String value){
+		
+		Map<String, String> sqlParamMap = new HashMap<String, String>();
+
+	    sqlParamMap.put("n_xh", n_xh);
+	    sqlParamMap.put("n_cllbxh", n_cllbxh);
+	    sqlParamMap.put("d_tjrq", value);
+
+	    int cnt = ((Integer)this.carService.selectOne("CarOilReportMapper.getCarOilReportRepeatCnt", sqlParamMap)).intValue();
+	    if (cnt == 0) {
+	      return "success";
+	    }
+	    return "failure";
+	  }
+	
 	@SuppressWarnings("unchecked")
 	public List<Combox> carOilReportOldCnt() throws IOException{
 		

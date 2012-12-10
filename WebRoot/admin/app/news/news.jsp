@@ -4,11 +4,6 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
-String newsType = (String)request.getParameter("newsType");
-if(newsType == null){
-	newsType = "";
-}
-
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -17,7 +12,7 @@ if(newsType == null){
 <head>
     <title></title> 
     <link href="<%=basePath%>liger/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
-    <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" />
+    <%-- <link href="<%=basePath%>liger/lib/ligerUI/skins/Gray/css/all.css" rel="stylesheet" type="text/css" /> --%>
     <script src="<%=basePath%>liger/lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/ligerUI/js/ligerui.all.js" type="text/javascript"></script>   
     <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerGrid.js" type="text/javascript"></script>
@@ -111,7 +106,7 @@ if(newsType == null){
                   if (editingrow == null) {
                       
                       //top.f_addTab(null, '增加新闻信息', '<!%=basePath%>admin/app/news/newsDetail.jsp?newsType='+newsType);
-                     dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/news/newsDetail.jsp?newsType='+newsType, 
+                     dialog = $.ligerDialog.open({ url: '<%=basePath%>admin/app/news/newsDetail.jsp', 
                            height: 600,width: 900,showMax: true, showToggle: true,  showMin: true, title:'增加新闻信息'
 					  });
                   } else
