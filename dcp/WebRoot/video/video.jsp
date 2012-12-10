@@ -153,7 +153,6 @@ List<News> list= (List<News>) newsService.selectList("NewsMapper.getVideoNewsLis
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="newimages/12312.jpg"
 				width="14" height="13" />&nbsp;&nbsp;<strong>车辆限行尾号：</strong>
 					<%
-					ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());
 					ClxxSvc clxxSvc= (ClxxSvc) ctx.getBean("clxxSvc");
 					out.print(clxxSvc.getWh());
 					%>
@@ -264,7 +263,7 @@ List<News> list= (List<News>) newsService.selectList("NewsMapper.getVideoNewsLis
         <div style="height:400px; width:420px; float:left; margin:0px 10px 10px 10px;">
         <%  if(list.size()>0){%>
         <a href="newsCenterList?news.c_lm=1239&pageNo=1">
-	    <img  style="height:360px; width:400px;" src="<%=basePath %><%=list.get(0).getC_spfmljdz() %>"/>
+	    <img  style="height:360px; width:400px;" src="<%=basePath %><%=list.get(0).getC_spfmljdz()!=null?list.get(0).getC_spfmljdz():"video/images/null.png"%>"/>
 		<div  style="text-align:center; "><%=list.get(0).getC_bt() %></div>
 		</a>
 		 <%  }%>
@@ -273,7 +272,7 @@ List<News> list= (List<News>) newsService.selectList("NewsMapper.getVideoNewsLis
 	    <div style="height:200px; width:200px; float:left; margin:0px 10px 10px 10px;">
 	    <%  if(list.size()>1){%>
 	         <a href="newsCenterList?news.c_lm=1239&pageNo=1">
-	    <img  style="height:180px; width:200px;" src="<%=basePath %><%=list.get(1).getC_spfmljdz() %>"/>
+	    <img  style="height:180px; width:200px;" src="<%=basePath %><%=list.get(1).getC_spfmljdz()!=null?list.get(1).getC_spfmljdz():"video/images/null.png" %>"/>
 		<div style="text-align:center; "><%=list.get(1).getC_bt() %></div>
 			</a>
 			<%  }%>
@@ -282,7 +281,7 @@ List<News> list= (List<News>) newsService.selectList("NewsMapper.getVideoNewsLis
 	    <div style="height:200px; width:200px; float:left; margin:0px 10px 10px 10px;">
 	    <%  if(list.size()>2){%>
 	         <a href="newsCenterList?news.c_lm=1239&pageNo=1">
-	    <img  style="height:180px; width:200px;" src="<%=basePath %><%=list.get(2).getC_spfmljdz() %>"/>
+	    <img  style="height:180px; width:200px;" src="<%=basePath %><%=list.get(2).getC_spfmljdz()!=null?list.get(2).getC_spfmljdz():"video/images/null.png" %>"/>
 		<div style="text-align:center; "><%=list.get(2).getC_bt() %></div>
 			</a>
 			<%  }%>
@@ -291,7 +290,7 @@ List<News> list= (List<News>) newsService.selectList("NewsMapper.getVideoNewsLis
 	  <div style="height:200px; width:200px; float:left; margin:0px 10px 10px 10px;">
 	  <%  if(list.size()>3){%>
 	       <a href="newsCenterList?news.c_lm=1239&pageNo=1">
-	    <img  style="height:180px; width:200px;" src="<%=basePath %><%=list.get(3).getC_spfmljdz() %>"/>
+	    <img  style="height:180px; width:200px;" src="<%=basePath %><%=list.get(3).getC_spfmljdz()!=null?list.get(3).getC_spfmljdz():"video/images/null.png"%>"/>
 		<div style="text-align:center; "><%=list.get(3).getC_bt() %></div>
 			</a>
 			<%  }%>
@@ -300,7 +299,7 @@ List<News> list= (List<News>) newsService.selectList("NewsMapper.getVideoNewsLis
 	     <div style="height:200px; width:200px; float:left; margin:0px 10px 10px 10px;">
 	     <%  if(list.size()>4){%>
 	          <a href="newsCenterList?news.c_lm=1239&pageNo=1">
-	    <img  style="height:180px; width:200px;" src="<%=basePath %><%=list.get(4).getC_spfmljdz() %>"/>
+	    <img  style="height:180px; width:200px;" src="<%=basePath %><%=list.get(4).getC_spfmljdz()!=null?list.get(4).getC_spfmljdz():"video/images/null.png" %>"/>
 		<div style="text-align:center; "><%=list.get(4).getC_bt() %></div>
 			</a>
 			<%  }%>
@@ -309,7 +308,7 @@ List<News> list= (List<News>) newsService.selectList("NewsMapper.getVideoNewsLis
 	  <div style="height:200px; width:200px; float:left; margin:0px 10px 10px 10px;">
 	  <%  if(list.size()>5){%>
 	       <a href="newsCenterList?news.c_lm=1239&pageNo=1">
-	    <img  style="height:180px; width:200px;" src="<%=basePath %><%=list.get(5).getC_spfmljdz() %>"/>
+	    <img  style="height:180px; width:200px;" src="<%=basePath %><%=list.get(5).getC_spfmljdz()!=null?list.get(5).getC_spfmljdz():"video/images/null.png" %>"/>
 		<div style="text-align:center; "><%=list.get(5).getC_bt() %></div>
 			</a>
 			<%  }%>
