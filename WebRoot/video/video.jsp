@@ -137,8 +137,8 @@ List<News> list= (List<News>) newsService.selectList("NewsMapper.getVideoNewsLis
 	      <li><a href="newsCenterList?news.c_lm=1305&pageNo=1"><span>法律汇编</span></a> </li>
 	      <li><a href="newsCenterList?news.c_lm=1209&pageNo=1"><span>法规汇编</span></a> </li>
 	      <li><a href="newsCenterList?news.c_lm=1307&pageNo=1"><span>规章汇编</span></a></li> 
-	      <li><a href="newsCenterList?news.c_lm=1200&pageNo=1"><span>办案流程</span></a></li>
 	      <li><a href="newsCenterList?news.c_lm=1312&pageNo=1"><span>规范性文件</span></a></li>
+	      <li><a href="newsCenterList?news.c_lm=1200&pageNo=1"><span>办案流程</span></a></li>
 	  </ul>
 	</div>
 		
