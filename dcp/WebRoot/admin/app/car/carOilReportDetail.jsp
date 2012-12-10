@@ -200,16 +200,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	
       	formMap['n_cllbxh'] = formMap['n_cllbxh_val'];
       	
-      	CarOilReportAction.carOilReportSave(formMap,function (result){
-      		if(result == 'success'){
-     			LG.showSuccess('保存成功', function () { 
-                     f_cancel();
-                     parent.f_reload();
-                 });
-     		} else {
-     		 	LG.showError('保存失败');
-     		}
-      	});
+      	CarOilReportAction.carOilReportCheckRepeat(formMap['n_xh'],formMap['n_cllbxh'],formMap['d_tjrq'],function(result){
+		  	if(result == 'success'){
+		  		CarOilReportAction.carOilReportSave(formMap,function (result){
+		      		if(result == 'success'){
+		     			LG.showSuccess('保存成功', function () { 
+		                     f_cancel();
+		                     parent.f_reload();
+		                 });
+		     		} else {
+		     		 	LG.showError('保存失败');
+		     		}
+		      	});
+		  	} else {
+		  		LG.showSuccess('您本月已经记录了该车辆的油料报表信息了！');
+		  	}
+		});
+      	
       	
       }
       function f_cancel() {

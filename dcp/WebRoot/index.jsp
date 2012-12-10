@@ -180,7 +180,7 @@ function MM_out(mmObj) {
 		      <li><a href="newsCenterList?news.c_lm=1305&pageNo=1"><span>法律汇编</span></a> </li>
 		      <li><a href="newsCenterList?news.c_lm=1209&pageNo=1"><span>法规汇编</span></a> </li>
 		      <li><a href="newsCenterList?news.c_lm=1307&pageNo=1"><span>规章汇编</span></a></li> 
-		      <li><a href="newsCenterList?news.c_lm=1200&pageNo=1"><span>办案流程</span></a></li> 
+		      <li><a href="newsCenterList?news.c_lm=1400&pageNo=1"><span>办案流程</span></a></li> 
 		      <li><a href="newsCenterList?news.c_lm=1312&pageNo=1"><span>规范性文件</span></a></li>
 		  </ul>
 		</div>
@@ -458,7 +458,7 @@ function MM_out(mmObj) {
 					}
 					%>
 				    </div>
-				    <div class="ztzl_img_div"><a href="newsCenterList?news.c_lm=1272&pageNo=1" target="_blank"><img src="newimages/jywh.png" /></a></div>
+				    <div class="ztzl_img_div"><a href="newsCenterList?news.c_lm=1272&pageNo=1"><img src="newimages/jywh.png" /></a></div>
 					
 				</div>
 				
