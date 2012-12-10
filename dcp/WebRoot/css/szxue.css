@@ -172,7 +172,7 @@ A.visited {
 }
 
 .navlist DL DD {
-	Z-INDEX: 1; BORDER-BOTTOM: #A9cfe5 1px solid; POSITION: absolute; BORDER-LEFT: #A9cfe5 1px solid; WIDTH: 100px; DISPLAY: none; BACKGROUND: #fffdf3; BORDER-TOP: #A9cfe5 1px solid; BORDER-RIGHT: #A9cfe5 1px solid; LEFT: -275px
+	Z-INDEX: 1; BORDER-BOTTOM: #A9cfe5 1px solid; POSITION: absolute; BORDER-LEFT: #A9cfe5 1px solid; WIDTH: 100px; DISPLAY: none; BACKGROUND: #fffdf3; BORDER-TOP: #A9cfe5 1px solid; BORDER-RIGHT: #A9cfe5 1px solid; LEFT: -271px
 }
 .navlist DL DD .sideleft {
 	WIDTH: 0px; FLOAT: left
