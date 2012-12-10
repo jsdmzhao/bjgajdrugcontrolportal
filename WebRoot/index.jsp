@@ -656,7 +656,7 @@ function MM_out(mmObj) {
 					              <LI class="noline">
 					                <DIV>
 					                	<s:iterator value="resMap.qgdhList" var="website">
-					                		<A style="width: 75px;" title="<s:property value="#website.c_bt"/>" href="<s:property value="#website.c_lj"/>" target="_blank">
+					                		<A style="width: 120px;" title="<s:property value="#website.c_bt"/>" href="<s:property value="#website.c_lj"/>" target="_blank">
 					                			<s:property value="#website.c_bt"/>
 					                		</A> 
 					                	</s:iterator>
@@ -691,7 +691,7 @@ function MM_out(mmObj) {
 					            <LI class="noline">
 					              <DIV>
 				              		<s:iterator value="resMap.fxjdhList" var="website">
-				                		<A style="width: 75px;" title="<s:property value="#website.c_bt"/>" href="<s:property value="#website.c_lj"/>" target="_blank">
+				                		<A style="width: 120px;" title="<s:property value="#website.c_bt"/>" href="<s:property value="#website.c_lj"/>" target="_blank">
 				                			<s:property value="#website.c_bt"/>
 				                		</A> 
 				                	</s:iterator>
@@ -708,7 +708,7 @@ function MM_out(mmObj) {
 					              <LI class="noline">
 					                  <DIV>
 					              		<s:iterator value="resMap.jddhList" var="website">
-					                		<A style="width: 80px;" title="<s:property value="#website.c_bt"/>" href="<s:property value="#website.c_lj"/>" target="_blank">
+					                		<A style="width: 120px;" title="<s:property value="#website.c_bt"/>" href="<s:property value="#website.c_lj"/>" target="_blank">
 					                			<s:property value="#website.c_bt"/>
 					                		</A> 
 					                	</s:iterator>
