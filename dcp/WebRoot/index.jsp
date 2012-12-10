@@ -180,8 +180,8 @@ function MM_out(mmObj) {
 		      <li><a href="newsCenterList?news.c_lm=1305&pageNo=1"><span>法律汇编</span></a> </li>
 		      <li><a href="newsCenterList?news.c_lm=1209&pageNo=1"><span>法规汇编</span></a> </li>
 		      <li><a href="newsCenterList?news.c_lm=1307&pageNo=1"><span>规章汇编</span></a></li> 
-		      <li><a href="newsCenterList?news.c_lm=1400&pageNo=1"><span>办案流程</span></a></li> 
 		      <li><a href="newsCenterList?news.c_lm=1312&pageNo=1"><span>规范性文件</span></a></li>
+		      <li><a href="newsCenterList?news.c_lm=1400&pageNo=1"><span>办案流程</span></a></li> 
 		  </ul>
 		</div>
 		
@@ -765,7 +765,7 @@ function MM_out(mmObj) {
 					</ul>
 				</div>
 			</div>
-				<div class="xxph_div" style="margin-top: 25px;">
+				<div class="xxph_div" style="margin-top: 5px;">
 						<div class="xxph_title_content">
 							<div class="jrzb_title_img"><img src="newimages/content_title_img.png" /></div>
 							<div class="jrzb_title_font">信息排行</div>
@@ -799,165 +799,17 @@ function MM_out(mmObj) {
 														<div style="float:left; margin-top: 3px; margin-left: 0px;">
 															<img alt="" src="newimages/num<s:property value='#status.index+1'/>.png">
 														</div>
-														<div style="float:left; width:60px;">
+														<div style="float:left; width:80px;">
 															<a href="#"><s:property value="#news.c_fbdw"/>
 															</a>
 														</div>
-														<div style="float:left; width:60px; margin-left:30px;">
+														<div style="float:left; width:40px; margin-left:30px;">
 															<a href="#"/>
 															<s:property value="#news.n_xxxh"/>条
 															</a>
 														</div>
 													</li>
 												</s:iterator>
-											<!-- 
-												<li style="margin-top: -3px;">
-													<div style="float:left; width:16px; margin-left: 0px;">
-														<img alt="" src="newimages/num1.png">
-													</div>
-													<div style="float:left; width:60px;">
-														<a href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>">东城分局</a>
-													</div>
-													<div style="float:left; width:60px; margin-left:30px;">
-														<a href="#">
-														0条
-														</a>
-													</div>
-												</li>
-												<li style="margin-top: -3px;">
-													<div style="float:left; width:16px; margin-left: 0px;">
-														<img alt="" src="newimages/num2.png">
-													</div>
-													<div style="float:left; width:60px;">
-														<a href="#">西城分局</a>
-													</div>
-													<div style="float:left; width:60px; margin-left:30px;">
-														<a href="#">0条</a>
-													</div>
-												</li>
-												<li style="margin-top: -3px;">
-													<div style="float:left; width:60px;">
-														<a href="#">朝阳分局</a>
-													</div>
-													<div style="float:left; width:60px; margin-left:30px;">
-														<a href="#">0条</a>
-													</div>
-												</li>
-												<li style="margin-top: -3px;">
-													<div style="float:left; width:60px;">
-														<a href="#">丰台分局</a>
-													</div>
-													<div style="float:left; width:60px; margin-left:30px;">
-														<a href="#">0条</a>
-													</div>
-												</li>
-												<li style="margin-top: -3px;">
-													<div style="float:left; width:60px;">
-														<a href="#">石景山分局</a>
-													</div>
-													<div style="float:left; width:60px; margin-left:30px;">
-														<a href="#">0条</a>
-													</div>
-												</li>
-												<li style="margin-top: -3px;">
-													<div style="float:left; width:60px;">
-														<a href="#">海淀分局</a>
-													</div>
-													<div style="float:left; width:60px; margin-left:30px;">
-														<a href="#">0条</a>
-													</div>
-												</li>	
-												<li style="margin-top: -3px;">
-													<div style="float:left; width:60px;">
-														<a href="#">门头沟分局</a>
-													</div>
-													<div style="float:left; width:60px; margin-left:30px;">
-														<a href="#">0条</a>
-													</div>
-												</li>
-												<li style="margin-top: -3px;">
-													<div style="float:left; width:60px;">
-														<a href="#">燕山分局</a>
-													</div>
-													<div style="float:left; width:60px; margin-left:30px;">
-														<a href="#">0条</a>
-													</div>
-												</li>
-												 -->
-												<!-- 
-												<li style="margin-top: -3px;">
-													<div style="float:left; width:60px;">
-														<a href="#">房山分局</a>
-													</div>
-													<div style="float:left; width:60px; margin-left:30px;">
-														<a href="#">0条</a>
-													</div>
-												</li>
-												<li style="margin-top: -3px;">
-													<div style="float:left; width:60px;">
-														<a href="#">通州分局</a>
-													</div>
-													<div style="float:left; width:60px; margin-left:30px;">
-														<a href="#">0条</a>
-													</div>
-												</li>
-												<li style="margin-top: -3px;">
-													<div style="float:left; width:60px;">
-														<a href="#">顺义分局</a>
-													</div>
-													<div style="float:left; width:60px; margin-left:30px;">
-														<a href="#">0条</a>
-													</div>
-												</li>
-												<li style="margin-top: -3px;">
-													<div style="float:left; width:60px;">
-														<a href="#">昌平分局</a>
-													</div>
-													<div style="float:left; width:60px; margin-left:30px;">
-														<a href="#">0条</a>
-													</div>
-												</li>
-												<li style="margin-top: -3px;">
-													<div style="float:left; width:60px;">
-														<a href="#">大兴分局</a>
-													</div>
-													<div style="float:left; width:60px; margin-left:30px;">
-														<a href="#">0条</a>
-													</div>
-												</li>
-												<li style="margin-top: -3px;">
-													<div style="float:left; width:60px;">
-														<a href="#">怀柔分局</a>
-													</div>
-													<div style="float:left; width:60px; margin-left:30px;">
-														<a href="#">0条</a>
-													</div>
-												</li>
-												<li style="margin-top: -3px;">
-													<div style="float:left; width:60px;">
-														<a href="#">平谷分局</a>
-													</div>
-													<div style="float:left; width:60px; margin-left:30px;">
-														<a href="#">0条</a>
-													</div>
-												</li>
-												<li style="margin-top: -3px;">
-													<div style="float:left; width:60px;">
-														<a href="#">密云分局</a>
-													</div>
-													<div style="float:left; width:60px; margin-left:30px;">
-														<a href="#">0条</a>
-													</div>
-												</li>
-												<li style="margin-top: -3px;">
-													<div style="float:left; width:60px;">
-														<a href="#">延庆分局</a>
-													</div>
-													<div style="float:left; width:60px; margin-left:30px;">
-														<a href="#">0条</a>
-													</div>
-												</li>
-												 -->
 											</ul>
 											
 											<ul class="items">
