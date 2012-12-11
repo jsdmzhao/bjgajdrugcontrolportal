@@ -59,23 +59,23 @@ if(nYhz==null){
          fields : [
          {name:"nXh",type:"hidden",value:'<%=nXh %>'},
          <%if("".equals(nYhz)){%>
-         {display:"申请单位",name:"cSqdw",newline:true,labelWidth:100,width:200,space:30,type:"select",
+         {display:"申请单位",name:"cSqdw",newline:true,labelWidth:100,width:200,validate: { required: true},space:30,type:"select",
              comboboxName:"cSqdwName",
              options:{valueFieldID:"cSqdw",data: cSqdwdata }},
          <%}else{%>
          {name:"cSqdw",value:"<%=nYhz%>",type:"hidden"},  
          <%}%>
-         {display:"拟使用会议室",name:"cNsyhys",newline:true,labelWidth:100,width:200,space:30,type:"select",
+         {display:"拟使用会议室",name:"cNsyhys",newline:true,labelWidth:100,width:200,validate: { required: true},space:30,type:"select",
              comboboxName:"cNsyhysName",
              options:{valueFieldID:"cNsyhys",data:[{ text: '主会议室', id: 0 },{ text: '专案会议室', id: 1 }] }},
              
-         {display:"会议日期",name:"dHyrq",newline:false,labelWidth:100,width:200,space:30,type:"date"},
-         {display:"开始时间",name:"dKssj",newline:true,labelWidth:100,width:200,space:30,type:"datetime"},
-         {display:"结束时间",name:"dJssj",newline:false,labelWidth:100,width:200,space:30,type:"datetime"},
-         {display:"会议内容",name:"cHynr",newline:true,labelWidth:100,width:500,space:30,type:"textarea"},
-         {display:"主持人",name:"cZcr",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"联系人",name:"cLxr",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"联系人",name:"cLxdh",newline:true,labelWidth:100,width:200,space:30,type:"text"}
+         {display:"会议日期",name:"dHyrq",newline:false,labelWidth:100,width:200,validate: { required: true},space:30,type:"date"},
+         {display:"开始时间",name:"dKssj",newline:true,labelWidth:100,width:200,validate: { required: true},space:30,type:"datetime"},
+         {display:"结束时间",name:"dJssj",newline:false,labelWidth:100,width:200,validate: { required: true},space:30,type:"datetime"},
+         {display:"会议内容",name:"cHynr",newline:true,labelWidth:100,width:500,validate: { required: true},space:30,type:"textarea"},
+         {display:"主持人",name:"cZcr",newline:true,labelWidth:100,width:200,validate: { required: true},space:30,type:"text"},
+         {display:"联系人",name:"cLxr",newline:false,labelWidth:100,width:200,validate: { required: true},space:30,type:"text"},
+         {display:"联系人",name:"cLxdh",newline:true,labelWidth:100,width:200,validate: { required: true},space:30,type:"text"}
          
         ]
  }};
@@ -179,7 +179,11 @@ if(nYhz==null){
         }
 
         function f_save() {
-
+        	//验证
+        	if (!LG.validator.form()) {
+                LG.showInvalid();
+                return false;
+            }
         	var formMap = DWRUtil.getValues("mform"); 
 			if(isAddNew){
         	KqHyssqSvc.save(formMap,function (rdata){

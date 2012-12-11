@@ -57,12 +57,12 @@ if(userId==null){
          fields : [
          {name:"nXh",type:"hidden",value:'<%=nXh %>'},
          {name:"cChfw",type:"hidden"},
-         {display:"会议名称",name:"cHymc",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"会议开始时间",name:"dKssj",newline:false,labelWidth:100,width:200,space:30,type:"datetime"},
-         {display:"会议时长",name:"cHysc",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"会议地点",name:"cHydd",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"参会范围",name:"cChfwName",newline:true,labelWidth:100,width:500,space:30,type:"smarttext"},
-         {display:"分会场",name:"cFc",newline:true,labelWidth:100,width:200,space:30,type:"text"}
+         {display:"会议名称",name:"cHymc",newline:true,labelWidth:100,width:200,validate: { required: true},space:30,type:"text"},
+         {display:"会议开始时间",name:"dKssj",newline:false,labelWidth:100,width:200,validate: { required: true},space:30,type:"datetime"},
+         {display:"会议时长",name:"cHysc",newline:true,labelWidth:100,width:200,validate: { required: true},space:30,type:"text"},
+         {display:"会议地点",name:"cHydd",newline:false,labelWidth:100,width:200,validate: { required: true},space:30,type:"text"},
+         {display:"参会范围",name:"cChfwName",newline:true,labelWidth:100,width:500,validate: { required: true},space:30,type:"smarttext"},
+         {display:"分会场",name:"cFc",newline:true,labelWidth:100,width:200,space:30,validate: { required: true},type:"text"}
         ]
  }};
 
@@ -168,7 +168,11 @@ if(userId==null){
         }
 
         function f_save() {
-
+        	//验证
+        	if (!LG.validator.form()) {
+                LG.showInvalid();
+                return false;
+            }
         	var formMap = DWRUtil.getValues("mform"); 
         	
         	

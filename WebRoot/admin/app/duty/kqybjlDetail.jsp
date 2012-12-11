@@ -69,24 +69,24 @@ if(nLx==null){
          {name:"nXh",type:"hidden",value:'<%=nXh %>'},
          {name:"nLx",type:"hidden",value:'<%=nLx %>'},
          <%if("".equals(userId)){%>
-         {display:"人员",name:"userId",newline:false,labelWidth:100,width:200,space:30,type:"select",
+         {display:"人员",name:"userId",newline:false,labelWidth:100,width:200,validate: { required: true},space:30,type:"select",
              comboboxName:"userIdName",
              options:{valueFieldID:"userId",data: userdata }},
          <%}else{%>
          {name:"userId",value:"<%=userId%>",type:"hidden"},  
          <%}%>
-         {display:"请假类别",name:"nQjlx",newline:false,labelWidth:100,width:200,space:30,type:"select",
+         {display:"请假类别",name:"nQjlx",newline:false,labelWidth:100,width:200,validate: { required: true},space:30,type:"select",
              comboboxName:"nQjlxName",
              options:{valueFieldID:"nQjlx",data:qjlxdata }},
              
       
-         {display:"开始时间",name:"dKssj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
-         {display:"结束时间",name:"dJssj",newline:false,labelWidth:100,width:200,space:30,type:"date"},
+         {display:"开始时间",name:"dKssj",newline:true,labelWidth:100,width:200,validate: { required: true},space:30,type:"date"},
+         {display:"结束时间",name:"dJssj",newline:false,labelWidth:100,width:200,validate: { required: true},space:30,type:"date"},
        //  {display:"登记时间",name:"dDj",newline:true,labelWidth:100,width:200,space:30,type:"date"},
-         {display:"是否离京",name:"cSflj",newline:true,labelWidth:100,width:200,space:30,type:"select",
+         {display:"是否离京",name:"cSflj",newline:true,labelWidth:100,width:200,validate: { required: true},space:30,type:"select",
              comboboxName:"cSfljName",
              options:{valueFieldID:"cSflj",data:[{ text: '是', id: 1 },{ text: '否', id: 0 }] }},
-         {display:"地点",name:"cDd",newline:false,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"地点",name:"cDd",newline:false,labelWidth:100,width:200,validate: { required: true},space:30,type:"text"},
          
          <%if("1".equals(nLx)){  %>
          
@@ -96,7 +96,7 @@ if(nLx==null){
              
          <%}else{%>
          
-         {display:"联系方式",name:"cLxfs",newline:true,labelWidth:100,width:200,space:30,type:"text"},
+         {display:"联系方式",name:"cLxfs",newline:true,labelWidth:100,width:200,validate: { required: true},space:30,type:"text"},
          <%}%>
         
          {display:"备注",name:"cYy",newline:true,labelWidth:100,width:500,space:30,type:"textarea"}
@@ -202,7 +202,11 @@ if(nLx==null){
         }
 
         function f_save() {
-
+        	//验证
+        	if (!LG.validator.form()) {
+                LG.showInvalid();
+                return false;
+            }
         	var formMap = DWRUtil.getValues("mform"); 
         	formMap["cShzt"]="0";
 			if(isAddNew){
@@ -238,7 +242,11 @@ if(nLx==null){
         	}
         }
 			 function f_submit() {
-
+				//验证
+		        	if (!LG.validator.form()) {
+		                LG.showInvalid();
+		                return false;
+		            }
 		        	var formMap = DWRUtil.getValues("mform"); 
 		        	formMap["cShzt"]="1";
 					if(isAddNew){
