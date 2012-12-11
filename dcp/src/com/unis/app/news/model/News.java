@@ -1,5 +1,7 @@
 package com.unis.app.news.model;
 
+import java.util.Map;
+
 public class News {
 
 	private String n_xh;
@@ -68,6 +70,8 @@ public class News {
 	
 	private String start;
 	
+	private Map<String, Object> resMap;
+ 
 	private String limit;
 	
 	
@@ -341,6 +345,14 @@ public class News {
 
 	public void setLimit(String limit) {
 		this.limit = limit;
+	}
+
+	public Map<String, Object> getResMap() {
+		return resMap;
+	}
+
+	public void setResMap(Map<String, Object> resMap) {
+		this.resMap = resMap;
 	}
 	
 }

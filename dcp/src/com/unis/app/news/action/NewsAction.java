@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.unis.app.column.model.Column;
 import com.unis.app.duty.service.KqZbSvc;
 import com.unis.app.limit.service.ClxxSvc;
 import com.unis.app.news.model.News;
@@ -223,7 +225,24 @@ public class NewsAction {
 			keyWords = (String) newsService.selectOne("NewsMapper.getLanmuName", news.getC_lm());
 		}
 		
-		      
+		Map<String, Object> sqlParamMap = new HashMap<String, Object>();
+		Map<String, Object> resMap = new HashMap<String, Object>();
+		
+		//banner导航菜单
+		sqlParamMap.put("c_sjlmdm", "0000");
+		List<Column> columnList = (List<Column>) newsService.selectList("ColumnMapper.getColumnIndexList", sqlParamMap);
+		resMap.put("dhcdList", columnList);
+		
+		//二级菜单
+		List<List<Column>> cdlist = new ArrayList<List<Column>>();
+		for(int i = 0; i < columnList.size(); i++ ){
+			sqlParamMap.put("c_sjlmdm", columnList.get(i).getC_lmdm());
+			List<Column> colList = (List<Column>) newsService.selectList("ColumnMapper.getColumnIndexList", sqlParamMap);
+			cdlist.add(i, colList);
+		}
+		resMap.put("dhejcdList", cdlist);
+		
+		pageModel.setResMap(resMap);
 		pageModel.setList(newsList);
 		pageModel.setTotalRecords(totalRecords);
 		pageModel.setPageNo(Long.valueOf(pageNo));
@@ -236,6 +255,8 @@ public class NewsAction {
 		if("12390".equals(news.getC_lm())){
 			return Globals.INPUT;
 		}
+		
+		
 		
 		return Globals.SUCCESS;
 	}
@@ -257,6 +278,20 @@ public class NewsAction {
 		Map<String, Object> sqlParamMap = new HashMap<String, Object>();
 		
 		resMap = new HashMap<String, Object>();
+		
+		//banner导航菜单
+		sqlParamMap.put("c_sjlmdm", "0000");
+		List<Column> columnList = (List<Column>) newsService.selectList("ColumnMapper.getColumnIndexList", sqlParamMap);
+		resMap.put("dhcdList", columnList);
+		
+		//二级菜单
+		List<List> cdlist = new ArrayList<List>();
+		for(int i = 0; i < columnList.size(); i++ ){
+			sqlParamMap.put("c_sjlmdm", columnList.get(i).getC_lmdm());
+			List<Column> colList = (List<Column>) newsService.selectList("ColumnMapper.getColumnIndexList", sqlParamMap);
+			cdlist.add(i, colList);
+		}
+		resMap.put("dhejcdList", cdlist);
 		
 		//工作要闻
 		sqlParamMap.put("c_lm", "1081");
@@ -575,12 +610,32 @@ public class NewsAction {
 		return Globals.SUCCESS;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public String newsDetail(){
+		
+		Map<String, Object> sqlParamMap = new HashMap<String, Object>();
+		Map<String, Object> resMap = new HashMap<String, Object>();
+		
+		//banner导航菜单
+		sqlParamMap.put("c_sjlmdm", "0000");
+		List<Column> columnList = (List<Column>) newsService.selectList("ColumnMapper.getColumnIndexList", sqlParamMap);
+		resMap.put("dhcdList", columnList);
+		
+		//二级菜单
+		List<List<Column>> cdlist = new ArrayList<List<Column>>();
+		for(int i = 0; i < columnList.size(); i++ ){
+			sqlParamMap.put("c_sjlmdm", columnList.get(i).getC_lmdm());
+			List<Column> colList = (List<Column>) newsService.selectList("ColumnMapper.getColumnIndexList", sqlParamMap);
+			cdlist.add(i, colList);
+		}
+		resMap.put("dhejcdList", cdlist);
+		
 		if("1507".equals(news.getC_lm())||"1506".equals(news.getC_lm())||"1505".equals(news.getC_lm())||"1503".equals(news.getC_lm())||"1502".equals(news.getC_lm())){
 			news = (News) newsService.selectOne("NewsMapper.getIndexNews", news);
 			return Globals.INPUT;
 		}
 		news = (News) newsService.selectOne("NewsMapper.getIndexNews", news);
+		news.setResMap(resMap);
 		return Globals.SUCCESS;
 	}
 	
