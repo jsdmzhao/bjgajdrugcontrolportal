@@ -50,6 +50,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
 <script type='text/javascript'
 	src='<%=basePath%>dwr/interface/SysUserSvc.js'></script>
+	
+	<script type='text/javascript'
+	src='<%=basePath%>dwr/interface/SysUserSvc.js'></script>
+	<script type='text/javascript'
+	src='<%=basePath%>dwr/interface/SysMenuSvc.js'></script>
+	
 	</head>
 	<body
 		style="text-align: center; background: #F0F0F0; overflow: hidden;">
@@ -58,8 +64,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			style="width: 99.2%; margin: 0 auto; margin-top: 3px;">
 			<div position="left" title="主要菜单" id="mainmenu"></div>
 			<div position="center" id="framecenter">
-				<div tabid="home" title="出勤">
-					<iframe frameborder="0" name="home" id="home" src="<%=basePath%>admin/app/duty/kqybjl.jsp?lx=CQ&userId=<%=session.getAttribute("userId")%>"></iframe>
+				<div tabid="home" title="">
+					<iframe frameborder="0" name="home" id="home" src=""></iframe>
 				</div>
 				
 			</div>
@@ -165,44 +171,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
             var mainmenu = $("#mainmenu");
                
-            var menus=[
-                     { "children":[{
-                    "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                    "text":"因公请销假",
-                    "MenuUrl":"<%=basePath%>admin/app/duty/kqybjl.jsp?lx=YG&userId=<%=session.getAttribute("userId")%>",
-                    },{
-                        "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                        "text":"因私请销假",
-                        "MenuUrl":"<%=basePath%>admin/app/duty/kqybjl.jsp?lx=YS&userId=<%=session.getAttribute("userId")%>",
-                        },{
-                                "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                                "text":"会议提示",
-                                "MenuUrl":"<%=basePath%>admin/app/duty/kqhyts.jsp?userId=<%=session.getAttribute("userId")%>",
-                                }
-                        
-                        <%    String jb=session.getAttribute("cJb")+"";
-                             if("0".equals(jb)||"1".equals(jb)||"2".equals(jb)||"3".equals(jb)||"4".equals(jb)){
-                        
-                        %>
-                        ,{
-                                    "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                                    "text":"勤务安排",
-                                    "MenuUrl":"<%=basePath%>admin/app/duty/kqqwap.jsp?userId=<%=session.getAttribute("userId")%>",
-                                    },{
-                                    "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                                    "text":"会议室申请",
-                                    "MenuUrl":"<%=basePath%>admin/app/duty/kqhyssq.jsp?cYhz=<%=session.getAttribute("cYhz")%>",
-                                    },{
-                                        "icon":"<%=basePath%>liger/lib/icons/32X32/my_account.gif",
-                                        "text":"请销假审核",
-                                        "MenuUrl":"<%=basePath%>admin/app/duty/kqqxjsh.jsp?userId=<%=session.getAttribute("userId")%>",
-                                        }
-                                    <%}%>
-                    ],
-                    "MenuName":"警务管理",
-                    "text":"警务管理"
-                    }]; 
-            
+                var menus;
+                var obj={userId : '<%=session.getAttribute("userId")%>'};
+    	        DWREngine.setAsync(false); 
+         	   SysMenuSvc.queryUserJwglMenu(obj, function(rdata) {
+         		//   alert(rdata);
+ 					if (rdata) {
+ 						menus =rdata;
+ 					} else {
+ 						alert('暂无权限！');
+ 					}
+ 				});
+         	//alert( '<%=session.getAttribute("userId")%>');
+            //alert(menus);
             $(menus).each(function (i, menu)
                 {
                     var item = $('<div title="' + menu.MenuName + '"><ul class="menulist"></ul></div>');
