@@ -4,7 +4,6 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
-String newsType = request.getParameter("newsType");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -79,7 +78,7 @@ String newsType = request.getParameter("newsType");
              validate: { required: true},
              newline:true,
              labelWidth:100,
-             width:308
+             width:606
          },{
    	         name:"wzlm",
    	         newline:false,
@@ -89,7 +88,8 @@ String newsType = request.getParameter("newsType");
    	         cssClass:"l-button-2",
    	         value:"选择栏目",
    	         onclick : "selectLanmu()"
-         },{display:"发布单位",name:"c_fbdw",validate: { required: true},newline:false,labelWidth:90,width:172,type:"basicText"},
+         },{display:"发布单位",name:"c_fbdw",validate: { required: true},newline:true,labelWidth:100,width:325,type:"basicText"},
+         {display:"访问权限",name:"c_fwqx",newline:false,labelWidth:90,width:270,validate: { required: true},type:"basicText"},
          {display:"是否图片文章",
              name:"c_sftwwz",
              newline:true,
@@ -150,7 +150,7 @@ String newsType = request.getParameter("newsType");
          	type:"textarea",
          	value: "<s:property value='news.c_jj'/>"
          },
-         {display:"链接",name:"c_lj",newline:true,labelWidth:100,width:300,space:30,type:"text", value: "<s:property value='news.c_lj'/>"},
+         {display:"链接",name:"c_lj",newline:true,labelWidth:100,width:315,space:30,type:"text", value: "<s:property value='news.c_lj'/>"},
          {display:"发布时间",name:"d_fbsj",newline:false,labelWidth:100,validate: { required: true},
              width:250,space:30,type:"text",value: "<s:property value='news.d_fbsj'/>",
              onclick:"WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" },
@@ -228,16 +228,25 @@ String newsType = request.getParameter("newsType");
             //查看状态，控制不能编辑
             $("input,select,textarea",mainform2).attr("readonly", "readonly");
         }
-		
+		var tempdata = [{text:'总队内部可见',value:'1'},{text:'全市可见',value:'2'},{text:'全国可见',value:'3'}];
 		com = $("#c_fbdw").ligerComboBox({
 	    	 isMultiSelect: false,
-	    	 width: 170, 
-             selectBoxWidth: 170,
-             selectBoxHeight: 100, 
+             selectBoxWidth: 325,
+             selectBoxHeight: 200, 
 	         valueField:"value",
 	         textFiled:"text",
 	         url:"<%=basePath%>newsCombox",
 	         value:"<s:property value='news.c_fbdw'/>"
+		});
+		
+		com2 = $("#c_fwqx").ligerComboBox({
+	    	 isMultiSelect: false,
+             selectBoxWidth: 270,
+             selectBoxHeight: 100, 
+	         valueField:"value",
+	         textFiled:"text",
+	         data: tempdata,
+	         value: "<s:property value='news.c_fwqx'/>"
 		});
 
         //<!-- 设置一些默认参数 -->
@@ -270,6 +279,7 @@ String newsType = request.getParameter("newsType");
         	
         	formMap["c_nr"] = editor.document.getBody().getHtml();
         	formMap["c_fbdw"] = com.getValue();
+		formMap["c_fwqx"] = com2.getValue();
 			
         	NewsAction.newsSave(formMap,function (result){
         		
@@ -277,7 +287,7 @@ String newsType = request.getParameter("newsType");
         		if(result == 'success'){
         			LG.showSuccess('保存成功', function () { 
                         f_cancel();
-                        parent.loadGrid('<%=newsType%>');
+                        parent.f_reload();
                     });
         		} else {
         		    LG.showError('保存失败');

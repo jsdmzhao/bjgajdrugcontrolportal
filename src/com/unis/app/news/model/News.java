@@ -38,6 +38,8 @@ public class News {
 
 	private String c_fbdw;
 	
+	private String c_fwqx;
+	
 	private String c_sfsh;
 	
 	private String c_shr;
@@ -227,6 +229,14 @@ public class News {
 
 	public void setC_fbdw(String c_fbdw) {
 		this.c_fbdw = c_fbdw;
+	}
+
+	public String getC_fwqx() {
+		return c_fwqx;
+	}
+
+	public void setC_fwqx(String c_fwqx) {
+		this.c_fwqx = c_fwqx;
 	}
 
 	public String getC_sfsh() {

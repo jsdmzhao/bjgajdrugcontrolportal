@@ -42,7 +42,7 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
     <form id="mainform"  method="post"></form> 
     <script type="text/javascript"> 
     
-        var tempdata=[{ text:2323,value:1000},{text:2323,value:1000},{text:2323,value:1000}];
+        var tempdata;
 
         WebsiteAction.getWebtypeCombox(function(data){
 			//$("#n_lbxh").tempdata = data;
@@ -60,6 +60,7 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
 		          group:"基本信息",
 		          groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
 		         },
+		         {display:"显示序号",name:"n_xsxh",newline:false,labelWidth:100,width:190,space:30,type:"number",value:"<s:property value='website.n_xsxh'/>"},
 		         {
 			         display:"网站标题",
 			         name:"c_bt",
@@ -71,9 +72,7 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
 			         value:"<s:property value='website.c_bt'/>"
 		         },
 		         {display:"网站地址",name:"c_lj",newline:true,labelWidth:100,width:540,space:30,type:"text",value:"<s:property value='website.c_lj'/>"},
-		         {name:"n_xh", type:"hidden",value:"<s:property value='website.n_xh'/>"},
-         		 {name:"n_xsxh", type:"hidden",value:"<s:property value='website.n_xsxh'/>"}
-         
+		         {name:"n_xh", type:"hidden",value:"<s:property value='website.n_xh'/>"}
 		        ]
 			 }};
 	       

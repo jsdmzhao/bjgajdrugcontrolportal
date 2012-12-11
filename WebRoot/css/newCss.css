@@ -161,7 +161,7 @@ body {
 	border-bottom: dashed 1px #a9cfe5;
 	padding: 7px 4px 7px 25px;
 	float: left;
-	width: 380px;
+	width: 425px;
 }
 
 #red_lddt_title {
@@ -209,8 +209,8 @@ body {
 .lddt_news_list_d {
 	margin-top: 5px;
 	float: right;
-	margin-right: 5px;
-	width:70px;
+	margin-right: 2px;
+	width:40px;
 	text-align: left;
 	color: #888;
 }
@@ -375,7 +375,7 @@ body {
 
 .jwgk_content_center_content {
 	width: 496px;
-	height: 170px;
+	height: 190px;
 }
 
 .jwgk_content_right {
@@ -696,8 +696,9 @@ body {
 	width: 720px;
 	border: solid 1px #a9cfe5;
 	margin: 2px 0px 0px 10px;
-	/**background: url(../newimages/bg1.png) repeat;**/
-	background-color: #EEF5F9;
+	/**background: url(../newimages/bg1.png) repeat;
+	background-color: #EEF5F9;**/
+	background-color: #f4fbff;
     height:670px;
 }
 

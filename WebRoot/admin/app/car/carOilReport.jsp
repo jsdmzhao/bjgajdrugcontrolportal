@@ -88,12 +88,12 @@ if(carType == null){
       var grid = $("#maingrid").ligerGrid({
           columns: [
           { name: "n_xh", editor: {type: 'hidden'},hide : '1' },
-          { display: "使用单位", name: "c_yhzid", width:140, type: "text", align: "left" },
-          { display: "车牌", name: "c_cphm", width:140, type: "text", align: "left" },
+          { display: "使用单位", name: "c_yhzid", width:100, type: "text", align: "left" },
+          { display: "车牌", name: "c_cphm", width:180, type: "text", align: "left" },
           { display: "品牌型号", name: "c_ppxh", width:100, type: "text", align: "left" },
-          { display: "责任司机", name: "c_zrsj", width:100, type: "text", align: "left" },
+          { display: "责任司机", name: "c_zrsj", width:80, type: "text", align: "left" },
           { display: "上月公里数", name: "n_sygls", width: 80, type: "text", align: "left"},
-          { display: "当月行驶公里数", name: "n_dyxsgls", width: 140, type: "text", align: "left"},
+          { display: "当月行驶公里数", name: "n_dyxsgls", width: 120, type: "text", align: "left"},
           { display: "当月公里数", name: "n_dygls", width: 80, type: "text", align: "left"},
           { display: "当月油耗", name: "n_dyyh", width: 80, type: "text", align: "left"},
           { display: "百公里油耗", name: "n_bglyh", width: 80, type: "text", align: "left"},
