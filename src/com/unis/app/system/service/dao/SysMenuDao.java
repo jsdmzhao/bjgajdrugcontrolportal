@@ -50,7 +50,12 @@ public class SysMenuDao<T> extends AbsServiceAdapter<T> {
 	public List queryUserMenu(Map p){
 		return super.selectList("SysMenuMapper.queryUserMenu", p);
 	}
+	
+	public List queryUserJwglMenu(Map p){
+		return super.selectList("SysMenuMapper.queryUserJwglMenu", p);
+	}
 
+	
 
 	public Map queryByPageInfo(Map p, Map page){
 		String count = String.valueOf((Integer)queryCountInfo(p));
