@@ -210,7 +210,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 		
 		
 		
-		<div id="news_center" style="width: 980px; margin-left: 1px">
+		<div id="news_center" style="width: 980px;height:1135px; margin-left: 1px">
 			<div class="news_center_title">
 				<div class="news_center_title_font">媒体播报</div>
 				<div class="news_center_title_more">
@@ -243,7 +243,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	     <%if(list1502.size()>1){
         %>
          <a href="video/videomain.jsp?news.c_lm=1502&n_xh=<%=list1502.get(1).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1502.get(1).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1502.get(1).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1502.get(1).getC_bt() %></div>
 		</a>
         
@@ -258,7 +258,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	 <%if(list1502.size()>2){
         %>
          <a href="video/videomain.jsp?news.c_lm=1502&n_xh=<%=list1502.get(2).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1502.get(2).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1502.get(2).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1502.get(2).getC_bt() %></div>
 		</a>
         
@@ -273,7 +273,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	   <%if(list1502.size()>3){
         %>
          <a href="video/videomain.jsp?news.c_lm=1502&n_xh=<%=list1502.get(3).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1502.get(3).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1502.get(3).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1502.get(3).getC_bt() %></div>
 		</a>
         
@@ -288,7 +288,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	      <%if(list1502.size()>4){
         %>
          <a href="video/videomain.jsp?news.c_lm=1502&n_xh=<%=list1502.get(4).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1502.get(4).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1502.get(4).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1502.get(4).getC_bt() %></div>
 		</a>
         
@@ -303,7 +303,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	     <%if(list1502.size()>5){
         %>
          <a href="video/videomain.jsp?news.c_lm=1502&n_xh=<%=list1502.get(5).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1502.get(5).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1502.get(5).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1502.get(5).getC_bt() %></div>
 		</a>
         
@@ -317,7 +317,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	    <%if(list1502.size()>6){
         %>
          <a href="video/videomain.jsp?news.c_lm=1502&n_xh=<%=list1502.get(6).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1502.get(6).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1502.get(6).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1502.get(6).getC_bt() %></div>
 		</a>
         
@@ -342,7 +342,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	    <%if(list1503.size()>0){
         %>
          <a href="video/videomain.jsp?news.c_lm=1503&n_xh=<%=list1503.get(0).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1503.get(0).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1503.get(0).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1503.get(0).getC_bt() %></div>
 		</a>
         
@@ -356,7 +356,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	    <%if(list1503.size()>1){
         %>
          <a href="video/videomain.jsp?news.c_lm=1503&n_xh=<%=list1503.get(1).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1503.get(1).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1503.get(1).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1503.get(1).getC_bt() %></div>
 		</a>
         
@@ -370,7 +370,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	    <%if(list1503.size()>2){
         %>
          <a href="video/videomain.jsp?news.c_lm=1503&n_xh=<%=list1503.get(2).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1503.get(2).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1503.get(2).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1503.get(2).getC_bt() %></div>
 		</a>
         
@@ -384,7 +384,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	    <%if(list1503.size()>3){
         %>
          <a href="video/videomain.jsp?news.c_lm=1503&n_xh=<%=list1503.get(3).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1503.get(3).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1503.get(3).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1503.get(3).getC_bt() %></div>
 		</a>
         
@@ -398,7 +398,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	    <%if(list1503.size()>4){
         %>
          <a href="video/videomain.jsp?news.c_lm=1503&n_xh=<%=list1503.get(4).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1503.get(4).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1503.get(4).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1503.get(4).getC_bt() %></div>
 		</a>
         
@@ -420,7 +420,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	    <%if(list1505.size()>0){
         %>
          <a href="video/videomain.jsp?news.c_lm=1505&n_xh=<%=list1505.get(0).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1505.get(0).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1505.get(0).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1505.get(0).getC_bt() %></div>
 		</a>
         
@@ -434,7 +434,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	    <%if(list1505.size()>1){
         %>
          <a href="video/videomain.jsp?news.c_lm=1505&n_xh=<%=list1505.get(1).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1505.get(1).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1505.get(1).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1505.get(1).getC_bt() %></div>
 		</a>
         
@@ -448,7 +448,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	    <%if(list1505.size()>2){
         %>
          <a href="video/videomain.jsp?news.c_lm=1505&n_xh=<%=list1505.get(2).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1505.get(2).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1505.get(2).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1505.get(2).getC_bt() %></div>
 		</a>
         
@@ -462,7 +462,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	    <%if(list1505.size()>3){
         %>
          <a href="video/videomain.jsp?news.c_lm=1505&n_xh=<%=list1505.get(3).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1505.get(3).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1505.get(3).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1505.get(3).getC_bt() %></div>
 		</a>
         
@@ -476,7 +476,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	    <%if(list1505.size()>4){
         %>
          <a href="video/videomain.jsp?news.c_lm=1505&n_xh=<%=list1505.get(4).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1505.get(4).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1505.get(4).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1505.get(4).getC_bt() %></div>
 		</a>
         
@@ -498,7 +498,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	    <%if(list1506.size()>0){
         %>
          <a href="video/videomain.jsp?news.c_lm=1506&n_xh=<%=list1506.get(0).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1506.get(0).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1506.get(0).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1506.get(0).getC_bt() %></div>
 		</a>
         
@@ -512,7 +512,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	    <%if(list1506.size()>1){
         %>
          <a href="video/videomain.jsp?news.c_lm=1506&n_xh=<%=list1506.get(1).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1506.get(1).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1506.get(1).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1506.get(1).getC_bt() %></div>
 		</a>
         
@@ -526,7 +526,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	    <%if(list1506.size()>2){
         %>
          <a href="video/videomain.jsp?news.c_lm=1506&n_xh=<%=list1506.get(2).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1506.get(2).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1506.get(2).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1506.get(2).getC_bt() %></div>
 		</a>
         
@@ -540,7 +540,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	    <%if(list1506.size()>3){
         %>
          <a href="video/videomain.jsp?news.c_lm=1506&n_xh=<%=list1506.get(3).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1506.get(3).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1506.get(3).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1506.get(3).getC_bt() %></div>
 		</a>
         
@@ -554,7 +554,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	    <%if(list1506.size()>4){
         %>
          <a href="video/videomain.jsp?news.c_lm=1506&n_xh=<%=list1506.get(4).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1506.get(4).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1506.get(4).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1506.get(4).getC_bt() %></div>
 		</a>
         
@@ -576,7 +576,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	    <%if(list1507.size()>0){
         %>
          <a href="video/videomain.jsp?news.c_lm=1507&n_xh=<%=list1507.get(0).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1507.get(0).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1507.get(0).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1507.get(0).getC_bt() %></div>
 		</a>
         
@@ -590,7 +590,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	    <%if(list1507.size()>1){
         %>
          <a href="video/videomain.jsp?news.c_lm=1507&n_xh=<%=list1507.get(1).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1507.get(1).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1507.get(1).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1507.get(1).getC_bt() %></div>
 		</a>
         
@@ -604,7 +604,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	    <%if(list1507.size()>2){
         %>
          <a href="video/videomain.jsp?news.c_lm=1507&n_xh=<%=list1507.get(2).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1507.get(2).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1507.get(2).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1507.get(2).getC_bt() %></div>
 		</a>
         
@@ -618,7 +618,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	    <%if(list1507.size()>3){
         %>
          <a href="video/videomain.jsp?news.c_lm=1507&n_xh=<%=list1507.get(3).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1507.get(3).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1507.get(3).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1507.get(3).getC_bt() %></div>
 		</a>
         
@@ -632,7 +632,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 	    <%if(list1507.size()>4){
         %>
          <a href="video/videomain.jsp?news.c_lm=1507&n_xh=<%=list1507.get(4).getN_xh() %>">
-	    <img  style="height:240px; width:320px;" src="<%=basePath %><%=list1507.get(4).getC_spfmljdz() %>"/>
+	    <img  style="height:120px; width:160px;" src="<%=basePath %><%=list1507.get(4).getC_spfmljdz() %>"/>
 		<div  style="text-align:center; "><%=list1507.get(4).getC_bt() %></div>
 		</a>
         
@@ -643,7 +643,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 		  <%}%>
 	  </div>
 			</div> 
-				</DIV>		
+						
 	
 			<div id="bottom_blue_line" ></div>
 			<div id="bottom">
