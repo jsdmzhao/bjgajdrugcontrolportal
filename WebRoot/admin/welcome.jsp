@@ -90,7 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  -->    
 
 
-           <p class="p1"><b>特别说明</b>：此程序版本为测试版！功能逐步完善中！</p>
+           <p class="p1"><b></b></p>
            
        <!--     <script type="text/javascript">
                $("div.link").live("mouseover", function ()
