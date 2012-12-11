@@ -95,6 +95,8 @@ if(c_bt == null){
 				submit();
 			}
 		}
+		
+		//alert('<%=news.getN_xh()  %>');
 	</script>
 
   </head>

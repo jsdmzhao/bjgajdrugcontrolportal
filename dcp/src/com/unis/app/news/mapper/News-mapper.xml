@@ -77,6 +77,7 @@
 	       FUN_GET_MULTI_LMMC(C_LM) C_LM_,
 	       FUN_GET_YHMC(C_YHID) C_YHID,
 	       FUN_GET_DMMC('DEP',C_FBDW) C_YHZID,
+	       C_SPLJDZ,
 		   C_TPLJDZ
 		FROM B_XINWEN WHERE N_XH = #{n_xh}
 	</select>

@@ -214,7 +214,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 			<div class="news_center_title">
 				<div class="news_center_title_font">媒体播报</div>
 				<div class="news_center_title_more">
-					<font color="#DF7024" size="2"><a href="video/dynamic_flash_video_gallery.swf">您现在所在的位置</a>： 首页&nbsp;&gt;&gt;&nbsp;视频在线</font>
+					<font color="#DF7024" size="2"><a href="video/dynamic_flash_video_gallery.swf"></a>您现在所在的位置</a>： 首页&nbsp;&gt;&gt;&nbsp;视频在线</font>
 				</div>
 			</div>
 			<div class="">
@@ -334,7 +334,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
   	  <div class="news_center_title" >
 				<div class="news_center_title_font">法制讲堂</div>
 				<div class="news_center_title_more">
-					<font color="#DF7024" size="2"><a href="video/dynamic_flash_video_gallery.swf"></font>
+					<font color="#DF7024" size="2"><a href="video/dynamic_flash_video_gallery.swf"></a></font>
 				</div>
 			</div>
 		<div class="">
@@ -412,7 +412,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 			  <div class="news_center_title" >
 				<div class="news_center_title_font">禁毒宣传</div>
 				<div class="news_center_title_more">
-					<font color="#DF7024" size="2"><a href="video/dynamic_flash_video_gallery.swf"></font>
+					<font color="#DF7024" size="2"><a href="video/dynamic_flash_video_gallery.swf"></a></font>
 				</div>
 			</div>
 		<div class="">
@@ -490,7 +490,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
   	  <div class="news_center_title" >
 				<div class="news_center_title_font">成果展播</div>
 				<div class="news_center_title_more">
-					<font color="#DF7024" size="2"><a href="video/dynamic_flash_video_gallery.swf"></font>
+					<font color="#DF7024" size="2"><a href="video/dynamic_flash_video_gallery.swf"></a></font>
 				</div>
 			</div>
 					<div class="">
@@ -568,7 +568,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 			  	  <div class="news_center_title" >
 				<div class="news_center_title_font">禁毒微电影</div>
 				<div class="news_center_title_more">
-					<font color="#DF7024" size="2"><a href="video/dynamic_flash_video_gallery.swf"></font>
+					<font color="#DF7024" size="2"><a href="video/dynamic_flash_video_gallery.swf"></a></font>
 				</div>
 			</div>
 					<div class="">
