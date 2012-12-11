@@ -230,11 +230,11 @@ public class NewsAction {
 		pageModel.setKeyWords(keyWords);
 		pageModel.setSysdate(DateUtil.getSysDate("yyyy-MM-dd"));
 		//news.c_lm=1239
-		if("1239".equals(news.getC_lm())){
-			return Globals.INPUT;
-		}
+	//	if("1239".equals(news.getC_lm())){
+	//		return Globals.INPUT;
+	//	}
 		if("12390".equals(news.getC_lm())){
-			return Globals.ERROR;
+			return Globals.INPUT;
 		}
 		
 		return Globals.SUCCESS;
@@ -555,9 +555,11 @@ public class NewsAction {
 	}
 	
 	public String newsQuery(){
+	
 		news = (News) newsService.selectOne("NewsMapper.getIndexNews", news);
 		return Globals.SUCCESS;
 	}
+	
 	
 	@SuppressWarnings("unchecked")
 	public String newsSort(){
@@ -574,6 +576,10 @@ public class NewsAction {
 	}
 	
 	public String newsDetail(){
+		if("1507".equals(news.getC_lm())||"1506".equals(news.getC_lm())||"1505".equals(news.getC_lm())||"1503".equals(news.getC_lm())||"1502".equals(news.getC_lm())){
+			news = (News) newsService.selectOne("NewsMapper.getIndexNews", news);
+			return Globals.INPUT;
+		}
 		news = (News) newsService.selectOne("NewsMapper.getIndexNews", news);
 		return Globals.SUCCESS;
 	}
