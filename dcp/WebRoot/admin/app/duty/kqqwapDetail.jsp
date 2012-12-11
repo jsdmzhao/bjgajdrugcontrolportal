@@ -56,25 +56,25 @@ if(nXh==null){
          fields : [
          {name:"nXh",type:"hidden",value:'<%=nXh %>'},
          
-         {display:"开始时间",name:"dKsrq",newline:true,labelWidth:100,width:200,space:30,type:"datetime"},
-         {display:"结束时间",name:"dJsrq",newline:false,labelWidth:100,width:200,space:30,type:"datetime"},
+         {display:"开始时间",name:"dKsrq",newline:true,labelWidth:100,width:200,validate: { required: true},space:30,type:"datetime"},
+         {display:"结束时间",name:"dJsrq",newline:false,labelWidth:100,width:200,validate: { required: true},space:30,type:"datetime"},
          
-         {display:"勤务类别",name:"cQwlb",newline:true,labelWidth:100,width:200,space:30,type:"select",
+         {display:"勤务类别",name:"cQwlb",newline:true,labelWidth:100,width:200,validate: { required: true},space:30,type:"select",
              comboboxName:"cQwlbName",
              options:{valueFieldID:"cQwlb",data:[{ text: '便衣勤务', id: '0' },{ text: '制服勤务', id: '1' }] }},
 
-             {display:"勤务类型",name:"cQwlx",newline:false,labelWidth:100,width:200,space:30,type:"select",
+             {display:"勤务类型",name:"cQwlx",newline:false,labelWidth:100,width:200,validate: { required: true},space:30,type:"select",
                  comboboxName:"cQwlxName",
                  options:{valueFieldID:"cQwlx",data:[{ text: '足球勤务', id: '0' },{ text: '两会勤务', id: '1' },{ text: '涉日维稳勤务', id: '2' },{ text: '节假日广场勤务', id: '3' },{ text: '其他勤务', id: '4' }] }},
              
-         {display:"参加人员",name:"cCjryName",newline:true,labelWidth:100,width:500,space:30,type:"smarttext"},
+         {display:"参加人员",name:"cCjryName",newline:true,labelWidth:100,width:500,validate: { required: true},space:30,type:"smarttext"},
       
-         {display:"勤务地段",name:"cQwdd",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"带队领导",name:"cDdld",newline:false,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"联络人员",name:"cLlry",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"出发时间",name:"dCfsj",newline:false,labelWidth:100,width:200,space:30,type:"datetime"},
-         {display:"出发地点",name:"cCfdd",newline:true,labelWidth:100,width:200,space:30,type:"text"},
-         {display:"勤务车辆",name:"cQucl",newline:false,labelWidth:100,width:200,space:30,type:"text"}
+         {display:"勤务地段",name:"cQwdd",newline:true,labelWidth:100,width:200,validate: { required: true},space:30,type:"text"},
+         {display:"带队领导",name:"cDdld",newline:false,labelWidth:100,width:200,validate: { required: true},space:30,type:"text"},
+         {display:"联络人员",name:"cLlry",newline:true,labelWidth:100,width:200,validate: { required: true},space:30,type:"text"},
+         {display:"出发时间",name:"dCfsj",newline:false,labelWidth:100,width:200,validate: { required: true},space:30,type:"datetime"},
+         {display:"出发地点",name:"cCfdd",newline:true,labelWidth:100,width:200,validate: { required: true},space:30,type:"text"},
+         {display:"勤务车辆",name:"cQucl",newline:false,labelWidth:100,width:200,validate: { required: true},space:30,type:"text"}
          
         ]
  }};
@@ -178,7 +178,13 @@ if(nXh==null){
         }
 
         function f_save() {
-
+        	//验证
+        	if (!LG.validator.form()) {
+                LG.showInvalid();
+                return false;
+            }
+        	
+        	
         	var formMap = DWRUtil.getValues("mform"); 
         	
         	

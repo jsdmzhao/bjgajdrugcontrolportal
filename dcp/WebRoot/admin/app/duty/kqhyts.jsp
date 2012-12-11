@@ -78,12 +78,12 @@
 	
 	 var config ={"Grid":{
          columns: [
-		 { display: "会议名称", name: "cHymc", width: 180, type: "text", align: "left" },
-		 { display: "会议开始时间", name: "dKssj", width: 180, type: "text", align: "left" },
-         { display: "会议时长", name: "cHysc", width: 180, type: "text", align: "left" },
-         { display: "会议地点", name: "cHydd", width: 180, type: "text", align: "left" },
-         { display: "参会范围", name: "cChfw", width: 180, type: "text", align: "left" },
-         { display: "分会场", name: "cFc", width: 180, type: "text", align: "left" }
+		 { display: "会议名称", name: "cHymc", width: 180,type: "text", align: "left" },
+		 { display: "会议开始时间", name: "dKssj", width: 180,type: "text", align: "left" },
+         { display: "会议时长", name: "cHysc", width: 180,type: "text", align: "left" },
+         { display: "会议地点", name: "cHydd", width: 180,type: "text", align: "left" },
+         { display: "参会范围", name: "cChfw", width: 180,type: "text", align: "left" },
+         { display: "分会场", name: "cFc", width: 180,type: "text", align: "left" }
          ]      
 },"Search":null};
 
