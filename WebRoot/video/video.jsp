@@ -210,7 +210,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 		
 		
 		
-		<div id="news_center" style="width: 980px;height:1135px; margin-left: 1px">
+		<div id="news_center" style="width: 980px; margin-left: 1px">
 			<div class="news_center_title">
 				<div class="news_center_title_font">媒体播报</div>
 				<div class="news_center_title_more">
@@ -643,7 +643,7 @@ List<News> list1502= (List<News>) newsService.selectList("NewsMapper.getVideoNew
 		  <%}%>
 	  </div>
 			</div> 
-						
+				</DIV>		
 	
 			<div id="bottom_blue_line" ></div>
 			<div id="bottom">
