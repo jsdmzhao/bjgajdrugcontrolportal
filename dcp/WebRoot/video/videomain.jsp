@@ -103,40 +103,27 @@ if(c_bt == null){
   
   <body>
 <div id="container_news">
-	<div id="banner_top">
-		<div style="margin-left: 450px; padding-top:40px;">
-	      <object
-	        classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
-	        codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
-	        id="banner_t"
-	        width="278" height="34"
-	      >
-	        <param name="movie" value="<%=basePath%>flash/banner_t.swf">
-	        <param name="bgcolor" value="#FFFFFF">
-	        <param name="quality" value="high">
-	        <param name="seamlesstabbing" value="false">
-	        <param name="allowscriptaccess" value="samedomain">
-	        <embed
-	          type="application/x-shockwave-flash"
-	          pluginspage="http://www.adobe.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"
-	          name="banner_t"
-	          width="278" height="34"
-	          src="<%=basePath%>flash/banner_t.swf"
-	          bgcolor="#FFFFFF"
-	          quality="high"
-	        >
-	          <noembed>
-	          </noembed>
-	        </embed>
-	      </object>
-	    </div>
-	  <div id="favor">
-		<img src="<%=basePath%>newimages/4.png" width="15" height="12" />
-	  	<a href="#" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('<%=basePath%>');" ><font color="white">设为首页</font></a>&nbsp;
-	  	<img src="<%=basePath%>newimages/2.png" width="18" height="14" />&nbsp;
-	  	<a href="#" onclick="javascript:window.external.AddFavorite('<%=basePath%>', '北京禁毒信息网');" ><font color="white">加入收藏</font></a>
-	  </div>
-	</div>
+	<div id="banner_top" style="padding-left: 1px;">
+			<div style="margin-left: 1px; padding-top: -10px; padding-left: 50px; width: 86px; float: left;">
+		      <object type="application/x-shockwave-flash" data="<%=basePath%>flash/banner_t1.swf" width="96" height="96">
+				<param name="movie" value="<%=basePath%>flash/banner_t1.swf" />
+				<param name="wmode" value="transparent" />
+			  </object>
+		    </div>
+			<div style="margin-left: 200px; padding-top:20px; padding-left: 1px; width: 418px; float: right;">
+		      <object type="application/x-shockwave-flash" data="<%=basePath%>flash/banner_t.swf" width="418" height="53" wmode="transparent">
+				<param name="movie" value="<%=basePath%>flash/banner_t.swf" />
+				<param name="wmode" value="transparent" />
+			  </object>
+		    </div>
+		  <div id="favor" style="margin-top:8px; height:20px; ">
+		  	<img src="<%=basePath%>newimages/4.png" width="15" height="12" />
+		  	<a href="#" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('<%=basePath%>');" ><font color="white">设为首页</font></a>&nbsp;
+		  	<img src="<%=basePath%>newimages/2.png" width="18" height="14" />&nbsp;
+		  	<a href="#" onclick="window.external.AddFavorite('<%=basePath%>', '北京禁毒信息网');" ><font color="white">加入收藏</font></a>
+		  </div>
+		 
+		</div>
 	  		
     <div id="banner_bottom"  style="margin-left:2px;">
 	  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="978" height="152">
