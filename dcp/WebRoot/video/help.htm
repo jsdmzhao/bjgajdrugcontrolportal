@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>升级文档</title>
+<style type="text/css">
+body,td,th {
+	font-size: 14px;
+	line-height: 28px;
+}
+p {
+	padding-left: 20px;
+}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+</style>
+</head>
+
+<body>
+<p>5.9在5.8的基础上做了比较大的改进</p>
+<p>一：文件修改方面<br />
+  1：ckplayer/ckplayer.js和ckplayer/ckplayer.xml方面的改动，以ckplayer.js为例，ckplayer.xml对应<br />
+&nbsp;&nbsp;&nbsp;&nbsp;A:ck.setup = '1,1,1,1,1,1,0,0,1,2,4';更新为11个参数，新增加了3个功能控制，请查看对应的帮助文档<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;B:ck.pr_clockwait='';该参数为新增加的，用来做默认不加载时显示的文字<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;C:ck.pm_repc='';该参数默认改为空，播放器里会自动把地址里包含[]的替换成&amp;</p>
+<p>2：ckplayer/ckplayer.swf主文件需要替换<br />
+  3：ckplayer/share/里的文件需要替换<br />
+  4：ckplayer.js里替换了原来的调用播放器函数，使用了swfobject.js2.2版本的新调用方式，这样做的好处是对于插件的使用有很好的支持。<br />
+  5：ckplayer/share.xml是新的分享插件所要调用的xml文档，相关说明请到网站查看<br />
+  6：ckplayer/assets/share.swf，新的分享插件<br />
+7：ckplayer/related.swf，新的精彩视频推荐插件，优化了代码，增强了加载图片的可靠性。</p>
+<p>二：程序方面<br />
+  1：增强了插件方面的功能，同时放出了大量的api接口函数<br />
+  2：增强了js互动方面的功能，api接口请到网站查看<br />
+  3：规范了接口函数的名称，在as3里有大小写的区别，在js里为了方便新手，一律采用小写。</p>
+<p>三：网站方面<br />
+  1：网站同期改版，栏目更加优化，帮助文档根据5.9全部重新整理编写<br />
+  2：会陆续增加更多的实例演示</p>
+<p>四：注意事项<br />
+  1：如果你不准备使用新的分享功能，那么可以不替换新的调用播放器函数。<br />
+  2：如果你的程序里本来就存在swfobject.js文件，那么完全可以整合在一起使用。<br />
+  3：如果你的程序目前在用jq，那么也可以使用jq函数来调用播放器。</p>
+</body>
+</html>
