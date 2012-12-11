@@ -193,7 +193,7 @@ if(c_bt == null){
 					<a href='newsCenterList?news.c_lm=1108&pageNo=1'><img src="newimages/menu_ljksc.png" /></a>
 			</div>
 			<div id="gzjdts">
-					<a href='newsCenterList?news.c_lm=1100&pageNo=1'><img src="newimages/menu_gzjdts.png" /></a>
+					<a href='<%=basePath%>admin'><img src="newimages/menu_wsbg.png" /></a>
 			</div>
 		</div>
 		

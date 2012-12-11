@@ -62,7 +62,8 @@
 		       C_SFZD,
 		       C_SFGL,
 		       N_XXXH,
-		       C_SHJG
+		       C_SHJG,
+		       C_FWQX
 		  FROM B_XINWEN
 		 WHERE N_XH = #{n_xh}
 	</select>
@@ -75,14 +76,7 @@
 	       C_NR,
 	       FUN_GET_MULTI_LMMC(C_LM) C_LM_,
 	       FUN_GET_YHMC(C_YHID) C_YHID,
-	       DECODE(C_FBDW,'1','总队领导',
-		       		  '3','办公室',
-		       		  '4','协调指导大队',
-		       		  '9','情报中心',
-		       		  '7','侦查大队',
-		       		  '8','查禁大队',
-		       		  '5','缉控大队',
-		       		  '10','两品办')  C_YHZID,
+	       FUN_GET_DMMC('DEP',C_FBDW) C_YHZID,
 		   C_TPLJDZ
 		FROM B_XINWEN WHERE N_XH = #{n_xh}
 	</select>
@@ -141,7 +135,7 @@
 	          FROM (
 				  SELECT N_XH,
 					   C_BT,
-				       TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
+				       TO_CHAR(D_FBSJ, 'YYYY-MM-DD') D_FBSJ,
 				       NVL(C_SFZD,'0') C_SFZD,
 				       NVL(C_SFGL,'0') C_SFGL,
 				       NVL(C_SFTJ,'0') C_SFTJ,
@@ -225,7 +219,7 @@
 	  SELECT N_XH,C_BT,D_FBSJ,C_TPLJDZ,C_LJ FROM (
 	    SELECT N_XH,
 			  C_BT,
-		      TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
+		      TO_CHAR(D_FBSJ, 'MM-DD') D_FBSJ,
 			  C_TPLJDZ,
 			  C_LJ
 	  	FROM B_XINWEN
@@ -241,7 +235,7 @@
 	<select id="getNewsIndexNoLimitList" parameterType="News" resultMap="resultIndexNews">
 	    SELECT N_XH,
 			  C_BT,
-		      TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
+		      TO_CHAR(D_FBSJ, 'MM-DD') D_FBSJ,
 			  C_TPLJDZ,
 			  C_LJ
 	  	FROM B_XINWEN
@@ -254,7 +248,7 @@
 	 SELECT N_XH,C_BT,D_FBSJ,C_TPLJDZ FROM  (
 	  SELECT N_XH,
 			  C_BT,
-		      TO_CHAR(D_FBSJ, 'YYYY-MM-DD HH24:MI:SS') D_FBSJ,
+		      TO_CHAR(D_FBSJ, 'YYYY-MM-DD') D_FBSJ,
 			  C_TPLJDZ
 	  FROM B_XINWEN
 	 	 WHERE C_LM LIKE '%;'||#{c_lm}||';%'
@@ -320,7 +314,8 @@
 			N_YDCS,
 			C_SFTJ,
 			C_SFZD,
-			N_XXXH ) 
+			N_XXXH,
+			C_FWQX ) 
 		VALUES (	            	
 		    seq_b_xinwen.nextval,
 		     #{c_bt,jdbcType=VARCHAR},    
@@ -343,7 +338,8 @@
 	         '0',          
 	         #{c_sftj,jdbcType=VARCHAR},          
 	         #{c_sfzd,jdbcType=VARCHAR},          
-	       	 #{n_xxxh,jdbcType=NUMERIC}         
+	       	 #{n_xxxh,jdbcType=NUMERIC},
+	       	 #{c_fwqx,jdbcType=VARCHAR}        
 	    )  
 	</insert>
 	
@@ -362,7 +358,8 @@
 				C_NR     =	#{c_nr,jdbcType=CLOB,handler=ClobTypeHandler},     							
 				D_FBSJ   =	to_date(#{d_fbsj,jdbcType=VARCHAR},'yyyy-mm-dd hh24:mi:ss'),      							
 				C_LM     =	#{c_lm,jdbcType=VARCHAR},
-				C_FBDW   =	#{c_fbdw,jdbcType=VARCHAR}							
+				C_FBDW   =	#{c_fbdw,jdbcType=VARCHAR},
+				C_FWQX   =  #{c_fwqx,jdbcType=VARCHAR}						
 		WHERE N_XH = #{n_xh}
 	</update>
 	

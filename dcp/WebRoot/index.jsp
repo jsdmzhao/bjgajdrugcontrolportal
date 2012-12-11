@@ -59,7 +59,7 @@ KqZbSvc kqZbSvc = (KqZbSvc) ctx.getBean("kqZbSvc");
 		.ny2010 td img{ width:220px; height:36px; display:block; margin:0 5px 2px 0; padding:1px; border:1px solid #CCCCCC;}
 		
 		#link_logo{ border-left: solid 1px #a9cfe5; border-right: solid 1px #a9cfe5;border-bottom: solid 1px #a9cfe5;height:190px; width:208px; overflow:hidden;list-style:none;}
-		#link_logo li{height:30px;width:190px; padding-left:5px;line-height:30px; border-bottom:1px dotted #ddd;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+		#link_logo li{width:190px; padding-left:5px;line-height:20px; border-bottom:1px dotted #ddd;}
 		
 	</style>
 
@@ -296,8 +296,8 @@ function MM_out(mmObj) {
 				
 				<s:iterator value="resMap.lddtList" var="news" begin="1">
 					<div class="lddt_news_list">
-						<div class="lddt_news_list_c" style="width:345px;">
-							<div class="lddt_news_list_c_l" style="width:315px;">
+						<div class="lddt_news_list_c" style="width:385px;">
+							<div class="lddt_news_list_c_l" style="width:360px;">
 								<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 								<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 									<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -306,12 +306,12 @@ function MM_out(mmObj) {
 									<s:property value="#news.c_bt"/>
 								</a>
 							</div>
-							<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-							  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+							<s:if test="#news.d_fbsj == resMap.sysdate">
+							  <img src="newimages/new.gif" style="margin-top: 2px; float: left;"/>
 							</s:if>
 						</div>
 						<div class="lddt_news_list_d">
-							<s:property value="#news.d_fbsj.substring(0,10)"/>
+							<s:property value="#news.d_fbsj"/>
 						</div>
 					</div>
 				</s:iterator>
@@ -482,8 +482,8 @@ function MM_out(mmObj) {
 					
 					<s:iterator value="resMap.tztbList" var="news">
 						<div class="lddt_news_list">
-							<div class="lddt_news_list_c" style="width:415px;">
-								<div class="lddt_news_list_c_l" style="width:380px;">
+							<div class="lddt_news_list_c" style="width:445px;">
+								<div class="lddt_news_list_c_l" style="width:420px;">
 									<img src="newimages/dote.gif" style="margin-top:6px;"/>
 									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -492,12 +492,12 @@ function MM_out(mmObj) {
 										<s:property value="#news.c_bt"/>
 									</a>
 								</div>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								<s:if test="#news.d_fbsj == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 2px; float: left;"/>
 								</s:if>
 							</div>
 							<div class="lddt_news_list_d">
-								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:property value="#news.d_fbsj"/>
 							</div>
 						</div>
 					</s:iterator>
@@ -508,8 +508,8 @@ function MM_out(mmObj) {
 					
 					<s:iterator value="resMap.jdwjList" var="news">
 						<div class="lddt_news_list">
-							<div class="lddt_news_list_c" style="width:415px;">
-								<div class="lddt_news_list_c_l" style="width:380px;">
+							<div class="lddt_news_list_c" style="width:445px;">
+								<div class="lddt_news_list_c_l" style="width:420px;">
 									<img src="newimages/dote.gif" style="margin-top:6px;"/>
 									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -518,12 +518,12 @@ function MM_out(mmObj) {
 										<s:property value="#news.c_bt"/>
 									</a>
 								</div>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								<s:if test="#news.d_fbsj == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 2px; float: left;"/>
 								</s:if>
 							</div>
 							<div class="lddt_news_list_d">
-								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:property value="#news.d_fbsj"/>
 							</div>
 						</div>
 					</s:iterator>
@@ -545,8 +545,8 @@ function MM_out(mmObj) {
 					
 					<s:iterator value="resMap.dwjsList" var="news">
 						<div class="lddt_news_list">
-							<div class="lddt_news_list_c" style="width:415px;">
-								<div class="lddt_news_list_c_l" style="width:380px;">
+							<div class="lddt_news_list_c" style="width:445px;">
+								<div class="lddt_news_list_c_l" style="width:420px;">
 									<img src="newimages/dote.gif" style="margin-top:6px;"/>
 									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -555,12 +555,12 @@ function MM_out(mmObj) {
 										<s:property value="#news.c_bt"/>
 									</a>
 								</div>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								<s:if test="#news.d_fbsj == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 2px; float: left;"/>
 								</s:if>
 							</div>
 							<div class="lddt_news_list_d">
-								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:property value="#news.d_fbsj"/>
 							</div>
 						</div>
 					</s:iterator>
@@ -571,8 +571,8 @@ function MM_out(mmObj) {
 					
 					<s:iterator value="resMap.xxsbdList" var="news">
 						<div class="lddt_news_list">
-							<div class="lddt_news_list_c" style="width:415px;">
-								<div class="lddt_news_list_c_l" style="width:380px;">
+							<div class="lddt_news_list_c" style="width:445px;">
+								<div class="lddt_news_list_c_l" style="width:420px;">
 									<img src="newimages/dote.gif" style="margin-top:6px;"/>
 									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -581,12 +581,12 @@ function MM_out(mmObj) {
 										<s:property value="#news.c_bt"/>
 									</a>
 								</div>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								<s:if test="#news.d_fbsj == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 2px; float: left;"/>
 								</s:if>
 							</div>
 							<div class="lddt_news_list_d">
-								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:property value="#news.d_fbsj"/>
 							</div>
 						</div>
 					</s:iterator>
@@ -604,8 +604,8 @@ function MM_out(mmObj) {
 							</div>
 						</div>					
 					</div>
-					<div id="link_logo" style="OVERFLOW: hidden; height:190px; width:208px; ">
-					  <div id="link_logo1" style="OVERFLOW: hidden">
+					<div id="link_logo" style="height:190px; width:208px; ">
+					  <div id="link_logo1" style="">
 						
 						 <s:iterator value="resMap.gglList" var="news">
 							<li style="text-align: left; padding-top: 10px;">
@@ -615,6 +615,11 @@ function MM_out(mmObj) {
 										<img src="newimages/pictures.png" style="margin-top: 3px; height: 12px;" alt="图"/>
 									</s:if>
 									<s:property value="#news.c_bt"/>
+									<s:property value="#news.d_fbsj"/>
+									<s:if test="#news.d_fbsj == resMap.sysdate">
+									  <img src="newimages/new.gif" style="float: left;"/>
+									</s:if>
+									
 								</a>
 							</li>
 						</s:iterator>
@@ -860,8 +865,8 @@ function MM_out(mmObj) {
 				<div class="ztzl_content_center_content" id="showDivContent_31" >
 					<s:iterator value="resMap.mrjqList" var="news">
 						<div class="lddt_news_list">
-							<div class="lddt_news_list_c" style="width:270px;">
-								<div class="lddt_news_list_c_l" style="width:240px;">
+							<div class="lddt_news_list_c" style="width:300px;">
+								<div class="lddt_news_list_c_l" style="width:280px;">
 									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -870,12 +875,12 @@ function MM_out(mmObj) {
 										<s:property value="#news.c_bt"/>
 									</a>
 								</div>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								<s:if test="#news.d_fbsj == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 2px; float: left;"/>
 								</s:if>
 							</div>
 							<div class="lddt_news_list_d">
-								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:property value="#news.d_fbsj"/>
 							</div>
 						</div>
 					</s:iterator>
@@ -884,8 +889,8 @@ function MM_out(mmObj) {
 				<div class="ztzl_content_center_content" id="showDivContent_32" style="display: none;" >
 					<s:iterator value="resMap.qxdtList" var="news">
 						<div class="lddt_news_list">
-							<div class="lddt_news_list_c" style="width:270px;">
-								<div class="lddt_news_list_c_l" style="width:240px;">
+							<div class="lddt_news_list_c" style="width:305px;">
+								<div class="lddt_news_list_c_l" style="width:280px;">
 									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -894,12 +899,12 @@ function MM_out(mmObj) {
 										<s:property value="#news.c_bt"/>
 									</a>
 								</div>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								<s:if test="#news.d_fbsj == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 2px; float: left;"/>
 								</s:if>
 							</div>
 							<div class="lddt_news_list_d">
-								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:property value="#news.d_fbsj"/>
 							</div>
 						</div>
 					</s:iterator>
@@ -918,8 +923,8 @@ function MM_out(mmObj) {
 				<div class="ztzl_content_center_content" id="showDivContent_41">
 					<s:iterator value="resMap.dtgkList" var="news">
 						<div class="lddt_news_list">
-							<div class="lddt_news_list_c" style="width:270px;">
-								<div class="lddt_news_list_c_l" style="width:240px;">
+							<div class="lddt_news_list_c" style="width:305px;">
+								<div class="lddt_news_list_c_l" style="width:280px;">
 									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -928,12 +933,12 @@ function MM_out(mmObj) {
 										<s:property value="#news.c_bt"/>
 									</a>
 								</div>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								<s:if test="#news.d_fbsj == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 2px; float: left;"/>
 								</s:if>
 							</div>
 							<div class="lddt_news_list_d">
-								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:property value="#news.d_fbsj"/>
 							</div>
 						</div>
 					</s:iterator>
@@ -942,8 +947,8 @@ function MM_out(mmObj) {
 				<div class="ztzl_content_center_content" id="showDivContent_42" style="display: none;">
 					<s:iterator value="resMap.yfjyList" var="news">
 						<div class="lddt_news_list">
-							<div class="lddt_news_list_c" style="width:270px;">
-								<div class="lddt_news_list_c_l" style="width:240px;">
+							<div class="lddt_news_list_c" style="width:305px;">
+								<div class="lddt_news_list_c_l" style="width:280px;">
 									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -952,12 +957,12 @@ function MM_out(mmObj) {
 										<s:property value="#news.c_bt"/>
 									</a>
 								</div>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								<s:if test="#news.d_fbsj == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 2px; float: left;"/>
 								</s:if>
 							</div>
 							<div class="lddt_news_list_d">
-								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:property value="#news.d_fbsj"/>
 							</div>
 						</div>
 					</s:iterator>
@@ -977,8 +982,8 @@ function MM_out(mmObj) {
 				<div class="ztzl_content_center_content" id="showDivContent_71">
 					<s:iterator value="resMap.csglList" var="news">
 						<div class="lddt_news_list">
-							<div class="lddt_news_list_c" style="width:270px;">
-								<div class="lddt_news_list_c_l" style="width:240px;">
+							<div class="lddt_news_list_c" style="width:305px;">
+								<div class="lddt_news_list_c_l" style="width:280px;">
 									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -987,12 +992,12 @@ function MM_out(mmObj) {
 										<s:property value="#news.c_bt"/>
 									</a>
 								</div>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								<s:if test="#news.d_fbsj == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 2px; float: left;"/>
 								</s:if>
 							</div>
 							<div class="lddt_news_list_d">
-								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:property value="#news.d_fbsj"/>
 							</div>
 						</div>
 					</s:iterator>
@@ -1001,8 +1006,8 @@ function MM_out(mmObj) {
 				<div class="ztzl_content_center_content" id="showDivContent_72" style="display: none;">
 					<s:iterator value="resMap.lpglList" var="news">
 						<div class="lddt_news_list">
-							<div class="lddt_news_list_c" style="width:270px;">
-								<div class="lddt_news_list_c_l" style="width:240px;">
+							<div class="lddt_news_list_c" style="width:305px;">
+								<div class="lddt_news_list_c_l" style="width:280px;">
 									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -1011,12 +1016,12 @@ function MM_out(mmObj) {
 										<s:property value="#news.c_bt"/>
 									</a>
 								</div>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								<s:if test="#news.d_fbsj == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 2px; float: left;"/>
 								</s:if>
 							</div>
 							<div class="lddt_news_list_d">
-								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:property value="#news.d_fbsj"/>
 							</div>
 						</div>
 					</s:iterator>
@@ -1042,8 +1047,8 @@ function MM_out(mmObj) {
 				<div class="ztzl_content_center_content" id="showDivContent_51">
 					<s:iterator value="resMap.qbxxList" var="news">
 						<div class="lddt_news_list">
-							<div class="lddt_news_list_c" style="width:270px; margin-left: 0px;">
-								<div class="lddt_news_list_c_l" style="width:240px;">
+							<div class="lddt_news_list_c" style="width:305px; margin-left: 0px;">
+								<div class="lddt_news_list_c_l" style="width:280px;">
 									<img src="newimages/dote.gif" style="margin-top:6px; margin-left: 0px;"/> 
 									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -1053,13 +1058,13 @@ function MM_out(mmObj) {
 									</a>
 								</div>
 								<div>
-									<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-									  <img src="newimages/new.gif" style="margin-top: 3px;" alt="new"/>
+									<s:if test="#news.d_fbsj == resMap.sysdate">
+									  <img src="newimages/new.gif" style="margin-top: 3px; float: left;" alt="new"/>
 									</s:if>
 								</div>
 							</div>
 							<div class="lddt_news_list_d">
-								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:property value="#news.d_fbsj"/>
 							</div>
 						</div>
 					</s:iterator>
@@ -1067,8 +1072,8 @@ function MM_out(mmObj) {
 				<div class="ztzl_content_center_content" id="showDivContent_52" style="display: none;">
 					<s:iterator value="resMap.zfgfList" var="news">
 						<div class="lddt_news_list">
-							<div class="lddt_news_list_c" style="width:270px; margin-left: 2px;">
-								<div class="lddt_news_list_c_l" style="width:240px;">
+							<div class="lddt_news_list_c" style="width:305px; margin-left: 2px;">
+								<div class="lddt_news_list_c_l" style="width:280px;">
 									<img src="newimages/dote.gif" style="margin-top:6px; margin-left: 0px;"/> 
 									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -1078,13 +1083,13 @@ function MM_out(mmObj) {
 									</a>
 								</div>
 								<div>
-									<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-									  <img src="newimages/new.gif" style="margin-top: 3px;" alt="new"/>
+									<s:if test="#news.d_fbsj == resMap.sysdate">
+									  <img src="newimages/new.gif" style="margin-top: 3px; float: left;" alt="new"/>
 									</s:if>
 								</div>
 							</div>
 							<div class="lddt_news_list_d">
-								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:property value="#news.d_fbsj"/>
 							</div>
 						</div>
 					</s:iterator>
@@ -1092,8 +1097,8 @@ function MM_out(mmObj) {
 				<div class="ztzl_content_center_content" id="showDivContent_53" style="display: none;">
 					<s:iterator value="resMap.jdkhList" var="news">
 						<div class="lddt_news_list">
-							<div class="lddt_news_list_c" style="width:270px; margin-left: 2px;">
-								<div class="lddt_news_list_c_l" style="width:240px;">
+							<div class="lddt_news_list_c" style="width:305px; margin-left: 2px;">
+								<div class="lddt_news_list_c_l" style="width:280px;">
 									<img src="newimages/dote.gif" style="margin-top:6px; margin-left: 0px;"/> 
 									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -1103,13 +1108,13 @@ function MM_out(mmObj) {
 									</a>
 								</div>
 								<div>
-									<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-									  <img src="newimages/new.gif" style="margin-top: 3px;" alt="new"/>
+									<s:if test="#news.d_fbsj == resMap.sysdate">
+									  <img src="newimages/new.gif" style="margin-top: 2px; float: left;" alt="new" />
 									</s:if>
 								</div>
 							</div>
 							<div class="lddt_news_list_d">
-								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:property value="#news.d_fbsj"/>
 							</div>
 						</div>
 					</s:iterator>
@@ -1131,8 +1136,8 @@ function MM_out(mmObj) {
 				<div class="ztzl_content_center_content" id="showDivContent_61">
 					<s:iterator value="resMap.mbajList" var="news">
 						<div class="lddt_news_list">
-							<div class="lddt_news_list_c" style="width:270px;margin-left: 2px;">
-								<div class="lddt_news_list_c_l" style="width:240px;">
+							<div class="lddt_news_list_c" style="width:305px;margin-left: 2px;">
+								<div class="lddt_news_list_c_l" style="width:280px;">
 									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -1141,12 +1146,12 @@ function MM_out(mmObj) {
 										<s:property value="#news.c_bt"/>
 									</a>
 								</div>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								<s:if test="#news.d_fbsj == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 2px; float: left;"/>
 								</s:if>
 							</div>
 							<div class="lddt_news_list_d">
-								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:property value="#news.d_fbsj"/>
 							</div>
 						</div>
 					</s:iterator>
@@ -1154,8 +1159,8 @@ function MM_out(mmObj) {
 				<div class="ztzl_content_center_content" id="showDivContent_62" style="display: none;">
 					<s:iterator value="resMap.dlsjList" var="news">
 						<div class="lddt_news_list">
-							<div class="lddt_news_list_c" style="width:270px;margin-left: 2px;">
-								<div class="lddt_news_list_c_l" style="width:240px;">
+							<div class="lddt_news_list_c" style="width:305px;margin-left: 2px;">
+								<div class="lddt_news_list_c_l" style="width:280px;">
 									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -1164,12 +1169,12 @@ function MM_out(mmObj) {
 										<s:property value="#news.c_bt"/>
 									</a>
 								</div>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								<s:if test="#news.d_fbsj == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 2px; float: left;"/>
 								</s:if>
 							</div>
 							<div class="lddt_news_list_d">
-								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:property value="#news.d_fbsj"/>
 							</div>
 						</div>
 					</s:iterator>
@@ -1178,8 +1183,8 @@ function MM_out(mmObj) {
 				<div class="ztzl_content_center_content" id="showDivContent_63" style="display: none;">
 					<s:iterator value="resMap.dyjlList" var="news">
 						<div class="lddt_news_list">
-							<div class="lddt_news_list_c" style="width:270px;margin-left: 2px;">
-								<div class="lddt_news_list_c_l" style="width:240px;">
+							<div class="lddt_news_list_c" style="width:305px;margin-left: 2px;">
+								<div class="lddt_news_list_c_l" style="width:280px;">
 									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -1188,12 +1193,12 @@ function MM_out(mmObj) {
 										<s:property value="#news.c_bt"/>
 									</a>
 								</div>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								<s:if test="#news.d_fbsj == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 2px; float: left;"/>
 								</s:if>
 							</div>
 							<div class="lddt_news_list_d">
-								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:property value="#news.d_fbsj"/>
 							</div>
 						</div>
 					</s:iterator>
@@ -1204,7 +1209,7 @@ function MM_out(mmObj) {
 					<div id="showDivTitle_82" onmouseover="javascript:showDiv(8,2)">领导讲话</div>
 					<div id="showDivTitle_83" onmouseover="javascript:showDiv(8,3)">禁毒视角</div>
 					<div class="more"  id="showDivMore_81">
-						<a href="newsCenterList?news.c_lm=1352 &pageNo=1">更多&gt;&gt;</a>
+						<a href="newsCenterList?news.c_lm=1352&pageNo=1">更多&gt;&gt;</a>
 					</div>
 					<div class="more" id="showDivMore_82" style="display: none;">
 						<a href="newsCenterList?news.c_lm=1353&pageNo=1">更多&gt;&gt;</a>
@@ -1216,8 +1221,8 @@ function MM_out(mmObj) {
 				<div class="ztzl_content_center_content" id="showDivContent_81">
 					<s:iterator value="resMap.dyjl2List" var="news">
 						<div class="lddt_news_list">
-							<div class="lddt_news_list_c" style="width:270px;margin-left: 2px;">
-								<div class="lddt_news_list_c_l" style="width:240px;">
+							<div class="lddt_news_list_c" style="width:305px;margin-left: 2px;">
+								<div class="lddt_news_list_c_l" style="width:280px;">
 									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -1226,12 +1231,12 @@ function MM_out(mmObj) {
 										<s:property value="#news.c_bt"/>
 									</a>
 								</div>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								<s:if test="#news.d_fbsj == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 2px; float: left;"/>
 								</s:if>
 							</div>
 							<div class="lddt_news_list_d">
-								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:property value="#news.d_fbsj"/>
 							</div>
 						</div>
 					</s:iterator>
@@ -1239,8 +1244,8 @@ function MM_out(mmObj) {
 				<div class="ztzl_content_center_content" id="showDivContent_82" style="display: none;">
 					<s:iterator value="resMap.ldjhList" var="news">
 						<div class="lddt_news_list">
-							<div class="lddt_news_list_c" style="width:270px;margin-left: 2px;">
-								<div class="lddt_news_list_c_l" style="width:240px;">
+							<div class="lddt_news_list_c" style="width:305px;margin-left: 2px;">
+								<div class="lddt_news_list_c_l" style="width:280px;">
 									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -1249,12 +1254,12 @@ function MM_out(mmObj) {
 										<s:property value="#news.c_bt"/>
 									</a>
 								</div>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								<s:if test="#news.d_fbsj == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 2px; float: left;"/>
 								</s:if>
 							</div>
 							<div class="lddt_news_list_d">
-								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:property value="#news.d_fbsj"/>
 							</div>
 						</div>
 					</s:iterator>
@@ -1263,8 +1268,8 @@ function MM_out(mmObj) {
 				<div class="ztzl_content_center_content" id="showDivContent_83" style="display: none;">
 					<s:iterator value="resMap.jdsjList" var="news">
 						<div class="lddt_news_list">
-							<div class="lddt_news_list_c" style="width:270px;margin-left: 2px;">
-								<div class="lddt_news_list_c_l" style="width:240px;">
+							<div class="lddt_news_list_c" style="width:305px;margin-left: 2px;">
+								<div class="lddt_news_list_c_l" style="width:280px;">
 									<img src="newimages/dote.gif" style="margin-top:6px;"/> 
 									<a title="<s:property value="#news.c_bt"/>" href="newsDetail?news.n_xh=<s:property value="#news.n_xh"/>" target="_blank">
 										<s:if test="#news.c_tpljdz != null and #news.c_tpljdz != '' ">
@@ -1273,12 +1278,12 @@ function MM_out(mmObj) {
 										<s:property value="#news.c_bt"/>
 									</a>
 								</div>
-								<s:if test="#news.d_fbsj.substring(0,10) == resMap.sysdate">
-								  <img src="newimages/new.gif" style="margin-top: 1px;"/>
+								<s:if test="#news.d_fbsj == resMap.sysdate">
+								  <img src="newimages/new.gif" style="margin-top: 2px; float: left;"/>
 								</s:if>
 							</div>
 							<div class="lddt_news_list_d">
-								<s:property value="#news.d_fbsj.substring(0,10)"/>
+								<s:property value="#news.d_fbsj"/>
 							</div>
 						</div>
 					</s:iterator>
@@ -1295,10 +1300,10 @@ function MM_out(mmObj) {
 				<div style="margin-left: -10px; width: 740px;">
 				<img src="newimages/wjfb_hy_qw_jh.png" usemap="#planetmap"/>
 					<map name="planetmap" id="planetmap"> 
-						<area shape="rect" coords="0,0,106,78" href="newsCenterList?news.c_lm=1140&pageNo=1" alt="文件发布"/>
+						<area shape="rect" coords="0,0,106,78" href="<%=basePath%>admin" alt="文件发布"/>
 						<area shape="rect" coords="106,0,216,78" href="newsCenterList?news.c_lm=1141&pageNo=1" alt="会议提示"/>
 						<area shape="rect" coords="216,0,331,78" href="newsCenterList?news.c_lm=1142&pageNo=1" alt="勤务安排"/>
-						<area shape="rect" coords="331,0,464,78" href="newsCenterList?news.c_lm=1186&pageNo=1" alt="文件交换"/>
+						<area shape="rect" coords="331,0,464,78" href="http://10.8.1.135/login.jsp" alt="文件交换"/>
 						<area shape="rect" coords="464,0,588,78" href="newsCenterList?news.c_lm=1143&pageNo=1" alt="电视电话会议"/>
 						<area shape="rect" coords="588,0,731,78" href="newsCenterList?news.c_lm=1144&pageNo=1" alt="会议室管理"/>
 					</map> 

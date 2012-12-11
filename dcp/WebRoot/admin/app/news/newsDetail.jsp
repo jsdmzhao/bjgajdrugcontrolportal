@@ -64,7 +64,7 @@ String newsType = request.getParameter("newsType");
 	         name:"c_bt",
 	         newline:true,
 	         labelWidth:100,
-	         width:700,
+	         width:696,
 	         type:"text",
 	         validate: { required: true},
 	         group:"基本信息",
@@ -75,7 +75,7 @@ String newsType = request.getParameter("newsType");
              validate: { required: true},
              newline:true,
              labelWidth:100,
-             width:308
+             width:606
          },{
    	         name:"wzlm",
    	         newline:false,
@@ -85,7 +85,8 @@ String newsType = request.getParameter("newsType");
    	         cssClass:"l-button-2",
    	         value:"选择栏目",
    	         onclick : "selectLanmu()"
-         },{display:"发布单位",name:"c_fbdw",validate: { required: true},newline:false,labelWidth:90,width:172,type:"basicText"},
+         },{display:"发布单位",name:"c_fbdw",validate: { required: true},newline:true,labelWidth:100,width:325,type:"basicText"},
+         {display:"访问权限",name:"c_fwqx",newline:false,labelWidth:90,width:270,validate: { required: true},type:"basicText"},
          {display:"是否图片文章",
              name:"c_sftwwz",
              newline:true,
@@ -140,7 +141,7 @@ String newsType = request.getParameter("newsType");
          	width:700,space:30,
          	type:"textarea"
          },
-         {display:"链接",name:"c_lj",newline:true,labelWidth:100,width:300,space:30,type:"text"},
+         {display:"链接",name:"c_lj",newline:true,labelWidth:100,width:315,space:30,type:"text"},
          {display:"发布时间",name:"d_fbsj",newline:false,labelWidth:100,width:250,validate: { required: true},
          space:30,type:"text",onclick:"WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"},
          {display:"内容",name:"c_nr",newline:true,labelWidth:100,width:700,heigth: 800,space:30,type:"textarea"}
@@ -208,14 +209,25 @@ String newsType = request.getParameter("newsType");
             $("input,select,textarea",mainform2).attr("readonly", "readonly");
         }
 		
+		
+		var tempdata = [{text:'总队内部可见',value:'1'},{text:'全市可见',value:'2'},{text:'全国可见',value:'3'}];
 		com = $("#c_fbdw").ligerComboBox({
 	    	 isMultiSelect: false,
-	    	 width: 170, 
-             selectBoxWidth: 170,
-             selectBoxHeight: 100, 
+             selectBoxWidth: 325,
+             selectBoxHeight: 200, 
 	         valueField:"value",
 	         textFiled:"text",
 	         url:"<%=basePath%>newsCombox"
+		});
+		
+		com2 = $("#c_fwqx").ligerComboBox({
+	    	 isMultiSelect: false,
+             selectBoxWidth: 270,
+             selectBoxHeight: 100, 
+	         valueField:"value",
+	         textFiled:"text",
+	         data: tempdata,
+	         value: '3'
 		});
 
         //<!-- 设置一些默认参数 -->
@@ -248,6 +260,7 @@ String newsType = request.getParameter("newsType");
         	
         	formMap["c_nr"] = editor.document.getBody().getHtml();
         	formMap["c_fbdw"] = com.getValue();
+		formMap["c_fwqx"] = com2.getValue();
 			
         	NewsAction.newsSave(formMap,function (result){
         		//var win = parent || window;

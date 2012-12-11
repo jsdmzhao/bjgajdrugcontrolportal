@@ -26,7 +26,6 @@ import com.unis.app.news.model.News;
 import com.unis.app.pagination.Pagination;
 import com.unis.app.userinfo.service.UserInfoSvc;
 import com.unis.app.website.model.Website;
-import com.unis.core.action.CreateIndexAction;
 import com.unis.core.commons.Combox;
 import com.unis.core.service.AbsServiceAdapter;
 import com.unis.core.util.DateUtil;
@@ -54,9 +53,6 @@ public class NewsAction {
 	
 	@Autowired
 	private AbsServiceAdapter<Integer> newsService = null;
-	
-	@Autowired
-	private CreateIndexAction createdIndexAction = null;
 	
 	@Autowired
 	private ClxxSvc clxxSvc = null;
@@ -396,7 +392,7 @@ public class NewsAction {
 		
 		//公告栏
 		sqlParamMap.put("c_lm", "1200");
-		sqlParamMap.put("rownum", "11");
+		sqlParamMap.put("rownum", "8");
 		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
 		resMap.put("gglList", newsList);
 		
@@ -493,7 +489,7 @@ public class NewsAction {
 			}
 		}
 		//当前日期
-		resMap.put("sysdate", DateUtil.getSysDate("yyyy-MM-dd"));
+		resMap.put("sysdate", DateUtil.getSysDate("MM-dd"));
 		
 		return  Globals.SUCCESS;
 	}
@@ -694,10 +690,6 @@ public class NewsAction {
 		this.newsService = newsService;
 	}
 
-	public CreateIndexAction getCreatedIndexAction() {
-		return createdIndexAction;
-	}
-
 	public ClxxSvc getClxxSvc() {
 		return clxxSvc;
 	}
@@ -722,9 +714,6 @@ public class NewsAction {
 		this.userInfoSvc = userInfoSvc;
 	}
 
-	public void setCreatedIndexAction(CreateIndexAction createdIndexAction) {
-		this.createdIndexAction = createdIndexAction;
-	}
 	public Map<String, Object> getResMap() {
 		return resMap;
 	}

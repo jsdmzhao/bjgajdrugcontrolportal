@@ -167,7 +167,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<a href='newsCenterList?news.c_lm=1108&pageNo=1'><img src="newimages/menu_ljksc.png" /></a>
 			</div>
 			<div id="gzjdts">
-					<a href='newsCenterList?news.c_lm=1100&pageNo=1'><img src="newimages/menu_gzjdts.png" /></a>
+					<a href='<%=basePath%>admin'><img src="newimages/menu_wsbg.png" /></a>
 			</div>
 		</div>
 	
@@ -182,7 +182,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</s:else>
 				</div>
 				<div class="news_center_title_more">
-					<font color="#DF7024" size="2">您现在所在的位置：<a href="<%=basePath%>"><font color="#DF7024" size="2">首页</font></a>&nbsp;&gt;&gt;&nbsp;<s:property value="news.c_lm_"/></font>
+					<font color="#DF7024" size="2">您现在所在的位置：<a href="<%=basePath%>"><font color="#DF7024" size="2">首页</font></a>&nbsp;&gt;&gt;&nbsp;
+						<s:if test="news.c_lm_.indexOf(';') > -1">
+							<s:property value="news.c_lm_.substring(0,news.c_lm_.indexOf(';'))"/>
+						</s:if>
+						<s:else>
+							<s:property value="news.c_lm_"/>
+						</s:else>
+					</font>
 				</div>
 			</div>
 			<div class="news_content_center_content" style="padding:10px 0px 10px 20px;">

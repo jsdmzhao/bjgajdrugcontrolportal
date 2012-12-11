@@ -3,7 +3,6 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
-String c_sjlmdm = request.getParameter("c_sjlmdm");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -26,7 +25,6 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
     <script src="<%=basePath%>liger/lib/js/validator.js" type="text/javascript"></script>
     <script src="<%=basePath%>liger/lib/js/ligerui.expand.js" type="text/javascript"></script> 
     <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerForm.js" type="text/javascript"></script>
-    <script src="<%=basePath%>liger/lib/ligerUI/js/plugins/ligerTree.js" type="text/javascript"></script>
     <script src="<%=basePath%>js/formUtil.js" type="text/javascript"></script>
     
     <script type="text/javascript" src="<%=basePath%>ckeditor/ckeditor.js"></script>
@@ -58,7 +56,8 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
 		          },
 		          group:"基本信息",
 		          groupicon:"<%=basePath%>liger/lib/icons/32X32/communication.gif"
-		         },
+		         }
+		         , {display:"显示序号",name:"n_xsxh",newline:false,labelWidth:100,width:190,space:30,type:"number"},
 		         {
 			         display:"网站标题",
 			         name:"c_bt",
@@ -168,9 +167,6 @@ String c_sjlmdm = request.getParameter("c_sjlmdm");
 	
         });
     </script>
- 	<div id="uploadImageDiv" style="display: none;">
-		 <iframe src="<%=basePath%>fileupload/uploadFile.jsp?fileNameId=c_tpljdz"></iframe> <!---->
-	</div>
 </body>
 
 </html>
