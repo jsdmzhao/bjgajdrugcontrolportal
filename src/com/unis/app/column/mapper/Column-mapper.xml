@@ -55,6 +55,19 @@
 	CONNECT BY PRIOR C_LMDM = C_SJLMDM
 	</select>
 	
+	<select id="getColumnIndexList" resultType="Column">
+	   SELECT C_LMDM, 
+	   		C_LMMC,
+	   		C_LJ
+	   FROM B_LANMU
+	  WHERE  N_YXX = 1
+	   <if test="c_sjlmdm != null and c_sjlmdm != '' ">
+	   		AND C_SJLMDM = #{c_sjlmdm}
+	   </if>
+	   AND C_SFDH = '1'
+	   ORDER BY N_XSXH
+	</select>
+	
 	<delete id="deleteColumn" parameterType="int">
 		DELETE FROM B_LANMU WHERE N_XH = #{n_xh}
 	</delete>

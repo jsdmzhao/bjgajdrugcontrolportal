@@ -1,6 +1,7 @@
 package com.unis.core.util;
 
 import java.util.List;
+import java.util.Map;
 
 public class PageModel {
 
@@ -15,6 +16,8 @@ public class PageModel {
 	private String keyWords;
 	
 	private String sysdate;
+	
+	private Map<String, Object> resMap;
 
 	public Long getPageNo() {
 		return pageNo;
@@ -97,6 +100,14 @@ public class PageModel {
 
 	public void setSysdate(String sysdate) {
 		this.sysdate = sysdate;
+	}
+
+	public Map<String, Object> getResMap() {
+		return resMap;
+	}
+
+	public void setResMap(Map<String, Object> resMap) {
+		this.resMap = resMap;
 	}
 
 }

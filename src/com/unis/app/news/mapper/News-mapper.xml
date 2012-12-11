@@ -217,10 +217,10 @@
 	
 	
 	<select id="getNewsIndexList" parameterType="News" resultMap="resultIndexNews">
-	  SELECT N_XH,C_BT,D_FBSJ,C_TPLJDZ,C_LJ FROM (
+	  SELECT N_XH,C_BT,TO_CHAR(D_FBSJ, 'MM-DD') D_FBSJ,C_TPLJDZ,C_LJ FROM (
 	    SELECT N_XH,
 			  C_BT,
-		      TO_CHAR(D_FBSJ, 'MM-DD') D_FBSJ,
+		      D_FBSJ,
 			  C_TPLJDZ,
 			  C_LJ
 	  	FROM B_XINWEN
