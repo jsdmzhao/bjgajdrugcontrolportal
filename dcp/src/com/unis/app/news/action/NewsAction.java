@@ -431,6 +431,11 @@ public class NewsAction {
 		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
 		resMap.put("gglList", newsList);
 		
+		//应用导航
+		sqlParamMap.put("c_lm", "1509");
+		sqlParamMap.put("rownum", "6");
+		newsList = (List<News>) newsService.selectList("NewsMapper.getNewsIndexList", sqlParamMap);
+		resMap.put("yydhList", newsList);
 		
 		//滚动专题专栏
 		sqlParamMap.put("c_lm", "1283");
@@ -490,31 +495,7 @@ public class NewsAction {
 				session.setAttribute("userId",rp.get("userId") );
 				session.setAttribute("cJb",rp.get("cJb") );
 				session.setAttribute("cYhz",rp.get("cYhz") );
-				session.setAttribute("cZc",rp.get("cZc") );
-				session.setAttribute("cXm",rp.get("cXm") );
-				session.setAttribute("nXb",rp.get("nXb") );
-				session.setAttribute("dSr",rp.get("dSr") );
-				session.setAttribute("cGj",rp.get("cGj") );
-				session.setAttribute("cCsd",rp.get("cCsd") );
-				session.setAttribute("cHyzk",rp.get("cHyzk") );
-				session.setAttribute("cXl",rp.get("cXl") );
-				session.setAttribute("cByyx",rp.get("cByyx") );
-				session.setAttribute("cZy",rp.get("cZy") );
-				session.setAttribute("cKh",rp.get("cKh") );
-				session.setAttribute("cHkszd",rp.get("cHkszd") );
-				session.setAttribute("cDhhm",rp.get("cDhhm") );
-				session.setAttribute("cSjhm",rp.get("cSjhm") );
-				session.setAttribute("cYx",rp.get("cYx") );
-				session.setAttribute("cDz",rp.get("cDz") );
-				session.setAttribute("dGzsj",rp.get("dGzsj") );
-				session.setAttribute("dRzsj",rp.get("dRzsj") );
-				session.setAttribute("cJcjl",rp.get("cJcjl") );
-				session.setAttribute("cBz",rp.get("cBz") );
-				session.setAttribute("nDlcs",rp.get("nDlcs") );
-				session.setAttribute("nZxsc",rp.get("nZxsc") );
 				session.setAttribute("cLx",rp.get("cLx") );
-				session.setAttribute("cYxip",rp.get("cYxip") );
-				session.setAttribute("cKs",rp.get("cKs") );
 				
 			}else{
 				session.setAttribute("cXm", "游客");
@@ -524,7 +505,7 @@ public class NewsAction {
 			}
 		}
 		//当前日期
-		resMap.put("sysdate", DateUtil.getSysDate("MM-dd"));
+		//resMap.put("sysdate", DateUtil.getSysDate("MM-dd"));
 		
 		return  Globals.SUCCESS;
 	}

@@ -70,6 +70,8 @@ public class News {
 	
 	private String start;
 	
+	private String d_dj;
+	
 	private Map<String, Object> resMap;
  
 	private String limit;
@@ -353,6 +355,14 @@ public class News {
 
 	public void setResMap(Map<String, Object> resMap) {
 		this.resMap = resMap;
+	}
+
+	public String getD_dj() {
+		return d_dj;
+	}
+
+	public void setD_dj(String d_dj) {
+		this.d_dj = d_dj;
 	}
 	
 }

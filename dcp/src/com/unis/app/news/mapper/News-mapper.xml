@@ -20,6 +20,7 @@
 	 	<result column="D_FBSJ" property="d_fbsj"/>
 	 	<result column="C_TPLJDZ" property="c_tpljdz"/>
 	 	<result column="C_LJ" property="c_lj"/>
+	 	<result column="D_DJ" property="d_dj"/>
 	 </resultMap>
 	 
 	 
@@ -217,12 +218,13 @@
 	
 	
 	<select id="getNewsIndexList" parameterType="News" resultMap="resultIndexNews">
-	  SELECT N_XH,C_BT,TO_CHAR(D_FBSJ, 'MM-DD') D_FBSJ,C_TPLJDZ,C_LJ FROM (
+	  SELECT N_XH,C_BT,TO_CHAR(D_FBSJ, 'MM-DD') D_FBSJ,C_TPLJDZ,C_LJ,TO_CHAR(D_DJ, 'MM-DD') D_DJ FROM (
 	    SELECT N_XH,
 			  C_BT,
 		      D_FBSJ,
 			  C_TPLJDZ,
-			  C_LJ
+			  C_LJ,
+			  SYSDATE D_DJ
 	  	FROM B_XINWEN
 	 	 WHERE C_LM LIKE '%;'||#{c_lm}||';%'
 	 	 	<if test="c_lm != null and c_lm == '1081' and rownum == 4 ">
