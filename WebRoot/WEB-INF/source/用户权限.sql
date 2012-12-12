@@ -10,6 +10,15 @@ drop table SYS_USER ;
 drop table SYS_USER_GROUP ;
 DROP TABLE SYS_MENU;
 DROP TABLE SYS_BUTTON;
+DROP TABLE SYS_CONFIG;
+
+create table SYS_CONFIG  (
+   CONFIG_ID         NUMBER(8)                      ,
+   CONFIG_NAME          VARCHAR2(100)                       ,
+   CONFIG_PARA        VARCHAR2(100)                        ,
+   constraint PK_SYS_CONFIG primary key (CONFIG_ID)
+);
+
 
 /*==============================================================*/
 /* Table: SYS_AUTHORITY                                         */
@@ -379,6 +388,13 @@ increment by 1
 cache 20;
 
 create sequence SEQ_SYS_USER_GROUP_ID
+minvalue 10000000
+maxvalue 99999999
+start with 10000000
+increment by 1
+cache 20;
+
+create sequence SEQ_SYS_CONFIG_ID
 minvalue 10000000
 maxvalue 99999999
 start with 10000000

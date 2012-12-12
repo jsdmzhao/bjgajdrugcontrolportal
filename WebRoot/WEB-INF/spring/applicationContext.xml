@@ -63,5 +63,9 @@
 	<bean id="kqHytsDao" class="com.unis.app.duty.service.dao.KqHytsDao" parent="absServiceAdapter"/>
 	
 	
+	<bean id="sysConfigDao" class="com.unis.app.system.service.dao.SysConfigDao" parent="absServiceAdapter"/>
+	
+	
+	
 	
 </beans>
