@@ -152,6 +152,10 @@
 			<param name="beanName" value="clxxSvc"></param>
 		</create>
 		
+		
+		<create javascript="SysConfigSvc" creator="spring">
+			<param name="beanName" value="sysConfigSvc"></param>
+		</create>
 
 		
 		<!-- 定义允许dwr将User实例转换成JavaScript对象 -->

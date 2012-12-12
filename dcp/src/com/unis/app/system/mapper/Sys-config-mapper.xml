@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SysConfigMapper">
+	<resultMap id="Result"  type="java.util.Map">
+		<result property="configId" column="CONFIG_ID" jdbcType="DECIMAL"/>
+		<result property="configName" column="CONFIG_NAME" jdbcType="VARCHAR"/>
+		<result property="configPara" column="CONFIG_PARA" jdbcType="VARCHAR"/>
+	</resultMap>
+	 
+
+	<select id="queryAllInfo" resultMap="Result"  parameterType="java.util.Map" >
+				 select 
+					base.CONFIG_ID,
+					base.CONFIG_NAME,
+					base.CONFIG_PARA
+				 from SYS_CONFIG base 
+		 <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="configId != null and configId !='' ">  and CONFIG_ID = #{configId}</if>
+			<if test="configName != null and configName !='' ">  and CONFIG_NAME = #{configName}</if>
+			<if test="configPara != null and configPara !='' ">  and CONFIG_PARA = #{configPara}</if>
+		</trim>
+		ORDER BY CONFIG_ID  ASC 
+	</select>
+
+	<select id="queryInfo" resultMap="Result" parameterType="java.util.Map" >
+		<include refid="pagination.paginationStart"></include>
+		 select 
+					base.CONFIG_ID,
+					base.CONFIG_NAME,
+					base.CONFIG_PARA
+				 from SYS_CONFIG base 
+		 <trim prefix="where" prefixOverrides="and |or"> 
+			<if test="configId != null and configId !='' ">  and CONFIG_ID = #{configId}</if>
+			<if test="configName != null and configName !='' ">  and CONFIG_NAME = #{configName}</if>
+			<if test="configPara != null and configPara !='' ">  and CONFIG_PARA = #{configPara}</if>
+		</trim>
+		ORDER BY CONFIG_ID  ASC 
+		<include refid="pagination.paginationLast"></include>
+	</select>
+
+
+	<select id="queryCountInfo" resultType="integer" parameterType="java.util.Map" >
+				select count(base.CONFIG_ID) from SYS_CONFIG base
+ 		<trim prefix="where" prefixOverrides="and |or"> 
+			<if test="configId != null and configId !='' ">  and 	CONFIG_ID = #{configId}</if>
+			<if test="configName != null and configName !='' ">  and 	CONFIG_NAME = #{configName}</if>
+			<if test="configPara != null and configPara !='' ">  and 	CONFIG_PARA = #{configPara}</if>
+		</trim>
+	</select> 
+	
+	
+
+	<insert id="saveInfo" parameterType="java.util.Map" >
+			INSERT INTO SYS_CONFIG(
+				 CONFIG_ID
+			<if test="configName != null and configName !='' ">  , CONFIG_NAME</if>
+			<if test="configPara != null and configPara !='' ">  , CONFIG_PARA</if>
+			)VALUES(
+				SEQ_SYS_CONFIG_ID.NEXTVAL 
+				<!-- #{n_xh#-->
+			<if test="configName != null and configName !='' ">  ,  #{configName}</if>
+			<if test="configPara != null and configPara !='' ">  ,  #{configPara}</if>
+			
+			
+			)
+		<selectKey resultType="string" keyProperty="id" >
+			 <!--SELECT #{nXh# AS ID FROM dual  -->
+			 SELECT  SEQ_SYS_CONFIG_ID.CURRVAL  AS ID FROM dual 
+		</selectKey>
+	</insert>
+
+	<insert id="saveAllInfo" parameterType="java.util.Map" >
+			INSERT INTO SYS_CONFIG(
+				CONFIG_ID,
+				CONFIG_NAME,
+				CONFIG_PARA
+			)VALUES(
+				 SEQ_SYS_CONFIG_ID.NEXTVAL,  
+				<!--#nXh#,-->
+				#{configName},
+				#{configPara}
+			)
+		<selectKey resultType="string" keyProperty="id" >
+			 <!--SELECT #{nXh# AS ID FROM dual --> 
+			 SELECT  SEQ_SYS_CONFIG_ID.CURRVAL  AS ID FROM dual 
+		</selectKey>
+	</insert>
+
+	<update id="updateInfo" parameterType="java.util.Map"> 
+			update SYS_CONFIG 
+			<trim prefix="set" prefixOverrides=","> 
+				<if test="configName != null and configName !='' "> , CONFIG_NAME = #{configName}</if>
+				<if test="configPara != null and configPara !='' "> , CONFIG_PARA = #{configPara}</if>
+			</trim>
+			<trim prefix="where" prefixOverrides="and |or">  
+				<if test="configId != null and configId !='' ">  and CONFIG_ID = #{configId}</if>
+				<if test="configIds != null and configIds !='' ">  and  CONFIG_ID in (${configIds})</if>
+			</trim>
+	</update> 
+
+	<update id="updateAllInfo" parameterType="java.util.Map"> 
+			update SYS_CONFIG set 
+				CONFIG_ID = #{configId},
+				CONFIG_NAME = #{configName},
+				CONFIG_PARA = #{configPara}
+			WHERE 
+				CONFIG_ID = #{configId}
+	</update> 
+
+	<delete id="removeInfo" parameterType="java.util.Map"> 
+			 DELETE FROM SYS_CONFIG
+			 WHERE
+			<!--N_XH = #{nXh#
+			<![CDATA[ CONFIG_ID IN (${userIds}) ]]>--> 
+			 CONFIG_ID =#{configId} 
+	</delete> 
+	
+	
+</mapper>

@@ -14,9 +14,12 @@ delete from D_DM;
 delete from B_ZMCD;
 delete from B_WDZM;
 
-delete from B_YH
+delete from B_YH;
+delete from SYS_CONFIG;
 
-
+--配置表
+insert into SYS_CONFIG (CONFIG_ID, CONFIG_NAME, CONFIG_PARA, ROWID)
+values (100, '总访问次数', '0', null);
 
 --菜单
 insert into SYS_MENU (MENU_ID, MENU_NO, MENU_PARENT_NO, MENU_NAME, MENU_URL, 
